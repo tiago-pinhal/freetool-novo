@@ -1,58 +1,42 @@
 <template>
   <!-- Mobile: DaisyUI drawer overlay -->
-  <div v-if="!isHomePage" class="drawer-side z-30 lg:hidden">
+  <div v-if="!isHomePage" class="drawer-side z-[60] lg:hidden">
     <label for="main-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-    <div class="h-full bg-base-200 text-base-content flex flex-col w-80 shadow-xl border-r border-base-content/5">
-      <nav aria-label="Main Navigation" class="flex-grow w-full px-2 pt-4 overflow-y-auto custom-scrollbar">
-        <ul class="space-y-1">
+    <div class="h-full bg-base-200 text-base-content flex flex-col shadow-xl border-r border-base-content/5">
+      <nav aria-label="Main Navigation" class="flex-grow w-full overflow-y-auto custom-scrollbar">
+        <ul class="menu menu-lg p-2 gap-1">
           <li v-for="item in menuItems" :key="item.path">
             <NuxtLink
               :to="localePath(item.path)"
-              :aria-current="route.path === localePath(item.path) ? 'page' : undefined"
-              class="flex items-center gap-4 px-4 py-2 rounded-2xl hover:text-primary transition-all duration-200 group active:scale-[0.98]"
+              active-class="active"
               @click="closeDrawer"
+              class="flex items-center gap-4"
             >
-              <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-base-content/50 group-hover:text-primary transition-all duration-300">
-                <Icon :name="`${item.icon}.svg?width=24&height=24`" aria-hidden="true" />
-              </div>
+              <Icon :name="`${item.icon}.svg?width=24&height=24`" aria-hidden="true" />
               <span class="font-semibold text-sm">{{ t(item.label) }}</span>
             </NuxtLink>
           </li>
         </ul>
       </nav>
-      <div class="mt-auto py-4 border-t border-base-content/10 text-center opacity-50">
-        <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">© {{ currentYear }} FreeTool.dev</p>
-      </div>
     </div>
   </div>
 
-  <!-- Desktop: sidebar fixed com hover expand -->
+  <!-- Desktop: Mini sidebar with tooltips -->
   <aside
     v-if="!isHomePage"
     aria-label="Main Navigation"
-    class="hidden lg:flex flex-col fixed top-[77px] left-0 z-30 h-[calc(100vh-77px)] bg-base-200 border-r border-base-content/5 shadow-xl transition-[width] duration-300 ease-in-out overflow-hidden"
-    @mouseenter="isHovered = true"
-    @mouseleave="isHovered = false"
-    @focusin="isHovered = true"
-    @focusout="isHovered = false"
+    class="hidden lg:flex flex-col fixed top-16 left-0 z-30 h-[calc(100vh-64px)] bg-base-200 border-r border-base-content/5 shadow-xl w-14 items-center pt-0 pb-4 overflow-visible"
   >
-    <nav class="flex-grow w-full overflow-y-auto custom-scrollbar">
-      <ul>
+    <nav class="flex-grow w-full overflow-visible">
+      <ul class="menu p-1 gap-1 items-center overflow-visible">
         <li v-for="item in menuItems" :key="item.path">
           <NuxtLink
             :to="localePath(item.path)"
-            :aria-current="route.path === localePath(item.path) ? 'page' : undefined"
-            class="flex items-center py-1 rounded-2xl hover:text-primary transition-all duration-200 group active:scale-[0.98]"
+            active-class="active"
+            class="tooltip tooltip-right p-3"
+            :data-tip="t(item.label)"
           >
-            <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-base-content/50 group-hover:text-primary transition-all duration-300">
-              <Icon :name="`${item.icon}.svg?width=24&height=24`" aria-hidden="true" />
-            </div>
-            <span
-              class="font-semibold text-sm whitespace-nowrap transition-all duration-200"
-              :class="isHovered ? 'opacity-100 pr-8' : 'sr-only'"
-            >
-              {{ t(item.label) }}
-            </span>
+            <Icon :name="`${item.icon}.svg?width=24&height=24`" aria-hidden="true" />
           </NuxtLink>
         </li>
       </ul>
@@ -64,7 +48,6 @@
 const { t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
-const isHovered = ref(false)
 const currentYear = new Date().getFullYear()
 
 const isHomePage = computed(() => route.path === localePath('/'))
@@ -77,7 +60,7 @@ const menuItems = [
   { path: 'date-time-tools', icon: 'calendar', label: 'dts' },
   { path: 'random-data', icon: 'circle-stack', label: 'rand' },
   { path: 'code-minifiers', icon: 'arrows-pointing-in', label: 'min' },
-  { path: 'code-formatters', icon: 'bars-4', label: 'fmt' },
+  { path: 'code-formatters', icon: 'bars-3-bottom-left', label: 'fmt' },
   { path: 'converters', icon: 'arrows-right-left', label: 'conv' },
   { path: 'various-tools', icon: 'squares-2x2', label: 'misc' },
 ]

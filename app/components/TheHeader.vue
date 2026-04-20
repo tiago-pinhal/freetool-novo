@@ -26,7 +26,7 @@ const isHomePage = computed(() => route.path === localePath('/'))
 </script>
 
 <template>
-  <header class="navbar bg-base-200 shadow-sm w-full rounded-md px-4">
+  <header class="navbar bg-base-200 shadow-sm w-full sticky top-0 z-50 h-16 px-4">
     <div class="navbar-start">
       <button v-if="!isHomePage" @click="toggleMenu" class="btn btn-ghost lg:hidden">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -40,35 +40,26 @@ const isHomePage = computed(() => route.path === localePath('/'))
     </div>
     <div class="navbar-end">
       <div class="flex items-center">
-        <div class="dropdown dropdown-end group">
-          <div
-            tabindex="0"
-            role="button"
-            aria-haspopup="menu"
-            aria-expanded="false"
-            aria-label="Select language"
-            class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-base-content hover:bg-base-200 transition-colors duration-200 cursor-pointer"
-          >
-            <Icon name="language.svg?width=18&height=18" aria-hidden="true" />
-            <span class="hidden sm:inline font-medium">{{ currentLocaleName }}</span>
-            <Icon name="chevron-down.svg?width=18&height=18" class="opacity-60 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
-          </div>
-
-          <ul
-            tabindex="0"
-            role="menu"
-            class="dropdown-content z-[100] menu p-2 shadow-xl bg-base-200 rounded-lg w-44 mt-2 border border-base-content/10"
-          >
-            <li v-for="loc in otherLocales" :key="loc.code">
-              <NuxtLink
-                :to="switchLocalePath(loc.code)"
-                class="text-base-content hover:bg-base-300 transition-colors rounded-md"
-              >
-                {{ loc.name }}
-              </NuxtLink>
-            </li>
-          </ul>
-        </div>
+        <ul class="menu menu-horizontal p-0">
+          <li>
+            <details>
+              <summary class="flex items-center gap-2 px-4 py-2 rounded-lg text-base-content hover:bg-base-200 transition-colors duration-200 cursor-pointer list-none">
+                <Icon name="language.svg?width=18&height=18" aria-hidden="true" />
+                <span class="hidden sm:inline font-medium text-sm">{{ currentLocaleName }}</span>
+              </summary>
+              <ul class="p-2 bg-base-200 rounded-lg w-44 mt-2 z-[100] shadow-xl border border-base-content/10 right-0">
+                <li v-for="loc in otherLocales" :key="loc.code">
+                  <NuxtLink
+                    :to="switchLocalePath(loc.code)"
+                    class="text-sm font-medium whitespace-nowrap"
+                  >
+                    {{ loc.name }}
+                  </NuxtLink>
+                </li>
+              </ul>
+            </details>
+          </li>
+        </ul>
       </div>
     </div>
   </header>

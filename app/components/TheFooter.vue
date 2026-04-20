@@ -5,13 +5,13 @@ const currentYear = new Date().getFullYear()
 </script>
 
 <template>
-  <footer class="footer footer-center p-10 bg-base-200 text-base-content border-t border-base-content/5 mt-auto">
-    <aside>
+  <footer class="footer p-4 bg-base-200 text-base-content border-t border-base-content/5 mt-auto flex flex-wrap items-center justify-between gap-y-4 px-6 md:px-10">
+    <aside class="flex items-center">
       <p class="text-sm opacity-60">
         &copy; {{ currentYear }} <span class="font-bold">FreeTool.Dev</span> — {{ t('r') }}
       </p>
     </aside>
-    <nav class="grid grid-flow-col gap-4" aria-label="Footer Navigation">
+    <nav class="flex flex-wrap gap-x-6 gap-y-2 justify-center" aria-label="Footer Navigation">
       <NuxtLink :to="localePath('about')" class="link link-hover font-medium underline-offset-4">{{ t('a') }}</NuxtLink>
       <NuxtLink :to="localePath('privacy')" class="link link-hover font-medium underline-offset-4">{{ t('p') }}</NuxtLink>
       <NuxtLink :to="localePath('terms-of-use')" class="link link-hover font-medium underline-offset-4">{{ t('t') }}</NuxtLink>

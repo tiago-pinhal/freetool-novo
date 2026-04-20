@@ -11,7 +11,7 @@ const isHomePage = computed(() => route.path === localePath('/'))
       <input id="main-drawer" type="checkbox" class="drawer-toggle" aria-label="Toggle menu" />
       <div 
         class="drawer-content flex flex-col transition-all duration-300"
-        :class="{ 'lg:ml-20': !isHomePage }"
+        :class="{ 'lg:ml-14': !isHomePage }"
       >
         <main class="flex-grow">
           <slot />
