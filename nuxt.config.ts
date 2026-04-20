@@ -67,6 +67,11 @@ export default defineNuxtConfig({
         code: 'id',
         name: 'Bahasa Indonesia',
         language: 'id'
+      },
+      {
+        code: 'de',
+        name: 'Deutsch',
+        language: 'de'
       }
     ],
     defaultLocale: 'en',
