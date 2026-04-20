@@ -3,7 +3,7 @@
   <div v-if="!isHomePage" class="drawer-side z-30 lg:hidden">
     <label for="main-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
     <div class="h-full bg-base-200 text-base-content flex flex-col w-80 shadow-xl border-r border-base-content/5">
-      <nav aria-label="Navegação principal" class="flex-grow w-full px-2 pt-4 overflow-y-auto custom-scrollbar">
+      <nav aria-label="Main Navigation" class="flex-grow w-full px-2 pt-4 overflow-y-auto custom-scrollbar">
         <ul class="space-y-1">
           <li v-for="item in menuItems" :key="item.path">
             <NuxtLink
@@ -29,7 +29,7 @@
   <!-- Desktop: sidebar fixed com hover expand -->
   <aside
     v-if="!isHomePage"
-    aria-label="Navegação principal"
+    aria-label="Main Navigation"
     class="hidden lg:flex flex-col fixed top-[77px] left-0 z-30 h-[calc(100vh-77px)] bg-base-200 border-r border-base-content/5 shadow-xl transition-[width] duration-300 ease-in-out overflow-hidden"
     @mouseenter="isHovered = true"
     @mouseleave="isHovered = false"

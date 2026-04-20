@@ -11,7 +11,7 @@ const currentYear = new Date().getFullYear()
         &copy; {{ currentYear }} <span class="font-bold">FreeTool.Dev</span> — {{ t('r') }}
       </p>
     </aside>
-    <nav class="grid grid-flow-col gap-4">
+    <nav class="grid grid-flow-col gap-4" aria-label="Footer Navigation">
       <NuxtLink :to="localePath('about')" class="link link-hover font-medium underline-offset-4">{{ t('a') }}</NuxtLink>
       <NuxtLink :to="localePath('privacy')" class="link link-hover font-medium underline-offset-4">{{ t('p') }}</NuxtLink>
       <NuxtLink :to="localePath('terms-of-use')" class="link link-hover font-medium underline-offset-4">{{ t('t') }}</NuxtLink>
