@@ -36,11 +36,13 @@ const toolCategories = [
             <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent">
               {{ t('d1') }} Freetool
             </span>
+            <span class="ml-4 text-2xl sm:text-4xl font-bold px-3 py-1 rounded-2xl bg-gradient-to-r from-indigo-600 to-pink-500 text-white uppercase tracking-wider align-middle shadow-xl">
+              DEV
+            </span>
           </h1>
           <p class="text-lg sm:text-xl text-base-content/70 leading-relaxed mb-10 max-w-2xl mx-auto">
             {{ t('d2') }}
           </p>
-          
         </div>
       </div>
     </section>
