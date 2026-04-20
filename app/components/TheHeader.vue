@@ -29,6 +29,7 @@ const toggleMenu = () => {
         <!-- Esquerda: Toggle & Logo -->
         <div class="flex items-center gap-4">
           <button
+            v-if="!isHomePage"
             @click="toggleMenu"
             class="btn btn-ghost btn-square lg:hidden"
             aria-label="Menu"

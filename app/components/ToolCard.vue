@@ -3,7 +3,6 @@ defineProps<{
   to: string
   icon: string
   title: string
-  gradient?: string
 }>()
 </script>
 
@@ -12,8 +11,7 @@ defineProps<{
     :to="to"
     class="group relative p-8 rounded-3xl bg-base-200/40 backdrop-blur-md border border-base-content/5 transition-all duration-500 hover:-translate-y-2 hover:border-primary/60 hover:shadow-[0_0_30px_-5px_var(--color-primary)] hover:bg-base-200/60 h-full flex flex-col items-center justify-center text-center"
   >
-    <!-- Background Glow intensity (optional/subtle) -->
-    <div class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-10 shadow-[inset_0_0_20px_var(--color-primary)] transition-opacity duration-500 pointer-events-none"></div>
+    <div aria-hidden="true" class="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-10 shadow-[inset_0_0_20px_var(--color-primary)] transition-opacity duration-500 pointer-events-none"></div>
 
     <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center mb-6 group-hover:from-primary/20 group-hover:to-secondary/20 transition-colors">
       <Icon :name="icon" class="w-8 h-8 text-primary group-hover:scale-110 transition-transform" aria-hidden="true" />
