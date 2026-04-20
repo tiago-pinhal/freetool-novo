@@ -1,0 +1,28 @@
+{
+    "name": "freetool.dev",
+    "short_name": "freetool.dev",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "lang": "en",
+    "scope": "/",
+    "theme_color": "#4285F4",
+    "description": "Free Online Tools for Developers",
+    "icons": [
+        {
+            "src": "icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-64x64.png",
+            "sizes": "64x64",
+            "type": "image/png"
+        }
+    ]
+}

@@ -1,2 +1,3 @@
-User-Agent: *
+﻿User-Agent: *
 Disallow:
+Sitemap: https://www.freetool.dev/sitemap_index.xml
