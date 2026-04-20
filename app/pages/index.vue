@@ -7,7 +7,7 @@ useHead({
 })
 
 const toolCategories = [
-  { id: 'pdf', to: '/pdf-tools', icon: 'document', title: t('pdf') || 'PDF Tools' },
+  { id: 'pdf', to: '/pdf-tools', icon: 'document', title: t('pdf') },
   { id: 'color', to: '/color-tools', icon: 'swatch', title: t('clr') },
   { id: 'image', to: '/image-tools', icon: 'photo', title: t('img') },
   { id: 'text', to: '/text-tools', icon: 'document-text', title: t('txt') },
@@ -54,24 +54,13 @@ const toolCategories = [
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          <NuxtLinkLocale
+          <ToolCard
             v-for="tool in toolCategories"
             :key="tool.id"
             :to="tool.to"
-            class="group relative p-8 rounded-3xl bg-base-200/50 backdrop-blur-sm border border-base-content/5 hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10"
-          >
-            <div class="flex flex-col items-center text-center">
-              <div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 flex items-center justify-center mb-6 group-hover:from-primary/20 group-hover:to-secondary/20 transition-colors">
-                <Icon :name="tool.icon" class="w-8 h-8 text-primary group-hover:scale-110 transition-transform" />
-              </div>
-              <h3 class="text-xl font-bold text-base-content mb-2 group-hover:text-primary transition-colors">
-                {{ tool.title }}
-              </h3>
-              <div class="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <Icon name="arrow-up-right" class="w-5 h-5 text-base-content/30" />
-              </div>
-            </div>
-          </NuxtLinkLocale>
+            :icon="tool.icon"
+            :title="tool.title"
+          />
         </div>
       </div>
     </section>
@@ -82,8 +71,8 @@ const toolCategories = [
 {
     en: {
         d1: "Welcome to",
-        d2: "Explore our platform dedicated to offering free online tools to simplify your daily tasks. We also feature exclusive tools for software developers (DEV), aimed at streamlining your professional activities",
-        d3: "Tools available for",
+        d2: "Simplify your tasks with free online tools, including solutions for software developers.",
+        d3: "Browse by category",
         pdf: "PDF",
         clr: "Colors",
         img: "Images",
@@ -97,8 +86,8 @@ const toolCategories = [
     },
     pt: {
         d1: "Bem-vindo ao",
-        d2: "Explore nossa plataforma dedicada a oferecer ferramentas online gratuitas para facilitar suas tarefas cotidianas. Contamos também com ferramentas exclusivas para desenvolvedores de software (DEV), visando agilizar suas atividades profissionais",
-        d3: "Ferramentas disponíveis para",
+        d2: "Simplifique suas tarefas com ferramentas online gratuitas, incluindo soluções para desenvolvedores de software.",
+        d3: "Navegar por categoria",
         pdf: "PDF",
         clr: "Cores",
         img: "Imagens",
@@ -112,8 +101,8 @@ const toolCategories = [
     },
     es: {
         d1: "Bienvenido a",
-        d2: "Explore nuestra plataforma dedicada a ofrecer herramientas en línea gratuitas para facilitar sus tareas diarias. También contamos con herramientas exclusivas para desarrolladores de software (DEV), destinadas a agilizar sus actividades profesionales",
-        d3: "Herramientas disponibles para",
+        d2: "Simplifica tus tareas con herramientas en línea gratuitas, incluidas soluciones para desarrolladores de software.",
+        d3: "Navegar por categoría",
         pdf: "PDF",
         clr: "Colores",
         img: "Imágenes",
@@ -127,8 +116,8 @@ const toolCategories = [
     },
     fr: {
         d1: "Bienvenue chez",
-        d2: "Explorez notre plateforme dédiée à offrir des outils en ligne gratuits pour simplifier vos tâches quotidiennes. Nous proposons également des outils exclusifs pour les développeurs de logiciels (DEV), visant à optimiser leurs activités professionnelles",
-        d3: "Outils disponibles pour",
+        d2: "Simplifiez vos tâches avec des outils en ligne gratuits, y compris des solutions pour les développeurs de logiciels.",
+        d3: "Parcourir par catégorie",
         pdf: "PDF",
         clr: "Couleurs",
         img: "Images",
@@ -142,8 +131,8 @@ const toolCategories = [
     },
     it: {
         d1: "Benvenuto su",
-        d2: "Esplora la nostra piattaforma dedicata a offrire strumenti online gratuiti per facilitare i tuoi compiti quotidiani. Offriamo inoltre strumenti esclusivi per sviluppatori di software (DEV), mirati a velocizzare le tue attività professionali",
-        d3: "Strumenti disponibili per",
+        d2: "Semplifica le tue attività con strumenti online gratuiti, incluse soluzioni per sviluppatori software.",
+        d3: "Sfoglia per categoria",
         pdf: "PDF",
         clr: "Colori",
         img: "Immagini",
@@ -157,8 +146,8 @@ const toolCategories = [
     },
     id: {
         d1: "Selamat datang di",
-        d2: "Jelajahi platform kami yang menyediakan alat online gratis untuk mempermudah tugas sehari-hari Anda. Kami juga menghadirkan alat ekklusif untuk pengembang perangkat lunak (DEV), dirancang untuk meningkatkan efisiensi aktivitas profesional Anda",
-        d3: "Alat tersedia untuk",
+        d2: "Sederhanakan tugas Anda dengan alat online gratis, termasuk solusi untuk pengembang perangkat lunak.",
+        d3: "Telusuri per kategori",
         pdf: "PDF",
         clr: "Warna",
         img: "Gambar",

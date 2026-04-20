@@ -3,16 +3,17 @@
   <div class="drawer-side z-30 lg:hidden">
     <label for="main-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
     <div class="h-full bg-base-200 text-base-content flex flex-col w-80 shadow-xl border-r border-base-content/5">
-      <nav class="flex-grow w-full px-2 pt-4 overflow-y-auto custom-scrollbar">
+      <nav aria-label="Navegação principal" class="flex-grow w-full px-2 pt-4 overflow-y-auto custom-scrollbar">
         <ul class="space-y-1">
           <li v-for="item in menuItems" :key="item.path">
             <NuxtLink
               :to="localePath(item.path)"
+              :aria-current="route.path === localePath(item.path) ? 'page' : undefined"
               class="flex items-center gap-4 px-4 py-2 rounded-2xl hover:text-primary transition-all duration-200 group active:scale-[0.98]"
               @click="closeDrawer"
             >
               <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-base-content/50 group-hover:text-primary transition-all duration-300">
-                <Icon :name="`${item.icon}.svg?width=24&height=24`" />
+                <Icon :name="`${item.icon}.svg?width=24&height=24`" aria-hidden="true" />
               </div>
               <span class="font-semibold text-sm">{{ t(item.label) }}</span>
             </NuxtLink>
@@ -20,31 +21,34 @@
         </ul>
       </nav>
       <div class="mt-auto py-4 border-t border-base-content/10 text-center opacity-50">
-        <p class="text-[10px] uppercase tracking-widest font-bold">© {{ new Date().getFullYear() }} FreeTool</p>
+        <p class="text-[10px] uppercase tracking-widest font-bold opacity-60">© {{ currentYear }} FreeTool.dev</p>
       </div>
     </div>
   </div>
 
   <!-- Desktop: sidebar fixed com hover expand -->
   <aside
+    aria-label="Navegação principal"
     class="hidden lg:flex flex-col fixed top-[77px] left-0 z-30 h-[calc(100vh-77px)] bg-base-200 border-r border-base-content/5 shadow-xl transition-[width] duration-300 ease-in-out overflow-hidden"
     @mouseenter="isHovered = true"
     @mouseleave="isHovered = false"
+    @focusin="isHovered = true"
+    @focusout="isHovered = false"
   >
     <nav class="flex-grow w-full overflow-y-auto custom-scrollbar">
       <ul>
         <li v-for="item in menuItems" :key="item.path">
           <NuxtLink
             :to="localePath(item.path)"
+            :aria-current="route.path === localePath(item.path) ? 'page' : undefined"
             class="flex items-center py-1 rounded-2xl hover:text-primary transition-all duration-200 group active:scale-[0.98]"
-           
           >
             <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center text-base-content/50 group-hover:text-primary transition-all duration-300">
-              <Icon :name="`${item.icon}.svg?width=24&height=24`" />
+              <Icon :name="`${item.icon}.svg?width=24&height=24`" aria-hidden="true" />
             </div>
             <span
-              class="font-semibold text-sm whitespace-nowrap transition-all duration-200 "
-              :class="isHovered ? 'opacity-100 pr-4' : 'opacity-0 w-0 overflow-hidden'"
+              class="font-semibold text-sm whitespace-nowrap transition-all duration-200"
+              :class="isHovered ? 'opacity-100 pr-8' : 'sr-only'"
             >
               {{ t(item.label) }}
             </span>
@@ -58,7 +62,9 @@
 <script setup lang="ts">
 const { t } = useI18n()
 const localePath = useLocalePath()
+const route = useRoute()
 const isHovered = ref(false)
+const currentYear = new Date().getFullYear()
 
 const menuItems = [
   { path: 'pdf-tools', icon: 'document', label: 'pdf' },
