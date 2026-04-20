@@ -1,6 +1,6 @@
 <template>
   <span
-    class="icon-mask"
+    class="iconify"
     :style="maskStyle"
     role="img"
     :aria-label="name"
@@ -25,19 +25,3 @@ const maskStyle = computed(() => {
   }
 })
 </script>
-
-<style scoped>
-.icon-mask {
-  display: inline-block;
-  width: 1.5em;
-  height: 1.5em;
-  background-color: currentColor;
-  mask-size: contain;
-  mask-repeat: no-repeat;
-  mask-position: center;
-  -webkit-mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  vertical-align: middle;
-}
-</style>

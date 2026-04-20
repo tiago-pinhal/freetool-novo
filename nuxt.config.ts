@@ -17,7 +17,10 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: {
         'data-theme': 'night'
-      }   
+      },
+      link: [
+        { rel: 'preconnect', href: 'https://api.iconify.design' }
+      ]
     }
   },
 
