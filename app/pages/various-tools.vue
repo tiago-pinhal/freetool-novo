@@ -40,6 +40,8 @@ defineI18nRoute({
       </p>
     </div>
 
+    <h2 class="sr-only">Ferramentas Principais</h2>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
       <ToolCard        :title="t('calc')"
         :to="localePath('percentage-calculator')"

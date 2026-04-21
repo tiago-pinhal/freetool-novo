@@ -35,10 +35,10 @@ onLoaded(async () => {
   >
     <div v-if="isDev" class="absolute inset-0 flex items-center justify-center pointer-events-none">
       <div class="text-center">
-        <span class="text-[10px] uppercase tracking-widest font-bold text-base-content/50 border border-base-content/5 px-4 py-2 rounded-full block mb-2">
+        <span class="text-[10px] uppercase tracking-widest font-bold text-base-content/70 border border-base-content/5 px-4 py-2 rounded-full block mb-2">
           Google Adsense (Dev Mode)
         </span>
-        <div class="text-xs text-base-content/50 italic">
+        <div class="text-xs text-base-content/70 italic">
           Format: {{ adFormat || 'auto' }} | ID: {{ adSlot || 'default' }}
         </div>
       </div>

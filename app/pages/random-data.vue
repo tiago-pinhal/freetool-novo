@@ -40,6 +40,8 @@ defineI18nRoute({
       </p>
     </div>
 
+    <h2 class="sr-only">Geradores Disponíveis</h2>
+
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6">
       <ToolCard         :title="t('number')" 
         :to="localePath('random-number-generator')" 

@@ -28,8 +28,15 @@ const isHomePage = computed(() => route.path === localePath('/'))
 <template>
   <header class="navbar bg-base-200 shadow-sm w-full sticky top-0 z-50 h-16 px-4">
     <div class="navbar-start flex items-center h-full">
-      <button v-if="!isHomePage" @click="toggleMenu" class="btn btn-ghost lg:hidden mr-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+      <button
+        @click="toggleMenu"
+        class="btn btn-ghost lg:hidden mr-2"
+        aria-label="Menu"
+        title="Menu"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
+        </svg>
       </button>
       <NuxtLink :to="localePath('/')" class="flex items-center leading-none text-2xl font-bold text-base-content transition-transform active:scale-95 whitespace-nowrap">
         𝗙𝗿𝗲𝗲𝗧𝗼𝗼𝗹
