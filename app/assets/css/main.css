@@ -12,6 +12,24 @@ body {
   min-height: 100vh;
 }
 
+/* Reset total de ring e outline para focos e estados de acessibilidade */
+:focus, 
+:focus-visible, 
+:focus-within,
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none !important;
+  outline-offset: 0 !important;
+  box-shadow: none !important;
+  border-color: var(--color-primary) !important;
+  /* Reset de variáveis do Tailwind v4 */
+  --tw-ring-color: transparent !important;
+  --tw-ring-shadow: none !important;
+  --tw-ring-offset-shadow: none !important;
+  --tw-inset-ring-shadow: none !important;
+}
+
 .tools-title {
   @apply text-3xl md:text-5xl font-extrabold tracking-tight mt-6 mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent italic
 }
