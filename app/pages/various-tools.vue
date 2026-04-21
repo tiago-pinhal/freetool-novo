@@ -41,37 +41,27 @@ defineI18nRoute({
     </div>
 
     <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('calc')"
+      <ToolCard        :title="t('calc')"
         :to="localePath('percentage-calculator')"
         icon="mdi:percent"
         :index="0"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('list')"
+      <ToolCard        :title="t('list')"
         :to="localePath('list-randomizer')"
         icon="mdi:shuffle-variant"
         :index="1"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('dice')"
+      <ToolCard        :title="t('dice')"
         :to="localePath('dice-roller')"
         icon="mdi:dice-multiple"
         :index="2"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('rule')"
+      <ToolCard        :title="t('rule')"
         :to="localePath('simple-rule-of-three-calculator')"
         icon="mdi:numeric-3-box-multiple-outline"
         :index="3"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('email')"
+      <ToolCard        :title="t('email')"
         :to="localePath('email-extractor')"
         icon="mdi:at"
         :index="4"
@@ -84,23 +74,17 @@ defineI18nRoute({
     </div>
 
     <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('json')"
+      <ToolCard        :title="t('json')"
         :to="localePath('json-viewer')"
         icon="mdi:code-json"
         :index="5"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('md5')"
+      <ToolCard        :title="t('md5')"
         :to="localePath('md5-hash-generator')"
         icon="mdi:hashtag"
         :index="6"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('bcrypt')"
+      <ToolCard        :title="t('bcrypt')"
         :to="localePath('bcrypt-generator')"
         icon="mdi:script-text-key"
         :index="0"

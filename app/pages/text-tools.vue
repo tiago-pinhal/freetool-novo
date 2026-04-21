@@ -41,44 +41,32 @@ defineI18nRoute({
     </div>
 
     <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('fonts')" 
+      <ToolCard         :title="t('fonts')" 
         :to="localePath('fancy-letters')" 
         icon="mdi:format-letter-starts-with"
         :index="0"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('asc')" 
+      <ToolCard         :title="t('asc')" 
         :to="localePath('ascii-letter-generator')" 
         icon="mdi:alphabetical"
         :index="1"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('txt')" 
+      <ToolCard         :title="t('txt')" 
         :to="localePath('text-converter')" 
         icon="mdi:file-document-edit-outline"
         :index="2"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('diff')" 
+      <ToolCard         :title="t('diff')" 
         :to="localePath('text-comparator')" 
         icon="mdi:vector-difference"
         :index="3"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('count')" 
+      <ToolCard         :title="t('count')" 
         :to="localePath('text-counter')" 
         icon="mdi:counter"
         :index="4"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('lorem')" 
+      <ToolCard         :title="t('lorem')" 
         :to="localePath('text-generator')" 
         icon="mdi:text"
         :index="5"

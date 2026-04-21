@@ -41,51 +41,37 @@ defineI18nRoute({
     </div>
 
     <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('emoji')" 
+      <ToolCard         :title="t('emoji')" 
         to="emoji-picker" 
         icon="mdi:sticker-emoji"
         :index="0"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('symbol')" 
+      <ToolCard         :title="t('symbol')" 
         to="symbol-picker" 
         icon="mdi:omega"
         :index="1"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('qr')" 
+      <ToolCard         :title="t('qr')" 
         to="qrcode-generator" 
         icon="mdi:qrcode"
         :index="2"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('barcode')" 
+      <ToolCard         :title="t('barcode')" 
         to="barcode-generator" 
         icon="mdi:barcode"
         :index="3"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('cropper')" 
+      <ToolCard         :title="t('cropper')" 
         to="image-cropper" 
         icon="mdi:crop"
         :index="4"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('resizer')" 
+      <ToolCard         :title="t('resizer')" 
         to="image-resizer" 
         icon="mdi:resize"
         :index="5"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('img_pdf')" 
+      <ToolCard         :title="t('img_pdf')" 
         to="image-to-pdf" 
         icon="mdi:file-pdf-box"
         :index="6"

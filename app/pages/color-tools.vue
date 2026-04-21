@@ -41,30 +41,22 @@ defineI18nRoute({
     </div>
 
     <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('random')" 
+      <ToolCard         :title="t('random')" 
         to="random-colors" 
         icon="mdi:format-color-fill"
         :index="0"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('dominant')" 
+      <ToolCard         :title="t('dominant')" 
         to="dominant-colors-of-the-image" 
         icon="mdi:select-color"
         :index="1"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('converter')" 
+      <ToolCard         :title="t('converter')" 
         to="color-converter" 
         icon="mdi:palette-swatch"
         :index="2"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('combination')" 
+      <ToolCard         :title="t('combination')" 
         to="color-combination" 
         icon="mdi:palette-swatch-variant"
         :index="3"

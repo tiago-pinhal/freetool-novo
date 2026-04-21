@@ -41,30 +41,22 @@ defineI18nRoute({
     </div>
 
     <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('edit')" 
+      <ToolCard         :title="t('edit')" 
         to="pdf-editor" 
         icon="mdi:file-cog"
         :index="0"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('split')" 
+      <ToolCard         :title="t('split')" 
         to="pdf-splitter" 
         icon="mdi:content-cut"
         :index="1"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('num')" 
+      <ToolCard         :title="t('num')" 
         to="numbering-pdf" 
         icon="mdi:numeric-1-box-multiple-outline"
         :index="2"
       />
-      <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('to_img')" 
+      <ToolCard         :title="t('to_img')" 
         to="pdf-to-image" 
         icon="mdi:file-image"
         :index="3"

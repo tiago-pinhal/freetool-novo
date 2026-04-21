@@ -60,7 +60,7 @@ const toolCategories = [
             :icon="tool.icon"
             :title="tool.title"
             :index="i"
-            class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(20%-20px)]"
+            :cols="5"
           />
         </div>
       </div>

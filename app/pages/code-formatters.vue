@@ -42,42 +42,42 @@ defineI18nRoute({
 
     <div class="flex flex-wrap justify-center gap-6">
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('html')" 
         :to="localePath('html-formatter')" 
         icon="mdi:language-html5"
         :index="0"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('js')" 
         :to="localePath('javascript-formatter')" 
         icon="mdi:language-javascript"
         :index="1"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('css')" 
         :to="localePath('css-formatter')" 
         icon="mdi:language-css3"
         :index="2"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('graphql')" 
         :to="localePath('graphql-formatter')" 
         icon="mdi:graphql"
         :index="3"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('yaml')" 
         :to="localePath('yaml-formatter')" 
         icon="mdi:file-code-outline"
         :index="4"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('markdown')" 
         :to="localePath('markdown-formatter')" 
         icon="mdi:language-markdown"

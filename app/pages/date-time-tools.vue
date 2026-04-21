@@ -42,63 +42,63 @@ defineI18nRoute({
 
     <div class="flex flex-wrap justify-center gap-6">
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('dt')" 
         :to="localePath('date-difference')" 
         icon="mdi:calendar-range"
         :index="0"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('times')" 
         :to="localePath('time-difference')" 
         icon="mdi:clock-outline"
         :index="1"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('diff')" 
         :to="localePath('date-time-difference')" 
         icon="mdi:calendar-clock"
         :index="2"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('birth')" 
         :to="localePath('birthday-generator')" 
         icon="mdi:calendar-account"
         :index="3"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('age')" 
         :to="localePath('age-calculator')" 
         icon="mdi:calculator"
         :index="4"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('hour')" 
         :to="localePath('hours-and-minutes-calculator')" 
         icon="mdi:alarm-plus"
         :index="5"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('future')" 
         :to="localePath('future-date-calculator')" 
         icon="mdi:calendar-plus"
         :index="6"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('past')" 
         :to="localePath('past-date-calculator')" 
         icon="mdi:calendar-minus"
         :index="0"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('time')" 
         :to="localePath('time-converter')" 
         icon="mdi:arrow-left-right"
@@ -114,14 +114,14 @@ defineI18nRoute({
 
     <div class="flex flex-wrap justify-center gap-6">
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('cron')" 
         :to="localePath('crontab-generator')" 
         icon="mdi:asterisk"
         :index="2"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('unix')" 
         :to="localePath('unix-timestamp-converter')" 
         icon="mdi:clock-fast"

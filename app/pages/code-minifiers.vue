@@ -41,23 +41,17 @@ defineI18nRoute({
     </div>
 
     <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('html')"
+      <ToolCard        :title="t('html')"
         :to="localePath('html-minifier')"
         icon="mdi:language-html5"
         :index="0"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('js')"
+      <ToolCard        :title="t('js')"
         :to="localePath('javascript-minifier')"
         icon="mdi:language-javascript"
         :index="1"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('css')"
+      <ToolCard        :title="t('css')"
         :to="localePath('css-minifier')"
         icon="mdi:language-css3"
         :index="2"

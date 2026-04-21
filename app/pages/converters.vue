@@ -41,37 +41,29 @@ defineI18nRoute({
     </div>
 
     <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('roman')"
+      <ToolCard        :title="t('roman')"
         :to="localePath('roman-numerals-converter')"
         icon="mdi:format-list-numbered-rtl"
         :index="0"
       />
       <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(20%-20px)]"
+        :cols="5"
         :title="t('length')"
         :to="localePath('length-converter')"
         icon="mdi:ruler"
         :index="1"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('temperature')"
+      <ToolCard        :title="t('temperature')"
         :to="localePath('temperature-converter')"
         icon="mdi:thermometer"
         :index="2"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('time')"
+      <ToolCard        :title="t('time')"
         :to="localePath('time-converter')"
         icon="mdi:clock-outline"
         :index="3"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('url')"
+      <ToolCard        :title="t('url')"
         :to="localePath('url-encoder-decoder')"
         icon="mdi:link-variant"
         :index="4"
@@ -84,51 +76,37 @@ defineI18nRoute({
     </div>
 
     <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('less')"
+      <ToolCard        :title="t('less')"
         :to="localePath('less-to-css-converter')"
         icon="mdi:file-code-outline"
         :index="5"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('xmlToJson')"
+      <ToolCard        :title="t('xmlToJson')"
         :to="localePath('xml-to-json-converter')"
         icon="mdi:code-braces"
         :index="6"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('jsonToXml')"
+      <ToolCard        :title="t('jsonToXml')"
         :to="localePath('json-to-xml-converter')"
         icon="mdi:code-json"
         :index="0"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('csvToJson')"
+      <ToolCard        :title="t('csvToJson')"
         :to="localePath('csv-to-json-converter')"
         icon="mdi:file-delimited-outline"
         :index="1"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('jsonToCsv')"
+      <ToolCard        :title="t('jsonToCsv')"
         :to="localePath('json-to-csv-converter')"
         icon="mdi:file-delimited"
         :index="2"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('num')"
+      <ToolCard        :title="t('num')"
         :to="localePath('number-base-converter')"
         icon="mdi:numeric"
         :index="3"
       />
-      <ToolCard
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]"
-        :title="t('unit')"
+      <ToolCard        :title="t('unit')"
         :to="localePath('storage-unit-converter')"
         icon="mdi:harddisk"
         :index="4"

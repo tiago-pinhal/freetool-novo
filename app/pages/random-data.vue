@@ -42,14 +42,14 @@ defineI18nRoute({
 
     <div class="flex flex-wrap justify-center gap-6">
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('number')" 
         :to="localePath('random-number-generator')" 
         icon="mdi:dice-multiple"
         :index="0"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('pass')" 
         :to="localePath('password-generator')" 
         icon="mdi:lock"
@@ -65,35 +65,35 @@ defineI18nRoute({
 
     <div class="flex flex-wrap justify-center gap-6">
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('cpf')" 
         :to="localePath('cpf-generator')" 
         icon="mdi:card-account-details"
         :index="2"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('cnpj')" 
         :to="localePath('cnpj-generator')" 
         icon="mdi:office-building"
         :index="3"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('rg')" 
         :to="localePath('rg-generator')" 
         icon="mdi:card-account-details-outline"
         :index="4"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('cc')" 
         :to="localePath('credit-card-generator')" 
         icon="mdi:credit-card"
         :index="5"
       />
       <ToolCard 
-        class="w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]"
+        :cols="3"
         :title="t('uuid')" 
         :to="localePath('uuid-generator')" 
         icon="mdi:identifier"
