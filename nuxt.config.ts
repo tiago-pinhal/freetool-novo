@@ -5,7 +5,15 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
-  modules: ['@nuxtjs/i18n'],
+  modules: ['@nuxtjs/i18n', '@nuxt/scripts'],
+
+  scripts: {
+    registry: {
+      googleAdsense: {
+        client: 'ca-pub-3940256099942544'
+      }
+    }
+  },
 
   vite: {
     plugins: [tailwindcss() as any],

@@ -35,6 +35,10 @@ body {
   vertical-align: middle;
 }
 
+.adsense-wrapper {
+  transition: all 0.3s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
