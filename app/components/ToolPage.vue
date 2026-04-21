@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto px-4 pt-8 pb-8 lg:pb-12">
+  <div class="max-w-5xl mx-auto px-4 pt-8 pb-8 lg:pb-12">
     <!-- Cabeçalho da Ferramenta -->
     <header class="mb-6 text-left">
       <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-base-content mb-3">
