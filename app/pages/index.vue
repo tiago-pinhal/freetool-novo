@@ -33,7 +33,7 @@ const toolCategories = [
       <div class="container mx-auto px-4 relative z-10">
         <div class="text-center max-w-4xl mx-auto">
           <h1 class="text-5xl sm:text-8xl font-extrabold tracking-tighter mb-8 leading-tight">
-            <span class="bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-500 bg-clip-text text-transparent">
+            <span class="bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent">
               {{ t('d1') }} Freetool
             </span>
           </h1>
@@ -45,7 +45,7 @@ const toolCategories = [
     </section>
 
     <!-- Tools Grid Section -->
-    <section class="pb-24 px-4">
+    <section class="px-4">
       <div class="container mx-auto">
         <div class="flex items-center gap-4 mb-12">
           <h2 class="text-2xl font-bold text-base-content">{{ t('d3') }}</h2>

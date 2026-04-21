@@ -13,9 +13,12 @@ const isHomePage = computed(() => route.path === localePath('/'))
         class="drawer-content flex flex-col transition-all duration-300"
         :class="{ 'lg:ml-14': !isHomePage }"
       >
-        <main class="flex-grow">
-          <slot />
-        </main>
+        <div class="flex flex-grow flex-col lg:flex-row lg:items-start gap-4 px-4">
+          <main class="flex-1 min-w-0 mt">
+            <slot />
+          </main>
+          <AdSidebar />
+        </div>
         <TheFooter />
       </div>
       <Drawer />

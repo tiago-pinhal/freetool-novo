@@ -33,7 +33,7 @@ const isHomePage = computed(() => route.path === localePath('/'))
       </button>
       <NuxtLink :to="localePath('/')" class="flex items-center leading-none text-2xl font-bold text-base-content transition-transform active:scale-95 whitespace-nowrap">
         𝗙𝗿𝗲𝗲𝗧𝗼𝗼𝗹
-        <span class="text-sm ml-2 inline-flex items-center px-2 py-0.5 rounded-lg bg-gradient-to-r from-indigo-600 to-pink-500 font-black text-white uppercase tracking-tighter text-[11px] transform -translate-y-[1px] shadow-sm">
+        <span class="text-sm ml-2 inline-flex items-center px-2 py-0.5 rounded-lg bg-gradient-to-r from-primary to-secondary font-black text-white uppercase tracking-tighter text-[11px] transform -translate-y-[1px] shadow-sm">
           DEV
         </span>
       </NuxtLink>
@@ -43,7 +43,7 @@ const isHomePage = computed(() => route.path === localePath('/'))
         <ul class="menu menu-horizontal p-0">
           <li>
             <details>
-              <summary class="flex items-center gap-2 px-4 py-2 rounded-lg text-base-content hover:bg-base-200 transition-colors duration-200 cursor-pointer list-none">
+              <summary class="flex items-center gap-2 px-4 py-2 rounded-lg text-base-content hover:bg-base-content/10 transition-colors duration-200 cursor-pointer list-none">
                 <Icon name="language.svg?width=18&height=18" aria-hidden="true" />
                 <span class="hidden sm:inline font-medium text-sm">{{ currentLocaleName }}</span>
               </summary>
