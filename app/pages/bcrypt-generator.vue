@@ -1,13 +1,11 @@
 <script setup lang="ts">
 useScript('https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js', {
-  trigger: 'client',
-  scriptOptions: { defer: true }
+  trigger: 'client'
 })
 
 const { t, locale } = useI18n({ useScope: 'local' })
 const localePath = useLocalePath()
 
-// SEO Estruturado (JSON-LD)
 usePageJsonLd({
   name: `${t('title')} ${t('m_title')}`,
   description: t('meta'),
@@ -126,7 +124,7 @@ defineI18nRoute({
           </div>
 
           <div class="flex flex-col sm:flex-row items-end gap-4">
-            <!-- Novo Select Customizado -->
+            
             <ToolSelect 
               v-model.number="stateGen.round"
               :label="t('rounds')"

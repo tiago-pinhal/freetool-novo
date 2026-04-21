@@ -50,7 +50,7 @@ defineI18nRoute({
     </div>
 
     <div class="mt-16 mb-8 flex items-center gap-4">
-      <h2 class="text-xl font-bold text-base-content/50 uppercase tracking-widest">{{ t('devs') }}</h2>
+      <h3 class="text-sm font-bold text-base-content/50 uppercase tracking-widest">{{ t('devs') }}</h3>
       <div class="h-px flex-1 bg-base-content/10" />
     </div>
 
