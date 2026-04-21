@@ -10,7 +10,9 @@ export default defineNuxtConfig({
   scripts: {
     registry: {
       googleAdsense: {
-        client: 'ca-pub-6172875094663882'
+        client: process.env.NODE_ENV === 'production' 
+          ? 'ca-pub-6172875094663882' 
+          : 'ca-pub-3940256099942544'
       }
     }
   },

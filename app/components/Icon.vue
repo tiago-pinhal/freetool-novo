@@ -16,9 +16,14 @@ const props = withDefaults(defineProps<{
 })
 
 const maskStyle = computed(() => {
-  // Ensure the name doesn't already have .svg or queries if we are adding them
-  const cleanName = props.name.split('.')[0].split('?')[0]
-  const url = `https://api.iconify.design/${props.lib}/${cleanName}.svg`
+  let [prefix, iconName] = props.name.includes(':') 
+    ? props.name.split(':') 
+    : [props.lib, props.name]
+
+  // Clean the icon name from extensions or queries
+  iconName = iconName.split('.')[0].split('?')[0]
+  
+  const url = `https://api.iconify.design/${prefix}/${iconName}.svg`
   return {
     maskImage: `url("${url}")`,
     WebkitMaskImage: `url("${url}")`

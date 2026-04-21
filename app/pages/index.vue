@@ -54,11 +54,12 @@ const toolCategories = [
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
           <ToolCard
-            v-for="tool in toolCategories"
+            v-for="(tool, i) in toolCategories"
             :key="tool.id"
             :to="tool.to"
             :icon="tool.icon"
             :title="tool.title"
+            :index="i"
           />
         </div>
       </div>

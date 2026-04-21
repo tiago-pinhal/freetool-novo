@@ -18,7 +18,6 @@ const reservedHeight = computed(() => {
 
 onLoaded(async () => {
   await nextTick()
-  // No modo dev, o insRef será undefined por causa do v-if/v-else
   if (!insRef.value || insRef.value.offsetWidth === 0) return
   try {
     // @ts-ignore

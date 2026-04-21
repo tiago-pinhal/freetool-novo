@@ -11,6 +11,10 @@ body {
   min-height: 100vh;
 }
 
+.title-page {
+  @apply text-2xl font-light text-orange-300 bg-gradient-to-l from-slate-800/30 from-55% w-full mb-4
+}
+
 .layout-wrapper {
   display: flex;
   flex-direction: column;

@@ -14,7 +14,7 @@ const isHomePage = computed(() => route.path === localePath('/'))
         :class="{ 'lg:ml-14': !isHomePage }"
       >
         <div class="flex flex-grow flex-col lg:flex-row lg:items-start gap-4 px-4">
-          <main class="flex-1 min-w-0">
+          <main class="flex-1 min-w-0 pt-6">
             <slot />
           </main>
           <AdSidebar />
