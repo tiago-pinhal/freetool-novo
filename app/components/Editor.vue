@@ -21,7 +21,9 @@ const emit = defineEmits(['onChange', 'onLoad'])
 let editor: any = null
 
 onMounted(() => {
-  useLibrary('https://cdnjs.cloudflare.com/ajax/libs/ace/1.23.0/ace.js', 'ace', () => {
+  useScript('https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3/ace.js', {
+    trigger: 'client'
+  }).onLoaded(() => {
     const ace = (window as any).ace
     if (!ace) return
 
@@ -35,7 +37,7 @@ onMounted(() => {
       tabSize: 2
     })
 
-    ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.23.0')
+    ace.config.set('basePath', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.43.3')
     editor.setTheme('ace/theme/cobalt')
     editor.session.setMode(`ace/mode/${props.lang}`)
     

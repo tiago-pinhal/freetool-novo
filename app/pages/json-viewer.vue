@@ -3,7 +3,7 @@ useScript('https://cdn.jsdelivr.net/npm/jsnview/build/index.min.js', {
   trigger: 'client'
 })
 
-const { t, locale } = useI18n({ useScope: 'local' })
+const { t } = useI18n({ useScope: 'local' })
 const localePath = useLocalePath()
 
 // JSON-LD Metadata
@@ -11,9 +11,27 @@ usePageJsonLd({
   name: t('title'),
   description: t('meta'),
   type: 'tool',
+  applicationCategory: 'DeveloperApplication',
   breadcrumb: [
     { name: 'Home', url: localePath('/') },
     { name: t('title') }
+  ],
+  features: [
+    "Interactive JSON tree virtualization",
+    "Syntax highlighting and color-coded fields",
+    "Real-time validation and error detection",
+    "No registration or installation required"
+  ],
+  howToName: t('how_it_works_title'),
+  howToSteps: [
+    { name: t('hiw_1_title'), text: t('hiw_1_desc') },
+    { name: t('hiw_2_title'), text: t('hiw_2_desc') },
+    { name: t('hiw_3_title'), text: t('hiw_3_desc') }
+  ],
+  faq: [
+    { question: t('faq_1_q'), answer: t('faq_1_a') },
+    { question: t('faq_2_q'), answer: t('faq_2_a') },
+    { question: t('faq_3_q'), answer: t('faq_3_a') }
   ]
 })
 
@@ -24,59 +42,6 @@ useHead({
   ],
   link: [
     { rel: 'stylesheet', href: '/css/jsnview.css' }
-  ],
-  script: [
-    {
-      type: 'application/ld+json',
-      children: JSON.stringify({
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "WebApplication",
-            "name": t('title'),
-            "description": t('meta'),
-            "applicationCategory": "DeveloperApplication",
-            "operatingSystem": "All",
-            "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-            "featureList": [
-              "Interactive JSON tree virtualization",
-              "Syntax highlighting and color-coded fields",
-              "Real-time validation and error detection",
-              "No registration or installation required"
-            ]
-          },
-          {
-            "@type": "HowTo",
-            "name": t('how_it_works_title'),
-            "step": [
-              { "@type": "HowToStep", "position": 1, "name": t('hiw_1_title'), "text": t('hiw_1_desc') },
-              { "@type": "HowToStep", "position": 2, "name": t('hiw_2_title'), "text": t('hiw_2_desc') },
-              { "@type": "HowToStep", "position": 3, "name": t('hiw_3_title'), "text": t('hiw_3_desc') }
-            ]
-          },
-          {
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": t('faq_1_q'),
-                "acceptedAnswer": { "@type": "Answer", "text": t('faq_1_a') }
-              },
-              {
-                "@type": "Question",
-                "name": t('faq_2_q'),
-                "acceptedAnswer": { "@type": "Answer", "text": t('faq_2_a') }
-              },
-              {
-                "@type": "Question",
-                "name": t('faq_3_q'),
-                "acceptedAnswer": { "@type": "Answer", "text": t('faq_3_a') }
-              }
-            ]
-          }
-        ]
-      })
-    }
   ]
 })
 
@@ -84,7 +49,7 @@ useHead({
 const state = reactive({ 
   hasCode: false, 
   loaded: false, 
-  error: false, 
+  error: false as string | boolean, 
   ads: false 
 })
 
@@ -115,8 +80,8 @@ function onChange() {
       viewer.appendChild(jsnviewFn(JSON.parse(rawValue), options))
       state.error = false
     }
-  } catch (e) {
-    state.error = true
+  } catch (e: any) {
+    state.error = e.message
   }
 }
 
@@ -184,9 +149,14 @@ defineI18nRoute({
         enter-from-class="transform scale-95 opacity-0"
         enter-to-class="transform scale-100 opacity-100"
       >
-        <div v-if="state.error && state.hasCode" class="alert alert-error shadow-lg border-none rounded-2xl text-white">
-          <Icon name="heroicons:x-circle-20-solid" class="w-6 h-6" />
-          <span class="font-bold">{{ t('err') }}</span>
+        <div v-if="state.error && state.hasCode" class="alert alert-error shadow-lg border-none rounded-2xl text-white flex-col items-start gap-1">
+          <div class="flex items-center gap-2">
+            <Icon name="heroicons:x-circle-20-solid" class="w-6 h-6" />
+            <span class="font-bold">{{ t('err') }}</span>
+          </div>
+          <div v-if="typeof state.error === 'string'" class="text-xs opacity-90 font-mono bg-black/20 p-2 rounded-lg w-full mt-1">
+            {{ state.error }}
+          </div>
         </div>
       </Transition>
     </div>
@@ -264,41 +234,14 @@ defineI18nRoute({
         </section>
 
         <!-- FAQ Section -->
-        <section>
-          <h2 class="text-2xl font-bold text-base-content mb-6 flex items-center gap-2">
-            <Icon name="heroicons:question-mark-circle" class="text-primary" />
-            {{ t('faq_title') }}
-          </h2>
-          <div class="space-y-4">
-            <div class="collapse collapse-arrow bg-base-200/50 border border-base-content/5 rounded-2xl">
-              <input type="radio" name="faq-accordion" checked="checked" /> 
-              <div class="collapse-title text-lg font-bold text-base-content">
-                {{ t('faq_1_q') }}
-              </div>
-              <div class="collapse-content text-base-content/60 leading-relaxed pb-4">
-                <p>{{ t('faq_1_a') }}</p>
-              </div>
-            </div>
-            <div class="collapse collapse-arrow bg-base-200/50 border border-base-content/5 rounded-2xl">
-              <input type="radio" name="faq-accordion" /> 
-              <div class="collapse-title text-lg font-bold text-base-content">
-                {{ t('faq_2_q') }}
-              </div>
-              <div class="collapse-content text-base-content/60 leading-relaxed pb-4">
-                <p>{{ t('faq_2_a') }}</p>
-              </div>
-            </div>
-            <div class="collapse collapse-arrow bg-base-200/50 border border-base-content/5 rounded-2xl">
-              <input type="radio" name="faq-accordion" /> 
-              <div class="collapse-title text-lg font-bold text-base-content">
-                {{ t('faq_3_q') }}
-              </div>
-              <div class="collapse-content text-base-content/60 leading-relaxed pb-4">
-                <p>{{ t('faq_3_a') }}</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <FaqSection 
+          :title="t('faq_title')"
+          :items="[
+            { question: t('faq_1_q'), answer: t('faq_1_a') },
+            { question: t('faq_2_q'), answer: t('faq_2_a') },
+            { question: t('faq_3_q'), answer: t('faq_3_a') }
+          ]"
+        />
       </div>
     </template>
   </ToolPage>
@@ -313,7 +256,7 @@ defineI18nRoute({
         info_title: "Information",
         d1: "This online JSON viewer displays your data in an interactive tree format, where each node is indented to reflect the data hierarchy. You can expand or collapse any group to focus on the information that matters.",
         d2: "Fields and values are color-coded for quick identification, and any change made to the input is instantly reflected in the visualization. Ideal for developers debugging APIs, validating responses, or inspecting configuration files — no installation or sign-up needed.",
-        viewer: "Viewer",
+        viewer: "Resultado",
         plc: "Insert the JSON code here or drag a file",
         err: "Provide a valid JSON",
         how_it_works_title: "How It Works",
@@ -349,7 +292,7 @@ defineI18nRoute({
         info_title: "Informações",
         d1: "Este visualizador de JSON online exibe seus dados em um formato de árvore interativa, onde cada nó reflete visualmente a hierarquia dos dados. Você pode expandir ou recolher grupos longos.",
         d2: "Campos e valores são coloridos para identificação rápida, e qualquer alteração feita na entrada é validada instantaneamente. Ideal para desenvolvedores depurando APIs sem instalação ou cadastro.",
-        viewer: "Árvore de Resultados",
+        viewer: "Resultado",
         plc: "Insira o código JSON aqui ou arraste um arquivo",
         err: "Informe um JSON estruturalmente válido",
         how_it_works_title: "Como Funciona",
@@ -366,7 +309,7 @@ defineI18nRoute({
         uc_2_desc: "Descubra aquela vírgula esquecida ou chaves mal fechadas em arquivos de setting críticos.",
         uc_3_title: "Análise Visual",
         uc_3_desc: "Enxergue dados aninhados sem embaralhamento mental lendo logs crus extensos.",
-        faq_title: "perguntas e Respostas",
+        faq_title: "Perguntas e Respostas",
         faq_1_q: "O meu JSON fica salvo nos servidores do site?",
         faq_1_a: "Não. A leitura, validação e estruturação da árvore interativa ocorre 100% no seu navegador de internet, oferecendo o mais alto nível de segurança para logs confidenciais.",
         faq_2_q: "Consigo minimizar blocos grandes para focar na leitura?",
@@ -385,7 +328,7 @@ defineI18nRoute({
         info_title: "Información",
         d1: "Este visor de JSON online muestra tus datos en un formato de árbol interactivo, donde cada nodo está indentado para reflejar la jerarquía. Puedes expandir o colapsar nodos extensos.",
         d2: "Los campos y valores están coloreados para una identificación rápida. Ideal para desarrolladores que depuran APIs o inspeccionan archivos de configuración sin instalación.",
-        viewer: "Árbol Resultante",
+        viewer: "Resultado",
         plc: "Introduce el código JSON aquí o arrastra un archivo",
         err: "Ingrese un JSON estructuralmente válido",
         how_it_works_title: "Cómo Funciona",
@@ -421,7 +364,7 @@ defineI18nRoute({
         info_title: "Information",
         d1: "Ce visualiseur JSON en ligne affiche vos données dans un format d'arbre interactif, où chaque nœud est indenté pour refléter la hiérarchie des données.",
         d2: "Les champs et les valeurs sont colorés pour une identification rapide. Idéal pour les développeurs qui déboguent des APIs ou des fichiers de configuration sans installation.",
-        viewer: "Arborescence Visuelle",
+        viewer: "Resultado",
         plc: "Insérez le code JSON ici ou faites glisser un fichier",
         err: "Fournissez un JSON syntaxiquement valide",
         how_it_works_title: "Comment l'utiliser ?",
@@ -457,7 +400,7 @@ defineI18nRoute({
         info_title: "Informazioni",
         d1: "Questo visualizzatore JSON online mostra i tuoi dati in un formato ad albero interattivo, dove ogni nodo è indentato per riflettere la gerarchia dei dati. Puoi espandere o comprimere qualsiasi gruppo.",
         d2: "I campi e i valori sono colorati per una rapida identificazione. Ideale per sviluppatori che debuggano API, validano risposte o ispezionano file di configurazione — senza installazione né registrazione.",
-        viewer: "Albero Visivo",
+        viewer: "Resultado",
         plc: "Incolla il codice JSON qui o trascina un file",
         err: "JSON non valido",
         how_it_works_title: "Come Funziona",
@@ -493,7 +436,7 @@ defineI18nRoute({
         info_title: "Informasi",
         d1: "Penampil JSON online ini menampilkan data Anda dalam format pohon interaktif, di mana setiap node diindentasi untuk mencerminkan hierarki data. Anda dapat memperluas atau menciutkan kelompok mana pun.",
         d2: "Kolom dan nilai diberi kode warna untuk identifikasi cepat. Ideal untuk developer yang men-debug API, memvalidasi respons, atau memeriksa file konfigurasi — tanpa instalasi maupun pendaftaran.",
-        viewer: "Pohon Data",
+        viewer: "Resultado",
         plc: "Tempelkan kode JSON di sini atau seret file",
         err: "Masukkan JSON yang valid",
         how_it_works_title: "Cara Kerja",

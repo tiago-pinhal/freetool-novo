@@ -45,6 +45,11 @@ export interface SoftwareApplicationSchema extends WithContext {
   operatingSystem?: string
   offers?: OfferSchema
   inLanguage?: string
+  featureList?: string | string[]
+}
+
+export interface WebApplicationSchema extends Omit<SoftwareApplicationSchema, '@type'> {
+  '@type': 'WebApplication'
 }
 
 export interface OfferSchema {
@@ -67,6 +72,19 @@ export interface FAQItem {
   }
 }
 
+export interface HowToSchema extends WithContext {
+  '@type': 'HowTo'
+  name: string
+  step: HowToStep[]
+}
+
+export interface HowToStep {
+  '@type': 'HowToStep'
+  position: number
+  name: string
+  text: string
+}
+
 export interface OrganizationSchema extends WithContext {
   '@type': 'Organization'
   name: string
@@ -81,7 +99,9 @@ export type JsonLdInput =
   | WebPageSchema
   | BreadcrumbListSchema
   | SoftwareApplicationSchema
+  | WebApplicationSchema
   | FAQPageSchema
+  | HowToSchema
   | OrganizationSchema
 
 // --- Constants ---
@@ -112,6 +132,12 @@ export function buildSoftwareApp(
   return { '@context': 'https://schema.org', '@type': 'SoftwareApplication', ...options }
 }
 
+export function buildWebApp(
+  options: Omit<WebApplicationSchema, '@context' | '@type'>
+): WebApplicationSchema {
+  return { '@context': 'https://schema.org', '@type': 'WebApplication', ...options }
+}
+
 export function buildBreadcrumbList(
   items: { name: string; url?: string }[]
 ): BreadcrumbListSchema {
@@ -137,6 +163,23 @@ export function buildFAQPage(
       '@type': 'Question',
       name: q.question,
       acceptedAnswer: { '@type': 'Answer', text: q.answer },
+    })),
+  }
+}
+
+export function buildHowTo(
+  name: string,
+  steps: { name: string; text: string }[]
+): HowToSchema {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    step: steps.map((s, index) => ({
+      '@type': 'HowToStep',
+      position: index + 1,
+      name: s.name,
+      text: s.text,
     })),
   }
 }
@@ -171,6 +214,9 @@ interface PageJsonLdOptions {
   applicationCategory?: string
   breadcrumb?: { name: string; url?: string }[]
   faq?: { question: string; answer: string }[]
+  features?: string[]
+  howToName?: string
+  howToSteps?: { name: string; text: string }[]
 }
 
 export function usePageJsonLd(options: PageJsonLdOptions) {
@@ -182,7 +228,7 @@ export function usePageJsonLd(options: PageJsonLdOptions) {
 
   if (options.type === 'tool') {
     schemas.push(
-      buildSoftwareApp({
+      buildWebApp({
         name: options.name,
         url: pageUrl,
         description: options.description,
@@ -190,6 +236,7 @@ export function usePageJsonLd(options: PageJsonLdOptions) {
         operatingSystem: 'All',
         offers: FREE_OFFER,
         inLanguage: locale.value,
+        featureList: options.features,
       })
     )
   } else {
@@ -216,6 +263,10 @@ export function usePageJsonLd(options: PageJsonLdOptions) {
 
   if (options.faq?.length) {
     schemas.push(buildFAQPage(options.faq))
+  }
+
+  if (options.howToSteps?.length) {
+    schemas.push(buildHowTo(options.howToName || options.name, options.howToSteps))
   }
 
   useJsonLd(schemas)

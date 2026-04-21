@@ -18,19 +18,19 @@ const props = withDefaults(defineProps<Props>(), {
 <template>
   <div class="max-w-5xl mx-auto px-4 pt-8 pb-8 lg:pb-12">
     <!-- Cabeçalho da Ferramenta -->
-    <header class="mb-6 text-left">
+    <div class="mb-6 text-left">
       <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-base-content mb-3">
         {{ title }}
       </h1>
-      <p v-if="description" class="text-lg text-base-content/60 max-w-2xl leading-relaxed">
+      <p v-if="description" class="text-lg text-base-content/60 leading-relaxed">
         {{ description }}
       </p>
-    </header>
+    </div>
 
     <!-- Área Principal da Ferramenta (Slot) -->
-    <main class="bg-base-100 rounded-3xl shadow-sm border border-primary/20 p-6 sm:p-10 mb-8">
+    <div class="bg-base-100 rounded-xl shadow-sm border border-primary/20 p-4">
       <slot />
-    </main>
+    </div>
 
     <!-- Seção de Anúncios Central (Condicional) -->
     <div v-if="showAds" class="mb-8">
