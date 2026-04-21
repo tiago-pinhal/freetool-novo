@@ -40,7 +40,7 @@ defineI18nRoute({
       </p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
       <ToolCard        :title="t('html')"
         :to="localePath('html-minifier')"
         icon="mdi:language-html5"

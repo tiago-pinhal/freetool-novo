@@ -40,45 +40,33 @@ defineI18nRoute({
       </p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard 
-        :cols="3"
-        :title="t('html')" 
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+      <ToolCard         :title="t('html')" 
         :to="localePath('html-formatter')" 
         icon="mdi:language-html5"
         :index="0"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('js')" 
+      <ToolCard         :title="t('js')" 
         :to="localePath('javascript-formatter')" 
         icon="mdi:language-javascript"
         :index="1"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('css')" 
+      <ToolCard         :title="t('css')" 
         :to="localePath('css-formatter')" 
         icon="mdi:language-css3"
         :index="2"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('graphql')" 
+      <ToolCard         :title="t('graphql')" 
         :to="localePath('graphql-formatter')" 
         icon="mdi:graphql"
         :index="3"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('yaml')" 
+      <ToolCard         :title="t('yaml')" 
         :to="localePath('yaml-formatter')" 
         icon="mdi:file-code-outline"
         :index="4"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('markdown')" 
+      <ToolCard         :title="t('markdown')" 
         :to="localePath('markdown-formatter')" 
         icon="mdi:language-markdown"
         :index="5"

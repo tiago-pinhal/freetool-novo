@@ -40,17 +40,13 @@ defineI18nRoute({
       </p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard 
-        :cols="3"
-        :title="t('number')" 
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+      <ToolCard         :title="t('number')" 
         :to="localePath('random-number-generator')" 
         icon="mdi:dice-multiple"
         :index="0"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('pass')" 
+      <ToolCard         :title="t('pass')" 
         :to="localePath('password-generator')" 
         icon="mdi:lock"
         :index="1"
@@ -63,38 +59,28 @@ defineI18nRoute({
       <div class="h-px flex-1 bg-base-content/10"></div>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-6">
-      <ToolCard 
-        :cols="3"
-        :title="t('cpf')" 
+    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+      <ToolCard         :title="t('cpf')" 
         :to="localePath('cpf-generator')" 
         icon="mdi:card-account-details"
         :index="2"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('cnpj')" 
+      <ToolCard         :title="t('cnpj')" 
         :to="localePath('cnpj-generator')" 
         icon="mdi:office-building"
         :index="3"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('rg')" 
+      <ToolCard         :title="t('rg')" 
         :to="localePath('rg-generator')" 
         icon="mdi:card-account-details-outline"
         :index="4"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('cc')" 
+      <ToolCard         :title="t('cc')" 
         :to="localePath('credit-card-generator')" 
         icon="mdi:credit-card"
         :index="5"
       />
-      <ToolCard 
-        :cols="3"
-        :title="t('uuid')" 
+      <ToolCard         :title="t('uuid')" 
         :to="localePath('uuid-generator')" 
         icon="mdi:identifier"
         :index="6"

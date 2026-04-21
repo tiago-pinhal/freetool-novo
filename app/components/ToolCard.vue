@@ -4,14 +4,7 @@ const props = defineProps<{
   icon: string
   title: string
   index?: number
-  cols?: 3 | 4 | 5
 }>()
-
-const widthClasses = {
-  3: 'w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)]',
-  4: 'w-full sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)]',
-  5: 'w-full sm:w-[calc(50%-12px)] lg:w-[calc(20%-20px)]',
-}
 
 // Premium gradient combinations
 const gradients = [
@@ -30,7 +23,7 @@ const currentGradient = computed(() => gradients[(props.index || 0) % gradients.
 <template>
   <NuxtLinkLocale
     :to="to"
-    :class="[widthClasses[cols ?? 4], 'group relative p-[2px] rounded-3xl transition-all duration-500 h-full flex flex-col overflow-hidden shadow-lg hover:shadow-2xl cursor-pointer', `bg-gradient-to-br ${currentGradient}`]"
+    :class="['group relative p-[2px] rounded-3xl transition-all duration-500 h-full flex flex-col overflow-hidden shadow-lg hover:shadow-2xl cursor-pointer', `bg-gradient-to-br ${currentGradient}`]"
   >
     <!-- Card Inner -->
     <div class="relative flex-1 bg-base-300/95 backdrop-blur-xl rounded-[calc(1.5rem-1.5px)] px-6 py-5 flex flex-row items-center gap-5 transition-all duration-500 group-hover:bg-base-300/70" style="background-clip: padding-box;">

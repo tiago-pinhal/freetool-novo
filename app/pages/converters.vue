@@ -40,15 +40,13 @@ defineI18nRoute({
       </p>
     </div>
 
-    <div class="flex flex-wrap justify-center gap-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
       <ToolCard        :title="t('roman')"
         :to="localePath('roman-numerals-converter')"
         icon="mdi:format-list-numbered-rtl"
         :index="0"
       />
-      <ToolCard
-        :cols="5"
-        :title="t('length')"
+      <ToolCard        :title="t('length')"
         :to="localePath('length-converter')"
         icon="mdi:ruler"
         :index="1"
@@ -75,7 +73,7 @@ defineI18nRoute({
       <div class="h-px flex-1 bg-base-content/10" />
     </div>
 
-    <div class="flex flex-wrap justify-center gap-6">
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
       <ToolCard        :title="t('less')"
         :to="localePath('less-to-css-converter')"
         icon="mdi:file-code-outline"
