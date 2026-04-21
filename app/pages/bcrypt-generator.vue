@@ -1,14 +1,22 @@
 <script setup lang="ts">
-// Carregamento otimizado com @nuxt/scripts
-const { onLoaded } = useScript('https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js', {
+useScript('https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js', {
   trigger: 'client',
-  scriptOptions: {
-    defer: true
-  }
+  scriptOptions: { defer: true }
 })
 
 const { t, locale } = useI18n({ useScope: 'local' })
 const localePath = useLocalePath()
+
+// SEO Estruturado (JSON-LD)
+usePageJsonLd({
+  name: `${t('title')} ${t('m_title')}`,
+  description: t('meta'),
+  type: 'tool',
+  breadcrumb: [
+    { name: 'Home', url: localePath('/') },
+    { name: t('title') }
+  ]
+})
 
 // Estados da Ferramenta
 const currentTab = ref('gen')
@@ -19,17 +27,21 @@ const stateGen = reactive({
   loading: false 
 })
 
-const stateCheck = reactive({ 
-  text: '', 
-  hash: '', 
-  check: null as boolean | null 
+const stateCheck = reactive({
+  text: '',
+  hash: '',
+  check: null as boolean | null
 })
 
-// Limpa resultados ao editar entradas
-watch(() => stateGen.text, () => stateGen.hash = '')
-watch(() => stateGen.round, () => stateGen.hash = '')
-watch(() => stateCheck.text, () => stateCheck.check = null)
-watch(() => stateCheck.hash, () => stateCheck.check = null)
+watch(() => [stateCheck.text, stateCheck.hash], () => {
+  stateCheck.check = null
+})
+
+// Opções de Rounds para o Select
+const roundOptions = Array.from({ length: 17 }, (_, i) => ({
+  label: i + 4,
+  value: i + 4
+}))
 
 // Função para Gerar Hash
 function generate() {
@@ -41,9 +53,10 @@ function generate() {
     stateGen.loading = true
 
     bcrypt.genSalt(stateGen.round, (err: any, salt: string) => {
+      if (err) { stateGen.loading = false; return }
       bcrypt.hash(stateGen.text, salt, (err: any, hash: string) => {
-        stateGen.hash = hash
         stateGen.loading = false
+        if (!err) stateGen.hash = hash
       })
     })
   }
@@ -54,9 +67,9 @@ function check() {
   const bcrypt = (window as any).dcodeIO?.bcrypt
   if (!bcrypt) return
 
-  bcrypt.compare(stateCheck.text, stateCheck.hash).then((res: boolean) => {
-    stateCheck.check = res
-  })
+  bcrypt.compare(stateCheck.text, stateCheck.hash)
+    .then((res: boolean) => { stateCheck.check = res })
+    .catch(() => { stateCheck.check = false })
 }
 
 // Configuração de Rotas Localizadas
@@ -113,24 +126,22 @@ defineI18nRoute({
           </div>
 
           <div class="flex flex-col sm:flex-row items-end gap-4">
-            <div class="form-control w-full sm:w-32">
-              <label class="label">
-                <span class="label-text font-bold text-base-content/60 text-xs uppercase tracking-wider">{{ t('rounds') }}</span>
-              </label>
-              <select v-model="stateGen.round" class="select select-bordered bg-base-200 rounded-xl">
-                <option v-for="i in 17" :key="i" :value="i + 3">{{ i + 3 }}</option>
-              </select>
-            </div>
+            <!-- Novo Select Customizado -->
+            <ToolSelect 
+              v-model.number="stateGen.round"
+              :label="t('rounds')"
+              :options="roundOptions"
+              class="sm:w-40"
+            />
 
-            <button 
+            <ButtonPrimary 
               @click="generate"
-              class="btn btn-primary btn-lg flex-1 sm:flex-none px-8 rounded-2xl gap-2"
-              :disabled="!stateGen.text || stateGen.loading"
+              icon="heroicons:lock-closed-20-solid"
+              :is-loading="stateGen.loading"
+              :disabled="!stateGen.text"
             >
-              <span v-if="stateGen.loading" class="loading loading-spinner loading-sm"></span>
-              <Icon v-else name="heroicons:lock-closed-20-solid" class="w-5 h-5" />
               {{ t('bt') }}
-            </button>
+            </ButtonPrimary>
           </div>
 
           <!-- Resultado -->
@@ -167,14 +178,13 @@ defineI18nRoute({
             />
           </div>
 
-          <button 
+          <ButtonSecondary 
             @click="check"
-            class="btn btn-secondary btn-lg px-8 rounded-2xl gap-2"
+            icon="heroicons:shield-check-20-solid"
             :disabled="!stateCheck.text || !stateCheck.hash"
           >
-            <Icon name="heroicons:shield-check-20-solid" class="w-5 h-5" />
             {{ t('check') }}
-          </button>
+          </ButtonSecondary>
 
           <!-- Resultado da Verificação -->
           <Transition

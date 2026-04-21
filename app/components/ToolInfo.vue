@@ -10,7 +10,7 @@ defineProps<Props>()
 </script>
 
 <template>
-  <section class="mt-16 bg-base-200 rounded-3xl p-8 border border-base-content/10">
+  <section class="mt-8 bg-base-200 rounded-3xl p-8 border border-base-content/10">
     <div>
       <div class="flex items-center gap-3 mb-4">
         <div class="w-10 h-10 rounded-xl bg-info/20 flex items-center justify-center">

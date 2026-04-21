@@ -13,7 +13,7 @@ const localePath = useLocalePath()
 </script>
 
 <template>
-  <section class="mt-16">
+  <section class="mt-8">
     <div class="flex items-center gap-4 mb-8">
       <h3 class="text-sm font-bold text-base-content/50 uppercase tracking-widest">
         {{ t('see') }}

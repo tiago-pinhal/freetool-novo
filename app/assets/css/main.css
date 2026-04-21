@@ -15,19 +15,25 @@ body {
 /* Reset total de ring e outline para focos e estados de acessibilidade */
 :focus, 
 :focus-visible, 
-:focus-within,
-.input:focus,
-.select:focus,
-.textarea:focus {
+:focus-within {
   outline: none !important;
   outline-offset: 0 !important;
   box-shadow: none !important;
-  border-color: var(--color-primary) !important;
   /* Reset de variáveis do Tailwind v4 */
   --tw-ring-color: transparent !important;
   --tw-ring-shadow: none !important;
   --tw-ring-offset-shadow: none !important;
   --tw-inset-ring-shadow: none !important;
+}
+
+/* Destaque de borda apenas para elementos de formulário */
+input:focus,
+select:focus,
+textarea:focus,
+.input:focus,
+.select:focus,
+.textarea:focus {
+  border-color: var(--color-primary) !important;
 }
 
 .tools-title {

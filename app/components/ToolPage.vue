@@ -16,10 +16,10 @@ const props = withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto px-4 py-12 lg:py-20">
+  <div class="max-w-4xl mx-auto px-4 pt-8 pb-8 lg:pb-12">
     <!-- Cabeçalho da Ferramenta -->
-    <header class="mb-12 text-center sm:text-left">
-      <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-base-content mb-6">
+    <header class="mb-6 text-left">
+      <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-base-content mb-3">
         {{ title }}
       </h1>
       <p v-if="description" class="text-lg text-base-content/60 max-w-2xl leading-relaxed">
@@ -28,13 +28,13 @@ const props = withDefaults(defineProps<Props>(), {
     </header>
 
     <!-- Área Principal da Ferramenta (Slot) -->
-    <main class="bg-base-100 rounded-3xl shadow-sm border border-base-content/5 p-6 sm:p-10 mb-16">
+    <main class="bg-base-100 rounded-3xl shadow-sm border border-primary/20 p-6 sm:p-10 mb-8">
       <slot />
     </main>
 
     <!-- Seção de Anúncios Central (Condicional) -->
-    <div v-if="showAds" class="mb-16">
-      <Adsense />
+    <div v-if="showAds" class="mb-8">
+      <Adsense v-once />
     </div>
 
     <!-- Informações Detalhadas (ToolInfo) -->
