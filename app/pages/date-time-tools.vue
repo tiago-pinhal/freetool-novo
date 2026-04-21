@@ -78,12 +78,12 @@ defineI18nRoute({
       <ToolCard :title="t('past')" 
         :to="localePath('past-date-calculator')" 
         icon="mdi:calendar-minus"
-        :index="0"
+        :index="7"
       />
       <ToolCard :title="t('time')" 
         :to="localePath('time-converter')" 
         icon="mdi:arrow-left-right"
-        :index="1"
+        :index="8"
       />
     </div>
 
@@ -97,12 +97,12 @@ defineI18nRoute({
       <ToolCard :title="t('cron')" 
         :to="localePath('crontab-generator')" 
         icon="mdi:asterisk"
-        :index="2"
+        :index="9"
       />
       <ToolCard :title="t('unix')" 
         :to="localePath('unix-timestamp-converter')" 
         icon="mdi:clock-fast"
-        :index="3"
+        :index="10"
       />
     </div>
 
@@ -157,10 +157,10 @@ defineI18nRoute({
         diff: "Diferencia entre Fechas Y Horas",
         birth: "Fecha de Nacimiento",
         age: "Calculadora de Edad",
-        hour: "Calculadora de Horas e Minutos",
+        hour: "Calculadora de Horas y Minutos",
         cron: "Generador de Crontab",
         future: "Calculadora de Fecha Futura",
-        past: "Calculadora de Data Passada",
+        past: "Calculadora de Fecha Pasada",
         time: "Convertidor de Tiempo",
         unix: "Convertidor de Timestamp Unix",
         devs: "Desarrolladores"
@@ -202,7 +202,7 @@ defineI18nRoute({
     id: {
         title: "Alat Tanggal dan Waktu",
         meta: "Alat tanggal dan waktu online gratis: hitung perbedaan, buat tanggal, kalkulator usia, generator crontab, dan lainnya. Sederhanakan perhitungan waktu!",
-        desc: "Dengan alat-alat ini, Anda dapat menghitung perbedaan tanggal dan waktu, membuat tanggal acak, menghitung usia, dan membuat ekspresi cron dengan mudah. Instan, akurat, dan tanpa perlu instalasi.",
+        desc: "Dengan alat-alat ini, Anda dapat menghitung perbedaan tanggal dan waktu, membuat tanggal acak, menghitung usia, dan membuat ekspresi cron dengan mudah. Instan, akurat, dan tidak diperlukan instalasi.",
         dt: "Selisih Tanggal",
         times: "Selisih Waktu",
         diff: "Selisih Tanggal dan Waktu",

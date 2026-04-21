@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const localePath = useLocalePath()
 
 useHead({
   title: 'Home | Freetool.Dev',
@@ -56,7 +57,7 @@ const toolCategories = [
           <ToolCard
             v-for="(tool, i) in toolCategories"
             :key="tool.id"
-            :to="tool.to"
+            :to="localePath(tool.to)"
             :icon="tool.icon"
             :title="tool.title"
             :index="i"

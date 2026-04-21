@@ -88,7 +88,7 @@ defineI18nRoute({
       <ToolCard :title="t('bcrypt')"
         :to="localePath('bcrypt-generator')"
         icon="mdi:script-text-key"
-        :index="0"
+        :index="7"
       />
     </div>
 
@@ -173,7 +173,7 @@ defineI18nRoute({
     id: {
         title: "Berbagai Alat",
         meta: "Alat online gratis: kalkulator persentase, pengacak daftar, pelempar dadu, aturan tiga, ekstraktor email, penampil JSON, generator MD5 dan Bcrypt. Alat berguna untuk kegiatan sehari-hari!",
-        desc: "Hitung persentase, acak daftar, lempar dadu, selesaikan aturan tiga, ekstrak email dari teks dan tampilkan JSON terformat. Semua pemrosesan dilakukan di browser Anda dan tidak diperlukan instalasi apa pun.",
+        desc: "Hitung persentase, acak daftar, lempar dadu, selesaikan aturan tiga, ekstrak email dari teks dan tampilkan JSON terformat. Semua pemrosesan dilakukan di browser Anda dan tidak diperlukan instalasi.",
         devs: "Untuk Developer",
         calc: "Kalkulator Persentase",
         list: "Pengacak Daftar",

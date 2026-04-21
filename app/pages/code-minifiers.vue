@@ -108,7 +108,7 @@ defineI18nRoute({
     id: {
         title: "Minifikasi Kode",
         meta: "Minifikasi kode online gratis: HTML, JavaScript, dan CSS. Optimalkan dan kompres kode Anda untuk meningkatkan waktu pemuatan halaman secara instan!",
-        desc: "Minimalkan dan kompres kode HTML, JavaScript, dan CSS Anda untuk mengurangi ukuran file dan mempercepat pemuatan halaman. Semua pemrosesan dilakukan di browser Anda, kode Anda tidak pernah meninggalkan perangkat dan tidak diperlukan instalasi apa pun.",
+        desc: "Minimalkan dan kompres kode HTML, JavaScript, dan CSS Anda untuk mengurangi ukuran file dan mempercepat pemuatan halaman. Semua pemrosesan dilakukan di browser Anda, kode Anda tidak pernah meninggalkan perangkat Anda dan tidak diperlukan instalasi.",
         html: "Minifikasi HTML",
         js: "Minifikasi JavaScript",
         css: "Minifikasi CSS"

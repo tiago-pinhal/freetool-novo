@@ -56,13 +56,13 @@ defineI18nRoute({
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
       <ToolCard :title="t('less')" :to="localePath('less-to-css-converter')" icon="mdi:file-code-outline" :index="5" />
       <ToolCard :title="t('xmlToJson')" :to="localePath('xml-to-json-converter')" icon="mdi:code-braces" :index="6" />
-      <ToolCard :title="t('jsonToXml')" :to="localePath('json-to-xml-converter')" icon="mdi:code-json" :index="0" />
+      <ToolCard :title="t('jsonToXml')" :to="localePath('json-to-xml-converter')" icon="mdi:code-json" :index="7" />
       <ToolCard :title="t('csvToJson')" :to="localePath('csv-to-json-converter')" icon="mdi:file-delimited-outline"
-        :index="1" />
+        :index="8" />
       <ToolCard :title="t('jsonToCsv')" :to="localePath('json-to-csv-converter')" icon="mdi:file-delimited"
-        :index="2" />
-      <ToolCard :title="t('num')" :to="localePath('number-base-converter')" icon="mdi:numeric" :index="3" />
-      <ToolCard :title="t('unit')" :to="localePath('storage-unit-converter')" icon="mdi:harddisk" :index="4" />
+        :index="9" />
+      <ToolCard :title="t('num')" :to="localePath('number-base-converter')" icon="mdi:numeric" :index="10" />
+      <ToolCard :title="t('unit')" :to="localePath('storage-unit-converter')" icon="mdi:harddisk" :index="11" />
     </div>
 
     <div class="mt-16 bg-base-200/50 rounded-3xl p-8 border border-base-content/5">
@@ -166,7 +166,7 @@ defineI18nRoute({
     id: {
         title: "Alat Konversi",
         meta: "Konverter online gratis: satuan, suhu, waktu, angka Romawi, URL, LESS ke CSS, XML/JSON, dan lainnya. Konversi data seketika!",
-        desc: "Konversi satuan panjang, suhu dan waktu, encode dan decode URL, konversi angka Romawi dan beralih antar format data seperti XML, JSON dan CSV. Semua pemrosesan dilakukan di browser Anda dan tidak diperlukan instalasi apa pun.",
+        desc: "Konversi satuan panjang, suhu dan waktu, encode dan decode URL, konversi angka Romawi dan beralih antar format data seperti XML, JSON dan CSV. Semua pemrosesan dilakukan di browser Anda dan tidak diperlukan instalasi.",
         devs: "Untuk Developer",
         roman: "Angka Romawi",
         length: "Panjang",

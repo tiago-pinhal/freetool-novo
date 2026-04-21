@@ -13,6 +13,12 @@ usePageJsonLd({
   breadcrumb: [
     { name: 'Home', url: localePath('/') },
     { name: t('title') }
+  ],
+  features: [
+    t('f_1'),
+    t('f_2'),
+    t('f_3'),
+    t('f_4')
   ]
 })
 
@@ -161,7 +167,7 @@ defineI18nRoute({
           </div>
 
           <!-- Resultado -->
-          <Blockcopy v-if="stateGen.hash" label="Bcrypt Hash" :content="stateGen.hash">
+          <Blockcopy v-if="stateGen.hash" :label="t('result')" :content="stateGen.hash">
             {{ stateGen.hash }}
           </Blockcopy>
         </div>
@@ -238,8 +244,13 @@ defineI18nRoute({
     see3: "Email Extractor",
     see4: "XML to JSON Converter",
     tip: "Quick Tip:",
+    result: "Result",
     tip_rounds: "Rounds: Higher values are more secure but increase processing time.",
-    tip_salt: "Salt: Automatically included to prevent rainbow table attacks."
+    tip_salt: "Salt: Automatically included to prevent rainbow table attacks.",
+    f_1: "Secure Bcrypt hash generation",
+    f_2: "Customizable salt rounds (4-20)",
+    f_3: "Real-time hash verification",
+    f_4: "Client-side processing for maximum privacy"
   },
   pt: {
     title: "Gerador e Verificador de Bcrypt",
@@ -258,14 +269,19 @@ defineI18nRoute({
     see3: "Extrator de E-mails",
     see4: "Conversor de XML para JSON",
     tip: "Dica Rápida:",
+    result: "Resultado",
     tip_rounds: "Rounds: Valores mais altos são mais seguros, porém aumentam o tempo de processamento.",
-    tip_salt: "Salt: Incluído automaticamente para prevenir ataques de dicionário (rainbow tables)."
+    tip_salt: "Salt: Incluído automaticamente para prevenir ataques de dicionário (rainbow tables).",
+    f_1: "Geração de hash Bcrypt seguro",
+    f_2: "Rounds de salt personalizáveis (4-20)",
+    f_3: "Verificação de hash em tempo real",
+    f_4: "Processamento no navegador para total privacidade"
   },
   es: {
     title: "Generador y Verificador de Bcrypt",
     meta: "Genere hashes Bcrypt seguros a partir de cualquier texto con rondas personalizables, o verifique hashes existentes.",
     desc: "Bcrypt es un método de cifrado de contraseñas altamente seguro. Utiliza un 'Salt' aleatorio que evita ataques de tablas arcoíris. El factor de costo (Rounds) determina la complejidad computacional, haciendo que los ataques de fuerza bruta sean extremadamente lentos y costosos para un atacante.",
-    check: "Validar Hash",
+    check: "Verificar Correspondencia",
     bt: "Generar Hash",
     plc: "Texto a cifrar",
     plcgen: "Cadena de hash Bcrypt",
@@ -278,14 +294,19 @@ defineI18nRoute({
     see3: "Extractor de Correos Electrónicos",
     see4: "Convertidor de XML a JSON",
     tip: "Consejo Rápido:",
+    result: "Resultado",
     tip_rounds: "Rondas: Valores más altos son más seguros pero más lentos.",
-    tip_salt: "Salt: Incluido automáticamente para prevenir ataques de tablas arcoíris."
+    tip_salt: "Salt: Incluido automáticamente para prevenir ataques de tablas arcoíris.",
+    f_1: "Generación de hash Bcrypt seguro",
+    f_2: "Rondas de salt personalizables (4-20)",
+    f_3: "Verificación de hash en tiempo real",
+    f_4: "Procesamiento local para total privacidad"
   },
   fr: {
     title: "Générateur et Vérificateur Bcrypt",
     meta: "Générez des hachages Bcrypt sécurisés avec des cycles personnalisables ou vérifiez la correspondance d'un hachage.",
     desc: "Bcrypt est une méthode de hachage conçue pour sécuriser les mots de passe. Il intègre un 'Salt' unique pour prévenir les attaques par tables arc-en-ciel. Le paramètre 'Rounds' définit le coût de calcul, rendant les tentatives de force brute beaucoup plus difficiles.",
-    check: "Vérifier le Hachage",
+    check: "Vérifier la Correspondance",
     bt: "Générer le Hachage",
     plc: "Texte à chiffrer",
     plcgen: "Chaîne de hachage Bcrypt",
@@ -298,8 +319,13 @@ defineI18nRoute({
     see3: "Extracteur d'e-mails",
     see4: "Convertisseur de XML vers JSON",
     tip: "Astuce Rapide :",
+    result: "Résultat",
     tip_rounds: "Cycles : Des valeurs plus élevées sont plus sûres mais plus lentes.",
-    tip_salt: "Salt : Inclus automatiquement pour prévenir les attaques par tables arc-en-ciel."
+    tip_salt: "Salt : Inclus automatiquement pour prévenir les attaques par tables arc-en-ciel.",
+    f_1: "Génération de hash Bcrypt sécurisée",
+    f_2: "Cycles de salt personnalisables (4-20)",
+    f_3: "Vérification de hachage en temps réel",
+    f_4: "Traitement côté client pour la confidentialité"
   },
   it: {
     title: "Generatore e Verificatore Bcrypt",
@@ -319,12 +345,17 @@ defineI18nRoute({
     see4: "Convertitore da XML a JSON",
     tip: "Consiglio Rapido:",
     tip_rounds: "Round: Valori più alti sono più sicuri ma più lenti.",
-    tip_salt: "Salt: Incluso automaticamente per prevenire attacchi rainbow table."
+    tip_salt: "Salt: Incluso automaticamente per prevenire attacchi rainbow table.",
+    result: "Risultato",
+    f_1: "Generazione hash Bcrypt sicura",
+    f_2: "Round di salt personalizzabili (4-20)",
+    f_3: "Verifica hash in tempo real",
+    f_4: "Elaborazione nel browser per la privacy"
   },
   id: {
     title: "Generator dan Verifikator Bcrypt",
     meta: "Buat hash Bcrypt yang aman dengan round yang dapat disesuaikan atau verifikasi kecocokan hash yang ada.",
-    desc: "Bcrypt adalah metode hashing yang dirancang untuk mengenkripsi kata sandi secara sangat aman. Fitur 'Salt' mencegah serangan tabel pelangi, sementara 'Rounds' menentukan tingkat kesulitan komputasi agar tahan terhadap serangan brute-force.",
+    desc: "Bcrypt adalah metode hashing yang dirancang untuk mengenkripsi kata sandi secara sangat aman. Fitur 'Salt' mencegah serangan tabel pelangi, sementara 'Rounds' menentukan tingkat kesulitan komputasi agar tahan terhadap serangan brute-force. Semua pemrosesan dilakukan di browser Anda dan tidak diperlukan instalasi.",
     check: "Verifikasi Kecocokan",
     bt: "Buat Hash",
     plc: "Teks untuk enkripsi",
@@ -338,8 +369,13 @@ defineI18nRoute({
     see3: "Ekstraktor Email",
     see4: "Konverter XML ke JSON",
     tip: "Tips Cepat:",
+    result: "Hasil",
     tip_rounds: "Round: Nilai yang lebih tinggi lebih aman tetapi lebih lambat.",
-    tip_salt: "Salt: Disertakan secara otomatis untuk mencegah serangan tabel pelangi."
+    tip_salt: "Salt: Disertakan secara otomatis untuk mencegah serangan tabel pelangi.",
+    f_1: "Pembuatan hash Bcrypt yang aman",
+    f_2: "Putaran salt yang dapat disesuaikan (4-20)",
+    f_3: "Verifikasi hash waktu nyata",
+    f_4: "Pemrosesan sisi klien untuk privasi total"
   }
 }
 </i18n>

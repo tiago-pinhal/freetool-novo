@@ -164,7 +164,7 @@ defineI18nRoute({
     id: {
         title: "Generator Data Acak",
         meta: "Generator data acak online gratis: angka, kata sandi, CPF, CNPJ, RG, kartu kredit, dan UUID. Buat data uji secara instan!",
-        desc: "Dengan alat-alat ini, kamu dapat membuat angka acak, kata sandi yang aman, dan data fiktif untuk pengujian dan pengembangan. Sempurna untuk pengembang dan penguji. Instan dan tanpa instalasi.",
+        desc: "Dengan alat-alat ini, Anda dapat membuat angka acak, kata sandi yang aman, dan data fiktif untuk pengujian dan pengembangan. Sempurna untuk pengembang dan penguji. Instan dan tidak diperlukan instalasi.",
         cc: "Generator Kartu Kredit",
         number: "Generator Angka Acak",
         pass: "Generator Kata Sandi",

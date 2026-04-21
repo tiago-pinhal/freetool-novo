@@ -17,10 +17,10 @@ usePageJsonLd({
     { name: t('title') }
   ],
   features: [
-    "Interactive JSON tree virtualization",
-    "Syntax highlighting and color-coded fields",
-    "Real-time validation and error detection",
-    "No registration or installation required"
+    t('f_1'),
+    t('f_2'),
+    t('f_3'),
+    t('f_4')
   ],
   howToName: t('how_it_works_title'),
   howToSteps: [
@@ -134,7 +134,7 @@ defineI18nRoute({
       <div v-show="!state.error && state.hasCode" class="space-y-3">
         <div class="flex items-center gap-2 text-sm font-bold text-base-content/60 uppercase tracking-wider">
           <Icon name="heroicons:eye-20-solid" class="w-4 h-4" />
-          {{ t('viewer') }}
+          {{ t('result') }}
         </div>
         <div 
           ref="viewerRef"
@@ -256,7 +256,7 @@ defineI18nRoute({
         info_title: "Information",
         d1: "This online JSON viewer displays your data in an interactive tree format, where each node is indented to reflect the data hierarchy. You can expand or collapse any group to focus on the information that matters.",
         d2: "Fields and values are color-coded for quick identification, and any change made to the input is instantly reflected in the visualization. Ideal for developers debugging APIs, validating responses, or inspecting configuration files — no installation or sign-up needed.",
-        viewer: "Result",
+        result: "Result",
         plc: "Insert the JSON code here or drag a file",
         err: "Provide a valid JSON",
         how_it_works_title: "How It Works",
@@ -280,10 +280,11 @@ defineI18nRoute({
         faq_2_a: "Yes. By interacting directly with the generated JSON tree, you can copy specific nodes, arrays, or sub-objects without parsing the entire raw text.",
         faq_3_q: "Does the viewer indicate JSON errors?",
         faq_3_a: "Yes. If your JSON payload is malformed (missing quotes, trailing commas, etc.), the tool will display a direct red syntax error flag preventing the tree render.",
-        see1: "XML to JSON Converter",
-        see2: "JSON to XML Converter",
-        see3: "MD5 Hash Generator",
-        see4: "Bcrypt Generator"
+        see4: "Bcrypt Generator",
+        f_1: "Interactive JSON tree virtualization",
+        f_2: "Syntax highlighting and color-coded fields",
+        f_3: "Real-time validation and error detection",
+        f_4: "No registration or installation required"
     },
     pt: {
         m_title: "Visualizador de JSON Online - Visualize e Formate JSON de Graça",
@@ -292,7 +293,7 @@ defineI18nRoute({
         info_title: "Informações",
         d1: "Este visualizador de JSON online exibe seus dados em um formato de árvore interativa, onde cada nó reflete visualmente a hierarquia dos dados. Você pode expandir ou recolher grupos longos.",
         d2: "Campos e valores são coloridos para identificação rápida, e qualquer alteração feita na entrada é validada instantaneamente. Ideal para desenvolvedores depurando APIs sem instalação ou cadastro.",
-        viewer: "Resultado",
+        result: "Resultado",
         plc: "Insira o código JSON aqui ou arraste um arquivo",
         err: "Informe um JSON estruturalmente válido",
         how_it_works_title: "Como Funciona",
@@ -316,10 +317,11 @@ defineI18nRoute({
         faq_2_a: "Sim. A grande vantagem de um Visualizador (Viewer) ao invés de um arquivo puro é que você pode fechar todos os nós (nodes) e investigar a hierarquia do arquivo aos poucos.",
         faq_3_q: "A ferramenta localiza vírgulas e aspas faltando?",
         faq_3_a: "Se o seu JSON contiver sintaxe inválida (aspas faltando, vírgulas extras, etc.), a ferramenta exibirá uma mensagem de erro e o painel visual não será gerado até que o código seja corrigido.",
-        see1: "Conversor de XML para JSON",
-        see2: "Conversor de JSON para XML",
-        see3: "Gerador de Hash MD5",
-        see4: "Gerador Bcrypt"
+        see4: "Gerador Bcrypt",
+        f_1: "Visualização interativa em árvore JSON",
+        f_2: "Destaque de sintaxe e campos coloridos",
+        f_3: "Validação em tempo real e detecção de erros",
+        f_4: "Sem necessidade de cadastro ou instalação"
     },
     es: {
         m_title: "Visor de JSON Online - Visualiza y Formatea JSON Gratis",
@@ -328,7 +330,7 @@ defineI18nRoute({
         info_title: "Información",
         d1: "Este visor de JSON online muestra tus datos en un formato de árbol interactivo, donde cada nodo está indentado para reflejar la jerarquía. Puedes expandir o colapsar nodos extensos.",
         d2: "Los campos y valores están coloreados para una identificación rápida. Ideal para desarrolladores que depuran APIs o inspeccionan archivos de configuración sin instalación.",
-        viewer: "Resultado",
+        result: "Resultado",
         plc: "Introduce el código JSON aquí o arrastra un archivo",
         err: "Ingrese un JSON estructuralmente válido",
         how_it_works_title: "Cómo Funciona",
@@ -352,10 +354,11 @@ defineI18nRoute({
         faq_2_a: "Sí. Cada objeto o arreglo principal posee flechas desplegables que admiten cierres y aperturas modulares para facilitarte la inmersión.",
         faq_3_q: "¿El visor detecta errores en el JSON?",
         faq_3_a: "Sí. Si tu JSON tiene errores de sintaxis (comillas o comas faltantes, corchetes incorrectos), aparecerá un bloque rojo de alerta y el árbol no se mostrará hasta que lo corrijas.",
-        see1: "Convertidor de XML a JSON",
-        see2: "Convertidor de JSON a XML",
-        see3: "Generador de Hash MD5",
-        see4: "Generador Bcrypt"
+        see4: "Generador Bcrypt",
+        f_1: "Visualización interactiva en árbol JSON",
+        f_2: "Resaltado de sintaxe y campos coloreados",
+        f_3: "Validación en tiempo real y detección de errores",
+        f_4: "Sin necesidad de registro ni instalación"
     },
     fr: {
         m_title: "Visualiseur JSON en Ligne - Visualisez et Formatez Gratuit",
@@ -364,7 +367,7 @@ defineI18nRoute({
         info_title: "Information",
         d1: "Ce visualiseur JSON en ligne affiche vos données dans un format d'arbre interactif, où chaque nœud est indenté pour refléter la hiérarchie des données.",
         d2: "Les champs et les valeurs sont colorés pour une identification rapide. Idéal pour les développeurs qui déboguent des APIs ou des fichiers de configuration sans installation.",
-        viewer: "Résultat",
+        result: "Résultat",
         plc: "Insérez le code JSON ici ou faites glisser un fichier",
         err: "Fournissez un JSON syntaxiquement valide",
         how_it_works_title: "Comment l'utiliser ?",
@@ -388,10 +391,11 @@ defineI18nRoute({
         faq_2_a: "C'est l'essence de cet outil : Il rend le survol dynamique. Repoussez des tableaux à listes massives pour clarifier les paramètres qui vous manquent.",
         faq_3_q: "Le visualiseur détecte-t-il les erreurs d'inattention ?",
         faq_3_a: "La fenêtre de visualisation refusera de compiler un tableau si la saisie manque de formalisme (oubli de parenthèses ou de crochets), ce qui sécurise globalement le diagnostic.",
-        see1: "Convertisseur de XML vers JSON",
-        see2: "Convertisseur de JSON vers XML",
-        see3: "Générateur de Hash MD5",
-        see4: "Générateur Bcrypt"
+        see4: "Générateur Bcrypt",
+        f_1: "Visualisation interactive en arbre JSON",
+        f_2: "Coloration syntaxique et champs colorés",
+        f_3: "Validation en temps réel et détection d'erreurs",
+        f_4: "Aucune inscription ou installation requise"
     },
     it: {
         m_title: "Visualizzatore JSON Online - Visualizza e Formatta JSON Gratis",
@@ -400,7 +404,7 @@ defineI18nRoute({
         info_title: "Informazioni",
         d1: "Questo visualizzatore JSON online mostra i tuoi dati in un formato ad albero interattivo, dove ogni nodo è indentato per riflettere la gerarchia dei dati. Puoi espandere o comprimere qualsiasi gruppo.",
         d2: "I campi e i valori sono colorati per una rapida identificazione. Ideale per sviluppatori che debuggano API, validano risposte o ispezionano file di configurazione — senza installazione né registrazione.",
-        viewer: "Risultato",
+        result: "Risultato",
         plc: "Incolla il codice JSON qui o trascina un file",
         err: "JSON non valido",
         how_it_works_title: "Come Funziona",
@@ -424,10 +428,11 @@ defineI18nRoute({
         faq_2_a: "Sì. Interagendo direttamente con l'albero generato, puoi copiare nodi, array o sotto-oggetti specifici senza dover analizzare l'intero testo grezzo.",
         faq_3_q: "Il visualizzatore segnala errori nel JSON?",
         faq_3_a: "Sì. Se il JSON è malformato (virgolette mancanti, virgole finali, ecc.), lo strumento mostra un messaggio di errore e blocca il rendering dell'albero.",
-        see1: "Convertitore da XML a JSON",
-        see2: "Convertitore da JSON a XML",
-        see3: "Generatore di Hash MD5",
-        see4: "Generatore Bcrypt"
+        see4: "Generatore Bcrypt",
+        f_1: "Visualizzazione interattiva ad albero JSON",
+        f_2: "Evidenziazione della sintassi e campi colorati",
+        f_3: "Validazione in tempo reale e rilevamento errori",
+        f_4: "Nessuna registrazione o installazione richiesta"
     },
     id: {
         m_title: "Penampil JSON Online - Visualisasi & Format Pohon JSON",
@@ -436,7 +441,7 @@ defineI18nRoute({
         info_title: "Informasi",
         d1: "Penampil JSON online ini menampilkan data Anda dalam format pohon interaktif, di mana setiap node diindentasi untuk mencerminkan hierarki data. Anda dapat memperluas atau menciutkan kelompok mana pun.",
         d2: "Kolom dan nilai diberi kode warna untuk identifikasi cepat. Ideal untuk developer yang men-debug API, memvalidasi respons, atau memeriksa file konfigurasi — tanpa instalasi maupun pendaftaran.",
-        viewer: "Hasil",
+        result: "Hasil",
         plc: "Tempelkan kode JSON di sini atau seret file",
         err: "Masukkan JSON yang valid",
         how_it_works_title: "Cara Kerja",
@@ -457,13 +462,14 @@ defineI18nRoute({
         faq_1_q: "Apakah data JSON saya tersimpan di server?",
         faq_1_a: "Tidak. Semua pemrosesan dilakukan sepenuhnya di browser Anda. Kami tidak mengirim atau menyimpan data JSON Anda di server kami, sehingga privasi Anda terjaga.",
         faq_2_q: "Bisakah saya menyalin bagian tertentu dari JSON?",
-        faq_2_a: "Ya. Dengan berinteraksi langsung dengan pohon yang dihasilkan, Anda dapat menyalin node, array, o sub-objek tertentu tanpa harus memindai seluruh teks mentah.",
+        faq_2_a: "Ya. Dengan berinteraksi langsung dengan pohon yang dihasilkan, Anda dapat menyalin node, array, atau sub-objek tertentu tanpa harus memindai seluruh teks mentah.",
         faq_3_q: "Apakah penampil ini mendeteksi kesalahan JSON?",
         faq_3_a: "Ya. Jika JSON Anda tidak valid (tanda kutip hilang, koma berlebih, dll.), alat ini akan menampilkan pesan error dan mencegah pohon dirender.",
-        see1: "Konverter XML ke JSON",
-        see2: "Konverter JSON ke XML",
-        see3: "Generator Hash MD5",
-        see4: "Generator Bcrypt"
+        see4: "Generator Bcrypt",
+        f_1: "Virtualisasi pohon JSON interaktif",
+        f_2: "Penyorotan sintaks dan kolom berwarna",
+        f_3: "Validasi real-time dan deteksi kesalahan",
+        f_4: "Tanpa pendaftaran atau instalasi"
     }
 }
 </i18n>

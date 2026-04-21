@@ -138,7 +138,7 @@ defineI18nRoute({
     id: {
         title: "Alat Teks",
         meta: "Alat teks online gratis: penghitung kata, generator teks, konverter, komparator, huruf mewah, dan ASCII art. Tingkatkan produktivitas Anda!",
-        desc: "Ubah kapitalisasi teks, bandingkan dokumen, hitung kata, buat teks pengisi, ciptakan huruf berbeda dan seni ASCII. Semua pemrosesan dilakukan di browser Anda, data Anda tidak pernah meninggalkan perangkat dan tidak diperlukan instalasi apa pun.",
+        desc: "Ubah kapitalisasi teks, bandingkan dokumen, hitung kata, buat teks pengisi, ciptakan huruf berbeda dan seni ASCII. Semua pemrosesan dilakukan di browser Anda, data Anda tidak pernah meninggalkan perangkat Anda dan tidak diperlukan instalasi.",
         asc: "Huruf ASCII",
         fonts: "Huruf Berbeda",
         txt: "Konverter Teks",

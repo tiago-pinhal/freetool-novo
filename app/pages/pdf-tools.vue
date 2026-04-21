@@ -118,7 +118,7 @@ defineI18nRoute({
     id: {
         title: "Alat PDF",
         meta: "Alat PDF online gratis: edit, pisahkan, beri nomor halaman, dan konversi PDF ke gambar. Manipulasi dokumen yang andal tanpa instalasi perangkat lunak!",
-        desc: "Edit, pisahkan dan beri nomor halaman PDF atau konversi file menjadi gambar, semua tanpa meninggalkan browser Anda. Dokumen Anda tidak pernah meninggalkan perangkat dan tidak diperlukan instalasi apa pun.",
+        desc: "Edit, pisahkan dan beri nomor halaman PDF atau konversi file menjadi gambar, semua tanpa meninggalkan browser Anda. Dokumen Anda tidak pernah meninggalkan perangkat Anda dan tidak diperlukan instalasi.",
         edit: "Edit PDF",
         split: "Pisahkan PDF",
         num: "Beri Nomor PDF",

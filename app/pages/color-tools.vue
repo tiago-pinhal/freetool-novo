@@ -123,7 +123,7 @@ defineI18nRoute({
     id: {
         title: "Alat Warna",
         meta: "Alat warna online gratis: palet acak, ekstraksi warna dari gambar, konverter warna, dan kombinasi warna. Tanpa instalasi!",
-        desc: "Buat palet warna acak, ekstrak warna dominan dari gambar apa pun, konversi antar format warna dan susun kombinasi yang harmonis. Semua berjalan di browser Anda, file Anda tetap di perangkat dan tidak perlu instalasi apa pun.",
+        desc: "Buat palet warna acak, ekstrak warna dominan dari gambar apa pun, konversi antar format warna dan susun kombinasi yang harmonis. Semua berjalan di browser Anda, file Anda tetap di perangkat Anda dan tidak diperlukan instalasi.",
         random: "Warna Acak",
         dominant: "Warna Gambar",
         contrast: "Kontras Warna",

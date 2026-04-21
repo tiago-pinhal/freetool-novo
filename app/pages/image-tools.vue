@@ -115,7 +115,7 @@ defineI18nRoute({
         desc: "Elige emojis y símbolos, genera códigos QR y de barras, recorta y redimensiona imágenes o incluso conviértelas a PDF. Todo el procesamiento ocurre en tu navegador, tus archivos nunca salen de tu dispositivo y no necesitas instalar nada.",
         emoji: "Selector de Emoji",
         symbol: "Selector de Símbolos",
-        qr: "Generador de QR Code",
+        qr: "Generador de Códigos QR",
         barcode: "Generador de Códigos de Barras",
         cropper: "Recortar Imagen",
         resizer: "Redimensionar Imagen",
@@ -148,7 +148,7 @@ defineI18nRoute({
     id: {
         title: "Alat Gambar",
         meta: "Alat gambar online gratis: pemilih emoji dan simbol, generator kode QR dan barcode, pemotong, pengubah ukuran gambar dan konversi gambar ke PDF. Tanpa instalasi!",
-        desc: "Pilih emoji dan simbol, buat kode QR dan barcode, potong dan ubah ukuran gambar atau bahkan konversi ke PDF. Semua pemrosesan dilakukan di browser Anda, file Anda tidak pernah meninggalkan perangkat dan tidak diperlukan instalasi apa pun.",
+        desc: "Pilih emoji dan simbol, buat kode QR dan barcode, potong dan ubah ukuran gambar atau bahkan konversi ke PDF. Semua pemrosesan dilakukan di browser Anda, file Anda tidak pernah meninggalkan perangkat Anda dan tidak diperlukan instalasi.",
         emoji: "Pemilih Emoji",
         symbol: "Pemilih Simbol",
         qr: "Generator Kode QR",

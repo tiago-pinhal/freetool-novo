@@ -13,6 +13,12 @@ usePageJsonLd({
   breadcrumb: [
     { name: 'Home', url: localePath('/') },
     { name: t('title') }
+  ],
+  features: [
+    t('f_1'),
+    t('f_2'),
+    t('f_3'),
+    t('f_4')
   ]
 })
 
@@ -112,7 +118,7 @@ defineI18nRoute({
         enter-from-class="transform scale-95 opacity-0"
         enter-to-class="transform scale-100 opacity-100"
       >
-        <Blockcopy v-if="state.md5" label="MD5 Hash" :content="state.md5">
+        <Blockcopy v-if="state.md5" :label="t('result')" :content="state.md5">
           {{ state.md5 }}
         </Blockcopy>
       </Transition>
@@ -149,7 +155,12 @@ defineI18nRoute({
     see4: "XML to JSON Converter",
     tip_title: "Security Warning",
     tip_security: "MD5 is not safe for password hashing as it's vulnerable to collision attacks.",
-    tip_usage: "We recommend using Bcrypt for security. MD5 is best suited for file integrity (Checksum)."
+    tip_usage: "We recommend using Bcrypt for security. MD5 is best suited for file integrity (Checksum).",
+    result: "Result",
+    f_1: "Fast MD5 hash calculation",
+    f_2: "128-bit digital fingerprinting",
+    f_3: "Data integrity verification",
+    f_4: "No registration or installation required"
   },
   pt: {
     title: "Gerador de Hash MD5",
@@ -163,7 +174,12 @@ defineI18nRoute({
     see4: "Conversor de XML para JSON",
     tip_title: "Aviso de Segurança",
     tip_security: "O MD5 não é seguro para senhas por ser vulnerável a colisões.",
-    tip_usage: "Recomendamos o uso de Bcrypt para segurança de senhas. O MD5 é ideal para verificar a integridade de arquivos (Checksum)."
+    tip_usage: "Recomendamos o uso de Bcrypt para segurança de senhas. O MD5 é ideal para verificar a integridade de arquivos (Checksum).",
+    result: "Resultado",
+    f_1: "Cálculo rápido de hash MD5",
+    f_2: "Impressão digital de 128 bits",
+    f_3: "Verificação de integridade de dados",
+    f_4: "Sem necessidade de cadastro ou instalação"
   },
   es: {
     title: "Generador de Hash MD5",
@@ -177,7 +193,12 @@ defineI18nRoute({
     see4: "Convertidor de XML a JSON",
     tip_title: "Aviso de Seguridad",
     tip_security: "MD5 no es seguro para contraseñas ya que es vulnerable a ataques de colisión.",
-    tip_usage: "Recomendamos usar Bcrypt para mayor seguridad. MD5 es ideal para verificar la integridad de archivos (Checksum)."
+    tip_usage: "Recomendamos usar Bcrypt para mayor seguridad. MD5 es ideal para verificar la integridad de archivos (Checksum).",
+    result: "Resultado",
+    f_1: "Cálculo rápido de hash MD5",
+    f_2: "Huella digital de 128 bits",
+    f_3: "Verificación de integridad de datos",
+    f_4: "Sin registro ni instalación"
   },
   fr: {
     title: "Générateur de Hash MD5",
@@ -191,7 +212,12 @@ defineI18nRoute({
     see4: "Convertisseur de XML vers JSON",
     tip_title: "Avertissement de Sécurité",
     tip_security: "MD5 n'est pas sûr pour les mots de passe car il est vulnérable aux collisions.",
-    tip_usage: "Nous recommandons d'utiliser Bcrypt pour la sécurité. MD5 est parfait pour vérifier l'intégrité des fichiers (Checksum)."
+    tip_usage: "Nous recommandons d'utiliser Bcrypt pour la sécurité. MD5 est parfait pour vérifier l'intégrité des fichiers (Checksum).",
+    result: "Résultat",
+    f_1: "Calcul rapide de hash MD5",
+    f_2: "Empreinte numérique 128 bits",
+    f_3: "Vérification de l'intégrité des données",
+    f_4: "Aucune inscription ou installation requise"
   },
   it: {
     title: "Generatore di Hash MD5",
@@ -205,12 +231,17 @@ defineI18nRoute({
     see4: "Convertitore da XML a JSON",
     tip_title: "Avviso di Sicurezza",
     tip_security: "MD5 non è sicuro per le password perché vulnerabile alle collisioni.",
-    tip_usage: "Raccomandiamo di usare Bcrypt per la sicurezza. MD5 è ideale per verificare l'integrità dei file (Checksum)."
+    tip_usage: "Raccomandiamo di usare Bcrypt per la sicurezza. MD5 è ideale per verificare l'integrità dei file (Checksum).",
+    result: "Risultato",
+    f_1: "Calcolo rapido hash MD5",
+    f_2: "Impronta digitale a 128 bit",
+    f_3: "Verifica integrità dati",
+    f_4: "Nessuna registrazione o installazione"
   },
   id: {
     title: "Generator Hash MD5",
     meta: "Hitung hash MD5 (sidik jari 128-bit) dengan mudah untuk teks apa pun. Verifikasi integritas data dengan alat online kami.",
-    desc: "MD5 (Message Digest Algorithm 5) adalah algoritma hash kriptografi yang banyak digunakan yang menghasilkan sidik jari 128-bit (32-karakter) untuk teks atau data input apa pun. Ini terutama digunakan untuk memverifikasi integritas data, karena akan menghasilkan hash yang unik dan konsisten. Bahkan sedikit perubahan pada teks input akan mengubah kode ini, sehingga memudahkan untuk mengidentifikasi setiap perubahan pada data asli. Untuk keamanan kata sandi, algoritma yang lebih kuat seperti SHA-256 atau Bcrypt sangat disarankan.",
+    desc: "MD5 (Message Digest Algorithm 5) adalah algoritma hash kriptografi yang banyak digunakan yang menghasilkan sidik jari 128-bit (32-karakter) untuk teks atau data input apa pun. Ini terutama digunakan untuk memverifikasi integritas data, karena akan menghasilkan hash yang unik dan konsisten. Bahkan sedikit perubahan pada teks input akan mengubah kode ini, sehingga memudahkan untuk mengidentifikasi setiap perubahan pada data asli. Untuk keamanan kata sandi, algoritma yang lebih kuat seperti SHA-256 atau Bcrypt sangat disarankan. Semua pemrosesan dilakukan di browser Anda dan tidak diperlukan instalasi.",
     bt: "Hitung",
     plc: "Teks untuk dihitung",
     see1: "Generator Bcrypt",
@@ -219,7 +250,12 @@ defineI18nRoute({
     see4: "Konverter XML ke JSON",
     tip_title: "Peringatan Keamanan",
     tip_security: "MD5 tidak aman untuk kata sandi karena rentan terhadap serangan tabrakan (Collision).",
-    tip_usage: "Kami menyarankan penggunaan Bcrypt untuk keamanan. MD5 paling cocok untuk integritas file (Checksum)."
+    tip_usage: "Kami menyarankan penggunaan Bcrypt untuk keamanan. MD5 paling cocok untuk integritas file (Checksum).",
+    result: "Hasil",
+    f_1: "Perhitungan hash MD5 yang cepat",
+    f_2: "Sidik jari digital 128-bit",
+    f_3: "Verifikasi integritas data",
+    f_4: "Tanpa pendaftaran atau instalasi"
   }
 }
 </i18n>

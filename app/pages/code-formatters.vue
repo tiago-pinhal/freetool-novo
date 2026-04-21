@@ -138,7 +138,7 @@ defineI18nRoute({
     id: {
         title: "Pemformat Kode",
         meta: "Pemformat kode online gratis: HTML, JavaScript, CSS, GraphQL, YAML dan Markdown. Format dan percantik kode Anda secara instan!",
-        desc: "Format dan percantik kode Anda secara terstruktur dan terorganisir. Semua pemrosesan dilakukan di browser Anda - kode Anda tidak pernah meninggalkan perangkat Anda. Sempurna untuk pengembang web dan keterbacaan kode.",
+        desc: "Format dan percantik kode Anda secara terstruktur dan terorganisir. Semua pemrosesan dilakukan di browser Anda, kode Anda tidak pernah meninggalkan perangkat Anda dan tidak diperlukan instalasi.",
         html: "Pemformat HTML",
         js: "Pemformat JavaScript",
         css: "Pemformat CSS",
