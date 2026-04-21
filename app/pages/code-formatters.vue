@@ -2,7 +2,6 @@
 const { t } = useI18n()
 const localePath = useLocalePath()
 
-// JSON-LD and SEO
 usePageJsonLd({
   type: 'page',
   name: t('title'),
@@ -86,7 +85,6 @@ defineI18nRoute({
       />
     </div>
 
-    <!-- Ad placeholder -->
     <div class="mt-16 bg-base-200/50 rounded-3xl p-8 border border-base-content/5 text-center">
       <Adsense />
     </div>
@@ -131,7 +129,7 @@ defineI18nRoute({
     fr: {
         title: "Formateurs de Code",
         meta: "Formateurs de code en ligne gratuits : HTML, JavaScript, CSS, GraphQL, YAML et Markdown. Formatez et embellissez votre code instantanément !",
-        desc: "Formatez et embellissez votre code de manière structurée et organisée. Tout le traitement se fait dans votre navegador, votre code ne quitte jamais votre appareil et aucune installation n'est requise.",
+        desc: "Formatez et embellissez votre code de manière structurée et organisée. Tout le traitement se fait dans votre navigateur, votre code ne quitte jamais votre appareil et aucune installation n'est requise.",
         html: "Formateur HTML",
         js: "Formateur JavaScript",
         css: "Formateur CSS",

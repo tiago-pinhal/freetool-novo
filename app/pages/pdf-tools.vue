@@ -2,7 +2,6 @@
 const { t } = useI18n()
 const localePath = useLocalePath()
 
-// JSON-LD and SEO
 usePageJsonLd({
   type: 'page',
   name: t('title'),
@@ -72,7 +71,6 @@ defineI18nRoute({
       />
     </div>
 
-    <!-- Ad placeholder -->
     <div class="mt-16 bg-base-200/50 rounded-3xl p-8 border border-base-content/5">
       <Adsense />
     </div>
