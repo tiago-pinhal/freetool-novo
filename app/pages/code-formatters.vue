@@ -23,8 +23,7 @@ defineI18nRoute({
         es: "/formateadores-de-codigo",
         fr: '/formateurs-de-code',
         it: '/formattatori-di-codice',
-        id: '/pemformat-kode',
-        de: '/code-formatierer'
+        id: '/pemformat-kode'
     }
 })
 </script>
@@ -146,17 +145,6 @@ defineI18nRoute({
         graphql: "Pemformat GraphQL",
         yaml: "Pemformat YAML",
         markdown: "Pemformat Markdown"
-    },
-    de: {
-        title: "Code-Formatierer",
-        meta: "Kostenlose Online-Code-Formatierer: HTML, JavaScript, CSS, GraphQL, YAML und Markdown. Formatieren und verschönern Sie Ihren Code sofort!",
-        desc: "Formatieren und verschönern Sie Ihren Code strukturiert und organisiert. Die gesamte Verarbeitung erfolgt in Ihrem Browser, Ihr Code verlässt niemals Ihr Gerät und eine Installation ist nicht erforderlich.",
-        html: "HTML-Formatierer",
-        js: "JavaScript-Formatierer",
-        css: "CSS-Formatierer",
-        graphql: "GraphQL-Formatierer",
-        yaml: "YAML-Formatierer",
-        markdown: "Markdown-Formatierer"
     }
 }
 </i18n>

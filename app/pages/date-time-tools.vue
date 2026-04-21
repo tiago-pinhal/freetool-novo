@@ -23,8 +23,7 @@ defineI18nRoute({
         es: '/herramientas-para-fechas-y-horas',
         fr: '/outils-pour-dates-et-heures',
         it: '/strumenti-per-date-e-ore',
-        id: '/alat-tanggal-dan-waktu',
-        de: '/datum-und-zeit-werkzeuge'
+        id: '/alat-tanggal-dan-waktu'
     }
 })
 </script>
@@ -41,47 +40,47 @@ defineI18nRoute({
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6">
-      <ToolCard         :title="t('dt')" 
+      <ToolCard :title="t('dt')" 
         :to="localePath('date-difference')" 
         icon="mdi:calendar-range"
         :index="0"
       />
-      <ToolCard         :title="t('times')" 
+      <ToolCard :title="t('times')" 
         :to="localePath('time-difference')" 
         icon="mdi:clock-outline"
         :index="1"
       />
-      <ToolCard         :title="t('diff')" 
+      <ToolCard :title="t('diff')" 
         :to="localePath('date-time-difference')" 
         icon="mdi:calendar-clock"
         :index="2"
       />
-      <ToolCard         :title="t('birth')" 
+      <ToolCard :title="t('birth')" 
         :to="localePath('birthday-generator')" 
         icon="mdi:calendar-account"
         :index="3"
       />
-      <ToolCard         :title="t('age')" 
+      <ToolCard :title="t('age')" 
         :to="localePath('age-calculator')" 
         icon="mdi:calculator"
         :index="4"
       />
-      <ToolCard         :title="t('hour')" 
+      <ToolCard :title="t('hour')" 
         :to="localePath('hours-and-minutes-calculator')" 
         icon="mdi:alarm-plus"
         :index="5"
       />
-      <ToolCard         :title="t('future')" 
+      <ToolCard :title="t('future')" 
         :to="localePath('future-date-calculator')" 
         icon="mdi:calendar-plus"
         :index="6"
       />
-      <ToolCard         :title="t('past')" 
+      <ToolCard :title="t('past')" 
         :to="localePath('past-date-calculator')" 
         icon="mdi:calendar-minus"
         :index="0"
       />
-      <ToolCard         :title="t('time')" 
+      <ToolCard :title="t('time')" 
         :to="localePath('time-converter')" 
         icon="mdi:arrow-left-right"
         :index="1"
@@ -95,12 +94,12 @@ defineI18nRoute({
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6">
-      <ToolCard         :title="t('cron')" 
+      <ToolCard :title="t('cron')" 
         :to="localePath('crontab-generator')" 
         icon="mdi:asterisk"
         :index="2"
       />
-      <ToolCard         :title="t('unix')" 
+      <ToolCard :title="t('unix')" 
         :to="localePath('unix-timestamp-converter')" 
         icon="mdi:clock-fast"
         :index="3"
@@ -216,23 +215,6 @@ defineI18nRoute({
         time: "Konverter Waktu",
         unix: "Konverter Timestamp Unix",
         devs: "Pengembang"
-    },
-    de: {
-        title: "Datums- und Zeitwerkzeuge",
-        meta: "Kostenlose Online-Datums- und Zeitwerkzeuge: Differenzen berechnen, Daten generieren, Altersrechner, Crontab-Generator und mehr. Vereinfachen Sie Zeitberechnungen!",
-        desc: "Mit diesen Werkzeugen können Sie ganz einfach Datums- und Zeitdifferenzen berechnen, zufällige Daten generieren, Alter berechnen und Cron-Ausdrücke erstellen. Sofort, genau und keine Installation erforderlich.",
-        dt: "Datumsdifferenz",
-        times: "Zeitdifferenz",
-        diff: "Datum-Zeit-Differenz",
-        birth: "Geburtsdatum-Generator",
-        age: "Altersrechner",
-        hour: "Stunden- und Minutenrechner",
-        cron: "Crontab-Generator",
-        future: "Zukunftsdatum-Rechner",
-        past: "Vergangenheitsdatum-Rechner",
-        time: "Zeitumrechner",
-        unix: "Unix-Zeitstempel-Konverter",
-        devs: "Entwickler"
     }
 }
 </i18n>

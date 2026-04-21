@@ -23,8 +23,7 @@ defineI18nRoute({
         es: '/herramientas-para-colores',
         fr: '/outils-pour-couleurs',
         it: '/strumenti-per-colori',
-        id: '/alat-warna',
-        de: '/farb-werkzeuge'
+        id: '/alat-warna'
     }
 })
 </script>
@@ -130,16 +129,6 @@ defineI18nRoute({
         contrast: "Kontras Warna",
         converter: "Konverter Warna",
         combination: "Kombinasi Warna",
-    },
-    de: {
-        title: "Farb-Werkzeuge",
-        meta: "Kostenlose Online-Farbtools: Zufallspaletten, Farbextraktion aus Bildern, Farbumrechner und Farbkombinationen. Ohne Installation!",
-        desc: "Erstellen Sie zufällige Farbpaletten, extrahieren Sie dominante Farben aus beliebigen Bildern, konvertieren Sie zwischen Farbformaten und entwerfen Sie harmonische Kombinationen. Alles läuft in Ihrem Browser, Ihre Dateien bleiben auf Ihrem Gerät und eine Installation ist nicht nötig.",
-        random: "Zufallsfarben",
-        dominant: "Bildfarben",
-        contrast: "Farbkontrast",
-        converter: "Farbumrechner",
-        combination: "Farbkombination",
     }
 }
 </i18n>

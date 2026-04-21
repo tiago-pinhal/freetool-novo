@@ -23,8 +23,7 @@ defineI18nRoute({
         es: "/datos-aleatorios",
         fr: '/donnees-aleatoires',
         it: '/dati-casuali',
-        id: '/data-acak',
-        de: '/zufallsdaten-werkzeuge'
+        id: '/data-acak'
     }
 })
 </script>
@@ -67,22 +66,22 @@ defineI18nRoute({
         icon="mdi:card-account-details"
         :index="2"
       />
-      <ToolCard         :title="t('cnpj')" 
+      <ToolCard :title="t('cnpj')" 
         :to="localePath('cnpj-generator')" 
         icon="mdi:office-building"
         :index="3"
       />
-      <ToolCard         :title="t('rg')" 
+      <ToolCard :title="t('rg')" 
         :to="localePath('rg-generator')" 
         icon="mdi:card-account-details-outline"
         :index="4"
       />
-      <ToolCard         :title="t('cc')" 
+      <ToolCard :title="t('cc')" 
         :to="localePath('credit-card-generator')" 
         icon="mdi:credit-card"
         :index="5"
       />
-      <ToolCard         :title="t('uuid')" 
+      <ToolCard :title="t('uuid')" 
         :to="localePath('uuid-generator')" 
         icon="mdi:identifier"
         :index="6"
@@ -174,19 +173,6 @@ defineI18nRoute({
         rg: "Generator RG 🇧🇷",
         uuid: "Generator UUID",
         devs: "Pengembang"
-    },
-    de: {
-        title: "Zufallsdaten-Generatoren",
-        meta: "Kostenlose Online-Zufallsdatengeneratoren: Zahlen, Passwörter, CPF, CNPJ, RG, Kreditkarten und UUID. Testdaten sofort generieren!",
-        desc: "Mit diesen Werkzeugen können Sie Zufallszahlen, sichere Passwörter und fiktive Daten für Tests und Entwicklung generieren. Perfekt für Entwickler und Tester. Sofort und keine Installation erforderlich.",
-        cc: "Kreditkarten-Generator",
-        number: "Zufallszahlen-Generator",
-        pass: "Passwort-Generator",
-        cpf: "CPF-Generator 🇧🇷",
-        cnpj: "CNPJ-Generator 🇧🇷",
-        rg: "RG-Generator 🇧🇷",
-        uuid: "UUID-Generator",
-        devs: "Entwickler"
     }
 }
 </i18n>

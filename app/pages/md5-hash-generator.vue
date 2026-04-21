@@ -60,8 +60,7 @@ defineI18nRoute({
     es: '/generador-de-hash-md5',
     fr: '/generateur-de-hash-md5',
     it: '/generatore-di-hash-md5',
-    id: '/generator-hash-md5',
-    de: '/md5-hash-generator'
+    id: '/generator-hash-md5'
   }
 })
 </script>
@@ -70,7 +69,6 @@ defineI18nRoute({
   <ToolPage
     :title="t('title')"
     :description="t('meta')"
-    :info-description="t('desc')"
     :show-ads="!!state.md5"
     :wiki-url="`https://${locale}.wikipedia.org/wiki/MD5`"
     :wiki-label="'Wikipedia (MD5)'"
@@ -119,6 +117,21 @@ defineI18nRoute({
         </Blockcopy>
       </Transition>
     </div>
+    <template #info>
+      <div class="space-y-4">
+        <p>{{ t('desc') }}</p>
+        <div class="bg-warning/10 p-4 rounded-xl border border-warning/20">
+          <h4 class="font-bold mb-2 text-warning flex items-center gap-2">
+            <Icon name="heroicons:exclamation-triangle-20-solid" class="w-5 h-5" />
+            {{ t('tip_title') }}
+          </h4>
+          <ul class="list-disc list-inside text-sm space-y-1 text-base-content/70">
+            <li>{{ t('tip_security') }}</li>
+            <li>{{ t('tip_usage') }}</li>
+          </ul>
+        </div>
+      </div>
+    </template>
   </ToolPage>
 </template>
 
@@ -133,7 +146,10 @@ defineI18nRoute({
     see1: "Bcrypt Generator",
     see2: "JSON Viewer",
     see3: "Email Extractor",
-    see4: "XML to JSON Converter"
+    see4: "XML to JSON Converter",
+    tip_title: "Security Warning",
+    tip_security: "MD5 is not safe for password hashing as it's vulnerable to collision attacks.",
+    tip_usage: "We recommend using Bcrypt for security. MD5 is best suited for file integrity (Checksum)."
   },
   pt: {
     title: "Gerador de Hash MD5",
@@ -144,7 +160,10 @@ defineI18nRoute({
     see1: "Gerador Bcrypt",
     see2: "Visualizador de JSON",
     see3: "Extrator de E-mails",
-    see4: "Conversor de XML para JSON"
+    see4: "Conversor de XML para JSON",
+    tip_title: "Aviso de Segurança",
+    tip_security: "O MD5 não é seguro para senhas por ser vulnerável a colisões.",
+    tip_usage: "Recomendamos o uso de Bcrypt para segurança de senhas. O MD5 é ideal para verificar a integridade de arquivos (Checksum)."
   },
   es: {
     title: "Generador de Hash MD5",
@@ -155,7 +174,10 @@ defineI18nRoute({
     see1: "Generador Bcrypt",
     see2: "Visor de JSON",
     see3: "Extractor de Correos Electrónicos",
-    see4: "Convertidor de XML a JSON"
+    see4: "Convertidor de XML a JSON",
+    tip_title: "Aviso de Seguridad",
+    tip_security: "MD5 no es seguro para contraseñas ya que es vulnerable a ataques de colisión.",
+    tip_usage: "Recomendamos usar Bcrypt para mayor seguridad. MD5 é ideal para verificar a integridade de arquivos (Checksum)."
   },
   fr: {
     title: "Générateur de Hash MD5",
@@ -166,7 +188,10 @@ defineI18nRoute({
     see1: "Générateur Bcrypt",
     see2: "Visualiseur JSON",
     see3: "Extracteur d'e-mails",
-    see4: "Convertisseur de XML vers JSON"
+    see4: "Convertisseur de XML vers JSON",
+    tip_title: "Avertissement de Sécurité",
+    tip_security: "MD5 n'est pas sûr pour les mots de passe car il est vulnérable aux collisions.",
+    tip_usage: "Nous recommandons d'utiliser Bcrypt pour la sécurité. MD5 est parfait pour vérifier l'intégrité des fichiers (Checksum)."
   },
   it: {
     title: "Generatore di Hash MD5",
@@ -177,7 +202,10 @@ defineI18nRoute({
     see1: "Generatore Bcrypt",
     see2: "Visualizzatore di JSON",
     see3: "Estrattore di Email",
-    see4: "Convertitore da XML a JSON"
+    see4: "Convertitore da XML a JSON",
+    tip_title: "Avviso di Sicurezza",
+    tip_security: "MD5 non è sicuro per le password perché vulnerabile alle collisioni.",
+    tip_usage: "Raccomandiamo di usare Bcrypt per la sicurezza. MD5 è ideale per verificare l'integrità dei file (Checksum)."
   },
   id: {
     title: "Generator Hash MD5",
@@ -188,18 +216,10 @@ defineI18nRoute({
     see1: "Generator Bcrypt",
     see2: "Penampil JSON",
     see3: "Ekstraktor Email",
-    see4: "Konverter XML ke JSON"
-  },
-  de: {
-    title: "MD5-Hash-Generator",
-    meta: "Berechnen Sie ganz einfach den MD5-Hash (128-Bit-Fingerabdruck) eines beliebigen Textes. Überprüfen Sie die Datenintegrität online.",
-    desc: "MD5 (Message Digest Algorithm 5) ist ein weit verbreiteter kryptografischer Hash-Algorithmus, der für jeden Eingabetext oder Datensatz einen 128-Bit-Fingerabdruck (32 Zeichen) erzeugt. Er wird primär zur Überprüfung der Datenintegrität verwendet, da er einen eindeutigen und konsistenten Hash erzeugt. Selbst geringfügige Änderungen am Eingabetext verändern diesen Code vollständig. Für das sichere Hashing von Passwörtern werden modernere Algorithmen wie SHA-256 oder Bcrypt empfohlen.",
-    bt: "Berechnen",
-    plc: "Zu berechnender Text",
-    see1: "Bcrypt-Generator",
-    see2: "JSON-Viewer",
-    see3: "Email-Extraktor",
-    see4: "XML-zu-JSON-Konverter"
+    see4: "Konverter XML ke JSON",
+    tip_title: "Peringatan Keamanan",
+    tip_security: "MD5 tidak aman untuk kata sandi karena rentan terhadap serangan tabrakan (Collision).",
+    tip_usage: "Kami menyarankan penggunaan Bcrypt untuk keamanan. MD5 paling cocok untuk integritas file (Checksum)."
   }
 }
 </i18n>

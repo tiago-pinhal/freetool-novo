@@ -23,8 +23,7 @@ defineI18nRoute({
         es: '/herramientas-para-imagenes',
         fr: '/outils-pour-images',
         it: '/strumenti-per-immagini',
-        id: '/alat-gambar',
-        de: '/bild-werkzeuge'
+        id: '/alat-gambar'
     }
 })
 </script>
@@ -41,37 +40,37 @@ defineI18nRoute({
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
-      <ToolCard         :title="t('emoji')" 
+      <ToolCard :title="t('emoji')" 
         to="emoji-picker" 
         icon="mdi:sticker-emoji"
         :index="0"
       />
-      <ToolCard         :title="t('symbol')" 
+      <ToolCard :title="t('symbol')" 
         to="symbol-picker" 
         icon="mdi:omega"
         :index="1"
       />
-      <ToolCard         :title="t('qr')" 
+      <ToolCard :title="t('qr')" 
         to="qrcode-generator" 
         icon="mdi:qrcode"
         :index="2"
       />
-      <ToolCard         :title="t('barcode')" 
+      <ToolCard :title="t('barcode')" 
         to="barcode-generator" 
         icon="mdi:barcode"
         :index="3"
       />
-      <ToolCard         :title="t('cropper')" 
+      <ToolCard :title="t('cropper')" 
         to="image-cropper" 
         icon="mdi:crop"
         :index="4"
       />
-      <ToolCard         :title="t('resizer')" 
+      <ToolCard :title="t('resizer')" 
         to="image-resizer" 
         icon="mdi:resize"
         :index="5"
       />
-      <ToolCard         :title="t('img_pdf')" 
+      <ToolCard :title="t('img_pdf')" 
         to="image-to-pdf" 
         icon="mdi:file-pdf-box"
         :index="6"
@@ -157,18 +156,6 @@ defineI18nRoute({
         cropper: "Pemotong Gambar",
         resizer: "Pengubah Ukuran Gambar",
         img_pdf: "Gambar ke PDF",
-    },
-    de: {
-        title: "Bild-Werkzeuge",
-        meta: "Kostenlose Online-Bildtools: Emoji- und Symbol-Auswahl, QR-Code- und Barcode-Generator, Bild zuschneiden, Größe ändern und in PDF konvertieren. Ohne Installation!",
-        desc: "Wählen Sie Emojis und Symbole, erstellen Sie QR-Codes und Barcodes, schneiden Sie Bilder zu und ändern Sie ihre Größe oder konvertieren Sie sie sogar in PDF. Die gesamte Verarbeitung erfolgt in Ihrem Browser, Ihre Dateien verlassen niemals Ihr Gerät und eine Installation ist nicht erforderlich.",
-        emoji: "Emoji-Auswahl",
-        symbol: "Symbol-Auswahl",
-        qr: "QR-Code-Generator",
-        barcode: "Barcode-Generator",
-        cropper: "Bild zuschneiden",
-        resizer: "Bildgröße ändern",
-        img_pdf: "Bild zu PDF",
     }
 }
 </i18n>

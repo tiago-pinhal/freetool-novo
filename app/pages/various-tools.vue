@@ -19,13 +19,12 @@ useHead({
 
 defineI18nRoute({
   paths: {
-        pt: "/ferramentas-diversas",
-        es: "/herramientas-diversas",
+    pt: "/ferramentas-diversas",
+    es: "/herramientas-diversas",
     fr: '/outils-divers',
-        it: "/strumenti-diversi",
-        id: "/berbagai-alat",
-        de: "/verschiedene-werkzeuge"
-    }
+    it: "/strumenti-diversi",
+    id: "/berbagai-alat"
+  }
 })
 </script>
 
@@ -43,27 +42,27 @@ defineI18nRoute({
     <h2 class="sr-only">Ferramentas Principais</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
-      <ToolCard        :title="t('calc')"
+      <ToolCard :title="t('calc')"
         :to="localePath('percentage-calculator')"
         icon="mdi:percent"
         :index="0"
       />
-      <ToolCard        :title="t('list')"
+      <ToolCard :title="t('list')"
         :to="localePath('list-randomizer')"
         icon="mdi:shuffle-variant"
         :index="1"
       />
-      <ToolCard        :title="t('dice')"
+      <ToolCard :title="t('dice')"
         :to="localePath('dice-roller')"
         icon="mdi:dice-multiple"
         :index="2"
       />
-      <ToolCard        :title="t('rule')"
+      <ToolCard :title="t('rule')"
         :to="localePath('simple-rule-of-three-calculator')"
         icon="mdi:numeric-3-box-multiple-outline"
         :index="3"
       />
-      <ToolCard        :title="t('email')"
+      <ToolCard :title="t('email')"
         :to="localePath('email-extractor')"
         icon="mdi:at"
         :index="4"
@@ -76,17 +75,17 @@ defineI18nRoute({
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
-      <ToolCard        :title="t('json')"
+      <ToolCard :title="t('json')"
         :to="localePath('json-viewer')"
         icon="mdi:code-json"
         :index="5"
       />
-      <ToolCard        :title="t('md5')"
+      <ToolCard :title="t('md5')"
         :to="localePath('md5-hash-generator')"
         icon="mdi:hashtag"
         :index="6"
       />
-      <ToolCard        :title="t('bcrypt')"
+      <ToolCard :title="t('bcrypt')"
         :to="localePath('bcrypt-generator')"
         icon="mdi:script-text-key"
         :index="0"
@@ -184,20 +183,6 @@ defineI18nRoute({
         json: "Penampil JSON",
         md5: "Generator Hash MD5",
         bcrypt: "Generator Bcrypt",
-    },
-    de: {
-        title: "Verschiedene Werkzeuge",
-        meta: "Kostenlose Online-Tools: Prozentrechner, Listen-Randomizer, Würfelwurf, Dreisatz, E-Mail-Extraktor, JSON-Viewer, MD5- und Bcrypt-Generatoren. Nützliche Tools für den Alltag!",
-        desc: "Berechnen Sie Prozentsätze, mischen Sie Listen, würfeln Sie, lösen Sie Dreisatz-Aufgaben, extrahieren Sie E-Mails aus Texten und zeigen Sie formatierten JSON an. Die Verarbeitung erfolgt vollständig in Ihrem Browser und eine Installation ist nicht erforderlich.",
-        devs: "Für Entwickler",
-        calc: "Prozentrechner",
-        list: "Listen-Randomizer",
-        dice: "Würfelwurf",
-        rule: "Dreisatz",
-        email: "E-Mail-Extraktor",
-        json: "JSON-Viewer",
-        md5: "MD5-Hash-Generator",
-        bcrypt: "Bcrypt-Generator",
     }
 }
 </i18n>

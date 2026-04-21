@@ -39,12 +39,14 @@ const props = withDefaults(defineProps<Props>(), {
 
     <!-- Informações Detalhadas (ToolInfo) -->
     <ToolInfo 
-      v-if="infoDescription"
+      v-if="infoDescription || $slots.info"
       :title="infoTitle"
       :description="infoDescription"
       :wiki-url="wikiUrl"
       :wiki-label="wikiLabel"
-    />
+    >
+      <slot name="info" />
+    </ToolInfo>
 
     <!-- Links Relacionados (SeeAlso) -->
     <SeeAlso 

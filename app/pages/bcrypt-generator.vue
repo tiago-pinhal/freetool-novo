@@ -85,8 +85,7 @@ defineI18nRoute({
     es: '/generador-de-bcrypt',
     fr: '/generateur-de-bcrypt',
     it: '/generatore-di-bcrypt',
-    id: '/generator-bcrypt',
-    de: '/bcrypt-generator'
+    id: '/generator-bcrypt'
   }
 })
 </script>
@@ -95,7 +94,6 @@ defineI18nRoute({
   <ToolPage
     :title="t('title')"
     :description="t('meta')"
-    :info-description="t('desc')"
     :show-ads="!!stateGen.hash || stateCheck.check !== null"
     :wiki-url="`https://${locale}.wikipedia.org/wiki/Bcrypt`"
     :wiki-label="'Wikipedia (Bcrypt)'"
@@ -106,6 +104,19 @@ defineI18nRoute({
       { label: t('see4'), to: 'xml-to-json-converter' }
     ]"
   >
+    <template #info>
+      <div class="space-y-4">
+        <p>{{ t('desc') }}</p>
+        <div class="bg-base-300/30 p-4 rounded-xl border border-base-content/5">
+          <h4 class="font-bold mb-2">💡 {{ t('tip') }}</h4>
+          <ul class="list-disc list-inside text-sm space-y-1">
+            <li>{{ t('tip_rounds') }}</li>
+            <li>{{ t('tip_salt') }}</li>
+          </ul>
+        </div>
+      </div>
+    </template>
+
     <!-- Sistema de Abas -->
     <ToolTabs 
       v-model:activeTab="currentTab"
@@ -225,7 +236,10 @@ defineI18nRoute({
     see1: "MD5 Hash Generator",
     see2: "JSON Viewer",
     see3: "Email Extractor",
-    see4: "XML to JSON Converter"
+    see4: "XML to JSON Converter",
+    tip: "Quick Tip:",
+    tip_rounds: "Rounds: Higher values are safer but slower.",
+    tip_salt: "Salt: Automatically included to prevent rainbow table attacks."
   },
   pt: {
     title: "Gerador e Verificador de Bcrypt",
@@ -242,7 +256,10 @@ defineI18nRoute({
     see1: "Gerador de Hash MD5",
     see2: "Visualizador de JSON",
     see3: "Extrator de E-mails",
-    see4: "Conversor de XML para JSON"
+    see4: "Conversor de XML para JSON",
+    tip: "Dica Rápida:",
+    tip_rounds: "Rounds: Valores mais altos são mais seguros, porém variam o tempo de processamento.",
+    tip_salt: "Salt: Incluído automaticamente para prevenir ataques de dicionário (rainbow tables)."
   },
   es: {
     title: "Generador y Verificador de Bcrypt",
@@ -259,7 +276,10 @@ defineI18nRoute({
     see1: "Generador de Hash MD5",
     see2: "Visor de JSON",
     see3: "Extractor de Correos Electrónicos",
-    see4: "Convertidor de XML a JSON"
+    see4: "Convertidor de XML a JSON",
+    tip: "Consejo Rápido:",
+    tip_rounds: "Rondas: Valores más altos son más seguros pero más lentos.",
+    tip_salt: "Salt: Incluido automáticamente para prevenir ataques de tablas arcoíris."
   },
   fr: {
     title: "Générateur et Vérificateur Bcrypt",
@@ -276,7 +296,10 @@ defineI18nRoute({
     see1: "Générateur de Hash MD5",
     see2: "Visualiseur JSON",
     see3: "Extracteur d'e-mails",
-    see4: "Convertisseur de XML vers JSON"
+    see4: "Convertisseur de XML vers JSON",
+    tip: "Astuce Rapide :",
+    tip_rounds: "Cycles : Des valeurs plus élevées sont plus sûres mais plus lentes.",
+    tip_salt: "Salt : Inclus automatiquement pour prévenir les attaques par tables arc-en-ciel."
   },
   it: {
     title: "Generatore e Verificatore Bcrypt",
@@ -293,7 +316,10 @@ defineI18nRoute({
     see1: "Generatore di Hash MD5",
     see2: "Visualizzatore di JSON",
     see3: "Estrattore di Email",
-    see4: "Convertitore da XML a JSON"
+    see4: "Convertitore da XML a JSON",
+    tip: "Consiglio Rapido:",
+    tip_rounds: "Round: Valori più alti sono più sicuri ma più lenti.",
+    tip_salt: "Salt: Incluso automaticamente per prevenire attacchi rainbow table."
   },
   id: {
     title: "Generator dan Verifikator Bcrypt",
@@ -310,24 +336,10 @@ defineI18nRoute({
     see1: "Generator Hash MD5",
     see2: "Penampil JSON",
     see3: "Ekstraktor Email",
-    see4: "Konverter XML ke JSON"
-  },
-  de: {
-    title: "Bcrypt-Generator und Verifizierer",
-    meta: "Generieren Sie sichere Bcrypt-Hashes mit anpassbaren Rounds oder überprüfen Sie bestehende Hashes.",
-    desc: "Bcrypt ist eine hochsichere Hashing-Methode für Passwörter. Ein einzigartiger 'Salt' verhindert Rainbow-Table-Angriffe, während der 'Rounds'-Parameter die Rechenkomplexität bestimmt, um Brute-Force-Angriffe zu erschweren.",
-    check: "Hash validieren",
-    bt: "Hash generieren",
-    plc: "Zu verschlüsselnder Text",
-    plcgen: "Bcrypt-Hash-String",
-    plcver: "Originaltext zum Abgleich",
-    match: "Erfolgreich! Der Hash stimmt mit dem Quelltext überein.",
-    notmatch: "Verifizierung fehlgeschlagen. Der Hash stimmt nicht überein.",
-    rounds: "Schwierigkeit (Rounds)",
-    see1: "MD5-Hash-Generator",
-    see2: "JSON-Viewer",
-    see3: "Email-Extraktor",
-    see4: "XML-zu-JSON-Konverter"
+    see4: "Konverter XML ke JSON",
+    tip: "Tips Cepat:",
+    tip_rounds: "Round: Nilai yang lebih tinggi lebih aman tetapi lebih lambat.",
+    tip_salt: "Salt: Disertakan secara otomatis untuk mencegah serangan tabel pelangi."
   }
 }
 </i18n>

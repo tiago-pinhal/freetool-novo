@@ -23,8 +23,7 @@ defineI18nRoute({
         es: '/herramientas-para-textos',
         fr: '/outils-pour-textes',
         it: '/strumenti-per-testi',
-        id: '/alat-teks',
-        de: '/text-werkzeuge'
+        id: '/alat-teks'
     }
 })
 </script>
@@ -41,32 +40,32 @@ defineI18nRoute({
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
-      <ToolCard         :title="t('fonts')" 
+      <ToolCard :title="t('fonts')" 
         :to="localePath('fancy-letters')" 
         icon="mdi:format-letter-starts-with"
         :index="0"
       />
-      <ToolCard         :title="t('asc')" 
+      <ToolCard :title="t('asc')" 
         :to="localePath('ascii-letter-generator')" 
         icon="mdi:alphabetical"
         :index="1"
       />
-      <ToolCard         :title="t('txt')" 
+      <ToolCard :title="t('txt')" 
         :to="localePath('text-converter')" 
         icon="mdi:file-document-edit-outline"
         :index="2"
       />
-      <ToolCard         :title="t('diff')" 
+      <ToolCard :title="t('diff')" 
         :to="localePath('text-comparator')" 
         icon="mdi:vector-difference"
         :index="3"
       />
-      <ToolCard         :title="t('count')" 
+      <ToolCard :title="t('count')" 
         :to="localePath('text-counter')" 
         icon="mdi:counter"
         :index="4"
       />
-      <ToolCard         :title="t('lorem')" 
+      <ToolCard :title="t('lorem')" 
         :to="localePath('text-generator')" 
         icon="mdi:text"
         :index="5"
@@ -146,17 +145,6 @@ defineI18nRoute({
         diff: "Komparator Teks",
         count: "Penghitung Teks",
         lorem: "Generator Teks"
-    },
-    de: {
-        title: "Text-Werkzeuge",
-        meta: "Kostenlose Online-Text-Tools: Wortzähler, Textgenerator, Konverter, Vergleicher, ausgefallene Buchstaben und ASCII-Art. Steigern Sie Ihre Produktivität!",
-        desc: "Wandeln Sie Groß- und Kleinschreibung um, vergleichen Sie Dokumente, zählen Sie Wörter, erstellen Sie Fülltext sowie ausgefallene Buchstaben und ASCII-Art. Die gesamte Verarbeitung erfolgt in Ihrem Browser, Ihre Daten verlassen niemals Ihr Gerät und eine Installation ist nicht erforderlich.",
-        asc: "ASCII-Buchstaben",
-        fonts: "Besondere Buchstaben",
-        txt: "Text-Konverter",
-        diff: "Text-Vergleich",
-        count: "Text-Zähler",
-        lorem: "Text-Generator"
     }
 }
 </i18n>
