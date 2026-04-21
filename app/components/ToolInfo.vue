@@ -61,8 +61,6 @@ fr:
   label: "Lecture recommandée :"
 it:
   label: "Lettura consigliata:"
-de:
-  label: "Leseempfehlung:"
 id:
   label: "Bacaan yang Disarankan:"
 </i18n>

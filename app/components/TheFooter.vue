@@ -50,9 +50,4 @@ id:
     a: "Tentang Kami"
     p: "Kebijakan Privasi"
     t: "Syarat dan Ketentuan"
-de:
-    r: "Alle Rechte vorbehalten"
-    a: "Über uns"
-    p: "Datenschutzerklärung"
-    t: "Bedingungen"
 </i18n>

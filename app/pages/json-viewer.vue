@@ -366,7 +366,7 @@ defineI18nRoute({
         uc_2_desc: "Descubra aquela vírgula esquecida ou chaves mal fechadas em arquivos de setting críticos.",
         uc_3_title: "Análise Visual",
         uc_3_desc: "Enxergue dados aninhados sem embaralhamento mental lendo logs crus extensos.",
-        faq_title: "Perguntas Frequentes (FAQ)",
+        faq_title: "perguntas e Respostas",
         faq_1_q: "O meu JSON fica salvo nos servidores do site?",
         faq_1_a: "Não. A leitura, validação e estruturação da árvore interativa ocorre 100% no seu navegador de internet, oferecendo o mais alto nível de segurança para logs confidenciais.",
         faq_2_q: "Consigo minimizar blocos grandes para focar na leitura?",

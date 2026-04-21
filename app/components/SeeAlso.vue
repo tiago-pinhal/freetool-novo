@@ -53,9 +53,6 @@ const localePath = useLocalePath()
     },
     id: {
         see: "Lihat juga"
-    },
-    de: {
-        see: "Siehe auch"
     }
 }
 </i18n>
