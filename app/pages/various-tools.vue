@@ -40,7 +40,7 @@ defineI18nRoute({
       </p>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
       <ToolCard        :title="t('calc')"
         :to="localePath('percentage-calculator')"
         icon="mdi:percent"
@@ -73,7 +73,7 @@ defineI18nRoute({
       <div class="h-px flex-1 bg-base-content/10" />
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
       <ToolCard        :title="t('json')"
         :to="localePath('json-viewer')"
         icon="mdi:code-json"

@@ -40,7 +40,7 @@ defineI18nRoute({
       </p>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6">
       <ToolCard         :title="t('dt')" 
         :to="localePath('date-difference')" 
         icon="mdi:calendar-range"
@@ -94,7 +94,7 @@ defineI18nRoute({
       <div class="h-px flex-1 bg-base-content/10"></div>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6">
       <ToolCard         :title="t('cron')" 
         :to="localePath('crontab-generator')" 
         icon="mdi:asterisk"

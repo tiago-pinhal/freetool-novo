@@ -40,7 +40,7 @@ defineI18nRoute({
       </p>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6">
       <ToolCard         :title="t('number')" 
         :to="localePath('random-number-generator')" 
         icon="mdi:dice-multiple"
@@ -59,7 +59,7 @@ defineI18nRoute({
       <div class="h-px flex-1 bg-base-content/10"></div>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6">
       <ToolCard         :title="t('cpf')" 
         :to="localePath('cpf-generator')" 
         icon="mdi:card-account-details"
@@ -96,7 +96,7 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
     en: {
-        title: "Random Data Tools",
+        title: "Random Data Generators",
         meta: "Free online random data generators: numbers, passwords, CPF, CNPJ, RG, credit cards and UUID. Generate test data instantly!",
         desc: "With these tools, you can generate random numbers, secure passwords, and fictitious data for testing and development. Perfect for developers and testers. Instant and no installation required.",
         cc: "Credit Card Generator",
@@ -109,7 +109,7 @@ defineI18nRoute({
         devs: "Developers"
     },
     pt: {
-        title: "Ferramentas de Dados Aleatórios",
+        title: "Geradores de Dados Aleatórios",
         meta: "Geradores de dados aleatórios online grátis: números, senhas, CPF, CNPJ, RG, cartões de crédito e UUID. Gere dados de teste instantaneamente!",
         desc: "Com essas ferramentas, você pode gerar números aleatórios, senhas seguras e dados fictícios para testes e desenvolvimento. Perfeito para desenvolvedores e testadores. Instantâneo e sem necessidade de instalação.",
         cc: "Gerador de Cartão de Crédito",
@@ -122,7 +122,7 @@ defineI18nRoute({
         devs: "Desenvolvedores"
     },
     es: {
-        title: "Herramientas de Datos Aleatorios",
+        title: "Generadores de Datos Aleatorios",
         meta: "Generadores de datos aleatorios online gratis: números, contraseñas, CPF, CNPJ, RG, tarjetas de crédito y UUID. ¡Genera datos de prueba instantáneamente!",
         desc: "Con estas herramientas, puedes generar números aleatorios, contraseñas seguras y datos ficticios para pruebas y desarrollo. Perfecto para desarrolladores y testers. Instantáneo y sin necesidad de instalación.",
         cc: "Generador de Tarjeta de Crédito",
@@ -135,7 +135,7 @@ defineI18nRoute({
         devs: "Desarrolladores"
     },
     fr: {
-        title: "Outils de Données Aléatoires",
+        title: "Générateurs de Données Aléatoires",
         meta: "Générateurs de données aléatoires en ligne gratuits: nombres, mots de passe, CPF, CNPJ, RG, cartes de crédit et UUID. Générez des données de test instantanément!",
         desc: "Avec ces outils, vous pouvez générer des nombres aléatoires, des mots de passe sécurisés et des données fictives pour les tests et le développement. Parfait pour les développeurs et testeurs. Instantané et sans installation nécessaire.",
         cc: "Générateur de Carte de Crédit",
@@ -148,7 +148,7 @@ defineI18nRoute({
         devs: "Développeurs"
     },
     it: {
-        title: "Strumenti di Dati Casuali",
+        title: "Generatori di Dati Casuali",
         meta: "Generatori di dati casuali online gratuiti: numeri, password, CPF, CNPJ, RG, carte di credito e UUID. Genera dati di test istantaneamente!",
         desc: "Con questi strumenti, puoi generare numeri casuali, password sicure e dati fittizi per test e sviluppo. Perfetto per sviluppatori e tester. Istantaneo e senza necessità di installazione.",
         cc: "Generatore di Carta di Credito",
@@ -161,7 +161,7 @@ defineI18nRoute({
         devs: "Sviluppatori"
     },
     id: {
-        title: "Alat Data Acak",
+        title: "Generator Data Acak",
         meta: "Generator data acak online gratis: angka, kata sandi, CPF, CNPJ, RG, kartu kredit, dan UUID. Buat data uji secara instan!",
         desc: "Dengan alat-alat ini, kamu dapat membuat angka acak, kata sandi yang aman, dan data fiktif untuk pengujian dan pengembangan. Sempurna untuk pengembang dan penguji. Instan dan tanpa instalasi.",
         cc: "Generator Kartu Kredit",
@@ -174,7 +174,7 @@ defineI18nRoute({
         devs: "Pengembang"
     },
     de: {
-        title: "Zufallsdaten-Werkzeuge",
+        title: "Zufallsdaten-Generatoren",
         meta: "Kostenlose Online-Zufallsdatengeneratoren: Zahlen, Passwörter, CPF, CNPJ, RG, Kreditkarten und UUID. Testdaten sofort generieren!",
         desc: "Mit diesen Werkzeugen können Sie Zufallszahlen, sichere Passwörter und fiktive Daten für Tests und Entwicklung generieren. Perfekt für Entwickler und Tester. Sofort und keine Installation erforderlich.",
         cc: "Kreditkarten-Generator",

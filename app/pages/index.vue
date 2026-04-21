@@ -52,7 +52,7 @@ const toolCategories = [
           <div class="h-px flex-1 bg-base-content/10"></div>
         </div>
 
-        <div class="grid grid-cols-2 lg:grid-cols-5 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-5 gap-6">
           <ToolCard
             v-for="(tool, i) in toolCategories"
             :key="tool.id"
@@ -78,7 +78,7 @@ const toolCategories = [
         img: "Images",
         txt: "Texts",
         dts: "Dates and Times",
-        rand: "Random Data",
+        rand: "Random Data Generators",
         min: "Minify Code",
         fmt: "Format Code",
         conv: "Converters",
@@ -93,7 +93,7 @@ const toolCategories = [
         img: "Imagens",
         txt: "Textos",
         dts: "Datas e Horas",
-        rand: "Dados Aleatórios",
+        rand: "Geradores de Dados Aleatórios",
         min: "Minificar Código",
         fmt: "Formatar Código",
         conv: "Conversores",
@@ -108,7 +108,7 @@ const toolCategories = [
         img: "Imágenes",
         txt: "Textos",
         dts: "Fechas y Horas",
-        rand: "Datos Aleatorios",
+        rand: "Generadores de Datos Aleatorios",
         min: "Minificar Código",
         fmt: "Formatear Código",
         conv: "Convertidores",
@@ -123,7 +123,7 @@ const toolCategories = [
         img: "Images",
         txt: "Textes",
         dts: "Dates et Heures",
-        rand: "Données Aléatoires",
+        rand: "Générateurs de Données Aléatoires",
         min: "Minifier le Code",
         fmt: "Formater le Code",
         conv: "Convertisseurs",
@@ -138,7 +138,7 @@ const toolCategories = [
         img: "Immagini",
         txt: "Testi",
         dts: "Date e Ore",
-        rand: "Dati Casuali",
+        rand: "Generatori di Dati Casuali",
         min: "Minimizza Codice",
         fmt: "Formatta Codice",
         conv: "Convertitori",
@@ -153,7 +153,7 @@ const toolCategories = [
         img: "Gambar",
         txt: "Teks",
         dts: "Tanggal dan Waktu",
-        rand: "Data Acak",
+        rand: "Generator Data Acak",
         min: "Minifikasi Kode",
         fmt: "Format Kode",
         conv: "Konverter",
@@ -168,7 +168,7 @@ const toolCategories = [
         img: "Bilder",
         txt: "Texte",
         dts: "Daten & Zeiten",
-        rand: "Zufallsdaten",
+        rand: "Zufallsdaten-Generatoren",
         min: "Code minimieren",
         fmt: "Code formatieren",
         conv: "Konverter",

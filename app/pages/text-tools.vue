@@ -40,7 +40,7 @@ defineI18nRoute({
       </p>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
       <ToolCard         :title="t('fonts')" 
         :to="localePath('fancy-letters')" 
         icon="mdi:format-letter-starts-with"

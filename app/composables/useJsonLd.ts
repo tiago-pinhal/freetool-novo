@@ -174,7 +174,7 @@ interface PageJsonLdOptions {
 }
 
 export function usePageJsonLd(options: PageJsonLdOptions) {
-  const { locale } = useI18n()
+  const { locale } = useI18n({ useScope: 'global' })
   const reqUrl = useRequestURL()
   const pageUrl = reqUrl.href
 

@@ -19,13 +19,13 @@ useHead({
 
 defineI18nRoute({
   paths: {
-        pt: "/conversores",
-        es: "/convertidores",
+    pt: "/conversores",
+    es: "/convertidores",
     fr: '/convertisseurs',
     it: '/convertitori',
     id: '/konverter',
-        de: '/konverter'
-    }
+    de: '/konverter'
+  }
 })
 </script>
 
@@ -40,32 +40,13 @@ defineI18nRoute({
       </p>
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <ToolCard        :title="t('roman')"
-        :to="localePath('roman-numerals-converter')"
-        icon="mdi:format-list-numbered-rtl"
-        :index="0"
-      />
-      <ToolCard        :title="t('length')"
-        :to="localePath('length-converter')"
-        icon="mdi:ruler"
-        :index="1"
-      />
-      <ToolCard        :title="t('temperature')"
-        :to="localePath('temperature-converter')"
-        icon="mdi:thermometer"
-        :index="2"
-      />
-      <ToolCard        :title="t('time')"
-        :to="localePath('time-converter')"
-        icon="mdi:clock-outline"
-        :index="3"
-      />
-      <ToolCard        :title="t('url')"
-        :to="localePath('url-encoder-decoder')"
-        icon="mdi:link-variant"
-        :index="4"
-      />
+    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
+      <ToolCard :title="t('roman')" :to="localePath('roman-numerals-converter')" icon="mdi:format-list-numbered-rtl"
+        :index="0" />
+      <ToolCard :title="t('length')" :to="localePath('length-converter')" icon="mdi:ruler" :index="1" />
+      <ToolCard :title="t('temperature')" :to="localePath('temperature-converter')" icon="mdi:thermometer" :index="2" />
+      <ToolCard :title="t('time')" :to="localePath('time-converter')" icon="mdi:clock-outline" :index="3" />
+      <ToolCard :title="t('url')" :to="localePath('url-encoder-decoder')" icon="mdi:link-variant" :index="4" />
     </div>
 
     <div class="mt-16 mb-8 flex items-center gap-4">
@@ -73,42 +54,16 @@ defineI18nRoute({
       <div class="h-px flex-1 bg-base-content/10" />
     </div>
 
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-      <ToolCard        :title="t('less')"
-        :to="localePath('less-to-css-converter')"
-        icon="mdi:file-code-outline"
-        :index="5"
-      />
-      <ToolCard        :title="t('xmlToJson')"
-        :to="localePath('xml-to-json-converter')"
-        icon="mdi:code-braces"
-        :index="6"
-      />
-      <ToolCard        :title="t('jsonToXml')"
-        :to="localePath('json-to-xml-converter')"
-        icon="mdi:code-json"
-        :index="0"
-      />
-      <ToolCard        :title="t('csvToJson')"
-        :to="localePath('csv-to-json-converter')"
-        icon="mdi:file-delimited-outline"
-        :index="1"
-      />
-      <ToolCard        :title="t('jsonToCsv')"
-        :to="localePath('json-to-csv-converter')"
-        icon="mdi:file-delimited"
-        :index="2"
-      />
-      <ToolCard        :title="t('num')"
-        :to="localePath('number-base-converter')"
-        icon="mdi:numeric"
-        :index="3"
-      />
-      <ToolCard        :title="t('unit')"
-        :to="localePath('storage-unit-converter')"
-        icon="mdi:harddisk"
-        :index="4"
-      />
+    <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
+      <ToolCard :title="t('less')" :to="localePath('less-to-css-converter')" icon="mdi:file-code-outline" :index="5" />
+      <ToolCard :title="t('xmlToJson')" :to="localePath('xml-to-json-converter')" icon="mdi:code-braces" :index="6" />
+      <ToolCard :title="t('jsonToXml')" :to="localePath('json-to-xml-converter')" icon="mdi:code-json" :index="0" />
+      <ToolCard :title="t('csvToJson')" :to="localePath('csv-to-json-converter')" icon="mdi:file-delimited-outline"
+        :index="1" />
+      <ToolCard :title="t('jsonToCsv')" :to="localePath('json-to-csv-converter')" icon="mdi:file-delimited"
+        :index="2" />
+      <ToolCard :title="t('num')" :to="localePath('number-base-converter')" icon="mdi:numeric" :index="3" />
+      <ToolCard :title="t('unit')" :to="localePath('storage-unit-converter')" icon="mdi:harddisk" :index="4" />
     </div>
 
     <div class="mt-16 bg-base-200/50 rounded-3xl p-8 border border-base-content/5">
