@@ -176,7 +176,7 @@ defineI18nRoute({
                         <span v-if="!state.isRolling">{{ state.total }}</span>
                         <span v-else class="loading loading-dots loading-md text-primary"></span>
                     </h2>
-                    <p v-if="state.modifier !== 0 && !state.isRolling" class="font-medium opacity-60">
+                    <p v-if="state.modifier !== 0 && !state.isRolling" class="font-medium opacity-80">
                         ({{ state.baseTotal }} {{ state.modifier > 0 ? '+' : '' }}{{ state.modifier }})
                     </p>
                 </div>
@@ -191,7 +191,7 @@ defineI18nRoute({
                     />
                 </div>
 
-                <div v-if="state.total === null && !state.isRolling" class="text-center opacity-40">
+                <div v-if="state.total === null && !state.isRolling" class="text-center opacity-70">
                     <Icon name="heroicons:cube-transparent" class="w-16 h-16 mx-auto mb-2" />
                     <p class="font-medium italic">{{ locale === 'pt' ? 'Pronto para rolar' : 'Ready to roll' }}</p>
                 </div>
@@ -228,7 +228,7 @@ defineI18nRoute({
                     </h2>
                     <div class="space-y-4">
                         <div v-for="i in 3" :key="i" class="collapse collapse-plus bg-base-200/50 rounded-2xl border border-base-300">
-                            <input type="radio" name="dice-faq" /> 
+                            <input type="radio" name="dice-faq" :aria-label="t(`faq${i}q`)" /> 
                             <div class="collapse-title text-lg font-bold">
                                 {{ t(`faq${i}q`) }}
                             </div>
