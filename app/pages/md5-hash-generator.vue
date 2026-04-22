@@ -126,6 +126,11 @@ defineI18nRoute({
     <template #info>
       <div class="space-y-4">
         <p>{{ t('desc') }}</p>
+        <div class="font-bold mb-2">{{ t('how_title') }}</div>
+        <ul class="list-disc list-inside space-y-1 mb-4">
+          <li>{{ t('how_1') }}</li>
+          <li>{{ t('how_2') }}</li>
+        </ul>
         <div class="bg-warning/10 p-4 rounded-xl border border-warning/20">
           <div class="font-bold mb-2 text-warning flex items-center gap-2">
             <Icon name="heroicons:exclamation-triangle-20-solid" class="w-5 h-5" />
@@ -145,7 +150,7 @@ defineI18nRoute({
 {
   en: {
     title: "MD5 Hash Generator",
-    meta: "Easily calculate the MD5 hash (128-bit fingerprint) of any text. Verify data integrity with our fast online tool.",
+    meta: "Easily calculate the MD5 hash (128-bit fingerprint) of any text and verify data integrity by comparing hashes.",
     desc: "MD5 (Message Digest Algorithm 5) is a widely used cryptographic hash algorithm that produces a 128-bit (32-character) fingerprint for any input text or data. It is primarily used to verify data integrity, as it will generate a unique and consistent hash, regardless of the size of the input data. Thus, even the slightest change in the input alters this code, making it easy to identify any modifications. MD5 is often used to verify that a file has not been altered, although for high-security password hashing, more modern algorithms like SHA-256 or Bcrypt are recommended.",
     bt: "Calculate",
     plc: "Text to hash",
@@ -157,6 +162,9 @@ defineI18nRoute({
     tip_security: "MD5 is not safe for password hashing as it's vulnerable to collision attacks.",
     tip_usage: "We recommend using Bcrypt for security. MD5 is best suited for file integrity (Checksum).",
     result: "Result",
+    how_title: "How to use",
+    how_1: "Enter or paste the text you want to use and click Calculate MD5 Hash.",
+    how_2: "To verify integrity between different contents, generate the hash for both and compare the results.",
     f_1: "Fast MD5 hash calculation",
     f_2: "128-bit digital fingerprinting",
     f_3: "Data integrity verification",
@@ -164,7 +172,7 @@ defineI18nRoute({
   },
   pt: {
     title: "Gerador de Hash MD5",
-    meta: "Calcule facilmente o hash MD5 (impressão digital de 128 bits) de qualquer texto. Verifique a integridade dos dados rapidamente.",
+    meta: "Calcule facilmente o hash MD5 (impressão digital de 128 bits) de qualquer texto e verifique a integridade dos dados comparando os hashes.",
     desc: "O MD5 (Message Digest Algorithm 5) é um algoritmo de hash criptográfico bastante utilizado, que produz uma impressão digital de 128 bits (32 caracteres) para qualquer texto ou conjunto de dados. Ele é usado principalmente para verificar a integridade dos dados, pois gera um hash único e consistente. Até a menor alteração na entrada modifica esse código, permitindo identificar facilmente qualquer alteração nos dados originais. Embora útil para verificação de arquivos, para segurança de senhas recomenda-se algoritmos mais robustos como SHA-256 ou Bcrypt.",
     bt: "Calcular",
     plc: "Texto para gerar o hash",
@@ -176,6 +184,9 @@ defineI18nRoute({
     tip_security: "O MD5 não é seguro para senhas por ser vulnerável a colisões.",
     tip_usage: "Recomendamos o uso de Bcrypt para segurança de senhas. O MD5 é ideal para verificar a integridade de arquivos (Checksum).",
     result: "Resultado",
+    how_title: "Como usar",
+    how_1: "Digite ou cole o texto que deseja usar e clique em Calcular Hash MD5.",
+    how_2: "Para verificar a integridade entre diferentes conteúdos, gere o hash de ambos e compare os resultados.",
     f_1: "Cálculo rápido de hash MD5",
     f_2: "Impressão digital de 128 bits",
     f_3: "Verificação de integridade de dados",
@@ -183,7 +194,7 @@ defineI18nRoute({
   },
   es: {
     title: "Generador de Hash MD5",
-    meta: "Calcula fácilmente el hash MD5 (huella digital de 128 bits) de cualquier texto. Verifica la integridad de tus datos al instante.",
+    meta: "Calcula fácilmente el hash MD5 (huella digital de 128 bits) de cualquier texto y verifica la integridad de tus datos comparando los hashes.",
     desc: "MD5 (Algoritmo de Resumen del Mensaje 5) es un algoritmo de hash criptográfico muy utilizado que produce una huella digital de 128 bits (32 caracteres) para cualquier texto o datos de entrada. Se utiliza principalmente para verificar la integridad de los datos, ya que genera un hash único y consistente. Incluso el cambio más mínimo en el texto de entrada altera este código, lo que facilita la identificación de cualquier modificación. Para la seguridad de las contraseñas, se recomienda el uso de algoritmos más modernos como SHA-256 o Bcrypt.",
     bt: "Calcular",
     plc: "Texto para generar el hash",
@@ -195,6 +206,9 @@ defineI18nRoute({
     tip_security: "MD5 no es seguro para contraseñas ya que es vulnerable a ataques de colisión.",
     tip_usage: "Recomendamos usar Bcrypt para mayor seguridad. MD5 es ideal para verificar la integridad de archivos (Checksum).",
     result: "Resultado",
+    how_title: "Cómo usar",
+    how_1: "Escribe o pega el texto que quieres usar y haz clic en Calcular Hash MD5.",
+    how_2: "Para verificar la integridad entre contenidos diferentes, genera el hash de ambos y compara los resultados.",
     f_1: "Cálculo rápido de hash MD5",
     f_2: "Huella digital de 128 bits",
     f_3: "Verificación de integridad de datos",
@@ -202,7 +216,7 @@ defineI18nRoute({
   },
   fr: {
     title: "Générateur de Hash MD5",
-    meta: "Calculez facilement le hash MD5 (empreinte 128 bits) de n'importe quel texte. Vérifiez l'intégrité des données en ligne.",
+    meta: "Calculez facilement le hash MD5 (empreinte 128 bits) de n'importe quel texte et vérifiez l'intégrité des données en comparant les hachages.",
     desc: "Le MD5 (Message Digest Algorithm 5) est un algorithme de hachage cryptographique largement utilisé qui produit une empreinte numérique de 128 bits (32 caractères) pour n'importe quel texte ou jeu de données. Il sert principalement à vérifier l'intégrité des données, car il génère un hachage unique et constant. La moindre modification de l'entrée change ce code, ce qui permet de repérer facilement toute altération. Pour le hachage sécurisé des mots de passe, des algorithmes plus récents comme SHA-256 ou Bcrypt sont recommandés.",
     bt: "Calculer",
     plc: "Texte à hacher",
@@ -214,6 +228,9 @@ defineI18nRoute({
     tip_security: "MD5 n'est pas sûr pour les mots de passe car il est vulnérable aux collisions.",
     tip_usage: "Nous recommandons d'utiliser Bcrypt pour la sécurité. MD5 est parfait pour vérifier l'intégrité des fichiers (Checksum).",
     result: "Résultat",
+    how_title: "Comment utiliser l'outil",
+    how_1: "Saisissez ou collez le texte à utiliser, puis cliquez sur Calculer le Hash MD5.",
+    how_2: "Pour vérifier l'intégrité entre différents contenus, générez le hachage des deux et comparez les résultats.",
     f_1: "Calcul rapide de hash MD5",
     f_2: "Empreinte numérique 128 bits",
     f_3: "Vérification de l'intégrité des données",
@@ -221,7 +238,7 @@ defineI18nRoute({
   },
   it: {
     title: "Generatore di Hash MD5",
-    meta: "Calcola l'hash MD5 (impronta a 128 bit) di qualsiasi testo e verifica l'integrità dei dati in modo rapido e semplice.",
+    meta: "Calcola l'hash MD5 (impronta a 128 bit) di qualsiasi testo e verifica l'integrità dei dati confrontando gli hash.",
     desc: "L'MD5 (Message Digest Algorithm 5) è un algoritmo di hash crittografico ampiamente utilizzato che produce un'impronta digitale di 128 bit (32 caratteri) per qualsiasi testo o dato in input. Viene usato soprattutto per verificare l'integrità dei dati, perché genera un hash unico e coerente. Anche la modifica più piccola dell'input cambia questo codice, rendendo semplice individuare eventuali alterazioni. Per la sicurezza delle password, sono consigliati algoritmi più moderni e robusti come SHA-256 o Bcrypt.",
     bt: "Calcola",
     plc: "Testo per generare l'hash",
@@ -233,6 +250,9 @@ defineI18nRoute({
     tip_security: "MD5 non è sicuro per le password perché vulnerabile alle collisioni.",
     tip_usage: "Raccomandiamo di usare Bcrypt per la sicurezza. MD5 è ideale per verificare l'integrità dei file (Checksum).",
     result: "Risultato",
+    how_title: "Come usare lo strumento",
+    how_1: "Digita o incolla il testo da usare e fai clic su Calcola Hash MD5.",
+    how_2: "Per verificare l'integrità tra contenuti diversi, genera l'hash di entrambi e confronta i risultati.",
     f_1: "Calcolo rapido hash MD5",
     f_2: "Impronta digitale a 128 bit",
     f_3: "Verifica integrità dati",
@@ -240,7 +260,7 @@ defineI18nRoute({
   },
   id: {
     title: "Generator Hash MD5",
-    meta: "Hitung hash MD5 (sidik jari 128-bit) dengan mudah untuk teks apa pun. Verifikasi integritas data dengan alat online kami.",
+    meta: "Hitung hash MD5 (sidik jari 128-bit) dengan mudah untuk teks apa pun dan verifikasi integritas data dengan membandingkan hash.",
     desc: "MD5 (Message Digest Algorithm 5) adalah algoritma hash kriptografi yang banyak digunakan yang menghasilkan sidik jari 128-bit (32-karakter) untuk teks atau data input apa pun. Ini terutama digunakan untuk memverifikasi integritas data, karena akan menghasilkan hash yang unik dan konsisten. Bahkan sedikit perubahan pada teks input akan mengubah kode ini, sehingga memudahkan untuk mengidentifikasi setiap perubahan pada data asli. Untuk keamanan kata sandi, algoritma yang lebih kuat seperti SHA-256 atau Bcrypt sangat disarankan. Semua pemrosesan dilakukan di browser Anda dan tidak diperlukan instalasi.",
     bt: "Hitung",
     plc: "Teks untuk dibuat hash",
@@ -252,6 +272,9 @@ defineI18nRoute({
     tip_security: "MD5 tidak aman untuk kata sandi karena rentan terhadap collision attacks.",
     tip_usage: "Kami menyarankan penggunaan Bcrypt untuk keamanan. MD5 paling cocok untuk integritas file (Checksum).",
     result: "Hasil",
+    how_title: "Cara menggunakan alat ini",
+    how_1: "Ketik atau tempel teks yang ingin Anda gunakan, lalu klik Hitung Hash MD5.",
+    how_2: "Untuk memverifikasi integritas antara konten yang berbeda, buat hash untuk keduanya lalu bandingkan hasilnya.",
     f_1: "Perhitungan hash MD5 yang cepat",
     f_2: "Sidik jari digital 128-bit",
     f_3: "Verifikasi integritas data",
