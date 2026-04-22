@@ -22,7 +22,7 @@ const props = withDefaults(defineProps<Props>(), {
       <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-base-content mb-3">
         {{ title }}
       </h1>
-      <p v-if="description" class="text-lg text-base-content/60 leading-relaxed">
+      <p v-if="description" class="text-lg text-base-content leading-relaxed">
         {{ description }}
       </p>
     </div>
