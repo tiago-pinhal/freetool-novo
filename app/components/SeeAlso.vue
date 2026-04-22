@@ -15,9 +15,9 @@ const localePath = useLocalePath()
 <template>
   <section class="mt-8">
     <div class="flex items-center gap-4 mb-8">
-      <h3 class="text-sm font-bold text-base-content/50 uppercase tracking-widest">
+      <h2 class="text-sm font-bold text-base-content/80 uppercase tracking-widest">
         {{ t('see') }}
-      </h3>
+      </h2>
       <div class="h-px flex-1 bg-base-content/10"></div>
     </div>
 
@@ -28,7 +28,7 @@ const localePath = useLocalePath()
           {{ link.label }}
         </span>
         <Icon name="heroicons:arrow-small-right-20-solid"
-          class="w-5 h-5 text-base-content/30 group-hover:text-primary group-hover:translate-x-1 transition-all" aria-hidden="true" />
+          class="w-5 h-5 text-base-content/50 group-hover:text-primary group-hover:translate-x-1 transition-all" aria-hidden="true" />
       </NuxtLink>
     </nav>
   </section>

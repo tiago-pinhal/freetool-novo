@@ -72,29 +72,33 @@ defineI18nRoute({
             <span class="text-xs font-bold uppercase tracking-wider text-primary opacity-80">{{ t('if') }}</span>
             <div class="flex items-center gap-3">
               <input 
+                id="v1"
                 v-model.number="state.v1" 
                 type="number"
                 class="input input-bordered w-full bg-base-100 focus:border-primary transition-all rounded-xl font-mono"
                 placeholder="0"
+                :aria-label="`${t('if')} - ${t('val1')}`"
               />
-              <Icon name="heroicons:arrow-long-right-20-solid" class="w-6 h-6 shrink-0 opacity-30" />
+              <Icon name="heroicons:arrow-long-right-20-solid" class="w-6 h-6 shrink-0 opacity-30" aria-hidden="true" />
               <input 
+                id="v2"
                 v-model.number="state.v2" 
                 type="number"
                 class="input input-bordered w-full bg-base-100 focus:border-primary transition-all rounded-xl font-mono"
                 placeholder="0"
+                :aria-label="t('val2')"
               />
             </div>
             <div class="flex justify-between px-1">
-              <span class="text-[10px] text-base-content/40 uppercase tracking-tighter">{{ t('val1') }}</span>
-              <span class="text-[10px] text-base-content/40 uppercase tracking-tighter">{{ t('val2') }}</span>
+              <span class="text-[10px] text-base-content/70 uppercase tracking-tighter">{{ t('val1') }}</span>
+              <span class="text-[10px] text-base-content/70 uppercase tracking-tighter">{{ t('val2') }}</span>
             </div>
           </div>
 
           <!-- Divider with label -->
           <div class="relative flex items-center py-2">
             <div class="flex-grow border-t border-base-content/10"></div>
-            <span class="flex-shrink mx-4 text-xs font-medium text-base-content/30 uppercase tracking-widest">{{ t('then') }}</span>
+            <span class="flex-shrink mx-4 text-xs font-medium text-base-content/60 uppercase tracking-widest">{{ t('then') }}</span>
             <div class="flex-grow border-t border-base-content/10"></div>
           </div>
 
@@ -102,30 +106,32 @@ defineI18nRoute({
           <div class="space-y-3">
             <div class="flex items-center gap-3">
               <input 
+                id="v3"
                 v-model.number="state.v3" 
                 type="number"
                 class="input input-bordered w-full bg-base-100 focus:border-primary transition-all rounded-xl font-mono"
                 placeholder="0"
+                :aria-label="`${t('then')} - ${t('val3')}`"
               />
-              <Icon name="heroicons:arrow-long-right-20-solid" class="w-6 h-6 shrink-0 opacity-30" />
-              <div class="w-full flex items-center justify-center h-12 bg-primary/5 rounded-xl border border-primary/20 border-dashed">
+              <Icon name="heroicons:arrow-long-right-20-solid" class="w-6 h-6 shrink-0 opacity-30" aria-hidden="true" />
+              <div class="w-full flex items-center justify-center h-12 bg-primary/5 rounded-xl border border-primary/20 border-dashed" aria-hidden="true">
                 <span class="text-primary font-bold">X</span>
               </div>
             </div>
             <div class="flex justify-between px-1">
-              <span class="text-[10px] text-base-content/40 uppercase tracking-tighter">{{ t('val3') }}</span>
-              <span class="text-[10px] text-primary/40 uppercase tracking-tighter font-bold">{{ t('result') }}</span>
+              <span class="text-[10px] text-base-content/70 uppercase tracking-tighter">{{ t('val3') }}</span>
+              <span class="text-[10px] text-primary/70 uppercase tracking-tighter font-bold">{{ t('result') }}</span>
             </div>
           </div>
         </div>
 
         <!-- Result Display -->
-        <div class="flex flex-col items-center justify-center space-y-4 p-8 bg-base-100 rounded-2xl border border-base-content/10 shadow-lg relative overflow-hidden">
+        <div class="flex flex-col items-center justify-center space-y-4 p-8 bg-base-100 rounded-2xl border border-base-content/10 shadow-lg relative overflow-hidden" aria-live="polite">
           <div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
-            <Icon name="heroicons:variable-20-solid" class="w-24 h-24" />
+            <Icon name="heroicons:variable-20-solid" class="w-24 h-24" aria-hidden="true" />
           </div>
           
-          <h3 class="text-sm font-semibold text-base-content/50 uppercase tracking-widest">{{ t('result') }}</h3>
+          <h2 class="text-sm font-semibold text-base-content/80 uppercase tracking-widest">{{ t('result') }}</h2>
           
           <div class="text-5xl md:text-6xl font-black text-primary transition-all duration-300 tabular-nums">
             {{ output ?? '...' }}
@@ -136,7 +142,7 @@ defineI18nRoute({
               {{ t('copy_result') }}
             </Blockcopy>
           </div>
-          <p v-else class="text-xs text-base-content/40 text-center italic">
+          <p v-else class="text-xs text-base-content/60 text-center italic">
             {{ t('waiting') }}
           </p>
         </div>
@@ -147,10 +153,10 @@ defineI18nRoute({
       <div class="space-y-4">
         <p>{{ t('desc') }}</p>
         <div class="bg-primary/10 p-4 rounded-xl border border-primary/20">
-          <h4 class="font-bold mb-2 text-primary flex items-center gap-2">
-            <Icon name="heroicons:light-bulb-20-solid" class="w-5 h-5" />
+          <h3 class="font-bold mb-2 text-primary flex items-center gap-2">
+            <Icon name="heroicons:light-bulb-20-solid" class="w-5 h-5" aria-hidden="true" />
             {{ t('tip_title') }}
-          </h4>
+          </h3>
           <p class="text-sm text-base-content/70">
             {{ t('tip_formula') }}: <code class="bg-base-200 px-1 rounded">X = (V3 * V2) / V1</code>
           </p>
