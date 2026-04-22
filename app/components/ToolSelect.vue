@@ -14,6 +14,8 @@ interface Props {
 defineProps<Props>()
 const emit = defineEmits(['update:modelValue'])
 
+const id = useId()
+
 function handleChange(event: Event) {
   const target = event.target as HTMLSelectElement
   const parsed = Number(target.value)
@@ -23,15 +25,17 @@ function handleChange(event: Event) {
 
 <template>
   <div class="form-control w-full">
-    <label v-if="label" class="label">
-      <span class="label-text font-bold text-base-content/60 text-xs uppercase tracking-wider">
+    <label v-if="label" :for="id" class="label cursor-pointer">
+      <span class="label-text font-bold text-base-content/80 text-xs uppercase tracking-wider">
         {{ label }}
       </span>
     </label>
     <select 
+      :id="id"
       :value="modelValue" 
       class="select select-bordered select-lg bg-base-200 rounded-2xl w-full transition-all duration-300 focus:border-primary"
       @change="handleChange"
+      :aria-label="!label ? placeholder : undefined"
     >
       <option v-if="placeholder" disabled value="">{{ placeholder }}</option>
       <option v-for="opt in options" :key="opt.value" :value="opt.value">
