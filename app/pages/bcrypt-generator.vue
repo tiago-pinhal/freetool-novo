@@ -188,7 +188,7 @@ defineI18nRoute({
             <input 
               v-model="stateCheck.hash"
               type="text" 
-              class="input input-bordered input-lg w-full bg-base-200 focus:bg-base-200 transition-all rounded-2xl font-mono text-sm" 
+              class="input input-bordered input-lg w-full bg-base-200 focus:bg-base-200 transition-all rounded-2xl font-mono text-lg" 
               placeholder="$2a$12$..."
             />
           </div>

@@ -3,7 +3,7 @@
     <div 
       id="editor" 
       class="border-2 border-base-content/10 rounded-2xl overflow-hidden focus-within:border-primary/50 transition-all duration-300 shadow-sm"
-      style="font-size: 1.1em"
+      style="font-size: 1.25rem"
     />
     <DragDropText @onDrop="onDrop" />
   </div>
@@ -31,7 +31,7 @@ onMounted(() => {
       maxLines: 20, 
       minLines: 10, 
       placeholder: props.placeholder,
-      fontSize: '14px',
+      fontSize: '18px',
       showPrintMargin: false,
       useSoftTabs: true,
       tabSize: 2

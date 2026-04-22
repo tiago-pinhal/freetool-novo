@@ -99,7 +99,7 @@ defineI18nRoute({
         <textarea 
           v-model="state.text" 
           rows="8" 
-          class="textarea textarea-bordered textarea-lg w-full bg-base-200 focus:bg-base-200 transition-all rounded-2xl" 
+          class="textarea textarea-bordered textarea-lg w-full bg-base-200 focus:bg-base-200 transition-all rounded-2xl text-lg" 
           :placeholder="t('plc')"
           autofocus
         ></textarea>
@@ -132,7 +132,7 @@ defineI18nRoute({
         :label="t('res')" 
         :content="state.output"
       >
-        <pre class="whitespace-pre-wrap break-all font-mono text-sm">{{ state.output }}</pre>
+        <pre class="whitespace-pre-wrap break-all font-mono text-lg">{{ state.output }}</pre>
       </Blockcopy>
 
       <!-- Empty State -->

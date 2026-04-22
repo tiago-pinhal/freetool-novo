@@ -139,7 +139,7 @@ defineI18nRoute({
         <div 
           ref="viewerRef"
           id="viewer" 
-          class="rounded-2xl border-2 border-base-content/10 p-6 bg-[#002240] min-h-[10rem] max-h-[50rem] overflow-y-auto"
+          class="rounded-2xl border-2 border-base-content/10 p-6 bg-[#002240] min-h-[10rem] max-h-[50rem] overflow-y-auto text-lg"
         ></div>
       </div>
         
@@ -154,7 +154,7 @@ defineI18nRoute({
             <Icon name="heroicons:x-circle-20-solid" class="w-6 h-6" />
             <span class="font-bold">{{ t('err') }}</span>
           </div>
-          <div v-if="typeof state.error === 'string'" class="text-xs opacity-90 font-mono bg-black/20 p-2 rounded-lg w-full mt-1">
+          <div v-if="typeof state.error === 'string'" class="text-sm opacity-90 font-mono bg-black/20 p-2 rounded-lg w-full mt-1">
             {{ state.error }}
           </div>
         </div>

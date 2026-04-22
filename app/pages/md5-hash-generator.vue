@@ -94,7 +94,7 @@ defineI18nRoute({
         <textarea 
           v-model="state.text"
           rows="6"
-          class="textarea textarea-bordered textarea-lg w-full bg-base-200 focus:bg-base-200 transition-all rounded-2xl font-mono text-sm leading-relaxed" 
+          class="textarea textarea-bordered textarea-lg w-full bg-base-200 focus:bg-base-200 transition-all rounded-2xl font-mono text-lg leading-relaxed" 
           placeholder="..."
           autofocus
         ></textarea>

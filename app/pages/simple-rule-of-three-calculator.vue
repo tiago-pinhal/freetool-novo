@@ -75,7 +75,7 @@ defineI18nRoute({
                 id="v1"
                 v-model.number="state.v1" 
                 type="number"
-                class="input input-bordered w-full bg-base-100 focus:border-primary transition-all rounded-xl font-mono"
+                class="input input-bordered input-lg w-full bg-base-100 focus:border-primary transition-all rounded-xl font-mono text-lg"
                 placeholder="0"
                 :aria-label="`${t('if')} - ${t('val1')}`"
               />
@@ -84,7 +84,7 @@ defineI18nRoute({
                 id="v2"
                 v-model.number="state.v2" 
                 type="number"
-                class="input input-bordered w-full bg-base-100 focus:border-primary transition-all rounded-xl font-mono"
+                class="input input-bordered input-lg w-full bg-base-100 focus:border-primary transition-all rounded-xl font-mono text-lg"
                 placeholder="0"
                 :aria-label="t('val2')"
               />
@@ -109,13 +109,13 @@ defineI18nRoute({
                 id="v3"
                 v-model.number="state.v3" 
                 type="number"
-                class="input input-bordered w-full bg-base-100 focus:border-primary transition-all rounded-xl font-mono"
+                class="input input-bordered input-lg w-full bg-base-100 focus:border-primary transition-all rounded-xl font-mono text-lg"
                 placeholder="0"
                 :aria-label="`${t('then')} - ${t('val3')}`"
               />
               <Icon name="heroicons:arrow-long-right-20-solid" class="w-6 h-6 shrink-0 opacity-30" aria-hidden="true" />
-              <div class="w-full flex items-center justify-center h-12 bg-primary/5 rounded-xl border border-primary/20 border-dashed" aria-hidden="true">
-                <span class="text-primary font-bold">X</span>
+              <div class="w-full flex items-center justify-center h-16 bg-primary/5 rounded-xl border border-primary/20 border-dashed" aria-hidden="true">
+                <span class="text-primary font-bold text-xl">X</span>
               </div>
             </div>
             <div class="flex justify-between px-1">
