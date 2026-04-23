@@ -38,9 +38,9 @@ const detailsRef = ref<HTMLDetailsElement | null>(null)
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
         </svg>
       </button>
-      <NuxtLink :to="localePath('/')" class="flex items-center leading-none text-2xl font-bold text-base-content transition-transform active:scale-95 whitespace-nowrap">
+      <NuxtLink :to="localePath('/')" class="header-title">
         𝗙𝗿𝗲𝗲𝗧𝗼𝗼𝗹
-        <span class="text-sm ml-2 inline-flex items-center px-2 py-0.5 rounded-lg bg-gradient-to-r from-primary to-secondary font-black text-white uppercase tracking-tighter text-[11px] transform -translate-y-[1px] shadow-sm">
+        <span>
           DEV
         </span>
       </NuxtLink>
