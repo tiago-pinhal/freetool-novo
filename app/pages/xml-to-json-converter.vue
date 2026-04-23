@@ -68,9 +68,12 @@ function convert() {
   }
 
   try {
-    const options = state.attr
-      ? { ignoreAttributes: false, attributeNamePrefix: '@', allowBooleanAttributes: true }
-      : {}
+    const options = {
+      ignoreAttributes: !state.attr,
+      attributeNamePrefix: '@',
+      allowBooleanAttributes: true,
+      ignoreDeclaration: true
+    }
     const result = new XMLParser(options).parse(editor.value!.getValue())
     editor.value!.setValue(JSON.stringify(result, null, '\t'))
     editor.value!.setMode('json')
