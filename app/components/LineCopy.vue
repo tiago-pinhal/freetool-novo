@@ -23,15 +23,15 @@ async function copy() {
 
 <template>
   <div v-if="content" class="my-6">
-    <span class="text-xs font-bold uppercase tracking-wider text-base-content/50 px-1">
+    <span class="text-xs font-bold uppercase tracking-wider text-base-content/70 px-1">
       {{ label }}:
     </span>
 
     <div
-      class="mt-2 flex items-center gap-3 p-3 pl-5 rounded-2xl border transition-all duration-300 group max-w-full overflow-hidden"
+      class="mt-2 flex items-center gap-3 p-3 pl-5 rounded-2xl border transition-all duration-300 group max-w-full overflow-hidden w-fit"
       :class="copied
         ? 'bg-base-200 border-success/50 shadow-[0_0_0_3px_oklch(var(--su)/0.15)]'
-        : 'bg-base-200 border-base-content/10 hover:border-primary/20'"
+        : 'bg-base-200 border-base-content/20 hover:border-primary/20'"
     >
       <!-- Conteúdo (Truncado) -->
       <div class="flex-1 font-mono text-base font-medium text-base-content truncate">
@@ -44,7 +44,7 @@ async function copy() {
         @click="copy"
         :aria-label="`${t('copy')} ${label}`"
         class="btn btn-square btn-ghost btn-sm transition-all duration-300 cursor-pointer active:scale-90 flex-shrink-0"
-        :class="copied ? 'text-success' : 'text-base-content/30 hover:text-primary'"
+        :class="copied ? 'text-success' : 'text-base-content/60 hover:text-primary'"
       >
         <Transition
           enter-active-class="transition duration-200 ease-out"
@@ -57,7 +57,7 @@ async function copy() {
         >
           <Icon
             :key="copied ? 'check' : 'copy'"
-            :name="copied ? 'heroicons:check-20-solid' : 'heroicons:document-duplicate-20-solid'"
+            :name="copied ? 'material-symbols:check-rounded' : 'material-symbols:content-copy-outline'"
             class="w-5 h-5"
             aria-hidden="true"
           />

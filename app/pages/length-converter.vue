@@ -74,10 +74,8 @@ defineI18nRoute({
     ]"
   >
     <template #info>
-      <div class="space-y-4">
-        <p>{{ t('d1') }}</p>
-        <p>{{ t('d2') }}: {{ units.map(u => t(u)).join(', ') }}.</p>
-      </div>
+      <p>{{ t('d1') }}</p>
+      <p class="mt-4">{{ t('d2') }}: {{ units.map(u => t(u)).join(', ') }}.</p>
     </template>
 
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">

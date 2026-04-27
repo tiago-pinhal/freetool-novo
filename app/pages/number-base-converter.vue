@@ -78,7 +78,7 @@ defineI18nRoute({
       <div class="grid sm:grid-cols-3 gap-4">
         <div class="form-control w-full">
           <label for="num-value" class="label">
-            <span class="label-text font-bold text-base-content">{{ t('num') }}</span>
+            <span class="label-text font-bold text-base-content text-xs uppercase tracking-wider">{{ t('num') }}</span>
           </label>
           <input
             id="num-value"
@@ -115,9 +115,7 @@ defineI18nRoute({
 
     <template #info>
       <div class="space-y-12">
-        <div class="prose prose-sm max-w-none text-base-content leading-relaxed">
-          <p class="text-lg">{{ t('d1') }}</p>
-        </div>
+        <p>{{ t('d1') }}</p>
 
         <!-- How It Works -->
         <section>
@@ -125,7 +123,7 @@ defineI18nRoute({
             <Icon name="heroicons:light-bulb" class="text-primary" />
             {{ t('how_title') }}
           </h2>
-          <p class="text-base-content/70 leading-relaxed">{{ t('how_desc') }}</p>
+          <p>{{ t('how_desc') }}</p>
         </section>
 
         <!-- Applications -->
@@ -134,12 +132,12 @@ defineI18nRoute({
             <Icon name="heroicons:briefcase" class="text-primary" />
             {{ t('apps_title') }}
           </h2>
-          <div class="bg-base-200/30 rounded-3xl p-8 border border-base-content/5">
-            <p class="text-base-content/70 mb-4 leading-relaxed">{{ t('uc_intro') }}</p>
+          <div class="bg-base-200/30 rounded-3xl p-8 border border-base-content/20">
+            <p class="mb-4">{{ t('uc_intro') }}</p>
             <ul class="grid sm:grid-cols-2 gap-4 list-none p-0 m-0">
               <li v-for="item in useCases" :key="item" class="flex gap-3">
                 <Icon name="heroicons:check-circle" class="text-primary w-5 h-5 mt-0.5 shrink-0" />
-                <span class="text-base-content/70 leading-relaxed">{{ item }}</span>
+                <span>{{ item }}</span>
               </li>
             </ul>
           </div>
@@ -151,11 +149,11 @@ defineI18nRoute({
             <Icon name="heroicons:cpu-chip" class="text-primary" />
             {{ t('tech_title') }}
           </h2>
-          <p class="text-base-content/70 mb-4 leading-relaxed">{{ t('tech_desc') }}</p>
+          <p class="mb-4">{{ t('tech_desc') }}</p>
           <ul class="space-y-3 list-none p-0 m-0">
             <li v-for="item in techNotes" :key="item" class="flex gap-3">
               <Icon name="heroicons:chevron-right" class="text-primary w-5 h-5 mt-0.5 shrink-0" />
-              <span class="text-base-content/70 leading-relaxed">{{ item }}</span>
+              <span>{{ item }}</span>
             </li>
           </ul>
         </section>

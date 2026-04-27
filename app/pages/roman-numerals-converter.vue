@@ -91,15 +91,13 @@ defineI18nRoute({
     ]"
   >
     <template #info>
-      <div class="space-y-4">
-        <p>{{ t('desc') }}</p>
-        <div class="bg-base-300/30 p-4 rounded-xl border border-base-content/5">
-          <div class="font-bold mb-2">💡 {{ t('tip') }}</div>
-          <ul class="list-disc list-inside space-y-1">
-            <li>{{ t('tip_to') }}</li>
-            <li>{{ t('tip_from') }}</li>
-          </ul>
-        </div>
+      <p>{{ t('desc') }}</p>
+      <div class="mt-6 bg-base-300/30 p-4 rounded-xl border border-base-content/20">
+        <div class="font-bold mb-2">💡 {{ t('tip') }}</div>
+        <ul class="list-disc list-inside space-y-1">
+          <li>{{ t('tip_to') }}</li>
+          <li>{{ t('tip_from') }}</li>
+        </ul>
       </div>
     </template>
 

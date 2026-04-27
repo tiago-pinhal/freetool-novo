@@ -127,15 +127,13 @@ defineI18nRoute({
     </div>
 
     <template #info>
-      <div class="space-y-4">
-        <p>{{ t('desc') }}</p>
-        <div class="font-bold mb-2">{{ t('how_title') }}</div>
-        <ul class="list-disc list-inside space-y-1 mb-4">
-          <li>{{ t('how_1') }}</li>
-          <li>{{ t('how_2') }}</li>
-          <li>{{ t('how_3') }}</li>
-        </ul>
-      </div>
+      <p>{{ t('desc') }}</p>
+      <div class="font-bold">{{ t('how_title') }}</div>
+      <ul class="list-disc list-inside">
+        <li>{{ t('how_1') }}</li>
+        <li>{{ t('how_2') }}</li>
+        <li>{{ t('how_3') }}</li>
+      </ul>
     </template>
 
     <DragDropText @onDrop="txt => state.list = txt"/>

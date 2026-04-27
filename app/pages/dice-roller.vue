@@ -198,7 +198,7 @@ defineI18nRoute({
                         <Icon name="heroicons:information-circle-20-solid" class="w-6 h-6 text-primary" />
                         {{ t('how_title') }}
                     </h2>
-                    <p class="text-base-content/80 leading-relaxed">{{ t('how_desc') }}</p>
+                    <p>{{ t('how_desc') }}</p>
                 </section>
 
                 <section>
@@ -207,9 +207,9 @@ defineI18nRoute({
                         {{ t('usecases_title') }}
                     </h2>
                     <ul class="grid sm:grid-cols-2 gap-3">
-                        <li v-for="i in 4" :key="i" class="flex items-start gap-2 bg-base-200/40 p-3 rounded-xl border border-primary/5">
+                        <li v-for="i in 4" :key="i" class="flex items-start gap-2 bg-base-200/40 p-3 rounded-xl border border-primary/20">
                             <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-success shrink-0 mt-0.5" />
-                            <span class="text-base-content/80">{{ t(`uc${i}`) }}</span>
+                            <span>{{ t(`uc${i}`) }}</span>
                         </li>
                     </ul>
                 </section>
@@ -225,7 +225,7 @@ defineI18nRoute({
                             <div class="collapse-title text-lg font-bold">
                                 {{ t(`faq${i}q`) }}
                             </div>
-                            <div class="collapse-content text-base-content/70"> 
+                            <div class="collapse-content"> 
                                 <p>{{ t(`faq${i}a`) }}</p>
                             </div>
                         </div>

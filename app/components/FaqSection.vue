@@ -28,7 +28,7 @@ withDefaults(defineProps<Props>(), {
       <div 
         v-for="(item, index) in items" 
         :key="index"
-        class="collapse collapse-arrow bg-base-200/50 border border-base-content/5 rounded-2xl"
+        class="collapse collapse-arrow bg-base-200/50 border border-base-content/20 rounded-2xl"
       >
         <input 
           type="radio" 
@@ -39,7 +39,7 @@ withDefaults(defineProps<Props>(), {
         <div class="collapse-title text-lg font-bold text-base-content hover:text-primary transition-colors">
           {{ item.question }}
         </div>
-        <div class="collapse-content text-base-content leading-relaxed pb-4">
+        <div class="collapse-content text-base-content/90 leading-relaxed pb-4">
           <p>{{ item.answer }}</p>
         </div>
       </div>

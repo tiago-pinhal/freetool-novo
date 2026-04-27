@@ -46,15 +46,9 @@ function handleChange(event: Event) {
 </template>
 
 <style scoped>
-@reference "../assets/css/main.css";
 
-/* Reset de foco agressivo para eliminar o ring e sombras */
 .select:focus {
   outline: none !important;
   box-shadow: none !important;
-  border-color: var(--color-primary) !important;
-  --tw-ring-color: transparent !important;
-  --tw-ring-shadow: none !important;
-  --tw-ring-offset-shadow: none !important;
 }
 </style>

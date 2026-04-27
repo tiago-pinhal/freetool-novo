@@ -143,13 +143,13 @@ defineI18nRoute({
     <template #info>
       <div class="space-y-4">
         <p>{{ t('desc') }}</p>
-        <div class="bg-primary/10 p-4 rounded-xl border border-primary/20">
-          <div class="font-bold mb-2 text-primary flex items-center gap-2">
+        <div class="p-4 rounded-xl border border-base-content/20">
+          <div class="font-bold mb-2 flex items-center gap-2">
             <Icon name="heroicons:light-bulb-20-solid" class="w-5 h-5" aria-hidden="true" />
             {{ t('tip_title') }}
           </div>
-          <p class="text-sm text-base-content">
-            {{ t('tip_formula') }}: <code class="bg-base-200 px-1 rounded">X = (V3 * V2) / V1</code>
+          <p>
+            {{ t('tip_formula') }}: <code class="px-1 rounded">X = (V3 * V2) / V1</code>
           </p>
         </div>
       </div>

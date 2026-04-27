@@ -251,14 +251,14 @@ defineI18nRoute({
 
     <template #info>
       <div class="space-y-8">
-        <p class="text-base-content/80 leading-relaxed">{{ t('features_subtitle') }}</p>
+        <p>{{ t('features_subtitle') }}</p>
 
         <section>
           <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
             <Icon name="heroicons:briefcase-20-solid" class="w-6 h-6 text-primary" />
             {{ t('t4') }}
           </h2>
-          <p class="text-base-content/80 leading-relaxed">{{ t('applications_desc') }}</p>
+          <p>{{ t('applications_desc') }}</p>
         </section>
 
         <section>
@@ -266,7 +266,7 @@ defineI18nRoute({
             <Icon name="heroicons:academic-cap-20-solid" class="w-6 h-6 text-primary" />
             {{ t('t5') }}
           </h2>
-          <div class="space-y-4 text-base-content/80 leading-relaxed">
+          <div class="space-y-4">
             <p>{{ t('professional_desc') }}</p>
             <p>{{ t('simplicity_desc') }}</p>
           </div>

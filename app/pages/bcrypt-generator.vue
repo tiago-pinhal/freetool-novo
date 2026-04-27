@@ -107,12 +107,12 @@ defineI18nRoute({
     <template #info>
       <div class="space-y-4">
         <p>{{ t('desc') }}</p>
-        <div class="font-bold mb-2">{{ t('how_title') }}</div>
-        <ul class="list-disc list-inside space-y-1">
+        <div class="font-bold">{{ t('how_title') }}</div>
+        <ul class="list-disc list-inside">
           <li>{{ t('how_gen') }}</li>
           <li>{{ t('how_check') }}</li>
         </ul>
-        <div class="bg-base-300/30 p-4 rounded-xl border border-base-content/5">
+        <div class="bg-base-300/30 p-4 rounded-xl border border-base-content/20">
           <div class="font-bold mb-2">💡 {{ t('tip') }}</div>
           <ul class="list-disc list-inside space-y-1">
             <li>{{ t('tip_rounds') }}</li>

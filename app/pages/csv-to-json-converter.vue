@@ -127,7 +127,7 @@ defineI18nRoute({
       { label: t('see1'), to: 'json-viewer' },
       { label: t('see2'), to: 'xml-to-json-converter' },
       { label: t('see3'), to: 'json-to-xml-converter' },
-      { label: t('see4'), to: 'json-formatter' }
+      { label: t('see4'), to: 'json-viewer' }
     ]"
   >
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -236,8 +236,7 @@ defineI18nRoute({
     <!-- Info Section Content -->
     <template #info>
       <div class="space-y-12">
-        <!-- Main Description -->
-        <div class="prose prose-sm max-w-none text-base-content leading-relaxed">
+        <div>
           <p class="text-lg">{{ t('d1') }}</p>
           <p class="text-lg">{{ t('d2') }}</p>
         </div>
@@ -249,26 +248,26 @@ defineI18nRoute({
             {{ t('how_it_works_title') }}
           </h2>
           <div class="grid md:grid-cols-3 gap-6">
-            <div class="bg-base-200/50 p-6 rounded-2xl border border-base-content/5 hover:border-primary/20 transition-colors group">
-              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="bg-base-200/50 p-6 rounded-2xl border border-base-content/20">
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                 <span class="font-bold text-primary text-xl">1</span>
               </div>
               <h3 class="font-bold text-base-content mb-2">{{ t('hiw_1_title') }}</h3>
-              <p class="text-base-content/60 leading-relaxed">{{ t('hiw_1_desc') }}</p>
+              <p>{{ t('hiw_1_desc') }}</p>
             </div>
-            <div class="bg-base-200/50 p-6 rounded-2xl border border-base-content/5 hover:border-primary/20 transition-colors group">
-              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="bg-base-200/50 p-6 rounded-2xl border border-base-content/20">
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                 <span class="font-bold text-primary text-xl">2</span>
               </div>
               <h3 class="font-bold text-base-content mb-2">{{ t('hiw_2_title') }}</h3>
-              <p class="text-base-content/60 leading-relaxed">{{ t('hiw_2_desc') }}</p>
+              <p>{{ t('hiw_2_desc') }}</p>
             </div>
-            <div class="bg-base-200/50 p-6 rounded-2xl border border-base-content/5 hover:border-primary/20 transition-colors group">
-              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="bg-base-200/50 p-6 rounded-2xl border border-base-content/20">
+              <div class="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                 <span class="font-bold text-primary text-xl">3</span>
               </div>
               <h3 class="font-bold text-base-content mb-2">{{ t('hiw_3_title') }}</h3>
-              <p class="text-base-content/60 leading-relaxed">{{ t('hiw_3_desc') }}</p>
+              <p>{{ t('hiw_3_desc') }}</p>
             </div>
           </div>
         </section>
@@ -279,20 +278,20 @@ defineI18nRoute({
             <Icon name="heroicons:briefcase" class="text-primary" />
             {{ t('use_cases_title') }}
           </h2>
-          <div class="bg-base-200/30 rounded-3xl p-8 border border-base-content/5">
+          <div class="bg-base-200/30 rounded-3xl p-8 border border-base-content/20">
             <ul class="grid sm:grid-cols-2 gap-6 list-none p-0 m-0">
               <li class="flex gap-4">
                 <div class="mt-1"><Icon name="heroicons:check-circle" class="text-primary w-5 h-5" /></div>
                 <div>
                   <strong class="text-base-content block mb-1 uppercase text-xs tracking-widest font-black">{{ t('uc_1_title') }}</strong>
-                  <span class="text-base-content/60 leading-relaxed">{{ t('uc_1_desc') }}</span>
+                  <span>{{ t('uc_1_desc') }}</span>
                 </div>
               </li>
               <li class="flex gap-4">
                 <div class="mt-1"><Icon name="heroicons:check-circle" class="text-primary w-5 h-5" /></div>
                 <div>
                   <strong class="text-base-content block mb-1 uppercase text-xs tracking-widest font-black">{{ t('uc_2_title') }}</strong>
-                  <span class="text-base-content/60 leading-relaxed">{{ t('uc_2_desc') }}</span>
+                  <span>{{ t('uc_2_desc') }}</span>
                 </div>
               </li>
             </ul>

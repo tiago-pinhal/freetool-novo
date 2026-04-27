@@ -33,7 +33,7 @@ textarea:focus,
 .input:focus,
 .select:focus,
 .textarea:focus {
-  border-color: var(--color-primary) !important;
+  border-color: oklch(var(--p)) !important;
 }
 
 .tools-title {

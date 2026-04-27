@@ -120,8 +120,8 @@ defineI18nRoute({
     <template #info>
       <div class="space-y-4">
         <p>{{ t('desc') }}</p>
-        <div class="font-bold mb-2">{{ t('how_title') }}</div>
-        <ul class="list-disc list-inside space-y-1 mb-4">
+        <div class="font-bold">{{ t('how_title') }}</div>
+        <ul class="list-disc list-inside">
           <li>{{ t('how_1') }}</li>
           <li>{{ t('how_2') }}</li>
         </ul>
@@ -130,7 +130,7 @@ defineI18nRoute({
             <Icon name="heroicons:exclamation-triangle-20-solid" class="w-5 h-5" />
             {{ t('tip_title') }}
           </div>
-          <ul class="list-disc list-inside text-sm space-y-1 text-base-content">
+          <ul class="list-disc list-inside text-sm space-y-1">
             <li>{{ t('tip_security') }}</li>
             <li>{{ t('tip_usage') }}</li>
           </ul>

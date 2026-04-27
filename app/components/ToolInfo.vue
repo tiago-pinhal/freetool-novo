@@ -23,7 +23,7 @@ defineProps<Props>()
         </h2>
       </div>
 
-      <div class="prose prose-sm max-w-none text-base-content/90 leading-relaxed space-y-4">
+      <div class="prose prose-sm max-w-none text-base-content/90 leading-relaxed space-y-4 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:text-base-content [&_h2]:flex [&_h2]:items-center [&_h2]:gap-2 [&_h2]:mb-4">
         <p v-if="description">
           {{ description }}
         </p>

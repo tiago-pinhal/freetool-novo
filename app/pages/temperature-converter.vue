@@ -74,9 +74,7 @@ defineI18nRoute({
     ]"
   >
     <template #info>
-      <div class="space-y-4">
-        <p>{{ t('d1') }}</p>
-      </div>
+      <p>{{ t('d1') }}</p>
     </template>
 
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">

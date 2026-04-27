@@ -61,7 +61,7 @@ defineI18nRoute({
       <ToolCard :title="t('unit')" :to="localePath('storage-unit-converter')" icon="mdi:harddisk" :index="11" />
     </div>
 
-    <div class="mt-16 bg-base-200/50 rounded-3xl p-8 border border-base-content/5">
+    <div class="mt-16 bg-base-200/50 rounded-3xl p-8 border border-base-content/20">
       <Adsense />
     </div>
   </div>

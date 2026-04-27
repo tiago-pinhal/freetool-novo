@@ -1,0 +1,534 @@
+<script setup lang="ts">
+useScript('https://cdn.jsdelivr.net/npm/convert@4/dist/convert.prod.js', {
+  trigger: 'client'
+})
+
+const { t, locale } = useI18n({ useScope: 'local' })
+
+usePageJsonLd({
+  name: t('title'),
+  description: t('meta'),
+  features: [
+    t('f_1'),
+    t('f_2'),
+    t('f_3'),
+    t('f_4')
+  ],
+  faq: [
+    { question: t('faq_1_q'), answer: t('faq_1_a') },
+    { question: t('faq_2_q'), answer: t('faq_2_a') },
+    { question: t('faq_3_q'), answer: t('faq_3_a') },
+    { question: t('faq_4_q'), answer: t('faq_4_a') }
+  ]
+})
+
+useHead({
+  title: t('m_title'),
+  meta: [
+    { name: 'description', content: t('meta') }
+  ]
+})
+
+const units: [string, string][] = [
+  ['B', 'Byte'], ['b', 'Bit'], ['KB', 'Kilobyte'], ['Kb', 'Kilobit'],
+  ['KiB', 'Kibibyte'], ['Kib', 'Kibibit'], ['MB', 'Megabyte'], ['Mb', 'Megabit'],
+  ['MiB', 'Mebibyte'], ['Mib', 'Mebibit'], ['GB', 'Gigabyte'], ['Gb', 'Gigabit'],
+  ['GiB', 'Gibibyte'], ['Gib', 'Gibibit'], ['TB', 'Terabyte'], ['Tb', 'Terabit'],
+  ['TiB', 'Tebibyte'], ['Tib', 'Tebibit'], ['PB', 'Petabyte'], ['Pb', 'Petabit'],
+  ['PiB', 'Pebibyte'], ['Pib', 'Pebibit'], ['cB', 'Centibyte'], ['cb', 'Centibit'],
+  ['daB', 'Decabyte'], ['dab', 'Decabit'], ['dB', 'Decibyte'], ['db', 'Decibit'],
+  ['fB', 'Femtobyte'], ['fb', 'Femtobit'], ['hB', 'Hectobyte'], ['hb', 'Hectobit'],
+  ['mB', 'Millibyte'], ['mb', 'Millibit'], ['nB', 'Nanobyte'], ['nb', 'Nanobit'],
+  ['pB', 'Picobyte'], ['pb', 'Picobit'], ['μB', 'Microbyte'], ['μb', 'Microbit']
+]
+
+const state = reactive({
+  value: '',
+  from: 'B',
+  to: 'MB'
+})
+
+const unitOptions = computed(() =>
+  units.map(([abbr, key]) => ({ label: `${t(key)} [${abbr}]`, value: abbr }))
+)
+
+const output = computed(() => {
+  if (!state.value || isNaN(Number(state.value))) return null
+  try {
+    const convert = (window as any).convert
+    if (!convert) return null
+    const result = convert.convert(Number(state.value), state.from).to(state.to)
+    // Round to 12 decimal places to avoid floating point noise, strip trailing zeros
+    return Number.isInteger(result) ? result.toString() : parseFloat(result.toFixed(12)).toString()
+  } catch {
+    return null
+  }
+})
+
+const useCases = computed(() => [t('uc_1'), t('uc_2'), t('uc_3'), t('uc_4'), t('uc_5')])
+const techNotes = computed(() => [t('t_1'), t('t_2'), t('t_3'), t('t_4')])
+
+defineI18nRoute({
+  paths: {
+    en: '/storage-unit-converter',
+    pt: '/conversor-de-unidades-de-armazenamento',
+    es: '/convertidor-de-unidades-de-almacenamiento',
+    fr: '/convertisseur-de-unites-de-stockage',
+    it: '/convertitore-di-unita-di-archiviazione',
+    id: '/konverter-unit-penyimpanan'
+  }
+})
+</script>
+
+<template>
+  <ToolPage
+    :title="t('title')"
+    :description="t('meta')"
+    :show-ads="!!output"
+    :wiki-url="`https://${locale}.wikipedia.org/wiki/Units_of_information`"
+    :wiki-label="'Wikipedia (Units of Information)'"
+    :see-also-links="[
+      { label: t('see1'), to: 'less-to-css-converter' },
+      { label: t('see2'), to: 'xml-to-json-converter' },
+      { label: t('see3'), to: 'json-to-xml-converter' },
+      { label: t('see4'), to: 'number-base-converter' }
+    ]"
+  >
+    <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div class="form-control w-full">
+          <label for="storage-value" class="label">
+            <span class="label-text font-bold text-base-content text-xs uppercase tracking-wider">{{ t('value') }}</span>
+          </label>
+          <input
+            id="storage-value"
+            v-model="state.value"
+            type="text"
+            class="input input-bordered input-lg w-full bg-base-200 focus:bg-base-200 transition-all rounded-2xl"
+            autofocus
+          />
+        </div>
+
+        <ToolSelect
+          v-model="state.from"
+          :label="t('from')"
+          :options="unitOptions"
+        />
+
+        <ToolSelect
+          v-model="state.to"
+          :label="t('to')"
+          :options="unitOptions"
+        />
+      </div>
+
+      <Transition
+        enter-active-class="transition duration-300 ease-out"
+        enter-from-class="transform scale-95 opacity-0"
+        enter-to-class="transform scale-100 opacity-100"
+      >
+        <LineCopy v-if="output" :label="t('result')" :content="output">
+          {{ output }}
+        </LineCopy>
+      </Transition>
+    </div>
+
+    <template #info>
+      <div class="space-y-12">
+        <p>{{ t('d1') }}</p>
+
+        <!-- How It Works -->
+        <section>
+          <h2 class="text-2xl font-bold text-base-content mb-4 flex items-center gap-2">
+            <Icon name="heroicons:light-bulb" class="text-primary" />
+            {{ t('how_title') }}
+          </h2>
+          <p>{{ t('how_desc') }}</p>
+        </section>
+
+        <!-- Applications -->
+        <section>
+          <h2 class="text-2xl font-bold text-base-content mb-6 flex items-center gap-2">
+            <Icon name="heroicons:briefcase" class="text-primary" />
+            {{ t('apps_title') }}
+          </h2>
+          <div class="bg-base-200/30 rounded-3xl p-8 border border-base-content/20">
+            <p class="mb-4">{{ t('uc_intro') }}</p>
+            <ul class="grid sm:grid-cols-2 gap-4 list-none p-0 m-0">
+              <li v-for="item in useCases" :key="item" class="flex gap-3">
+                <Icon name="heroicons:check-circle" class="text-primary w-5 h-5 mt-0.5 shrink-0" />
+                <span>{{ item }}</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Technical Notes -->
+        <section>
+          <h2 class="text-2xl font-bold text-base-content mb-4 flex items-center gap-2">
+            <Icon name="heroicons:cpu-chip" class="text-primary" />
+            {{ t('tech_title') }}
+          </h2>
+          <p class="mb-4">{{ t('tech_desc') }}</p>
+          <ul class="space-y-3 list-none p-0 m-0">
+            <li v-for="item in techNotes" :key="item" class="flex gap-3">
+              <Icon name="heroicons:chevron-right" class="text-primary w-5 h-5 mt-0.5 shrink-0" />
+              <span>{{ item }}</span>
+            </li>
+          </ul>
+        </section>
+
+        <!-- All Supported Units -->
+        <section>
+          <h2 class="text-2xl font-bold text-base-content mb-4 flex items-center gap-2">
+            <Icon name="heroicons:squares-2x2" class="text-primary" />
+            {{ t('units_title') }}
+          </h2>
+          <div class="bg-base-200/30 rounded-3xl p-6 border border-base-content/20">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2">
+              <div v-for="[abbr, key] in units" :key="abbr" class="flex items-center gap-2">
+                <Icon name="heroicons:check-circle" class="text-primary w-4 h-4 shrink-0" />
+                <span class="font-mono text-xs text-primary font-bold">{{ abbr }}</span>
+                <span class="text-base-content/60 text-sm">{{ t(key) }}</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FAQ -->
+        <FaqSection
+          :title="t('faq_title')"
+          :items="[
+            { question: t('faq_1_q'), answer: t('faq_1_a') },
+            { question: t('faq_2_q'), answer: t('faq_2_a') },
+            { question: t('faq_3_q'), answer: t('faq_3_a') },
+            { question: t('faq_4_q'), answer: t('faq_4_a') }
+          ]"
+        />
+      </div>
+    </template>
+  </ToolPage>
+</template>
+
+<i18n lang="yaml">
+{
+  en: {
+    m_title: "Storage Unit Converter — KB, MB, GB, TB, GiB, TiB | Free Online",
+    title: "Storage Unit Converter",
+    meta: "Free online storage unit converter. Convert between bytes, kilobytes, megabytes, gigabytes, terabytes and 35 more units instantly. Supports both SI (decimal) and IEC (binary) standards.",
+    value: "Value",
+    from: "From",
+    to: "To",
+    result: "Result",
+    units_title: "All Supported Units",
+    see1: "LESS to CSS Converter",
+    see2: "XML to JSON Converter",
+    see3: "JSON to XML Converter",
+    see4: "Number Base Converter",
+    Byte: "Byte", Bit: "Bit", Centibyte: "Centibyte", Centibit: "Centibit",
+    Decabyte: "Decabyte", Decabit: "Decabit", Decibyte: "Decibyte", Decibit: "Decibit",
+    Femtobyte: "Femtobyte", Femtobit: "Femtobit", Gigabyte: "Gigabyte", Gigabit: "Gigabit",
+    Gibibyte: "Gibibyte", Gibibit: "Gibibit", Hectobyte: "Hectobyte", Hectobit: "Hectobit",
+    Kilobyte: "Kilobyte", Kilobit: "Kilobit", Kibibyte: "Kibibyte", Kibibit: "Kibibit",
+    Millibyte: "Millibyte", Millibit: "Millibit", Megabyte: "Megabyte", Megabit: "Megabit",
+    Mebibyte: "Mebibyte", Mebibit: "Mebibit", Nanobyte: "Nanobyte", Nanobit: "Nanobit",
+    Picobyte: "Picobyte", Picobit: "Picobit", Petabyte: "Petabyte", Petabit: "Petabit",
+    Pebibyte: "Pebibyte", Pebibit: "Pebibit", Terabyte: "Terabyte", Terabit: "Terabit",
+    Tebibyte: "Tebibyte", Tebibit: "Tebibit", Microbyte: "Microbyte", Microbit: "Microbit",
+    d1: "Free online tool to convert between 40 storage units — from bits and bytes to petabytes and pebibits. Supports both SI decimal units (KB = 1,000 bytes) and IEC binary units (KiB = 1,024 bytes). Ideal for developers, sysadmins, and anyone working with file sizes, RAM, or network bandwidth.",
+    how_title: "How Storage Unit Conversion Works",
+    how_desc: "This converter handles precise conversions using exact decimal and binary multiplication factors. All conversions normalize through a base byte value before being expressed in the target unit. The tool correctly implements both the SI (IEC 80000-13) decimal standard and the IEC binary (IEC 60027-2) standard, ensuring accurate results for all 40 supported units.",
+    apps_title: "Common Applications",
+    uc_intro: "Storage unit conversion is essential in many technical and everyday scenarios:",
+    uc_1: "Plan storage infrastructure — convert GB to TB for NAS, backup systems and cloud deployments",
+    uc_2: "Calculate network bandwidth consumption — convert Mbps to GB/day to estimate data transfer costs",
+    uc_3: "Understand hardware specs — compare GiB vs GB to resolve confusion between OS-reported and manufacturer-advertised sizes",
+    uc_4: "Debug embedded systems and IoT devices where byte-level precision matters between KB and KiB",
+    uc_5: "Compare cloud storage pricing across providers that use different unit standards (SI vs IEC binary)",
+    tech_title: "SI vs IEC Binary: Technical Standards",
+    tech_desc: "Understanding the two competing standards is critical to avoid errors in storage calculations:",
+    t_1: "SI / Decimal units (KB, MB, GB, TB): 1 KB = 1,000 bytes — defined by IEC 80000-13, used by hard drive manufacturers and network providers",
+    t_2: "IEC / Binary units (KiB, MiB, GiB, TiB): 1 KiB = 1,024 bytes — defined by IEC 60027-2, used by operating systems for RAM and file system reporting",
+    t_3: "The gap grows with scale: 1 TB (SI) ≈ 0.909 TiB (binary) — a 1 TB drive shows ~931 GiB in Windows or macOS",
+    t_4: "40 units supported: from Bit and Byte through Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte and all IEC binary equivalents",
+    faq_title: "Frequently Asked Questions",
+    faq_1_q: "What is the difference between MB and MiB?",
+    faq_1_a: "MB (Megabyte) is an SI unit: 1 MB = 1,000,000 bytes. MiB (Mebibyte) is an IEC binary unit: 1 MiB = 1,048,576 bytes. The difference (~4.9%) is small at low scales but becomes significant at GB and TB ranges.",
+    faq_2_q: "Why does my 1 TB hard drive show less space on my computer?",
+    faq_2_a: "Hard drive manufacturers use SI units: 1 TB = 1,000,000,000,000 bytes. Operating systems (Windows, macOS, Linux) display storage in binary units: 1 TiB = 1,099,511,627,776 bytes. So 1 TB ≈ 931 GiB — the drive is not missing storage, it's a unit standard difference.",
+    faq_3_q: "How do I convert Mbps to MB/s?",
+    faq_3_a: "Divide by 8: 1 Megabit = 0.125 Megabytes (since 1 byte = 8 bits). So a 100 Mbps connection can transfer about 12.5 MB per second at peak speed.",
+    faq_4_q: "Which standard should I use: KB or KiB?",
+    faq_4_a: "For file sizes and disk storage: KB (SI, 1,000 bytes). For RAM specifications and programming byte buffers: KiB (IEC binary, 1,024 bytes) is technically correct. Modern standards (IEC 60027-2) reserve 'K' for 1,000 and 'Ki' for 1,024 to eliminate ambiguity.",
+    f_1: "Convert between 40 storage units instantly",
+    f_2: "Supports both SI (KB, MB, GB) and IEC binary (KiB, MiB, GiB) standards",
+    f_3: "Precise mathematical conversions for all units",
+    f_4: "No server calls — runs entirely in the browser"
+  },
+  pt: {
+    m_title: "Conversor de Unidades de Armazenamento — KB, MB, GB, TB, GiB | Grátis",
+    title: "Conversor de Unidades de Armazenamento",
+    meta: "Conversor de unidades de armazenamento online grátis. Converta entre bytes, kilobytes, megabytes, gigabytes, terabytes e mais 35 unidades instantaneamente. Suporta padrões SI e IEC binário.",
+    value: "Valor",
+    from: "De",
+    to: "Para",
+    result: "Resultado",
+    units_title: "Todas as Unidades Suportadas",
+    see1: "Conversor de LESS para CSS",
+    see2: "Conversor de XML para JSON",
+    see3: "Conversor de JSON para XML",
+    see4: "Conversor de Bases Numéricas",
+    Byte: "Byte", Bit: "Bit", Centibyte: "Centibyte", Centibit: "Centibit",
+    Decabyte: "Decabyte", Decabit: "Decabit", Decibyte: "Decibyte", Decibit: "Decibit",
+    Femtobyte: "Femtobyte", Femtobit: "Femtobit", Gigabyte: "Gigabyte", Gigabit: "Gigabit",
+    Gibibyte: "Gibibyte", Gibibit: "Gibibit", Hectobyte: "Hectobyte", Hectobit: "Hectobit",
+    Kilobyte: "Kilobyte", Kilobit: "Kilobit", Kibibyte: "Kibibyte", Kibibit: "Kibibit",
+    Millibyte: "Millibyte", Millibit: "Millibit", Megabyte: "Megabyte", Megabit: "Megabit",
+    Mebibyte: "Mebibyte", Mebibit: "Mebibit", Nanobyte: "Nanobyte", Nanobit: "Nanobit",
+    Picobyte: "Picobyte", Picobit: "Picobit", Petabyte: "Petabyte", Petabit: "Petabit",
+    Pebibyte: "Pebibyte", Pebibit: "Pebibit", Terabyte: "Terabyte", Terabit: "Terabit",
+    Tebibyte: "Tebibyte", Tebibit: "Tebibit", Microbyte: "Microbyte", Microbit: "Microbit",
+    d1: "Ferramenta online gratuita para converter entre 40 unidades de armazenamento — de bits e bytes a petabytes e pebibits. Suporta unidades decimais SI (KB = 1.000 bytes) e unidades binárias IEC (KiB = 1.024 bytes). Ideal para desenvolvedores, sysadmins e qualquer pessoa que trabalhe com tamanhos de arquivo, RAM ou largura de banda.",
+    how_title: "Como Funciona a Conversão de Unidades de Armazenamento",
+    how_desc: "Este conversor realiza conversões precisas usando fatores de multiplicação decimais e binários exatos. Todas as conversões normalizam por um valor base em bytes antes de serem expressas na unidade alvo. A ferramenta implementa corretamente o padrão SI decimal (IEC 80000-13) e o padrão binário IEC (IEC 60027-2), garantindo resultados precisos para todas as 40 unidades suportadas.",
+    apps_title: "Aplicações Comuns",
+    uc_intro: "A conversão de unidades de armazenamento é essencial em muitos cenários técnicos e cotidianos:",
+    uc_1: "Planejar infraestrutura de armazenamento — converter GB para TB em NAS, sistemas de backup e cloud",
+    uc_2: "Calcular consumo de largura de banda — converter Mbps para GB/dia para estimar custos de transferência",
+    uc_3: "Entender especificações de hardware — comparar GiB vs GB para resolver a confusão entre tamanho reportado pelo SO e pelo fabricante",
+    uc_4: "Depurar sistemas embarcados e dispositivos IoT onde a precisão em bytes importa entre KB e KiB",
+    uc_5: "Comparar preços de armazenamento em nuvem entre provedores que usam padrões de unidades diferentes (SI vs IEC binário)",
+    tech_title: "SI vs IEC Binário: Padrões Técnicos",
+    tech_desc: "Entender os dois padrões em competição é fundamental para evitar erros em cálculos de armazenamento:",
+    t_1: "Unidades SI / Decimais (KB, MB, GB, TB): 1 KB = 1.000 bytes — definido pela IEC 80000-13, usado por fabricantes de HD e provedores de rede",
+    t_2: "Unidades IEC / Binárias (KiB, MiB, GiB, TiB): 1 KiB = 1.024 bytes — definido pela IEC 60027-2, usado por sistemas operacionais para RAM e sistema de arquivos",
+    t_3: "A diferença cresce com a escala: 1 TB (SI) ≈ 0,909 TiB (binário) — um HD de 1 TB aparece como ~931 GiB no Windows ou macOS",
+    t_4: "40 unidades suportadas: de Bit e Byte a Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte e todos os equivalentes binários IEC",
+    faq_title: "Perguntas Frequentes",
+    faq_1_q: "Qual é a diferença entre MB e MiB?",
+    faq_1_a: "MB (Megabyte) é uma unidade SI: 1 MB = 1.000.000 bytes. MiB (Mebibyte) é uma unidade IEC binária: 1 MiB = 1.048.576 bytes. A diferença (~4,9%) é pequena em escalas baixas, mas torna-se significativa em faixas de GB e TB.",
+    faq_2_q: "Por que meu HD de 1 TB mostra menos espaço no computador?",
+    faq_2_a: "Fabricantes de HD usam unidades SI: 1 TB = 1.000.000.000.000 bytes. Sistemas operacionais (Windows, macOS, Linux) exibem armazenamento em unidades binárias: 1 TiB = 1.099.511.627.776 bytes. Portanto, 1 TB ≈ 931 GiB — o HD não está com espaço faltando, é uma diferença de padrão de unidade.",
+    faq_3_q: "Como converter Mbps para MB/s?",
+    faq_3_a: "Divida por 8: 1 Megabit = 0,125 Megabytes (pois 1 byte = 8 bits). Então uma conexão de 100 Mbps pode transferir cerca de 12,5 MB por segundo na velocidade máxima.",
+    faq_4_q: "Qual padrão devo usar: KB ou KiB?",
+    faq_4_a: "Para tamanhos de arquivo e armazenamento em disco: KB (SI, 1.000 bytes). Para especificações de RAM e buffers em programação: KiB (IEC binário, 1.024 bytes) é tecnicamente correto. Os padrões modernos (IEC 60027-2) reservam 'K' para 1.000 e 'Ki' para 1.024 para eliminar ambiguidade.",
+    f_1: "Converter entre 40 unidades de armazenamento instantaneamente",
+    f_2: "Suporta SI (KB, MB, GB) e IEC binário (KiB, MiB, GiB)",
+    f_3: "Conversões matemáticas precisas para todas as unidades",
+    f_4: "Sem chamadas ao servidor — roda inteiramente no navegador"
+  },
+  es: {
+    m_title: "Convertidor de Unidades de Almacenamiento — KB, MB, GB, TB, GiB | Gratis",
+    title: "Convertidor de Unidades de Almacenamiento",
+    meta: "Convertidor de unidades de almacenamiento online gratis. Convierte entre bytes, kilobytes, megabytes, gigabytes, terabytes y 35 unidades más al instante. Soporta estándares SI e IEC binario.",
+    value: "Valor",
+    from: "De",
+    to: "A",
+    result: "Resultado",
+    units_title: "Todas las Unidades Soportadas",
+    see1: "Convertidor de LESS a CSS",
+    see2: "Convertidor de XML a JSON",
+    see3: "Convertidor de JSON a XML",
+    see4: "Convertidor de Bases Numéricas",
+    Byte: "Byte", Bit: "Bit", Centibyte: "Centibyte", Centibit: "Centibit",
+    Decabyte: "Decabyte", Decabit: "Decabit", Decibyte: "Decibyte", Decibit: "Decibit",
+    Femtobyte: "Femtobyte", Femtobit: "Femtobit", Gigabyte: "Gigabyte", Gigabit: "Gigabit",
+    Gibibyte: "Gibibyte", Gibibit: "Gibibit", Hectobyte: "Hectobyte", Hectobit: "Hectobit",
+    Kilobyte: "Kilobyte", Kilobit: "Kilobit", Kibibyte: "Kibibyte", Kibibit: "Kibibit",
+    Millibyte: "Millibyte", Millibit: "Millibit", Megabyte: "Megabyte", Megabit: "Megabit",
+    Mebibyte: "Mebibyte", Mebibit: "Mebibit", Nanobyte: "Nanobyte", Nanobit: "Nanobit",
+    Picobyte: "Picobyte", Picobit: "Picobit", Petabyte: "Petabyte", Petabit: "Petabit",
+    Pebibyte: "Pebibyte", Pebibit: "Pebibit", Terabyte: "Terabyte", Terabit: "Terabit",
+    Tebibyte: "Tebibyte", Tebibit: "Tebibit", Microbyte: "Microbyte", Microbit: "Microbit",
+    d1: "Herramienta online gratuita para convertir entre 40 unidades de almacenamiento — de bits y bytes a petabytes y pebibits. Soporta unidades decimales SI (KB = 1.000 bytes) y unidades binarias IEC (KiB = 1.024 bytes). Ideal para desarrolladores, sysadmins y cualquiera que trabaje con tamaños de archivos, RAM o ancho de banda.",
+    how_title: "Cómo Funciona la Conversión de Unidades de Almacenamiento",
+    how_desc: "Este convertidor realiza conversiones precisas usando factores de multiplicación decimales y binarios exactos. Todas las conversiones normalizan a través de un valor base en bytes antes de expresarse en la unidad destino. La herramienta implementa correctamente el estándar decimal SI (IEC 80000-13) e el estándar binario IEC (IEC 60027-2), garantizando resultados precisos para las 40 unidades soportadas.",
+    apps_title: "Aplicaciones Comunes",
+    uc_intro: "La conversión de unidades de almacenamiento es esencial en muchos escenarios técnicos y cotidianos:",
+    uc_1: "Planificar infraestructura de almacenamiento — convertir GB a TB para NAS, sistemas de backup y cloud",
+    uc_2: "Calcular consumo de ancho de banda — convertir Mbps a GB/día para estimar costos de transferencia",
+    uc_3: "Entender especificaciones de hardware — comparar GiB vs GB para resolver la confusión entre el tamaño reportado por el SO y el fabricante",
+    uc_4: "Depurar sistemas embebidos y dispositivos IoT donde la precisión en bytes importa entre KB y KiB",
+    uc_5: "Comparar precios de almacenamiento en nube entre proveedores que usan diferentes estándares (SI vs IEC binario)",
+    tech_title: "SI vs IEC Binario: Estándares Técnicos",
+    tech_desc: "Entender los dos estándares en competencia es fundamental para evitar errores en cálculos de almacenamiento:",
+    t_1: "Unidades SI / Decimales (KB, MB, GB, TB): 1 KB = 1.000 bytes — definido por IEC 80000-13, usado por fabricantes de disco duro y proveedores de red",
+    t_2: "Unidades IEC / Binarias (KiB, MiB, GiB, TiB): 1 KiB = 1.024 bytes — definido por IEC 60027-2, usado por sistemas operativos para RAM y sistema de archivos",
+    t_3: "La brecha crece con la escala: 1 TB (SI) ≈ 0,909 TiB (binario) — un disco de 1 TB aparece como ~931 GiB en Windows o macOS",
+    t_4: "40 unidades soportadas: de Bit y Byte a Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte y todos los equivalentes binarios IEC",
+    faq_title: "Preguntas Frecuentes",
+    faq_1_q: "¿Cuál es la diferencia entre MB y MiB?",
+    faq_1_a: "MB (Megabyte) es una unidad SI: 1 MB = 1.000.000 bytes. MiB (Mebibyte) es una unidad IEC binaria: 1 MiB = 1.048.576 bytes. La diferencia (~4,9%) es pequeña a baja escala pero se vuelve significativa en rangos de GB y TB.",
+    faq_2_q: "¿Por qué mi disco duro de 1 TB muestra menos espacio en el ordenador?",
+    faq_2_a: "Los fabricantes de discos usan unidades SI: 1 TB = 1.000.000.000.000 bytes. Los sistemas operativos (Windows, macOS, Linux) muestran el almacenamiento en unidades binarias: 1 TiB = 1.099.511.627.776 bytes. Por tanto, 1 TB ≈ 931 GiB — el disco no tiene espacio faltante, es una diferencia de estándar de unidades.",
+    faq_3_q: "¿Cómo convierto Mbps a MB/s?",
+    faq_3_a: "Divide entre 8: 1 Megabit = 0,125 Megabytes (ya que 1 byte = 8 bits). Así, una conexión de 100 Mbps puede transferir unos 12,5 MB por segundo a velocidad máxima.",
+    faq_4_q: "¿Qué estándar debo usar: KB o KiB?",
+    faq_4_a: "Para tamaños de archivos y almacenamiento en disco: KB (SI, 1.000 bytes). Para especificaciones de RAM y buffers en programación: KiB (IEC binario, 1.024 bytes) es técnicamente correcto. Los estándares modernos (IEC 60027-2) reservan 'K' para 1.000 y 'Ki' para 1.024 para eliminar ambigüedad.",
+    f_1: "Convertir entre 40 unidades de almacenamiento al instante",
+    f_2: "Soporta SI (KB, MB, GB) e IEC binario (KiB, MiB, GiB)",
+    f_3: "Conversiones matemáticas precisas para todas las unidades",
+    f_4: "Sin llamadas al servidor — se ejecuta completamente en el navegador"
+  },
+  fr: {
+    m_title: "Convertisseur d'Unités de Stockage — KB, MB, GB, TB, GiB | Gratuit",
+    title: "Convertisseur d'Unités de Stockage",
+    meta: "Convertisseur d'unités de stockage en ligne gratuit. Convertissez entre octets, kilooctets, mégaoctets, gigaoctets, téraoctets et 35 autres unités instantanément. Supporte les normes SI et IEC binaire.",
+    value: "Valeur",
+    from: "De",
+    to: "À",
+    result: "Résultat",
+    units_title: "Toutes les Unités Supportées",
+    see1: "Convertisseur de LESS vers CSS",
+    see2: "Convertisseur de XML vers JSON",
+    see3: "Convertisseur de JSON vers XML",
+    see4: "Convertisseur de Bases Numériques",
+    Byte: "Byte", Bit: "Bit", Centibyte: "Centibyte", Centibit: "Centibit",
+    Decabyte: "Decabyte", Decabit: "Decabit", Decibyte: "Decibyte", Decibit: "Decibit",
+    Femtobyte: "Femtobyte", Femtobit: "Femtobit", Gigabyte: "Gigabyte", Gigabit: "Gigabit",
+    Gibibyte: "Gibibyte", Gibibit: "Gibibit", Hectobyte: "Hectobyte", Hectobit: "Hectobit",
+    Kilobyte: "Kilobyte", Kilobit: "Kilobit", Kibibyte: "Kibibyte", Kibibit: "Kibibit",
+    Millibyte: "Millibyte", Millibit: "Millibit", Megabyte: "Megabyte", Megabit: "Megabit",
+    Mebibyte: "Mebibyte", Mebibit: "Mebibit", Nanobyte: "Nanobyte", Nanobit: "Nanobit",
+    Picobyte: "Picobyte", Picobit: "Picobit", Petabyte: "Petabyte", Petabit: "Petabit",
+    Pebibyte: "Pebibyte", Pebibit: "Pebibit", Terabyte: "Terabyte", Terabit: "Terabit",
+    Tebibyte: "Tebibyte", Tebibit: "Tebibit", Microbyte: "Microbyte", Microbit: "Microbit",
+    d1: "Outil en ligne gratuit pour convertir entre 40 unités de stockage — des bits et octets aux pétaoctets et pébioctets. Supporte les unités décimales SI (KB = 1 000 octets) et les unités binaires IEC (KiB = 1 024 octets). Idéal pour les développeurs, sysadmins et toute personne travaillant avec des tailles de fichiers, de la RAM ou de la bande passante.",
+    how_title: "Comment Fonctionne la Conversion d'Unités de Stockage",
+    how_desc: "Ce convertisseur effectue des conversions précises en utilisant des facteurs de multiplication décimaux et binaires exacts. Toutes les conversions se normalisent via une valeur de base en octets avant d'être exprimées dans l'unité cible. L'outil implémente correctement la norme SI décimale (IEC 80000-13) et la norme binaire IEC (IEC 60027-2), garantissant des résultats précis pour les 40 unités supportées.",
+    apps_title: "Applications Courantes",
+    uc_intro: "La conversion d'unités de stockage est essentielle dans de nombreux scénarios techniques et quotidiens :",
+    uc_1: "Planifier une infrastructure de stockage — convertir des GB en TB pour les NAS, systèmes de sauvegarde et cloud",
+    uc_2: "Calculer la consommation de bande passante — convertir des Mbps en GB/jour pour estimer les coûts de transfert",
+    uc_3: "Comprendre les spécifications matérielles — comparer GiB et GB pour résoudre la confusion entre les tailles rapportées par l'OS et le fabricant",
+    uc_4: "Déboguer des systèmes embarqués et appareils IoT où la précision à l'octet est importante entre KB et KiB",
+    uc_5: "Comparer les prix de stockage cloud entre fournisseurs utilisant des standards d'unités différents (SI vs IEC binaire)",
+    tech_title: "SI vs IEC Binaire : Normes Techniques",
+    tech_desc: "Comprendre les deux normes concurrentes est essentiel pour éviter les erreurs dans les calculs de stockage :",
+    t_1: "Unités SI / Décimales (KB, MB, GB, TB) : 1 KB = 1 000 octets — défini par IEC 80000-13, utilisé par les fabricants de disques durs et fournisseurs réseau",
+    t_2: "Unités IEC / Binaires (KiB, MiB, GiB, TiB) : 1 KiB = 1 024 octets — défini par IEC 60027-2, utilisé par les systèmes d'exploitation pour la RAM et le système de fichiers",
+    t_3: "L'écart grandit avec l'échelle : 1 TB (SI) ≈ 0,909 TiB (binaire) — un disque de 1 TB affiche ~931 GiB sous Windows ou macOS",
+    t_4: "40 unités supportées : du Bit et Byte au Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte et tous les équivalents binaires IEC",
+    faq_title: "Foire Aux Questions",
+    faq_1_q: "Quelle est la différence entre MB et MiB ?",
+    faq_1_a: "MB (Megabyte) est une unité SI : 1 MB = 1 000 000 octets. MiB (Mébioctet) est une unité IEC binaire : 1 MiB = 1 048 576 octets. La différence (~4,9 %) est faible à petite échelle mais devient significative aux niveaux GB et TB.",
+    faq_2_q: "Pourquoi mon disque dur de 1 To affiche moins d'espace sur mon ordinateur ?",
+    faq_2_a: "Les fabricants de disques durs utilisent les unités SI : 1 TB = 1 000 000 000 000 octets. Les systèmes d'exploitation (Windows, macOS, Linux) affichent le stockage en unités binaires : 1 TiB = 1 099 511 627 776 octets. Donc 1 TB ≈ 931 GiB — le disque ne manque pas d'espace, c'est une différence de norme d'unités.",
+    faq_3_q: "Comment convertir des Mbps en MB/s ?",
+    faq_3_a: "Divisez par 8 : 1 Megabit = 0,125 Megabyte (car 1 octet = 8 bits). Ainsi, une connexion de 100 Mbps peut transférer environ 12,5 MB par seconde à vitesse maximale.",
+    faq_4_q: "Quelle norme utiliser : KB ou KiB ?",
+    faq_4_a: "Pour les tailles de fichiers et le stockage sur disque : KB (SI, 1 000 octets). Pour les spécifications de RAM et les tampons en programmation : KiB (IEC binaire, 1 024 octets) est techniquement correct. Les normes modernes (IEC 60027-2) réservent 'K' pour 1 000 et 'Ki' pour 1 024 afin d'éliminer l'ambiguïté.",
+    f_1: "Convertir entre 40 unités de stockage instantanément",
+    f_2: "Supporte SI (KB, MB, GB) et IEC binaire (KiB, MiB, GiB)",
+    f_3: "Conversions mathématiques précises pour toutes les unités",
+    f_4: "Sans appels serveur — s'exécute entièrement dans le navigateur"
+  },
+  it: {
+    m_title: "Convertitore di Unità di Archiviazione — KB, MB, GB, TB, GiB | Gratis",
+    title: "Convertitore di Unità di Archiviazione",
+    meta: "Convertitore di unità di archiviazione online gratuito. Converti tra byte, kilobyte, megabyte, gigabyte, terabyte e altre 35 unità all'istante. Supporta gli standard SI e IEC binario.",
+    value: "Valore",
+    from: "Da",
+    to: "A",
+    result: "Risultato",
+    units_title: "Tutte le Unità Supportate",
+    see1: "Convertitore da LESS a CSS",
+    see2: "Convertitore da XML a JSON",
+    see3: "Convertitore da JSON a XML",
+    see4: "Convertitore di Basi Numeriche",
+    Byte: "Byte", Bit: "Bit", Centibyte: "Centibyte", Centibit: "Centibit",
+    Decabyte: "Decabyte", Decabit: "Decabit", Decibyte: "Decibyte", Decibit: "Decibit",
+    Femtobyte: "Femtobyte", Femtobit: "Femtobit", Gigabyte: "Gigabyte", Gigabit: "Gigabit",
+    Gibibyte: "Gibibyte", Gibibit: "Gibibit", Hectobyte: "Hectobyte", Hectobit: "Hectobit",
+    Kilobyte: "Kilobyte", Kilobit: "Kilobit", Kibibyte: "Kibibyte", Kibibit: "Kibibit",
+    Millibyte: "Millibyte", Millibit: "Millibit", Megabyte: "Megabyte", Megabit: "Megabit",
+    Mebibyte: "Mebibyte", Mebibit: "Mebibit", Nanobyte: "Nanobyte", Nanobit: "Nanobit",
+    Picobyte: "Picobyte", Picobit: "Picobit", Petabyte: "Petabyte", Petabit: "Petabit",
+    Pebibyte: "Pebibyte", Pebibit: "Pebibit", Terabyte: "Terabyte", Terabit: "Terabit",
+    Tebibyte: "Tebibyte", Tebibit: "Tebibit", Microbyte: "Microbyte", Microbit: "Microbit",
+    d1: "Strumento online gratuito per convertire tra 40 unità di archiviazione — da bit e byte a petabyte e pebibit. Supporta unità decimali SI (KB = 1.000 byte) e unità binarie IEC (KiB = 1.024 byte). Ideale per sviluppatori, sysadmin e chiunque lavori con dimensioni di file, RAM o larghezza di banda.",
+    how_title: "Come Funziona la Conversione di Unità di Archiviazione",
+    how_desc: "Questo convertitore gestisce conversioni precise usando fattori di moltiplicazione decimali e binari esatti. Tutte le conversioni si normalizzano attraverso un valore base in byte prima di essere espresse nell'unità target. Lo strumento implementa correttamente lo standard decimale SI (IEC 80000-13) e lo standard binario IEC (IEC 60027-2), garantendo risultati precisi per tutte le 40 unità supportate.",
+    apps_title: "Applicazioni Comuni",
+    uc_intro: "La conversione di unità di archiviazione è essenziale in molti scenari tecnici e quotidiani:",
+    uc_1: "Pianificare infrastrutture di archiviazione — convertire GB in TB per NAS, sistemi di backup e cloud",
+    uc_2: "Calcolare il consumo di larghezza di banda — convertire Mbps in GB/giorno per stimare i costi di trasferimento dati",
+    uc_3: "Comprendere le specifiche hardware — confrontare GiB e GB per risolvere la confusione tra dimensioni riportate dall'OS e dal produttore",
+    uc_4: "Debug di sistemi embedded e dispositivi IoT dove la precisione al byte è importante tra KB e KiB",
+    uc_5: "Confrontare i prezzi di archiviazione cloud tra provider che usano standard di unità diversi (SI vs IEC binario)",
+    tech_title: "SI vs IEC Binario: Standard Tecnici",
+    tech_desc: "Comprendere i due standard in competizione è fondamentale per evitare errori nei calcoli di archiviazione:",
+    t_1: "Unità SI / Decimali (KB, MB, GB, TB): 1 KB = 1.000 byte — definito da IEC 80000-13, usato dai produttori di dischi rigidi e provider di rete",
+    t_2: "Unità IEC / Binarie (KiB, MiB, GiB, TiB): 1 KiB = 1.024 byte — definito da IEC 60027-2, usato dai sistemi operativi per RAM e file system",
+    t_3: "Il divario cresce con la scala: 1 TB (SI) ≈ 0,909 TiB (binario) — un disco da 1 TB appare come ~931 GiB in Windows o macOS",
+    t_4: "40 unità supportate: da Bit e Byte a Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte e tutti gli equivalenti binari IEC",
+    faq_title: "Domande Frequenti",
+    faq_1_q: "Qual è la differenza tra MB e MiB?",
+    faq_1_a: "MB (Megabyte) è un'unità SI: 1 MB = 1.000.000 byte. MiB (Mebibyte) è un'unità IEC binaria: 1 MiB = 1.048.576 byte. La differenza (~4,9%) è piccola a bassa scala ma diventa significativa negli intervalli GB e TB.",
+    faq_2_q: "Perché il mio disco da 1 TB mostra meno spazio sul computer?",
+    faq_2_a: "I produttori di dischi rigidi usano unità SI: 1 TB = 1.000.000.000.000 byte. I sistemi operativi (Windows, macOS, Linux) mostrano lo spazio in unità binarie: 1 TiB = 1.099.511.627.776 byte. Quindi 1 TB ≈ 931 GiB — al disco non manca spazio, è una differenza di standard di unità.",
+    faq_3_q: "Come si convertono i Mbps in MB/s?",
+    faq_3_a: "Dividi per 8: 1 Megabit = 0,125 Megabyte (poiché 1 byte = 8 bit). Quindi una connessione da 100 Mbps può trasferire circa 12,5 MB al secondo alla velocità massima.",
+    faq_4_q: "Quale standard usare: KB o KiB?",
+    faq_4_a: "Per dimensioni di file e archiviazione su disco: KB (SI, 1.000 byte). Per specifiche RAM e buffer di programmazione: KiB (IEC binario, 1.024 byte) è tecnicamente corretto. Gli standard moderni (IEC 60027-2) riservano 'K' per 1.000 e 'Ki' per 1.024 per eliminare l'ambiguità.",
+    f_1: "Convertire tra 40 unità di archiviazione all'istante",
+    f_2: "Supporta SI (KB, MB, GB) e IEC binario (KiB, MiB, GiB)",
+    f_3: "Conversioni matematiche precise per tutte le unità",
+    f_4: "Nessuna chiamata al server — viene eseguito interamente nel browser"
+  },
+  id: {
+    m_title: "Konverter Unit Penyimpanan — KB, MB, GB, TB, GiB | Gratis Online",
+    title: "Konverter Unit Penyimpanan",
+    meta: "Konverter unit penyimpanan online gratis. Konversi antara byte, kilobyte, megabyte, gigabyte, terabyte dan 35 unit lainnya secara instan. Mendukung standar SI dan IEC biner.",
+    value: "Nilai",
+    from: "Dari",
+    to: "Ke",
+    result: "Hasil",
+    units_title: "Semua Unit yang Didukung",
+    see1: "Konverter LESS ke CSS",
+    see2: "Konverter XML ke JSON",
+    see3: "Konverter JSON ke XML",
+    see4: "Konverter Basis Angka",
+    Byte: "Byte", Bit: "Bit", Centibyte: "Centibyte", Centibit: "Centibit",
+    Decabyte: "Decabyte", Decabit: "Decabit", Decibyte: "Decibyte", Decibit: "Decibit",
+    Femtobyte: "Femtobyte", Femtobit: "Femtobit", Gigabyte: "Gigabyte", Gigabit: "Gigabit",
+    Gibibyte: "Gibibyte", Gibibit: "Gibibit", Hectobyte: "Hectobyte", Hectobit: "Hectobit",
+    Kilobyte: "Kilobyte", Kilobit: "Kilobit", Kibibyte: "Kibibyte", Kibibit: "Kibibit",
+    Millibyte: "Millibyte", Millibit: "Millibit", Megabyte: "Megabyte", Megabit: "Megabit",
+    Mebibyte: "Mebibyte", Mebibit: "Mebibit", Nanobyte: "Nanobyte", Nanobit: "Nanobit",
+    Picobyte: "Picobyte", Picobit: "Picobit", Petabyte: "Petabyte", Petabit: "Petabit",
+    Pebibyte: "Pebibyte", Pebibit: "Pebibit", Terabyte: "Terabyte", Terabit: "Terabit",
+    Tebibyte: "Tebibyte", Tebibit: "Tebibit", Microbyte: "Microbyte", Microbit: "Microbit",
+    d1: "Alat online gratis untuk mengonversi antara 40 unit penyimpanan — dari bit dan byte hingga petabyte dan pebibit. Mendukung unit desimal SI (KB = 1.000 byte) dan unit biner IEC (KiB = 1.024 byte). Ideal untuk pengembang, sysadmin, dan siapa saja yang bekerja dengan ukuran file, RAM, atau bandwidth jaringan.",
+    how_title: "Cara Kerja Konversi Unit Penyimpanan",
+    how_desc: "Konverter ini menangani konversi presisi menggunakan faktor perkalian desimal dan biner yang tepat. Semua konversi dinormalisasi melalui nilai dasar byte sebelum diekspresikan dalam unit target. Alat ini mengimplementasikan dengan benar standar desimal SI (IEC 80000-13) dan standar biner IEC (IEC 60027-2), memastikan hasil yang akurat untuk semua 40 unit yang didukung.",
+    apps_title: "Aplikasi Umum",
+    uc_intro: "Konversi unit penyimpanan sangat penting dalam banyak skenario teknis dan sehari-hari:",
+    uc_1: "Merencanakan infrastruktur penyimpanan — mengonversi GB ke TB untuk NAS, sistem backup, dan cloud",
+    uc_2: "Menghitung konsumsi bandwidth jaringan — mengonversi Mbps ke GB/hari untuk memperkirakan biaya transfer data",
+    uc_3: "Memahami spesifikasi hardware — membandingkan GiB vs GB untuk menyelesaikan kebingungan antara ukuran yang dilaporkan OS dan pabrikan",
+    uc_4: "Debug sistem embedded dan perangkat IoT di mana presisi byte penting antara KB dan KiB",
+    uc_5: "Membandingkan harga penyimpanan cloud antar penyedia yang menggunakan standar unit berbeda (SI vs IEC biner)",
+    tech_title: "SI vs IEC Biner: Standar Teknis",
+    tech_desc: "Memahami dua standar yang bersaing sangat penting untuk menghindari kesalahan dalam perhitungan penyimpanan:",
+    t_1: "Unit SI / Desimal (KB, MB, GB, TB): 1 KB = 1.000 byte — didefinisikan oleh IEC 80000-13, digunakan oleh produsen hard drive dan penyedia jaringan",
+    t_2: "Unit IEC / Biner (KiB, MiB, GiB, TiB): 1 KiB = 1.024 byte — didefinisikan oleh IEC 60027-2, digunakan oleh sistem operasi untuk RAM dan pelaporan sistem file",
+    t_3: "Selisihnya bertumbuh dengan skala: 1 TB (SI) ≈ 0,909 TiB (biner) — drive 1 TB menampilkan ~931 GiB di Windows atau macOS",
+    t_4: "40 unit didukung: dari Bit dan Byte hingga Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte dan semua ekuivalen biner IEC",
+    faq_title: "Pertanyaan yang Sering Diajukan",
+    faq_1_q: "Apa perbedaan antara MB dan MiB?",
+    faq_1_a: "MB (Megabyte) adalah unit SI: 1 MB = 1.000.000 byte. MiB (Mebibyte) adalah unit biner IEC: 1 MiB = 1.048.576 byte. Perbedaannya (~4,9%) kecil pada skala rendah tetapi menjadi signifikan pada kisaran GB dan TB.",
+    faq_2_q: "Mengapa hard drive 1 TB saya menampilkan lebih sedikit ruang di komputer?",
+    faq_2_a: "Produsen hard drive menggunakan unit SI: 1 TB = 1.000.000.000.000 byte. Sistem operasi (Windows, macOS, Linux) menampilkan penyimpanan dalam unit biner: 1 TiB = 1.099.511.627.776 byte. Jadi 1 TB ≈ 931 GiB — drive tidak kehilangan ruang, itu adalah perbedaan standar unit.",
+    faq_3_q: "Bagaimana cara mengonversi Mbps ke MB/s?",
+    faq_3_a: "Bagi dengan 8: 1 Megabit = 0,125 Megabyte (karena 1 byte = 8 bit). Jadi koneksi 100 Mbps dapat mentransfer sekitar 12,5 MB per detik pada kecepatan puncak.",
+    faq_4_q: "Standar mana yang harus digunakan: KB atau KiB?",
+    faq_4_a: "Untuk ukuran file dan penyimpanan disk: KB (SI, 1.000 byte). Untuk spesifikasi RAM dan buffer pemrograman: KiB (IEC biner, 1.024 byte) secara teknis benar. Standar modern (IEC 60027-2) memesan 'K' untuk 1.000 dan 'Ki' untuk 1.024 untuk menghilangkan ambiguitas.",
+    f_1: "Konversi antara 40 unit penyimpanan secara instan",
+    f_2: "Mendukung SI (KB, MB, GB) dan IEC biner (KiB, MiB, GiB)",
+    f_3: "Konversi matematis yang presisi untuk semua unit",
+    f_4: "Tanpa panggilan server — berjalan sepenuhnya di browser"
+  }
+}
+</i18n>

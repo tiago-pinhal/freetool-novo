@@ -88,7 +88,7 @@ defineI18nRoute({
             <Icon name="heroicons:briefcase-20-solid" class="w-6 h-6 text-primary" />
             {{ t('use_cases_title') }}
           </h2>
-          <p class="text-base-content/80 leading-relaxed">{{ t('use_cases_desc') }}</p>
+          <p>{{ t('use_cases_desc') }}</p>
         </section>
 
         <section>
@@ -96,7 +96,7 @@ defineI18nRoute({
             <Icon name="heroicons:user-group-20-solid" class="w-6 h-6 text-primary" />
             {{ t('ideal_for_title') }}
           </h2>
-          <p class="text-base-content/80 leading-relaxed">{{ t('ideal_for_desc') }}</p>
+          <p>{{ t('ideal_for_desc') }}</p>
         </section>
       </div>
     </template>

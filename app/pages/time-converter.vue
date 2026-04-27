@@ -67,17 +67,15 @@ defineI18nRoute({
     :wiki-url="`https://${locale}.wikipedia.org/wiki/Unit_of_time`"
     :wiki-label="'Wikipedia (Units of Time)'"
     :see-also-links="[
-      { label: t('see1'), to: 'time-difference' },
-      { label: t('see2'), to: 'hours-and-minutes-calculator' },
-      { label: t('see3'), to: 'date-time-difference' },
-      { label: t('see4'), to: 'crontab-generator' }
+      { label: t('see1'), to: 'date-time-tools' },
+      { label: t('see2'), to: 'date-time-tools' },
+      { label: t('see3'), to: 'date-time-tools' },
+      { label: t('see4'), to: 'date-time-tools' }
     ]"
   >
     <template #info>
-      <div class="space-y-4">
-        <p>{{ t('d1') }}</p>
-        <p>{{ t('d2') }}: {{ units.map(u => t(u)).join(', ') }}.</p>
-      </div>
+      <p>{{ t('d1') }}</p>
+      <p class="mt-4">{{ t('d2') }}: {{ units.map(u => t(u)).join(', ') }}.</p>
     </template>
 
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
