@@ -5,8 +5,15 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
-  modules: ['@nuxtjs/i18n', '@nuxt/scripts'],
+  modules: ['@nuxtjs/i18n', '@nuxt/scripts', '@nuxtjs/sitemap'],
 
+  site: {
+    url: 'https://www.freetool.dev'
+  },
+
+  sitemap: {
+    zeroRuntime: true
+  },
   scripts: {
     registry: {
       googleAdsense: {
