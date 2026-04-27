@@ -313,8 +313,8 @@ defineI18nRoute({
     pt: {
         m_title: "Formatador HTML Online - Organize e Indente HTML Grátis",
         title: "Formatador HTML",
-        meta: "Formatador HTML online gratuito. Cole seu código HTML e formate-o instantaneamente com indentação correta e estrutura limpa.",
-        d1: "Este formatador HTML online analisa e reformata seu código HTML com indentação consistente e estrutura organizada. Toda marcação bagunçada, minificada ou mal organizada é transformada em HTML legível e bem estruturado com um clique.",
+        meta: "Formatador HTML online gratuito. Cole seu código HTML e deixe-o organizado com indentação correta e estrutura uniformizada.",
+        d1: "Este formatador HTML online analisa e reformata seu código HTML com indentação consistente e estrutura uniformizada. Toda marcação bagunçada, minificada ou mal organizada é transformada em HTML legível e bem estruturado com um clique.",
         d2: "Ele remove linhas em branco desnecessárias, corrige a indentação e alinha as tags corretamente — facilitando a revisão, depuração ou entrega do código para um colega.",
         plc: "Insira o código HTML aqui ou arraste um arquivo",
         bt: "Formatar HTML",
