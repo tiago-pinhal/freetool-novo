@@ -110,7 +110,7 @@ defineI18nRoute({
       { label: t('see1'), to: 'javascript-formatter' },
       { label: t('see2'), to: 'html-formatter' },
       { label: t('see3'), to: 'css-formatter' },
-      { label: t('see4'), to: 'yaml-formatter' }
+      { label: t('see4'), to: 'json-viewer' }
     ]"
   >
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -304,7 +304,7 @@ defineI18nRoute({
         see1: "JavaScript Formatter",
         see2: "HTML Formatter",
         see3: "CSS Formatter",
-        see4: "YAML Formatter",
+        see4: "JSON Viewer",
         f_1: "Instant GraphQL beautification and formatting",
         f_2: "Correct indentation and field alignment",
         f_3: "Syntax error detection and reporting",
@@ -346,7 +346,7 @@ defineI18nRoute({
         see1: "Formatador JavaScript",
         see2: "Formatador HTML",
         see3: "Formatador CSS",
-        see4: "Formatador YAML",
+        see4: "Visualizador de JSON",
         f_1: "Formatação e organização instantânea de GraphQL",
         f_2: "Indentação correta e alinhamento de campos",
         f_3: "Detecção e reporte de erros de sintaxe",
@@ -388,7 +388,7 @@ defineI18nRoute({
         see1: "Formateador JavaScript",
         see2: "Formateador HTML",
         see3: "Formateador CSS",
-        see4: "Formateador YAML",
+        see4: "Visor de JSON",
         f_1: "Formateo y organización instantánea de GraphQL",
         f_2: "Indentación correcta y alineación de campos",
         f_3: "Detección y reporte de errores de sintaxis",
@@ -430,7 +430,7 @@ defineI18nRoute({
         see1: "Formateur JavaScript",
         see2: "Formateur HTML",
         see3: "Formateur CSS",
-        see4: "Formateur YAML",
+        see4: "Visualiseur JSON",
         f_1: "Formatage instantané du GraphQL",
         f_2: "Indentation correcte et alignement des champs",
         f_3: "Détection et signalement des erreurs de syntaxe",
@@ -472,7 +472,7 @@ defineI18nRoute({
         see1: "Formattatore JavaScript",
         see2: "Formattatore HTML",
         see3: "Formattatore CSS",
-        see4: "Formattatore YAML",
+        see4: "Visualizzatore JSON",
         f_1: "Formattazione istantanea del GraphQL",
         f_2: "Indentazione corretta e allineamento dei campi",
         f_3: "Rilevamento e segnalazione degli errori di sintassi",
@@ -514,7 +514,7 @@ defineI18nRoute({
         see1: "Pemformat JavaScript",
         see2: "Pemformat HTML",
         see3: "Pemformat CSS",
-        see4: "Pemformat YAML",
+        see4: "Penampil JSON",
         f_1: "Pemformatan GraphQL secara instan",
         f_2: "Indentasi yang benar dan penyelarasan field",
         f_3: "Deteksi dan pelaporan kesalahan sintaks",

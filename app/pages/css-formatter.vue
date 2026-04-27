@@ -110,7 +110,7 @@ defineI18nRoute({
       { label: t('see1'), to: 'css-minifier' },
       { label: t('see2'), to: 'html-formatter' },
       { label: t('see3'), to: 'javascript-formatter' },
-      { label: t('see4'), to: 'markdown-formatter' }
+      { label: t('see4'), to: 'json-viewer' }
     ]"
   >
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -304,7 +304,7 @@ defineI18nRoute({
         see1: "CSS Minifier",
         see2: "HTML Formatter",
         see3: "JavaScript Formatter",
-        see4: "Markdown Formatter",
+        see4: "JSON Viewer",
         f_1: "Instant CSS beautification and formatting",
         f_2: "Correct indentation and consistent spacing",
         f_3: "Syntax error detection and reporting",
@@ -346,7 +346,7 @@ defineI18nRoute({
         see1: "Minificador de CSS",
         see2: "Formatador HTML",
         see3: "Formatador JavaScript",
-        see4: "Formatador Markdown",
+        see4: "Visualizador de JSON",
         f_1: "Formatação e organização instantânea de CSS",
         f_2: "Indentação correta e espaçamento consistente",
         f_3: "Detecção e reporte de erros de sintaxe",
@@ -388,7 +388,7 @@ defineI18nRoute({
         see1: "Minificador CSS",
         see2: "Formateador HTML",
         see3: "Formateador JavaScript",
-        see4: "Formateador Markdown",
+        see4: "Visor de JSON",
         f_1: "Formateo y organización instantánea de CSS",
         f_2: "Indentación correcta y espaciado consistente",
         f_3: "Detección y reporte de errores de sintaxis",
@@ -430,7 +430,7 @@ defineI18nRoute({
         see1: "Minificateur CSS",
         see2: "Formateur HTML",
         see3: "Formateur JavaScript",
-        see4: "Formateur Markdown",
+        see4: "Visualiseur JSON",
         f_1: "Formatage instantané du CSS",
         f_2: "Indentation correcte et espacement cohérent",
         f_3: "Détection et signalement des erreurs de syntaxe",
@@ -472,7 +472,7 @@ defineI18nRoute({
         see1: "Minificatore di CSS",
         see2: "Formattatore HTML",
         see3: "Formattatore JavaScript",
-        see4: "Formattatore Markdown",
+        see4: "Visualizzatore JSON",
         f_1: "Formattazione istantanea del CSS",
         f_2: "Indentazione corretta e spaziatura coerente",
         f_3: "Rilevamento e segnalazione degli errori di sintassi",
@@ -514,7 +514,7 @@ defineI18nRoute({
         see1: "Minifikasi CSS",
         see2: "Pemformat HTML",
         see3: "Pemformat JavaScript",
-        see4: "Pemformat Markdown",
+        see4: "Penampil JSON",
         f_1: "Pemformatan CSS secara instan",
         f_2: "Indentasi yang benar dan spasi yang konsisten",
         f_3: "Deteksi dan pelaporan kesalahan sintaks",
