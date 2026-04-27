@@ -85,8 +85,8 @@ defineI18nRoute({
 
     <!-- Developers Section -->
     <div class="mt-16 mb-8 flex items-center gap-4">
-      <h2 class="text-xl font-bold text-base-content/50 uppercase tracking-widest">{{ t('devs') }}</h2>
-      <div class="h-px flex-1 bg-base-content/10"></div>
+      <h3 class="text-sm font-bold text-base-content/50 uppercase tracking-widest">{{ t('devs') }}</h3>
+      <div class="h-px flex-1 bg-base-content/10" />
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6">
@@ -125,7 +125,7 @@ defineI18nRoute({
         past: "Past Date Calculator",
         time: "Time Converter",
         unix: "Unix Timestamp Converter",
-        devs: "Developers"
+        devs: "For Developers"
     },
     pt: {
         title: "Ferramentas para Datas e Horas",
@@ -142,7 +142,7 @@ defineI18nRoute({
         past: "Calculadora de Data Passada",
         time: "Conversor de Tempo",
         unix: "Conversor de Timestamp Unix",
-        devs: "Desenvolvedores"
+        devs: "Para Desenvolvedores"
     },
     es: {
         title: "Herramientas para Fechas y Horas",
@@ -159,7 +159,7 @@ defineI18nRoute({
         past: "Calculadora de Fecha Pasada",
         time: "Convertidor de Tiempo",
         unix: "Convertidor de Timestamp Unix",
-        devs: "Desarrolladores"
+        devs: "Para Desarrolladores"
     },
     fr: {
         title: "Outils pour Dates et Heures",
@@ -176,7 +176,7 @@ defineI18nRoute({
         past: "Calculatrice de Date Passée",
         time: "Convertisseur de Temps",
         unix: "Convertisseur de Timestamp Unix",
-        devs: "Développeurs"
+        devs: "Pour les Développeurs"
     },
     it: {
         title: "Strumenti per Date e Ore",
@@ -193,7 +193,7 @@ defineI18nRoute({
         past: "Calcolatrice di Data Passata",
         time: "Convertitore di Tempo",
         unix: "Convertitore di Timestamp Unix",
-        devs: "Sviluppatori"
+        devs: "Per Sviluppatori"
     },
     id: {
         title: "Alat Tanggal dan Waktu",
@@ -210,7 +210,7 @@ defineI18nRoute({
         past: "Kalkulator Tanggal Masa Lalu",
         time: "Konverter Waktu",
         unix: "Konverter Timestamp Unix",
-        devs: "Pengembang"
+        devs: "Untuk Developer"
     }
 }
 </i18n>

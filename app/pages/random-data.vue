@@ -52,8 +52,8 @@ defineI18nRoute({
 
     <!-- Developers Section -->
     <div class="mt-16 mb-8 flex items-center gap-4">
-      <h2 class="text-xl font-bold text-base-content/50 uppercase tracking-widest">{{ t('devs') }}</h2>
-      <div class="h-px flex-1 bg-base-content/10"></div>
+      <h3 class="text-sm font-bold text-base-content/50 uppercase tracking-widest">{{ t('devs') }}</h3>
+      <div class="h-px flex-1 bg-base-content/10" />
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-6">
@@ -103,7 +103,7 @@ defineI18nRoute({
         cnpj: "CNPJ Generator 🇧🇷",
         rg: "RG Generator 🇧🇷",
         uuid: "UUID Generator",
-        devs: "Developers"
+        devs: "For Developers"
     },
     pt: {
         title: "Geradores de Dados Aleatórios",
@@ -116,7 +116,7 @@ defineI18nRoute({
         cnpj: "Gerador de CNPJ 🇧🇷",
         rg: "Gerador de RG 🇧🇷",
         uuid: "Gerador de UUID",
-        devs: "Desenvolvedores"
+        devs: "Para Desenvolvedores"
     },
     es: {
         title: "Generadores de Datos Aleatorios",
@@ -129,7 +129,7 @@ defineI18nRoute({
         cnpj: "Generador de CNPJ 🇧🇷",
         rg: "Generador de RG 🇧🇷",
         uuid: "Generador de UUID",
-        devs: "Desarrolladores"
+        devs: "Para Desarrolladores"
     },
     fr: {
         title: "Générateurs de Données Aléatoires",
@@ -142,7 +142,7 @@ defineI18nRoute({
         cnpj: "Générateur de CNPJ 🇧🇷",
         rg: "Générateur de RG 🇧🇷",
         uuid: "Générateur de UUID",
-        devs: "Développeurs"
+        devs: "Pour les Développeurs"
     },
     it: {
         title: "Generatori di Dati Casuali",
@@ -155,7 +155,7 @@ defineI18nRoute({
         cnpj: "Generatore di CNPJ 🇧🇷",
         rg: "Generatore di RG 🇧🇷",
         uuid: "Generatore di UUID",
-        devs: "Sviluppatori"
+        devs: "Per Sviluppatori"
     },
     id: {
         title: "Generator Data Acak",
@@ -168,7 +168,7 @@ defineI18nRoute({
         cnpj: "Generator CNPJ 🇧🇷",
         rg: "Generator RG 🇧🇷",
         uuid: "Generator UUID",
-        devs: "Pengembang"
+        devs: "Untuk Developer"
     }
 }
 </i18n>
