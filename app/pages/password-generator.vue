@@ -125,18 +125,19 @@ defineI18nRoute({
 
         <!-- Length slider -->
         <div class="form-control">
-          <label class="flex justify-between items-center mb-2">
+          <label class="flex justify-between items-center mb-2" for="length-slider">
             <span class="font-bold text-base-content/80">{{ t('len') }}</span>
             <span class="font-black text-primary text-2xl">{{ state.length }}</span>
           </label>
           <input
+            id="length-slider"
             type="range"
             min="4"
             max="50"
             v-model="state.length"
             class="range range-primary w-full"
           />
-          <div class="flex justify-between text-xs px-1 text-base-content/40 mt-1">
+          <div class="flex justify-between text-xs px-1 text-base-content/70 mt-1">
             <span>4</span>
             <span>50</span>
           </div>

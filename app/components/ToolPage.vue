@@ -28,7 +28,7 @@ const props = withDefaults(defineProps<Props>(), {
     </div>
 
     <!-- Área Principal da Ferramenta (Slot) -->
-    <div class="bg-base-100 rounded-xl shadow-sm border border-primary/20 p-4">
+    <div class="bg-base-100 text-base-content rounded-xl shadow-sm border border-primary/20 p-4">
       <slot />
     </div>
 
