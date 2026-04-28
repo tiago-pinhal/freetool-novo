@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useScript('https://cdnjs.cloudflare.com/ajax/libs/bcryptjs/2.4.3/bcrypt.min.js', {
-  trigger: 'client'
+  trigger: 'onNuxtReady'
 })
 
 const { t, locale } = useI18n({ useScope: 'local' })
@@ -114,13 +114,11 @@ defineI18nRoute({
       <div class="space-y-8">
         <p>{{ t('desc') }}</p>
 
-        <!-- Features -->
         <FeatureSection
           :title="t('features_title')"
           :items="[ t('f_1'), t('f_2'), t('f_3'), t('f_4') ]"
         />
-
-        <!-- How to Use -->
+        
         <HowToSection
           :title="t('how_to_use_title')"
           :items="[
@@ -140,7 +138,6 @@ defineI18nRoute({
       </div>
     </template>
 
-    <!-- Sistema de Abas -->
     <ToolTabs 
       v-model:activeTab="currentTab"
       :tabs="[
@@ -148,7 +145,6 @@ defineI18nRoute({
         { id: 'check', label: t('check') }
       ]"
     >
-      <!-- Conteúdo: Gerador -->
       <template #gen>
         <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           <div class="form-control w-full">

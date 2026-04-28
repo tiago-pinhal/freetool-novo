@@ -89,7 +89,17 @@ defineI18nRoute({
       <div class="space-y-8">
         <p>{{ t('desc') }}</p>
 
-        <!-- How to Use -->
+        <FeatureSection
+          :title="t('features_title')"
+          :items="[ t('f_1'), t('f_2'), t('f_3'), t('f_4') ]"
+        />
+
+        <UseCaseSection
+          :title="t('use_cases_title')"
+          :description="t('use_cases_desc')"
+          :items="[ t('uc_2'), t('uc_4') ]"
+        />
+
         <HowToSection
           :title="t('how_to_use_title')"
           :items="[
@@ -99,20 +109,6 @@ defineI18nRoute({
           ]"
         />
 
-        <!-- Use Cases -->
-        <ListSection
-          :title="t('use_cases_title')"
-          :description="t('use_cases_desc')"
-          :items="[]"
-        />
-
-        <!-- Features -->
-        <FeatureSection
-          :title="t('features_title')"
-          :items="[ t('f_1'), t('f_2'), t('f_3'), t('f_4') ]"
-        />
-
-        <!-- Ideal For -->
         <section>
           <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
             <Icon name="heroicons:user-group-20-solid" class="w-6 h-6 text-primary" />
@@ -196,7 +192,9 @@ defineI18nRoute({
         step_3_title: "Copy Emails",
         step_3_desc: "Copy the clean list of extracted emails, ready to use.",
         use_cases_title: "Use Cases",
-        use_cases_desc: "Use the Email Extractor to organize contacts copied from text, reports, spreadsheets, HTML pages, messages, logs, or old databases. It helps turn messy content into a clean list, without duplicate emails, ready to copy, review, or import into other tools.",
+        use_cases_desc: "The Email Extractor helps you turn messy content into a clean, ready-to-use list of contacts. It's perfect for:",
+        uc_2: "Extracting emails from long HTML pages or message logs",
+        uc_4: "Removing duplicate addresses automatically for outreach",
         ideal_for_title: "Ideal For",
         ideal_for_desc: "This tool is useful for marketing, sales, support, recruiting, customer service, research, and anyone who needs to separate email addresses from long texts quickly and accurately.",
         sep: "Separate by",
@@ -230,7 +228,9 @@ defineI18nRoute({
         step_3_title: "Copiar E-mails",
         step_3_desc: "Copie a lista limpa de e-mails extraídos, pronta para uso.",
         use_cases_title: "Casos de Uso",
-        use_cases_desc: "Use o Extrator de E-mails para organizar contatos copiados de textos, relatórios, planilhas, páginas HTML, mensagens, logs ou bases antigas. Ele ajuda a transformar conteúdo bagunçado em uma lista limpa, sem e-mails duplicados e pronta para copiar, revisar ou importar em outras ferramentas.",
+        use_cases_desc: "O Extrator de E-mails ajuda você a transformar conteúdos bagunçados em uma lista de contatos limpa e pronta para uso. É ideal para:",
+        uc_2: "Extrair e-mails de páginas HTML ou logs de mensagens",
+        uc_4: "Remover e-mails duplicados para campanhas de marketing",
         ideal_for_title: "Ideal Para",
         ideal_for_desc: "A ferramenta é útil para equipes de marketing, vendas, suporte, recrutamento, atendimento ao cliente, pesquisa e qualquer pessoa que precise separar endereços de e-mail de textos longos com rapidez e precisão.",
         sep: "Separar por",
@@ -264,7 +264,9 @@ defineI18nRoute({
         step_3_title: "Copiar Emails",
         step_3_desc: "Copia la lista limpia de emails extraídos, lista para usar.",
         use_cases_title: "Casos de Uso",
-        use_cases_desc: "Usa el Extractor de Emails para organizar contactos copiados de textos, informes, hojas de cálculo, páginas HTML, mensajes, logs o bases de datos antiguas. Ayuda a convertir contenido desordenado en una lista limpia, sin emails duplicados y lista para copiar, revisar o importar en otras herramientas.",
+        use_cases_desc: "El Extractor de Emails te ayuda a transformar contenido desordenado en una lista de contactos limpia y lista para usar. Es ideal para:",
+        uc_2: "Extraer correos de páginas HTML o registros de mensajes",
+        uc_4: "Eliminar correos duplicados para campañas de marketing",
         ideal_for_title: "Ideal Para",
         ideal_for_desc: "La herramienta es útil para equipos de marketing, ventas, soporte, reclutamiento, atención al cliente, investigación y cualquier persona que necesite separar direcciones de email de textos largos con rapidez y precisión.",
         sep: "Separar por",
@@ -298,7 +300,9 @@ defineI18nRoute({
         step_3_title: "Copier les E-mails",
         step_3_desc: "Copiez la liste propre des e-mails extraits, prête à l'emploi.",
         use_cases_title: "Cas d'Utilisation",
-        use_cases_desc: "Utilisez l'Extracteur d'Emails pour organiser des contacts copiés depuis des textes, rapports, feuilles de calcul, pages HTML, messages, logs ou anciennes bases de données. Il aide à transformer un contenu désordonné en liste propre, sans e-mails en double, prête à copier, vérifier ou importer dans d'autres outils.",
+        use_cases_desc: "L'Extracteur d'Emails vous aide à transformer un contenu désordonné en une liste de contacts propre et prête à l'emploi. Il est idéal pour :",
+        uc_2: "Extraire des e-mails de longues pages HTML ou de journaux de messages",
+        uc_4: "Supprimer automatiquement les adresses en double pour la prospection",
         ideal_for_title: "Idéal Pour",
         ideal_for_desc: "L'outil est utile pour les équipes marketing, vente, support, recrutement, service client, recherche et toute personne qui doit extraire rapidement et précisément des adresses e-mail à partir de longs textes.",
         sep: "Séparer par",
@@ -332,7 +336,9 @@ defineI18nRoute({
         step_3_title: "Copia Email",
         step_3_desc: "Copia l'elenco pulito delle email estratte, pronto all'uso.",
         use_cases_title: "Casi d'Uso",
-        use_cases_desc: "Usa l'Estrattore di Email per organizzare contatti copiati da testi, report, fogli di calcolo, pagine HTML, messaggi, log o vecchi database. Aiuta a trasformare contenuti disordinati in un elenco pulito, senza email duplicate, pronto da copiare, controllare o importare in altri strumenti.",
+        use_cases_desc: "L'Estrattore di Email ti aiuta a transformar contenuti disordinati in un elenco di contatti pulito e pronto all'uso. È ideale per:",
+        uc_2: "Estrarre email da lunghe pagine HTML o log di messaggi",
+        uc_4: "Rimuovere automaticamente gli indirizzi duplicati per l'outreach",
         ideal_for_title: "Ideale Per",
         ideal_for_desc: "Lo strumento è utile per team di marketing, vendite, supporto, recruiting, assistenza clienti, ricerca e chiunque abbia bisogno di separare indirizzi email da testi lunghi con rapidità e precisione.",
         sep: "Separare per",
@@ -366,7 +372,9 @@ defineI18nRoute({
         step_3_title: "Salin Email",
         step_3_desc: "Salin daftar bersih email yang diekstrak, siap digunakan.",
         use_cases_title: "Contoh Penggunaan",
-        use_cases_desc: "Gunakan Ekstraktor Email untuk mengatur kontak yang disalin dari teks, laporan, spreadsheet, halaman HTML, pesan, log, atau database lama. Alat ini membantu mengubah konten yang berantakan menjadi daftar bersih, tanpa email duplikat, siap disalin, diperiksa, atau diimpor ke alat lain.",
+        use_cases_desc: "Ekstraktor Email membantu Anda mengubah konten yang berantakan menjadi daftar kontak yang bersih dan siap digunakan. Sangat cocok untuk:",
+        uc_2: "Mengekstrak email dari halaman HTML panjang atau log pesan",
+        uc_4: "Menghapus alamat duplikat secara otomatis untuk penjangkauan",
         ideal_for_title: "Ideal Untuk",
         ideal_for_desc: "Alat ini berguna untuk tim marketing, sales, support, rekrutmen, layanan pelanggan, riset, dan siapa pun yang perlu memisahkan alamat email dari teks panjang dengan cepat dan akurat.",
         sep: "Pisahkan dengan",

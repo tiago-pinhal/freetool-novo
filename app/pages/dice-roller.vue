@@ -199,51 +199,35 @@ defineI18nRoute({
 
         <template #info>
             <div class="space-y-8">
-                <section>
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-                        <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
-                        {{ t('how_to_use_title') }}
-                    </h2>
-                    <p class="mb-4">{{ t('how_desc') }}</p>
-                    <div class="grid sm:grid-cols-3 gap-4">
-                        <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
-                            <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
-                            <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
-                            <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
-                        </div>
-                    </div>
-                </section>
+                <p>{{ t('how_desc') }}</p>
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-                        <Icon name="heroicons:check-badge-20-solid" class="w-6 h-6 text-primary" />
-                        {{ t('usecases_title') }}
-                    </h2>
-                    <ul class="grid sm:grid-cols-2 gap-3">
-                        <li v-for="i in 4" :key="i" class="flex items-start gap-2 bg-base-200/40 p-3 rounded-xl border border-primary/20">
-                            <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-success shrink-0 mt-0.5" />
-                            <span>{{ t(`uc${i}`) }}</span>
-                        </li>
-                    </ul>
-                </section>
+                <FeatureSection
+                  :title="t('features_title')"
+                  :items="[ t('f_1'), t('f_2'), t('f_3'), t('f_4') ]"
+                />
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-                        <Icon name="heroicons:question-mark-circle-20-solid" class="w-6 h-6 text-primary" />
-                        {{ t('faq_title') }}
-                    </h2>
-                    <div class="space-y-4">
-                        <div v-for="i in 3" :key="i" class="collapse collapse-plus bg-base-200/50 rounded-2xl border border-base-300">
-                            <input type="radio" name="dice-faq" :aria-label="t(`faq${i}q`)" /> 
-                            <div class="collapse-title text-lg font-bold">
-                                {{ t(`faq${i}q`) }}
-                            </div>
-                            <div class="collapse-content"> 
-                                <p>{{ t(`faq${i}a`) }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <UseCaseSection
+                  :title="t('use_cases_title')"
+                  :items="[ t('uc1'), t('uc2'), t('uc3'), t('uc4') ]"
+                />
+
+                <HowToSection
+                  :title="t('how_to_use_title')"
+                  :items="[
+                    { title: t('step_1_title'), description: t('step_1_desc') },
+                    { title: t('step_2_title'), description: t('step_2_desc') },
+                    { title: t('step_3_title'), description: t('step_3_desc') }
+                  ]"
+                />
+              
+                <FaqSection
+                  :title="t('faq_title')"
+                  :items="[
+                    { question: t('faq1q'), answer: t('faq1a') },
+                    { question: t('faq2q'), answer: t('faq2a') },
+                    { question: t('faq3q'), answer: t('faq3a') }
+                  ]"
+                />
             </div>
         </template>
     </ToolPage>
@@ -259,6 +243,7 @@ defineI18nRoute({
         f_2: "Add flat modifiers to the final roll",
         f_3: "Instant sum and physics-like animated results",
         f_4: "100% free with no downloads required",
+        features_title: "Features",
         how_to_use_title: "How to use",
         how_desc: "This tool generates highly random outcomes utilizing standard cryptography-strength math functions found in modern browsers. It perfectly simulates classic tabletop physical polyhedral dice (D4, D6, D8, D10, D12, D20, and D100).",
         step_1_title: "Select Dice Type",
@@ -267,12 +252,12 @@ defineI18nRoute({
         step_2_desc: "Set the number of dice to roll (up to 100) and add any optional modifiers required by your game rules.",
         step_3_title: "Roll and Result",
         step_3_desc: "Click 'Roll Dice' to see animated results and the calculated sum total instantly.",
-        usecases_title: "Use Cases",
+        use_cases_title: "Use Cases",
         uc1: "Playing Tabletop Roleplaying Games (TTRPGs) like D&D, Pathfinder, Call of Cthulhu, etc without physical dice at hand.",
         uc2: "Generating stats for new tabletop characters (e.g., rolling 4d6 to obtain strength and dexterity).",
         uc3: "Speeding up heavy damage rolls where calculating the sum of 10 or 20 dice mentally is time consuming.",
         uc4: "Casual board games, educational probability training, or just deciding who pays for dinner.",
-        faq_title: "Frequently Asked Questions",
+        faq_title: "Questions & Answers",
         faq1q: "Is this online dice roller truly random?",
         faq1a: "Yes. Our tool relies on robust pseudorandom number generators built into modern web browsers, ensuring a fair distribution that matches the behavior of physical dice precisely — with no hidden weights or biased outcomes.",
         faq2q: "Can I roll multiple dice at once (like 4d6)?",
@@ -296,6 +281,7 @@ defineI18nRoute({
         f_2: "Adicione modificadores fixos ao resultado final",
         f_3: "Soma instantânea e resultados animados",
         f_4: "100% gratuito, sem necessidade de download",
+        features_title: "Funcionalidades",
         how_to_use_title: "Como usar",
         how_desc: "Esta ferramenta gera resultados altamente aleatórios utilizando funções matemáticas seguras nativas dos navegadores modernos. Ela simula perfeitamente os pesos físicos e probabilidades dos clássicos dados poliedrais.",
         step_1_title: "Selecione o Tipo de Dado",
@@ -304,12 +290,12 @@ defineI18nRoute({
         step_2_desc: "Defina a quantidade de dados a serem rolados (até 100) e adicione modificadores opcionais exigidos pelas regras.",
         step_3_title: "Role e Veja o Resultado",
         step_3_desc: "Clique em 'Rolar Dados' para ver os resultados animados e o somatório total calculado instantaneamente.",
-        usecases_title: "Casos de Uso",
+        use_cases_title: "Casos de Uso",
         uc1: "Jogar RPG de mesa como Dungeons & Dragons ou Pathfinder rapidamente pelo celular.",
         uc2: "Gerar atributos na criação de personagens, simplificando rolagens repetidas de 4d6.",
         uc3: "Agilizar o cálculo de feitiços colossais com dezenas de dados simultâneos.",
         uc4: "Partidas clássicas de banco imobiliário ou tomada de decisões aleatórias.",
-        faq_title: "Perguntas Frequentes",
+        faq_title: "Perguntas e Respostas",
         faq1q: "O lançamento online é realmente aleatório?",
         faq1a: "Sim. Nossa ferramenta recorre aos geradores robustos de números pseudo-aleatórios fornecidos nativamente pelo seu navegador, garantindo uma distribuição justa equivalente a um dado real.",
         faq2q: "Posso lançar múltiplos dados ao mesmo tempo?",
@@ -333,6 +319,7 @@ defineI18nRoute({
         f_2: "Añade modificadores fijos al resultado final",
         f_3: "Suma instantánea y resultados animados",
         f_4: "100% gratis, sin necesidad de descarga",
+        features_title: "Funcionalidades",
         how_to_use_title: "Cómo usar",
         how_desc: "Esta herramienta genera resultados altamente aleatorios utilizando funciones criptográficas matemáticamente seguras del navegador moderno permitiéndole simular idénticamente la física de cualquier dado poliédrico.",
         step_1_title: "Seleccione el Tipo de Dado",
@@ -341,12 +328,12 @@ defineI18nRoute({
         step_2_desc: "Defina la cantidad de dados a lanzar (hasta 100) y agregue cualquier modificador opcional requerido.",
         step_3_title: "Lance y Vea el Resultado",
         step_3_desc: "Haga clic en 'Lanzar Dados' para ver los resultados animados y la suma total calculada al instante.",
-        usecases_title: "Casos de Uso",
+        use_cases_title: "Casos de Uso",
         uc1: "Disfrutar de juegos de rol (TTRPGs) como Dungeons & Dragons cuando no hay dados físicos.",
         uc2: "Construcción rápida de atributos del personaje calculando sumas de alto volumen.",
         uc3: "Agilizar los ataques en combates densos donde hay que contabilizar múltiples dados.",
         uc4: "Juegos de mesa diarios, resolver dilemas domésticos y ejercicios didácticos.",
-        faq_title: "Preguntas Frecuentes",
+        faq_title: "Preguntas y Respuestas",
         faq1q: "¿El lanzamiento es verdaderamente aleatorio?",
         faq1a: "Sí. La herramienta utiliza los generadores pseudoaleatorios nativos del navegador, lo que garantiza una distribución de resultados completamente equitativa.",
         faq2q: "¿Puedo lanzar varios a la vez?",
@@ -370,6 +357,7 @@ defineI18nRoute({
         f_2: "Ajoutez des modificateurs fixes au résultat",
         f_3: "Somme instantanée et résultats animés",
         f_4: "100% gratuit, sans téléchargement",
+        features_title: "Fonctionnalités",
         how_to_use_title: "Comment utiliser",
         how_desc: "Cet outil simule parfaitement les dés de jeu classiques grâce aux technologies de calcul pseudo-aléatoire internes de votre navigateur. Il intègre tous les dés polyédriques standards.",
         step_1_title: "Sélectionnez le Type de Dé",
@@ -378,12 +366,12 @@ defineI18nRoute({
         step_2_desc: "Définissez le nombre de dés à lancer (jusqu'à 100) et ajoutez d'éventuels modificateurs optionnels.",
         step_3_title: "Lancez et Résultat",
         step_3_desc: "Cliquez sur 'Lancer Dés' pour voir les résultats animés et le total calculé instantanément.",
-        usecases_title: "Cas d'Utilisation",
+        use_cases_title: "Cas d'Utilisation",
         uc1: "Remplacer l'absence de dés physiques en cours de parties de Donjons et Dragons ou Pathfinder.",
         uc2: "Déterminer des jets complexes comme la création initiale d'aptitudes via du classique 4d6.",
         uc3: "Résoudre presque instantanément le calcul de gros dégâts évitant la charge mentale.",
         uc4: "Décider une situation hasardeuse du quotidien ou dynamiser les jeux familiaux.",
-        faq_title: "Questions Fréquentes",
+        faq_title: "Questions et Réponses",
         faq1q: "Ce simulateur est-il 100% aléatoire ?",
         faq1a: "Oui. Le lancer dépend de la génération sécurisée native du navigateur évitant les défauts mécaniques du matériel.",
         faq2q: "Peut-on jouer un lot de dés ?",
@@ -407,6 +395,7 @@ defineI18nRoute({
         f_2: "Aggiungi modificatori fissi al risultato",
         f_3: "Somma istantanea e risultati animati",
         f_4: "100% gratuito, senza installazione",
+        features_title: "Funzionalità",
         how_to_use_title: "Come usare",
         how_desc: "Utilizziamo l'algoritmo di calcolo nativo del tuo browser per offrire risultati pseudo-casuali estremamente equi, simulando meticolosamente l'uso di veri dadi poliedrici.",
         step_1_title: "Seleziona il Tipo di Dado",
@@ -415,12 +404,12 @@ defineI18nRoute({
         step_2_desc: "Imposta il numero di dadi da lanciare (fino a 100) e aggiungi eventuali modificatori opzionali.",
         step_3_title: "Lancia e Risultato",
         step_3_desc: "Clicca su 'Lancia Dadi' per vedere i risultati animati e il totale calcolato istantaneamente.",
-        usecases_title: "Casi d'Uso",
+        use_cases_title: "Casi d'Uso",
         uc1: "Masterizzare sessioni di D&D e Pathfinder in mobilità senza dadi fisici.",
         uc2: "Creazione rapida delle schede calcolando tiri voluminosi di 4d6 consecutivamente.",
         uc3: "Agevolare le risoluzioni in arene di scontro smaltendo la somma cumulativa.",
         uc4: "Intrattenimento ordinario o sbroglio di decisioni affidandosi alla pura fortuna.",
-        faq_title: "Domande Frequenti",
+        faq_title: "Domande e Risposte",
         faq1q: "È affidabile o trucca i risultati?",
         faq1a: "Sì. Il simulatore utilizza i generatori pseudocasuali nativi del browser per garantire una distribuzione equa dei risultati.",
         faq2q: "È concepito per lanciarne a dozzine contemporaneamente?",
@@ -444,6 +433,7 @@ defineI18nRoute({
         f_2: "Tambahkan modifikator tetap ke hasil akhir",
         f_3: "Jumlah instan dan hasil animasi",
         f_4: "100% gratis, tanpa unduhan",
+        features_title: "Fitur",
         how_to_use_title: "Cara menggunakan",
         how_desc: "Alat ini menyajikan hasil yang benar-benar acak dengan bantuan fungsi matematika bawaan peramban internet modern yang menyimulasikan hukum lemparan dadu fisik klasik secara sangat presisi.",
         step_1_title: "Pilih Jenis Dadu",
@@ -452,12 +442,12 @@ defineI18nRoute({
         step_2_desc: "Atur jumlah dadu yang akan dilempar (hingga 100) dan tambahkan modifikator opsional apa pun.",
         step_3_title: "Lempar dan Hasil",
         step_3_desc: "Klik 'Lempar Dadu' untuk melihat hasil animasi dan total jumlah yang dihitung secara instan.",
-        usecases_title: "Contoh Penggunaan",
+        use_cases_title: "Contoh Penggunaan",
         uc1: "Pengganti praktis kala set fisik tidak tersedia untuk petualangan kampanye meja.",
         uc2: "Mempercepat lemparan awal untuk membangun status karakter (4d6).",
         uc3: "Memberi total perhitungan pada efek kerusakan magis berantai.",
         uc4: "Pemutus keraguan umum hingga pemutaran undian biasa.",
-        faq_title: "Pertanyaan Umum",
+        faq_title: "Tanya Jawab",
         faq1q: "Apakah angka keluaran ini adil?",
         faq1a: "Iya, murni adil tanpa pemberat. Alat ini mengacu pada penghasil bilik semu acak canggih bawaan peramban.",
         faq2q: "Bolehkah saya menggelindingkan lusinan keping?",

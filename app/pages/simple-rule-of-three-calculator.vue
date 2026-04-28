@@ -148,23 +148,26 @@ defineI18nRoute({
 
     <template #info>
       <div class="space-y-8">
-        <section>
-          <p class="mb-4">{{ t('desc') }}</p>
-        </section>
+        <p>{{ t('desc') }}</p>
 
-        <section>
-          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
-            {{ t('how_to_use_title') }}
-          </h2>
-          <div class="grid sm:grid-cols-3 gap-4">
-            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
-              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
-              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
-              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
-            </div>
-          </div>
-        </section>
+        <FeatureSection
+          :title="t('features_title')"
+          :items="[ t('f_1'), t('f_2'), t('f_3'), t('f_4') ]"
+        />
+
+        <UseCaseSection
+          :title="t('use_cases_title')"
+          :items="[ t('uc_1'), t('uc_2'), t('uc_3'), t('uc_4') ]"
+        />
+
+        <HowToSection
+          :title="t('how_to_use_title')"
+          :items="[
+            { title: t('step_1_title'), description: t('step_1_desc') },
+            { title: t('step_2_title'), description: t('step_2_desc') },
+            { title: t('step_3_title'), description: t('step_3_desc') }
+          ]"
+        />
 
         <section>
           <div class="p-4 rounded-xl border border-base-content/20 bg-base-300/30">
@@ -198,6 +201,7 @@ defineI18nRoute({
         waiting: "Enter all values above to see the result",
         tip_title: "How it works",
         tip_formula: "The formula used is",
+        features_title: "Features",
         how_to_use_title: "How to use",
         step_1_title: "Enter Base Values",
         step_1_desc: "Input Value A and Value B to define your initial known proportion.",
@@ -209,6 +213,11 @@ defineI18nRoute({
         see2: "Bcrypt Generator",
         see3: "Email Extractor",
         see4: "JSON Viewer",
+        use_cases_title: "Use Cases",
+        uc_1: "Scaling cooking recipes based on available ingredients",
+        uc_2: "Calculating fuel consumption for different distances",
+        uc_3: "Adjusting technical measurements and scale models",
+        uc_4: "Solving math problems and business proportion tasks",
         f_1: "Solve direct proportions with three known values",
         f_2: "Real-time result as you type",
         f_3: "Useful for recipes, scaling, and homework",
@@ -228,6 +237,7 @@ defineI18nRoute({
         waiting: "Preencha os valores acima para ver o resultado",
         tip_title: "Como funciona",
         tip_formula: "A fórmula utilizada é",
+        features_title: "Funcionalidades",
         how_to_use_title: "Como usar",
         step_1_title: "Valores Base",
         step_1_desc: "Insira o Valor A e Valor B para definir a proporção inicial conhecida.",
@@ -239,6 +249,11 @@ defineI18nRoute({
         see2: "Gerador Bcrypt",
         see3: "Extrator de E-mails",
         see4: "Visualizador de JSON",
+        use_cases_title: "Casos de Uso",
+        uc_1: "Adaptar receitas culinárias baseadas nos ingredientes disponíveis",
+        uc_2: "Calcular consumo de combustível para diferentes distâncias",
+        uc_3: "Ajustar medidas técnicas e modelos em escala",
+        uc_4: "Resolver problemas de matemática e proporções de negócios",
         f_1: "Resolva proporções diretas com três valores conhecidos",
         f_2: "Resultado em tempo real enquanto você digita",
         f_3: "Útil para receitas, escalas e lição de casa",
@@ -258,6 +273,7 @@ defineI18nRoute({
         waiting: "Complete los valores arriba para ver el resultado",
         tip_title: "Cómo funciona",
         tip_formula: "La fórmula utilizada es",
+        features_title: "Funcionalidades",
         how_to_use_title: "Cómo usar",
         step_1_title: "Valores Base",
         step_1_desc: "Ingresa el Valor A y Valor B para definir la proporción inicial conocida.",
@@ -269,6 +285,11 @@ defineI18nRoute({
         see2: "Generador Bcrypt",
         see3: "Extractor de Correos Electrónicos",
         see4: "Visor de JSON",
+        use_cases_title: "Casos de Uso",
+        uc_1: "Adaptar recetas culinarias basadas en los ingredientes disponibles",
+        uc_2: "Calcular el consumo de combustible para diferentes distancias",
+        uc_3: "Ajustar medidas técnicas y modelos a escala",
+        uc_4: "Resolver problemas matemáticos y tareas de proporción comercial",
         f_1: "Resuelve proporciones directas con tres valores conocidos",
         f_2: "Resultado en tiempo real mientras escribes",
         f_3: "Útil para recetas, escalas y tareas",
@@ -288,6 +309,7 @@ defineI18nRoute({
         waiting: "Entrez les valeurs ci-dessus pour voir le résultat",
         tip_title: "Comment ça marche",
         tip_formula: "La formule utilisée est",
+        features_title: "Fonctionnalités",
         how_to_use_title: "Comment utiliser l'outil",
         step_1_title: "Valeurs de Base",
         step_1_desc: "Entrez la Valeur A et la Valeur B pour définir la proportion initiale.",
@@ -299,6 +321,11 @@ defineI18nRoute({
         see2: "Générateur Bcrypt",
         see3: "Extracteur d'e-mails",
         see4: "Visualiseur JSON",
+        use_cases_title: "Cas d'Utilisation",
+        uc_1: "Adapter des recettes de cuisine en fonction des ingrédients disponibles",
+        uc_2: "Calculer la consommation de carburant pour différentes distances",
+        uc_3: "Ajuster les mesures techniques et les modèles à l'échelle",
+        uc_4: "Résoudre des problèmes de mathématiques et des tâches de proportion commerciale",
         f_1: "Résoudre des proportions directes avec trois valeurs connues",
         f_2: "Résultat en temps réel pendant la saisie",
         f_3: "Utile pour les recettes, les échelles et les devoirs",
@@ -318,6 +345,7 @@ defineI18nRoute({
         waiting: "Inserisci i valori sopra per vedere il risultato",
         tip_title: "Come funziona",
         tip_formula: "La formula utilizzata è",
+        features_title: "Funzionalità",
         how_to_use_title: "Come usare lo strumento",
         step_1_title: "Valori Base",
         step_1_desc: "Inserisci il Valore A e il Valore B per definire la proporzione iniziale.",
@@ -329,7 +357,12 @@ defineI18nRoute({
         see2: "Generatore Bcrypt",
         see3: "Estrattore di Email",
         see4: "Visualizzatore di JSON",
-        f_1: "Risolvi proporzioni dirette con tre valori noti",
+        use_cases_title: "Casi d'Uso",
+        uc_1: "Adattare le ricette di cucina in base agli ingredienti disponibili",
+        uc_2: "Calcolare il consumo di carburante per diverse distanze",
+        uc_3: "Regolare misure tecniche e modelli in scala",
+        uc_4: "Risolvere problemi matematici e compiti di proporzione aziendale",
+        f_1: "Risolvi proporzioni diretas con tre valori noti",
         f_2: "Risultato in tempo reale durante la digitazione",
         f_3: "Utile per ricette, scale e compiti",
         f_4: "Nessuna registrazione o installazione"
@@ -348,6 +381,7 @@ defineI18nRoute({
         waiting: "Masukkan semua nilai di atas untuk melihat hasil",
         tip_title: "Cara kerja",
         tip_formula: "Rumus yang digunakan adalah",
+        features_title: "Fitur",
         how_to_use_title: "Cara menggunakan alat ini",
         step_1_title: "Nilai Dasar",
         step_1_desc: "Masukkan Nilai A dan Nilai B untuk menentukan proporsi awal.",
@@ -359,6 +393,11 @@ defineI18nRoute({
         see2: "Generator Bcrypt",
         see3: "Ekstraktor Email",
         see4: "Penampil JSON",
+        use_cases_title: "Contoh Penggunaan",
+        uc_1: "Menyesuaikan resep masakan berdasarkan bahan yang tersedia",
+        uc_2: "Menghitung konsumsi bahan bakar untuk jarak yang berbeda",
+        uc_3: "Menyesuaikan pengukuran teknis dan model skala",
+        uc_4: "Menyelesaikan masalah matematika dan tugas proporsi bisnis",
         f_1: "Selesaikan perbandingan senilai dengan tiga nilai yang diketahui",
         f_2: "Hasil waktu nyata saat Anda mengetik",
         f_3: "Berguna untuk resep, penskalaan, dan PR",

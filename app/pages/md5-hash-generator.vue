@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useScript('https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.19.0/js/md5.js', {
-  trigger: 'client'
+  trigger: 'onNuxtReady'
 })
 
 const { t, locale } = useI18n({ useScope: 'local' })
@@ -47,7 +47,7 @@ function calc() {
   const md5Fn = (window as any).md5
   
   if (!md5Fn) {
-    if (process.client) {
+    if (import.meta.client) {
       document.location.reload()
     }
     return
@@ -77,7 +77,7 @@ defineI18nRoute({
     :description="t('meta')"
     :show-ads="!!state.md5"
     :wiki-url="`https://${locale}.wikipedia.org/wiki/MD5`"
-    :wiki-label="'Wikipedia (MD5)'"
+    :wiki-label="'MD5'"
     :see-also-links="[
       { label: t('see1'), to: 'bcrypt-generator' },
       { label: t('see2'), to: 'json-viewer' },

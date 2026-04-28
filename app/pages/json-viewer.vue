@@ -1,6 +1,6 @@
 <script setup lang="ts">
 useScript('https://cdn.jsdelivr.net/npm/jsnview/build/index.min.js', {
-  trigger: 'client'
+  trigger: 'onNuxtReady'
 })
 
 const { t } = useI18n({ useScope: 'local' })
@@ -15,7 +15,7 @@ usePageJsonLd({
     t('f_3'),
     t('f_4')
   ],
-  howToName: t('how_it_works_title'),
+  howToName: t('how_to_use_title'),
   howToSteps: [
     { name: t('hiw_1_title'), text: t('hiw_1_desc') },
     { name: t('hiw_2_title'), text: t('hiw_2_desc') },
@@ -154,14 +154,12 @@ defineI18nRoute({
       </Transition>
     </div>
 
-    <!-- Info Section Content -->
     <template #info>
       <div class="space-y-8">
         <div>
           <p class="text-lg">{{ t('d1') }} {{ t('d2') }}</p>
         </div>
 
-        <!-- Features -->
         <FeatureSection
           :title="t('features_title')"
           :items="[
@@ -172,18 +170,7 @@ defineI18nRoute({
           ]"
         />
 
-        <!-- How It Works -->
-        <HowToSection
-          :title="t('how_it_works_title')"
-          :items="[
-            { title: t('hiw_1_title'), description: t('hiw_1_desc') },
-            { title: t('hiw_2_title'), description: t('hiw_2_desc') },
-            { title: t('hiw_3_title'), description: t('hiw_3_desc') }
-          ]"
-        />
-
-        <!-- Use Cases -->
-        <ListSection
+        <UseCaseSection
           :title="t('use_cases_title')"
           :items="[
             { title: t('uc_1_title'), description: t('uc_1_desc') },
@@ -192,7 +179,15 @@ defineI18nRoute({
           ]"
         />
 
-        <!-- FAQ Section -->
+        <HowToSection
+          :title="t('how_to_use_title')"
+          :items="[
+            { title: t('hiw_1_title'), description: t('hiw_1_desc') },
+            { title: t('hiw_2_title'), description: t('hiw_2_desc') },
+            { title: t('hiw_3_title'), description: t('hiw_3_desc') }
+          ]"
+        />
+
         <FaqSection 
           :title="t('faq_title')"
           :items="[
@@ -219,7 +214,7 @@ defineI18nRoute({
         plc: "Insert the JSON code here or drag a file",
         err: "Provide a valid JSON",
         features_title: "Features",
-        how_it_works_title: "How It Works",
+        how_to_use_title: "How to Use",
         hiw_1_title: "Paste Your JSON",
         hiw_1_desc: "Simply paste or drag your raw JSON file into the editor.",
         hiw_2_title: "Instant Verification",
@@ -260,7 +255,7 @@ defineI18nRoute({
         plc: "Insira o código JSON aqui ou arraste um arquivo",
         err: "Informe um JSON estruturalmente válido",
         features_title: "Funcionalidades",
-        how_it_works_title: "Como Funciona",
+        how_to_use_title: "Como Usar",
         hiw_1_title: "Cole seu JSON",
         hiw_1_desc: "Cole ou arraste seu arquivo JSON bruto diretamente no editor.",
         hiw_2_title: "Validação em Tempo Real",
@@ -300,7 +295,7 @@ defineI18nRoute({
         result: "Resultado",
         plc: "Introduce el código JSON aquí o arrastra un archivo",
         err: "Ingrese un JSON estructuralmente válido",
-        how_it_works_title: "Cómo Funciona",
+        how_to_use_title: "Cómo usar",
         hiw_1_title: "Pega tu JSON",
         hiw_1_desc: "Pega o arrastra tu archivo JSON sin formato directamente en el editor.",
         hiw_2_title: "Validación en Tiempo Real",
@@ -340,7 +335,7 @@ defineI18nRoute({
         result: "Résultat",
         plc: "Insérez le code JSON ici ou faites glisser un fichier",
         err: "Fournissez un JSON syntaxiquement valide",
-        how_it_works_title: "Comment Ça Marche",
+        how_to_use_title: "Comment utiliser",
         hiw_1_title: "Collez Votre JSON",
         hiw_1_desc: "Collez ou faites glisser votre fichier JSON brut directement dans l'éditeur.",
         hiw_2_title: "Validation en temps réel",
@@ -380,7 +375,7 @@ defineI18nRoute({
         result: "Risultato",
         plc: "Incolla il codice JSON qui o trascina un file",
         err: "JSON non valido",
-        how_it_works_title: "Come Funziona",
+        how_to_use_title: "Come usare",
         hiw_1_title: "Incolla il JSON",
         hiw_1_desc: "Incolla o trascina il tuo file JSON grezzo nell'editor.",
         hiw_2_title: "Validazione in Tempo Reale",
@@ -420,7 +415,7 @@ defineI18nRoute({
         result: "Hasil",
         plc: "Tempelkan kode JSON di sini atau seret file",
         err: "Masukkan JSON yang valid",
-        how_it_works_title: "Cara Kerja",
+        how_to_use_title: "Cara menggunakan",
         hiw_1_title: "Tempel JSON Anda",
         hiw_1_desc: "Tempelkan atau seret file JSON Anda ke dalam editor.",
         hiw_2_title: "Validasi Real-time",

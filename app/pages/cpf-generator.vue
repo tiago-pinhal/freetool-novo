@@ -280,7 +280,7 @@ defineI18nRoute({
         </section>
 
         <!-- Use Cases -->
-        <ListSection
+        <UseCaseSection
           :title="t('use_cases_title')"
           :description="t('use_cases_intro')"
           :items="[ t('use_1'), t('use_2'), t('use_3'), t('use_4'), t('use_5') ]"
