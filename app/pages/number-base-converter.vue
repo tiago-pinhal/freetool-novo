@@ -120,7 +120,7 @@ defineI18nRoute({
     </div>
 
     <template #info>
-      <div class="space-y-12">
+      <div class="space-y-8">
         <p>{{ t('d1') }}</p>
 
         <!-- How It Works -->
@@ -241,7 +241,7 @@ defineI18nRoute({
     t_2: "Octal (base 8) and Hexadecimal (base 16): compact representations widely used in memory addressing, Unix file permissions, and color codes",
     t_3: "Decimal (base 10): the standard human-readable system; all other bases are derived from or converted through decimal internally",
     t_4: "Vigesimal (base 20): historically used by the Mayan civilization; also supported alongside bases 2–19 for academic and historical use",
-    faq_title: "Frequently Asked Questions",
+    faq_title: "Questions & Answers",
     faq_1_q: "What is the most common number base conversion in programming?",
     faq_1_a: "Binary ↔ Hexadecimal. Hexadecimal is a compact representation of binary: each hex digit maps exactly to 4 binary digits (nibble). For example, 0xFF = 11111111 in binary = 255 in decimal.",
     faq_2_q: "How do I convert binary to decimal?",
@@ -308,7 +308,7 @@ defineI18nRoute({
     t_2: "Octal (base 8) e Hexadecimal (base 16): representações compactas amplamente usadas em endereçamento de memória, permissões Unix e códigos de cores",
     t_3: "Decimal (base 10): o sistema padrão de leitura humana; todas as outras bases são convertidas internamente através do decimal",
     t_4: "Vigesimal (base 20): usado historicamente pela civilização Maia; suportado junto com as bases 2–19 para uso acadêmico e histórico",
-    faq_title: "Perguntas Frequentes",
+    faq_title: "Perguntas e Respostas",
     faq_1_q: "Qual é a conversão de bases mais comum na programação?",
     faq_1_a: "Binário ↔ Hexadecimal. O hexadecimal é uma representação compacta do binário: cada dígito hex corresponde exatamente a 4 dígitos binários (nibble). Por exemplo, 0xFF = 11111111 em binário = 255 em decimal.",
     faq_2_q: "Como converter binário para decimal?",
@@ -375,7 +375,7 @@ defineI18nRoute({
     t_2: "Octal (base 8) y Hexadecimal (base 16): representaciones compactas ampliamente usadas en direccionamiento de memoria, permisos Unix y códigos de color",
     t_3: "Decimal (base 10): el sistema estándar de lectura humana; todas las demás bases se convierten internamente a través del decimal",
     t_4: "Vigesimal (base 20): usado históricamente por la civilización Maya; soportado junto con las bases 2–19 para uso académico e histórico",
-    faq_title: "Preguntas Frecuentes",
+    faq_title: "Preguntas y Respuestas",
     faq_1_q: "¿Cuál es la conversión de bases más común en programación?",
     faq_1_a: "Binario ↔ Hexadecimal. El hexadecimal es una representación compacta del binario: cada dígito hex corresponde exactamente a 4 dígitos binarios (nibble). Por ejemplo, 0xFF = 11111111 en binario = 255 en decimal.",
     faq_2_q: "¿Cómo convierto binario a decimal?",
@@ -442,7 +442,7 @@ defineI18nRoute({
     t_2: "Octal (base 8) et Hexadécimal (base 16) : représentations compactes largement utilisées dans l'adressage mémoire, les permissions Unix et les codes couleur",
     t_3: "Décimal (base 10) : le système standard lisible par l'humain ; toutes les autres bases sont converties en interne via le décimal",
     t_4: "Vigésimal (base 20) : utilisé historiquement par la civilisation Maya ; supporté avec les bases 2–19 pour un usage académique et historique",
-    faq_title: "Foire Aux Questions",
+    faq_title: "Questions et Réponses",
     faq_1_q: "Quelle est la conversion de bases la plus courante en programmation ?",
     faq_1_a: "Binaire ↔ Hexadécimal. L'hexadécimal est une représentation compacte du binaire : chaque chiffre hex correspond exactement à 4 chiffres binaires (nibble). Par exemple, 0xFF = 11111111 en binaire = 255 en décimal.",
     faq_2_q: "Comment convertir du binaire en décimal ?",
@@ -509,7 +509,7 @@ defineI18nRoute({
     t_2: "Ottale (base 8) ed Esadecimale (base 16): rappresentazioni compatte ampiamente usate nell'indirizzamento di memoria, permessi Unix e codici colore",
     t_3: "Decimale (base 10): il sistema standard leggibile dall'uomo; tutte le altre basi vengono convertite internamente tramite il decimale",
     t_4: "Vigesimale (base 20): usato storicamente dalla civiltà Maya; supportato insieme alle basi 2–19 per uso accademico e storico",
-    faq_title: "Domande Frequenti",
+    faq_title: "Domande e Risposte",
     faq_1_q: "Qual è la conversione di basi più comune nella programmazione?",
     faq_1_a: "Binario ↔ Esadecimale. L'esadecimale è una rappresentazione compatta del binario: ogni cifra hex corrisponde esattamente a 4 cifre binarie (nibble). Ad esempio, 0xFF = 11111111 in binario = 255 in decimale.",
     faq_2_q: "Come converto il binario in decimale?",
@@ -576,7 +576,7 @@ defineI18nRoute({
     t_2: "Oktal (basis 8) dan Heksadesimal (basis 16): representasi ringkas yang banyak digunakan dalam pengalamatan memori dan kode warna",
     t_3: "Desimal (basis 10): sistem standar yang mudah dibaca manusia; semua basis lainnya dikonversi melalui desimal secara internal",
     t_4: "Vigesimal (basis 20): digunakan secara historis oleh peradaban Maya; didukung bersama basis 2–19 untuk penggunaan akademik",
-    faq_title: "Pertanyaan yang Sering Diajukan",
+    faq_title: "Tanya Jawab",
     faq_1_q: "Apa konversi basis angka yang paling umum dalam pemrograman?",
     faq_1_a: "Biner ↔ Heksadesimal. Heksadesimal adalah representasi biner yang ringkas: setiap digit hex memetakan tepat ke 4 digit biner (nibble).",
     faq_2_q: "Bagaimana cara mengonversi biner ke desimal?",

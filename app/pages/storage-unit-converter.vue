@@ -140,7 +140,7 @@ defineI18nRoute({
     </div>
 
     <template #info>
-      <div class="space-y-12">
+      <div class="space-y-8">
         <p>{{ t('d1') }}</p>
 
         <!-- How It Works -->
@@ -270,7 +270,7 @@ defineI18nRoute({
     t_2: "IEC / Binary units (KiB, MiB, GiB, TiB): 1 KiB = 1,024 bytes — defined by IEC 60027-2, used by operating systems for RAM and file system reporting",
     t_3: "The gap grows with scale: 1 TB (SI) ≈ 0.909 TiB (binary) — a 1 TB drive shows ~931 GiB in Windows or macOS",
     t_4: "40 units supported: from Bit and Byte through Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte and all IEC binary equivalents",
-    faq_title: "Frequently Asked Questions",
+    faq_title: "Questions & Answers",
     faq_1_q: "What is the difference between MB and MiB?",
     faq_1_a: "MB (Megabyte) is an SI unit: 1 MB = 1,000,000 bytes. MiB (Mebibyte) is an IEC binary unit: 1 MiB = 1,048,576 bytes. The difference (~4.9%) is small at low scales but becomes significant at GB and TB ranges.",
     faq_2_q: "Why does my 1 TB hard drive show less space on my computer?",
@@ -329,7 +329,7 @@ defineI18nRoute({
     t_2: "Unidades IEC / Binárias (KiB, MiB, GiB, TiB): 1 KiB = 1.024 bytes — definido pela IEC 60027-2, usado por sistemas operacionais para RAM e sistema de arquivos",
     t_3: "A diferença cresce com a escala: 1 TB (SI) ≈ 0,909 TiB (binário) — um HD de 1 TB aparece como ~931 GiB no Windows ou macOS",
     t_4: "40 unidades suportadas: de Bit e Byte a Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte e todos os equivalentes binários IEC",
-    faq_title: "Perguntas Frequentes",
+    faq_title: "Perguntas e Respostas",
     faq_1_q: "Qual é a diferença entre MB e MiB?",
     faq_1_a: "MB (Megabyte) é uma unidade SI: 1 MB = 1.000.000 bytes. MiB (Mebibyte) é uma unidade IEC binária: 1 MiB = 1.048.576 bytes. A diferença (~4,9%) é pequena em escalas baixas, mas torna-se significativa em faixas de GB e TB.",
     faq_2_q: "Por que meu HD de 1 TB mostra menos espaço no computador?",
@@ -388,7 +388,7 @@ defineI18nRoute({
     t_2: "Unidades IEC / Binarias (KiB, MiB, GiB, TiB): 1 KiB = 1.024 bytes — definido por IEC 60027-2, usado por sistemas operativos para RAM y sistema de archivos",
     t_3: "La brecha crece con la escala: 1 TB (SI) ≈ 0,909 TiB (binario) — un disco de 1 TB aparece como ~931 GiB en Windows o macOS",
     t_4: "40 unidades soportadas: de Bit y Byte a Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte y todos los equivalentes binarios IEC",
-    faq_title: "Preguntas Frecuentes",
+    faq_title: "Preguntas y Respuestas",
     faq_1_q: "¿Cuál es la diferencia entre MB y MiB?",
     faq_1_a: "MB (Megabyte) es una unidad SI: 1 MB = 1.000.000 bytes. MiB (Mebibyte) es una unidad IEC binaria: 1 MiB = 1.048.576 bytes. La diferencia (~4,9%) es pequeña a baja escala pero se vuelve significativa en rangos de GB y TB.",
     faq_2_q: "¿Por qué mi disco duro de 1 TB muestra menos espacio en el ordenador?",
@@ -447,7 +447,7 @@ defineI18nRoute({
     t_2: "Unités IEC / Binaires (KiB, MiB, GiB, TiB) : 1 KiB = 1 024 octets — défini par IEC 60027-2, utilisé par les systèmes d'exploitation pour la RAM et le système de fichiers",
     t_3: "L'écart grandit avec l'échelle : 1 TB (SI) ≈ 0,909 TiB (binaire) — un disque de 1 TB affiche ~931 GiB sous Windows ou macOS",
     t_4: "40 unités supportées : du Bit et Byte au Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte et tous les équivalents binaires IEC",
-    faq_title: "Foire Aux Questions",
+    faq_title: "Questions et Réponses",
     faq_1_q: "Quelle est la différence entre MB et MiB ?",
     faq_1_a: "MB (Megabyte) est une unité SI : 1 MB = 1 000 000 octets. MiB (Mébioctet) est une unité IEC binaire : 1 MiB = 1 048 576 octets. La différence (~4,9 %) est faible à petite échelle mais devient significative aux niveaux GB et TB.",
     faq_2_q: "Pourquoi mon disque dur de 1 To affiche moins d'espace sur mon ordinateur ?",
@@ -506,7 +506,7 @@ defineI18nRoute({
     t_2: "Unità IEC / Binarie (KiB, MiB, GiB, TiB): 1 KiB = 1.024 byte — definito da IEC 60027-2, usato dai sistemi operativi per RAM e file system",
     t_3: "Il divario cresce con la scala: 1 TB (SI) ≈ 0,909 TiB (binario) — un disco da 1 TB appare come ~931 GiB in Windows o macOS",
     t_4: "40 unità supportate: da Bit e Byte a Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte e tutti gli equivalenti binari IEC",
-    faq_title: "Domande Frequenti",
+    faq_title: "Domande e Risposte",
     faq_1_q: "Qual è la differenza tra MB e MiB?",
     faq_1_a: "MB (Megabyte) è un'unità SI: 1 MB = 1.000.000 byte. MiB (Mebibyte) è un'unità IEC binaria: 1 MiB = 1.048.576 byte. La differenza (~4,9%) è piccola a bassa scala ma diventa significativa negli intervalli GB e TB.",
     faq_2_q: "Perché il mio disco da 1 TB mostra meno spazio sul computer?",
@@ -565,7 +565,7 @@ defineI18nRoute({
     t_2: "Unit IEC / Biner (KiB, MiB, GiB, TiB): 1 KiB = 1.024 byte — didefinisikan oleh IEC 60027-2, digunakan oleh sistem operasi untuk RAM dan pelaporan sistem file",
     t_3: "Selisihnya bertumbuh dengan skala: 1 TB (SI) ≈ 0,909 TiB (biner) — drive 1 TB menampilkan ~931 GiB di Windows atau macOS",
     t_4: "40 unit didukung: dari Bit dan Byte hingga Kilobyte, Megabyte, Gigabyte, Terabyte, Petabyte dan semua ekuivalen biner IEC",
-    faq_title: "Pertanyaan yang Sering Diajukan",
+    faq_title: "Tanya Jawab",
     faq_1_q: "Apa perbedaan antara MB dan MiB?",
     faq_1_a: "MB (Megabyte) adalah unit SI: 1 MB = 1.000.000 byte. MiB (Mebibyte) adalah unit biner IEC: 1 MiB = 1.048.576 byte. Perbedaannya (~4,9%) kecil pada skala rendah tetapi menjadi signifikan pada kisaran GB dan TB.",
     faq_2_q: "Mengapa hard drive 1 TB saya menampilkan lebih sedikit ruang di komputer?",
