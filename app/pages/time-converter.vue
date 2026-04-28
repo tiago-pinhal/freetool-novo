@@ -13,6 +13,12 @@ usePageJsonLd({
     t('f_2'),
     t('f_3'),
     t('f_4')
+  ],
+  howToName: t('how_to_use_title'),
+  howToSteps: [
+    { name: t('step_1_title'), text: t('step_1_desc') },
+    { name: t('step_2_title'), text: t('step_2_desc') },
+    { name: t('step_3_title'), text: t('step_3_desc') }
   ]
 })
 
@@ -74,8 +80,26 @@ defineI18nRoute({
     ]"
   >
     <template #info>
-      <p>{{ t('d1') }}</p>
-      <p class="mt-4">{{ t('d2') }}: {{ units.map(u => t(u)).join(', ') }}.</p>
+      <div class="space-y-8">
+        <section>
+          <p class="mb-4">{{ t('d1') }}</p>
+          <p>{{ t('d2') }}: {{ units.map(u => t(u)).join(', ') }}.</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
+            {{ t('how_to_use_title') }}
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
+              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
+              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
+              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
+            </div>
+          </div>
+        </section>
+      </div>
     </template>
 
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -144,6 +168,13 @@ defineI18nRoute({
     to: "To",
     result: "Result",
     err: "Conversion not performed",
+    how_to_use_title: "How to use",
+    step_1_title: "Enter Value",
+    step_1_desc: "Type the time value you want to convert.",
+    step_2_title: "Select Units",
+    step_2_desc: "Choose the source and target time units.",
+    step_3_title: "Copy Result",
+    step_3_desc: "The conversion happens instantly. Use the copy button to send it to your clipboard.",
     see1: "Time Difference",
     see2: "Hours and Minutes Calculator",
     see3: "Date Time Difference",
@@ -176,6 +207,13 @@ defineI18nRoute({
     to: "Para",
     result: "Resultado",
     err: "Conversão não realizada",
+    how_to_use_title: "Como usar",
+    step_1_title: "Inserir Valor",
+    step_1_desc: "Digite o valor de tempo que você deseja converter.",
+    step_2_title: "Selecionar Unidades",
+    step_2_desc: "Escolha as unidades de tempo de origem e destino.",
+    step_3_title: "Copiar Resultado",
+    step_3_desc: "A conversão acontece instantaneamente. Use o botão de copiar para enviar para a área de transferência.",
     see1: "Diferença entre Horas",
     see2: "Calculadora de Horas e Minutos",
     see3: "Diferença entre Datas e Horas",
@@ -208,6 +246,13 @@ defineI18nRoute({
     to: "A",
     result: "Resultado",
     err: "Conversión no realizada",
+    how_to_use_title: "Cómo usar",
+    step_1_title: "Ingresar Valor",
+    step_1_desc: "Escribe el valor de tiempo que deseas convertir.",
+    step_2_title: "Seleccionar Unidades",
+    step_2_desc: "Elige las unidades de tiempo de origen y destino.",
+    step_3_title: "Copiar Resultado",
+    step_3_desc: "La conversión es instantánea. Usa el botón de copiar para enviarlo al portapapeles.",
     see1: "Diferencia entre Horas",
     see2: "Calculadora de Horas y Minutos",
     see3: "Diferencia entre Fechas Y Horas",
@@ -240,6 +285,13 @@ defineI18nRoute({
     to: "À",
     result: "Résultat",
     err: "Conversion non effectuée",
+    how_to_use_title: "Comment utiliser l'outil",
+    step_1_title: "Entrer la Valeur",
+    step_1_desc: "Tapez la valeur de temps que vous souhaitez convertir.",
+    step_2_title: "Sélectionner les Unités",
+    step_2_desc: "Choisissez les unités de temps de départ et d'arrivée.",
+    step_3_title: "Copier le Résultat",
+    step_3_desc: "La conversion est instantanée. Utilisez le bouton de copie pour l'envoyer au presse-papiers.",
     see1: "Différence entre Heures",
     see2: "Calculatrice d'Heures et de Minutes",
     see3: "Différence entre Dates et Heures",
@@ -272,6 +324,13 @@ defineI18nRoute({
     to: "A",
     result: "Risultato",
     err: "Conversione non eseguita",
+    how_to_use_title: "Come usare lo strumento",
+    step_1_title: "Inserisci Valore",
+    step_1_desc: "Digita il valore di tempo che desideri convertire.",
+    step_2_title: "Seleziona Unità",
+    step_2_desc: "Scegli le unità di tempo di origine e destinazione.",
+    step_3_title: "Copia Risultato",
+    step_3_desc: "La conversione è istantanea. Usa il pulsante di copia per inviarlo agli appunti.",
     see1: "Differenza tra Ore",
     see2: "Calcolatrice di Ore e Minuti",
     see3: "Differenza tra Date e Ore",
@@ -304,6 +363,13 @@ defineI18nRoute({
     to: "Ke",
     result: "Hasil",
     err: "Konversi tidak dilakukan",
+    how_to_use_title: "Cara menggunakan alat ini",
+    step_1_title: "Masukkan Nilai",
+    step_1_desc: "Ketik nilai waktu yang ingin Anda konversi.",
+    step_2_title: "Pilih Satuan",
+    step_2_desc: "Pilih satuan waktu asal dan tujuan.",
+    step_3_title: "Salin Hasil",
+    step_3_desc: "Konversi terjadi seketika. Gunakan tombol salin untuk mengirim ke papan klip.",
     see1: "Selisih Waktu",
     see2: "Kalkulator Jam dan Menit",
     see3: "Selisih Tanggal dan Waktu",

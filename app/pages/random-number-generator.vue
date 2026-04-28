@@ -311,7 +311,7 @@ defineI18nRoute({
     step_2_title: "Generate",
     step_2_desc: "Set the quantity, sort order, and click Generate Numbers.",
     step_3_title: "Copy",
-    step_3_desc: "Use the copy button to save the result to your clipboard.",
+    step_3_desc: "Use the copy button to send the result to your clipboard.",
     d1: "Free online tool for generating random numbers with a custom range and quantity. Ideal for raffles, lotteries, games, simulations, software testing, and statistical analysis. Generate unique or repeated numbers with flexible sorting options.",
     features_title: "Key Features",
     f_1: "Custom Range: Set minimum and maximum values to generate numbers within your specific interval.",
