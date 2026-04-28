@@ -243,7 +243,7 @@ defineI18nRoute({
               :key="i"
               class="flex items-start gap-2 bg-base-200/40 p-3 rounded-xl border border-primary/20"
             >
-              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-success shrink-0 mt-0.5" />
               <span>{{ t(`f_${i}`) }}</span>
             </li>
           </ul>
@@ -265,7 +265,7 @@ defineI18nRoute({
           <p class="mb-3">{{ t('use_cases_intro') }}</p>
           <ul class="grid gap-2">
             <li v-for="i in 5" :key="i" class="flex items-start gap-2">
-              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-success shrink-0 mt-0.5" />
               <span>{{ t(`use_${i}`) }}</span>
             </li>
           </ul>
@@ -279,7 +279,7 @@ defineI18nRoute({
           <p class="mb-4">{{ t('brands_desc') }}</p>
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-y-2 gap-x-4 bg-base-200/40 p-4 rounded-xl border border-base-content/10 text-sm">
             <div v-for="b in ['Visa', 'Mastercard', 'American Express', 'Maestro', 'Visa Electron', 'Discover Card', 'JCB', 'Diners Club', 'China UnionPay', 'InstaPayment', 'Bankcard', 'Laser / Solo / Switch']" :key="b" class="flex items-center gap-1.5">
-              <Icon name="heroicons:check-circle-20-solid" class="w-4 h-4 text-primary shrink-0" />
+              <Icon name="heroicons:check-circle-20-solid" class="w-4 h-4 text-success shrink-0" />
               <span>{{ b }}</span>
             </div>
           </div>

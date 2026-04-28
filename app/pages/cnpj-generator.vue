@@ -224,7 +224,7 @@ defineI18nRoute({
               :key="i"
               class="flex items-start gap-2 bg-base-200/40 p-3 rounded-xl border border-primary/20"
             >
-              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-success shrink-0 mt-0.5" />
               <span>{{ t(`f_${i}`) }}</span>
             </li>
           </ul>
@@ -246,7 +246,7 @@ defineI18nRoute({
           <p class="mb-3">{{ t('use_cases_intro') }}</p>
           <ul class="grid gap-2">
             <li v-for="i in 5" :key="i" class="flex items-start gap-2">
-              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-success shrink-0 mt-0.5" />
               <span>{{ t(`use_${i}`) }}</span>
             </li>
           </ul>
@@ -294,7 +294,7 @@ defineI18nRoute({
     quantity: "Quantidade",
     generated_cnpjs: "CNPJs Gerados ({count})",
     copy_all: "Copiar Todos",
-    placeholder: "Clique em Gerar para criar um CNPJ",
+    placeholder: "Clique em Gerar CNPJ para criar um número",
     warning: "Os números gerados são fictícios e destinados exclusivamente a testes.",
     d1: "Ferramenta online gratuita para gerar CNPJ válido para desenvolvedores, testadores de software (QA) e estudantes de programação. Gere números fictícios de registro empresarial com dígitos verificadores matematicamente corretos, em formato pontuado ou somente números. Ideal para testes de sistemas, validação de formulários e ambientes de staging.",
     features_title: "Funcionalidades",
@@ -344,7 +344,7 @@ defineI18nRoute({
     quantity: "Quantity",
     generated_cnpjs: "Generated CNPJs ({count})",
     copy_all: "Copy All",
-    placeholder: "Click Generate to create a CNPJ",
+    placeholder: "Click Generate CNPJ to create a number",
     warning: "The generated numbers are fictitious and intended exclusively for testing purposes.",
     d1: "Free online tool to generate valid CNPJ numbers for developers, software testers (QA), and programming students. Generate fictitious Brazilian company registration numbers with mathematically correct check digits, in formatted or numbers-only format. Ideal for system testing, form validation, and staging environments.",
     features_title: "Features",
@@ -394,7 +394,7 @@ defineI18nRoute({
     quantity: "Cantidad",
     generated_cnpjs: "CNPJs Generados ({count})",
     copy_all: "Copiar Todos",
-    placeholder: "Haz clic en Generar para crear un CNPJ",
+    placeholder: "Haz clic en Generar CNPJ para crear un número",
     warning: "Los números generados son ficticios y están destinados exclusivamente a pruebas.",
     d1: "Herramienta online gratuita para generar CNPJ válido para desarrolladores, testers de software (QA) y estudiantes de programación. Genera números ficticios de registro empresarial brasileño con dígitos verificadores matemáticamente correctos, en formato con puntuación o solo números. Ideal para pruebas de sistemas, validación de formularios y entornos de staging.",
     features_title: "Funcionalidades",
@@ -444,7 +444,7 @@ defineI18nRoute({
     quantity: "Quantité",
     generated_cnpjs: "CNPJs Générés ({count})",
     copy_all: "Tout Copier",
-    placeholder: "Cliquez sur Générer pour créer un CNPJ",
+    placeholder: "Cliquez sur Générer CNPJ pour créer un numéro",
     warning: "Les numéros générés sont fictifs et destinés exclusivement à des fins de test.",
     d1: "Outil en ligne gratuit pour générer des CNPJ valides pour les développeurs, les testeurs de logiciels (QA) et les étudiants en programmation. Générez des numéros fictifs d'enregistrement d'entreprise brésilienne avec des chiffres de contrôle mathématiquement corrects, au format ponctué ou chiffres uniquement. Idéal pour les tests de systèmes, la validation de formulaires et les environnements de staging.",
     features_title: "Fonctionnalités",
@@ -494,7 +494,7 @@ defineI18nRoute({
     quantity: "Quantità",
     generated_cnpjs: "CNPJ Generati ({count})",
     copy_all: "Copia Tutti",
-    placeholder: "Clicca su Genera per creare un CNPJ",
+    placeholder: "Clicca su Genera CNPJ per creare un numero",
     warning: "I numeri generati sono fittizi e destinati esclusivamente a scopi di test.",
     d1: "Strumento online gratuito per generare CNPJ validi per sviluppatori, tester di software (QA) e studenti di programmazione. Genera numeri fittizi di registro aziendale brasiliano con cifre di controllo matematicamente corrette, in formato punteggiato o solo numeri. Ideale per test di sistemi, validazione di moduli e ambienti di staging.",
     features_title: "Funzionalità",
@@ -544,7 +544,7 @@ defineI18nRoute({
     quantity: "Jumlah",
     generated_cnpjs: "CNPJ yang Dibuat ({count})",
     copy_all: "Salin Semua",
-    placeholder: "Klik Buat untuk membuat CNPJ",
+    placeholder: "Klik Buat CNPJ untuk membuat nomor",
     warning: "Nomor yang dihasilkan bersifat fiktif dan ditujukan semata-mata untuk keperluan pengujian.",
     d1: "Alat online gratis untuk menghasilkan CNPJ valid bagi pengembang, penguji perangkat lunak (QA), dan mahasiswa pemrograman. Buat nomor fiktif registrasi perusahaan Brasil dengan digit verifikasi yang benar secara matematis, dalam format berpungtuasi atau hanya angka. Ideal untuk pengujian sistem, validasi formulir, dan lingkungan staging.",
     features_title: "Fitur",

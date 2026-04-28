@@ -275,7 +275,7 @@ defineI18nRoute({
               :key="i"
               class="flex items-start gap-2 bg-base-200/40 p-3 rounded-xl border border-primary/20"
             >
-              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-success shrink-0 mt-0.5" />
               <span>{{ t(`f_${i}`) }}</span>
             </li>
           </ul>
@@ -297,7 +297,7 @@ defineI18nRoute({
           <p class="mb-3">{{ t('use_cases_intro') }}</p>
           <ul class="grid gap-2">
             <li v-for="i in 5" :key="i" class="flex items-start gap-2">
-              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-primary shrink-0 mt-0.5" />
+              <Icon name="heroicons:check-circle-20-solid" class="w-5 h-5 text-success shrink-0 mt-0.5" />
               <span>{{ t(`use_${i}`) }}</span>
             </li>
           </ul>
@@ -348,7 +348,7 @@ defineI18nRoute({
     quantity: "Quantidade",
     generated_cpfs: "CPFs Gerados ({count})",
     copy_all: "Copiar Todos",
-    placeholder: "Clique em Gerar para criar um CPF",
+    placeholder: "Clique em Gerar CPF para criar um número",
     warning: "Os números gerados são fictícios e destinados exclusivamente a testes.",
     d1: "Ferramenta online gratuita para gerar CPF válido para desenvolvedores, testadores de software (QA) e estudantes de programação. Gere números fictícios com dígitos verificadores matematicamente corretos, por estado brasileiro, em formato pontuado ou somente números. Ideal para testes de sistemas, validação de formulários e ambientes de desenvolvimento.",
     features_title: "Funcionalidades",
@@ -411,7 +411,7 @@ defineI18nRoute({
     quantity: "Quantity",
     generated_cpfs: "Generated CPFs ({count})",
     copy_all: "Copy All",
-    placeholder: "Click Generate to create a CPF",
+    placeholder: "Click Generate CPF to create a number",
     warning: "The generated numbers are fictitious and intended exclusively for testing purposes.",
     d1: "Free online tool to generate valid CPF numbers for developers, software testers (QA), and programming students. Generate fictitious numbers with mathematically correct check digits, by Brazilian state, in formatted or numbers-only format. Ideal for system testing, form validation, and development environments.",
     features_title: "Features",
@@ -474,7 +474,7 @@ defineI18nRoute({
     quantity: "Cantidad",
     generated_cpfs: "CPFs Generados ({count})",
     copy_all: "Copiar Todos",
-    placeholder: "Haz clic en Generar para crear un CPF",
+    placeholder: "Haz clic en Generar CPF para crear un número",
     warning: "Los números generados son ficticios y están destinados exclusivamente a pruebas.",
     d1: "Herramienta online gratuita para generar CPF válido para desarrolladores, testers de software (QA) y estudiantes de programación. Genera números ficticios con dígitos verificadores matemáticamente correctos, por estado brasileño, en formato con puntuación o solo números. Ideal para pruebas de sistemas, validación de formularios y entornos de desarrollo.",
     features_title: "Funcionalidades",
@@ -537,7 +537,7 @@ defineI18nRoute({
     quantity: "Quantité",
     generated_cpfs: "CPFs Générés ({count})",
     copy_all: "Tout Copier",
-    placeholder: "Cliquez sur Générer pour créer un CPF",
+    placeholder: "Cliquez sur Générer CPF pour créer un numéro",
     warning: "Les numéros générés sont fictifs et destinés exclusivement à des fins de test.",
     d1: "Outil en ligne gratuit pour générer des CPF valides pour les développeurs, les testeurs de logiciels (QA) et les étudiants en programmation. Générez des numéros fictifs avec des chiffres de contrôle mathématiquement corrects, par état brésilien, au format ponctué ou chiffres uniquement. Idéal pour les tests de systèmes, la validation de formulaires et les environnements de développement.",
     features_title: "Fonctionnalités",
@@ -600,7 +600,7 @@ defineI18nRoute({
     quantity: "Quantità",
     generated_cpfs: "CPF Generati ({count})",
     copy_all: "Copia Tutti",
-    placeholder: "Clicca su Genera per creare un CPF",
+    placeholder: "Clicca su Genera CPF per creare un numero",
     warning: "I numeri generati sono fittizi e destinati esclusivamente a scopi di test.",
     d1: "Strumento online gratuito per generare CPF validi per sviluppatori, tester di software (QA) e studenti di programmazione. Genera numeri fittizi con cifre di controllo matematicamente corrette, per stato brasiliano, in formato punteggiato o solo numeri. Ideale per test di sistemi, validazione di moduli e ambienti di sviluppo.",
     features_title: "Funzionalità",
@@ -663,7 +663,7 @@ defineI18nRoute({
     quantity: "Jumlah",
     generated_cpfs: "CPF yang Dibuat ({count})",
     copy_all: "Salin Semua",
-    placeholder: "Klik Buat untuk membuat CPF",
+    placeholder: "Klik Buat CPF untuk membuat nomor",
     warning: "Nomor yang dihasilkan bersifat fiktif dan ditujukan semata-mata untuk keperluan pengujian.",
     d1: "Alat online gratis untuk menghasilkan CPF valid bagi pengembang, penguji perangkat lunak (QA), dan mahasiswa pemrograman. Buat nomor fiktif dengan digit verifikasi yang benar secara matematis, berdasarkan negara bagian Brasil, dalam format berpungtuasi atau hanya angka. Ideal untuk pengujian sistem, validasi formulir, dan lingkungan pengembangan.",
     features_title: "Fitur",
