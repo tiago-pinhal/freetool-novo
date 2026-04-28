@@ -118,7 +118,7 @@ defineI18nRoute({
     :description="t('meta')"
     :show-ads="state.ads"
     :wiki-url="`https://${locale}.wikipedia.org/wiki/JSON`"
-    :wiki-label="'Wikipedia (JSON)'"
+    wiki-label="JSON"
     :see-also-links="[
       { label: t('see1'), to: 'csv-to-json-converter' },
       { label: t('see2'), to: 'json-viewer' },
@@ -233,8 +233,8 @@ defineI18nRoute({
     <template #info>
       <div class="space-y-8">
         <div>
-          <p class="text-lg">{{ t('d1') }}</p>
-          <p class="text-lg">{{ t('d2') }}</p>
+          <p>{{ t('d1') }}</p>
+          <p>{{ t('d2') }}</p>
         </div>
 
         <UseCaseSection

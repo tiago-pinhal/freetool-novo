@@ -77,7 +77,7 @@ defineI18nRoute({
     :description="t('meta')"
     :show-ads="!!state.md5"
     :wiki-url="`https://${locale}.wikipedia.org/wiki/MD5`"
-    :wiki-label="'MD5'"
+    wiki-label="MD5"
     :see-also-links="[
       { label: t('see1'), to: 'bcrypt-generator' },
       { label: t('see2'), to: 'json-viewer' },

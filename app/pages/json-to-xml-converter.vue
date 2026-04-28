@@ -189,7 +189,7 @@ defineI18nRoute({
     <template #info>
       <div class="space-y-12">
         <div>
-          <p class="text-lg">{{ t('d1') }}</p>
+          <p>{{ t('d1') }}</p>
         </div>
 
         <!-- How It Works -->
