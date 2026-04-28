@@ -149,7 +149,7 @@ defineI18nRoute({
             <p class="mb-4">{{ t('uc_intro') }}</p>
             <ul class="grid sm:grid-cols-2 gap-4 list-none p-0 m-0">
               <li v-for="item in useCases" :key="item" class="flex gap-3">
-                <Icon name="heroicons:check-circle" class="text-primary w-5 h-5 mt-0.5 shrink-0" />
+                <Icon name="heroicons:check-circle-20-solid" class="text-success w-5 h-5 mt-0.5 shrink-0" />
                 <span>{{ item }}</span>
               </li>
             </ul>

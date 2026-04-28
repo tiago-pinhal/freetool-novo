@@ -169,7 +169,7 @@ defineI18nRoute({
             <p class="mb-4">{{ t('uc_intro') }}</p>
             <ul class="grid sm:grid-cols-2 gap-4 list-none p-0 m-0">
               <li v-for="item in useCases" :key="item" class="flex gap-3">
-                <Icon name="heroicons:check-circle" class="text-primary w-5 h-5 mt-0.5 shrink-0" />
+                <Icon name="heroicons:check-circle-20-solid" class="text-success w-5 h-5 mt-0.5 shrink-0" />
                 <span>{{ item }}</span>
               </li>
             </ul>
@@ -200,7 +200,7 @@ defineI18nRoute({
           <div class="bg-base-200/30 rounded-3xl p-6 border border-base-content/20">
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-x-4 gap-y-2">
               <div v-for="[abbr, key] in units" :key="abbr" class="flex items-center gap-2">
-                <Icon name="heroicons:check-circle" class="text-primary w-4 h-4 shrink-0" />
+                <Icon name="heroicons:check-circle-20-solid" class="text-success w-4 h-4 shrink-0" />
                 <span class="font-mono text-xs text-primary font-bold">{{ abbr }}</span>
                 <span class="text-base-content/60 text-sm">{{ t(key) }}</span>
               </div>

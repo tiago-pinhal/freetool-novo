@@ -232,21 +232,21 @@ defineI18nRoute({
           <div class="bg-base-200/30 rounded-3xl p-8 border border-base-content/20">
             <ul class="grid sm:grid-cols-2 gap-6 list-none p-0 m-0">
               <li class="flex gap-4">
-                <div class="mt-1"><Icon name="heroicons:check-circle" class="text-primary w-5 h-5" /></div>
+                <div class="mt-1"><Icon name="heroicons:check-circle-20-solid" class="text-success w-5 h-5" /></div>
                 <div>
                   <strong class="text-base-content block mb-1 uppercase text-xs tracking-widest font-black">{{ t('uc_1_title') }}</strong>
                   <span>{{ t('uc_1_desc') }}</span>
                 </div>
               </li>
               <li class="flex gap-4">
-                <div class="mt-1"><Icon name="heroicons:check-circle" class="text-primary w-5 h-5" /></div>
+                <div class="mt-1"><Icon name="heroicons:check-circle-20-solid" class="text-success w-5 h-5" /></div>
                 <div>
                   <strong class="text-base-content block mb-1 uppercase text-xs tracking-widest font-black">{{ t('uc_2_title') }}</strong>
                   <span>{{ t('uc_2_desc') }}</span>
                 </div>
               </li>
               <li class="flex gap-4 sm:col-span-2">
-                <div class="mt-1"><Icon name="heroicons:check-circle" class="text-primary w-5 h-5" /></div>
+                <div class="mt-1"><Icon name="heroicons:check-circle-20-solid" class="text-success w-5 h-5" /></div>
                 <div>
                   <strong class="text-base-content block mb-1 uppercase text-xs tracking-widest font-black">{{ t('uc_3_title') }}</strong>
                   <span>{{ t('uc_3_desc') }}</span>
