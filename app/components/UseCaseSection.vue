@@ -18,7 +18,7 @@ withDefaults(defineProps<Props>(), {
 <template>
   <section v-if="items.length > 0" class="pt-2">
     <h2 class="text-2xl font-bold text-base-content mb-6 flex items-center gap-2">
-      <Icon name="heroicons:briefcase-20-solid" class="text-primary w-6 h-6" aria-hidden="true" />
+      <Icon name="heroicons:check-badge-20-solid" class="text-primary w-6 h-6" aria-hidden="true" />
       {{ title }}
     </h2>
     <p v-if="description" class="mb-6 text-base-content/80 leading-relaxed">
