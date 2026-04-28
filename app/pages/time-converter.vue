@@ -14,11 +14,15 @@ usePageJsonLd({
     t('f_3'),
     t('f_4')
   ],
-  howToName: t('how_to_use_title'),
+  howToName: t('how_it_works_title'),
   howToSteps: [
     { name: t('step_1_title'), text: t('step_1_desc') },
     { name: t('step_2_title'), text: t('step_2_desc') },
     { name: t('step_3_title'), text: t('step_3_desc') }
+  ],
+  faq: [
+    { question: t('faq_1_q'), answer: t('faq_1_a') },
+    { question: t('faq_2_q'), answer: t('faq_2_a') }
   ]
 })
 
@@ -71,7 +75,7 @@ defineI18nRoute({
     :description="t('meta')"
     :show-ads="!!output"
     :wiki-url="`https://${locale}.wikipedia.org/wiki/Unit_of_time`"
-    :wiki-label="'Wikipedia (Units of Time)'"
+    wiki-label="Units of Time"
     :see-also-links="[
       { label: t('see1'), to: 'date-time-tools' },
       { label: t('see2'), to: 'date-time-tools' },
@@ -81,24 +85,35 @@ defineI18nRoute({
   >
     <template #info>
       <div class="space-y-8">
-        <section>
+        <div>
           <p class="mb-4">{{ t('d1') }}</p>
           <p>{{ t('d2') }}: {{ units.map(u => t(u)).join(', ') }}.</p>
-        </section>
+        </div>
 
-        <section>
-          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
-            {{ t('how_to_use_title') }}
-          </h2>
-          <div class="grid sm:grid-cols-3 gap-4">
-            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
-              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
-              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
-              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
-            </div>
-          </div>
-        </section>
+        <UseCaseSection
+          :title="t('use_cases_title')"
+          :items="[
+            { title: t('uc_1_title'), description: t('uc_1_desc') },
+            { title: t('uc_2_title'), description: t('uc_2_desc') }
+          ]"
+        />
+
+        <HowToSection
+          :title="t('how_it_works_title')"
+          :items="[
+            { title: t('step_1_title'), description: t('step_1_desc') },
+            { title: t('step_2_title'), description: t('step_2_desc') },
+            { title: t('step_3_title'), description: t('step_3_desc') }
+          ]"
+        />
+
+        <FaqSection
+          :title="t('faq_title')"
+          :items="[
+            { question: t('faq_1_q'), answer: t('faq_1_a') },
+            { question: t('faq_2_q'), answer: t('faq_2_a') }
+          ]"
+        />
       </div>
     </template>
 
@@ -168,13 +183,23 @@ defineI18nRoute({
     to: "To",
     result: "Result",
     err: "Conversion not performed",
-    how_to_use_title: "How to use",
+    how_it_works_title: "How It Works",
     step_1_title: "Enter Value",
     step_1_desc: "Type the time value you want to convert.",
     step_2_title: "Select Units",
     step_2_desc: "Choose the source and target time units.",
     step_3_title: "Copy Result",
     step_3_desc: "The conversion happens instantly. Use the copy button to send it to your clipboard.",
+    use_cases_title: "Use Cases",
+    uc_1_title: "Project Planning",
+    uc_1_desc: "Quickly estimate project durations by converting weeks and months into hours or days for precise scheduling.",
+    uc_2_title: "Scientific Calculations",
+    uc_2_desc: "Convert nanoseconds and microseconds into standard units for technical documentation and experiments.",
+    faq_title: "Questions & Answers",
+    faq_1_q: "How are months and years handled?",
+    faq_1_a: "Because months and years have varying lengths, we use standard average values for conversion. This ensures consistent results for estimations and general planning.",
+    faq_2_q: "Which units are supported?",
+    faq_2_a: "We support 13 units, ranging from nanoseconds up to millenniums, including centuries and decades.",
     see1: "Time Difference",
     see2: "Hours and Minutes Calculator",
     see3: "Date Time Difference",
@@ -207,13 +232,23 @@ defineI18nRoute({
     to: "Para",
     result: "Resultado",
     err: "Conversão não realizada",
-    how_to_use_title: "Como usar",
+    how_it_works_title: "Como Funciona",
     step_1_title: "Inserir Valor",
     step_1_desc: "Digite o valor de tempo que você deseja converter.",
     step_2_title: "Selecionar Unidades",
     step_2_desc: "Escolha as unidades de tempo de origem e destino.",
     step_3_title: "Copiar Resultado",
     step_3_desc: "A conversão acontece instantaneamente. Use o botão de copiar para enviar para a área de transferência.",
+    use_cases_title: "Casos de Uso",
+    uc_1_title: "Planejamento de Projetos",
+    uc_1_desc: "Estime durações de projetos rapidamente convertendo semanas e meses em horas ou dias para cronogramas precisos.",
+    uc_2_title: "Cálculos Científicos",
+    uc_2_desc: "Converta nanossegundos e microssegundos em unidades padrão para documentação técnica e experimentos.",
+    faq_title: "Perguntas e Respostas",
+    faq_1_q: "Como meses e anos são tratados?",
+    faq_1_a: "Como meses e anos possuem durações variadas, utilizamos valores médios padrão para a conversão. Isso garante resultados consistentes para estimativas e planejamentos gerais.",
+    faq_2_q: "Quais unidades são suportadas?",
+    faq_2_a: "Suportamos 13 unidades, desde nanossegundos até milênios, incluindo séculos e décadas.",
     see1: "Diferença entre Horas",
     see2: "Calculadora de Horas e Minutos",
     see3: "Diferença entre Datas e Horas",
@@ -246,15 +281,25 @@ defineI18nRoute({
     to: "A",
     result: "Resultado",
     err: "Conversión no realizada",
-    how_to_use_title: "Cómo usar",
+    how_it_works_title: "Cómo Funciona",
     step_1_title: "Ingresar Valor",
     step_1_desc: "Escribe el valor de tiempo que deseas convertir.",
     step_2_title: "Seleccionar Unidades",
     step_2_desc: "Elige las unidades de tiempo de origen y destino.",
     step_3_title: "Copiar Resultado",
     step_3_desc: "La conversión es instantánea. Usa el botón de copiar para enviarlo al portapapeles.",
+    use_cases_title: "Casos de Uso",
+    uc_1_title: "Planificación de Proyectos",
+    uc_1_desc: "Estima rápidamente la duración de los proyectos convirtiendo semanas y meses en horas o días para cronogramas precisos.",
+    uc_2_title: "Cálculos Científicos",
+    uc_2_desc: "Convierte nanosegundos y microsegundos en unidades estándar para documentación técnica y experimentos.",
+    faq_title: "Preguntas y Respuestas",
+    faq_1_q: "¿Cómo se manejan los meses y años?",
+    faq_1_a: "Debido a que los meses y años tienen duraciones variables, utilizamos valores promedio estándar para la conversión. Esto garantiza resultados consistentes para estimaciones y planificación general.",
+    faq_2_q: "¿Qué unidades son compatibles?",
+    faq_2_a: "Admitimos 13 unidades, desde nanosegundos hasta milenios, incluyendo siglos y décadas.",
     see1: "Diferencia entre Horas",
-    see2: "Calculadora de Horas y Minutos",
+    see2: "Calculadora de Horas e Minutos",
     see3: "Diferencia entre Fechas Y Horas",
     see4: "Generador de Crontab",
     f_1: "Convierte entre 13 unidades de tiempo",
@@ -285,13 +330,23 @@ defineI18nRoute({
     to: "À",
     result: "Résultat",
     err: "Conversion non effectuée",
-    how_to_use_title: "Comment utiliser l'outil",
+    how_it_works_title: "Comment Ça Marche",
     step_1_title: "Entrer la Valeur",
     step_1_desc: "Tapez la valeur de temps que vous souhaitez convertir.",
     step_2_title: "Sélectionner les Unités",
     step_2_desc: "Choisissez les unités de temps de départ et d'arrivée.",
     step_3_title: "Copier le Résultat",
     step_3_desc: "La conversion est instantanée. Utilisez le bouton de copie pour l'envoyer au presse-papiers.",
+    use_cases_title: "Cas d'Utilisation",
+    uc_1_title: "Planification de Projet",
+    uc_1_desc: "Estimez rapidement la durée des projets en convertissant les semaines et les mois en heures ou en jours pour des plannings précis.",
+    uc_2_title: "Calculs Scientifiques",
+    uc_2_desc: "Convertissez les nanosecondes et les microsecondes en unités standard pour la documentation technique et les expériences.",
+    faq_title: "Questions et Réponses",
+    faq_1_q: "Comment les mois et les années sont-ils gérés ?",
+    faq_1_a: "Comme les mois et les années ont des durées variables, nous utilisons des valeurs moyennes standard pour la conversion. Cela garantit des résultats cohérents pour les estimations et la planification générale.",
+    faq_2_q: "Quelles unités sont prises en charge ?",
+    faq_2_a: "Nous prenons en charge 13 unités, allant de la nanoseconde au millénaire, y compris les siècles et les décennies.",
     see1: "Différence entre Heures",
     see2: "Calculatrice d'Heures et de Minutes",
     see3: "Différence entre Dates et Heures",
@@ -324,19 +379,29 @@ defineI18nRoute({
     to: "A",
     result: "Risultato",
     err: "Conversione non eseguita",
-    how_to_use_title: "Come usare lo strumento",
+    how_it_works_title: "Come Funziona",
     step_1_title: "Inserisci Valore",
     step_1_desc: "Digita il valore di tempo che desideri convertire.",
     step_2_title: "Seleziona Unità",
     step_2_desc: "Scegli le unità di tempo di origine e destinazione.",
     step_3_title: "Copia Risultato",
     step_3_desc: "La conversione è istantanea. Usa il pulsante di copia per inviarlo agli appunti.",
+    use_cases_title: "Casi d'Uso",
+    uc_1_title: "Pianificazione del Progetto",
+    uc_1_desc: "Stima rapidamente la durata dei progetti convertendo settimane e mesi in ore o giorni per programmi precisi.",
+    uc_2_title: "Calcoli Scientifici",
+    uc_2_desc: "Converti nanosecondi e microsecondi in unità standard per documentazione tecnica ed esperimenti.",
+    faq_title: "Domande e Risposte",
+    faq_1_q: "Come vengono gestiti mesi e anni?",
+    faq_1_a: "Poiché mesi e anni hanno lunghezze variabili, utilizziamo valori medi standard per la conversione. Ciò garantisce risultati coerenti per stime e pianificazione generale.",
+    faq_2_q: "Quali unità sono supportate?",
+    faq_2_a: "Supportiamo 13 unità, dai nanosecondi ai millenni, inclusi secoli e decenni.",
     see1: "Differenza tra Ore",
     see2: "Calcolatrice di Ore e Minuti",
     see3: "Differenza tra Date e Ore",
     see4: "Generatore di Crontab",
     f_1: "Converti tra 13 unità di tempo",
-    f_2: "Conversione istantanea in tempo reale",
+    f_2: "Conversione istantanea in tempo real e",
     f_3: "Supporta dai nanosecondi ai millenni",
     f_4: "Elaborazione nel browser — nessun dato inviato ai server"
   },
@@ -363,13 +428,23 @@ defineI18nRoute({
     to: "Ke",
     result: "Hasil",
     err: "Konversi tidak dilakukan",
-    how_to_use_title: "Cara menggunakan alat ini",
+    how_it_works_title: "Cara Kerja",
     step_1_title: "Masukkan Nilai",
     step_1_desc: "Ketik nilai waktu yang ingin Anda konversi.",
     step_2_title: "Pilih Satuan",
     step_2_desc: "Pilih satuan waktu asal dan tujuan.",
     step_3_title: "Salin Hasil",
     step_3_desc: "Konversi terjadi seketika. Gunakan tombol salin untuk mengirim ke papan klip.",
+    use_cases_title: "Contoh Penggunaan",
+    uc_1_title: "Perencanaan Proyek",
+    uc_1_desc: "Perkirakan durasi proyek dengan cepat dengan mengonversi minggu dan bulan menjadi jam atau hari untuk jadwal yang tepat.",
+    uc_2_title: "Perhitungan Ilmiah",
+    uc_2_desc: "Konversikan nanodetik dan mikrodetik ke satuan standar untuk dokumentasi teknis dan eksperimen.",
+    faq_title: "Tanya Jawab",
+    faq_1_q: "Bagaimana bulan dan tahun ditangani?",
+    faq_1_a: "Karena bulan dan tahun memiliki panjang yang bervariasi, kami menggunakan nilai rata-rata standar untuk konversi. Ini memastikan hasil yang konsisten untuk estimasi dan perencanaan umum.",
+    faq_2_q: "Satuan mana yang didukung?",
+    faq_2_a: "Kami mendukung 13 satuan, mulai dari nanodetik hingga milenium, termasuk abad dan dekade.",
     see1: "Selisih Waktu",
     see2: "Kalkulator Jam dan Menit",
     see3: "Selisih Tanggal dan Waktu",

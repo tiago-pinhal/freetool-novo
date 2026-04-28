@@ -10,11 +10,15 @@ usePageJsonLd({
     t('f_3'),
     t('f_4')
   ],
-  howToName: t('how_to_use_title'),
+  howToName: t('how_it_works_title'),
   howToSteps: [
     { name: t('step_1_title'), text: t('step_1_desc') },
     { name: t('step_2_title'), text: t('step_2_desc') },
     { name: t('step_3_title'), text: t('step_3_desc') }
+  ],
+  faq: [
+    { question: t('faq_1_q'), answer: t('faq_1_a') },
+    { question: t('faq_2_q'), answer: t('faq_2_a') }
   ]
 })
 
@@ -58,7 +62,7 @@ defineI18nRoute({
     :description="t('meta')"
     :show-ads="!!state.output"
     :wiki-url="`https://${locale}.wikipedia.org/wiki/URL_encoding`"
-    :wiki-label="'Wikipedia (URL Encoding)'"
+    wiki-label="URL Encoding"
     :see-also-links="[
       { label: t('see1'), to: 'less-to-css-converter' },
       { label: t('see2'), to: 'xml-to-json-converter' },
@@ -68,23 +72,34 @@ defineI18nRoute({
   >
     <template #info>
       <div class="space-y-8">
-        <section>
-          <p class="mb-4">{{ t('d1') }}</p>
-        </section>
+        <div>
+          <p>{{ t('d1') }}</p>
+        </div>
 
-        <section>
-          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
-            {{ t('how_to_use_title') }}
-          </h2>
-          <div class="grid sm:grid-cols-3 gap-4">
-            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
-              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
-              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
-              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
-            </div>
-          </div>
-        </section>
+        <UseCaseSection
+          :title="t('use_cases_title')"
+          :items="[
+            { title: t('uc_1_title'), description: t('uc_1_desc') },
+            { title: t('uc_2_title'), description: t('uc_2_desc') }
+          ]"
+        />
+
+        <HowToSection
+          :title="t('how_it_works_title')"
+          :items="[
+            { title: t('step_1_title'), description: t('step_1_desc') },
+            { title: t('step_2_title'), description: t('step_2_desc') },
+            { title: t('step_3_title'), description: t('step_3_desc') }
+          ]"
+        />
+
+        <FaqSection
+          :title="t('faq_title')"
+          :items="[
+            { question: t('faq_1_q'), answer: t('faq_1_a') },
+            { question: t('faq_2_q'), answer: t('faq_2_a') }
+          ]"
+        />
       </div>
     </template>
 
@@ -143,13 +158,23 @@ defineI18nRoute({
     in: "Enter the URL here",
     encode: "Encode",
     decode: "Decode",
-    how_to_use_title: "How to use",
+    how_it_works_title: "How It Works",
     step_1_title: "Enter URL",
     step_1_desc: "Paste or type the URL you want to encode or decode.",
     step_2_title: "Choose Action",
     step_2_desc: "Click 'Encode' to format for web use or 'Decode' to revert.",
     step_3_title: "Copy Result",
     step_3_desc: "The result appears instantly. Use the copy button to send it to your clipboard.",
+    use_cases_title: "Use Cases",
+    uc_1_title: "API Query Parameters",
+    uc_1_desc: "Encode keys and values in query strings to ensure special characters don't break the URL structure.",
+    uc_2_title: "Safe Data Transmission",
+    uc_2_desc: "Ensure that characters like spaces, ampersands, and slashes are correctly handled by web servers.",
+    faq_title: "Questions & Answers",
+    faq_1_q: "What is URL encoding?",
+    faq_1_a: "URL encoding, also known as percent-encoding, is a mechanism for encoding information in a Uniform Resource Identifier (URI).",
+    faq_2_q: "When should I use URL decoding?",
+    faq_2_a: "Use it when you have a URL containing percent signs (e.g., %20) and you want to see the original characters (e.g., spaces).",
     see1: "LESS to CSS Converter",
     see2: "XML to JSON Converter",
     see3: "JSON to XML Converter",
@@ -166,13 +191,23 @@ defineI18nRoute({
     in: "Insira a URL aqui",
     encode: "Codificar",
     decode: "Decodificar",
-    how_to_use_title: "Como usar",
+    how_it_works_title: "Como Funciona",
     step_1_title: "Inserir URL",
     step_1_desc: "Cole ou digite a URL que você deseja codificar ou decodificar.",
     step_2_title: "Escolher Ação",
     step_2_desc: "Clique em 'Codificar' para formatar ou 'Decodificar' para reverter.",
     step_3_title: "Copiar Resultado",
     step_3_desc: "O resultado aparece na hora. Use o botão de copiar para enviar para a área de transferência.",
+    use_cases_title: "Casos de Uso",
+    uc_1_title: "Parâmetros de Consulta de API",
+    uc_1_desc: "Codifique chaves e valores em strings de consulta para garantir que caracteres especiais não quebrem a estrutura da URL.",
+    uc_2_title: "Transmissão Segura de Dados",
+    uc_2_desc: "Garanta que caracteres como espaços, e-comerciais e barras sejam processados corretamente pelos servidores web.",
+    faq_title: "Perguntas e Respostas",
+    faq_1_q: "O que é codificação de URL?",
+    faq_1_a: "A codificação de URL, também conhecida como percent-encoding, é um mecanismo para codificar informações em um Identificador Uniforme de Recursos (URI).",
+    faq_2_q: "Quando devo usar a decodificação de URL?",
+    faq_2_a: "Use quando você tiver uma URL contendo sinais de porcentagem (ex: %20) e quiser ver os caracteres originais (ex: espaços).",
     see1: "Conversor de LESS para CSS",
     see2: "Conversor de XML para JSON",
     see3: "Conversor de JSON para XML",
@@ -189,13 +224,23 @@ defineI18nRoute({
     in: "Ingresa la URL aquí",
     encode: "Codificar",
     decode: "Decodificar",
-    how_to_use_title: "Cómo usar",
+    how_it_works_title: "Cómo Funciona",
     step_1_title: "Ingresar URL",
     step_1_desc: "Pega o escribe la URL que deseas codificar o decodificar.",
     step_2_title: "Elegir Acción",
     step_2_desc: "Haz clic en 'Codificar' para formatear o 'Decodificar' para revertir.",
     step_3_title: "Copiar Resultado",
     step_3_desc: "El resultado aparece al instante. Usa el botón de copiar para enviarlo al portapapeles.",
+    use_cases_title: "Casos de Uso",
+    uc_1_title: "Parámetros de Consulta de API",
+    uc_1_desc: "Codifica claves y valores en cadenas de consulta para asegurar que los caracteres especiales no rompan la estructura de la URL.",
+    uc_2_title: "Transmisión Segura de Datos",
+    uc_2_desc: "Asegura que los caracteres como espacios, ampersands y barras sean manejados correctamente por los servidores web.",
+    faq_title: "Preguntas y Respuestas",
+    faq_1_q: "¿Qué es la codificación de URL?",
+    faq_1_a: "La codificación de URL, también conocida como percent-encoding, es un mecanismo para codificar información en un Identificador de Recursos Uniforme (URI).",
+    faq_2_q: "¿Cuándo debo usar la decodificación de URL?",
+    faq_2_a: "Úsala cuando tengas una URL que contenga signos de porcentaje (ej: %20) y quieras ver los caracteres originales (ej: espacios).",
     see1: "Convertidor de LESS a CSS",
     see2: "Convertidor de XML a JSON",
     see3: "Convertidor de JSON a XML",
@@ -212,13 +257,23 @@ defineI18nRoute({
     in: "Saisissez l'URL ici",
     encode: "Encoder",
     decode: "Décoder",
-    how_to_use_title: "Comment utiliser l'outil",
+    how_it_works_title: "Comment Ça Marche",
     step_1_title: "Entrer l'URL",
     step_1_desc: "Collez ou tapez l'URL que vous souhaitez encoder ou décoder.",
     step_2_title: "Choisir l'Action",
     step_2_desc: "Cliquez sur 'Encoder' pour formater ou 'Décoder' pour rétablir.",
     step_3_title: "Copier le Résultat",
     step_3_desc: "Le résultat apparaît instantanément. Utilisez le bouton de copie pour l'envoyer au presse-papiers.",
+    use_cases_title: "Cas d'Utilisation",
+    uc_1_title: "Paramètres de Requête API",
+    uc_1_desc: "Encodez les clés et les valeurs dans les chaînes de requête pour éviter que les caractères spéciaux ne rompent la structure de l'URL.",
+    uc_2_title: "Transmission Sécurisée des Données",
+    uc_2_desc: "Assurez-vous que les caractères tels que les espaces, les esperluettes et les barres obliques sont correctement gérés par les serveurs web.",
+    faq_title: "Questions et Réponses",
+    faq_1_q: "Qu'est-be que l'encodage d'URL ?",
+    faq_1_a: "L'encodage d'URL, également appelé percent-encoding, est un mécanisme d'encodage d'informations dans un identifiant de ressource uniforme (URI).",
+    faq_2_q: "Quand dois-je utiliser le décodage d'URL ?",
+    faq_2_a: "Utilisez-le lorsque vous avez une URL contenant des signes de pourcentage (ex : %20) et que vous souhaitez voir les caractères originaux (ex : espaces).",
     see1: "Convertisseur de LESS vers CSS",
     see2: "Convertisseur de XML vers JSON",
     see3: "Convertisseur de JSON vers XML",
@@ -235,13 +290,23 @@ defineI18nRoute({
     in: "Inserisci l'URL qui",
     encode: "Codifica",
     decode: "Decodifica",
-    how_to_use_title: "Come usare lo strumento",
+    how_it_works_title: "Come Funziona",
     step_1_title: "Inserisci URL",
     step_1_desc: "Incolla o digita l'URL che desideri codificare o decodificare.",
     step_2_title: "Scegli Azione",
     step_2_desc: "Fai clic su 'Codifica' per formattare o 'Decodifica' per ripristinare.",
     step_3_title: "Copia Risultato",
     step_3_desc: "Il risultato appare all'istante. Usa il pulsante di copia per inviarlo agli appunti.",
+    use_cases_title: "Casi d'Uso",
+    uc_1_title: "Parametri di Query API",
+    uc_1_desc: "Codifica chiavi e valori nelle stringhe di query per garantire che i caratteri speciali non interrompano la struttura dell'URL.",
+    uc_2_title: "Trasmissione Sicura dei Dati",
+    uc_2_desc: "Assicura che i caratteri come spazi, e-commerciali e barre siano gestiti correttamente dai server web.",
+    faq_title: "Domande e Risposte",
+    faq_1_q: "Cos'è la codifica URL?",
+    faq_1_a: "La codifica URL, nota anche come percent-encoding, è un meccanismo per codificare informazioni in un Uniform Resource Identifier (URI).",
+    faq_2_q: "Quando dovrei usare la decodifica URL?",
+    faq_2_a: "Usala quando hai un URL contenente segni di percentuale (es. %20) and you want to see the original characters (e.g., spaces).",
     see1: "Convertitore da LESS a CSS",
     see2: "Convertitore da XML a JSON",
     see3: "Convertitore da JSON a XML",
@@ -258,13 +323,23 @@ defineI18nRoute({
     in: "Masukkan URL di sini",
     encode: "Enkode",
     decode: "Dekode",
-    how_to_use_title: "Cara menggunakan alat ini",
+    how_it_works_title: "Cara Kerja",
     step_1_title: "Masukkan URL",
     step_1_desc: "Tempel atau ketik URL yang ingin Anda enkode atau dekode.",
     step_2_title: "Pilih Tindakan",
     step_2_desc: "Klik 'Enkode' untuk memformat atau 'Dekode' untuk mengembalikan.",
     step_3_title: "Salin Hasil",
     step_3_desc: "Hasilnya muncul seketika. Gunakan tombol salin untuk mengirim ke papan klip.",
+    use_cases_title: "Contoh Penggunaan",
+    uc_1_title: "Parameter Kueri API",
+    uc_1_desc: "Enkode kunci dan nilai dalam string kueri untuk memastikan karakter khusus tidak merusak struktur URL.",
+    uc_2_title: "Transmisi Data Aman",
+    uc_2_desc: "Pastikan karakter seperti spasi, ampersand, dan garis miring ditangani dengan benar oleh server web.",
+    faq_title: "Tanya Jawab",
+    faq_1_q: "Apa itu enkode URL?",
+    faq_1_a: "Enkode URL, juga dikenal sebagai percent-encoding, adalah mekanisme untuk mengenkode informasi dalam Uniform Resource Identifier (URI).",
+    faq_2_q: "Kapan saya harus menggunakan dekode URL?",
+    faq_2_a: "Gunakan saat Anda memiliki URL yang mengandung tanda persen (misalnya, %20) dan Anda ingin melihat karakter aslinya (misalnya, spasi).",
     see1: "Konverter LESS ke CSS",
     see2: "Konverter XML ke JSON",
     see3: "Konverter JSON ke XML",

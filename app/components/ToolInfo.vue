@@ -39,7 +39,7 @@ defineProps<Props>()
           rel="noopener noreferrer"
           class="flex items-center gap-1.5 text-sm font-semibold text-info hover:brightness-110 transition-all group/link"
         >
-          <Icon name="mdi:wikipedia" class="w-5 h-5" aria-hidden="true" />
+          <!-- <Icon name="mdi:wikipedia" class="w-5 h-5" aria-hidden="true" /> -->
           <span class="border-b border-transparent group-hover/link:border-info">
             {{ wikiLabel || 'Wikipedia' }}
           </span>
