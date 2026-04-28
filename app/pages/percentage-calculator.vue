@@ -93,6 +93,12 @@ usePageJsonLd({
     t('f4'),
     t('f5'),
     t('f6')
+  ],
+  howToName: t('how_to_use_title'),
+  howToSteps: [
+    { name: t('step_1_title'), text: t('step_1_desc') },
+    { name: t('step_2_title'), text: t('step_2_desc') },
+    { name: t('step_3_title'), text: t('step_3_desc') }
   ]
 })
 
@@ -251,7 +257,21 @@ defineI18nRoute({
 
     <template #info>
       <div class="space-y-8">
-        <p>{{ t('features_subtitle') }}</p>
+        <p class="mb-4">{{ t('features_subtitle') }}</p>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
+            {{ t('how_to_use_title') }}
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
+              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
+              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
+              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
+            </div>
+          </div>
+        </section>
 
         <section>
           <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
@@ -287,6 +307,13 @@ defineI18nRoute({
     t4: "Everyday Applications",
     t5: "Professional and Academic Use",
     features_subtitle: "Our calculator offers seven calculation modes to meet your needs: basic percentage to find what percentage one number represents of another; percentage increases to calculate increments; percentage decreases to determine discounts with the amount saved shown; original value to find the starting amount from a percentage; percentage difference to compare changes between two numbers; and profit margin to calculate the selling price from cost and desired margin.",
+    how_to_use_title: "How to use",
+    step_1_title: "Choose Calculation",
+    step_1_desc: "Select the calculation mode that fits your needs from the 7 available options.",
+    step_2_title: "Enter Values",
+    step_2_desc: "Input your numbers into the corresponding fields. No need to click calculate.",
+    step_3_title: "Get Results",
+    step_3_desc: "The result is calculated instantly and displayed on the screen as you type.",
     applications_desc: "Use the calculator to calculate restaurant tips, find out how much you save on sales and promotions, compare offers, calculate product selling prices with profit margin, and analyze business growth rates.",
     professional_desc: "The calculator is useful for product pricing with profit margin, evaluating discounts, analyzing performance variations, solving math exercises, and understanding statistical concepts.",
     simplicity_desc: "Make your percentage calculations simpler with our percentage calculator, ideal for students, professionals, shoppers, and anyone who needs quick and accurate results.",
@@ -326,6 +353,13 @@ defineI18nRoute({
     t4: "Aplicações no Cotidiano",
     t5: "Uso Profissional e Acadêmico",
     features_subtitle: "Nossa calculadora oferece sete modos de cálculo para atender às suas necessidades: porcentagem básica para descobrir que porcentagem um número representa de outro; aumentos percentuais para calcular acréscimos; reduções percentuais para determinar descontos com exibição do valor economizado; valor original para encontrar o valor inicial a partir de uma porcentagem; diferença percentual para comparar variações entre dois números; e margem de lucro para calcular o preço de venda a partir do custo e da margem desejada.",
+    how_to_use_title: "Como usar",
+    step_1_title: "Escolher Cálculo",
+    step_1_desc: "Selecione o modo de cálculo que atende à sua necessidade dentre as 7 opções.",
+    step_2_title: "Inserir Valores",
+    step_2_desc: "Digite os números nos campos correspondentes. Não é necessário clicar em calcular.",
+    step_3_title: "Ver Resultados",
+    step_3_desc: "O resultado é calculado instantaneamente e exibido na tela enquanto você digita.",
     applications_desc: "Use a calculadora para calcular gorjetas em restaurantes, determinar o valor economizado em promoções, comparar ofertas, calcular o preço de venda de produtos com margem de lucro e analisar taxas de crescimento empresarial.",
     professional_desc: "A calculadora é útil para precificação de produtos com margem de lucro, avaliação de descontos e promoções, análise de variações de performance, resolução de exercícios de matemática e compreensão de conceitos estatísticos.",
     simplicity_desc: "Torne seus cálculos de porcentagem mais simples com nossa calculadora de porcentagens, ideal para estudantes, profissionais, compradores e qualquer pessoa que precise de respostas rápidas e precisas.",
@@ -365,6 +399,13 @@ defineI18nRoute({
     t4: "Aplicaciones Cotidianas",
     t5: "Uso Profesional y Académico",
     features_subtitle: "Nuestra calculadora ofrece siete modos de cálculo para satisfacer tus necesidades: porcentaje básico para descubrir qué porcentaje representa un número de otro; aumentos porcentuales para calcular incrementos; reducciones porcentuales para determinar descuentos mostrando el valor ahorrado; valor original para encontrar el valor inicial a partir de un porcentaje; diferencia porcentual para comparar variaciones entre dos números; y margen de ganancia para calcular el precio de venta a partir del costo y del margen deseado.",
+    how_to_use_title: "Cómo usar",
+    step_1_title: "Elegir Cálculo",
+    step_1_desc: "Selecciona el modo de cálculo que se ajuste a tus necesidades entre las 7 opciones.",
+    step_2_title: "Ingresar Valores",
+    step_2_desc: "Introduce los números en los campos correspondientes. No es necesario hacer clic en calcular.",
+    step_3_title: "Ver Resultados",
+    step_3_desc: "El resultado se calcula al instante y se muestra en pantalla mientras escribes.",
     applications_desc: "Usa la calculadora para calcular propinas en restaurantes, determinar el valor ahorrado en promociones, comparar ofertas, calcular el precio de venta de productos con margen de ganancia y analizar tasas de crecimiento empresarial.",
     professional_desc: "La calculadora es útil para fijar precios de productos con margen de ganancia, evaluar descuentos y promociones, analizar variaciones de rendimiento, resolver ejercicios de matemáticas y comprender conceptos estadísticos.",
     simplicity_desc: "Simplifica tus cálculos de porcentaje con nuestra calculadora de porcentajes, ideal para estudiantes, profesionales, compradores y cualquier persona que necesite respuestas rápidas y precisas.",
@@ -404,6 +445,13 @@ defineI18nRoute({
     t4: "Applications Quotidiennes",
     t5: "Usage Professionnel et Académique",
     features_subtitle: "Notre calculatrice propose sept modes de calcul pour répondre à vos besoins : pourcentage de base pour savoir quel pourcentage un nombre représente d'un autre ; augmentations en pourcentage pour calculer des hausses ; réductions en pourcentage pour déterminer des remises avec affichage du montant économisé ; valeur d'origine pour retrouver le montant initial à partir d'un pourcentage ; différence en pourcentage pour comparer les variations entre deux nombres ; et marge bénéficiaire pour calculer le prix de vente à partir du coût et de la marge souhaitée.",
+    how_to_use_title: "Comment utiliser",
+    step_1_title: "Choisir le Calcul",
+    step_1_desc: "Sélectionnez le mode de calcul adapté à vos besoins parmi les 7 options.",
+    step_2_title: "Entrer les Valeurs",
+    step_2_desc: "Saisissez les nombres dans les champs correspondants. Inutile de cliquer sur calculer.",
+    step_3_title: "Voir les Résultats",
+    step_3_desc: "Le résultat est calculé instantanément et affiché à l'écran pendant la saisie.",
     applications_desc: "Utilisez la calculatrice pour calculer les pourboires au restaurant, déterminer le montant économisé lors de promotions, comparer des offres, calculer le prix de vente de produits avec marge bénéficiaire et analyser les taux de croissance d'une entreprise.",
     professional_desc: "La calculatrice est utile pour fixer le prix de produits avec marge bénéficiaire, évaluer des remises et des promotions, analyser des variations de performance, résoudre des exercices de mathématiques et comprendre des concepts statistiques.",
     simplicity_desc: "Simplifiez vos calculs de pourcentage avec notre calculatrice de pourcentage, idéale pour les étudiants, les professionnels, les consommateurs et toute personne qui a besoin de réponses rapides et précises.",
@@ -443,6 +491,13 @@ defineI18nRoute({
     t4: "Applicazioni Quotidiane",
     t5: "Uso Professionale e Accademico",
     features_subtitle: "La nostra calcolatrice offre sette modalità di calcolo per soddisfare le tue esigenze: percentuale di base per scoprire quale percentuale un numero rappresenta di un altro; aumenti percentuali per calcolare incrementi; riduzioni percentuali per determinare sconti con visualizzazione dell'importo risparmiato; valore originale per trovare il valore iniziale a partire da una percentuale; differenza percentuale per confrontare variazioni tra due numeri; e margine di profitto per calcolare il prezzo di vendita a partire dal costo e dal margine desiderato.",
+    how_to_use_title: "Come usare",
+    step_1_title: "Scegliere Calcolo",
+    step_1_desc: "Seleziona la modalità di calcolo più adatta alle tue esigenze tra le 7 opzioni.",
+    step_2_title: "Inserire i Valori",
+    step_2_desc: "Inserisci i numeri nei campi corrispondenti. Non è necessario cliccare su calcola.",
+    step_3_title: "Vedere i Risultati",
+    step_3_desc: "Il risultato viene calcolato istantaneamente e mostrato sullo schermo mentre digiti.",
     applications_desc: "Usa la calcolatrice per calcolare mance al ristorante, determinare l'importo risparmiato nelle promozioni, confrontare offerte, calcolare il prezzo di vendita dei prodotti con margine di profitto e analizzare tassi di crescita aziendale.",
     professional_desc: "La calcolatrice è utile per la determinazione dei prezzi dei prodotti con margine di profitto, la valutazione di sconti e promozioni, l'analisi delle variazioni di performance, la risoluzione di esercizi di matematica e la comprensione di concetti statistici.",
     simplicity_desc: "Rendi più semplici i tuoi calcoli percentuali con la nostra calcolatrice di percentuali, ideale per studenti, professionisti, acquirenti e chiunque abbia bisogno di risposte rapide e precise.",
@@ -482,6 +537,13 @@ defineI18nRoute({
     t4: "Aplikasi Sehari-hari",
     t5: "Penggunaan Profesional dan Akademik",
     features_subtitle: "Kalkulator kami menawarkan tujuh mode perhitungan untuk memenuhi kebutuhan Anda: persentase dasar untuk mengetahui berapa persen suatu angka dari angka lain; kenaikan persentase untuk menghitung penambahan; penurunan persentase untuk menentukan diskon dengan menampilkan jumlah yang dihemat; nilai awal untuk menemukan nilai semula dari sebuah persentase; perbedaan persentase untuk membandingkan perubahan antara dua angka; dan margin keuntungan untuk menghitung harga jual berdasarkan biaya dan margin yang diinginkan.",
+    how_to_use_title: "Cara menggunakan",
+    step_1_title: "Pilih Perhitungan",
+    step_1_desc: "Pilih mode perhitungan yang sesuai dengan kebutuhan Anda dari 7 opsi yang tersedia.",
+    step_2_title: "Masukkan Nilai",
+    step_2_desc: "Ketik angka pada kolom yang sesuai. Tidak perlu mengklik tombol hitung.",
+    step_3_title: "Lihat Hasil",
+    step_3_desc: "Hasilnya dihitung secara instan dan ditampilkan di layar saat Anda mengetik.",
     applications_desc: "Gunakan kalkulator untuk menghitung tip di restoran, menentukan jumlah yang dihemat saat promosi, membandingkan penawaran, menghitung harga jual produk dengan margin keuntungan, dan menganalisis tingkat pertumbuhan bisnis.",
     professional_desc: "Kalkulator ini berguna untuk penetapan harga produk dengan margin keuntungan, evaluasi diskon dan promosi, analisis variasi performa, penyelesaian latihan matematika, dan pemahaman konsep statistik.",
     simplicity_desc: "Buat perhitungan persentase Anda lebih sederhana dengan kalkulator persentase kami, ideal untuk pelajar, profesional, pembeli, dan siapa pun yang membutuhkan jawaban cepat dan akurat.",

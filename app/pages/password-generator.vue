@@ -68,6 +68,12 @@ usePageJsonLd({
     { question: t('faq_3_q'), answer: t('faq_3_a') },
     { question: t('faq_4_q'), answer: t('faq_4_a') },
     { question: t('faq_5_q'), answer: t('faq_5_a') }
+  ],
+  howToName: t('how_to_use_title'),
+  howToSteps: [
+    { name: t('step_1_title'), text: t('step_1_desc') },
+    { name: t('step_2_title'), text: t('step_2_desc') },
+    { name: t('step_3_title'), text: t('step_3_desc') }
   ]
 })
 
@@ -193,7 +199,21 @@ defineI18nRoute({
     <template #info>
       <div class="space-y-8">
         <section>
-          <p>{{ t('d1') }}</p>
+          <p class="mb-4">{{ t('d1') }}</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
+            {{ t('how_to_use_title') }}
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
+              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
+              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
+              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
+            </div>
+          </div>
         </section>
 
         <section>
@@ -259,6 +279,13 @@ defineI18nRoute({
     copy: "Copy Password",
     placeholder: "Click Generate to create a password",
     d1: "With our Password Generator, you can instantly create strong, secure passwords to protect your accounts against unauthorized access. All generation happens locally in your browser. Your passwords never leave your device.",
+    how_to_use_title: "How to use",
+    step_1_title: "Customize",
+    step_1_desc: "Select the character types (uppercase, lowercase, numbers, symbols) and password length.",
+    step_2_title: "Generate",
+    step_2_desc: "Click the 'Generate Password' button to create your secure password instantly.",
+    step_3_title: "Copy & Use",
+    step_3_desc: "Use the copy button to save the password to your clipboard.",
     features_title: "Customize Your Security",
     f_1: "Include uppercase letters (A-Z) to increase password complexity.",
     f_2: "Mix in lowercase letters (a-z) for a broader character set.",
@@ -302,6 +329,13 @@ defineI18nRoute({
     copy: "Copiar Senha",
     placeholder: "Clique em Gerar para criar uma senha",
     d1: "Com o nosso Gerador de Senhas, você cria facilmente senhas fortes e seguras para blindar seus dados contra acessos não autorizados. Toda a geração ocorre localmente no seu navegador. Suas senhas nunca saem do seu dispositivo.",
+    how_to_use_title: "Como usar",
+    step_1_title: "Personalizar",
+    step_1_desc: "Selecione os tipos de caracteres (maiúsculas, minúsculas, números, símbolos) e o comprimento da senha.",
+    step_2_title: "Gerar",
+    step_2_desc: "Clique no botão 'Gerar Senha' para criar sua senha segura instantaneamente.",
+    step_3_title: "Copiar e Usar",
+    step_3_desc: "Use o botão de copiar para enviar a senha à área de transferência.",
     features_title: "Personalize sua Segurança",
     f_1: "Inclua letras maiúsculas (A-Z) para aumentar a complexidade da senha.",
     f_2: "Combine com letras minúsculas (a-z) para um conjunto de caracteres mais amplo.",
@@ -345,6 +379,13 @@ defineI18nRoute({
     copy: "Copiar Contraseña",
     placeholder: "Haz clic en Generar para crear una contraseña",
     d1: "Con nuestro Generador de Contraseñas, puedes crear fácilmente contraseñas fuertes y seguras para proteger tus cuentas contra accesos no autorizados. Toda la generación ocurre localmente en tu navegador. Tus contraseñas nunca salen de tu dispositivo.",
+    how_to_use_title: "Cómo usar",
+    step_1_title: "Personalizar",
+    step_1_desc: "Selecciona los tipos de caracteres (mayúsculas, minúsculas, números, símbolos) y la longitud de la contraseña.",
+    step_2_title: "Generar",
+    step_2_desc: "Haz clic en el botón 'Generar Contraseña' para crear tu contraseña segura al instante.",
+    step_3_title: "Copiar y Usar",
+    step_3_desc: "Usa el botón de copiar para enviar la contraseña al portapapeles.",
     features_title: "Personaliza tu Seguridad",
     f_1: "Incluye letras mayúsculas (A-Z) para aumentar la complejidad.",
     f_2: "Combina con letras minúsculas (a-z) para un conjunto de caracteres más amplio.",
@@ -388,6 +429,13 @@ defineI18nRoute({
     copy: "Copier le Mot de Passe",
     placeholder: "Cliquez sur Générer pour créer un mot de passe",
     d1: "Avec notre Générateur de Mot de Passe, vous créez facilement des mots de passe forts et sécurisés pour protéger vos comptes contre les accès non autorisés. Toute la génération se fait localement dans votre navigateur. Vos mots de passe ne quittent jamais votre appareil.",
+    how_to_use_title: "Comment utiliser l'outil",
+    step_1_title: "Personnaliser",
+    step_1_desc: "Sélectionnez les types de caractères (majuscules, minuscules, chiffres, symboles) et la longueur du mot de passe.",
+    step_2_title: "Générer",
+    step_2_desc: "Cliquez sur le bouton 'Générer un Mot de Passe' pour créer votre mot de passe sécurisé instantanément.",
+    step_3_title: "Copier et Utiliser",
+    step_3_desc: "Utilisez le bouton de copie pour envoyer le mot de passe dans le presse-papiers.",
     features_title: "Personnalisez Votre Sécurité",
     f_1: "Incluez des lettres majuscules (A-Z) pour augmenter la complexité.",
     f_2: "Combinez avec des lettres minuscules (a-z) pour un jeu de caractères plus large.",
@@ -431,6 +479,13 @@ defineI18nRoute({
     copy: "Copia Password",
     placeholder: "Clicca su Genera per creare una password",
     d1: "Con il nostro Generatore di Password, puoi creare facilmente password forti e sicure per proteggere i tuoi account dagli accessi non autorizzati. Tutta la generazione avviene localmente nel tuo browser. Le tue password non lasciano mai il tuo dispositivo.",
+    how_to_use_title: "Come usare lo strumento",
+    step_1_title: "Personalizza",
+    step_1_desc: "Seleziona i tipi di caratteri (maiuscole, minuscole, numeri, simboli) e la lunghezza della password.",
+    step_2_title: "Genera",
+    step_2_desc: "Fai clic sul pulsante 'Genera Password' per creare istantaneamente la tua password sicura.",
+    step_3_title: "Copia e Usa",
+    step_3_desc: "Usa il pulsante di copia per inviare la password negli appunti.",
     features_title: "Personalizza la Tua Sicurezza",
     f_1: "Includi lettere maiuscole (A-Z) per aumentare la complessità.",
     f_2: "Combina con lettere minuscole (a-z) per un set di caratteri più ampio.",
@@ -474,6 +529,13 @@ defineI18nRoute({
     copy: "Salin Kata Sandi",
     placeholder: "Klik Buat untuk membuat kata sandi",
     d1: "Dengan Generator Kata Sandi kami, Anda dapat dengan mudah membuat kata sandi yang kuat dan aman untuk melindungi akun Anda dari akses yang tidak sah. Semua pembuatan terjadi secara lokal di browser Anda. Kata sandi Anda tidak pernah meninggalkan perangkat Anda.",
+    how_to_use_title: "Cara menggunakan alat ini",
+    step_1_title: "Sesuaikan",
+    step_1_desc: "Pilih jenis karakter (huruf kapital, huruf kecil, angka, simbol) dan panjang kata sandi.",
+    step_2_title: "Buat",
+    step_2_desc: "Klik tombol 'Buat Kata Sandi' untuk langsung membuat kata sandi aman Anda.",
+    step_3_title: "Salin & Gunakan",
+    step_3_desc: "Gunakan tombol salin untuk menyalin kata sandi ke papan klip.",
     features_title: "Sesuaikan Keamanan Anda",
     f_1: "Sertakan huruf kapital (A-Z) untuk meningkatkan kompleksitas.",
     f_2: "Gabungkan dengan huruf kecil (a-z) untuk kumpulan karakter yang lebih luas.",

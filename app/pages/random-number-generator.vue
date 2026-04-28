@@ -77,6 +77,12 @@ usePageJsonLd({
     { question: t('faq_3_q'), answer: t('faq_3_a') },
     { question: t('faq_4_q'), answer: t('faq_4_a') },
     { question: t('faq_5_q'), answer: t('faq_5_a') }
+  ],
+  howToName: t('how_to_use_title'),
+  howToSteps: [
+    { name: t('step_1_title'), text: t('step_1_desc') },
+    { name: t('step_2_title'), text: t('step_2_desc') },
+    { name: t('step_3_title'), text: t('step_3_desc') }
   ]
 })
 
@@ -213,7 +219,21 @@ defineI18nRoute({
     <template #info>
       <div class="space-y-8">
         <section>
-          <p>{{ t('d1') }}</p>
+          <p class="mb-4">{{ t('d1') }}</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
+            {{ t('how_to_use_title') }}
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
+              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
+              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
+              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
+            </div>
+          </div>
         </section>
 
         <section>
@@ -285,6 +305,13 @@ defineI18nRoute({
     err: "The requested quantity exceeds the allowed range without repetition",
     placeholder: "Ready to generate",
     about_title: "Random Number Generator",
+    how_to_use_title: "How to use",
+    step_1_title: "Configure Range",
+    step_1_desc: "Set the minimum and maximum values for your numbers.",
+    step_2_title: "Generate",
+    step_2_desc: "Set the quantity, sort order, and click Generate Numbers.",
+    step_3_title: "Copy",
+    step_3_desc: "Use the copy button to save the result to your clipboard.",
     d1: "Free online tool for generating random numbers with a custom range and quantity. Ideal for raffles, lotteries, games, simulations, software testing, and statistical analysis. Generate unique or repeated numbers with flexible sorting options.",
     features_title: "Key Features",
     f_1: "Custom Range: Set minimum and maximum values to generate numbers within your specific interval.",
@@ -330,6 +357,13 @@ defineI18nRoute({
     err: "A quantidade solicitada é maior que o intervalo permitido sem repetição",
     placeholder: "Pronto para gerar",
     about_title: "Gerador de Números Aleatórios",
+    how_to_use_title: "Como usar",
+    step_1_title: "Configurar Intervalo",
+    step_1_desc: "Defina os valores mínimo e máximo para os seus números.",
+    step_2_title: "Gerar",
+    step_2_desc: "Defina a quantidade, a ordenação e clique em Gerar Números.",
+    step_3_title: "Copiar",
+    step_3_desc: "Use o botão de copiar para enviar o resultado à área de transferência.",
     d1: "Ferramenta online gratuita para gerar números aleatórios com intervalo e quantidade personalizados. Ideal para sorteios, loteria, jogos, simulações, testes de software e análises estatísticas. Gere números únicos ou repetidos com opções flexíveis de ordenação.",
     features_title: "Funcionalidades Principais",
     f_1: "Intervalo Personalizado: Defina valores mínimo e máximo para gerar números dentro do seu intervalo específico.",
@@ -375,6 +409,13 @@ defineI18nRoute({
     err: "La cantidad solicitada supera el intervalo permitido sin repetición",
     placeholder: "Listo para generar",
     about_title: "Generador de Números Aleatorios",
+    how_to_use_title: "Cómo usar",
+    step_1_title: "Configurar Rango",
+    step_1_desc: "Establece los valores mínimo y máximo para tus números.",
+    step_2_title: "Generar",
+    step_2_desc: "Define la cantidad, el orden y haz clic en Generar Números.",
+    step_3_title: "Copiar",
+    step_3_desc: "Usa el botón de copiar para enviar el resultado al portapapeles.",
     d1: "Herramienta online gratuita para generar números aleatorios con rango y cantidad personalizados. Ideal para sorteos, lotería, juegos, simulaciones, pruebas de software y análisis estadístico. Genera números únicos o repetidos con opciones flexibles de ordenación.",
     features_title: "Funcionalidades Principales",
     f_1: "Rango Personalizado: Define valores mínimo y máximo para generar números en tu intervalo específico.",
@@ -420,6 +461,13 @@ defineI18nRoute({
     err: "La quantité demandée dépasse l'intervalle autorisé sans répétition",
     placeholder: "Prêt à générer",
     about_title: "Générateur de Nombres Aléatoires",
+    how_to_use_title: "Comment utiliser l'outil",
+    step_1_title: "Configurer l'Intervalle",
+    step_1_desc: "Définissez les valeurs minimale et maximale de vos nombres.",
+    step_2_title: "Générer",
+    step_2_desc: "Définissez la quantité, l'ordre et cliquez sur Générer des Nombres.",
+    step_3_title: "Copier",
+    step_3_desc: "Utilisez le bouton de copie pour envoyer le résultat dans le presse-papiers.",
     d1: "Outil en ligne gratuit pour générer des nombres aléatoires avec un intervalle et une quantité personnalisés. Idéal pour les tirages au sort, la loterie, les jeux, les simulations et les analyses statistiques. Générez des nombres uniques ou répétés avec des options de tri flexibles.",
     features_title: "Fonctionnalités Principales",
     f_1: "Intervalle Personnalisé: Définissez des valeurs minimale et maximale pour votre intervalle spécifique.",
@@ -465,6 +513,13 @@ defineI18nRoute({
     err: "La quantità richiesta supera l'intervallo consentito senza ripetizione",
     placeholder: "Pronto per generare",
     about_title: "Generatore di Numeri Casuali",
+    how_to_use_title: "Come usare lo strumento",
+    step_1_title: "Configura Intervallo",
+    step_1_desc: "Imposta i valori minimo e massimo per i tuoi numeri.",
+    step_2_title: "Genera",
+    step_2_desc: "Imposta la quantità, l'ordinamento e fai clic su Genera Numeri.",
+    step_3_title: "Copia",
+    step_3_desc: "Usa il pulsante di copia per inviare il risultato negli appunti.",
     d1: "Strumento online gratuito per generare numeri casuali con intervallo e quantità personalizzati. Ideale per estrazioni, lotterie, giochi, simulazioni, test software e analisi statistiche. Genera numeri unici o ripetuti con opzioni di ordinamento flessibili.",
     features_title: "Funzionalità Principali",
     f_1: "Intervallo Personalizzato: Imposta valori minimo e massimo per il tuo intervallo specifico.",
@@ -510,6 +565,13 @@ defineI18nRoute({
     err: "Jumlah yang diminta melebihi rentang yang diizinkan tanpa pengulangan",
     placeholder: "Siap untuk menghasilkan",
     about_title: "Generator Angka Acak",
+    how_to_use_title: "Cara menggunakan alat ini",
+    step_1_title: "Atur Rentang",
+    step_1_desc: "Tetapkan nilai minimum dan maksimum untuk angka Anda.",
+    step_2_title: "Buat",
+    step_2_desc: "Atur jumlah, urutan, dan klik Buat Angka.",
+    step_3_title: "Salin",
+    step_3_desc: "Gunakan tombol salin untuk menyalin hasil ke papan klip.",
     d1: "Alat online gratis untuk menghasilkan angka acak dengan rentang dan jumlah yang dapat disesuaikan. Ideal untuk undian, lotere, permainan, simulasi, pengujian perangkat lunak, dan analisis statistik. Hasilkan angka unik atau berulang dengan opsi pengurutan yang fleksibel.",
     features_title: "Fitur Utama",
     f_1: "Rentang Kustom: Tetapkan nilai minimum dan maksimum untuk rentang spesifik Anda.",

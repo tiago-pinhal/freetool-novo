@@ -9,6 +9,12 @@ usePageJsonLd({
     t('f_2'),
     t('f_3'),
     t('f_4')
+  ],
+  howToName: t('how_to_use_title'),
+  howToSteps: [
+    { name: t('step_1_title'), text: t('step_1_desc') },
+    { name: t('step_2_title'), text: t('step_2_desc') },
+    { name: t('step_3_title'), text: t('step_3_desc') }
   ]
 })
 
@@ -141,17 +147,36 @@ defineI18nRoute({
     </div>
 
     <template #info>
-      <div class="space-y-4">
-        <p>{{ t('desc') }}</p>
-        <div class="p-4 rounded-xl border border-base-content/20">
-          <div class="font-bold mb-2 flex items-center gap-2">
-            <Icon name="heroicons:light-bulb-20-solid" class="w-5 h-5" aria-hidden="true" />
-            {{ t('tip_title') }}
+      <div class="space-y-8">
+        <section>
+          <p class="mb-4">{{ t('desc') }}</p>
+        </section>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
+            {{ t('how_to_use_title') }}
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
+              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
+              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
+              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
+            </div>
           </div>
-          <p>
-            {{ t('tip_formula') }}: <code class="px-1 rounded">X = (V3 * V2) / V1</code>
-          </p>
-        </div>
+        </section>
+
+        <section>
+          <div class="p-4 rounded-xl border border-base-content/20 bg-base-300/30">
+            <div class="font-bold mb-2 flex items-center gap-2">
+              <Icon name="heroicons:light-bulb-20-solid" class="w-5 h-5 text-primary" aria-hidden="true" />
+              {{ t('tip_title') }}
+            </div>
+            <p>
+              {{ t('tip_formula') }}: <code class="px-2 py-1 bg-base-100 rounded text-primary font-bold">X = (V3 * V2) / V1</code>
+            </p>
+          </div>
+        </section>
       </div>
     </template>
   </ToolPage>
@@ -173,6 +198,13 @@ defineI18nRoute({
         waiting: "Enter all values above to see the result",
         tip_title: "How it works",
         tip_formula: "The formula used is",
+        how_to_use_title: "How to use",
+        step_1_title: "Enter Base Values",
+        step_1_desc: "Input Value A and Value B to define your initial known proportion.",
+        step_2_title: "Enter Target",
+        step_2_desc: "Input Value C to find its proportional equivalent (X).",
+        step_3_title: "Get Result",
+        step_3_desc: "The result is calculated instantly. Use the copy button to send it to your clipboard.",
         see1: "Percentage Calculator",
         see2: "Bcrypt Generator",
         see3: "Email Extractor",
@@ -196,6 +228,13 @@ defineI18nRoute({
         waiting: "Preencha os valores acima para ver o resultado",
         tip_title: "Como funciona",
         tip_formula: "A fórmula utilizada é",
+        how_to_use_title: "Como usar",
+        step_1_title: "Valores Base",
+        step_1_desc: "Insira o Valor A e Valor B para definir a proporção inicial conhecida.",
+        step_2_title: "Valor Alvo",
+        step_2_desc: "Insira o Valor C para descobrir o seu equivalente proporcional (X).",
+        step_3_title: "Resultado",
+        step_3_desc: "O cálculo é feito na hora. Use o botão de copiar para enviar para a área de transferência.",
         see1: "Calculadora de Porcentagem",
         see2: "Gerador Bcrypt",
         see3: "Extrator de E-mails",
@@ -219,6 +258,13 @@ defineI18nRoute({
         waiting: "Complete los valores arriba para ver el resultado",
         tip_title: "Cómo funciona",
         tip_formula: "La fórmula utilizada es",
+        how_to_use_title: "Cómo usar",
+        step_1_title: "Valores Base",
+        step_1_desc: "Ingresa el Valor A y Valor B para definir la proporción inicial conocida.",
+        step_2_title: "Valor Objetivo",
+        step_2_desc: "Ingresa el Valor C para descubrir su equivalente proporcional (X).",
+        step_3_title: "Resultado",
+        step_3_desc: "El cálculo es automático. Usa el botón de copiar para enviarlo al portapapeles.",
         see1: "Calculadora de Porcentaje",
         see2: "Generador Bcrypt",
         see3: "Extractor de Correos Electrónicos",
@@ -242,6 +288,13 @@ defineI18nRoute({
         waiting: "Entrez les valeurs ci-dessus pour voir le résultat",
         tip_title: "Comment ça marche",
         tip_formula: "La formule utilisée est",
+        how_to_use_title: "Comment utiliser l'outil",
+        step_1_title: "Valeurs de Base",
+        step_1_desc: "Entrez la Valeur A et la Valeur B pour définir la proportion initiale.",
+        step_2_title: "Valeur Cible",
+        step_2_desc: "Entrez la Valeur C pour trouver son équivalent proportionnel (X).",
+        step_3_title: "Résultat",
+        step_3_desc: "Le calcul est instantané. Utilisez le bouton de copie pour l'envoyer au presse-papiers.",
         see1: "Calculatrice de Pourcentage",
         see2: "Générateur Bcrypt",
         see3: "Extracteur d'e-mails",
@@ -265,6 +318,13 @@ defineI18nRoute({
         waiting: "Inserisci i valori sopra per vedere il risultato",
         tip_title: "Come funziona",
         tip_formula: "La formula utilizzata è",
+        how_to_use_title: "Come usare lo strumento",
+        step_1_title: "Valori Base",
+        step_1_desc: "Inserisci il Valore A e il Valore B per definire la proporzione iniziale.",
+        step_2_title: "Valore Obiettivo",
+        step_2_desc: "Inserisci il Valore C per trovare il suo equivalente proporzionale (X).",
+        step_3_title: "Risultato",
+        step_3_desc: "Il calcolo è istantaneo. Usa il pulsante di copia per inviarlo agli appunti.",
         see1: "Calcolatrice di Percentuale",
         see2: "Generatore Bcrypt",
         see3: "Estrattore di Email",
@@ -288,6 +348,13 @@ defineI18nRoute({
         waiting: "Masukkan semua nilai di atas untuk melihat hasil",
         tip_title: "Cara kerja",
         tip_formula: "Rumus yang digunakan adalah",
+        how_to_use_title: "Cara menggunakan alat ini",
+        step_1_title: "Nilai Dasar",
+        step_1_desc: "Masukkan Nilai A dan Nilai B untuk menentukan proporsi awal.",
+        step_2_title: "Nilai Target",
+        step_2_desc: "Masukkan Nilai C untuk menemukan ekuivalen proporsionalnya (X).",
+        step_3_title: "Hasil",
+        step_3_desc: "Hasil dihitung seketika. Gunakan tombol salin untuk mengirim ke papan klip.",
         see1: "Kalkulator Persentase",
         see2: "Generator Bcrypt",
         see3: "Ekstraktor Email",

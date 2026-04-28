@@ -9,6 +9,12 @@ usePageJsonLd({
     "Remove duplicate emails automatically",
     "Export with comma, line break, semicolon, or pipe separator",
     "Drag and drop file support"
+  ],
+  howToName: t('how_to_use_title'),
+  howToSteps: [
+    { name: t('step_1_title'), text: t('step_1_desc') },
+    { name: t('step_2_title'), text: t('step_2_desc') },
+    { name: t('step_3_title'), text: t('step_3_desc') }
   ]
 })
 
@@ -81,7 +87,21 @@ defineI18nRoute({
   >
     <template #info>
       <div class="space-y-8">
-        <p>{{ t('desc') }}</p>
+        <p class="mb-4">{{ t('desc') }}</p>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
+            {{ t('how_to_use_title') }}
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
+              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
+              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
+              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
+            </div>
+          </div>
+        </section>
 
         <section>
           <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
@@ -166,6 +186,13 @@ defineI18nRoute({
         title: "Email Extractor",
         meta: "Extract multiple email addresses automatically from any text with our online Email Extractor.",
         desc: "Need to extract dozens of contacts hidden inside a large block of text or data? Our Email Extractor makes that easy. Just paste or drag your content into the box, choose your preferred separator for the output list (comma, line break, semicolon, or pipe), and click 'Extract'. The tool automatically finds valid email addresses, removes duplicates, and generates a clean, ready-to-use list.",
+        how_to_use_title: "How to use",
+        step_1_title: "Input Text",
+        step_1_desc: "Paste your text or drag a file into the input box.",
+        step_2_title: "Select Separator",
+        step_2_desc: "Choose the separator (comma, line break, etc.) and click Extract.",
+        step_3_title: "Copy Emails",
+        step_3_desc: "Copy the clean list of extracted emails, ready to use.",
         use_cases_title: "Use Cases",
         use_cases_desc: "Use the Email Extractor to organize contacts copied from text, reports, spreadsheets, HTML pages, messages, logs, or old databases. It helps turn messy content into a clean list, without duplicate emails, ready to copy, review, or import into other tools.",
         ideal_for_title: "Ideal For",
@@ -188,6 +215,13 @@ defineI18nRoute({
         title: "Extrator de E-mails",
         meta: "Extraia automaticamente múltiplos endereços de e-mail de qualquer texto com nosso Extrator de E-mails online.",
         desc: "Precisa extrair dezenas de contatos escondidos em um grande bloco de texto ou dados? Nosso Extrator de E-mails facilita esse trabalho. Basta colar ou arrastar o conteúdo, escolher o separador da lista de saída (vírgula, quebra de linha, ponto e vírgula ou pipe) e clicar em 'Extrair'. A ferramenta encontra automaticamente todos os e-mails válidos, remove duplicados e gera uma lista limpa e pronta para uso.",
+        how_to_use_title: "Como usar",
+        step_1_title: "Inserir Texto",
+        step_1_desc: "Cole o seu texto ou arraste um arquivo para a caixa de entrada.",
+        step_2_title: "Escolher Separador",
+        step_2_desc: "Selecione o separador (vírgula, quebra de linha, etc) e clique em Extrair.",
+        step_3_title: "Copiar E-mails",
+        step_3_desc: "Copie a lista limpa de e-mails extraídos, pronta para uso.",
         use_cases_title: "Casos de Uso",
         use_cases_desc: "Use o Extrator de E-mails para organizar contatos copiados de textos, relatórios, planilhas, páginas HTML, mensagens, logs ou bases antigas. Ele ajuda a transformar conteúdo bagunçado em uma lista limpa, sem e-mails duplicados e pronta para copiar, revisar ou importar em outras ferramentas.",
         ideal_for_title: "Ideal Para",
@@ -210,6 +244,13 @@ defineI18nRoute({
         title: "Extractor de Emails",
         meta: "Extrae automáticamente múltiples direcciones de email de cualquier texto con nuestro Extractor de Emails online.",
         desc: "¿Necesitas extraer decenas de contactos ocultos dentro de un gran bloque de texto o datos? Nuestro Extractor de Emails te facilita ese trabajo. Solo tienes que pegar o arrastrar el contenido, elegir el separador de la lista de salida que prefieras (coma, salto de línea, punto y coma o pipe) y hacer clic en 'Extraer'. La herramienta detecta automáticamente todos los emails válidos, elimina los duplicados y genera una lista limpia y lista para usar.",
+        how_to_use_title: "Cómo usar",
+        step_1_title: "Insertar Texto",
+        step_1_desc: "Pega tu texto o arrastra un archivo a la caja de entrada.",
+        step_2_title: "Elegir Separador",
+        step_2_desc: "Selecciona el separador (coma, salto de línea, etc.) y haz clic en Extraer.",
+        step_3_title: "Copiar Emails",
+        step_3_desc: "Copia la lista limpia de emails extraídos, lista para usar.",
         use_cases_title: "Casos de Uso",
         use_cases_desc: "Usa el Extractor de Emails para organizar contactos copiados de textos, informes, hojas de cálculo, páginas HTML, mensajes, logs o bases de datos antiguas. Ayuda a convertir contenido desordenado en una lista limpia, sin emails duplicados y lista para copiar, revisar o importar en otras herramientas.",
         ideal_for_title: "Ideal Para",
@@ -232,6 +273,13 @@ defineI18nRoute({
         title: "Extracteur d'Emails",
         meta: "Extrayez automatiquement plusieurs adresses e-mail à partir de n'importe quel texte avec notre Extracteur d'Emails en ligne.",
         desc: "Vous avez besoin d'extraire des dizaines de contacts cachés dans un grand bloc de texte ou de données ? Notre Extracteur d'Emails simplifie ce travail. Il suffit de coller ou de faire glisser votre contenu, puis de choisir le séparateur de la liste de sortie (virgule, saut de ligne, point-virgule ou pipe) et de cliquer sur 'Extraire'. L'outil détecte automatiquement toutes les adresses e-mail valides, supprime les doublons et génère une liste propre, prête à l'emploi.",
+        how_to_use_title: "Comment utiliser l'outil",
+        step_1_title: "Insérer le Texte",
+        step_1_desc: "Collez votre texte ou faites glisser un fichier dans la zone de saisie.",
+        step_2_title: "Choisir le Séparateur",
+        step_2_desc: "Sélectionnez le séparateur (virgule, saut de ligne, etc.) et cliquez sur Extraire.",
+        step_3_title: "Copier les E-mails",
+        step_3_desc: "Copiez la liste propre des e-mails extraits, prête à l'emploi.",
         use_cases_title: "Cas d'Utilisation",
         use_cases_desc: "Utilisez l'Extracteur d'Emails pour organiser des contacts copiés depuis des textes, rapports, feuilles de calcul, pages HTML, messages, logs ou anciennes bases de données. Il aide à transformer un contenu désordonné en liste propre, sans e-mails en double, prête à copier, vérifier ou importer dans d'autres outils.",
         ideal_for_title: "Idéal Pour",
@@ -254,6 +302,13 @@ defineI18nRoute({
         title: "Estrattore di Email",
         meta: "Estrai automaticamente più indirizzi email da qualsiasi testo con il nostro Estrattore di Email online.",
         desc: "Hai bisogno di estrarre decine di contatti nascosti all'interno di un grande blocco di testo o dati? Il nostro Estrattore di Email semplifica questo lavoro. Basta incollare o trascinare il contenuto, scegliere il separatore dell'elenco di output (virgola, interruzione di riga, punto e virgola o pipe) e fare clic su 'Estrai'. Lo strumento rileva automaticamente tutte le email valide, rimuove i duplicati e genera un elenco pulito e pronto all'uso.",
+        how_to_use_title: "Come usare lo strumento",
+        step_1_title: "Inserisci Testo",
+        step_1_desc: "Incolla il testo o trascina un file nella casella di input.",
+        step_2_title: "Scegli Separatore",
+        step_2_desc: "Seleziona il separatore (virgola, interruzione di riga, ecc.) e fai clic su Estrai.",
+        step_3_title: "Copia Email",
+        step_3_desc: "Copia l'elenco pulito delle email estratte, pronto all'uso.",
         use_cases_title: "Casi d'Uso",
         use_cases_desc: "Usa l'Estrattore di Email per organizzare contatti copiati da testi, report, fogli di calcolo, pagine HTML, messaggi, log o vecchi database. Aiuta a trasformare contenuti disordinati in un elenco pulito, senza email duplicate, pronto da copiare, controllare o importare in altri strumenti.",
         ideal_for_title: "Ideale Per",
@@ -276,6 +331,13 @@ defineI18nRoute({
         title: "Ekstraktor Email",
         meta: "Ekstrak beberapa alamat email secara otomatis dari teks apa pun dengan Ekstraktor Email online kami.",
         desc: "Perlu mengekstrak puluhan kontak yang tersembunyi di dalam blok teks atau data yang besar? Ekstraktor Email kami memudahkan pekerjaan itu. Cukup tempel atau seret konten Anda ke dalam kotak, pilih pemisah untuk daftar hasil (koma, jeda baris, titik koma, atau pipe), lalu klik 'Ekstrak'. Alat ini secara otomatis menemukan semua email yang valid, menghapus duplikat, dan menghasilkan daftar yang bersih serta siap digunakan.",
+        how_to_use_title: "Cara menggunakan alat ini",
+        step_1_title: "Masukkan Teks",
+        step_1_desc: "Tempel teks atau seret file ke dalam kotak input.",
+        step_2_title: "Pilih Pemisah",
+        step_2_desc: "Pilih pemisah (koma, jeda baris, dll) dan klik Ekstrak.",
+        step_3_title: "Salin Email",
+        step_3_desc: "Salin daftar bersih email yang diekstrak, siap digunakan.",
         use_cases_title: "Contoh Penggunaan",
         use_cases_desc: "Gunakan Ekstraktor Email untuk mengatur kontak yang disalin dari teks, laporan, spreadsheet, halaman HTML, pesan, log, atau database lama. Alat ini membantu mengubah konten yang berantakan menjadi daftar bersih, tanpa email duplikat, siap disalin, diperiksa, atau diimpor ke alat lain.",
         ideal_for_title: "Ideal Untuk",

@@ -13,6 +13,12 @@ usePageJsonLd({
     t('f_2'),
     t('f_3'),
     t('f_4')
+  ],
+  howToName: t('how_to_use_title'),
+  howToSteps: [
+    { name: t('step_1_title'), text: t('step_1_desc') },
+    { name: t('step_2_title'), text: t('step_2_desc') },
+    { name: t('step_3_title'), text: t('step_3_desc') }
   ]
 })
 
@@ -91,13 +97,22 @@ defineI18nRoute({
     ]"
   >
     <template #info>
-      <p>{{ t('desc') }}</p>
-      <div class="mt-6 bg-base-300/30 p-4 rounded-xl border border-base-content/20">
-        <div class="font-bold mb-2">💡 {{ t('tip') }}</div>
-        <ul class="list-disc list-inside space-y-1">
-          <li>{{ t('tip_to') }}</li>
-          <li>{{ t('tip_from') }}</li>
-        </ul>
+      <div class="space-y-8">
+        <p class="mb-4">{{ t('desc') }}</p>
+
+        <section>
+          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
+            {{ t('how_to_use_title') }}
+          </h2>
+          <div class="grid sm:grid-cols-3 gap-4">
+            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
+              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
+              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
+              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
+            </div>
+          </div>
+        </section>
       </div>
     </template>
 
@@ -164,9 +179,13 @@ defineI18nRoute({
     btn_to: "Convert to Roman",
     btn_from: "Convert from Roman",
     err: "The value could not be converted {0} Roman",
-    tip: "Quick Tip:",
-    tip_to: "To convert Arabic to Roman, enter a number like 2024 and click \"Convert to Roman\".",
-    tip_from: "To convert Roman to Arabic, enter a numeral like MMXXIV and click \"Convert from Roman\".",
+    how_to_use_title: "How to use",
+    step_1_title: "Enter Value",
+    step_1_desc: "Type an Arabic number (e.g. 2024) or a Roman numeral (e.g. MMXXIV).",
+    step_2_title: "Convert",
+    step_2_desc: "Click 'Convert to Roman' or 'Convert from Roman' depending on your input.",
+    step_3_title: "Copy",
+    step_3_desc: "Use the copy button to send the converted result to your clipboard.",
     see1: "Number Base Converter",
     see2: "Length Converter",
     see3: "Storage Unit Converter",
@@ -187,9 +206,13 @@ defineI18nRoute({
     btn_to: "Converter para Romano",
     btn_from: "Converter de Romano",
     err: "O valor não pôde ser convertido {0} Romano",
-    tip: "Dica Rápida:",
-    tip_to: "Para converter arábico para romano, insira um número como 2024 e clique em \"Converter para Romano\".",
-    tip_from: "Para converter romano para arábico, insira um numeral como MMXXIV e clique em \"Converter de Romano\".",
+    how_to_use_title: "Como usar",
+    step_1_title: "Inserir Valor",
+    step_1_desc: "Digite um número arábico (ex: 2024) ou um numeral romano (ex: MMXXIV).",
+    step_2_title: "Converter",
+    step_2_desc: "Clique em 'Converter para Romano' ou 'Converter de Romano' dependendo da entrada.",
+    step_3_title: "Copiar",
+    step_3_desc: "Use o botão de copiar para enviar o resultado convertido à área de transferência.",
     see1: "Conversor de Bases Numéricas",
     see2: "Conversor de Comprimento",
     see3: "Conversor de Unidades de Armazenamento",
@@ -210,9 +233,13 @@ defineI18nRoute({
     btn_to: "Convertir a Romano",
     btn_from: "Convertir de Romano",
     err: "El valor no pudo ser convertido {0} Romano",
-    tip: "Consejo Rápido:",
-    tip_to: "Para convertir árabe a romano, introduce un número como 2024 y haz clic en \"Convertir a Romano\".",
-    tip_from: "Para convertir romano a árabe, introduce un numeral como MMXXIV y haz clic en \"Convertir de Romano\".",
+    how_to_use_title: "Cómo usar",
+    step_1_title: "Ingresar Valor",
+    step_1_desc: "Escribe un número árabe (ej: 2024) o un número romano (ej: MMXXIV).",
+    step_2_title: "Convertir",
+    step_2_desc: "Haz clic en 'Convertir a Romano' o 'Convertir de Romano' dependiendo de tu entrada.",
+    step_3_title: "Copiar",
+    step_3_desc: "Usa el botón de copiar para enviar el resultado convertido al portapapeles.",
     see1: "Convertidor de Bases Numéricas",
     see2: "Convertidor de Longitud",
     see3: "Convertidor de Unidades de Almacenamiento",
@@ -233,9 +260,13 @@ defineI18nRoute({
     btn_to: "Convertir en Romain",
     btn_from: "Convertir depuis le Romain",
     err: "La valeur n'a pas pu être convertie {0} Romain",
-    tip: "Astuce Rapide :",
-    tip_to: "Pour convertir un nombre arabe en romain, entrez un chiffre comme 2024 et cliquez sur \"Convertir en Romain\".",
-    tip_from: "Pour convertir un nombre romain en arabe, entrez un chiffre comme MMXXIV et cliquez sur \"Convertir depuis le Romain\".",
+    how_to_use_title: "Comment utiliser l'outil",
+    step_1_title: "Entrer la Valeur",
+    step_1_desc: "Tapez un nombre arabe (ex: 2024) ou un chiffre romain (ex: MMXXIV).",
+    step_2_title: "Convertir",
+    step_2_desc: "Cliquez sur 'Convertir en Romain' ou 'Convertir depuis le Romain' selon votre entrée.",
+    step_3_title: "Copier",
+    step_3_desc: "Utilisez le bouton de copie pour envoyer le résultat converti dans le presse-papiers.",
     see1: "Convertisseur de Bases Numériques",
     see2: "Convertisseur de Longueur",
     see3: "Convertisseur d'Unités de Stockage",
@@ -256,9 +287,13 @@ defineI18nRoute({
     btn_to: "Converti in Romano",
     btn_from: "Converti da Romano",
     err: "Il valore non è potuto essere convertito {0} Romano",
-    tip: "Consiglio Rapido:",
-    tip_to: "Per convertire un numero arabo in romano, inserisci un numero come 2024 e clicca su \"Converti in Romano\".",
-    tip_from: "Per convertire un numero romano in arabo, inserisci un numerale come MMXXIV e clicca su \"Converti da Romano\".",
+    how_to_use_title: "Come usare lo strumento",
+    step_1_title: "Inserisci Valore",
+    step_1_desc: "Digita un numero arabo (es: 2024) o un numero romano (es: MMXXIV).",
+    step_2_title: "Converti",
+    step_2_desc: "Clicca su 'Converti in Romano' o 'Converti da Romano' a seconda dell'input.",
+    step_3_title: "Copia",
+    step_3_desc: "Usa il pulsante di copia per inviare il risultato convertito negli appunti.",
     see1: "Convertitore di Basi Numeriche",
     see2: "Convertitore di Lunghezza",
     see3: "Convertitore di Unità di Archiviazione",
@@ -279,9 +314,13 @@ defineI18nRoute({
     btn_to: "Konversi ke Romawi",
     btn_from: "Konversi dari Romawi",
     err: "Nilai tidak dapat dikonversi {0} Romawi",
-    tip: "Tips Cepat:",
-    tip_to: "Untuk mengonversi angka Arab ke Romawi, masukkan angka seperti 2024 lalu klik \"Konversi ke Romawi\".",
-    tip_from: "Untuk mengonversi angka Romawi ke Arab, masukkan numerik seperti MMXXIV lalu klik \"Konversi dari Romawi\".",
+    how_to_use_title: "Cara menggunakan alat ini",
+    step_1_title: "Masukkan Nilai",
+    step_1_desc: "Ketik angka Arab (mis: 2024) atau angka Romawi (mis: MMXXIV).",
+    step_2_title: "Konversi",
+    step_2_desc: "Klik 'Konversi ke Romawi' atau 'Konversi dari Romawi' tergantung pada masukan Anda.",
+    step_3_title: "Salin",
+    step_3_desc: "Gunakan tombol salin untuk menyalin hasil yang dikonversi ke papan klip.",
     see1: "Konverter Basis Angka",
     see2: "Konverter Panjang",
     see3: "Konverter Unit Penyimpanan",
