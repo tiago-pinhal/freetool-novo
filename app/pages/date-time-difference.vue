@@ -333,7 +333,7 @@ defineI18nRoute({
   pt: {
     title: "Calculadora de Diferença entre Datas e Horas",
     pageTitle: "Calculadora de Diferença entre Datas e Horas — Calcule o Intervalo Exato | Grátis",
-    meta: "Calcule a diferença exata entre duas datas e horários. Obtenha o resultado detalhado em anos, meses, dias, horas e minutos, mais totais equivalentes. Grátis, sem cadastro.",
+    meta: "Calcule a diferença exata entre duas datas e horários. Obtenha o resultado detalhado em anos, meses, dias, horas e minutos, mais totais equivalentes.",
     param1: "Data e Hora Inicial",
     param2: "Data e Hora Final",
     diff: "Diferença Exata",
@@ -353,7 +353,7 @@ defineI18nRoute({
     f_1: "Resultado exato em anos, meses, dias, horas e minutos",
     f_2: "Totais equivalentes: meses, semanas, dias, horas e minutos",
     f_3: "Tratamento automático de anos bissextos",
-    f_4: "Inversão automática dos momentos quando informados ao contrário",
+    f_4: "Correção automática da ordem dos momentos informados",
     how_desc: "Informe uma data e hora inicial e uma data e hora final. A calculadora exibe instantaneamente o tempo decorrido como resultado exato (anos, meses, dias, horas e minutos) e como totais equivalentes. Ideal para medir intervalos precisos que envolvem tanto datas quanto horários.",
     use_cases_title: "Principais Aplicações",
     use_1_t: "Duração de Reuniões e Eventos",
@@ -395,7 +395,7 @@ defineI18nRoute({
   es: {
     title: "Calculadora de Diferencia entre Fechas y Horas",
     pageTitle: "Calculadora de Diferencia entre Fechas y Horas — Calcula el Intervalo Exacto | Gratis",
-    meta: "Calcula la diferencia exacta entre dos fechas y horas. Obtén el resultado detallado en años, meses, días, horas y minutos, más totales equivalentes. Gratis, sin registro.",
+    meta: "Calcula la diferencia exacta entre dos fechas y horas. Obtén el resultado detallado en años, meses, días, horas y minutos, más totales equivalentes.",
     param1: "Fecha y Hora de Inicio",
     param2: "Fecha y Hora de Fin",
     diff: "Diferencia Exacta",
@@ -457,7 +457,7 @@ defineI18nRoute({
   fr: {
     title: "Calculateur de Différence entre Dates et Heures",
     pageTitle: "Calculateur de Différence entre Dates et Heures — Calculez l'Intervalle Exact | Gratuit",
-    meta: "Calculez la différence exacte entre deux dates et heures. Obtenez le résultat détaillé en années, mois, jours, heures et minutes, plus les totaux équivalents. Gratuit, sans inscription.",
+    meta: "Calculez la différence exacte entre deux dates et heures. Obtenez le résultat détaillé en années, mois, jours, heures et minutes, plus les totaux équivalents.",
     param1: "Date et Heure de Début",
     param2: "Date et Heure de Fin",
     diff: "Différence Exacte",
@@ -519,7 +519,7 @@ defineI18nRoute({
   it: {
     title: "Calcolatore di Differenza tra Date e Ore",
     pageTitle: "Calcolatore di Differenza tra Date e Ore — Calcola l'Intervallo Esatto | Gratis",
-    meta: "Calcola la differenza esatta tra due date e orari. Ottieni il risultato dettagliato in anni, mesi, giorni, ore e minuti, più i totali equivalenti. Gratis, senza registrazione.",
+    meta: "Calcola la differenza esatta tra due date e orari. Ottieni il risultato dettagliato in anni, mesi, giorni, ore e minuti, più i totali equivalenti.",
     param1: "Data e Ora di Inizio",
     param2: "Data e Ora di Fine",
     diff: "Differenza Esatta",
@@ -581,7 +581,7 @@ defineI18nRoute({
   id: {
     title: "Kalkulator Selisih Tanggal dan Waktu",
     pageTitle: "Kalkulator Selisih Tanggal dan Waktu — Hitung Interval Tepat | Gratis",
-    meta: "Hitung selisih tepat antara dua tanggal dan waktu. Dapatkan hasil rinci dalam tahun, bulan, hari, jam, dan menit, plus total setara. Gratis, tanpa pendaftaran.",
+    meta: "Hitung selisih tepat antara dua tanggal dan waktu. Dapatkan hasil rinci dalam tahun, bulan, hari, jam, dan menit, plus total setara.",
     param1: "Tanggal & Waktu Mulai",
     param2: "Tanggal & Waktu Akhir",
     diff: "Selisih Tepat",

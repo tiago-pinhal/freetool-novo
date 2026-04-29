@@ -64,7 +64,8 @@ defineI18nRoute({
     es: '/convertidor-de-temperatura',
     fr: '/convertisseur-de-temperature',
     it: '/convertitore-di-temperatura',
-    id: '/konverter-suhu'
+    id: '/konverter-suhu',
+    de: '/temperatur-umrechner'
   }
 })
 </script>
@@ -392,6 +393,45 @@ defineI18nRoute({
     f_2: "Konversi instan secara real-time",
     f_3: "Mendukung semua skala suhu utama",
     f_4: "Pemrosesan di browser — tidak ada data yang dikirim ke server"
+  },
+  de: {
+    title: "Temperatur-Umrechner",
+    meta: "Dieser Umrechner für Temperatureinheiten erleichtert die Umrechnung zwischen verschiedenen Einheiten wie Celsius, Fahrenheit, Rankine und Kelvin.",
+    d1: "Mit diesem Temperatur-Umrechner kannst du zum Beispiel schnell von Celsius in Fahrenheit oder von Kelvin in Celsius umrechnen. Egal, ob du Schüler, Wissenschaftler, Techniker oder einfach nur neugierig auf verschiedene Temperaturskalen bist: Dieses Tool hilft dir dabei, Temperaturen in die Einheit deiner Wahl umzuwandeln. Gib einfach den gewünschten Wert ein, wähle die Ausgangs- und Zieleinheit, und das Ergebnis wird sofort angezeigt.",
+    C: "Celsius",
+    F: "Fahrenheit",
+    K: "Kelvin",
+    R: "Rankine",
+    value: "Wert",
+    from: "Von",
+    to: "Nach",
+    result: "Ergebnis",
+    err: "Umrechnung nicht durchgeführt",
+    how_it_works_title: "So funktioniert es",
+    step_1_title: "Wert eingeben",
+    step_1_desc: "Gib den Temperaturwert ein, den du umrechnen möchtest.",
+    step_2_title: "Skalen auswählen",
+    step_2_desc: "Wähle die Ausgangs- und Zieltemperaturskala.",
+    step_3_title: "Ergebnis kopieren",
+    step_3_desc: "Die Umrechnung erfolgt sofort. Nutze den Kopier-Button, um das Ergebnis in die Zwischenablage zu senden.",
+    use_cases_title: "Anwendungsfälle",
+    uc_1_title: "Kochen und Rezepte",
+    uc_1_desc: "Wandle Ofentemperaturen schnell zwischen Celsius und Fahrenheit um, um internationale Rezepte korrekt nachzukochen.",
+    uc_2_title: "Wissenschaftliche Forschung",
+    uc_2_desc: "Konvertiere Messwerte in Kelvin oder Rankine für thermodynamische Berechnungen und Laborarbeit.",
+    faq_title: "Fragen und Antworten",
+    faq_1_q: "Was ist der Unterschied zwischen Celsius und Fahrenheit?",
+    faq_1_a: "Celsius basiert auf dem Gefrier- und Siedepunkt von Wasser (0°C und 100°C), während Fahrenheit eine andere Skala verwendet (32°F und 212°F für dieselben Punkte).",
+    faq_2_q: "Wann wird Kelvin verwendet?",
+    faq_2_a: "Kelvin ist die grundlegende Temperatureinheit in den physikalischen Wissenschaften und wird verwendet, wenn absolute Temperaturmessungen erforderlich sind.",
+    see1: "Längen-Umrechner",
+    see2: "Zeit-Umrechner",
+    see3: "Speichereinheiten-Umrechner",
+    see4: "Zahlenbasen-Umrechner",
+    f_1: "Zwischen Celsius, Fahrenheit, Kelvin und Rankine umrechnen",
+    f_2: "Sofortige Umrechnung in Echtzeit",
+    f_3: "Unterstützt alle wichtigen Temperaturskalen",
+    f_4: "Verarbeitung im Browser — keine Daten werden an Server gesendet"
   }
 }
 </i18n>
