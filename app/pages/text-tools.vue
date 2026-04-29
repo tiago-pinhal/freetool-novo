@@ -19,7 +19,8 @@ defineI18nRoute({
         es: '/herramientas-para-textos',
         fr: '/outils-pour-textes',
         it: '/strumenti-per-testi',
-        id: '/alat-teks'
+        id: '/alat-teks',
+        de: '/textwerkzeuge'
     }
 })
 </script>
@@ -141,6 +142,17 @@ defineI18nRoute({
         diff: "Komparator Teks",
         count: "Penghitung Teks",
         lorem: "Generator Teks"
+    },
+    de: {
+        title: "Textwerkzeuge",
+        meta: "Kostenlose Online-Textwerkzeuge: Wortzähler, Textgenerator, Konverter, Vergleicher, besondere Buchstaben und ASCII-Kunst. Steigere deine Produktivität!",
+        desc: "Wandle Groß- und Kleinschreibung um, vergleiche Dokumente, zähle Wörter, erstelle Platzhaltertext, erzeuge besondere Buchstaben und ASCII-Kunst. Die gesamte Verarbeitung erfolgt in deinem Browser, deine Daten verlassen niemals dein Gerät und es ist keine Installation erforderlich.",
+        asc: "ASCII-Buchstaben",
+        fonts: "Besondere Buchstaben",
+        txt: "Textkonverter",
+        diff: "Textvergleicher",
+        count: "Textzähler",
+        lorem: "Textgenerator"
     }
 }
 </i18n>

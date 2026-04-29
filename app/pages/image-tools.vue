@@ -18,7 +18,8 @@ defineI18nRoute({
         es: '/herramientas-para-imagenes',
         fr: '/outils-pour-images',
         it: '/strumenti-per-immagini',
-        id: '/alat-gambar'
+        id: '/alat-gambar',
+        de: '/bild-werkzeuge'
     }
 })
 </script>
@@ -151,6 +152,18 @@ defineI18nRoute({
         cropper: "Pemotong Gambar",
         resizer: "Pengubah Ukuran Gambar",
         img_pdf: "Gambar ke PDF",
+    },
+    de: {
+        title: "Bild-Werkzeuge",
+        meta: "Kostenlose Online-Bildwerkzeuge: Emoji- und Symbol-Auswahl, QR-Code- und Barcode-Generator, Bild zuschneiden, Größe ändern und in PDF umwandeln. Keine Installation erforderlich!",
+        desc: "Wähle Emojis und Symbole, erstelle QR-Codes und Barcodes, schneide Bilder zu und ändere deren Größe oder konvertiere sie sogar in PDF. Die gesamte Verarbeitung erfolgt in deinem Browser, deine Dateien verlassen nie dein Gerät und es ist keine Installation erforderlich.",
+        emoji: "Emoji-Auswahl",
+        symbol: "Symbol-Auswahl",
+        qr: "QR-Code-Generator",
+        barcode: "Barcode-Generator",
+        cropper: "Bild zuschneiden",
+        resizer: "Bildgröße ändern",
+        img_pdf: "Bild zu PDF",
     }
 }
 </i18n>

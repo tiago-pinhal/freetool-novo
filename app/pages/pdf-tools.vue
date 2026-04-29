@@ -18,7 +18,8 @@ defineI18nRoute({
         es: '/herramientas-para-pdf',
         fr: '/outils-pour-pdf',
         it: '/strumenti-per-pdf',
-        id: '/alat-pdf'
+        id: '/alat-pdf',
+        de: '/pdf-werkzeuge'
     }
 })
 </script>
@@ -118,6 +119,15 @@ defineI18nRoute({
         split: "Pisahkan PDF",
         num: "Beri Nomor PDF",
         to_img: "PDF ke Gambar",
+    },
+    de: {
+        title: "PDF-Werkzeuge",
+        meta: "Kostenlose Online-PDF-Werkzeuge: bearbeiten, aufteilen, Seiten nummerieren und PDF in Bild konvertieren. Leistungsstarke Dokumentenbearbeitung ohne Softwareinstallation!",
+        desc: "Bearbeite, teile und nummeriere PDF-Seiten oder konvertiere Dateien in Bilder, alles ohne deinen Browser zu verlassen. Deine Dokumente verlassen nie dein Gerät und es ist keine Installation erforderlich.",
+        edit: "PDF bearbeiten",
+        split: "PDF aufteilen",
+        num: "PDF nummerieren",
+        to_img: "PDF zu Bild",
     }
 }
 </i18n>
