@@ -37,7 +37,8 @@ const bases = Array.from({ length: 19 }, (_, i) => ({ value: String(i + 2), key:
 const state = reactive({
   number: '',
   from: '10',
-  to: '2'
+  to: '2',
+  ads: false
 })
 
 const baseOptions = computed(() =>
@@ -46,13 +47,13 @@ const baseOptions = computed(() =>
 
 const output = computed(() => {
   if (!state.number.trim()) return null
+  if (!state.ads) state.ads = true
   const parsed = parseInt(state.number, Number(state.from))
   if (isNaN(parsed)) return t('err')
   return parsed.toString(Number(state.to))
 })
 
-const useCases = computed(() => [t('uc_1'), t('uc_2'), t('uc_3'), t('uc_4')])
-const techNotes = computed(() => [t('t_1'), t('t_2'), t('t_3'), t('t_4')])
+
 
 defineI18nRoute({
   paths: {
@@ -120,59 +121,43 @@ defineI18nRoute({
       </Transition>
     </div>
 
+    <Mordizi v-if="state.ads" />
+
     <template #info>
       <div class="space-y-8">
         <p>{{ t('d1') }}</p>
 
-        <!-- How It Works -->
-        <section>
-          <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
-            <Icon name="heroicons:play-circle-20-solid" class="w-6 h-6 text-primary" />
-            {{ t('how_to_use_title') }}
-          </h2>
-          <p class="mb-4">{{ t('how_desc') }}</p>
-          <div class="grid sm:grid-cols-3 gap-4">
-            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 bg-base-200/40 p-4 rounded-xl border border-primary/20">
-              <span class="text-3xl font-black text-primary/30 leading-none">{{ i }}</span>
-              <span class="font-bold text-base-content">{{ t(`step_${i}_title`) }}</span>
-              <span class="text-sm text-base-content/70">{{ t(`step_${i}_desc`) }}</span>
-            </div>
-          </div>
-        </section>
+        <UseCaseSection
+          :title="t('tech_title')"
+          :description="t('tech_desc')"
+          :items="[
+            { title: t('t_1_t'), description: t('t_1_d') },
+            { title: t('t_2_t'), description: t('t_2_d') },
+            { title: t('t_3_t'), description: t('t_3_d') },
+            { title: t('t_4_t'), description: t('t_4_d') }
+          ]"
+        />
 
-        <!-- Applications -->
-        <section>
-          <h2 class="text-2xl font-bold text-base-content mb-6 flex items-center gap-2">
-            <Icon name="heroicons:briefcase" class="text-primary" />
-            {{ t('apps_title') }}
-          </h2>
-          <div class="bg-base-200/30 rounded-3xl p-8 border border-base-content/20">
-            <p class="mb-4">{{ t('uc_intro') }}</p>
-            <ul class="grid sm:grid-cols-2 gap-4 list-none p-0 m-0">
-              <li v-for="item in useCases" :key="item" class="flex gap-3">
-                <Icon name="heroicons:check-circle-20-solid" class="text-success w-5 h-5 mt-0.5 shrink-0" />
-                <span>{{ item }}</span>
-              </li>
-            </ul>
-          </div>
-        </section>
+        <UseCaseSection
+          :title="t('use_cases_title')"
+          :description="t('uc_intro')"
+          :items="[
+            { title: t('uc_1_t'), description: t('uc_1_d') },
+            { title: t('uc_2_t'), description: t('uc_2_d') },
+            { title: t('uc_3_t'), description: t('uc_3_d') },
+            { title: t('uc_4_t'), description: t('uc_4_d') }
+          ]"
+        />
 
-        <!-- Technical Notes -->
-        <section>
-          <h2 class="text-2xl font-bold text-base-content mb-4 flex items-center gap-2">
-            <Icon name="heroicons:cpu-chip" class="text-primary" />
-            {{ t('tech_title') }}
-          </h2>
-          <p class="mb-4">{{ t('tech_desc') }}</p>
-          <ul class="space-y-3 list-none p-0 m-0">
-            <li v-for="item in techNotes" :key="item" class="flex gap-3">
-              <Icon name="heroicons:chevron-right" class="text-primary w-5 h-5 mt-0.5 shrink-0" />
-              <span>{{ item }}</span>
-            </li>
-          </ul>
-        </section>
+        <HowToSection
+          :title="t('how_to_use_title')"
+          :items="[
+            { title: t('step_1_title'), description: t('step_1_desc') },
+            { title: t('step_2_title'), description: t('step_2_desc') },
+            { title: t('step_3_title'), description: t('step_3_desc') }
+          ]"
+        />
 
-        <!-- FAQ -->
         <FaqSection
           :title="t('faq_title')"
           :items="[
@@ -230,18 +215,26 @@ defineI18nRoute({
     step_2_desc: "Choose the source base (From) and the target base (To) from the dropdown menus.",
     step_3_title: "Copy Result",
     step_3_desc: "The converted number will appear instantly in the result area for you to copy.",
-    apps_title: "Common Applications",
+    use_cases_title: "Common Applications",
     uc_intro: "Number base conversion is a fundamental skill in computer science and engineering. Common real-world uses include:",
-    uc_1: "Debug binary and hexadecimal representations in embedded systems and low-level programming",
-    uc_2: "Practice numeral system conversions for computer science and digital electronics coursework",
-    uc_3: "Convert memory addresses between octal, decimal and hexadecimal in systems and assembly programming",
-    uc_4: "Explore historical numeral systems such as vigesimal (base 20, used by the Maya) for academic research",
-    tech_title: "Technical Notes and Supported Bases",
+    uc_1_t: "Software Debugging",
+    uc_1_d: "Debug binary and hexadecimal representations in embedded systems and low-level programming.",
+    uc_2_t: "Educational Practice",
+    uc_2_d: "Practice numeral system conversions for computer science and digital electronics coursework.",
+    uc_3_t: "Systems Programming",
+    uc_3_d: "Convert memory addresses between octal, decimal and hexadecimal in assembly programming.",
+    uc_4_t: "Historical Research",
+    uc_4_d: "Explore historical numeral systems such as vigesimal for academic and mathematical research.",
+    tech_title: "Technical Notes",
     tech_desc: "Key technical details about the bases supported by this converter:",
-    t_1: "Binary (base 2): uses only 0 and 1 — the foundation of all digital computing, hardware logic, and bitwise operations",
-    t_2: "Octal (base 8) and Hexadecimal (base 16): compact representations widely used in memory addressing, Unix file permissions, and color codes",
-    t_3: "Decimal (base 10): the standard human-readable system; all other bases are derived from or converted through decimal internally",
-    t_4: "Vigesimal (base 20): historically used by the Mayan civilization; also supported alongside bases 2–19 for academic and historical use",
+    t_1_t: "Binary (Base 2)",
+    t_1_d: "Uses only 0 and 1 — the foundation of all digital computing and hardware logic.",
+    t_2_t: "Octal & Hexadecimal",
+    t_2_d: "Compact representations used in memory addressing, file permissions, and color codes.",
+    t_3_t: "Decimal (Base 10)",
+    t_3_d: "The standard human-readable system used as the primary interface for all conversions.",
+    t_4_t: "Advanced Bases",
+    t_4_d: "Support for bases 11–20, including vigesimal (base 20) used by ancient civilizations.",
     faq_title: "Questions & Answers",
     faq_1_q: "What is the most common number base conversion in programming?",
     faq_1_a: "Binary ↔ Hexadecimal. Hexadecimal is a compact representation of binary: each hex digit maps exactly to 4 binary digits (nibble). For example, 0xFF = 11111111 in binary = 255 in decimal.",
@@ -297,18 +290,26 @@ defineI18nRoute({
     step_2_desc: "Escolha a base de origem (De) e a base de destino (Para) nos menus suspensos.",
     step_3_title: "Copie o Resultado",
     step_3_desc: "O número convertido aparecerá instantaneamente na área de resultado para você copiar.",
-    apps_title: "Aplicações Comuns",
-    uc_intro: "A conversão de bases numéricas é uma habilidade fundamental em ciência da computação e engenharia. Usos comuns no mundo real incluem:",
-    uc_1: "Depurar representações binárias e hexadecimais em sistemas embarcados e programação de baixo nível",
-    uc_2: "Praticar conversões entre sistemas numéricos para disciplinas de ciência da computação e eletrônica digital",
-    uc_3: "Converter endereços de memória entre octal, decimal e hexadecimal em sistemas e programação assembly",
-    uc_4: "Explorar sistemas numéricos históricos como o vigesimal (base 20, usado pelos Maias) em pesquisa acadêmica",
-    tech_title: "Notas Técnicas e Bases Suportadas",
+    use_cases_title: "Aplicações Comuns",
+    uc_intro: "A conversão de bases numéricas é uma habilidade fundamental em ciência da computação e engenharia. Usos comuns incluem:",
+    uc_1_t: "Depuração de Software",
+    uc_1_d: "Depure representações binárias e hexadecimais em sistemas embarcados e programação de baixo nível.",
+    uc_2_t: "Prática Educativa",
+    uc_2_d: "Pratique conversões entre sistemas numéricos para disciplinas de ciência da computação e eletrônica digital.",
+    uc_3_t: "Programação de Sistemas",
+    uc_3_d: "Converta endereços de memória entre octal, decimal e hexadecimal em sistemas e programação assembly.",
+    uc_4_t: "Pesquisa Histórica",
+    uc_4_d: "Explore sistemas numéricos históricos como o vigesimal para fins acadêmicos e matemáticos.",
+    tech_title: "Notas Técnicas",
     tech_desc: "Detalhes técnicos importantes sobre as bases suportadas por este conversor:",
-    t_1: "Binário (base 2): usa apenas 0 e 1 — a base de toda computação digital, lógica de hardware e operações bitwise",
-    t_2: "Octal (base 8) e Hexadecimal (base 16): representações compactas amplamente usadas em endereçamento de memória, permissões Unix e códigos de cores",
-    t_3: "Decimal (base 10): o sistema padrão de leitura humana; todas as outras bases são convertidas internamente através do decimal",
-    t_4: "Vigesimal (base 20): usado historicamente pela civilização Maia; suportado junto com as bases 2–19 para uso acadêmico e histórico",
+    t_1_t: "Binário (Base 2)",
+    t_1_d: "Usa apenas 0 e 1 — a base de toda computação digital, lógica de hardware e operações bitwise.",
+    t_2_t: "Octal & Hexadecimal",
+    t_2_d: "Representações compactas amplamente usadas em endereçamento de memória, permissões Unix e códigos de cores.",
+    t_3_t: "Decimal (Base 10)",
+    t_3_d: "O sistema padrão de leitura humana; todas as outras bases são convertidas internamente através do decimal.",
+    t_4_t: "Bases Avançadas",
+    t_4_d: "Suporte para bases 11–20, incluindo o vigesimal usado por civilizações antigas.",
     faq_title: "Perguntas e Respostas",
     faq_1_q: "Qual é a conversão de bases mais comum na programação?",
     faq_1_a: "Binário ↔ Hexadecimal. O hexadecimal é uma representação compacta do binário: cada dígito hex corresponde exatamente a 4 dígitos binários (nibble). Por exemplo, 0xFF = 11111111 em binário = 255 em decimal.",
@@ -364,18 +365,26 @@ defineI18nRoute({
     step_2_desc: "Elija la base de origen (De) y la base de destino (A) en los menús desplegables.",
     step_3_title: "Copie el Resultado",
     step_3_desc: "El número convertido aparecerá instantáneamente en el área de resultado para que lo copies.",
-    apps_title: "Aplicaciones Comunes",
-    uc_intro: "La conversión de bases numéricas es una habilidad fundamental en ciencias de la computación e ingeniería. Usos comunes en el mundo real incluyen:",
-    uc_1: "Depurar representaciones binarias y hexadecimales en sistemas embebidos y programación de bajo nivel",
-    uc_2: "Practicar conversiones entre sistemas numéricos para cursos de ciencias de la computación y electrónica digital",
-    uc_3: "Convertir direcciones de memoria entre octal, decimal y hexadecimal en programación de sistemas y ensamblador",
-    uc_4: "Explorar sistemas numéricos históricos como el vigesimal (base 20, usado por los Mayas) en investigación académica",
-    tech_title: "Notas Técnicas y Bases Soportadas",
+    use_cases_title: "Aplicaciones Comunes",
+    uc_intro: "La conversión de bases numéricas es una habilidad fundamental en informática e ingeniería. Usos comunes incluyen:",
+    uc_1_t: "Depuración de Software",
+    uc_1_d: "Depure representaciones binarias y hexadecimales en sistemas embebidos y programación de bajo nivel.",
+    uc_2_t: "Práctica Educativa",
+    uc_2_d: "Practique conversiones entre sistemas numéricos para cursos de informática y electrónica digital.",
+    uc_3_t: "Programación de Sistemas",
+    uc_3_d: "Convierta direcciones de memoria entre octal, decimal y hexadecimal en ensamblador y sistemas.",
+    uc_4_t: "Investigación Histórica",
+    uc_4_d: "Explore sistemas numéricos históricos como el vigesimal para fines académicos y matemáticos.",
+    tech_title: "Notas Técnicas",
     tech_desc: "Detalles técnicos importantes sobre las bases soportadas por este conversor:",
-    t_1: "Binario (base 2): usa solo 0 y 1 — la base de toda la computación digital, lógica de hardware y operaciones bitwise",
-    t_2: "Octal (base 8) y Hexadecimal (base 16): representaciones compactas ampliamente usadas en direccionamiento de memoria, permisos Unix y códigos de color",
-    t_3: "Decimal (base 10): el sistema estándar de lectura humana; todas las demás bases se convierten internamente a través del decimal",
-    t_4: "Vigesimal (base 20): usado históricamente por la civilización Maya; soportado junto con las bases 2–19 para uso académico e histórico",
+    t_1_t: "Binario (Base 2)",
+    t_1_d: "Usa solo 0 y 1 — la base de toda la computación digital, lógica de hardware y operaciones bitwise.",
+    t_2_t: "Octal y Hexadecimal",
+    t_2_d: "Representaciones compactas usadas en direccionamiento de memoria, permisos Unix e iconos de color.",
+    t_3_t: "Decimal (Base 10)",
+    t_3_d: "El sistema estándar de lectura humana utilizado como interfaz principal para todas las conversiones.",
+    t_4_t: "Bases Avanzadas",
+    t_4_d: "Soporte para bases 11–20, incluyendo el vigesimal (base 20) usado por civilizaciones antiguas.",
     faq_title: "Preguntas y Respuestas",
     faq_1_q: "¿Cuál es la conversión de bases más común en programación?",
     faq_1_a: "Binario ↔ Hexadecimal. El hexadecimal es una representación compacta del binario: cada dígito hex corresponde exactamente a 4 dígitos binarios (nibble). Por ejemplo, 0xFF = 11111111 en binario = 255 en decimal.",
@@ -431,18 +440,26 @@ defineI18nRoute({
     step_2_desc: "Choisissez la base source (De) et la base cible (À) dans les menus déroulants.",
     step_3_title: "Copier le Résultat",
     step_3_desc: "Le nombre converti apparaîtra instantanément dans la zone de résultat pour que vous puissiez le copier.",
-    apps_title: "Applications Courantes",
-    uc_intro: "La conversion de bases numériques est une compétence fondamentale en informatique et en ingénierie. Les utilisations courantes dans le monde réel incluent :",
-    uc_1: "Déboguer les représentations binaires et hexadécimales dans les systèmes embarqués et la programmation bas niveau",
-    uc_2: "Pratiquer les conversions entre systèmes numériques pour les cours d'informatique et d'électronique numérique",
-    uc_3: "Convertir des adresses mémoire entre octal, décimal et hexadécimal en programmation système et assembleur",
-    uc_4: "Explorer les systèmes numériques historiques comme le vigésimal (base 20, utilisé par les Mayas) pour la recherche académique",
-    tech_title: "Notes Techniques et Bases Supportées",
+    use_cases_title: "Applications Courantes",
+    uc_intro: "La conversion de bases numériques est une compétence fondamentale en informatique. Les utilisations courantes incluent :",
+    uc_1_t: "Débogage Logiciel",
+    uc_1_d: "Déboguez les représentations binaires et hexadécimales dans les systèmes embarqués.",
+    uc_2_t: "Pratique Éducative",
+    uc_2_d: "Pratiquez les conversions pour les cours d'informatique et d'électronique numérique.",
+    uc_3_t: "Programmation Système",
+    uc_3_d: "Convertissez les adresses mémoire entre octal, décimal et hexadécimal en assembleur.",
+    uc_4_t: "Recherche Historique",
+    uc_4_d: "Explorez les systèmes historiques comme le vigésimal pour la recherche académique.",
+    tech_title: "Notes Techniques",
     tech_desc: "Détails techniques importants sur les bases supportées par ce convertisseur :",
-    t_1: "Binaire (base 2) : utilise uniquement 0 et 1 — la base de toute l'informatique numérique, de la logique matérielle et des opérations bitwise",
-    t_2: "Octal (base 8) et Hexadécimal (base 16) : représentations compactes largement utilisées dans l'adressage mémoire, les permissions Unix et les codes couleur",
-    t_3: "Décimal (base 10) : le système standard lisible par l'humain ; toutes les autres bases sont converties en interne via le décimal",
-    t_4: "Vigésimal (base 20) : utilisé historiquement par la civilisation Maya ; supporté avec les bases 2–19 pour un usage académique et historique",
+    t_1_t: "Binaire (Base 2)",
+    t_1_d: "Utilise uniquement 0 et 1 — la base de toute l'informatique numérique e de la logique matérielle.",
+    t_2_t: "Octal & Hexadécimal",
+    t_2_d: "Représentations compactes utilisées dans l'adressage mémoire e les permissions Unix.",
+    t_3_t: "Décimal (Base 10)",
+    t_3_d: "Le système standard lisible par l'humain utilisé comme interface principale.",
+    t_4_t: "Bases Avancées",
+    t_4_d: "Support des bases 11–20, incluant le vigésimal (base 20) utilisé par les anciennes civilisations.",
     faq_title: "Questions et Réponses",
     faq_1_q: "Quelle est la conversion de bases la plus courante en programmation ?",
     faq_1_a: "Binaire ↔ Hexadécimal. L'hexadécimal est une représentation compacte du binaire : chaque chiffre hex correspond exactement à 4 chiffres binaires (nibble). Par exemple, 0xFF = 11111111 en binaire = 255 en décimal.",
@@ -498,18 +515,26 @@ defineI18nRoute({
     step_2_desc: "Scegli la base di origine (Da) e la base di destinazione (A) dai menu a discesa.",
     step_3_title: "Copia il Risultato",
     step_3_desc: "Il numero convertito apparirà istantaneamente nell'area dei risultati per essere copiato.",
-    apps_title: "Applicazioni Comuni",
-    uc_intro: "La conversione di basi numeriche è una competenza fondamentale in informatica e ingegneria. Usi comuni nel mondo reale includono:",
-    uc_1: "Eseguire il debug di rappresentazioni binarie ed esadecimali in sistemi embedded e programmazione a basso livello",
-    uc_2: "Praticare le conversioni tra sistemi numerici per corsi di informatica ed elettronica digitale",
-    uc_3: "Convertire indirizzi di memoria tra ottale, decimale ed esadecimale in programmazione di sistema e assembly",
-    uc_4: "Esplorare sistemi numerici storici come il vigesimale (base 20, usato dai Maya) per ricerca accademica",
-    tech_title: "Note Tecniche e Basi Supportate",
+    use_cases_title: "Applicazioni Comuni",
+    uc_intro: "La conversione di basi numeriche è una competenza fondamentale in informatica. Gli usi comuni includono:",
+    uc_1_t: "Debug del Software",
+    uc_1_d: "Esegui il debug di rappresentazioni binarie ed esadecimali in sistemi embedded e firmware.",
+    uc_2_t: "Pratica Educativa",
+    uc_2_d: "Esercitati con le conversioni per corsi di informatica ed elettronica digitale.",
+    uc_3_t: "Programmazione di Sistemi",
+    uc_3_d: "Converti indirizzi di memoria tra ottale, decimale ed esadecimale in assembly.",
+    uc_4_t: "Ricerca Storica",
+    uc_4_d: "Esplora sistemi numerici storici come il vigesimale per scopi accademici.",
+    tech_title: "Note Tecniche",
     tech_desc: "Dettagli tecnici importanti sulle basi supportate da questo convertitore:",
-    t_1: "Binario (base 2): usa solo 0 e 1 — la base di tutta l'informatica digitale, la logica hardware e le operazioni bitwise",
-    t_2: "Ottale (base 8) ed Esadecimale (base 16): rappresentazioni compatte ampiamente usate nell'indirizzamento di memoria, permessi Unix e codici colore",
-    t_3: "Decimale (base 10): il sistema standard leggibile dall'uomo; tutte le altre basi vengono convertite internamente tramite il decimale",
-    t_4: "Vigesimale (base 20): usato storicamente dalla civiltà Maya; supportato insieme alle basi 2–19 per uso accademico e storico",
+    t_1_t: "Binario (Base 2)",
+    t_1_d: "Usa solo 0 e 1 — la base di tutta l'informatica digitale e della logica hardware.",
+    t_2_t: "Ottale & Esadecimale",
+    t_2_d: "Rappresentazioni compatte usate nell'indirizzamento di memoria e permessi Unix.",
+    t_3_t: "Decimale (Base 10)",
+    t_3_d: "Il sistema standard leggibile dall'uomo utilizzato come interfaccia principale.",
+    t_4_t: "Basi Avanzate",
+    t_4_d: "Supporto per basi 11–20, incluso il vigesimale (base 20) usato da antiche civiltà.",
     faq_title: "Domande e Risposte",
     faq_1_q: "Qual è la conversione di basi più comune nella programmazione?",
     faq_1_a: "Binario ↔ Esadecimale. L'esadecimale è una rappresentazione compatta del binario: ogni cifra hex corrisponde esattamente a 4 cifre binarie (nibble). Ad esempio, 0xFF = 11111111 in binario = 255 in decimale.",
@@ -565,18 +590,26 @@ defineI18nRoute({
     step_2_desc: "Pilih basis sumber (Dari) dan basis target (Ke) dari menu tarik-turun.",
     step_3_title: "Salin Hasil",
     step_3_desc: "Angka yang dikonversi akan muncul secara instan di area hasil untuk Anda salin.",
-    apps_title: "Aplikasi Umum",
-    uc_intro: "Konversi basis angka adalah keterampilan mendasar dalam ilmu komputer dan teknik. Penggunaan dunia nyata yang umum meliputi:",
-    uc_1: "Debugging representasi biner dan heksadesimal dalam sistem tertanam dan pemrograman tingkat rendah",
-    uc_2: "Melatih konversi sistem angka untuk mata kuliah ilmu komputer dan elektronika digital",
-    uc_3: "Mengonversi alamat memori antara oktal, desimal, dan heksadesimal dalam pemrograman sistem dan assembly",
-    uc_4: "Menjelajahi sistem angka historis seperti vigesimal (basis 20, digunakan oleh suku Maya) untuk penelitian akademik",
-    tech_title: "Catatan Teknis dan Basis yang Didukung",
+    use_cases_title: "Aplikasi Umum",
+    uc_intro: "Konversi basis angka adalah keterampilan mendasar dalam ilmu komputer. Penggunaan umum meliputi:",
+    uc_1_t: "Debugging Perangkat Lunak",
+    uc_1_d: "Debug representasi biner dan heksadesimal dalam sistem tertanam dan tingkat rendah.",
+    uc_2_t: "Praktik Pendidikan",
+    uc_2_d: "Latih konversi sistem angka untuk mata kuliah ilmu komputer dan elektronika digital.",
+    uc_3_t: "Pemrograman Sistem",
+    uc_3_d: "Konversi alamat memori antara oktal, desimal, dan heksadesimal dalam assembly.",
+    uc_4_t: "Penelitian Sejarah",
+    uc_4_d: "Jelajahi sistem angka historis seperti vigesimal untuk tujuan akademik dan matematika.",
+    tech_title: "Catatan Teknis",
     tech_desc: "Detail teknis utama tentang basis yang didukung oleh konverter ini:",
-    t_1: "Biner (basis 2): hanya menggunakan 0 dan 1 — dasar dari semua komputasi digital dan logika perangkat keras",
-    t_2: "Oktal (basis 8) dan Heksadesimal (basis 16): representasi ringkas yang banyak digunakan dalam pengalamatan memori dan kode warna",
-    t_3: "Desimal (basis 10): sistem standar yang mudah dibaca manusia; semua basis lainnya dikonversi melalui desimal secara internal",
-    t_4: "Vigesimal (basis 20): digunakan secara historis oleh peradaban Maya; didukung bersama basis 2–19 untuk penggunaan akademik",
+    t_1_t: "Biner (Basis 2)",
+    t_1_d: "Hanya menggunakan 0 dan 1 — dasar dari semua komputasi digital dan logika perangkat keras.",
+    t_2_t: "Oktal & Heksadesimal",
+    t_2_d: "Representasi ringkas yang digunakan dalam pengalamatan memori e izin file Unix.",
+    t_3_t: "Desimal (Basis 10)",
+    t_3_d: "Sistem standar yang mudah dibaca manusia yang digunakan sebagai antarmuka utama.",
+    t_4_t: "Basis Lanjutan",
+    t_4_d: "Dukungan untuk basis 11–20, termasuk vigesimal (basis 20) yang digunakan suku Maya.",
     faq_title: "Tanya Jawab",
     faq_1_q: "Apa konversi basis angka yang paling umum dalam pemrograman?",
     faq_1_a: "Biner ↔ Heksadesimal. Heksadesimal adalah representasi biner yang ringkas: setiap digit hex memetakan tepat ke 4 digit biner (nibble).",
@@ -632,18 +665,26 @@ defineI18nRoute({
     step_2_desc: "Wähle die Ausgangsbasis (Von) und die Zielbasis (Nach) in den Dropdown-Menüs aus.",
     step_3_title: "Ergebnis kopieren",
     step_3_desc: "Die umgerechnete Zahl erscheint sofort im Ergebnisbereich und kann dort kopiert werden.",
-    apps_title: "Häufige Anwendungen",
-    uc_intro: "Die Umrechnung von Zahlenbasen ist eine grundlegende Fähigkeit in Informatik und Technik. Häufige praktische Anwendungen sind:",
-    uc_1: "Binäre und hexadezimale Darstellungen in eingebetteten Systemen und bei Low-Level-Programmierung debuggen",
-    uc_2: "Umrechnungen von Zahlensystemen für Informatik- und Digitalelektronik-Kurse üben",
-    uc_3: "Speicheradressen in System- und Assemblerprogrammierung zwischen Oktal, Dezimal und Hexadezimal umwandeln",
-    uc_4: "Historische Zahlensysteme wie das vigesimale System (Basis 20, von den Maya verwendet) für akademische Forschung untersuchen",
-    tech_title: "Technische Hinweise und unterstützte Basen",
+    use_cases_title: "Häufige Anwendungen",
+    uc_intro: "Die Umrechnung von Zahlenbasen ist eine grundlegende Fähigkeit in der Informatik. Anwendungen sind:",
+    uc_1_t: "Software-Debugging",
+    uc_1_d: "Debugge binäre und hexadezimale Darstellungen in eingebetteten Systemen.",
+    uc_2_t: "Bildung & Übung",
+    uc_2_d: "Übe Umrechnungen für Informatik- und Digitalelektronik-Kurse.",
+    uc_3_t: "Systemprogrammierung",
+    uc_3_d: "Wandle Speicheradressen in Assembler zwischen Oktal, Dezimal und Hexadezimal um.",
+    uc_4_t: "Historische Forschung",
+    uc_4_d: "Untersuche historische Zahlensysteme wie das vigesimale System der Maya.",
+    tech_title: "Technische Hinweise",
     tech_desc: "Wichtige technische Details zu den von diesem Umrechner unterstützten Basen:",
-    t_1: "Binär (Basis 2): verwendet nur 0 und 1 — die Grundlage aller digitalen Berechnungen, Hardwarelogik und bitweisen Operationen",
-    t_2: "Oktal (Basis 8) und Hexadezimal (Basis 16): kompakte Darstellungen, die häufig bei Speicheradressierung, Unix-Dateirechten und Farbcodes verwendet werden",
-    t_3: "Dezimal (Basis 10): das für Menschen übliche Standardsystem; alle anderen Basen werden intern über Dezimal verarbeitet",
-    t_4: "Vigesimal (Basis 20): wurde historisch von der Maya-Zivilisation verwendet; wird zusammen mit den Basen 2 bis 19 für akademische und historische Zwecke unterstützt",
+    t_1_t: "Binär (Basis 2)",
+    t_1_d: "Verwendet nur 0 und 1 — die Grundlage aller digitalen Berechnungen e der Hardwarelogik.",
+    t_2_t: "Oktal & Hexadezimal",
+    t_2_d: "Kompakte Darstellungen für Speicheradressierung, Unix-Dateirechte e Farbcodes.",
+    t_3_t: "Dezimal (Basis 10)",
+    t_3_d: "Das für Menschen übliche Standardsystem, das als primäre Schnittstelle dient.",
+    t_4_t: "Erweiterte Basen",
+    t_4_d: "Unterstützung für die Basen 11–20, einschließlich des vigesimalen Systems (Basis 20).",
     faq_title: "Fragen und Antworten",
     faq_1_q: "Welche Zahlenbasen-Umrechnung ist in der Programmierung am häufigsten?",
     faq_1_a: "Binär ↔ Hexadezimal. Hexadezimal ist eine kompakte Darstellung von Binärzahlen: Jede Hex-Ziffer entspricht genau 4 Binärziffern (Nibble). Zum Beispiel gilt 0xFF = 11111111 binär = 255 dezimal.",

@@ -107,7 +107,8 @@ defineI18nRoute({
     es: '/convertidor-de-json-a-csv',
     fr: '/convertisseur-de-json-en-csv',
     it: '/convertitore-da-json-a-csv',
-    id: '/konverter-json-ke-csv'
+    id: '/konverter-json-ke-csv',
+    de: '/json-zu-csv-konverter'
   }
 })
 </script>
@@ -544,6 +545,52 @@ defineI18nRoute({
     f_2: "Dukungan pemisah kustom",
     f_3: "Object flattening otomatis",
     f_4: "Tanpa pendaftaran atau instalasi"
+  },
+  de: {
+    m_title: "JSON-zu-CSV-Konverter Online - Kostenlos und Sofort",
+    title: "JSON-zu-CSV-Konverter",
+    meta: "Konvertiere JSON kostenlos online in CSV. Wandle JSON-Objekt-Arrays sofort in tabellarische CSV-Dateien um, die sich für Excel und andere Tabellenkalkulationen eignen.",
+    d1: "Dieses Tool wandelt eine Liste von Daten im JSON-Format in eine einfache Tabelle (CSV) um, damit sie sich leichter in Tabellenkalkulationen ansehen und verwenden lassen. Objektschlüssel werden zu Kopfzeilen-Spalten, während ihre Werte die darunterliegenden Zeilen füllen.",
+    d2: "Die Konvertierung von JSON in CSV ist besonders nützlich, um API-Antworten in Excel-Dateien zu exportieren, Daten in ältere Berichtssysteme zu migrieren oder Rohdaten für Business-Teams aufzubereiten.",
+    bt: "Konvertieren",
+    rst: "Neu beginnen",
+    copy: "Kopieren",
+    plc: "Füge hier den JSON-Code ein oder ziehe eine Datei hinein",
+    header: "Kopfzeile in der ersten Zeile einfügen",
+    delimiter: "Trennzeichen:",
+    comma: "Komma",
+    semicolon: "Semikolon",
+    pipe: "Pipe",
+    tab: "Tabulator",
+    err: "Fehler",
+    err_label: "Ungültiges JSON",
+    how_it_works_title: "So funktioniert es",
+    hiw_1_title: "JSON einfügen",
+    hiw_1_desc: "Füge deine JSON-Datei in den Editor ein oder ziehe sie hinein. Aktiviere die Kopfzeilen-Option, wenn die erste CSV-Zeile die Spaltennamen enthalten soll.",
+    hiw_2_title: "Optionen prüfen",
+    hiw_2_desc: "Das System überprüft die JSON-Syntax. Du kannst festlegen, ob die erste Zeile Spaltenüberschriften enthalten soll oder nicht.",
+    hiw_3_title: "In CSV umwandeln",
+    hiw_3_desc: "Klicke auf Konvertieren, um sofort den CSV-Text mit Spalten zu erzeugen, die durch das gewählte Trennzeichen getrennt sind.",
+    use_cases_title: "Anwendungsfälle",
+    uc_1_title: "Export in Tabellenkalkulationen",
+    uc_1_desc: "Wandle strukturierte JSON-Daten wie API-Antworten in ein lesbares Format für Excel oder Google Sheets um.",
+    uc_2_title: "Systemmigration",
+    uc_2_desc: "Konvertiere dokumentbasierte Daten, damit sie sich leicht in klassische Systeme und relationale Datenbanken importieren lassen.",
+    faq_title: "Fragen und Antworten",
+    faq_1_q: "Werden meine JSON-Daten auf dem Server gespeichert?",
+    faq_1_a: "Nein. Die gesamte Verarbeitung findet vollständig in deinem Browser statt. Wir übertragen oder speichern deine JSON-Daten nicht auf unseren Servern.",
+    faq_2_q: "Welche JSON-Struktur wird unterstützt?",
+    faq_2_a: "Das Tool erwartet ein JSON-Array von Objekten, bei dem jedes Objekt eine Zeile darstellt und seine Schlüssel zu den Spaltenüberschriften der CSV werden.",
+    faq_3_q: "Kann ich ein anderes Trennzeichen als das Komma verwenden?",
+    faq_3_a: "Ja. Du kannst zwischen Komma, Semikolon, Pipe-Symbol oder Tabulator wählen, je nachdem, welches Format deine Software erwartet.",
+    see1: "CSV-zu-JSON-Konverter",
+    see2: "JSON-Betrachter",
+    see3: "JSON-Formatter",
+    see4: "XML-zu-JSON-Konverter",
+    f_1: "Sofortige JSON-zu-CSV-Konvertierung",
+    f_2: "Unterstützung für benutzerdefinierte Trennzeichen",
+    f_3: "Automatisches Abflachen von Objekten",
+    f_4: "Keine Registrierung oder Installation erforderlich"
   }
 }
 </i18n>

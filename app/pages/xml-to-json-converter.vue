@@ -108,7 +108,8 @@ defineI18nRoute({
     es: '/convertidor-de-xml-a-json',
     fr: '/convertisseur-de-xml-en-json',
     it: '/convertitore-da-xml-a-json',
-    id: '/konverter-xml-ke-json'
+    id: '/konverter-xml-ke-json',
+    de: '/xml-zu-json-konverter'
   }
 })
 </script>
@@ -338,7 +339,7 @@ defineI18nRoute({
     f_4: "Sem necessidade de cadastro ou instalação"
   },
   es: {
-    m_title: "Convertidor de XML a JSON Online - Gratis y Instantáneo",
+    m_title: "Convertidor de XML a JSON Online - Gratis e Instantáneo",
     title: "Convertidor de XML a JSON",
     meta: "Convierte XML a JSON online y gratis. Pega tu XML y obtén un JSON limpio y formateado sin necesidad de ninguna herramienta o instalación.",
     d1: "Esta herramienta analiza tu XML y mapea cada elemento, atributo y valor a su equivalente en JSON. Las etiquetas se convierten en claves de objeto, los elementos anidados en objetos anidados y las etiquetas repetidas se agrupan automáticamente en arrays, preservando la jerarquía original de los datos.",
@@ -508,6 +509,49 @@ defineI18nRoute({
     f_2: "Dukungan atribut XML",
     f_3: "Mempertahankan hierarki dan struktur bersarang data",
     f_4: "Tanpa pendaftaran atau instalasi"
+  },
+  de: {
+    m_title: "XML-zu-JSON-Konverter Online - Kostenlos und Sofort",
+    title: "XML-zu-JSON-Konverter",
+    meta: "Konvertiere XML kostenlos online in JSON. Füge dein XML ein und erhalte sauberes, formatiertes JSON, ganz ohne zusätzliche Tools oder Installation.",
+    d1: "Dieses Tool analysiert dein XML und ordnet jedes Element, Attribut und jeden Wert dem entsprechenden JSON-Äquivalent zu. Tags werden zu Objektschlüsseln, verschachtelte Elemente zu verschachtelten Objekten, und wiederholte Tags werden automatisch in Arrays gruppiert, sodass die ursprüngliche Datenhierarchie erhalten bleibt.",
+    d2: "Die Konvertierung von XML in JSON ist besonders nützlich, wenn Systeme integriert werden sollen, die nur JSON akzeptieren, Altdaten migriert werden oder REST-APIs genutzt werden, die JSON-Payloads erwarten.",
+    bt: "Konvertieren",
+    rst: "Neu beginnen",
+    copy: "Kopieren",
+    plc: "Füge hier den XML-Code ein oder ziehe eine Datei hinein",
+    attr: "XML-Attribute einschließen (falls vorhanden)",
+    err: "Fehler",
+    err_label: "Parsing-Fehler",
+    how_it_works_title: "So funktioniert es",
+    hiw_1_title: "XML einfügen",
+    hiw_1_desc: "Füge deine XML-Datei in den Editor ein oder ziehe sie hinein. Aktiviere die Attribut-Option, wenn dein XML Attribute enthält, die du behalten möchtest.",
+    hiw_2_title: "Auf Konvertieren klicken",
+    hiw_2_desc: "Klicke auf Konvertieren und das Tool analysiert dein XML und wandelt es sofort in eine saubere, formatierte JSON-Struktur um.",
+    hiw_3_title: "JSON kopieren",
+    hiw_3_desc: "Das erzeugte JSON erscheint im Editor und ist sofort einsatzbereit. Klicke auf JSON kopieren, um es in die Zwischenablage zu übernehmen.",
+    use_cases_title: "Anwendungsfälle",
+    uc_1_title: "API-Integration",
+    uc_1_desc: "Wandle XML-Antworten aus Legacy-APIs in JSON um, um moderne Frontend-Anwendungen oder andere Dienste damit zu versorgen.",
+    uc_2_title: "Datenmigration",
+    uc_2_desc: "Transformiere alte XML-Datensätze in JSON, wenn Datenbanken migriert oder Daten zwischen Systemen verschoben werden.",
+    uc_3_title: "Konfigurationskonvertierung",
+    uc_3_desc: "Übersetze XML-Konfigurationsdateien in JSON, um sie mit Tools und Frameworks zu verwenden, die nativ mit JSON arbeiten.",
+    faq_title: "Fragen und Antworten",
+    faq_1_q: "Werden meine XML-Daten an einen Server gesendet?",
+    faq_1_a: "Nein. Die Konvertierung läuft vollständig in deinem Browser. Deine Daten verlassen dein Gerät niemals.",
+    faq_2_q: "Was passiert mit XML-Attributen?",
+    faq_2_a: "Standardmäßig werden Attribute ignoriert. Aktiviere die Option 'XML-Attribute einschließen', um sie im JSON-Ergebnis als Schlüssel mit dem Präfix {'@'} abzubilden.",
+    faq_3_q: "Was ist, wenn mein XML wiederholte Tags enthält?",
+    faq_3_a: "Wiederholte Tags auf derselben Ebene werden automatisch in einem JSON-Array gruppiert, sodass die ursprüngliche Struktur erhalten bleibt.",
+    see1: "LESS-zu-CSS-Konverter",
+    see2: "JSON-zu-XML-Konverter",
+    see3: "Zahlenbasen-Umrechner",
+    see4: "Speichereinheiten-Umrechner",
+    f_1: "Sofortige XML-zu-JSON-Konvertierung",
+    f_2: "Unterstützung für XML-Attribute",
+    f_3: "Bewahrt Datenhierarchie und Verschachtelung",
+    f_4: "Keine Registrierung oder Installation erforderlich"
   }
 }
 </i18n>

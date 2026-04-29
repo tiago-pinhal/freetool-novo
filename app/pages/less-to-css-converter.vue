@@ -101,7 +101,8 @@ defineI18nRoute({
     es: '/convertidor-de-less-a-css',
     fr: '/convertisseur-de-less-en-css',
     it: '/convertitore-da-less-a-css',
-    id: '/konverter-less-ke-css'
+    id: '/konverter-less-ke-css',
+    de: '/less-zu-css-konverter'
   }
 })
 </script>
@@ -312,7 +313,7 @@ defineI18nRoute({
     f_4: "Sem necessidade de cadastro ou instalação"
   },
   es: {
-    m_title: "Convertidor de LESS a CSS Online - Gratis y Instantáneo",
+    m_title: "Convertidor de LESS a CSS Online - Gratis e Instantáneo",
     title: "Convertidor de LESS a CSS",
     meta: "Convertidor de LESS a CSS online y gratuito. Pega tu código LESS y obtén el CSS equivalente y válido sin necesidad de una herramienta de build.",
     d1: "LESS es un preprocesador CSS que extiende el lenguaje con variables, reglas anidadas, mixins y funciones, haciendo que las hojas de estilo sean más organizadas y reutilizables. Como los navegadores solo entienden CSS puro, LESS debe compilarse antes de usarse.",
@@ -474,6 +475,47 @@ defineI18nRoute({
     f_2: "Mendukung variabel, mixin, dan aturan bertingkat",
     f_3: "Umpan balik kesalahan secara real-time",
     f_4: "Tanpa pendaftaran atau instalasi"
+  },
+  de: {
+    m_title: "LESS-zu-CSS-Konverter Online - Kostenlos und Sofort",
+    title: "LESS-zu-CSS-Konverter",
+    meta: "Konvertiere LESS kostenlos online in CSS. Füge deinen LESS-Code ein und erhalte das entsprechende gültige CSS, ganz ohne Build-Tool.",
+    d1: "LESS ist ein CSS-Präprozessor, der die Sprache mit Variablen, verschachtelten Regeln, Mixins und Funktionen erweitert und Stylesheets dadurch wartbarer und wiederverwendbarer macht. Browser verstehen jedoch nur reines CSS, deshalb muss LESS vor dem Einsatz kompiliert werden.",
+    bt: "Konvertieren",
+    rst: "Neu beginnen",
+    copy: "Kopieren",
+    plc: "Füge hier den LESS-Code ein oder ziehe eine Datei hinein",
+    err: "Fehler",
+    err_label: "Kompilierungsfehler",
+    how_it_works_title: "So funktioniert es",
+    hiw_1_title: "LESS einfügen",
+    hiw_1_desc: "Füge deine LESS-Datei in den Editor ein oder ziehe sie hinein. Variablen, Mixins und Verschachtelungen werden unterstützt.",
+    hiw_2_title: "Auf Konvertieren klicken",
+    hiw_2_desc: "Klicke auf Konvertieren und das Tool kompiliert dein LESS sofort direkt im Browser.",
+    hiw_3_title: "CSS kopieren",
+    hiw_3_desc: "Das kompilierte CSS wird im Editor angezeigt und kann direkt kopiert werden. Klicke auf CSS kopieren, um es in die Zwischenablage zu übernehmen.",
+    use_cases_title: "Anwendungsfälle",
+    uc_1_title: "Schnelles Testen von Snippets",
+    uc_1_desc: "Teste LESS-Variablen, Mixins oder Verschachtelungsregeln sofort, ohne eine lokale Build-Umgebung einzurichten.",
+    uc_2_title: "Style-Debugging",
+    uc_2_desc: "Isoliere und debugge bestimmte LESS-Blöcke, um die erzeugte CSS-Ausgabe besser zu verstehen und Fehler zu finden.",
+    uc_3_title: "Code-Migration",
+    uc_3_desc: "Konvertiere bestehende LESS-Stylesheets in reines CSS, wenn Projekte von Präprozessoren weg migriert werden.",
+    faq_title: "Fragen und Antworten",
+    faq_1_q: "Wird mein LESS-Code an einen Server gesendet?",
+    faq_1_a: "Nein. Die Kompilierung läuft vollständig in deinem Browser. Dein Code verlässt dein Gerät niemals.",
+    faq_2_q: "Unterstützt das Tool alle LESS-Funktionen?",
+    faq_2_a: "Ja. Variablen, Mixins, Verschachtelung, Funktionen, Imports aus Inline-Definitionen und die meisten LESS-Sprachfunktionen werden vollständig unterstützt.",
+    faq_3_q: "Was passiert, wenn mein LESS einen Fehler enthält?",
+    faq_3_a: "Das Tool zeigt eine aussagekräftige Fehlermeldung an, damit du das Problem schnell finden und beheben kannst.",
+    see1: "XML-zu-JSON-Konverter",
+    see2: "JSON-zu-XML-Konverter",
+    see3: "Zahlenbasen-Umrechner",
+    see4: "Speichereinheiten-Umrechner",
+    f_1: "Sofortige LESS-zu-CSS-Kompilierung",
+    f_2: "Unterstützt Variablen, Mixins und Verschachtelung",
+    f_3: "Echtzeit-Fehlerrückmeldung",
+    f_4: "Keine Registrierung oder Installation erforderlich"
   }
 }
 </i18n>

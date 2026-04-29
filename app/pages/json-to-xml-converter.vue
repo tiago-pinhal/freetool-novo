@@ -98,7 +98,8 @@ defineI18nRoute({
     es: '/convertidor-de-json-a-xml',
     fr: '/convertisseur-de-json-en-xml',
     it: '/convertitore-da-json-a-xml',
-    id: '/konverter-json-ke-xml'
+    id: '/konverter-json-ke-xml',
+    de: '/json-zu-xml-konverter'
   }
 })
 </script>
@@ -309,7 +310,7 @@ defineI18nRoute({
     f_4: "Sem necessidade de cadastro ou instalação"
   },
   es: {
-    m_title: "Convertidor de JSON a XML Online - Gratis y Instantáneo",
+    m_title: "Convertidor de JSON a XML Online - Gratis e Instantáneo",
     title: "Convertidor de JSON a XML",
     meta: "Convierte JSON a XML online y gratis. Pega tu JSON y obtén un XML limpio, válido y bien estructurado sin necesidad de ninguna otra herramienta o instalación.",
     d1: "Esta herramienta analiza tu JSON y mapea cada par clave-valor, objeto anidado y array al elemento XML correspondiente. Las claves se convierten en etiquetas XML, los objetos anidados en elementos hijo y los elementos de array se envuelven en etiquetas repetidas, preservando la estructura original de los datos.",
@@ -471,6 +472,47 @@ defineI18nRoute({
     f_2: "Menangani objek bersarang dan array",
     f_3: "Menghasilkan XML valid dan terstruktur dengan baik",
     f_4: "Tanpa pendaftaran atau instalasi"
+  },
+  de: {
+    m_title: "JSON-zu-XML-Konverter Online - Kostenlos und Sofort",
+    title: "JSON-zu-XML-Konverter",
+    meta: "Konvertiere JSON kostenlos online in XML. Füge dein JSON ein und erhalte sauberes, gültiges und gut strukturiertes XML, ganz ohne zusätzliche Tools oder Installation.",
+    d1: "Dieses Tool analysiert dein JSON und ordnet jedes Schlüssel-Wert-Paar, verschachtelte Objekt und Array dem entsprechenden XML-Element zu. Objektschlüssel werden zu XML-Tags, verschachtelte Objekte zu Kindelementen, und Array-Elemente werden in wiederholte Tags verpackt, sodass die ursprüngliche Datenstruktur erhalten bleibt.",
+    bt: "Konvertieren",
+    rst: "Neu beginnen",
+    copy: "Kopieren",
+    plc: "Füge hier den JSON-Code ein oder ziehe eine Datei hinein",
+    err: "Fehler",
+    err_label: "Parsing-Fehler",
+    how_it_works_title: "So funktioniert es",
+    hiw_1_title: "JSON einfügen",
+    hiw_1_desc: "Füge deine JSON-Datei in den Editor ein oder ziehe sie hinein. Stelle sicher, dass es gültiges JSON ist, bevor du konvertierst.",
+    hiw_2_title: "Auf Konvertieren klicken",
+    hiw_2_desc: "Klicke auf Konvertieren und das Tool analysiert dein JSON und wandelt es sofort in ein sauberes, gut strukturiertes XML-Dokument um.",
+    hiw_3_title: "XML kopieren",
+    hiw_3_desc: "Das erzeugte XML erscheint im Editor und ist sofort einsatzbereit. Klicke auf XML kopieren, um es in die Zwischenablage zu übernehmen.",
+    use_cases_title: "Anwendungsfälle",
+    uc_1_title: "SOAP und Webservices",
+    uc_1_desc: "Wandle JSON-Payloads in XML um, um sie mit SOAP-basierten Webservices und Unternehmens-APIs zu verwenden, die nur XML akzeptieren.",
+    uc_2_title: "Integration mit Altsystemen",
+    uc_2_desc: "Transformiere moderne JSON-Daten in XML, wenn ältere Systeme, Plattformen oder Middleware XML-Eingaben benötigen.",
+    uc_3_title: "Konfigurationsdateien",
+    uc_3_desc: "Konvertiere JSON-Konfigurationsobjekte in XML-Format für Tools, Frameworks und Plattformen, die XML-basierte Konfigurationsdateien verwenden.",
+    faq_title: "Fragen und Antworten",
+    faq_1_q: "Werden meine JSON-Daten an einen Server gesendet?",
+    faq_1_a: "Nein. Die Konvertierung läuft vollständig in deinem Browser. Deine Daten verlassen dein Gerät niemals.",
+    faq_2_q: "Was passiert mit verschachtelten JSON-Objekten?",
+    faq_2_a: "Verschachtelte Objekte werden in verschachtelte XML-Kindelemente umgewandelt, sodass die ursprüngliche Hierarchie deiner Daten erhalten bleibt.",
+    faq_3_q: "Wie werden JSON-Arrays behandelt?",
+    faq_3_a: "Jedes Element eines JSON-Arrays wird in ein wiederholtes XML-Tag mit dem Namen des übergeordneten Schlüssels eingebettet, sodass die Array-Struktur intakt bleibt.",
+    see1: "LESS-zu-CSS-Konverter",
+    see2: "XML-zu-JSON-Konverter",
+    see3: "Zahlenbasen-Umrechner",
+    see4: "Speichereinheiten-Umrechner",
+    f_1: "Sofortige JSON-zu-XML-Konvertierung",
+    f_2: "Verarbeitet verschachtelte Objekte und Arrays",
+    f_3: "Erzeugt gültiges, gut strukturiertes XML",
+    f_4: "Keine Registrierung oder Installation erforderlich"
   }
 }
 </i18n>

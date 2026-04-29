@@ -51,7 +51,8 @@ defineI18nRoute({
     es: '/codificador-y-decodificador-de-url',
     fr: '/encodeur-et-decodeur-d-url',
     it: '/codificatore-e-decodificatore-di-url',
-    id: '/enkoder-dekoder-url'
+    id: '/enkoder-dekoder-url',
+    de: '/url-kodierer-und-dekodierer'
   }
 })
 </script>
@@ -348,6 +349,39 @@ defineI18nRoute({
     f_2: "Dekode URL yang dienkode ke format yang mudah dibaca",
     f_3: "Enkode dan dekode instan",
     f_4: "Pemrosesan di browser — tidak ada data yang dikirim ke server"
+  },
+  de: {
+    title: "URL-Kodierer und -Dekodierer",
+    meta: "Mit diesem URL-Kodierer und -Dekodierer kannst du URLs direkt im Browser einfach und schnell kodieren und dekodieren.",
+    d1: "Mit diesem URL-Kodierer und -Dekodierer wandelt die Schaltfläche 'Kodieren' Sonderzeichen und Leerzeichen in eine für das Web geeignete Zeichenfolge um, damit Browser und andere Systeme die URL korrekt interpretieren. Die Schaltfläche 'Dekodieren' kehrt den Vorgang um und wandelt die kodierte Zeichenfolge wieder in ihre ursprüngliche, lesbare Form zurück. Füge einfach die URL in das Feld oben ein und klicke auf die gewünschte Aktion.",
+    in: "URL hier eingeben",
+    encode: "Kodieren",
+    decode: "Dekodieren",
+    how_it_works_title: "So funktioniert es",
+    step_1_title: "URL eingeben",
+    step_1_desc: "Füge die URL ein oder tippe sie ein, die du kodieren oder dekodieren möchtest.",
+    step_2_title: "Aktion auswählen",
+    step_2_desc: "Klicke auf 'Kodieren', um sie webtauglich zu formatieren, oder auf 'Dekodieren', um den Vorgang rückgängig zu machen.",
+    step_3_title: "Ergebnis kopieren",
+    step_3_desc: "Das Ergebnis erscheint sofort. Verwende den Kopier-Button, um es in die Zwischenablage zu senden.",
+    use_cases_title: "Anwendungsfälle",
+    uc_1_title: "API-Abfrageparameter",
+    uc_1_desc: "Kodiere Schlüssel und Werte in Query-Strings, damit Sonderzeichen die URL-Struktur nicht beschädigen.",
+    uc_2_title: "Sichere Datenübertragung",
+    uc_2_desc: "Stelle sicher, dass Zeichen wie Leerzeichen, kaufmännische Unds und Schrägstriche von Webservern korrekt verarbeitet werden.",
+    faq_title: "Fragen und Antworten",
+    faq_1_q: "Was ist URL-Kodierung?",
+    faq_1_a: "URL-Kodierung, auch als Percent-Encoding bekannt, ist ein Mechanismus zum Kodieren von Informationen in einem Uniform Resource Identifier (URI).",
+    faq_2_q: "Wann sollte ich URL-Dekodierung verwenden?",
+    faq_2_a: "Verwende sie, wenn du eine URL mit Prozentzeichen hast, zum Beispiel %20, und die ursprünglichen Zeichen wie Leerzeichen sehen möchtest.",
+    see1: "LESS-zu-CSS-Konverter",
+    see2: "XML-zu-JSON-Konverter",
+    see3: "JSON-zu-XML-Konverter",
+    see4: "Zahlenbasen-Umrechner",
+    f_1: "Kodiere URLs für eine sichere Webübertragung",
+    f_2: "Dekodiere kodierte URLs in ein lesbares Format",
+    f_3: "Sofortiges Kodieren und Dekodieren",
+    f_4: "Verarbeitung im Browser — keine Daten werden an Server gesendet"
   }
 }
 </i18n>

@@ -111,7 +111,8 @@ defineI18nRoute({
     es: '/convertidor-de-csv-a-json',
     fr: '/convertisseur-de-csv-en-json',
     it: '/convertitore-da-csv-a-json',
-    id: '/konverter-csv-ke-json'
+    id: '/konverter-csv-ke-json',
+    de: '/csv-zu-json-konverter'
   }
 })
 </script>
@@ -333,7 +334,7 @@ defineI18nRoute({
     delimiter: "Separador:",
     comma: "Vírgula",
     semicolon: "Ponto e Vírgula",
-    pipe: "Barra",
+    pipe: "Barra vertical",
     tab: "Tabulação",
     err: "Erro",
     err_label: "Erro de Análise",
@@ -366,7 +367,7 @@ defineI18nRoute({
     f_4: "Sem necessidade de cadastro ou instalação"
   },
   es: {
-    m_title: "Convertidor de CSV a JSON Online - Gratis y Instantáneo",
+    m_title: "Convertidor de CSV a JSON Online - Gratis e Instantáneo",
     title: "Convertidor de CSV a JSON",
     meta: "Convierte CSV a JSON online y gratis. Pega tu CSV y obtén un JSON limpio y formateado con detección automática de tipos y soporte de delimitadores personalizados.",
     d1: "Esta herramienta analiza tu texto CSV y mapea cada fila a su equivalente en JSON. Los encabezados se convierten en claves de objeto y las filas en objetos dentro de un array JSON, preservando la estructura original de los datos.",
@@ -379,7 +380,7 @@ defineI18nRoute({
     delimiter: "Separador:",
     comma: "Coma",
     semicolon: "Punto y Coma",
-    pipe: "Barra",
+    pipe: "Barra vertical",
     tab: "Tabulador",
     err: "Error",
     err_label: "Error de Análisis",
@@ -548,6 +549,52 @@ defineI18nRoute({
     f_2: "Dukungan pemisah kustom",
     f_3: "Deteksi jenis data otomatis",
     f_4: "Tanpa pendaftaran atau instalasi"
+  },
+  de: {
+    m_title: "CSV-zu-JSON-Konverter Online - Kostenlos und Sofort",
+    title: "CSV-zu-JSON-Konverter",
+    meta: "Konvertiere CSV kostenlos online in JSON. Füge deine CSV-Daten ein und erhalte sauberes, formatiertes JSON mit automatischer Typerkennung und Unterstützung für benutzerdefinierte Trennzeichen.",
+    d1: "Dieses Tool analysiert deinen CSV-Text und ordnet jede Zeile ihrem JSON-Äquivalent zu. Kopfzeilen werden zu Objektschlüsseln und Zeilen zu Objekten in einem JSON-Array, wobei die ursprüngliche Datenstruktur erhalten bleibt.",
+    d2: "Die Konvertierung von CSV in JSON ist besonders nützlich, wenn tabellarische Daten in Webanwendungen integriert, Exporte aus Altsystemen migriert oder REST-APIs verwendet werden sollen, die JSON-Payloads erwarten.",
+    bt: "Konvertieren",
+    rst: "Neu beginnen",
+    copy: "Kopieren",
+    plc: "Füge hier den CSV-Text ein oder ziehe eine Datei hinein",
+    header: "Erste Zeile ist die Kopfzeile",
+    delimiter: "Trennzeichen:",
+    comma: "Komma",
+    semicolon: "Semikolon",
+    pipe: "Pipe",
+    tab: "Tabulator",
+    err: "Fehler",
+    err_label: "Parsing-Fehler",
+    how_it_works_title: "So funktioniert es",
+    hiw_1_title: "CSV einfügen",
+    hiw_1_desc: "Füge deine CSV-Datei in den Editor ein oder ziehe sie hinein. Aktiviere die Kopfzeilen-Option, wenn die erste Zeile Spaltennamen enthält.",
+    hiw_2_title: "Optionen konfigurieren",
+    hiw_2_desc: "Wähle das richtige Trennzeichen für deine Datei und gib an, ob die erste Zeile eine Kopfzeile ist.",
+    hiw_3_title: "JSON kopieren",
+    hiw_3_desc: "Klicke auf Konvertieren und das Tool erzeugt sofort ein sauberes JSON-Array. Klicke auf JSON kopieren, um es in die Zwischenablage zu übernehmen.",
+    use_cases_title: "Anwendungsfälle",
+    uc_1_title: "Datenmigration",
+    uc_1_desc: "Konvertiere Exporte aus Altdatenbanken und Tabellenkalkulationen in JSON, um sie in moderne NoSQL-Datenbanken zu laden.",
+    uc_2_title: "API-Integration",
+    uc_2_desc: "Wandle Tabellenkalkulationsdaten in JSON-Payloads um, die direkt an REST-API-Endpunkte gesendet werden können.",
+    faq_title: "Fragen und Antworten",
+    faq_1_q: "Werden meine CSV-Daten an einen Server gesendet?",
+    faq_1_a: "Nein. Die Konvertierung läuft vollständig in deinem Browser. Deine Daten verlassen dein Gerät niemals.",
+    faq_2_q: "Kann ich ein anderes Trennzeichen als das Komma verwenden?",
+    faq_2_a: "Ja. Du kannst Kommas, Semikolons, Pipe-Symbole oder Tabulatoren auswählen, damit das Format zu deinem Datei-Export passt.",
+    faq_3_q: "Erkennt das Tool Zahlen und Boolesche Werte automatisch?",
+    faq_3_a: "Ja. Der Parser erkennt automatisch Ganzzahlen, Dezimalzahlen und Wahr/Falsch-Werte und stellt sie im JSON-Ergebnis ohne Anführungszeichen dar.",
+    see1: "JSON-Betrachter",
+    see2: "XML-zu-JSON-Konverter",
+    see3: "JSON-zu-XML-Konverter",
+    see4: "JSON-Formatter",
+    f_1: "Sofortige CSV-zu-JSON-Konvertierung",
+    f_2: "Unterstützung für benutzerdefinierte Trennzeichen",
+    f_3: "Automatische Erkennung von Datentypen",
+    f_4: "Keine Registrierung oder Installation erforderlich"
   }
 }
 </i18n>
