@@ -111,75 +111,117 @@ defineI18nRoute({
       { label: t('see4'), to: 'date-difference' },
     ]"
   >
-    <!-- Mode selector -->
-    <div class="flex flex-wrap gap-4 mb-5">
-      <label class="flex items-center gap-2 cursor-pointer">
-        <input type="radio" value="age" v-model="state.tp" class="radio radio-primary radio-sm" />
-        <span class="text-base-content/80">{{ t('ages') }}</span>
-      </label>
-      <label class="flex items-center gap-2 cursor-pointer">
-        <input type="radio" value="year" v-model="state.tp" class="radio radio-primary radio-sm" />
-        <span class="text-base-content/80">{{ t('years') }}</span>
-      </label>
-    </div>
-
-    <!-- Inputs -->
-    <div class="flex flex-wrap gap-4 mb-6">
-      <template v-if="state.tp === 'age'">
-        <div class="form-control w-full sm:w-48">
-          <label class="label" for="minAge">
-            <span class="label-text font-bold text-base-content">{{ t('minAge') }}</span>
+    <div class="grid lg:grid-cols-2 gap-8 mb-4">
+      <!-- Left Column: Controls -->
+      <div class="space-y-5">
+        <!-- Mode selector -->
+        <div>
+          <label class="label pb-1">
+            <span class="label-text font-bold text-base-content/80">{{ t('mode_label') }}</span>
           </label>
-          <input id="minAge" type="number" :min="0" v-model.number="state.minAge" class="input input-bordered w-full" />
-        </div>
-        <div class="form-control w-full sm:w-48">
-          <label class="label" for="maxAge">
-            <span class="label-text font-bold text-base-content">{{ t('maxAge') }}</span>
-          </label>
-          <input id="maxAge" type="number" :min="state.minAge ?? 0" v-model.number="state.maxAge" class="input input-bordered w-full" />
-        </div>
-      </template>
-      <template v-else>
-        <div class="form-control w-full sm:w-48">
-          <label class="label" for="minYear">
-            <span class="label-text font-bold text-base-content">{{ t('minYear') }}</span>
-          </label>
-          <input id="minYear" type="number" :min="0" v-model.number="state.minYear" class="input input-bordered w-full" />
-        </div>
-        <div class="form-control w-full sm:w-48">
-          <label class="label" for="maxYear">
-            <span class="label-text font-bold text-base-content">{{ t('maxYear') }}</span>
-          </label>
-          <input id="maxYear" type="number" :min="state.minYear ?? 0" v-model.number="state.maxYear" class="input input-bordered w-full" />
-        </div>
-      </template>
-    </div>
-
-    <!-- Generate button -->
-    <button type="button" @click="generate" class="btn btn-primary">
-      {{ t('bt') }}
-    </button>
-
-    <!-- Result -->
-    <LineCopy :label="t('dt')" :content="state.output" />
-
-    <!-- Age -->
-    <div v-if="state.age" class="mb-6">
-      <div>
-        <p class="text-xs uppercase tracking-widest text-base-content/50 mb-2">{{ t('age') }}</p>
-        <div class="stats shadow w-fit border border-base-content/10">
-          <div v-if="state.age.years > 0" class="stat text-center">
-            <div class="stat-title">{{ t('years_label') }}</div>
-            <div class="stat-value text-3xl">{{ state.age.years }}</div>
+          <div class="flex flex-wrap gap-3">
+            <label 
+              class="flex items-center gap-2 cursor-pointer bg-base-200/50 px-4 py-2.5 rounded-xl border transition-all duration-200"
+              :class="state.tp === 'age' ? 'border-primary bg-primary/5 ring-1 ring-primary/20' : 'border-base-content/5 hover:bg-base-200'"
+            >
+              <input type="radio" value="age" v-model="state.tp" class="radio radio-primary radio-sm" />
+              <span class="text-sm font-semibold" :class="state.tp === 'age' ? 'text-primary' : 'text-base-content/70'">{{ t('ages') }}</span>
+            </label>
+            <label 
+              class="flex items-center gap-2 cursor-pointer bg-base-200/50 px-4 py-2.5 rounded-xl border transition-all duration-200"
+              :class="state.tp === 'year' ? 'border-primary bg-primary/5 ring-1 ring-primary/20' : 'border-base-content/5 hover:bg-base-200'"
+            >
+              <input type="radio" value="year" v-model="state.tp" class="radio radio-primary radio-sm" />
+              <span class="text-sm font-semibold" :class="state.tp === 'year' ? 'text-primary' : 'text-base-content/70'">{{ t('years') }}</span>
+            </label>
           </div>
-          <div v-if="state.age.months > 0" class="stat text-center">
-            <div class="stat-title">{{ t('months_label') }}</div>
-            <div class="stat-value text-3xl">{{ state.age.months }}</div>
+        </div>
+
+        <!-- Inputs -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <template v-if="state.tp === 'age'">
+            <div class="form-control">
+              <label class="label pb-1" for="minAge">
+                <span class="label-text font-bold text-base-content/80">{{ t('minAge') }}</span>
+              </label>
+              <input id="minAge" type="number" :min="0" v-model.number="state.minAge" class="input input-bordered w-full" />
+            </div>
+            <div class="form-control">
+              <label class="label pb-1" for="maxAge">
+                <span class="label-text font-bold text-base-content/80">{{ t('maxAge') }}</span>
+              </label>
+              <input id="maxAge" type="number" :min="state.minAge ?? 0" v-model.number="state.maxAge" class="input input-bordered w-full" />
+            </div>
+          </template>
+          <template v-else>
+            <div class="form-control">
+              <label class="label pb-1" for="minYear">
+                <span class="label-text font-bold text-base-content/80">{{ t('minYear') }}</span>
+              </label>
+              <input id="minYear" type="number" :min="0" v-model.number="state.minYear" class="input input-bordered w-full" />
+            </div>
+            <div class="form-control">
+              <label class="label pb-1" for="maxYear">
+                <span class="label-text font-bold text-base-content/80">{{ t('maxYear') }}</span>
+              </label>
+              <input id="maxYear" type="number" :min="state.minYear ?? 0" v-model.number="state.maxYear" class="input input-bordered w-full" />
+            </div>
+          </template>
+        </div>
+
+        <!-- Generate button -->
+        <ButtonPrimary
+          @click="generate"
+          icon="heroicons:sparkles-20-solid"
+          class="w-full h-14 text-lg"
+        >
+          {{ t('bt') }}
+        </ButtonPrimary>
+      </div>
+
+      <!-- Right Column: Result -->
+      <div class="bg-base-200/50 border border-primary/10 rounded-2xl p-6 min-h-[16rem] flex flex-col justify-center relative overflow-hidden">
+        <Transition
+          enter-active-class="transition duration-300 ease-out"
+          enter-from-class="transform scale-95 opacity-0"
+          enter-to-class="transform scale-100 opacity-100"
+        >
+          <div v-if="state.output" class="space-y-6 w-full">
+            <LineCopy 
+              :content="state.output" 
+              :label="t('dt')" 
+              class="!my-0 [&>div:last-child]:!w-full"
+            >
+              <span class="text-3xl sm:text-4xl font-mono font-bold tracking-tight text-primary">{{ state.output }}</span>
+            </LineCopy>
+
+            <!-- Age Stats -->
+            <div v-if="state.age" class="space-y-3">
+              <div class="mt-2 text-xs uppercase tracking-wider text-base-content font-bold px-1">{{ t('age') }}:</div>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="bg-base-100/50 rounded-xl p-3 border border-base-content/5 text-center">
+                  <div class="text-2xl font-bold text-base-content">{{ state.age.years }}</div>
+                  <div class="text-[10px] uppercase text-base-content/50">{{ t('years_label') }}</div>
+                </div>
+                <div class="bg-base-100/50 rounded-xl p-3 border border-base-content/5 text-center">
+                  <div class="text-2xl font-bold text-base-content">{{ state.age.months }}</div>
+                  <div class="text-[10px] uppercase text-base-content/50">{{ t('months_label') }}</div>
+                </div>
+                <div class="bg-base-100/50 rounded-xl p-3 border border-base-content/5 text-center">
+                  <div class="text-2xl font-bold text-base-content">{{ state.age.days }}</div>
+                  <div class="text-[10px] uppercase text-base-content/50">{{ t('days_label') }}</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div v-if="state.age.days > 0" class="stat text-center">
-            <div class="stat-title">{{ t('days_label') }}</div>
-            <div class="stat-value text-3xl">{{ state.age.days }}</div>
+        </Transition>
+
+        <!-- Placeholder -->
+        <div v-if="!state.output" class="text-center opacity-70">
+          <div class="bg-base-100/50 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-base-content/5 shadow-sm">
+            <Icon name="heroicons:calendar" class="w-8 h-8 text-primary/40" />
           </div>
+          <p class="font-medium italic">{{ t('placeholder') }}</p>
         </div>
       </div>
     </div>
@@ -284,6 +326,9 @@ defineI18nRoute({
     ex3: "Senior NPC: set age range 60–80 to generate a birth date for an elderly character in a story or game.",
     ex4: "Baby boomer sample: set year range 1946–1964 to create test data for a baby boomer demographic.",
     faq_title: "Questions & Answers",
+    mode_label: "Generation Mode",
+    placeholder: "Click Generate to create a birthday",
+    copy: "Copy date",
     faq1q: "How does the random birthday generator work?",
     faq1a: "Choose the generation method: by age range (for example 25–35 years) or by birth year interval (such as 1990–2000). Enter the minimum and maximum values and click 'Generate Birthday'. The tool instantly creates a random birth date and calculates the exact age based on today's date.",
     faq2q: "What is a random birthday generator used for?",
@@ -336,6 +381,9 @@ defineI18nRoute({
     ex3: "NPC idoso: defina faixa etária de 60 a 80 anos para gerar uma data de nascimento de um personagem idoso em uma história ou jogo.",
     ex4: "Amostra baby boomer: defina intervalo de anos de 1946 a 1964 para criar dados de teste para uma demografia baby boomer.",
     faq_title: "Perguntas Frequentes",
+    mode_label: "Modo de Geração",
+    placeholder: "Clique em Gerar para criar uma data",
+    copy: "Copiar data",
     faq1q: "Como funciona o gerador de data de nascimento aleatória?",
     faq1a: "Escolha o método de geração: por faixa etária (exemplo: 25–35 anos) ou por intervalo de anos de nascimento (como 1990–2000). Informe os valores mínimo e máximo e clique em 'Gerar Data de Nascimento'. A ferramenta cria uma data de nascimento aleatória e calcula a idade exata com base na data atual.",
     faq2q: "Para que serve um gerador de data de nascimento?",
@@ -388,7 +436,10 @@ defineI18nRoute({
     ex3: "NPC anciano: define rango de edad 60–80 para generar una fecha para un personaje anciano en una historia o juego.",
     ex4: "Muestra baby boomer: define rango de años 1946–1964 para crear datos de prueba de esa demografía.",
     faq_title: "Preguntas Frecuentes",
-    faq1q: "¿Cómo funciona el generador de fecha de nacimiento aleatoria?",
+    mode_label: "Modo de Generación",
+    placeholder: "Haz clic en Generar para crear una fecha",
+    copy: "Copiar fecha",
+    faq1q: "¿Cómo funciona el generador de fecha de nacimiento aleatória?",
     faq1a: "Elige el método: por rango de edad (por ejemplo, 25–35 años) o por intervalo de años (como 1990–2000). Introduce los valores y haz clic en 'Generar Fecha de Nacimiento'. La herramienta crea una fecha aleatoria y calcula la edad exacta.",
     faq2q: "¿Para qué sirve un generador de fecha de nacimiento?",
     faq2a: "Es ideal para desarrolladores probando validaciones de edad, escritores creando personajes realistas, administradores de bases de datos generando datos de prueba, y educadores o investigadores.",
@@ -440,6 +491,9 @@ defineI18nRoute({
     ex3: "PNJ senior : définissez la tranche 60–80 ans pour générer une date pour un personnage âgé dans une histoire ou un jeu.",
     ex4: "Échantillon baby boomer : définissez l'intervalle 1946–1964 pour créer des données de test pour cette démographie.",
     faq_title: "Questions Fréquentes",
+    mode_label: "Mode de Génération",
+    placeholder: "Cliquez sur Générer pour créer une date",
+    copy: "Copier la date",
     faq1q: "Comment fonctionne le générateur de date de naissance aléatoire ?",
     faq1a: "Choisissez la méthode : par tranche d'âge (par exemple 25–35 ans) ou par intervalle d'années (comme 1990–2000). Saisissez les valeurs et cliquez sur 'Générer une Date de Naissance'. L'outil crée une date aléatoire et calcule l'âge exact.",
     faq2q: "À quoi sert un générateur de date de naissance ?",
@@ -492,6 +546,9 @@ defineI18nRoute({
     ex3: "NPC anziano: imposta fascia 60–80 anni per generare una data per un personaggio anziano in una storia o gioco.",
     ex4: "Campione baby boomer: imposta intervallo 1946–1964 per creare dati di test per quella demografia.",
     faq_title: "Domande Frequenti",
+    mode_label: "Modalità di Generazione",
+    placeholder: "Clicca su Genera per creare una data",
+    copy: "Copia data",
     faq1q: "Come funziona il generatore di data di nascita casuale?",
     faq1a: "Scegli il metodo: per fascia d'età (ad esempio 25–35 anni) o per intervallo di anni (come 1990–2000). Inserisci i valori e clicca su 'Genera Data di Nascita'. Lo strumento crea una data casuale e calcola l'età esatta.",
     faq2q: "A cosa serve un generatore di data di nascita?",
@@ -544,6 +601,9 @@ defineI18nRoute({
     ex3: "NPC lansia: atur rentang usia 60–80 untuk membuat tanggal lahir karakter lansia dalam cerita atau game.",
     ex4: "Sampel baby boomer: atur rentang tahun 1946–1964 untuk membuat data uji demografis tersebut.",
     faq_title: "Pertanyaan Umum",
+    mode_label: "Mode Pembuatan",
+    placeholder: "Klik Generate untuk membuat tanggal lahir",
+    copy: "Salin tanggal",
     faq1q: "Bagaimana cara kerja generator tanggal lahir acak?",
     faq1a: "Pilih metode: berdasarkan rentang usia (misalnya 25–35 tahun) atau interval tahun (seperti 1990–2000). Masukkan nilai dan klik 'Buat Tanggal Lahir'. Alat ini membuat tanggal lahir acak dan menghitung usia tepat berdasarkan tanggal hari ini.",
     faq2q: "Untuk apa generator tanggal lahir digunakan?",

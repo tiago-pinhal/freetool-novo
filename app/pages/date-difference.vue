@@ -154,7 +154,7 @@ defineI18nRoute({
     <div v-if="state.result" class="space-y-4">
       <!-- Exact breakdown -->
       <div>
-        <p class="text-xs uppercase tracking-widest text-base-content/50 mb-2">{{ t('diff') }}</p>
+        <p class="text-xs uppercase tracking-widest text-base-content/90 mb-2">{{ t('diff') }}</p>
         <div class="stats shadow w-fit border border-base-content/10">
           <div v-if="state.result.years > 0" class="stat text-center">
             <div class="stat-title">{{ t('years_label') }}</div>
@@ -173,7 +173,7 @@ defineI18nRoute({
 
       <!-- Equivalents -->
       <div>
-        <p class="text-xs uppercase tracking-widest text-base-content/50 mb-2">{{ t('or') }}</p>
+        <p class="text-xs uppercase tracking-widest text-base-content/90 mb-2">{{ t('or') }}</p>
         <div class="stats stats-vertical lg:stats-horizontal shadow w-fit border border-base-content/10">
           <div v-if="state.result.totalMonths > 0" class="stat text-center">
             <div class="stat-title">{{ t('total_months_label') }}</div>

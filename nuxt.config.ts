@@ -16,6 +16,9 @@ export default defineNuxtConfig({
   },
   scripts: {
     registry: {
+      googleAnalytics: {
+        id: process.env.NODE_ENV === 'production' ? 'G-B57PC5L4JC' : undefined
+      },
       googleAdsense: {
         client: process.env.NODE_ENV === 'production' 
           ? 'ca-pub-6172875094663882' 
