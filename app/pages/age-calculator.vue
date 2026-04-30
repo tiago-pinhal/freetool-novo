@@ -85,7 +85,8 @@ defineI18nRoute({
     es: '/calculadora-de-edad',
     fr: '/calculateur-d-age',
     it: '/calcolatrice-dell-eta',
-    id: '/kalkulator-usia'
+    id: '/kalkulator-usia',
+    de: '/alter-rechner'
   }
 })
 </script>
@@ -392,7 +393,7 @@ defineI18nRoute({
     see1: "Fecha de Nacimiento",
     see2: "Diferencia entre Fechas",
     see3: "Calculadora de Fecha Futura",
-    see4: "Calculadora de Data Pasada"
+    see4: "Calculadora de Fecha Pasada"
   },
   fr: {
     pageTitle: "Calculateur d'Âge - Quel Âge Ai-Je ?",
@@ -560,10 +561,63 @@ defineI18nRoute({
     faq_2_a: "Ya. Menggunakan aritmatika tanggal yang tepat dengan memperhitungkan tahun kabisat dan panjang bulan yang berbeda.",
     faq_3_q: "Apa arti 'atau...' di hasil?",
     faq_3_a: "Menampilkan cara alternatif untuk mengungkapkan usia Anda, misalnya total usia yang dinyatakan dalam bulan atau minggu saja.",
-    see1: "Generator Tanggal Lahir",
+    see1: "Generator Ulang Tahun",
     see2: "Selisih Tanggal",
     see3: "Kalkulator Tanggal Masa Depan",
     see4: "Kalkulator Tanggal Masa Lalu"
+  },
+  de: {
+    pageTitle: "Alter Rechner - Wie alt bin ich?",
+    title: "Alter Rechner",
+    meta: "Kostenloser Online-Altersrechner. Geben Sie Ihr Geburtsdatum ein und erfahren Sie sofort Ihr exaktes Alter in Jahren, Monaten, Wochen und Tagen.",
+    dt: "Geburtsdatum",
+    age: "Ihr Alter",
+    or: "oder",
+    err: "Bitte geben Sie ein Datum vor dem heutigen Tag ein",
+    placeholder: "Geben Sie Ihr Geburtsdatum ein",
+    years_label: "Jahre",
+    months_label: "Monate",
+    weeks_label: "Wochen",
+    days_label: "Tage",
+    total_months_label: "Gesamtmonate",
+    total_weeks_label: "Gesamtwochen",
+    total_days_label: "Gesamttage",
+    week_day: "Wochentag",
+    day_0: "Sonntag",
+    day_1: "Montag",
+    day_2: "Dienstag",
+    day_3: "Mittwoch",
+    day_4: "Donnerstag",
+    day_5: "Freitag",
+    day_6: "Samstag",
+    desc: "Dieser kostenlose Altersrechner berechnet präzise, wie lange Sie bereits leben, basierend auf Ihrem Geburtsdatum. Das Ergebnis geht über eine einfache Jahreszahl hinaus: Es wird detailliert dargestellt, wobei Ihr Alter in Jahre, Monate, Wochen und Tage aufgeschlüsselt wird, sowie in Gesamteinheiten, wie viele Monate oder Tage Sie gelebt haben.",
+    use_cases_title: "Anwendungsfälle",
+    uc_1_title: "Kennen Sie Ihr exaktes Alter",
+    uc_1_desc: "Finden Sie präzise heraus, wie alt Sie in Jahren, Monaten, Wochen und Tagen sind.",
+    uc_2_title: "Das Alter von jedem berechnen",
+    uc_2_desc: "Geben Sie ein beliebiges Geburtsdatum ein, um das genaue Alter eines Kindes, Elternteils, Patienten oder Kunden zu erfahren.",
+    uc_3_title: "Offizielle Dokumente",
+    uc_3_desc: "Überprüfen Sie schnell Ihr Alter für Formulare, Verträge oder altersbeschränkte Dienste.",
+    uc_4_title: "Gesundheit & Fitness",
+    uc_4_desc: "Verfolgen Sie altersbedingte Meilensteine und Gesundheits-Benchmarks mit Präzision.",
+    how_it_works_title: "So funktioniert es",
+    step_1_title: "Geburtsdatum eingeben",
+    step_1_desc: "Wählen Sie Ihr Geburtsdatum über das Datumsauswahlfeld aus.",
+    step_2_title: "Sofortige Berechnung",
+    step_2_desc: "Ihr Alter wird automatisch berechnet, sobald Sie ein Datum auswählen.",
+    step_3_title: "Ergebnisse sehen",
+    step_3_desc: "Sehen Sie Ihr Alter aufgeschlüsselt in Jahre, Monate, Wochen und Tage sowie alternative Darstellungen.",
+    faq_title: "Häufig gestellte Fragen",
+    faq_1_q: "Wie wird das Alter berechnet?",
+    faq_1_a: "Wir berechnen die exakte Differenz zwischen Ihrem Geburtsdatum und heute, aufgeschlüsselt in Jahre, Monate, Wochen und Tage.",
+    faq_2_q: "Ist dieser Rechner genau?",
+    faq_2_a: "Ja. Er verwendet eine präzise Datumsarithmetik, die Schaltjahre und unterschiedliche Monatslängen berücksichtigt.",
+    faq_3_q: "Was bedeutet 'oder...' in den Ergebnissen?",
+    faq_3_a: "Es zeigt alternative Wege, Ihr Alter auszudrücken, zum Beispiel Ihr Gesamtalter vollständig in Monaten oder vollständig in Wochen.",
+    see1: "Geburtstagsgenerator",
+    see2: "Datumsdifferenz",
+    see3: "Zukunftsdatum-Rechner",
+    see4: "Vergangenheitsdatum-Rechner"
   }
 }
 </i18n>
