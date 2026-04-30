@@ -10,8 +10,8 @@ interface Props {
   showAds?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  showAds: true
+withDefaults(defineProps<Props>(), {
+  showAds: false
 })
 </script>
 
@@ -28,17 +28,26 @@ const props = withDefaults(defineProps<Props>(), {
     </div>
 
     <!-- Área Principal da Ferramenta (Slot) -->
-    <div class="bg-base-100 text-base-content rounded-xl shadow-sm border border-primary/20 p-4">
+    <section 
+      :aria-label="title" class="bg-base-100 text-base-content rounded-xl shadow-sm border border-primary/20 p-4"
+    >
       <slot />
-    </div>
+    </section>
 
     <!-- Seção de Anúncios Central (Condicional) -->
-    <div v-if="showAds" class="mb-8">
-      <Adsense v-once />
-    </div>
+    <Transition
+      enter-active-class="transition duration-700 ease-out"
+      enter-from-class="opacity-0 translate-y-4"
+      leave-active-class="transition duration-300 ease-in"
+      leave-to-class="opacity-0"
+    >
+      <div v-if="showAds" class="my-8">
+        <Adsense v-once />
+      </div>
+    </Transition>
 
     <!-- Informações Detalhadas (ToolInfo) -->
-    <ToolInfo 
+    <ToolInfo
       v-if="infoDescription || $slots.info"
       :title="infoTitle"
       :description="infoDescription"
@@ -49,9 +58,9 @@ const props = withDefaults(defineProps<Props>(), {
     </ToolInfo>
 
     <!-- Links Relacionados (SeeAlso) -->
-    <SeeAlso 
+    <SeeAlso
       v-if="seeAlsoLinks && seeAlsoLinks.length > 0"
-      :links="seeAlsoLinks" 
+      :links="seeAlsoLinks"
     />
   </div>
 </template>
