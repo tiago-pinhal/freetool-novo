@@ -47,7 +47,7 @@ onLoaded(async () => {
     class="adsense-wrapper w-full flex justify-center items-center rounded-xl overflow-hidden relative"
     :class="reservedHeight"
   >
-    <!-- Placeholder visual em desenvolvimento -->
+    <!-- Placeholder para ambiente de desenvolvimento -->
     <div
       v-if="isDev"
       class="absolute inset-0 flex items-center justify-center pointer-events-none bg-base-200/20"

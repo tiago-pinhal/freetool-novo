@@ -67,7 +67,8 @@ defineI18nRoute({
     fr: '/generateur-de-hash-md5',
     it: '/generatore-di-hash-md5',
     id: '/generator-hash-md5',
-    de: '/md5-hash-generator'
+    de: '/md5-hash-generator',
+    nl: '/md5-hash-generator'
   }
 })
 </script>
@@ -350,6 +351,33 @@ defineI18nRoute({
     f_2: "Digitaler 128-Bit-Fingerabdruck",
     f_3: "Prüfung der Datenintegrität",
     f_4: "Keine Registrierung oder Installation erforderlich"
+  },
+  nl: {
+    title: "MD5-hashgenerator",
+    meta: "Bereken eenvoudig de MD5-hash (128-bits vingerafdruk) van elke tekst en verifieer de integriteit van gegevens door hashes te vergelijken.",
+    desc: "MD5 (Message Digest Algorithm 5) is een veelgebruikt cryptografisch hashing-algoritme dat een 128-bits (32 karakters) vingerafdruk produceert voor elke ingevoerde tekst of gegevens. Het wordt voornamelijk gebruikt om de integriteit van gegevens te verifiëren, omdat het een unieke en consistente hash genereert, ongeacht de grootte van de invoergegevens. Zelfs de kleinste verandering in de invoer wijzigt deze code, waardoor eventuele wijzigingen eenvoudig te herkennen zijn. MD5 wordt vaak gebruikt om te controleren of een bestand niet is gewijzigd, hoewel voor veilige wachtwoord-hashing modernere algoritmen zoals SHA-256 of Bcrypt worden aanbevolen.",
+    bt: "Berekenen",
+    features_title: "Kenmerken",
+    plc: "Tekst om te hashen",
+    see1: "Bcrypt",
+    see2: "JSON-viewer",
+    see3: "E-mailextractor",
+    see4: "XML → JSON",
+    tip_title: "Veiligheidswaarschuwing",
+    tip_security: "MD5 is niet veilig voor wachtwoord-hashing omdat het kwetsbaar is voor botsingsaanvallen.",
+    tip_usage: "We raden aan om Bcrypt te gebruiken voor de beveiliging van wachtwoorden. MD5 is het meest geschikt voor bestandsintegriteit (Checksum).",
+    result: "Resultaat",
+    how_to_use_title: "Hoe gebruik je deze tool",
+    step_1_title: "Tekst invoeren",
+    step_1_desc: "Typ of plak de brontekst in het invoerveld.",
+    step_2_title: "Hash genereren",
+    step_2_desc: "Klik op de knop 'MD5-hash berekenen' om de tekst te verwerken.",
+    step_3_title: "Resultaat kopiëren",
+    step_3_desc: "De unieke 32-karakter MD5-hash wordt direct gegenereerd zodat je deze kunt kopiëren.",
+    f_1: "Snelle MD5-hashberekening",
+    f_2: "128-bits digitale vingerafdruk",
+    f_3: "Verificatie van gegevensintegriteit",
+    f_4: "Geen registratie of installatie vereist"
   }
 }
 </i18n>

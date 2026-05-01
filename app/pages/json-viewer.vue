@@ -87,7 +87,8 @@ defineI18nRoute({
     fr: '/visualiseur-json',
     it: '/visualizzatore-di-json',
     id: '/penampil-json',
-    de: '/json-betrachter'
+    de: '/json-betrachter',
+    nl: '/json-viewer'
   }
 })
 </script>
@@ -486,6 +487,47 @@ defineI18nRoute({
         f_2: "Syntaxhervorhebung und farbcodierte Felder",
         f_3: "Echtzeitvalidierung und Fehlererkennung",
         f_4: "Keine Registrierung oder Installation erforderlich"
+    },
+    nl: {
+        m_title: "JSON-viewer online - Visualiseer & formatteer JSON gratis",
+        title: "JSON-viewer",
+        meta: "Gratis online JSON-viewer. Plak of upload je JSON en visualiseer het direct als een inklapbare boomstructuur met kleurgecodeerde velden. Geen registratie vereist.",
+        info_title: "Informatie",
+        d1: "Deze online JSON-viewer geeft je gegevens weer in een interactief boomformaat, waarbij elke node is ingesprongen om de gegevenshiërarchie te weerspiegelen. Je kunt elke groep uit- of inklappen om je te concentreren op de informatie die er toe doet.",
+        d2: "Velden en waarden zijn kleurgecodeerd voor snelle identificatie, en elke wijziging in de invoer wordt direct weerspiegeld in de visualisatie. Ideaal voor ontwikkelaars die API's debuggen, responses valideren of configuratiebestanden inspecteren — geen installatie of aanmelding nodig.",
+        result: "Resultaat",
+        plc: "Voeg de JSON-code hier in of sleep een bestand",
+        err: "Zorg voor een geldige JSON",
+        features_title: "Kenmerken",
+        how_to_use_title: "Hoe te gebruiken",
+        hiw_1_title: "Plak je JSON",
+        hiw_1_desc: "Plak of sleep je ruwe JSON-bestand eenvoudig in de editor.",
+        hiw_2_title: "Directe verificatie",
+        hiw_2_desc: "De tool valideert je code snel en geeft fouten dynamisch aan.",
+        hiw_3_title: "Boomvisualisatie",
+        hiw_3_desc: "Het genereert een volledig doorzoekbare, kleurgecodeerde interactieve boom voor het eenvoudig lezen van gegevens.",
+        use_cases_title: "Gebruiksscenario's",
+        uc_1_title: "API-debugging",
+        uc_1_desc: "Begrijp uitgebreide payload-structuren door nodes te isoleren en ouder-kindrelaties te controleren.",
+        uc_2_title: "Configuratiecontrole",
+        uc_2_desc: "Vind moeiteloos ontbrekende komma's, verkeerde haken of slecht gestructureerde instellingenbestanden.",
+        uc_3_title: "Gegevenspresentatie",
+        uc_3_desc: "Deel je scherm eenvoudig tijdens technische vergaderingen met een opgeschoonde en inklapbare JSON-grafiek.",
+        faq_title: "Vragen & Antwoorden",
+        faq_1_q: "Worden mijn JSON-gegevens op de server opgeslagen?",
+        faq_1_a: "Nee. De verwerking vindt strikt plaats in je browservenster. We verzenden of bewaren je JSON-objecten niet op onze servers, wat totale privacy garandeert.",
+        faq_2_q: "Kan ik afzonderlijke delen van de JSON kopiëren?",
+        faq_2_a: "Ja. Door direct te communiceren met de gegenereerde JSON-boom, kun je specifieke nodes, arrays of sub-objecten kopiëren zonder de volledige ruwe tekst te hoeven parsen.",
+        faq_3_q: "Geeft de viewer JSON-fouten aan?",
+        faq_3_a: "Ja. Als je JSON-payload misvormd is (ontbrekende aanhalingstekens, overtollige komma's, enz.), geeft de tool een directe rode syntactische foutmelding die de render van de boom voorkomt.",
+        see1: "XML → JSON",
+        see2: "JSON → XML",
+        see3: "MD5",
+        see4: "Bcrypt",
+        f_1: "Interactieve JSON-boomvirtualisatie",
+        f_2: "Syntaxis-highlighting en kleurgecodeerde velden",
+        f_3: "Real-time validatie en foutdetectie",
+        f_4: "Geen registratie of installatie vereist"
     }
 }
 </i18n>

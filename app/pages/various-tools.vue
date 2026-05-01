@@ -20,7 +20,8 @@ defineI18nRoute({
     fr: '/outils-divers',
     it: "/strumenti-diversi",
     id: "/berbagai-alat",
-    de: "/verschiedene-tools"
+    de: "/verschiedene-tools",
+    nl: "/diverse-tools"
   }
 })
 </script>
@@ -201,6 +202,21 @@ defineI18nRoute({
         json: "JSON-Betrachter",
         md5: "MD5-Hash-Generator",
         bcrypt: "Bcrypt-Generator",
+    },
+    nl: {
+        title: "Diverse tools",
+        meta: "Gratis diverse online tools: percentagecalculator, lijst-randomizer, dobbelsteenroller, regel-van-drie-calculator, e-mailextractor, JSON-viewer, MD5- en Bcrypt-generatoren. Handige hulpmiddelen voor dagelijkse taken!",
+        desc: "Bereken percentages, meng lijsten, rol dobbelstenen, los de regel van drie op, extraheer e-mailadressen uit tekst en bekijk geformatteerde JSON. Alle verwerking vindt plaats in je browser en er is geen installatie vereist.",
+        main_tools: "Belangrijkste tools",
+        devs: "Voor ontwikkelaars",
+        calc: "Percentagecalculator",
+        list: "Lijst-randomizer",
+        dice: "Dobbelsteenroller",
+        rule: "Regel-van-drie-calculator",
+        email: "E-mailextractor",
+        json: "JSON-viewer",
+        md5: "MD5-hashgenerator",
+        bcrypt: "Bcrypt-generator",
     }
 }
 </i18n>

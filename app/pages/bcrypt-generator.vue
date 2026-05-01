@@ -92,7 +92,8 @@ defineI18nRoute({
     fr: '/generateur-de-bcrypt',
     it: '/generatore-di-bcrypt',
     id: '/generator-bcrypt',
-    de: '/bcrypt-generator-und-pruefer'
+    de: '/bcrypt-generator-und-pruefer',
+    nl: '/bcrypt-generator-en-checker'
   }
 })
 </script>
@@ -544,6 +545,48 @@ defineI18nRoute({
     f_2: "Anpassbare Rounds (4-20)",
     f_3: "Hash-Prüfung in Echtzeit",
     f_4: "Clientseitige Verarbeitung für maximale Privatsphäre"
+  },
+  nl: {
+    title: "Bcrypt-generator en checker",
+    meta: "Genereer veilige Bcrypt-hashes van elke tekst met aanpasbare rounds of controleer of een bestaande hash overeenkomt met een specifieke tekst.",
+    desc: "Bcrypt is een veilig hashing-algoritme dat veel wordt gebruikt voor wachtwoorden. Elke hash bevat een unieke salt om aanvallen met rainbow tables te bemoeilijken. De instelling 'Rounds' regelt de rekenkracht: hogere waarden zijn trager, maar maken brute-force-aanvallen aanzienlijk moeilijker. Zelfs bij dezelfde tekst is elke gegenereerde hash anders.",
+    check: "Hash controleren",
+    bt: "Hash genereren",
+    features_title: "Kenmerken",
+    plc: "Tekst om te hashen",
+    plcgen: "Bcrypt-hash",
+    plcver: "Originele tekst",
+    match: "De hash komt overeen met de opgegeven tekst.",
+    notmatch: "De hash komt niet overeen met de opgegeven tekst.",
+    rounds: "Kostenfactor (Rounds)",
+    see1: "MD5",
+    see2: "JSON-viewer",
+    see3: "E-mailextractor",
+    see4: "XML → JSON",
+    tip: "Korte tip:",
+    result: "Resultaat",
+    use_cases_title: "Veelvoorkomende scenario's",
+    uc_1_title: "Wachtwoordopslag",
+    uc_1_desc: "Hash wachtwoorden van gebruikers veilig voordat je ze in de database opslaat.",
+    uc_2_title: "Beveiligingstesten",
+    uc_2_desc: "Test authenticatieflows en loginsystemen met geldige Bcrypt-hashes.",
+    uc_3_title: "Systeemmigratie",
+    uc_3_desc: "Verifieer en update oude wachtwoordhashes tijdens systeemmigraties.",
+    uc_4_title: "Educatie & Dev",
+    uc_4_desc: "Begrijp hoe salt en rounds de veiligheid van hashes beïnvloeden.",
+    how_to_use_title: "Hoe gebruik je deze tool",
+    step_1_title: "Hash genereren",
+    step_1_desc: "Voer de brontekst in, selecteer het aantal Rounds en klik op Hash genereren.",
+    step_2_title: "Hash verifiëren",
+    step_2_desc: "Plak de Bcrypt-hash, voer de originele tekst in en klik op Hash controleren.",
+    step_3_title: "Resultaat kopiëren",
+    step_3_desc: "Gebruik de kopieerknop naast de hash of het vergelijkingsresultaat voor je applicatie.",
+    tip_rounds: "Rounds: Hogere waarden zijn veiliger, maar vereisen meer verwerkingstijd.",
+    tip_salt: "Salt: Wordt automatisch toegevoegd om aanvallen met rainbow tables te voorkomen.",
+    f_1: "Veilige generatie van Bcrypt-hashes",
+    f_2: "Aanpasbaar aantal rounds (4-20)",
+    f_3: "Real-time hash-verificatie",
+    f_4: "Verwerking aan de clientzijde voor maximale privacy"
   }
 }
 </i18n>
