@@ -351,7 +351,7 @@ defineI18nRoute({
         see1: "Calculadora de Porcentaje",
         see2: "Aleatorizador de Listas",
         see3: "Regla de Tres",
-        see4: "Extractor de Correos Electrónicos"
+        see4: "Extractor de Emails"
     },
     fr: {
         pageTitle: "Dé Virtuel en Ligne (JDR & D&D) — Simulateur Polyédrique",
@@ -390,7 +390,7 @@ defineI18nRoute({
         see1: "Calculatrice de Pourcentage",
         see2: "Mélangeur de Listes",
         see3: "Règle de Trois",
-        see4: "Extracteur d'e-mails"
+        see4: "Extracteur d'Emails"
     },
     it: {
         pageTitle: "Dado Virtuale Online per GDR e D&D (D20, D6) | Gratis",
@@ -427,8 +427,8 @@ defineI18nRoute({
         bt: "Lancia Dadi",
         ready: "Pronto a lanciare",
         see1: "Calcolatrice di Percentuale",
-        see2: "Generatore di Liste Casuali",
-        see3: "Regola di Tre",
+        see2: "Randomizzatore di Liste",
+        see3: "Regola del Tre",
         see4: "Estrattore di Email"
     },
     id: {
@@ -506,7 +506,7 @@ defineI18nRoute({
         ready: "Bereit zum Würfeln",
         see1: "Prozentrechner",
         see2: "Listen-Zufallsgenerator",
-        see3: "Dreisatz",
+        see3: "Dreisatzrechner",
         see4: "E-Mail-Extraktor"
     }
 }

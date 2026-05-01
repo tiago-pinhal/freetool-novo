@@ -189,7 +189,7 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
     en: {
-        title: "Simple Rule of Three Calculator",
+        title: "Rule of Three",
         meta: "Calculate simple rule of three proportions online with our free calculator. Find unknown values in direct proportions quickly and easily.",
         desc: "The simple rule of three, also known as cross-multiplication, is a practical mathematical method used to find an unknown fourth value when you already know three values with a direct proportional relationship. Our calculator makes the process easy: whether you're scaling a recipe, calculating percentages, adjusting measurements, or doing homework, just fill in the fields with the known values and the calculator will automatically perform the calculation and show the result.",
         if: "Conditions",
@@ -225,7 +225,7 @@ defineI18nRoute({
         f_4: "No registration or installation required"
     },
     pt: {
-        title: "Calculadora de Regra de Três Simples",
+        title: "Regra de Três",
         meta: "Calcule regra de três simples online com nossa calculadora gratuita. Descubra valores desconhecidos em proporções diretas de forma rápida e fácil.",
         desc: "A regra de três simples, também conhecida como multiplicação cruzada, é um método matemático prático para descobrir um quarto valor desconhecido quando você já conhece três valores com proporção direta entre si. Nossa calculadora facilita esse processo: seja para adaptar receitas, calcular porcentagens, ajustar medidas ou resolver exercícios escolares, basta preencher os campos com os valores conhecidos para que a calculadora faça o cálculo automaticamente e mostre o resultado.",
         if: "Condições",
@@ -261,7 +261,7 @@ defineI18nRoute({
         f_4: "Sem necessidade de cadastro ou instalação"
     },
     es: {
-        title: "Calculadora de Regla de Tres Simple",
+        title: "Regla de Tres",
         meta: "Calcula la regla de tres simple online con nuestra calculadora gratis. Descubre valores desconocidos en proporciones directas de forma rápida y sencilla.",
         desc: "La regla de tres simple, también conocida como multiplicación cruzada, es un método matemático práctico para descubrir un cuarto valor desconocido cuando ya conoces tres valores con una relación de proporcionalidad directa. Nuestra herramienta facilita este proceso: ya sea para ajustar una receta, calcular porcentajes, adaptar medidas o resolver tareas escolares, solo tienes que completar los campos con los valores conocidos para que la calculadora haga el cálculo automáticamente y muestre el resultado.",
         if: "Condiciones",
@@ -284,7 +284,7 @@ defineI18nRoute({
         step_3_desc: "El cálculo es automático. Usa el botón de copiar para enviarlo al portapapeles.",
         see1: "Calculadora de Porcentaje",
         see2: "Generador Bcrypt",
-        see3: "Extractor de Correos Electrónicos",
+        see3: "Extractor de Emails",
         see4: "Visor de JSON",
         use_cases_title: "Casos de Uso",
         uc_1: "Adaptar recetas culinarias basadas en los ingredientes disponibles",
@@ -297,7 +297,7 @@ defineI18nRoute({
         f_4: "Sin registro ni instalación"
     },
     fr: {
-        title: "Calculatrice de Règle de Trois Simple",
+        title: "Règle de Trois",
         meta: "Calculez une règle de trois simple en ligne avec notre calculatrice gratuite. Trouvez rapidement et facilement une valeur inconnue dans une proportion directe.",
         desc: "La règle de trois simple, également appelée produit en croix, est une méthode mathématique pratique pour trouver une quatrième valeur inconnue lorsque vous connaissez déjà trois valeurs liées par une proportion directe. Notre calculatrice simplifie ce calcul : que ce soit pour adapter une recette, calculer des pourcentages, ajuster des mesures ou faire des exercices scolaires, il suffit de remplir les champs avec les valeurs connues pour que la calculatrice effectue automatiquement le calcul et affiche le résultat.",
         if: "Conditions",
@@ -320,7 +320,7 @@ defineI18nRoute({
         step_3_desc: "Le calcul est instantané. Utilisez le bouton de copie pour l'envoyer au presse-papiers.",
         see1: "Calculatrice de Pourcentage",
         see2: "Générateur Bcrypt",
-        see3: "Extracteur d'e-mails",
+        see3: "Extracteur d'Emails",
         see4: "Visualiseur JSON",
         use_cases_title: "Cas d'Utilisation",
         uc_1: "Adapter des recettes de cuisine en fonction des ingrédients disponibles",
@@ -333,7 +333,7 @@ defineI18nRoute({
         f_4: "Aucune inscription ou installation requise"
     },
     it: {
-        title: "Calcolatrice di Regola di Tre Semplice",
+        title: "Regola del Tre",
         meta: "Calcola la regola di tre semplice online con la nostra calcolatrice gratuita. Trova valori sconosciuti nelle proporzioni dirette in modo rapido e semplice.",
         desc: "La regola di tre semplice, nota anche come moltiplicazione incrociata, è un metodo matematico pratico per trovare un quarto valore sconosciuto quando conosci già tre valori in proporzione diretta tra loro. La nostra calcolatrice semplifica il procedimento: che tu debba adattare una ricetta, calcolare percentuali, regolare misure o svolgere compiti scolastici, ti basta compilare i campi con i valori noti perché la calcolatrice esegua automaticamente il calcolo e mostri il risultato.",
         if: "Condizioni",
@@ -369,7 +369,7 @@ defineI18nRoute({
         f_4: "Nessuna registrazione o installazione"
     },
     id: {
-        title: "Kalkulator Aturan Tiga Sederhana",
+        title: "Aturan Tiga",
         meta: "Hitung aturan tiga sederhana secara online dengan kalkulator gratis kami. Temukan nilai yang belum diketahui dalam perbandingan senilai dengan cepat dan mudah.",
         desc: "Aturan tiga sederhana, yang juga dikenal sebagai perkalian silang, adalah metode matematika praktis untuk menemukan nilai keempat yang belum diketahui ketika Anda sudah memiliki tiga nilai dengan hubungan perbandingan senilai. Kalkulator kami mempermudah proses ini: baik untuk menyesuaikan resep, menghitung persentase, mengatur ukuran, atau mengerjakan tugas sekolah, cukup isi kolom dengan nilai-nilai yang sudah diketahui agar kalkulator menghitung secara otomatis dan menampilkan hasilnya.",
         if: "Kondisi",

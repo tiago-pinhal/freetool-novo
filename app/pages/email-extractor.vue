@@ -215,7 +215,7 @@ defineI18nRoute({
         see1: "Percentage Calculator",
         see2: "List Randomizer",
         see3: "Dice Roller",
-        see4: "Rule of Three Calculator"
+        see4: "Rule of Three"
     },
     pt: {
         title: "Extrator de E-mails",
@@ -251,7 +251,7 @@ defineI18nRoute({
         see1: "Calculadora de Porcentagem",
         see2: "Sorteador de Listas",
         see3: "Lançador de Dados",
-        see4: "Calculadora de Regra de Três"
+        see4: "Regra de Três"
     },
     es: {
         title: "Extractor de Emails",
@@ -287,7 +287,7 @@ defineI18nRoute({
         see1: "Calculadora de Porcentaje",
         see2: "Aleatorizador de Listas",
         see3: "Lanzador de Dados",
-        see4: "Calculadora de Regla de Tres"
+        see4: "Regla de Tres"
     },
     fr: {
         title: "Extracteur d'Emails",
@@ -323,7 +323,7 @@ defineI18nRoute({
         see1: "Calculatrice de Pourcentage",
         see2: "Mélangeur de Listes",
         see3: "Lanceur de Dés",
-        see4: "Calculatrice de Règle de Trois"
+        see4: "Règle de Trois"
     },
     it: {
         title: "Estrattore di Email",
@@ -359,7 +359,7 @@ defineI18nRoute({
         see1: "Calcolatrice di Percentuale",
         see2: "Randomizzatore di Liste",
         see3: "Lanciatore di Dadi",
-        see4: "Calcolatrice di Regola di Tre"
+        see4: "Regola del Tre"
     },
     id: {
         title: "Ekstraktor Email",
@@ -395,7 +395,7 @@ defineI18nRoute({
         see1: "Kalkulator Persentase",
         see2: "Pengacak Daftar",
         see3: "Pelempar Dadu",
-        see4: "Kalkulator Aturan Tiga"
+        see4: "Aturan Tiga"
     },
     de: {
         title: "E-Mail-Extraktor",
