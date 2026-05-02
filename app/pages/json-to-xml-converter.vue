@@ -99,7 +99,8 @@ defineI18nRoute({
     fr: '/convertisseur-de-json-en-xml',
     it: '/convertitore-da-json-a-xml',
     id: '/konverter-json-ke-xml',
-    de: '/json-zu-xml-konverter'
+    de: '/json-zu-xml-konverter',
+    nl: '/json-naar-xml-converter'
   }
 })
 </script>
@@ -513,6 +514,48 @@ defineI18nRoute({
     f_2: "Verarbeitet verschachtelte Objekte und Arrays",
     f_3: "Erzeugt gültiges, gut strukturiertes XML",
     f_4: "Keine Registrierung oder Installation erforderlich"
+  },
+  nl: {
+    m_title: "JSON naar XML Converter Online - Gratis en Direct",
+    title: "JSON naar XML Converter",
+    meta: "Gratis online JSON naar XML converter. Plak je JSON en krijg schone, geldige en goed gestructureerde XML zonder extra tools of installatie.",
+    d1: "Deze tool analyseert je JSON en koppelt elk key-value paar, genest object en array aan het bijbehorende XML-element. Object keys worden XML-tags, geneste objecten worden kind-elementen, en array-items worden verpakt in herhaalde tags, waardoor de oorspronkelijke datastructuur behouden blijft.",
+    bt: "Converteren",
+    rst: "Opnieuw beginnen",
+    copy: "Kopiëren",
+    plc: "Plak hier de JSON-code of sleep een bestand hiernaartoe",
+    err: "Fout",
+    err_label: "Analysefout",
+    how_it_works_title: "Hoe het werkt",
+    hiw_1_title: "Plak je JSON",
+    hiw_1_desc: "Plak of sleep je JSON-bestand in de editor. Zorg ervoor dat het geldige JSON is voordat je converteert.",
+    hiw_2_title: "Klik op Converteren",
+    hiw_2_desc: "Klik op Converteren en de tool analyseert je JSON en zet deze direct om naar een schoon, goed gestructureerd XML-document.",
+    hiw_3_title: "XML kopiëren",
+    hiw_3_desc: "De gegenereerde XML verschijnt in de editor en is direct klaar voor gebruik. Klik op Kopiëren om het naar je klembord te kopiëren.",
+    use_cases_title: "Gebruiksvoorbeelden",
+    uc_1_title: "SOAP en Webservices",
+    uc_1_desc: "Zet JSON-payloads om naar XML voor gebruik met SOAP-gebaseerde webservices en enterprise API's die alleen XML accepteren.",
+    uc_2_title: "Integratie met oude systemen",
+    uc_2_desc: "Transformeer moderne JSON-gegevens naar XML wanneer oudere systemen, platforms of middleware XML-input vereisen.",
+    uc_3_title: "Configuratiebestanden",
+    uc_3_desc: "Converteer JSON-configuratieobjecten naar XML-formaat voor tools, frameworks en platforms die XML-gebaseerde configuratiebestanden gebruiken.",
+    faq_title: "Vragen & Antwoorden",
+    faq_1_q: "Worden mijn gegevens veilig verwerkt?",
+    faq_1_a: "Ja. Alle conversies vinden plaats in je browser. Je JSON-gegevens worden niet naar onze servers verzonden, wat maximale privacy en veiligheid garandeert.",
+    faq_2_q: "Wat gebeurt er met complexe JSON-objecten?",
+    faq_2_a: "De tool verwerkt geneste objecten door recursief XML-elementen te maken. Elk niveau in de JSON-hiërarchie wordt vertaald naar een geneste XML-tag.",
+    faq_3_q: "Hoe worden JSON-arrays behandeld?",
+    faq_3_a: "Elk item in een JSON-array wordt verpakt in een herhaalde XML-tag met de naam van de bovenliggende key, waardoor de array-structuur behouden blijft.",
+    see1: "XML → JSON",
+    see2: "CSV → JSON",
+    see3: "JSON → CSV",
+    see4: "LESS → CSS",
+    f_1: "Directe JSON naar XML conversie",
+    f_2: "Verwerkt geneste objecten en arrays",
+    f_3: "Genereert geldige en goed gestructureerde XML",
+    f_4: "Geen registratie of installatie vereist"
+  }
   }
 }
 </i18n>

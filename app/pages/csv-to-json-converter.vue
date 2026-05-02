@@ -112,7 +112,8 @@ defineI18nRoute({
     fr: '/convertisseur-de-csv-en-json',
     it: '/convertitore-da-csv-a-json',
     id: '/konverter-csv-ke-json',
-    de: '/csv-zu-json-konverter'
+    de: '/csv-zu-json-konverter',
+    nl: '/csv-naar-json-converter'
   }
 })
 </script>
@@ -595,6 +596,52 @@ defineI18nRoute({
     f_2: "Unterstützung für benutzerdefinierte Trennzeichen",
     f_3: "Automatische Erkennung von Datentypen",
     f_4: "Keine Registrierung oder Installation erforderlich"
+  },
+  nl: {
+    m_title: "CSV naar JSON Converter Online - Gratis en Direct",
+    title: "CSV naar JSON Converter",
+    meta: "Gratis online CSV naar JSON converter. Plak je CSV en krijg schone, geformatteerde JSON met automatische type-detectie en ondersteuning voor aangepaste scheidingstekens.",
+    d1: "Deze tool analyseert je CSV-tekst en zet elke rij om naar het JSON-equivalent. Kolomkoppen worden object keys en rijen worden objecten in een JSON-array, waarbij de oorspronkelijke datastructuur behouden blijft.",
+    d2: "Het converteren van CSV naar JSON is vooral nuttig bij het integreren van tabelgegevens in webapplicaties, het migreren van exports uit oude databases of het aanroepen van REST API's die JSON-payloads verwachten.",
+    bt: "Converteren",
+    rst: "Opnieuw beginnen",
+    copy: "Kopiëren",
+    plc: "Plak hier de CSV-tekst of sleep een bestand hiernaartoe",
+    header: "Eerste rij is koptekst",
+    delimiter: "Scheidingsteken:",
+    comma: "Komma",
+    semicolon: "Puntkomma",
+    pipe: "Pipe (|)",
+    tab: "Tab",
+    err: "Fout",
+    err_label: "Analysefout",
+    how_it_works_title: "Hoe het werkt",
+    hiw_1_title: "Plak je CSV",
+    hiw_1_desc: "Plak of sleep je CSV-bestand in de editor. Schakel de koptekst-optie in als de eerste rij kolomnamen bevat.",
+    hiw_2_title: "Configureer opties",
+    hiw_2_desc: "Selecteer het juiste scheidingsteken voor je bestand en geef aan of de eerste rij een koptekst is.",
+    hiw_3_title: "Kopieer de JSON",
+    hiw_3_desc: "Klik op Converteren en de tool genereert direct een schone JSON-array. Klik op Kopiëren om de JSON naar je klembord te kopiëren.",
+    use_cases_title: "Gebruiksvoorbeelden",
+    uc_1_title: "Datamigratie",
+    uc_1_desc: "Converteer exports uit oude databases en spreadsheetbestanden naar JSON om ze in moderne NoSQL-databases te laden.",
+    uc_2_title: "API-integratie",
+    uc_2_desc: "Transformeer tabelgegevens uit spreadsheets naar JSON-payloads die klaar zijn om naar REST API-endpoints te worden verzonden.",
+    faq_title: "Vragen & Antwoorden",
+    faq_1_q: "Worden mijn CSV-gegevens naar een server verzonden?",
+    faq_1_a: "Nee. De conversie draait volledig in je browser. Je gegevens verlaten je apparaat nooit.",
+    faq_2_q: "Kan ik een ander scheidingsteken dan een komma gebruiken?",
+    faq_2_a: "Ja. Je kunt kiezen tussen komma's, puntkomma's, pipe-symbolen of tabs, passend bij het exportformaat van je bestand.",
+    faq_3_q: "Detecteert het automatisch getallen en booleans?",
+    faq_3_a: "Ja. De parser detecteert automatisch integers, floats en true/false waarden en geeft deze zonder aanhalingstekens weer in de JSON-output.",
+    see1: "JSON → CSV",
+    see2: "XML → JSON",
+    see3: "JSON → XML",
+    see4: "JSON Viewer",
+    f_1: "Directe CSV naar JSON conversie",
+    f_2: "Ondersteuning voor aangepaste scheidingstekens",
+    f_3: "Automatische datatypedetectie",
+    f_4: "Geen registratie of installatie vereist"
   }
 }
 </i18n>

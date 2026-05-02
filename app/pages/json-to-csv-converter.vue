@@ -108,7 +108,8 @@ defineI18nRoute({
     fr: '/convertisseur-de-json-en-csv',
     it: '/convertitore-da-json-a-csv',
     id: '/konverter-json-ke-csv',
-    de: '/json-zu-csv-konverter'
+    de: '/json-zu-csv-konverter',
+    nl: '/json-naar-csv-converter'
   }
 })
 </script>
@@ -591,6 +592,52 @@ defineI18nRoute({
     f_2: "Unterstützung für benutzerdefinierte Trennzeichen",
     f_3: "Automatisches Abflachen von Objekten",
     f_4: "Keine Registrierung oder Installation erforderlich"
+  },
+  nl: {
+    m_title: "JSON naar CSV Converter Online - Gratis en Direct",
+    title: "JSON naar CSV Converter",
+    meta: "Gratis online JSON naar CSV converter. Transformeer JSON-objecten direct naar tabelformaat voor Excel of Google Sheets.",
+    d1: "Deze tool transformeert een lijst met JSON-gegevens naar een eenvoudige tabel (CSV), waardoor het makkelijker is om ze te bekijken en te gebruiken in spreadsheets. De keys van de objecten worden de kolomkoppen, terwijl de waarden de rijen eronder vullen.",
+    d2: "Het converteren van JSON naar CSV is erg nuttig voor het exporteren van API-responses naar Excel, het migreren van databases of het voorbereiden van ruwe data voor zakelijke teams.",
+    bt: "Converteren",
+    rst: "Opnieuw beginnen",
+    copy: "Kopiëren",
+    plc: "Plak hier de JSON-code of sleep een bestand hiernaartoe",
+    header: "Voeg koptekst toe aan de eerste rij",
+    delimiter: "Scheidingsteken:",
+    comma: "Komma",
+    semicolon: "Puntkomma",
+    pipe: "Pipe (|)",
+    tab: "Tab",
+    err: "Fout",
+    err_label: "Ongeldige JSON",
+    how_it_works_title: "Hoe het werkt",
+    hiw_1_title: "Plak je JSON",
+    hiw_1_desc: "Plak of sleep je JSON-bestand in de editor. Schakel de koptekst-optie in als je wilt dat de eerste rij van de CSV de kolomnamen bevat.",
+    hiw_2_title: "Controleer opties",
+    hiw_2_desc: "Het systeem valideert de JSON-syntaxis. Je kunt kiezen of je kolomkoppen in de eerste rij wilt opnemen.",
+    hiw_3_title: "Converteren naar CSV",
+    hiw_3_desc: "Klik op Converteren om direct de CSV-tekst te genereren met kolommen gescheiden door het door jou gekozen scheidingsteken.",
+    use_cases_title: "Gebruiksvoorbeelden",
+    uc_1_title: "Exporteren naar spreadsheets",
+    uc_1_desc: "Transformeer gestructureerde JSON-gegevens (zoals API-responses) naar een leesbaar formaat voor Excel of Google Sheets.",
+    uc_2_title: "Systeemmigratie",
+    uc_2_desc: "Converteer document-gebaseerde gegevens om ze eenvoudig te kunnen importeren in conventionele systemen en relationele databases.",
+    faq_title: "Vragen & Antwoorden",
+    faq_1_q: "Worden mijn JSON-gegevens op de server opgeslagen?",
+    faq_1_a: "Nee. Alle verwerking vindt volledig plaats in je browser. We verzenden of bewaren je JSON-gegevens nooit op onze servers.",
+    faq_2_q: "Welke JSON-structuur wordt ondersteund?",
+    faq_2_a: "De tool verwacht een JSON-array van objecten, waarbij elk object een rij vertegenwoordigt en de keys de CSV-kolomkoppen worden.",
+    faq_3_q: "Kan ik een ander scheidingsteken dan een komma gebruiken?",
+    faq_3_a: "Ja. Je kunt kiezen tussen komma's, puntkomma's, pipe-symbolen of tabs, passend bij het formaat dat je software verwacht.",
+    see1: "CSV → JSON",
+    see2: "XML → JSON",
+    see3: "JSON → XML",
+    see4: "JSON Viewer",
+    f_1: "Directe JSON naar CSV conversie",
+    f_2: "Ondersteuning voor aangepaste scheidingstekens",
+    f_3: "Automatisch afvlakken van objecten",
+    f_4: "Geen registratie of installatie vereist"
   }
 }
 </i18n>

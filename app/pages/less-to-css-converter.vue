@@ -102,7 +102,8 @@ defineI18nRoute({
     fr: '/convertisseur-de-less-en-css',
     it: '/convertitore-da-less-a-css',
     id: '/konverter-less-ke-css',
-    de: '/less-zu-css-konverter'
+    de: '/less-zu-css-konverter',
+    nl: '/less-naar-css-converter'
   }
 })
 </script>
@@ -516,6 +517,47 @@ defineI18nRoute({
     f_2: "Unterstützt Variablen, Mixins und Verschachtelung",
     f_3: "Echtzeit-Fehlerrückmeldung",
     f_4: "Keine Registrierung oder Installation erforderlich"
+  },
+  nl: {
+    m_title: "LESS naar CSS Converter Online - Gratis en Direct",
+    title: "LESS naar CSS Converter",
+    meta: "Converteer LESS gratis online naar CSS. Plak je LESS-code en krijg direct schone, geoptimaliseerde CSS met ondersteuning voor variabelen, mixins en nesting.",
+    d1: "Deze tool compileert je LESS-code naar standaard CSS. Het verwerkt automatisch variabelen, mixins, nesting (insluiting) en andere LESS-functies om browser-compatibele styles te genereren zonder dat je een lokale bouwomgeving nodig hebt.",
+    bt: "Converteren",
+    rst: "Opnieuw beginnen",
+    copy: "Kopiëren",
+    plc: "Plak hier de LESS-code of sleep een bestand hiernaartoe",
+    err: "Fout",
+    err_label: "Compilatiefout",
+    how_it_works_title: "Hoe het werkt",
+    hiw_1_title: "Plak je LESS",
+    hiw_1_desc: "Plak of sleep je LESS-code in de editor. Je kunt variabelen, mixins en geneste regels gebruiken.",
+    hiw_2_title: "Compileer direct",
+    hiw_2_desc: "Zodra je de code invoert, compileert de tool de LESS naar CSS. Eventuele syntaxfouten worden direct gemeld.",
+    hiw_3_title: "Kopieer de CSS",
+    hiw_3_desc: "De resulterende CSS verschijnt in de rechter editor. Klik op Kopiëren om de code direct in je project te gebruiken.",
+    use_cases_title: "Gebruiksvoorbeelden",
+    uc_1_title: "Snel snippets testen",
+    uc_1_desc: "Test LESS-variabelen, mixins of nesting-regels direct zonder een lokale build-omgeving in te richten.",
+    uc_2_title: "Style debugging",
+    uc_2_desc: "Isoleer en debug specifieke LESS-blokken om de gegenereerde CSS-output beter te begrijpen en fouten te vinden.",
+    uc_3_title: "Code migratie",
+    uc_3_desc: "Converteer bestaande LESS-stylesheets naar pure CSS wanneer projecten migreren van preprocessors naar standaard CSS.",
+    faq_title: "Vragen & Antwoorden",
+    faq_1_q: "Wordt mijn LESS-code naar een server verzonden?",
+    faq_1_a: "Nee. De compilatie vindt volledig plaats in je browser. Je code verlaat je apparaat nooit.",
+    faq_2_q: "Ondersteunt de tool alle LESS-functies?",
+    faq_2_a: "Ja. Variabelen, mixins, nesting, functies, imports en de meeste LESS-taalfuncties worden volledig ondersteund.",
+    faq_3_q: "Wat gebeurt er als mijn LESS een fout bevat?",
+    faq_3_a: "De tool toont een duidelijke foutmelding zodat je het probleem snel kunt vinden en oplossen.",
+    see1: "XML → JSON",
+    see2: "JSON → XML",
+    see3: "Talstelsels",
+    see4: "Opslageenheden",
+    f_1: "Directe LESS naar CSS compilatie",
+    f_2: "Ondersteuning voor variabelen, mixins en nesting",
+    f_3: "Real-time feedback bij fouten",
+    f_4: "Geen registratie of installatie vereist"
   }
 }
 </i18n>
