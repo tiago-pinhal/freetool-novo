@@ -689,7 +689,7 @@ defineI18nRoute({
     generated_uuids: "Gegenereerde UUIDs ({count})",
     copy_all: "Alles kopiëren",
     copied: "Gekopieerd!",
-    placeholder: "Klik op genereren",
+    placeholder: "Klik op Genereren om een UUID aan te maken",
     see1: "Crontab-generator",
     see2: "Willekeurige getallen-generator",
     see3: "Creditcard-generator",
