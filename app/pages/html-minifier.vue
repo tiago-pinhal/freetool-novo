@@ -108,7 +108,9 @@ defineI18nRoute({
     es: '/minificador-html',
     fr: '/minificateur-html',
     it: '/minificatore-html',
-    id: '/html-minifier'
+    id: '/html-minifier',
+    de: '/html-minifier',
+    nl: '/html-minifier'
   }
 })
 </script>

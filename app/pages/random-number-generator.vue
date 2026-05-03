@@ -103,7 +103,9 @@ defineI18nRoute({
     es: '/generador-de-numeros-aleatorios',
     fr: '/generateur-de-nombres-aleatoires',
     it: '/generatore-di-numeri-casuali',
-    id: '/generator-angka-acak'
+    id: '/generator-angka-acak',
+    de: '/zufallszahlengenerator',
+    nl: '/willekeurige-getallen-generator'
   }
 })
 </script>
@@ -612,6 +614,56 @@ defineI18nRoute({
     see2: "Kreditkarten-Generator",
     see3: "CPF-Generator",
     see4: "UUID-Generator"
+  },
+  nl: {
+    pageTitle: "Willekeurige getallen generator - Genereer getallen online | Gratis",
+    title: "Willekeurige getallen generator",
+    meta: "Gratis online willekeurige getallen generator. Stel een aangepast bereik en aantal in om reeksen te maken voor lotingen, loterijen, games, simulaties en statistische analyse.",
+    min: "Minimumwaarde",
+    max: "Maximumwaarde",
+    qty: "Aantal",
+    order: "Sorteervolgorde",
+    rand: "Willekeurig",
+    asc: "Oplopend",
+    desc: "Aflopend",
+    repet: "Herhaling van getallen toestaan",
+    bt: "Getallen genereren",
+    result: "Gegenereerde getallen",
+    copy: "Kopiëren",
+    err: "Het opgevraagde aantal overschrijdt het toegestane bereik zonder herhaling",
+    err_max: "Het maximaal toegestane aantal is 5.000 getallen",
+    placeholder: "Klaar om te genereren",
+    about_title: "Willekeurige getallen generator",
+    how_it_works_title: "Hoe het werkt",
+    step_1_title: "Bereik configureren",
+    step_1_desc: "Stel de minimum- en maximumwaarden in voor je getallen.",
+    step_2_title: "Genereren",
+    step_2_desc: "Stel het aantal en de sorteervolgorde in en klik op Getallen genereren.",
+    step_3_title: "Kopiëren",
+    step_3_desc: "Gebruik de kopieerknop om het resultaat naar je klembord te verzenden.",
+    d1: "Gratis online tool voor het genereren van willekeurige getallen met een aangepast bereik en aantal. Ideaal voor lotingen, loterijen, games, simulaties, softwaretests and statistische analyse. Genereer unieke of herhaalde getallen met flexibele sorteeropties.",
+    use_cases_title: "Gebruiksscenario's",
+    uc_1_title: "Lotingen & loterijen",
+    uc_1_desc: "Genereer willekeurige getallen om winnaars of loterijcombinaties eerlijk te selecteren.",
+    uc_2_title: "Games & bordspellen",
+    uc_2_desc: "Maak willekeurige elementen voor spelmechanismen, dobbelsteenworpen of computersimulaties.",
+    uc_3_title: "Softwaretests",
+    uc_3_desc: "Genereer gevarieerde invoergegevens om systeemfunctionaliteiten en randgevallen te testen.",
+    uc_4_title: "Statistische steekproeven",
+    uc_4_desc: "Verkrijg willekeurige steekproeven voor kwantitatieve studies, onderzoek en gegevensanalyse.",
+    faq_title: "Veelgestelde vragen",
+    faq_1_q: "Zijn de gegenereerde getallen echt willekeurig?",
+    faq_1_a: "Ja. We gebruiken standaard algoritmen die pseudowillekeurige getallen genereren die geschikt zijn voor de meeste toepassingen zoals lotingen, games en simulaties.",
+    faq_2_q: "Kan ik getallen genereren voor de loterij?",
+    faq_2_a: "Ja! Stel het bereik in (bijv. 1-60) en het aantal (bijv. 6), schakel herhaling uit en genereer je combinatie. Werkt uitstekend voor elk loterijformaat.",
+    faq_3_q: "Wat is het maximale aantal dat ik kan genereren?",
+    faq_3_a: "Je kunt tot 5.000 getallen tegelijk genereren. Dit zorgt ervoor dat de tool direct blijft werken en de resultaten gemakkelijk te verwerken zijn. De enige andere vereiste is wiskundig: als je herhaling uitschakelt, moet het aantal binnen het geselecteerde bereik passen.",
+    faq_4_q: "Kunnen getallen worden herhaald?",
+    faq_4_a: "Jij hebt de controle! Schakel 'Herhaling van getallen toestaan' in voor herhaalde getallen, of laat het uitgeschakeld voor alleen unieke getallen.",
+    see1: "Wachtwoordgenerator",
+    see2: "Creditcardgenerator",
+    see3: "CPF-generator",
+    see4: "UUID-generator"
   }
 }
 </i18n>
