@@ -28,7 +28,7 @@ async function copy() {
   >
     <!-- Header: Label + Botão Copiar -->
     <div class="flex items-center justify-between px-5 py-3 bg-base-300 border-b border-base-content/20">
-      <span class="text-xs font-bold uppercase tracking-wider text-base-content/50">
+      <span class="text-xs font-bold uppercase tracking-wider text-base-content/70">
         {{ label }}
       </span>
 
@@ -37,7 +37,7 @@ async function copy() {
         @click="copy"
         :aria-label="`${t('copy')} ${label}`"
         class="btn btn-xs btn-ghost gap-2 transition-all duration-300 cursor-pointer active:scale-90"
-        :class="copied ? 'text-success' : 'text-base-content/50 hover:text-primary'"
+        :class="copied ? 'text-success' : 'text-base-content/70 hover:text-primary'"
       >
         <Transition
           enter-active-class="transition duration-200 ease-out"
