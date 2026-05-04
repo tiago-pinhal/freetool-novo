@@ -272,10 +272,11 @@ defineI18nRoute({
         </h2>
         <div class="flex flex-wrap gap-4">
           <div class="form-control flex-1 min-w-48">
-            <label class="label pb-1">
+            <label class="label pb-1" for="input-ts">
               <span class="label-text font-bold text-base-content/80">{{ t('label_ts') }}</span>
             </label>
             <input
+              id="input-ts"
               type="number"
               v-model="state.inputTs"
               class="input input-bordered font-mono w-full"
@@ -286,10 +287,10 @@ defineI18nRoute({
             </label>
           </div>
           <div class="form-control min-w-48">
-            <label class="label pb-1">
+            <label class="label pb-1" for="timezone-select">
               <span class="label-text font-bold text-base-content/80">{{ t('timezone') }}</span>
             </label>
-            <select v-model="state.timezone" class="select select-bordered w-full">
+            <select id="timezone-select" v-model="state.timezone" class="select select-bordered w-full">
               <option v-for="tz in timezoneOptions" :key="tz" :value="tz">{{ tz }}</option>
             </select>
           </div>
@@ -329,10 +330,11 @@ defineI18nRoute({
         </h2>
         <div class="grid grid-cols-3 sm:grid-cols-6 gap-2">
           <div v-for="field in dateFields" :key="field.key" class="form-control">
-            <label class="label pb-1">
+            <label class="label pb-1" :for="'date-' + field.key">
               <span class="label-text text-sm uppercase tracking-wider text-base-content/60">{{ t(field.label) }}</span>
             </label>
             <input
+              :id="'date-' + field.key"
               type="number"
               v-model="state.manualDate[field.key as keyof typeof state.manualDate]"
               class="input input-bordered input-sm text-center font-mono"
@@ -370,11 +372,12 @@ defineI18nRoute({
         <p class="text-base-content/60 text-sm -mt-2">{{ t('arithmetic_intro') }}</p>
 
         <div class="form-control">
-          <label class="label pb-1">
+          <label class="label pb-1" for="base-ts">
             <span class="label-text font-bold text-base-content/80">{{ t('base_ts_label') }}</span>
           </label>
           <div class="flex gap-2">
             <input
+              id="base-ts"
               type="number"
               v-model="state.deltaBase"
               class="input input-bordered font-mono flex-1 min-w-0"
@@ -395,10 +398,11 @@ defineI18nRoute({
           <p class="text-sm text-base-content/70 mb-2">{{ t('delta_hint') }}</p>
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <div v-for="field in deltaFields" :key="field.key" class="form-control">
-              <label class="label pb-1">
+              <label class="label pb-1" :for="'delta-' + field.key">
                 <span class="label-text text-sm uppercase tracking-wider text-base-content/60">{{ t(field.label) }}</span>
               </label>
               <input
+                :id="'delta-' + field.key"
                 type="number"
                 v-model="state.delta[field.key as keyof typeof state.delta]"
                 class="input input-bordered input-sm text-center font-mono"
