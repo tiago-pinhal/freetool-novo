@@ -316,7 +316,7 @@ defineI18nRoute({
               >
                 <div
                   class="text-[10px] uppercase tracking-widest font-bold mb-1"
-                  :class="state.cursorPos === idx ? 'text-primary' : 'text-base-content/60'"
+                  :class="state.cursorPos === idx ? 'text-primary' : 'text-base-content/80'"
                 >
                   {{ field.label }}
                 </div>
@@ -328,7 +328,7 @@ defineI18nRoute({
                 </div>
                 <div
                   class="text-xs font-mono font-bold mt-1"
-                  :class="state.cursorPos === idx ? 'text-primary' : 'text-base-content/60'"
+                  :class="state.cursorPos === idx ? 'text-primary' : 'text-base-content/80'"
                 >
                   {{ field.allowed }}
                 </div>
@@ -338,7 +338,7 @@ defineI18nRoute({
 
           <!-- Legend -->
           <div v-if="state.cron" class="mt-6">
-            <p class="text-xs uppercase tracking-widest text-base-content/50 mb-2 px-1">{{ t('legends') }}</p>
+            <p class="text-xs uppercase tracking-widest text-base-content/80 mb-2 px-1">{{ t('legends') }}</p>
             <dl class="grid grid-cols-[80px_1fr] gap-y-2 gap-x-4 px-4 py-3 bg-base-200/50 rounded-lg text-sm">
               <dt class="font-mono text-primary font-bold">*</dt>
               <dd class="text-base-content/80 m-0">{{ t('all') }}</dd>
@@ -430,7 +430,7 @@ defineI18nRoute({
             <Icon name="heroicons:code-bracket-20-solid" class="text-primary w-6 h-6" aria-hidden="true" />
             {{ t('t7') }}
           </h2>
-          <p class="text-base-content/70 text-sm mb-4">{{ t('d7') }}</p>
+          <p class="text-base-content/90 text-sm mb-4">{{ t('d7') }}</p>
           <dl class="grid grid-cols-[80px_1fr] gap-y-2 gap-x-4 px-4 py-3 bg-base-200/50 rounded-lg text-sm w-fit">
             <dt class="font-mono text-primary font-bold">*</dt>
             <dd class="text-base-content/80 m-0">{{ t('d71') }}</dd>

@@ -12,7 +12,7 @@ const props = defineProps<{
 
 const emit = defineEmits(['update:activeTab'])
 
-const groupName = props.name || `tabs_${Math.random().toString(36).substring(2, 9)}`
+const groupName = props.name || useId()
 
 function handleTabChange(tabId: string) {
   emit('update:activeTab', tabId)
