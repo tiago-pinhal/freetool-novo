@@ -231,7 +231,11 @@ function getData() {
    const name = removeAccents(state.pix_name.trim() || 'RECEBEDOR').toUpperCase().substring(0, 25)
    const city = removeAccents(state.pix_city.trim() || 'CIDADE').toUpperCase().substring(0, 15)
    const amount = formatPixAmount(state.pix_amount)
-   const desc = removeAccents(state.pix_desc.trim()).substring(0, 20)
+   // MAI (ID 26) content must fit in 2-digit length (max 99 chars).
+   // Fixed overhead: GUI field = 18, key field header = 4, desc field header = 4.
+   // So desc can be at most (99 - 18 - 4 - pixKey.length - 4) chars.
+   const maxDescLen = Math.max(0, 73 - pixKey.length)
+   const desc = removeAccents(state.pix_desc.trim()).substring(0, Math.min(20, maxDescLen))
  
    // Merchant Account Information
    let merchantInfo = emvField('00', PIX_GUI)
