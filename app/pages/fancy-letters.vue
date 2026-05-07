@@ -149,10 +149,10 @@ defineI18nRoute({
     :description="t('meta')"
     :show-ads="state.text.length > 0"
     :see-also-links="[
-      { label: t('see1'), to: 'url-encoder-decoder' },
-      { label: t('see2'), to: 'password-generator' },
-      { label: t('see3'), to: 'list-randomizer' },
-      { label: t('see4'), to: 'email-extractor' }
+      { label: t('see1'), to: 'symbol-picker' },
+      { label: t('see2'), to: 'emoji-picker' },
+      { label: t('see3'), to: 'ascii-letter-generator' },
+      { label: t('see4'), to: 'text-converter' }
     ]"
   >
     <div class="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -399,10 +399,10 @@ defineI18nRoute({
     faq_7_q: "Essas são fontes ou símbolos? Qual a diferença?",
     faq_7_a: "Tecnicamente são símbolos Unicode, não fontes. Uma fonte muda a aparência das mesmas letras (a letra A continua sendo um A). Aqui, cada estilo é um conjunto distinto de caracteres dentro do padrão Unicode. Por isso o resultado se mantém ao copiar para qualquer aplicativo, sem depender da fonte instalada no dispositivo.",
 
-    see1: "Codificador de URL",
-    see2: "Gerador de Senhas",
-    see3: "Randomizador de Listas",
-    see4: "Extrator de E-mails",
+    see1: "Seletor de Símbolos",
+    see2: "Seletor de Emojis",
+    see3: "Gerador de Letras ASCII",
+    see4: "Conversor de Texto",
 
     f_1: "Mais de 30 estilos de letras personalizadas",
     f_2: "Cópia rápida com um clique",
@@ -482,10 +482,10 @@ defineI18nRoute({
     faq_7_q: "Are these fonts or symbols? What's the difference?",
     faq_7_a: "Technically, they are Unicode symbols, not fonts. A font changes the appearance of the same letters (the letter A remains an A). Here, each style is a distinct set of characters within the Unicode standard. That's why the result remains when copying to any app, regardless of the font installed on the device.",
 
-    see1: "URL Encoder/Decoder",
-    see2: "Password Generator",
-    see3: "List Randomizer",
-    see4: "Email Extractor",
+    see1: "Symbol Picker",
+    see2: "Emoji Picker",
+    see3: "ASCII Letter Generator",
+    see4: "Text Converter",
 
     f_1: "Over 30 custom letter styles",
     f_2: "Fast 1-click copy",
@@ -565,10 +565,10 @@ defineI18nRoute({
     faq_7_q: "¿Son estas fuentes o símbolos? ¿Cuál es la diferencia?",
     faq_7_a: "Técnicamente, son símbolos Unicode, no fuentes. Una fuente cambia la apariencia de las mismas letras (la letra A sigue siendo una A). Aquí, cada estilo es un conjunto distinto de caracteres dentro del estándar Unicode. Por eso el resultado se mantiene al copiar a cualquier aplicación, sin depender de la fuente instalada en el dispositivo.",
 
-    see1: "Codificador/Decodificador de URL",
-    see2: "Generador de Contraseñas",
-    see3: "Aleatorizador de Listas",
-    see4: "Extractor de Correos Electrónicos",
+    see1: "Selector de Símbolos",
+    see2: "Selector de Emojis",
+    see3: "Generador de Letras ASCII",
+    see4: "Convertidor de Texto",
 
     f_1: "Más de 30 estilos de letras personalizadas",
     f_2: "Copia rápida con un clic",
@@ -648,10 +648,10 @@ defineI18nRoute({
     faq_7_q: "S'agit-il de polices ou de symboles ? Quelle est la différence ?",
     faq_7_a: "Techniquement, ce sont des symboles Unicode, pas des polices. Une police change l'apparence des mêmes lettres (la lettre A reste un A). Ici, chaque style est un ensemble distinct de caractères au sein de la norme Unicode. C'est pourquoi le résultat reste le même lors de la copie vers n'importe quelle application, indépendamment de la police installée sur l'appareil.",
 
-    see1: "Encodeur/Décodeur d'URL",
-    see2: "Générateur de Mots de Passe",
-    see3: "Générateur de Listes Aléatoires",
-    see4: "Extracteur d'E-mails",
+    see1: "Sélecteur de Symboles",
+    see2: "Sélecteur d'Emojis",
+    see3: "Générateur de Lettres ASCII",
+    see4: "Convertisseur de Texte",
 
     f_1: "Plus de 30 styles de lettres personnalisés",
     f_2: "Copie rapide en un clic",
@@ -731,10 +731,10 @@ defineI18nRoute({
     faq_7_q: "Questi sono font o simboli? Qual è la differenza?",
     faq_7_a: "Tecnicamente sono simboli Unicode, non font. Un font cambia l'aspetto delle stesse lettere (la lettera A rimane una A). Qui, ogni stile è un insieme distinto di caratteri all'interno dello standard Unicode. Ecco perché il risultato viene mantenuto quando si copia in qualsiasi app, indipendentemente dal font installato sul dispositivo.",
 
-    see1: "Codificatore/Decodificatore URL",
-    see2: "Generatore di Password",
-    see3: "Randomizzatore di Elenchi",
-    see4: "Estrattore di E-mail",
+    see1: "Selettore di Simboli",
+    see2: "Selettore di Emoji",
+    see3: "Generatore di Lettere ASCII",
+    see4: "Convertitore di Testo",
 
     f_1: "Oltre 30 stili di lettere personalizzate",
     f_2: "Copia rapida in 1 clic",
@@ -814,10 +814,10 @@ defineI18nRoute({
     faq_7_q: "Apakah ini font atau simbol? Apa bedanya?",
     faq_7_a: "Secara teknis, mereka adalah simbol Unicode, bukan font. Font mengubah tampilan huruf yang sama (huruf A tetap A). Di sini, setiap gaya adalah kumpulan karakter berbeda dalam standar Unicode. Itulah sebabnya hasilnya tetap ada saat disalin ke aplikasi apa pun, terlepas dari font yang diinstal di perangkat.",
 
-    see1: "Encoder/Decoder URL",
-    see2: "Generator Kata Sandi",
-    see3: "Pengacak Daftar",
-    see4: "Pengekstrak Email",
+    see1: "Pemilih Simbol",
+    see2: "Pemilih Emoji",
+    see3: "Generator Huruf ASCII",
+    see4: "Konverter Teks",
 
     f_1: "Lebih dari 30 gaya huruf khusus",
     f_2: "Salin cepat 1-klik",
@@ -897,10 +897,10 @@ defineI18nRoute({
     faq_7_q: "Sind das Schriftarten oder Symbole? Was ist der Unterschied?",
     faq_7_a: "Technisch gesehen sind es Unicode-Symbole, keine Schriftarten. Eine Schriftart ändert das Aussehen derselben Buchstaben (der Buchstabe A bleibt ein A). Hier ist jeder Stil eine bestimmte Menge von Zeichen innerhalb des Unicode-Standards. Aus diesem Grund bleibt das Ergebnis beim Kopieren in eine beliebige App erhalten, unabhängig von der auf dem Gerät installierten Schriftart.",
 
-    see1: "URL Encoder/Decoder",
-    see2: "Passwort-Generator",
-    see3: "Listen-Zufallsgenerator",
-    see4: "E-Mail-Extraktor",
+    see1: "Symbol-Auswahl",
+    see2: "Emoji-Auswahl",
+    see3: "ASCII-Generator",
+    see4: "Text-Konverter",
 
     f_1: "Über 30 benutzerdefinierte Buchstabenstile",
     f_2: "Schnelles Kopieren mit 1 Klick",
@@ -980,10 +980,10 @@ defineI18nRoute({
     faq_7_q: "Zijn dit lettertypen of symbolen? Wat is het verschil?",
     faq_7_a: "Technisch gezien zijn het Unicode-symbolen, geen lettertypen. Een lettertype verandert het uiterlijk van dezelfde letters (de letter A blijft een A). Hier is elke stijl een aparte reeks tekens binnen de Unicode-standaard. Daarom blijft het resultaat behouden wanneer je het naar een willekeurige app kopieert, ongeacht het lettertype dat op het apparaat is geïnstalleerd.",
 
-    see1: "URL Encoder/Decoder",
-    see2: "Wachtwoordgenerator",
-    see3: "Lijst Randomizer",
-    see4: "E-mail Extractor",
+    see1: "Symbool-kiezer",
+    see2: "Emoji-kiezer",
+    see3: "ASCII-generator",
+    see4: "Tekst-converter",
 
     f_1: "Meer dan 30 aangepaste letterstijlen",
     f_2: "Snel 1-klik kopiëren",
