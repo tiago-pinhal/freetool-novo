@@ -720,6 +720,19 @@ onLoaded(() => {
           :items="[t('feature_1'), t('feature_2'), t('feature_3'), t('feature_4')]"
         />
 
+        <section>
+          <h2 class="mb-3 text-2xl font-bold text-base-content flex items-center gap-2">
+            <Icon name="material-symbols:qr-code-2-rounded" class="text-primary w-6 h-6" aria-hidden="true" />
+            {{ t('types_title') }}
+          </h2>
+          <p class="mb-4 text-base-content/80 leading-relaxed">{{ t('types_desc') }}</p>
+          <div class="grid gap-3 sm:grid-cols-2">
+            <p v-for="key in ['type_url', 'type_vcard', 'type_pix', 'type_email', 'type_wifi', 'type_sms', 'type_text']" :key="key" class="rounded-2xl border border-base-content/10 bg-base-200/40 p-4">
+              {{ t(key) }}
+            </p>
+          </div>
+        </section>
+
         <UseCaseSection
           :title="t('use_cases_title')"
           :description="t('use_cases_desc')"
@@ -739,16 +752,6 @@ onLoaded(() => {
             { title: t('how_3_title'), description: t('how_3_desc') }
           ]"
         />
-
-        <section>
-          <h2 class="mb-3 text-2xl font-bold text-base-content">{{ t('types_title') }}</h2>
-          <p class="mb-4 text-base-content/80 leading-relaxed">{{ t('types_desc') }}</p>
-          <div class="grid gap-3 sm:grid-cols-2">
-            <p v-for="key in ['type_url', 'type_vcard', 'type_pix', 'type_email', 'type_wifi', 'type_sms', 'type_text']" :key="key" class="rounded-2xl border border-base-content/10 bg-base-200/40 p-4">
-              {{ t(key) }}
-            </p>
-          </div>
-        </section>
 
         <FaqSection :title="t('faq_title')" :items="faqItems" />
       </div>
