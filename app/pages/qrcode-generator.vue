@@ -18,7 +18,6 @@ declare global {
 const { t } = useI18n({ useScope: 'local' })
 
 const PIX_GUI = 'br.gov.bcb.pix'
-const PIX_EMPTY_MESSAGE = 'Informe uma chave PIX para gerar o QR Code'
 
 const state = reactive({
   type: 'URL',
@@ -226,12 +225,11 @@ function getData() {
  
  function generatePixPayload() {
    const pixKey = state.pix_key.trim()
-   if (!pixKey) return PIX_EMPTY_MESSAGE
+   if (!pixKey) return t('pix_empty')
  
    const name = removeAccents(state.pix_name.trim() || 'RECEBEDOR').toUpperCase().substring(0, 25)
    const city = removeAccents(state.pix_city.trim() || 'CIDADE').toUpperCase().substring(0, 15)
    const amount = formatPixAmount(state.pix_amount)
-   // MAI (ID 26) content must fit in 2-digit length (max 99 chars).
    // Fixed overhead: GUI field = 18, key field header = 4, desc field header = 4.
    // So desc can be at most (99 - 18 - 4 - pixKey.length - 4) chars.
    const maxDescLen = Math.max(0, 73 - pixKey.length)
@@ -399,7 +397,7 @@ onLoaded(() => {
                 <option value="EMAIL">Email</option>
                 <option value="WIFI">Wi-Fi</option>
                 <option value="SMS">SMS</option>
-                <option value="PIX">PIX (Brasil)</option>
+                <option value="PIX">{{ t('pix') }}</option>
                 <option value="TEXT">{{ t('text') }}</option>
               </select>
             </label>
@@ -486,7 +484,7 @@ onLoaded(() => {
             <template v-if="state.type === 'EMAIL'">
               <label class="form-control flex flex-col w-full">
                 <span class="label-text mb-2 font-semibold">Email</span>
-                <input v-model="state.email_address" type="email" class="input input-bordered bg-base-100" placeholder="email@exemplo.com" autocomplete="email" />
+                <input v-model="state.email_address" type="email" class="input input-bordered bg-base-100" :placeholder="t('email_placeholder')" autocomplete="email" />
               </label>
               <label class="form-control flex flex-col w-full">
                 <span class="label-text mb-2 font-semibold">{{ t('subject') }}</span>
@@ -537,30 +535,30 @@ onLoaded(() => {
             <template v-if="state.type === 'PIX'">
               <label class="form-control flex flex-col w-full">
                 <span class="label-text mb-2 font-semibold">{{ t('pix_key') }}</span>
-                <input v-model="state.pix_key" type="text" class="input input-bordered bg-base-100" placeholder="CPF, Email, Telefone ou Chave Aleatória" />
+                <input v-model="state.pix_key" type="text" class="input input-bordered bg-base-100" :placeholder="t('pix_key_placeholder')" />
               </label>
               <div class="grid gap-3 sm:grid-cols-2">
                 <label class="form-control flex flex-col w-full">
                   <span class="label-text mb-2 font-semibold">{{ t('pix_name') }}</span>
-                  <input v-model="state.pix_name" type="text" class="input input-bordered bg-base-100" placeholder="Nome do Recebedor" maxlength="25" />
+                  <input v-model="state.pix_name" type="text" class="input input-bordered bg-base-100" :placeholder="t('pix_name')" maxlength="25" />
                 </label>
                 <label class="form-control flex flex-col w-full">
                   <span class="label-text mb-2 font-semibold">{{ t('pix_city') }}</span>
-                  <input v-model="state.pix_city" type="text" class="input input-bordered bg-base-100" placeholder="Cidade" maxlength="15" />
+                  <input v-model="state.pix_city" type="text" class="input input-bordered bg-base-100" :placeholder="t('pix_city')" maxlength="15" />
                 </label>
               </div>
               <div class="grid gap-3 sm:grid-cols-2">
                 <label class="form-control flex flex-col w-full">
-                  <span class="label-text mb-2 font-semibold">{{ t('pix_amount') }} (Opcional)</span>
-                  <input v-model="state.pix_amount" type="number" step="0.01" min="0" class="input input-bordered bg-base-100" placeholder="0,00" />
+                  <span class="label-text mb-2 font-semibold">{{ t('pix_amount') }} {{ t('optional') }}</span>
+                  <input v-model="state.pix_amount" type="number" step="0.01" min="0" class="input input-bordered bg-base-100" placeholder="0.00" />
                 </label>
                 <label class="form-control flex flex-col w-full">
-                  <span class="label-text mb-2 font-semibold">{{ t('msg') }} (Opcional)</span>
-                  <input v-model="state.pix_desc" type="text" class="input input-bordered bg-base-100" placeholder="Descrição" maxlength="20" />
+                  <span class="label-text mb-2 font-semibold">{{ t('msg') }} {{ t('optional') }}</span>
+                  <input v-model="state.pix_desc" type="text" class="input input-bordered bg-base-100" :placeholder="t('pix_desc_placeholder')" maxlength="20" />
                 </label>
               </div>
               <p class="text-xs text-base-content/60 px-1 mt-1">
-                Nota: O QR Code PIX gerado é estático. Verifique os dados antes de compartilhar.
+                {{ t('pix_note') }}
               </p>
             </template>
 
@@ -592,7 +590,7 @@ onLoaded(() => {
                   class="btn btn-ghost btn-sm btn-circle" 
                   :class="{ 'text-primary': state.lockProportions }"
                   @click="state.lockProportions = !state.lockProportions"
-                  :title="state.lockProportions ? 'Desvincular proporções' : 'Vincular proporções'"
+                  :title="state.lockProportions ? t('unlink') : t('link')"
                 >
                   <Icon :name="state.lockProportions ? 'heroicons:link-20-solid' : 'heroicons:link-slash-20-solid'" class="h-5 w-5" />
                 </button>
@@ -696,7 +694,7 @@ onLoaded(() => {
             <div id="qr-code" ref="canvasRef" class="qr-preview overflow-hidden rounded-xl bg-white shadow-inner flex items-center justify-center min-h-[300px]" />
             
             <div v-if="state.width > 400 || state.height > 400" class="mt-2 text-center">
-              <span class="badge badge-ghost badge-sm opacity-60">Visualização em escala ({{ state.width }}x{{ state.height }}px)</span>
+              <span class="badge badge-ghost badge-sm opacity-60">{{ t('scaled_preview') }} ({{ state.width }}x{{ state.height }}px)</span>
             </div>
           </div>
 
@@ -821,9 +819,9 @@ onLoaded(() => {
   en: {
     title: "QR Code Generator",
     page_title: "QR Code Generator with Logo - Create Free Custom QR Code",
-    meta: "Create free custom QR codes for URL, vCard, Wi-Fi, PIX, Email, SMS and text. Adjust colors, shapes, size, logo and download your high-resolution image.",
+    meta: "Free online QR Code generator with logo. Create QR codes for PIX, Wi-Fi, vCard and URL. Customize colors, shapes and download in high resolution for printing.",
     og_title: "Free Online QR Code Generator with Logo",
-    intro: "Create custom QR codes simply and for free, with real-time preview and high-resolution image download. Generate the main types of QR codes with full control over colors, styles, and logos.",
+    intro: "Create custom QR codes with logo for free and privately. Our tool offers instant in-browser processing, ensuring your data never leaves your device. Ideal for printed and digital materials.",
     data: "QR Code Data",
     data_opt: "Data type",
     text: "Text",
@@ -881,7 +879,7 @@ onLoaded(() => {
     feature_1: "QR Code creation for URL, vCard contacts, Wi-Fi, PIX, Email, SMS and text",
     feature_2: "Customization of colors, dot shapes, corners, size and margin",
     feature_3: "Central logo upload with margin control and hidden background",
-    feature_4: "Real-time preview and PNG download",
+    feature_4: "High-resolution PNG image download, ready for use in prints of any size",
     use_cases_title: "Where to use custom QR Codes",
     use_cases_desc: "Custom QR codes help connect physical materials to digital experiences without requiring the person to manually type links or data.",
     uc_1_title: "Marketing and printed materials",
@@ -919,13 +917,23 @@ onLoaded(() => {
     see2: "Barcode Generator",
     see3: "Random Colors",
     see4: "Dominant Colors of the Image",
+    email_placeholder: "email@example.com",
+    optional: "(Optional)",
+    pix_key_placeholder: "CPF, Email, Phone or Random Key",
+    pix_desc_placeholder: "Description",
+    pix_note: "Note: The generated PIX QR Code is static. Verify the data before sharing.",
+    pix_empty: "Provide a PIX key to generate the QR Code",
+    unlink: "Unlink proportions",
+    link: "Link proportions",
+    scaled_preview: "Scaled preview",
+    pix: "PIX (Brazil)"
   },
   pt: {
     title: "Gerador de QR Code",
     page_title: "Gerador de QR Code com Logo - Criar QR Code Personalizado Grátis",
-    meta: "Crie QR Codes personalizados grátis para URL, vCard, Wi-Fi, PIX, Email, SMS e texto. Ajuste cores, formatos, tamanho, logo e baixe sua imagem em alta resolução.",
+    meta: "Gerador de QR Code com logo online e grátis. Crie QR Codes para PIX, Wi-Fi, vCard e URL. Personalize cores, formatos e baixe em alta resolução para impressão.",
     og_title: "Gerador de QR Code com Logo Online e Grátis",
-    intro: "Crie QR Codes personalizados de forma simples e gratuita, com pré-visualização em tempo real e download de imagem em alta resolução. Gere os principais tipos de QR Codes com total controle sobre cores, estilos e logotipos.",
+    intro: "Crie QR Codes personalizados com logo de forma gratuita e privada. Nossa ferramenta oferece processamento instantâneo no navegador, garantindo que seus dados não saiam do seu dispositivo. Ideal para materiais impressos e digitais.",
 
     data: "Dados do QR Code",
     data_opt: "Tipo de dado",
@@ -986,7 +994,7 @@ onLoaded(() => {
     feature_1: "Criação de QR Code para URL, contatos vCard, Wi-Fi, PIX, Email, SMS e texto",
     feature_2: "Personalização de cores, formatos dos pontos, cantos, tamanho e margem",
     feature_3: "Upload de logo central com controle de margem e fundo oculto",
-    feature_4: "Prévia em tempo real e download em PNG",
+    feature_4: "Download em imagem PNG de alta resolução, pronta para uso em impressos de qualquer tamanho",
 
     use_cases_title: "Onde usar QR Codes personalizados",
     use_cases_desc: "QR Codes personalizados ajudam a conectar materiais físicos a experiências digitais sem exigir que a pessoa digite links ou dados manualmente.",
@@ -1025,17 +1033,27 @@ onLoaded(() => {
     faq_4_q: "O download é feito em qual formato?",
     faq_4_a: "Os arquivos são gerados no formato PNG de alta qualidade, ideal para uso digital e impressão.",
 
-    see1: "Copiar e Colar Emojis",
+    see1: "Seletor de Emoji",
     see2: "Gerador de Código de Barras",
     see3: "Cores Aleatórias",
     see4: "Cores Dominantes da Imagem",
+    email_placeholder: "email@exemplo.com",
+    optional: "(Opcional)",
+    pix_key_placeholder: "CPF, Email, Telefone ou Chave Aleatória",
+    pix_desc_placeholder: "Descrição",
+    pix_note: "Nota: O QR Code PIX gerado é estático. Verifique os dados antes de compartilhar.",
+    pix_empty: "Informe uma chave PIX para gerar o QR Code",
+    unlink: "Desvincular proporções",
+    link: "Vincular proporções",
+    scaled_preview: "Visualização em escala",
+    pix: "PIX (Brasil)"
   },
   es: {
     title: "Generador de Código QR",
     page_title: "Generador de Código QR con Logo - Crear Código QR Personalizado Gratis",
-    meta: "Cree códigos QR personalizados gratis para URL, vCard, Wi-Fi, PIX, Correo electrónico, SMS y texto. Ajuste colores, formas, tamaño, logo y descargue su imagen en alta resolución.",
+    meta: "Generador de código QR con logo online y gratis. Crea códigos QR para PIX, Wi-Fi, vCard y URL. Personaliza colores, formas y descarga en alta resolución para impresión.",
     og_title: "Generador de Código QR con Logo Online y Gratis",
-    intro: "Cree códigos QR personalizados de forma sencilla y gratuita, con vista previa en tiempo real y descarga de imagen en alta resolución. Genere los principales tipos de códigos QR con total control sobre colores, estilos y logotipos.",
+    intro: "Crea códigos QR personalizados con logo de forma gratuita y privada. Nuestra herramienta ofrece procesamiento instantáneo en el navegador, garantizando que sus datos no salgan de su dispositivo. Ideal para materiales impresos y digitales.",
     data: "Datos del Código QR",
     data_opt: "Tipo de dato",
     text: "Texto",
@@ -1093,7 +1111,7 @@ onLoaded(() => {
     feature_1: "Creación de códigos QR para URL, contactos vCard, Wi-Fi, PIX, Correo electrónico, SMS y texto",
     feature_2: "Personalización de colores, formatos de puntos, esquinas, tamaño y margen",
     feature_3: "Carga de logo central con control de margen y fondo oculto",
-    feature_4: "Vista previa en tiempo real y descarga en PNG",
+    feature_4: "Descarga de imagen PNG de alta resolución, lista para usar en impresiones de cualquier tamaño",
     use_cases_title: "Dónde usar códigos QR personalizados",
     use_cases_desc: "Los códigos QR personalizados ayudan a conectar materiales físicos con experiencias digitales sin requerir que la persona escriba enlaces o datos manualmente.",
     uc_1_title: "Marketing y materiales impresos",
@@ -1131,13 +1149,23 @@ onLoaded(() => {
     see2: "Generador de Código de Barras",
     see3: "Colores Aleatorios",
     see4: "Colores Dominantes de la Imagen",
+    email_placeholder: "email@ejemplo.com",
+    optional: "(Opcional)",
+    pix_key_placeholder: "CPF, Correo, Teléfono o Clave Aleatoria",
+    pix_desc_placeholder: "Descripción",
+    pix_note: "Nota: El Código QR PIX generado es estático. Verifique los datos antes de compartir.",
+    pix_empty: "Proporcione una clave PIX para generar el Código QR",
+    unlink: "Desvincular proporciones",
+    link: "Vincular proporciones",
+    scaled_preview: "Vista previa a escala",
+    pix: "PIX (Brasil)"
   },
   fr: {
     title: "Générateur de Code QR",
     page_title: "Générateur de Code QR avec Logo - Créer un Code QR Personnalisé Gratuit",
-    meta: "Créez des codes QR personnalisés gratuits pour URL, vCard, Wi-Fi, PIX, Email, SMS et texte. Ajustez les couleurs, les formes, la taille, le logo et téléchargez votre image haute résolution.",
+    meta: "Générateur de code QR avec logo en ligne et gratuit. Créez des codes QR pour PIX, Wi-Fi, vCard et URL. Personnalisez les couleurs, les formes et téléchargez en haute résolution pour l'impression.",
     og_title: "Générateur de Code QR avec Logo Online et Gratuit",
-    intro: "Créez des codes QR personnalisés simplement et gratuitement, avec aperçu en temps réel et téléchargement d' image haute résolution. Générez les principaux types de codes QR avec un contrôle total sur les couleurs, les styles et les logos.",
+    intro: "Créez des codes QR personnalisés avec logo gratuitement et en toute confidentialité. Notre outil offre un traitement instantané dans le navigateur, garantissant que vos données ne quittent jamais votre appareil. Idéal pour les supports imprimés et numériques.",
     data: "Données du Code QR",
     data_opt: "Type de données",
     text: "Texte",
@@ -1195,7 +1223,7 @@ onLoaded(() => {
     feature_1: "Création de codes QR pour URL, contacts vCard, Wi-Fi, PIX, Email, SMS et texte",
     feature_2: "Personnalisation des couleurs, formes de points, coins, taille et marge",
     feature_3: "Téléchargement de logo central avec contrôle de marge et fond masqué",
-    feature_4: "Aperçu en temps réel et téléchargement PNG",
+    feature_4: "Téléchargement d'image PNG haute résolution, prête à l'emploi pour des impressions de toutes tailles",
     use_cases_title: "Où utiliser des codes QR personnalisés",
     use_cases_desc: "Les codes QR personnalisés aident à connecter les supports physiques aux expériences numériques sans obliger la personne à saisir manuellement des liens ou des données.",
     uc_1_title: "Marketing et supports imprimés",
@@ -1233,13 +1261,23 @@ onLoaded(() => {
     see2: "Générateur de Code-Barres",
     see3: "Couleurs Aléatoires",
     see4: "Couleurs Dominantes de l'Image",
+    email_placeholder: "email@exemple.com",
+    optional: "(Optionnel)",
+    pix_key_placeholder: "CPF, E-mail, Téléphone ou Clé Aléatoire",
+    pix_desc_placeholder: "Description",
+    pix_note: "Remarque : Le code QR PIX généré est statique. Vérifiez les données avant de les partager.",
+    pix_empty: "Fournissez une clé PIX pour générer le code QR",
+    unlink: "Dissocier les proportions",
+    link: "Lier les proportions",
+    scaled_preview: "Aperçu à l'échelle",
+    pix: "PIX (Brésil)"
   },
   it: {
     title: "Generatore di Codice QR",
     page_title: "Generatore di Codice QR con Logo - Crea Codice QR Personalizzato Gratis",
-    meta: "Crea codici QR personalizzati gratuiti per URL, vCard, Wi-Fi, PIX, Email, SMS e testo. Regola colori, forme, dimensioni, logo e scarica la tua immagine ad alta risoluzione.",
+    meta: "Generatore di codici QR con logo online e gratuito. Crea codici QR per PIX, Wi-Fi, vCard e URL. Personalizza colori, forme e scarica in alta risoluzione per la stampa.",
     og_title: "Generatore di Codice QR con Logo Online e Gratis",
-    intro: "Crea codici QR personalizzati in modo semplice e gratuito, con anteprima in tempo reale e download di immagini ad alta risoluzione. Genera i principali tipi di codici QR con il controllo totale su colori, stili e loghi.",
+    intro: "Crea codici QR personalizzati con logo in modo gratuito e privato. Il nostro strumento offre un'elaborazione istantanea nel browser, garantendo che i tuoi dati non lascino mai il tuo dispositivo. Ideale per materiali stampati e digitali.",
     data: "Dati del Codice QR",
     data_opt: "Tipo di dati",
     text: "Testo",
@@ -1297,7 +1335,7 @@ onLoaded(() => {
     feature_1: "Creazione di codici QR per URL, contatti vCard, Wi-Fi, PIX, Email, SMS e testo",
     feature_2: "Personalizzazione di colori, forme dei punti, angoli, dimensioni e margine",
     feature_3: "Caricamento del logo centrale con controllo del margine e sfondo nascosto",
-    feature_4: "Anteprima in tempo reale e download in PNG",
+    feature_4: "Download di immagini PNG ad alta risoluzione, pronte per l'uso in stampe di qualsiasi dimensione",
     use_cases_title: "Dove usare codici QR personalizzati",
     use_cases_desc: "I codici QR personalizzati aiutano a connettere i materiali fisici alle esperienze digitali senza richiedere alla persona di digitare manualmente link o dati.",
     uc_1_title: "Marketing e materiali stampati",
@@ -1335,13 +1373,23 @@ onLoaded(() => {
     see2: "Generatore di Codice a Barre",
     see3: "Colori Casuali",
     see4: "Colori Dominanti dell'Immagine",
+    email_placeholder: "email@esempio.com",
+    optional: "(Opzionale)",
+    pix_key_placeholder: "CPF, Email, Telefono o Chiave Casuale",
+    pix_desc_placeholder: "Descrizione",
+    pix_note: "Nota: Il QR Code PIX generato è statico. Verifica i dati prima di condividere.",
+    pix_empty: "Fornisci una chiave PIX per generare il QR Code",
+    unlink: "Scollega proporzioni",
+    link: "Collega proporzioni",
+    scaled_preview: "Anteprima in scala",
+    pix: "PIX (Brasile)"
   },
   id: {
     title: "Pembuat Kode QR",
     page_title: "Pembuat Kode QR dengan Logo - Buat Kode QR Kustom Gratis",
-    meta: "Buat kode QR kustom gratis untuk URL, vCard, Wi-Fi, PIX, Email, SMS, dan teks. Sesuaikan warna, bentuk, ukuran, logo, dan unduh gambar resolusi tinggi Anda.",
+    meta: "Pembuat kode QR dengan logo online dan gratis. Buat kode QR kustom untuk PIX, Wi-Fi, vCard dan URL. Sesuaikan warna, bentuk, unduh dalam resolusi tinggi untuk pencetakan.",
     og_title: "Pembuat Kode QR dengan Logo Online Gratis",
-    intro: "Buat kode QR kustom dengan mudah dan gratis, dengan pratinjau waktu nyata dan unduhan gambar resolusi tinggi. Hasilkan jenis utama kode QR dengan kontrol penuh atas warna, gaya, dan logo.",
+    intro: "Buat kode QR kustom dengan logo secara gratis dan pribadi. Alat kami menawarkan pemrosesan instan di browser, memastikan data Anda tidak pernah meninggalkan perangkat Anda. Ideal untuk materi cetak dan digital.",
     data: "Data Kode QR",
     data_opt: "Jenis data",
     text: "Teks",
@@ -1399,7 +1447,7 @@ onLoaded(() => {
     feature_1: "Pembuatan kode QR untuk URL, kontak vCard, Wi-Fi, PIX, Email, SMS, dan teks",
     feature_2: "Kustomisasi warna, bentuk titik, sudut, ukuran, dan margin",
     feature_3: "Unggah logo tengah dengan kontrol margin dan latar belakang tersembunyi",
-    feature_4: "Pratinjau waktu nyata dan unduhan PNG",
+    feature_4: "Unduh gambar PNG resolusi tinggi, siap digunakan untuk cetakan ukuran apa pun",
     use_cases_title: "Tempat menggunakan kode QR kustom",
     use_cases_desc: "Kode QR kustom membantu menghubungkan materi fisik ke pengalaman digital tanpa mengharuskan orang mengetik tautan atau data secara manual.",
     uc_1_title: "Pemasaran dan materi cetak",
@@ -1437,13 +1485,23 @@ onLoaded(() => {
     see2: "Pembuat Barcode",
     see3: "Warna Acak",
     see4: "Warna Dominan Gambar",
+    email_placeholder: "email@contoh.com",
+    optional: "(Opsional)",
+    pix_key_placeholder: "CPF, Email, Telepon, atau Kunci Acak",
+    pix_desc_placeholder: "Deskripsi",
+    pix_note: "Catatan: Kode QR PIX yang dihasilkan bersifat statis. Periksa data sebelum membagikan.",
+    pix_empty: "Masukkan kunci PIX untuk membuat Kode QR",
+    unlink: "Pisahkan proporsi",
+    link: "Tautkan proporsi",
+    scaled_preview: "Pratinjau berskala",
+    pix: "PIX (Brasil)"
   },
   de: {
     title: "QR-Code-Generator",
     page_title: "QR-Code-Generator mit Logo - Kostenlos benutzerdefinierten QR-Code erstellen",
-    meta: "Erstellen Sie kostenlos benutzerdefinierte QR-Codes für URL, vCard, WLAN, PIX, E-Mail, SMS und Text. Passen Sie Farben, Formen, Größe und Logo an und laden Sie Ihr hochauflösendes Bild herunter.",
+    meta: "Kostenloser Online-QR-Code-Generator mit Logo. Erstellen Sie QR-Codes für PIX, WLAN, vCard und URL. Passen Sie Farben und Formen an und laden Sie sie in hoher Auflösung für den Druck herunter.",
     og_title: "Kostenloser Online-QR-Code-Generator mit Logo",
-    intro: "Erstellen Sie benutzerdefinierte QR-Codes einfach und kostenlos mit Echtzeit-Vorschau und hochauflösendem Bild-Download. Generieren Sie die wichtigsten Arten von QR-Codes mit voller Kontrolle über Farben, Stile und Logos.",
+    intro: "Erstellen Sie kostenlos und privat benutzerdefinierte QR-Codes mit Logo. Unser Tool bietet eine sofortige Verarbeitung im Browser, sodass Ihre Daten Ihr Gerät nie verlassen. Ideal für Druck- und digitale Materialien.",
     data: "QR-Code-Daten",
     data_opt: "Datentyp",
     text: "Text",
@@ -1501,7 +1559,7 @@ onLoaded(() => {
     feature_1: "QR-Code-Erstellung für URL, vCard-Kontakte, WLAN, PIX, E-Mail, SMS und Text",
     feature_2: "Anpassung von Farben, Punktformen, Ecken, Größe und Rand",
     feature_3: "Zentraler Logo-Upload mit Randsteuerung und verborgenem Hintergrund",
-    feature_4: "Echtzeit-Vorschau und PNG-Download",
+    feature_4: "Hochauflösender PNG-Bild-Download, bereit für den Einsatz in Drucken jeder Größe",
     use_cases_title: "Wo benutzerdefinierte QR-Codes verwendet werden",
     use_cases_desc: "Benutzerdefinierte QR-Codes helfen dabei, physische Materialien mit digitalen Erlebnissen zu verbinden, ohne dass die Person Links oder Daten manuell eingeben muss.",
     uc_1_title: "Marketing und gedruckte Materialien",
@@ -1539,13 +1597,23 @@ onLoaded(() => {
     see2: "Barcode-Generator",
     see3: "Zufällige Farben",
     see4: "Dominante Farben des Bildes",
+    email_placeholder: "email@beispiel.com",
+    optional: "(Optional)",
+    pix_key_placeholder: "CPF, E-Mail, Telefon oder Zufälliger Schlüssel",
+    pix_desc_placeholder: "Beschreibung",
+    pix_note: "Hinweis: Der generierte PIX QR-Code ist statisch. Überprüfen Sie die Daten vor dem Teilen.",
+    pix_empty: "Geben Sie einen PIX-Schlüssel ein, um den QR-Code zu generieren",
+    unlink: "Proportionen aufheben",
+    link: "Proportionen verknüpfen",
+    scaled_preview: "Skalierte Vorschau",
+    pix: "PIX (Brasilien)"
   },
   nl: {
     title: "QR Code Generator",
     page_title: "QR Code Generator met Logo - Maak Gratis Aangepaste QR Code",
-    meta: "Maak gratis aangepaste QR-codes voor URL, vCard, wifi, PIX, e-mail, sms en tekst. Pas kleuren, vormen, grootte en logo aan en download uw afbeelding in hoge resolutie.",
+    meta: "Gratis online QR-code generator met logo. Maak QR-codes voor PIX, Wi-Fi, vCard en URL. Pas kleuren en vormen aan en download in hoge resolutie voor afdrukken.",
     og_title: "Gratis Online QR Code Generator met Logo",
-    intro: "Maak eenvoudig en gratis aangepaste QR-codes met realtime preview en hoge resolutie afbeeldingsdownload. Genereer de belangrijkste soorten QR-codes met volledige controle over kleuren, stijlen en logo's.",
+    intro: "Maak gratis en privé aangepaste QR-codes met logo. Onze tool biedt directe verwerking in de browser, zodat uw gegevens uw apparaat nooit verlaten. Ideaal voor gedrukt en digitaal materiaal.",
     data: "QR Code Gegevens",
     data_opt: "Datatype",
     text: "Tekst",
@@ -1603,7 +1671,7 @@ onLoaded(() => {
     feature_1: "QR-code maken voor URL, vCard-contacten, wifi, PIX, e-mail, sms en tekst",
     feature_2: "Aanpassing van kleuren, stippelvormen, hoeken, grootte en marge",
     feature_3: "Centrale logo-upload met margecontrole en verborgen achtergrond",
-    feature_4: "Realtime voorbeeld en PNG-download",
+    feature_4: "PNG-afbeelding downloaden in hoge resolutie, klaar voor gebruik in afdrukken van elk formaat",
     use_cases_title: "Waar aangepaste QR-codes te gebruiken",
     use_cases_desc: "Aangepaste QR-codes helpen fysieke materialen te verbinden met digitale ervaringen zonder dat de persoon handmatig links of gegevens hoeft in te typen.",
     uc_1_title: "Marketing en gedrukt materiaal",
@@ -1641,6 +1709,16 @@ onLoaded(() => {
     see2: "Barcode Generator",
     see3: "Willekeurige Kleuren",
     see4: "Dominante Kleuren van de Afbeelding",
+    email_placeholder: "email@voorbeeld.com",
+    optional: "(Optioneel)",
+    pix_key_placeholder: "CPF, E-mail, Telefoon of Willekeurige Sleutel",
+    pix_desc_placeholder: "Beschrijving",
+    pix_note: "Let op: De gegenereerde PIX QR-code is statisch. Controleer de gegevens voor het delen.",
+    pix_empty: "Geef een PIX-sleutel op om de QR-code te genereren",
+    unlink: "Verhoudingen ontkoppelen",
+    link: "Verhoudingen koppelen",
+    scaled_preview: "Geschaalde weergave",
+    pix: "PIX (Brazilië)"
   }
 }
 </i18n>
