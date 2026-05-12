@@ -9,11 +9,12 @@ usePageJsonLd({
 
 useHead({
   title: t('title'),
-  meta: [{ name: "description", content: t('meta') }],
+  meta: [{ name: "description", content: t('meta') }]
 })
 
 defineI18nRoute({
     paths: {
+        en: '/image-tools',
         pt: '/ferramentas-para-imagens',
         es: '/herramientas-para-imagenes',
         fr: '/outils-pour-images',
@@ -58,12 +59,12 @@ defineI18nRoute({
         :index="3"
       />
       <ToolCard :title="t('cropper')" 
-        to="image-cropper" 
+        to="crop-image" 
         icon="mdi:crop"
         :index="4"
       />
       <ToolCard :title="t('resizer')" 
-        to="image-resizer" 
+        to="resize-image" 
         icon="mdi:resize"
         :index="5"
       />

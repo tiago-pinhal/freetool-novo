@@ -112,7 +112,9 @@ const { t } = useI18n({ useScope: 'local' })
   es: { clk: "Haz clic para subir", drg: "o arrastra y suelta" },
   fr: { clk: "Cliquez pour télécharger", drg: "ou glissez-déposez" },
   it: { clk: "Fai clic per caricare", drg: "o trascina e rilascia" },
-  id: { clk: "Klik untuk mengunggah", drg: "atau seret dan lepas" }
+  id: { clk: "Klik untuk mengunggah", drg: "atau seret dan lepas" },
+  de: { clk: "Zum Hochladen klicken", drg: "oder per Drag & Drop" },
+  nl: { clk: "Klik om te uploaden", drg: "of versleep bestanden" }
 }
 </i18n>
 
@@ -122,12 +124,16 @@ const { t } = useI18n({ useScope: 'local' })
 }
 
 #file {
-  @apply max-w-2xl w-full;
+  @apply max-w-2xl w-full cursor-pointer;
 }
 
 label {
-  @apply flex flex-col items-center justify-center w-full h-44 border-2 border-dashed rounded-xl cursor-pointer
-    border-base-content/20 bg-base-200/40 hover:bg-base-200/70 hover:border-primary/40 transition-colors;
+  @apply flex flex-col items-center justify-center w-full h-44 border-2 border-dashed rounded-xl
+    border-base-content/20 bg-base-200/40 hover:bg-base-200/70 hover:border-primary/40 transition-colors cursor-pointer;
+}
+
+label * {
+  cursor: pointer;
 }
 
 svg {
