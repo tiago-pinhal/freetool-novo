@@ -304,169 +304,153 @@ defineI18nRoute({
   >
     <div v-if="!imageLoaded" class="flex flex-col items-center justify-center py-8 gap-4">
       <ImageUploader :show="true" @on-file="onImageSelected" />
-      <p class="text-sm text-base-content/50">{{ t('uploadHint') }}</p>
+      <p class="text-sm text-base-content/70">{{ t('uploadHint') }}</p>
     </div>
 
-    <div v-else class="grid gap-5 lg:grid-cols-[320px_minmax(0,1fr)]">
-      <div class="space-y-4">
-        <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4">
-          <div class="flex items-start gap-3">
-            <Icon name="heroicons:photo-20-solid" class="w-5 h-5 mt-0.5 text-primary" />
-            <div class="min-w-0">
-              <p class="font-bold truncate">{{ fileName }}</p>
-              <p class="text-sm text-base-content/60">
-                {{ t('original') }}: {{ originalWidth }} × {{ originalHeight }} px
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
-          <p class="text-sm font-bold">{{ t('chooseMode') }}</p>
-          <div class="grid grid-cols-3 gap-2">
-            <button
-              type="button"
-              class="btn btn-sm"
-              :class="resizeMode === 'preset' ? 'btn-primary' : 'btn-ghost'"
-              @click="resizeMode = 'preset'; onPresetChange()"
-            >
-              {{ t('modePreset') }}
-            </button>
-            <button
-              type="button"
-              class="btn btn-sm"
-              :class="resizeMode === 'custom' ? 'btn-primary' : 'btn-ghost'"
-              @click="resizeMode = 'custom'; lockAspectRatio = true; selectedPercentage = null"
-            >
-              {{ t('modeCustom') }}
-            </button>
-            <button
-              type="button"
-              class="btn btn-sm"
-              :class="resizeMode === 'percentage' ? 'btn-primary' : 'btn-ghost'"
-              @click="resizeMode = 'percentage'"
-            >
-              {{ t('modePercentage') }}
-            </button>
-          </div>
-        </section>
-
-        <section v-if="resizeMode === 'preset'" class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
-          <label class="form-control w-full">
-            <span class="label-text mb-2 font-bold">{{ t('chooseCategory') }}</span>
-            <select v-model="selectedCategory" class="select select-bordered bg-base-100 w-full">
-              <option value="appStore">{{ t('catAppStore') }}</option>
-              <option value="social">{{ t('catSocial') }}</option>
-              <option value="web">{{ t('catWeb') }}</option>
-              <option value="ecommerce">{{ t('catEcommerce') }}</option>
-              <option value="print">{{ t('catPrint') }}</option>
-            </select>
-          </label>
-
-          <label class="form-control w-full">
-            <span class="label-text mb-2 font-bold">{{ t('chooseSize') }}</span>
-            <select v-model="selectedPresetId" class="select select-bordered bg-base-100 w-full" @change="onPresetChange">
-              <option v-for="preset in currentCategoryPresets" :key="preset.id" :value="preset.id">
-                {{ preset.label }} ({{ preset.width }}×{{ preset.height }})
-              </option>
-            </select>
-            <span class="label-text-alt mt-2 text-base-content/60">{{ currentPreset?.description }}</span>
-          </label>
-        </section>
-
-        <section v-if="resizeMode === 'custom'" class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
-          <div class="grid grid-cols-2 gap-3">
-            <label class="form-control">
-              <span class="label-text mb-1 font-semibold">{{ t('width') }}</span>
-              <input
-                v-model.number="targetWidth"
-                type="number"
-                min="1"
-                max="10000"
-                class="input input-bordered bg-base-100 w-full"
-                @input="onWidthChange"
-              >
-            </label>
-            <label class="form-control">
-              <span class="label-text mb-1 font-semibold">{{ t('height') }}</span>
-              <input
-                v-model.number="targetHeight"
-                type="number"
-                min="1"
-                max="10000"
-                class="input input-bordered bg-base-100 w-full"
-                @input="onHeightChange"
-              >
-            </label>
-          </div>
-
-          <label class="label cursor-pointer justify-start gap-3">
-            <input v-model="lockAspectRatio" type="checkbox" class="checkbox checkbox-sm" />
-            <span class="label-text">{{ t('lockRatio') }}</span>
-          </label>
-        </section>
-
-        <section v-if="resizeMode === 'percentage'" class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
-          <p class="text-sm font-bold">{{ t('choosePercentage') }}</p>
-          <div class="grid grid-cols-3 gap-2">
-            <button
-              v-for="pct in percentages"
-              :key="pct"
-              type="button"
-              class="btn btn-sm"
-              :class="selectedPercentage === pct ? 'btn-primary' : 'btn-ghost'"
-              @click="resizeByPercentage(pct)"
-            >
-              {{ pct }}%
-            </button>
-          </div>
-        </section>
-
-        <section class="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-center space-y-1">
-          <p class="text-sm text-base-content/60">{{ t('result') }}</p>
-          <p class="text-2xl font-black tracking-tight">{{ targetWidth }} × {{ targetHeight }} px</p>
-        </section>
-
-        <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
-          <label class="form-control w-full">
-            <span class="label-text mb-2 font-bold">{{ t('chooseFormat') }}</span>
-            <select v-model="exportFormat" class="select select-bordered bg-base-100 w-full">
-              <option value="png">PNG — {{ t('highQuality') }}</option>
-              <option value="jpeg">JPEG — {{ t('smallerSize') }}</option>
-              <option value="webp">WebP — {{ t('modern') }}</option>
-            </select>
-          </label>
-
-          <label v-if="exportFormat !== 'png'" class="form-control w-full">
-            <span class="label-text mb-1 font-bold">{{ t('quality') }}: {{ quality }}%</span>
-            <input v-model.number="quality" type="range" min="10" max="100" step="1" class="range range-primary range-sm" />
-          </label>
-        </section>
-
-        <div class="flex flex-col gap-2">
-          <button type="button" class="btn btn-primary w-full" :disabled="isProcessing" @click="download">
-            <Icon v-if="!isProcessing" name="heroicons:arrow-down-tray-20-solid" class="w-5 h-5" />
-            <span>{{ isProcessing ? `${t('processing')}...` : t('download') }}</span>
-          </button>
-          <button type="button" class="btn btn-ghost w-full" @click="newImage">
-            <Icon name="heroicons:arrow-path-20-solid" class="w-5 h-5" />
-            {{ t('restart') }}
-          </button>
-        </div>
-      </div>
-
-      <div class="rounded-2xl border border-base-content/10 bg-base-200/20 p-5">
-        <div class="flex h-full min-h-72 items-center justify-center rounded-2xl border border-dashed border-base-content/15 bg-base-100/40 p-6">
-          <div class="text-center space-y-3">
-            <Icon name="heroicons:arrows-pointing-out-20-solid" class="w-14 h-14 mx-auto text-primary" />
-            <p class="text-lg font-bold">{{ targetWidth }} × {{ targetHeight }} px</p>
-            <p class="text-sm text-base-content/60">{{ t('previewNote') }}</p>
-            <div class="mx-auto rounded-xl bg-base-200 px-4 py-2 text-sm text-base-content/70 inline-flex items-center gap-2">
-              <span>{{ t('format') }}:</span>
-              <strong class="uppercase">{{ exportFormat }}</strong>
-            </div>
+    <div v-else class="max-w-2xl mx-auto space-y-4">
+      <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4">
+        <div class="flex items-start gap-3">
+          <Icon name="heroicons:photo-20-solid" class="w-5 h-5 mt-0.5 text-primary" />
+          <div class="min-w-0">
+            <p class="font-bold truncate">{{ fileName }}</p>
+            <p class="text-sm text-base-content/60">
+              {{ t('original') }}: {{ originalWidth }} × {{ originalHeight }} px
+            </p>
           </div>
         </div>
+      </section>
+
+      <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
+        <p class="text-sm font-bold">{{ t('chooseMode') }}</p>
+        <div class="grid grid-cols-3 gap-2">
+          <button
+            type="button"
+            class="btn btn-sm"
+            :class="resizeMode === 'preset' ? 'btn-primary' : 'btn-ghost'"
+            @click="resizeMode = 'preset'; onPresetChange()"
+          >
+            {{ t('modePreset') }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm"
+            :class="resizeMode === 'custom' ? 'btn-primary' : 'btn-ghost'"
+            @click="resizeMode = 'custom'; lockAspectRatio = true; selectedPercentage = null"
+          >
+            {{ t('modeCustom') }}
+          </button>
+          <button
+            type="button"
+            class="btn btn-sm"
+            :class="resizeMode === 'percentage' ? 'btn-primary' : 'btn-ghost'"
+            @click="resizeMode = 'percentage'"
+          >
+            {{ t('modePercentage') }}
+          </button>
+        </div>
+      </section>
+
+      <section v-if="resizeMode === 'preset'" class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
+        <label class="form-control w-full">
+          <span class="label-text mb-2 font-bold">{{ t('chooseCategory') }}</span>
+          <select v-model="selectedCategory" class="select select-bordered bg-base-100 w-full">
+            <option value="appStore">{{ t('catAppStore') }}</option>
+            <option value="social">{{ t('catSocial') }}</option>
+            <option value="web">{{ t('catWeb') }}</option>
+            <option value="ecommerce">{{ t('catEcommerce') }}</option>
+            <option value="print">{{ t('catPrint') }}</option>
+          </select>
+        </label>
+
+        <label class="form-control w-full">
+          <span class="label-text mb-2 font-bold">{{ t('chooseSize') }}</span>
+          <select v-model="selectedPresetId" class="select select-bordered bg-base-100 w-full" @change="onPresetChange">
+            <option v-for="preset in currentCategoryPresets" :key="preset.id" :value="preset.id">
+              {{ preset.label }} ({{ preset.width }}×{{ preset.height }})
+            </option>
+          </select>
+          <span class="label-text-alt mt-2 text-base-content/60">{{ currentPreset?.description }}</span>
+        </label>
+      </section>
+
+      <section v-if="resizeMode === 'custom'" class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
+        <div class="grid grid-cols-2 gap-3">
+          <label class="form-control">
+            <span class="label-text mb-1 font-semibold">{{ t('width') }}</span>
+            <input
+              v-model.number="targetWidth"
+              type="number"
+              min="1"
+              max="10000"
+              class="input input-bordered bg-base-100 w-full"
+              @input="onWidthChange"
+            >
+          </label>
+          <label class="form-control">
+            <span class="label-text mb-1 font-semibold">{{ t('height') }}</span>
+            <input
+              v-model.number="targetHeight"
+              type="number"
+              min="1"
+              max="10000"
+              class="input input-bordered bg-base-100 w-full"
+              @input="onHeightChange"
+            >
+          </label>
+        </div>
+
+        <label class="label cursor-pointer justify-start gap-3">
+          <input v-model="lockAspectRatio" type="checkbox" class="checkbox checkbox-sm" />
+          <span class="label-text">{{ t('lockRatio') }}</span>
+        </label>
+      </section>
+
+      <section v-if="resizeMode === 'percentage'" class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
+        <p class="text-sm font-bold">{{ t('choosePercentage') }}</p>
+        <div class="grid grid-cols-3 gap-2">
+          <button
+            v-for="pct in percentages"
+            :key="pct"
+            type="button"
+            class="btn btn-sm"
+            :class="selectedPercentage === pct ? 'btn-primary' : 'btn-ghost'"
+            @click="resizeByPercentage(pct)"
+          >
+            {{ pct }}%
+          </button>
+        </div>
+      </section>
+
+      <section class="rounded-2xl border border-primary/20 bg-primary/5 p-4 text-center space-y-1">
+        <p class="text-sm text-base-content/60">{{ t('result') }}</p>
+        <p class="text-2xl font-black tracking-tight">{{ targetWidth }} × {{ targetHeight }} px</p>
+      </section>
+
+      <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4 space-y-3">
+        <label class="form-control w-full">
+          <span class="label-text mb-2 font-bold">{{ t('chooseFormat') }}</span>
+          <select v-model="exportFormat" class="select select-bordered bg-base-100 w-full">
+            <option value="png">PNG — {{ t('highQuality') }}</option>
+            <option value="jpeg">JPEG — {{ t('smallerSize') }}</option>
+            <option value="webp">WebP — {{ t('modern') }}</option>
+          </select>
+        </label>
+
+        <label v-if="exportFormat !== 'png'" class="form-control w-full">
+          <span class="label-text mb-1 font-bold">{{ t('quality') }}: {{ quality }}%</span>
+          <input v-model.number="quality" type="range" min="10" max="100" step="1" class="range range-primary range-sm" />
+        </label>
+      </section>
+
+      <div class="flex flex-col gap-2">
+        <button type="button" class="btn btn-primary w-full" :disabled="isProcessing" @click="download">
+          <Icon v-if="!isProcessing" name="heroicons:arrow-down-tray-20-solid" class="w-5 h-5" />
+          <span>{{ isProcessing ? `${t('processing')}...` : t('download') }}</span>
+        </button>
+        <button type="button" class="btn btn-ghost w-full" @click="newImage">
+          <Icon name="heroicons:arrow-path-20-solid" class="w-5 h-5" />
+          {{ t('restart') }}
+        </button>
       </div>
     </div>
 
@@ -517,10 +501,10 @@ en:
 
 pt:
   title: "Redimensionar Imagem"
-  pageTitle: "Redimensionar Imagem Online - Ferramenta Grátis com Presets"
-  meta: "Redimensione imagens com dimensões personalizadas ou escolha entre formatos predefinidos para redes sociais, e-commerce e impressão."
-  metaDescription: "Redimensione imagens online grátis. Escolha dimensões personalizadas ou use presets para Instagram, YouTube e lojas de apps. Redimensionamento de alta qualidade com Lanczos."
-  d1: "Todo processamento acontece localmente no seu navegador - suas imagens nunca são enviadas para nenhum servidor."
+  pageTitle: "Redimensionar Imagem Online: Ajuste Fotos com Modelos de Tamanho Profissionais"
+  meta: "Ferramenta rápida e precisa para redimensionar imagens. Use modelos de tamanho para Instagram, YouTube, e-commerce ou defina tamanhos personalizados com alta qualidade."
+  metaDescription: "Redimensione imagens online grátis. Escolha dimensões personalizadas ou use modelos de tamanho para Instagram, YouTube e lojas de apps. Redimensionamento de alta qualidade com Lanczos."
+  d1: "Ajuste o tamanho de suas fotos e imagens com precisão profissional de forma simples e rápida. Utilize nossos modelos de tamanho inteligentes para redes sociais ou configure dimensões personalizadas para garantir que fique perfeito em qualquer tela ou impresso."
   t2: "Funcionalidades"
   d21: "30+ tamanhos pré-definidos organizados por categoria"
   d22: "Dimensões personalizadas com bloqueio de proporção"
@@ -548,7 +532,7 @@ pt:
   how3d: "Selecione PNG para máxima qualidade, JPEG para arquivos menores ou WebP para um formato moderno, depois baixe a imagem redimensionada."
   faqTitle: "Perguntas Frequentes"
   faq1q: "Qual tamanho do ícone para loja de apps?"
-  faq1a: "Ícones de app devem ter 512×512 pixels para Google Play e App Store. Selecione a categoria 'Loja de Apps' e escolha o preset 'App Icon' para as dimensões exatas."
+  faq1a: "Ícones de app devem ter 512×512 pixels para Google Play e App Store. Selecione a categoria 'Loja de Apps' e escolha o modelo 'App Icon' para as dimensões exatas."
   faq2q: "Como redimensionar imagem para Instagram sem cortar?"
   faq2a: "Use o modo por porcentagem para escalar proporcionalmente. Para feed do Instagram, redimensione para caber em 1080px de largura. Para Stories, use 1080×1920 quando a proporção da imagem permitir."
   faq3q: "Qual o melhor tamanho para thumbnail do YouTube?"
@@ -560,7 +544,7 @@ pt:
   uploadHint: "Suporta JPG, PNG, WebP, GIF e mais"
   original: "Original"
   chooseMode: "Escolha como redimensionar"
-  modePreset: "Tamanho Predefinido"
+  modePreset: "Modelos de Tamanho"
   modeCustom: "Dimensões Personalizadas"
   modePercentage: "Por Porcentagem"
   chooseCategory: "Escolha uma categoria"

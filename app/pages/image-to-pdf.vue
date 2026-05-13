@@ -195,7 +195,7 @@ defineI18nRoute({
     <!-- Upload state -->
     <div v-if="items.length === 0" class="flex flex-col items-center justify-center py-8 gap-4">
       <ImageUploader :show="true" :multiple="true" @on-file="onImageSelected" />
-      <p class="text-sm text-base-content/50">{{ t('upload_hint') }}</p>
+      <p class="text-sm text-base-content/70">{{ t('upload_hint') }}</p>
     </div>
 
     <!-- Images loaded state -->

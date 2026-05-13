@@ -197,7 +197,7 @@ defineI18nRoute({
     <!-- Upload state -->
     <div v-if="!imageLoaded" class="flex flex-col items-center justify-center py-8 gap-4">
       <ImageUploader :show="true" @on-file="onImageSelected" />
-      <p class="text-sm text-base-content/50">{{ t('upload_hint') }}</p>
+      <p class="text-sm text-base-content/70">{{ t('upload_hint') }}</p>
     </div>
 
     <!-- Cropper state -->
