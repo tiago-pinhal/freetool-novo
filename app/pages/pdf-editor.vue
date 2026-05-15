@@ -457,7 +457,7 @@ pt:
   faq_3_q: "O editor suporta PDFs protegidos por senha?"
   faq_3_a: "Não. PDFs com proteção por senha não podem ser abertos pelo editor. Remova a senha do arquivo antes de tentar editá-lo."
   see1: "Imagem para PDF"
-  see2: "Divisor de PDF"
+  see2: "Dividir PDF"
   see3: "Numerar PDF"
   see4: "PDF para Imagem"
 en:
@@ -512,7 +512,7 @@ en:
   faq_3_q: "Does the editor support password-protected PDFs?"
   faq_3_a: "No. Password-protected PDFs cannot be opened by the editor. Remove the password from the file before trying to edit it."
   see1: "Image to PDF"
-  see2: "PDF Splitter"
+  see2: "Split PDF"
   see3: "Numbering PDF"
   see4: "PDF to Image"
 es:
@@ -567,7 +567,7 @@ es:
   faq_3_q: "¿El editor admite PDFs protegidos con contraseña?"
   faq_3_a: "No. Los PDFs protegidos con contraseña no se pueden abrir en el editor. Quita la contraseña del archivo antes de intentar editarlo."
   see1: "Imagen a PDF"
-  see2: "Divisor de PDF"
+  see2: "Dividir PDF"
   see3: "Numerar PDF"
   see4: "PDF a Imagen"
 fr:
@@ -622,7 +622,7 @@ fr:
   faq_3_q: "L'éditeur prend-il en charge les PDF protégés par mot de passe ?"
   faq_3_a: "Non. Les PDF protégés par mot de passe ne peuvent pas être ouverts par l'éditeur. Supprimez le mot de passe du fichier avant d'essayer de le modifier."
   see1: "Image en PDF"
-  see2: "Diviseur de PDF"
+  see2: "Diviser PDF"
   see3: "Numéroter PDF"
   see4: "PDF en Image"
 it:
@@ -677,7 +677,7 @@ it:
   faq_3_q: "L'editor supporta PDF protetti da password?"
   faq_3_a: "No. I PDF protetti da password non possono essere aperti dall'editor. Rimuovi la password dal file prima di provare a modificarlo."
   see1: "Immagine in PDF"
-  see2: "Divisore PDF"
+  see2: "Dividere PDF"
   see3: "Numerare PDF"
   see4: "PDF in Immagine"
 id:
@@ -732,7 +732,7 @@ id:
   faq_3_q: "Apakah editor mendukung PDF yang dilindungi kata sandi?"
   faq_3_a: "Tidak. PDF yang dilindungi kata sandi tidak dapat dibuka oleh editor. Hapus kata sandi dari file sebelum mencoba mengeditnya."
   see1: "Gambar ke PDF"
-  see2: "Pemisah PDF"
+  see2: "Bagi PDF"
   see3: "Beri Nomor PDF"
   see4: "PDF ke Gambar"
 de:
