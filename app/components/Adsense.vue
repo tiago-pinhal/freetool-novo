@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{
 
 const insRef = ref<HTMLElement>()
 const isDev = import.meta.dev
-const { onLoaded } = useScriptGoogleAdsense()
+const { adsConsent } = useConsentState()
 
 const reservedHeight = computed(() => {
   switch (props.adFormat) {
@@ -26,12 +26,12 @@ const reservedHeight = computed(() => {
       return 'min-h-[200px]'
     case 'auto':
     default:
-      // Mobile: retângulo (280px) | Desktop: banner (90px)
       return 'min-h-[280px] sm:min-h-[90px]'
   }
 })
 
-onLoaded(async () => {
+watch(adsConsent, async (granted) => {
+  if (!granted) return
   await nextTick()
   if (!insRef.value || insRef.value.offsetWidth === 0) return
   try {
@@ -39,7 +39,7 @@ onLoaded(async () => {
   } catch (e) {
     if (isDev) console.warn('AdSense push failed:', e)
   }
-})
+}, { immediate: true })
 </script>
 
 <template>
@@ -47,7 +47,6 @@ onLoaded(async () => {
     class="adsense-wrapper w-full flex justify-center items-center rounded-xl overflow-hidden relative"
     :class="reservedHeight"
   >
-    <!-- Placeholder para ambiente de desenvolvimento -->
     <div
       v-if="isDev"
       class="absolute inset-0 flex items-center justify-center pointer-events-none bg-base-200/20"
@@ -62,9 +61,8 @@ onLoaded(async () => {
       </div>
     </div>
 
-    <!-- Anúncio real em produção -->
     <ins
-      v-else
+      v-else-if="adsConsent"
       ref="insRef"
       class="adsbygoogle"
       style="display:block"

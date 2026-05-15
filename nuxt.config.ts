@@ -14,18 +14,6 @@ export default defineNuxtConfig({
   sitemap: {
     zeroRuntime: true
   },
-  scripts: {
-    registry: {
-      googleAnalytics: {
-        id: process.env.NODE_ENV === 'production' ? 'G-B57PC5L4JC' : undefined
-      },
-      googleAdsense: {
-        client: process.env.NODE_ENV === 'production' 
-          ? 'ca-pub-6172875094663882' 
-          : 'ca-pub-3940256099942544'
-      }
-    }
-  },
 
   vite: {
     plugins: [tailwindcss() as any],
