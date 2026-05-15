@@ -296,7 +296,7 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   pt: {
-    pageTitle: "Gerador de Cartão de Crédito (Visa, Mastercard, Amex...) | Grátis",
+    pageTitle: "Gerador de Cartão de Crédito (Visa, Mastercard, Amex, ...) | Grátis",
     title: "Gerador de Cartão de Crédito",
     meta: "Gere números de cartão de crédito fictícios para testes de software. Suporta Visa, Mastercard, Amex e mais. Válido pelo Algoritmo de Luhn, inclui nome, vencimento e CVV.",
     brands: "Bandeira",
@@ -350,7 +350,7 @@ defineI18nRoute({
     see4: "Gerador de Senha"
   },
   en: {
-    pageTitle: "Credit Card Generator (Visa, Mastercard, Amex...) | Free",
+    pageTitle: "Credit Card Generator (Visa, Mastercard, Amex, ...) | Free",
     title: "Credit Card Generator",
     meta: "Generate fake credit card numbers for software testing. Supports Visa, Mastercard, Amex and more. Luhn algorithm compliant, includes name, expiry date and CVV.",
     brands: "Card Brand",
@@ -404,7 +404,7 @@ defineI18nRoute({
     see4: "Password Generator"
   },
   es: {
-    pageTitle: "Generador de Tarjetas de Crédito (Visa, Mastercard, Amex...) | Gratis",
+    pageTitle: "Generador de Tarjetas de Crédito (Visa, Mastercard, Amex, ...) | Gratis",
     title: "Generador de Tarjetas de Crédito",
     meta: "Genera números de tarjeta de crédito falsos para pruebas de software. Compatible con Visa, Mastercard, Amex y más. Válido por el Algoritmo de Luhn, incluye nombre, vencimiento y CVV.",
     brands: "Marca",
@@ -458,7 +458,7 @@ defineI18nRoute({
     see4: "Generador de Contraseñas"
   },
   fr: {
-    pageTitle: "Générateur de Carte de Crédit (Visa, Mastercard, Amex...) | Gratuit",
+    pageTitle: "Générateur de Carte de Crédit (Visa, Mastercard, Amex, ...) | Gratuit",
     title: "Générateur de Carte de Crédit",
     meta: "Générez des numéros de carte de crédit fictifs pour les tests logiciels. Compatible Visa, Mastercard, Amex et plus. Conforme à l'algorithme de Luhn, inclut nom, date d'expiration et CVV.",
     brands: "Réseau",
@@ -512,7 +512,7 @@ defineI18nRoute({
     see4: "Générateur de Mot de Passe"
   },
   it: {
-    pageTitle: "Generatore di Carta di Credito (Visa, Mastercard, Amex...) | Gratis",
+    pageTitle: "Generatore Carte di Credito (Visa, Mastercard, Amex, ...) | Gratis",
     title: "Generatore di Carta di Credito",
     meta: "Genera numeri di carta di credito fittizi per test software. Supporta Visa, Mastercard, Amex e altri. Conforme all'algoritmo di Luhn, include nome, scadenza e CVV.",
     brands: "Circuito",
@@ -566,7 +566,7 @@ defineI18nRoute({
     see4: "Generatore di Password"
   },
   id: {
-    pageTitle: "Generator Kartu Kredit (Visa, Mastercard, Amex...) | Gratis",
+    pageTitle: "Generator Kartu Kredit — (Visa, Mastercard, Amex, ...) | Gratis",
     title: "Generator Kartu Kredit",
     meta: "Buat nomor kartu kredit fiktif untuk pengujian perangkat lunak. Mendukung Visa, Mastercard, Amex dan lainnya. Sesuai algoritma Luhn, mencakup nama, tanggal kedaluwarsa dan CVV.",
     brands: "Jaringan Kartu",
@@ -620,7 +620,7 @@ defineI18nRoute({
     see4: "Generator Kata Sandi"
   },
   de: {
-    pageTitle: "Kreditkarten-Generator (Visa, Mastercard, Amex...) | Kostenlos",
+    pageTitle: "Kreditkarten-Generator (Visa, Mastercard, Amex, ...) | Kostenlos",
     title: "Kreditkarten-Generator",
     meta: "Generieren Sie fiktive Kreditkartennummern für Softwaretests. Unterstützt Visa, Mastercard, Amex und mehr. Luhn-Algorithmus-konform, inklusive Name, Ablaufdatum und CVV.",
     brands: "Kartenmarke",
@@ -674,7 +674,7 @@ defineI18nRoute({
     see4: "Passwort-Generator"
   },
   nl: {
-    pageTitle: "Creditcardgenerator (Visa, Mastercard, Amex...) | Gratis",
+    pageTitle: "Creditcardgenerator (Visa, Mastercard, Amex, ...) | Gratis",
     title: "Creditcardgenerator",
     meta: "Genereer fictieve creditcardnummers voor softwaretests. Ondersteunt Visa, Mastercard, Amex en meer. Voldoet aan het Luhn-algoritme, inclusief naam, vervaldatum en CVV.",
     brands: "Kaartmerk",

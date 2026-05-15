@@ -287,7 +287,7 @@ defineI18nRoute({
 {
   en: {
     title: "Random Birthday Generator",
-    pageTitle: "Random Birthday Generator by Age or Year | Free",
+    pageTitle: "Random Birthday Generator by Age or Year — For OCs",
     meta: "Generate random birth dates instantly with exact age calculation. Create dates by age range or birth year for testing, characters and sample data.",
     ages: "By age range",
     years: "By birth year",
@@ -342,7 +342,7 @@ defineI18nRoute({
   },
   pt: {
     title: "Gerador de Data de Nascimento Aleatória",
-    pageTitle: "Gerador de Data de Nascimento Aleatória por Idade ou Ano | Grátis",
+    pageTitle: "Gerador de Data de Nascimento Aleatória por Idade ou Ano",
     meta: "Gere datas de nascimento aleatórias instantaneamente com cálculo exato de idade. Crie datas por faixa etária ou ano para testes, personagens e dados de exemplo.",
     ages: "Por faixa etária",
     years: "Por ano de nascimento",
@@ -397,7 +397,7 @@ defineI18nRoute({
   },
   es: {
     title: "Generador de Fecha de Nacimiento Aleatoria",
-    pageTitle: "Generador de Fecha de Nacimiento Aleatoria por Edad o Año | Gratis",
+    pageTitle: "Generador de Fecha de Nacimiento por Edad o Año",
     meta: "Genera fechas de nacimiento aleatorias al instante con cálculo exacto de edad. Crea fechas por rango de edad o año para pruebas, personajes y datos de ejemplo.",
     ages: "Por rango de edad",
     years: "Por año de nacimiento",
@@ -452,7 +452,7 @@ defineI18nRoute({
   },
   fr: {
     title: "Générateur de Date de Naissance Aléatoire",
-    pageTitle: "Générateur de Date de Naissance Aléatoire par Âge ou Année | Gratuit",
+    pageTitle: "Générateur de Date de Naissance par Âge ou Année",
     meta: "Générez des dates de naissance aléatoires instantanément avec un calcul d'âge exact. Créez des dates par tranche d'âge ou année pour les tests, personnages et données d'exemple.",
     ages: "Par tranche d'âge",
     years: "Par année de naissance",
@@ -507,7 +507,7 @@ defineI18nRoute({
   },
   it: {
     title: "Generatore di Data di Nascita Casuale",
-    pageTitle: "Generatore di Data di Nascita Casuale per Età o Anno | Gratis",
+    pageTitle: "Generatore di Data di Nascita per Età o Anno",
     meta: "Genera date di nascita casuali all'istante con calcolo esatto dell'età. Crea date per fascia d'età o anno per test, personaggi e dati di esempio.",
     ages: "Per fascia d'età",
     years: "Per anno di nascita",
@@ -561,8 +561,8 @@ defineI18nRoute({
     see4: "Differenza tra Date"
   },
   id: {
-    title: "Generator Tanggal Lahir Acak",
-    pageTitle: "Generator Tanggal Lahir Acak berdasarkan Usia atau Tahun | Gratis",
+    title: "Generator Tanggal Lahir",
+    pageTitle: "Generator Tanggal Lahir — Berdasarkan Usia atau Tahun",
     meta: "Buat tanggal lahir acak secara instan dengan perhitungan usia tepat. Buat tanggal berdasarkan rentang usia atau tahun untuk pengujian, karakter, dan data contoh.",
     ages: "Berdasarkan rentang usia",
     years: "Berdasarkan tahun lahir",

@@ -366,7 +366,7 @@ defineI18nRoute({
     see4: "Gerador de Data de Nascimento"
   },
   en: {
-    pageTitle: "Valid CPF Generator Online for Testing — Free",
+    pageTitle: "Brazilian CPF Generator — Fake & Valid for Testing",
     title: "CPF Generator",
     meta: "Generate valid CPFs online for free, whether by state, one or multiple CPFs at once (with or without formatting). Ideal tool for testing and development.",
 
@@ -434,8 +434,8 @@ defineI18nRoute({
     see4: "Birthday Generator"
   },
   es: {
-    pageTitle: "Generador de CPF Válido Online para Pruebas — Gratis",
-    title: "Generador de CPF",
+    pageTitle: "Generador de CPF de Brasil — Ejemplo Válido Gratis",
+    title: "Generador de CPF Brasileño",
     meta: "Genera CPFs válidos online y gratis, ya sea por estado, uno o múltiples CPFs a la vez (con o sin puntuación). Herramienta ideal para pruebas y desarrollo.",
 
     num: "Solo Números",
@@ -503,7 +503,7 @@ defineI18nRoute({
   },
   fr: {
     pageTitle: "Générateur de CPF Valide en Ligne pour Tests — Gratuit",
-    title: "Générateur de CPF",
+    title: "Générateur de CPF Brésilien",
     meta: "Générez des CPFs valides en ligne gratuitement, que ce soit par état, un ou plusieurs CPFs à la fois (avec ou sans ponctuation). Outil idéal pour les tests et le développement.",
 
     num: "Chiffres Uniquement",
@@ -570,8 +570,8 @@ defineI18nRoute({
     see4: "Générateur de Date de Naissance"
   },
   it: {
-    pageTitle: "Generatore di CPF Valido Online per Test — Gratuito",
-    title: "Generatore di CPF",
+    pageTitle: "Generatore di CPF Valido Online per Test — Gratis",
+    title: "Generatore di CPF Brasiliano",
     meta: "Genera CPF validi online gratuitamente, sia per stato, uno o più CPF alla volta (con o senza punteggiatura). Strumento ideale per test e sviluppo.",
 
     num: "Solo Numeri",
@@ -639,7 +639,7 @@ defineI18nRoute({
 },
   id: {
     pageTitle: "Generator CPF Valid Online untuk Pengujian — Gratis",
-    title: "Generator CPF",
+    title: "Generator CPF Brasil",
     meta: "Buat CPF valid online secara gratis, baik berdasarkan negara bagian, satu atau beberapa CPF sekaligus (dengan atau tanpa tanda baca). Alat ideal untuk pengujian dan pengembangan.",
 
     num: "Angka Saja",

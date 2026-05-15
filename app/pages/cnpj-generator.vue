@@ -267,7 +267,7 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   pt: {
-    pageTitle: "Gerador de CNPJ Válido Online para Testes — Grátis",
+    pageTitle: "Gerador de CNPJ Válido e Aleatório para Testes — Grátis",
     title: "Gerador de CNPJ",
     meta: "Gerador de CNPJ online grátis para testes de software. Gere um ou vários CNPJs válidos, em formato pontuado ou somente números, de forma simples e fácil.",
     num: "Somente Números",
@@ -322,7 +322,7 @@ defineI18nRoute({
     see4: "Gerador de Data de Nascimento"
   },
   en: {
-    pageTitle: "Valid CNPJ Generator Online for Testing — Free",
+    pageTitle: "Brazilian CNPJ Generator — Fake & Valid for Testing",
     title: "CNPJ Generator",
     meta: "Free online CNPJ generator for software testing. Generate one or multiple valid CNPJs, formatted or numbers-only, quickly and easily.",
     num: "Numbers Only",
@@ -377,8 +377,8 @@ defineI18nRoute({
     see4: "Birthday Generator"
   },
   es: {
-    pageTitle: "Generador de CNPJ Válido Online para Pruebas — Gratis",
-    title: "Generador de CNPJ",
+    pageTitle: "Generador de CNPJ Válido para Pruebas — Gratis",
+    title: "Generador de CNPJ Brasileño",
     meta: "Generador de CNPJ online gratuito para pruebas de software. Genera uno o varios CNPJs válidos, con puntuación o solo números, de forma sencilla y rápida.",
     num: "Solo Números",
     multiple_label: "Generar Múltiples CNPJs",
@@ -432,8 +432,8 @@ defineI18nRoute({
     see4: "Generador de Fecha de Nacimiento"
   },
   fr: {
-    pageTitle: "Générateur de CNPJ Valide en Ligne pour Tests — Gratuit",
-    title: "Générateur de CNPJ",
+    pageTitle: "Générateur de CNPJ Brésilien — Exemple Valide Gratuit",
+    title: "Générateur de CNPJ Brésilien",
     meta: "Générateur de CNPJ en ligne gratuit pour les tests logiciels. Générez un ou plusieurs CNPJs valides, avec ou sans ponctuation, facilement et rapidement.",
     num: "Chiffres Uniquement",
     multiple_label: "Générer Plusieurs CNPJs",
@@ -487,8 +487,8 @@ defineI18nRoute({
     see4: "Générateur de Date de Naissance"
   },
   it: {
-    pageTitle: "Generatore di CNPJ Valido Online per Test — Gratis",
-    title: "Generatore di CNPJ",
+    pageTitle: "Generatore di CNPJ Brasile — Esempio Valido Gratis",
+    title: "Generatore di CNPJ Brasiliano",
     meta: "Generatore di CNPJ online gratuito per test software. Genera uno o più CNPJ validi, con o senza punteggiatura, in modo semplice e veloce.",
     num: "Solo Numeri",
     multiple_label: "Genera Più CNPJ",
@@ -542,8 +542,8 @@ defineI18nRoute({
     see4: "Generatore di Data di Nascita"
   },
   id: {
-    pageTitle: "Generator CNPJ Valid Online untuk Pengujian — Gratis",
-    title: "Generator CNPJ",
+    pageTitle: "Generator CNPJ Brasil Valid untuk Pengujian — Gratis",
+    title: "Generator CNPJ Brasil",
     meta: "Generator CNPJ online gratis untuk pengujian perangkat lunak. Buat satu atau beberapa CNPJ valid, dengan atau tanpa tanda baca, dengan mudah dan cepat.",
     num: "Hanya Angka",
     multiple_label: "Buat Beberapa CNPJ",
@@ -598,7 +598,7 @@ defineI18nRoute({
   },
   de: {
     pageTitle: "Gültiger CNPJ-Generator Online für Tests — Kostenlos",
-    title: "CNPJ-Generator",
+    title: "Brasilianischer CNPJ-Generator",
     meta: "Kostenloser Online-CNPJ-Generator für Softwaretests. Generieren Sie einen oder mehrere gültige CNPJs, mit oder ohne Formatierung, einfach und schnell.",
     num: "Nur Zahlen",
     multiple_label: "Mehrere CNPJs generieren",
@@ -653,7 +653,7 @@ defineI18nRoute({
   },
   nl: {
     pageTitle: "Geldige CNPJ-generator Online voor Tests — Gratis",
-    title: "CNPJ-generator",
+    title: "Braziliaanse CNPJ-generator",
     meta: "Gratis online CNPJ-generator voor softwaretests. Genereer snel en eenvoudig één of meerdere geldige CNPJ's, geformatteerd of alleen cijfers.",
     num: "Alleen cijfers",
     multiple_label: "Genereer meerdere CNPJ's",
