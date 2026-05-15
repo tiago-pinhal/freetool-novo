@@ -113,6 +113,12 @@ usePageJsonLd({
             FREETOOL.DEV SHALL HAVE NO RESPONSIBILITY FOR ANY DAMAGE TO YOUR COMPUTER SYSTEM, LOSS OF DATA,
             OR OTHER HARM THAT RESULTS FROM SUCH USE.
           </p>
+          <p class="text-sm leading-relaxed mt-3">
+            All tools available on this Site are provided for informational and convenience purposes only.
+            <strong>You are solely responsible for independently verifying any output, result, or data generated
+            by any tool before relying on it for any professional, legal, financial, technical, or other purpose.</strong>
+            FreeTool.dev makes no guarantee that tool outputs are accurate, complete, or suitable for any specific use case.
+          </p>
         </section>
 
         <section>
@@ -152,12 +158,17 @@ usePageJsonLd({
         </section>
 
         <section>
-          <h2 class="text-lg font-bold mb-2 text-orange-300">9. Third-Party Websites, Content, and Services</h2>
+          <h2 class="text-lg font-bold mb-2 text-orange-300">9. Third-Party Websites, Content, and Advertising</h2>
           <p>
             The Site may contain links to third-party websites, products, or services ("External Links").
             FreeTool.dev does not endorse, recommend, or make any representations regarding any third-party content,
             product, or service. We are not responsible for the accuracy, completeness, reliability, legality,
             or availability of any content, product, or service accessible through External Links.
+          </p>
+          <p class="mt-2">
+            The Site also displays third-party advertisements served by <strong>Google AdSense</strong>.
+            These ads are only shown after you explicitly consent to the Advertising cookie category via our cookie banner.
+            FreeTool.dev is not responsible for the content of any advertisement or the products and services advertised.
           </p>
           <p class="mt-2">
             You bear all risks associated with accessing and using third-party websites. We strongly encourage you
@@ -170,9 +181,10 @@ usePageJsonLd({
           <h2 class="text-lg font-bold mb-2 text-orange-300">10. Privacy</h2>
           <p>
             Your use of the Site is also governed by our
-            <NuxtLink to="/privacy" class="link">Privacy and Cookies Policy</NuxtLink>,
-            which is incorporated into these Terms by reference. By using the Site, you consent to all actions
-            taken by us with respect to your information in compliance with that Policy.
+            <NuxtLink to="/privacy/" class="link">Privacy and Cookies Policy</NuxtLink>,
+            which is incorporated into these Terms by reference. Any collection or processing of personal data
+            is carried out only to the extent and under the conditions described in that Policy,
+            and where required by law, only after your explicit consent via our cookie banner.
           </p>
         </section>
 
@@ -210,9 +222,10 @@ usePageJsonLd({
           <h2 class="text-lg font-bold mb-2 text-orange-300">14. Changes to These Terms</h2>
           <p>
             We reserve the right to revise and update these Terms at any time at our sole discretion.
-            All changes are effective immediately when posted. Your continued access to or use of the Site
-            following the posting of revised Terms means that you accept and agree to the changes.
-            We encourage you to review this page each time you visit the Site to stay informed of any updates.
+            Non-material changes are effective immediately when posted. For changes that materially affect
+            how your personal data is processed, we will endeavour to provide reasonable notice before
+            they take effect, such as by updating the "Last updated" date and displaying a notice on the Site.
+            Your continued use of the Site after changes are posted constitutes acceptance of the updated Terms.
             If you do not agree to the revised Terms, you must stop using the Site.
           </p>
         </section>
