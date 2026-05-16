@@ -348,7 +348,7 @@ defineI18nRoute({
     step_3_title: "Escolher o formato",
     step_3_desc: "Por padrão, o CPF vem com pontos e traço. Se você precisa do número limpo (banco de dados, JSON, etc.), ative \"Somente Números\" antes de gerar.",
 
-    faq_title: "Perguntas Frequentes",
+    faq_title: "Perguntas e Respostas",
     faq_1_q: "Os CPFs gerados aqui são reais ou estão registrados na Receita Federal?",
     faq_1_a: "Não. São números fictícios construídos com o mesmo algoritmo de validação que a Receita usa, mas sem vínculo nenhum com pessoas reais. Eles passam na verificação dos dígitos porque o cálculo está correto, e nada além disso. Não tente usar para cadastros oficiais, pois não serão aceitos, e a tentativa pode configurar crime.",
     faq_2_q: "Por que existe um campo de estado no gerador?",
@@ -416,7 +416,7 @@ defineI18nRoute({
     step_3_title: "Choose the format",
     step_3_desc: "By default, the CPF is formatted with dots and a dash. If you need the raw number (database, JSON, etc.), enable \"Numbers Only\" before generating.",
 
-    faq_title: "Frequently Asked Questions",
+    faq_title: "Questions and Answers",
     faq_1_q: "Are the CPFs generated here real or registered with the Brazilian tax authority?",
     faq_1_a: "No. They are fictitious numbers built with the same validation algorithm used by the Receita Federal, but with no connection to real people. They pass the check-digit verification because the calculation is correct, and nothing more. Do not attempt to use them for official registrations — they will not be accepted, and the attempt may constitute fraud.",
     faq_2_q: "Why is there a state filter in the generator?",
@@ -484,7 +484,7 @@ defineI18nRoute({
     step_3_title: "Elegir el formato",
     step_3_desc: "Por defecto, el CPF viene con puntos y guion. Si necesitas el número limpio (base de datos, JSON, etc.), activa \"Solo Números\" antes de generar.",
 
-    faq_title: "Preguntas Frecuentes",
+    faq_title: "Preguntas y Respuestas",
     faq_1_q: "¿Los CPFs generados aquí son reales o están registrados en la Receita Federal?",
     faq_1_a: "No. Son números ficticios construidos con el mismo algoritmo de validación que usa la Receita Federal, pero sin ningún vínculo con personas reales. Superan la verificación de dígitos porque el cálculo es correcto, y nada más. No intentes usarlos en registros oficiales, ya que no serán aceptados, y el intento puede constituir un delito.",
     faq_2_q: "¿Por qué existe un filtro de estado en el generador?",
@@ -552,7 +552,7 @@ defineI18nRoute({
     step_3_title: "Choisir le format",
     step_3_desc: "Par défaut, le CPF est formaté avec des points et un tiret. Si vous avez besoin du numéro brut (base de données, JSON, etc.), activez « Chiffres Uniquement » avant de générer.",
 
-    faq_title: "Questions Fréquentes",
+    faq_title: "Questions et Réponses",
     faq_1_q: "Les CPF générés ici sont-ils réels ou enregistrés auprès de la Receita Federal ?",
     faq_1_a: "Non. Ce sont des numéros fictifs construits avec le même algorithme de validation qu'utilise la Receita Federal, mais sans aucun lien avec de vraies personnes. Ils passent la vérification des chiffres de contrôle parce que le calcul est correct, et rien de plus. N'essayez pas de les utiliser pour des inscriptions officielles — ils ne seront pas acceptés, et la tentative peut constituer une fraude.",
     faq_2_q: "Pourquoi y a-t-il un filtre par état dans le générateur ?",
@@ -620,7 +620,7 @@ defineI18nRoute({
     step_3_title: "Scegliere il formato",
     step_3_desc: "Per impostazione predefinita, il CPF è formattato con punti e trattino. Se hai bisogno del numero grezzo (database, JSON, ecc.), attiva \"Solo Numeri\" prima di generare.",
 
-    faq_title: "Domande Frequenti",
+    faq_title: "Domande e Risposte",
     faq_1_q: "I CPF generati qui sono reali o registrati presso la Receita Federal?",
     faq_1_a: "No. Sono numeri fittizi costruiti con lo stesso algoritmo di validazione usato dalla Receita Federal, ma senza alcun collegamento con persone reali. Superano la verifica delle cifre di controllo perché il calcolo è corretto, e nulla di più. Non tentare di usarli per registrazioni ufficiali — non saranno accettati e il tentativo può costituire una frode.",
     faq_2_q: "Perché c'è un filtro per stato nel generatore?",
@@ -688,7 +688,7 @@ defineI18nRoute({
     step_3_title: "Pilih format",
     step_3_desc: "Secara default, CPF diformat dengan titik dan tanda hubung. Jika Anda membutuhkan nomor mentah (database, JSON, dll.), aktifkan \"Angka Saja\" sebelum membuat.",
 
-    faq_title: "Pertanyaan yang Sering Diajukan",
+    faq_title: "Pertanyaan dan Jawaban",
     faq_1_q: "Apakah CPF yang dihasilkan di sini nyata atau terdaftar di Receita Federal?",
     faq_1_a: "Tidak. Mereka adalah nomor fiktif yang dibangun dengan algoritma validasi yang sama yang digunakan Receita Federal, tetapi tanpa hubungan apa pun dengan orang nyata. Mereka lulus verifikasi digit karena perhitungannya benar, dan tidak lebih dari itu. Jangan mencoba menggunakannya untuk pendaftaran resmi — tidak akan diterima, dan upaya tersebut dapat dianggap sebagai penipuan.",
     faq_2_q: "Mengapa ada filter negara bagian di generator?",
@@ -756,7 +756,7 @@ defineI18nRoute({
     step_3_title: "Format wählen",
     step_3_desc: "Standardmäßig wird der CPF mit Punkten und Bindestrich formatiert. Wenn Sie die Rohdaten benötigen (Datenbank, JSON usw.), aktivieren Sie \"Nur Zahlen\" vor der Generierung.",
 
-    faq_title: "Häufig gestellte Fragen",
+    faq_title: "Fragen und Antworten",
     faq_1_q: "Sind die hier generierten CPFs echt oder bei der Receita Federal registriert?",
     faq_1_a: "Nein. Es sind fiktive Nummern, die mit demselben Validierungsalgorithmus erstellt wurden, den die Receita Federal verwendet, aber ohne jede Verbindung zu echten Personen. Sie bestehen die Prüfzifferüberprüfung, weil die Berechnung korrekt ist, und nichts weiter. Versuchen Sie nicht, sie für offizielle Registrierungen zu verwenden — sie werden nicht akzeptiert, und der Versuch kann als Betrug gewertet werden.",
     faq_2_q: "Warum gibt es einen Bundesstaatsfilter im Generator?",
@@ -824,7 +824,7 @@ defineI18nRoute({
     step_3_title: "Formaat kiezen",
     step_3_desc: "Standaard wordt de CPF geformatteerd met punten en een streepje. Als je het ruwe nummer nodig hebt (database, JSON, etc.), schakel dan \"Alleen cijfers\" in voor het genereren.",
 
-    faq_title: "Veelgestelde vragen",
+    faq_title: "Vragen en Antwoorden",
     faq_1_q: "Zijn de hier gegenereerde CPF's echt of geregistreerd bij de Receita Federal?",
     faq_1_a: "Nee. Het zijn fictieve nummers die zijn opgebouwd met hetzelfde validatie-algoritme dat de Receita Federal gebruikt, maar zonder enige link met echte personen. Ze slagen voor de controlecijferverificatie omdat de berekening correct is, en meer niet. Probeer ze niet te gebruiken voor officiële registraties — ze zullen niet worden geaccepteerd en de poging kan als fraude worden beschouwd.",
     faq_2_q: "Waarom is er een staatsfilter in de generator?",
