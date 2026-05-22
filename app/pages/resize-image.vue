@@ -98,13 +98,7 @@ usePageJsonLd({
   name: t('title'),
   description: t('meta'),
   features: [t('d21'), t('d22'), t('d23'), t('d24'), t('d25')],
-  howToName: t('t5'),
-  howToSteps: [
-    { name: t('how1t'), text: t('how1d') },
-    { name: t('how2t'), text: t('how2d') },
-    { name: t('how3t'), text: t('how3d') },
-  ],
-  faq: faqItems.value,
+  faq: faqItems.value
 })
 
 useHead({

@@ -5,7 +5,7 @@ const { t, locale } = useI18n({ useScope: 'local' })
 <template>
   <div v-if="locale === 'pt'" class="w-fit mt-4">
     <div class="flex items-center gap-4 rounded-xl border border-orange-500/30 bg-orange-950/30 px-4 py-3">
-      <img src="/img/mordizi.webp" alt="Mordizi" class="w-12 h-12 rounded-xl shrink-0" />
+      <img src="https://www.freetool.dev/img/mordizi.webp" alt="Mordizi" class="w-12 h-12 rounded-xl shrink-0" />
       <div class="flex flex-col gap-1">
         <span class="text-orange-400 font-semibold text-sm leading-tight">{{ t('label') }}</span>
         <span class="text-white font-bold text-base leading-tight">{{ t('title') }}</span>

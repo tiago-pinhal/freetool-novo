@@ -34,12 +34,6 @@ usePageJsonLd({
   name: t('title'),
   description: t('meta'),
   features: [t('feature_1'), t('feature_2'), t('feature_3'), t('feature_4')],
-  howToName: t('how_to_title'),
-  howToSteps: [
-    { name: t('how_1_title'), text: t('how_1_desc') },
-    { name: t('how_2_title'), text: t('how_2_desc') },
-    { name: t('how_3_title'), text: t('how_3_desc') },
-  ],
   faq: faqItems.value,
 })
 
@@ -176,6 +170,8 @@ defineI18nRoute({
     fr: '/image-en-pdf',
     it: '/immagine-in-pdf',
     id: '/gambar-ke-pdf',
+    de: '/bild-zu-pdf',
+    nl: '/afbeelding-naar-pdf',
   },
 })
 </script>

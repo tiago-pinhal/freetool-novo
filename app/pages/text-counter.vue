@@ -95,7 +95,8 @@ defineI18nRoute({
       { label: t('converter'), to: 'text-converter' },
       { label: t('ascii'), to: 'ascii-letter-generator' },
       { label: t('fancy'), to: 'fancy-letters' },
-      { label: t('generator'), to: 'text-generator' }
+      { label: t('generator'), to: 'text-generator' },
+      { label: t('see_morse'), to: 'morse-code-converter' }
     ]"
   >
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -239,7 +240,8 @@ defineI18nRoute({
     converter: "Conversor de Texto",
     ascii: "Gerador de Letras ASCII",
     fancy: "Letras Diferentes",
-    generator: "Gerador de Texto"
+    generator: "Gerador de Texto",
+    see_morse: "Código Morse"
   },
   en: {
     title: "Text Counter",
@@ -296,7 +298,8 @@ defineI18nRoute({
     converter: "Text Converter",
     ascii: "ASCII Letter Generator",
     fancy: "Fancy Letters",
-    generator: "Text Generator"
+    generator: "Text Generator",
+    see_morse: "Morse Code"
   },
   es: {
     title: "Contador de Texto",

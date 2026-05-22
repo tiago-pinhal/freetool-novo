@@ -23,12 +23,6 @@ usePageJsonLd({
   name: t('title'),
   description: t('meta'),
   features: [t('f_1'), t('f_2'), t('f_3'), t('f_4')],
-  howToName: t('how_it_works_title'),
-  howToSteps: [
-    { name: t('hiw_1_title'), text: t('hiw_1_desc') },
-    { name: t('hiw_2_title'), text: t('hiw_2_desc') },
-    { name: t('hiw_3_title'), text: t('hiw_3_desc') }
-  ],
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
     { question: t('faq_2_q'), answer: t('faq_2_a') },
@@ -141,7 +135,7 @@ defineI18nRoute({
     :see-also-links="[
       { label: t('see1'), to: 'symbol-picker' },
       { label: t('see2'), to: 'barcode-generator' },
-      { label: t('see3'), to: 'random-colors' },
+      { label: 'Kaomojis', to: 'kaomoji' },
       { label: t('see4'), to: 'dominant-colors-of-the-image' }
     ]"
   >
@@ -438,7 +432,6 @@ defineI18nRoute({
 
     see1: "Seletor de Símbolos",
     see2: "Gerador de Código de Barras",
-    see3: "Cores Aleatórias",
     see4: "Cores Dominantes da Imagem",
 
     f_1: "Mais de 3.000 emojis disponíveis",
@@ -522,7 +515,6 @@ defineI18nRoute({
 
     see1: "Symbol Picker",
     see2: "Barcode Generator",
-    see3: "Random Colors",
     see4: "Dominant Colors of the Image",
 
     f_1: "More than 3,000 emojis available",
@@ -606,7 +598,6 @@ defineI18nRoute({
 
     see1: "Selector de Símbolos",
     see2: "Generador de Código de Barras",
-    see3: "Colores Aleatorios",
     see4: "Colores Dominantes de la Imagen",
 
     f_1: "Más de 3.000 emojis disponibles",
@@ -690,7 +681,6 @@ defineI18nRoute({
 
     see1: "Sélecteur de Symboles",
     see2: "Générateur de Code-Barres",
-    see3: "Couleurs Aléatoires",
     see4: "Couleurs Dominantes de l'Image",
 
     f_1: "Plus de 3 000 emojis disponibles",
@@ -774,7 +764,6 @@ defineI18nRoute({
 
     see1: "Selettore di Simboli",
     see2: "Generatore di Codice a Barre",
-    see3: "Colori Casuali",
     see4: "Colori Dominanti dell'Immagine",
 
     f_1: "Oltre 3.000 emoji disponibili",
@@ -858,7 +847,6 @@ defineI18nRoute({
 
     see1: "Pemilih Simbol",
     see2: "Generator Barcode",
-    see3: "Warna Acak",
     see4: "Warna Dominan Gambar",
 
     f_1: "Lebih dari 3.000 emoji tersedia",
@@ -942,7 +930,6 @@ defineI18nRoute({
 
     see1: "Symbol-Auswahl",
     see2: "Barcode-Generator",
-    see3: "Zufällige Farben",
     see4: "Dominante Bildfarben",
 
     f_1: "Mehr als 3.000 Emojis verfügbar",
@@ -1026,7 +1013,6 @@ defineI18nRoute({
 
     see1: "Symboolkiezer",
     see2: "Barcode Generator",
-    see3: "Willekeurige Kleuren",
     see4: "Dominante Afbeeldingskleuren",
 
     f_1: "Meer dan 3.000 emoji's beschikbaar",

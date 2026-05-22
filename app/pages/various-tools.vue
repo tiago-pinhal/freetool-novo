@@ -66,6 +66,16 @@ defineI18nRoute({
         icon="mdi:at"
         :index="4"
       />
+      <ToolCard :title="t('moon')"
+        :to="localePath('moon-phase')"
+        icon="mdi:moon-waning-crescent"
+        :index="5"
+      />
+      <ToolCard :title="t('morse')"
+        :to="localePath('morse-code-converter')"
+        icon="mdi:radio-tower"
+        :index="6"
+      />
     </div>
 
     <div class="mt-16 mb-8 flex items-center gap-4">
@@ -77,17 +87,17 @@ defineI18nRoute({
       <ToolCard :title="t('json')"
         :to="localePath('json-viewer')"
         icon="mdi:code-json"
-        :index="5"
+        :index="7"
       />
       <ToolCard :title="t('md5')"
         :to="localePath('md5-hash-generator')"
         icon="mdi:hashtag"
-        :index="6"
+        :index="8"
       />
       <ToolCard :title="t('bcrypt')"
         :to="localePath('bcrypt-generator')"
         icon="mdi:script-text-key"
-        :index="7"
+        :index="9"
       />
     </div>
 
@@ -110,9 +120,11 @@ defineI18nRoute({
         dice: "Dice Roller",
         rule: "Simple Rule of Three Calculator",
         email: "Email Extractor",
+        moon: "Moon Phase Today",
         json: "JSON Viewer",
         md5: "MD5 Hash Generator",
         bcrypt: "Bcrypt Generator",
+        morse: "Morse Code Converter",
     },
     pt: {
         title: "Ferramentas Diversas",
@@ -125,9 +137,11 @@ defineI18nRoute({
         dice: "Lançador de Dados",
         rule: "Calculadora de Regra de Três Simples",
         email: "Extrator de E-mails",
+        moon: "Fase da Lua Hoje",
         json: "Visualizador de JSON",
         md5: "Gerador de Hash MD5",
         bcrypt: "Gerador Bcrypt",
+        morse: "Conversor de Código Morse",
     },
     es: {
         title: "Herramientas Diversas",
@@ -140,6 +154,7 @@ defineI18nRoute({
         dice: "Lanzador de Dados",
         rule: "Calculadora de Regla de Tres Simple",
         email: "Extractor de Emails",
+        moon: "Fase de la Luna Hoy",
         json: "Visor de JSON",
         md5: "Generador de Hash MD5",
         bcrypt: "Generador Bcrypt",
@@ -155,6 +170,7 @@ defineI18nRoute({
         dice: "Lanceur de Dés",
         rule: "Calculatrice de Règle de Trois Simple",
         email: "Extracteur d'Emails",
+        moon: "Phase de la Lune Aujourd'hui",
         json: "Visualiseur JSON",
         md5: "Générateur de Hash MD5",
         bcrypt: "Générateur Bcrypt",
@@ -170,6 +186,7 @@ defineI18nRoute({
         dice: "Lanciatore di Dadi",
         rule: "Calcolatrice di Regola di Tre Semplice",
         email: "Estrattore di Email",
+        moon: "Fase della Luna Oggi",
         json: "Visualizzatore di JSON",
         md5: "Generatore di Hash MD5",
         bcrypt: "Generatore Bcrypt",
@@ -185,6 +202,7 @@ defineI18nRoute({
         dice: "Pelempar Dadu",
         rule: "Kalkulator Aturan Tiga Sederhana",
         email: "Ekstraktor Email",
+        moon: "Fase Bulan Hari Ini",
         json: "Penampil JSON",
         md5: "Generator Hash MD5",
         bcrypt: "Generator Bcrypt",
@@ -200,6 +218,7 @@ defineI18nRoute({
         dice: "Würfelroller",
         rule: "Dreisatzrechner",
         email: "E-Mail-Extraktor",
+        moon: "Mondphase Heute",
         json: "JSON-Betrachter",
         md5: "MD5-Hash-Generator",
         bcrypt: "Bcrypt-Generator",
@@ -215,6 +234,7 @@ defineI18nRoute({
         dice: "Dobbelsteenroller",
         rule: "Regel-van-drie-calculator",
         email: "E-mailextractor",
+        moon: "Maanfase Vandaag",
         json: "JSON-viewer",
         md5: "MD5-hashgenerator",
         bcrypt: "Bcrypt-generator",

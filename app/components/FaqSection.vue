@@ -19,7 +19,7 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <section v-if="items.length > 0">
+  <section v-if="items.length > 0" class="google-anno-skip">
     <h2 class="text-2xl font-bold text-base-content mb-6 flex items-center gap-2">
       <Icon :name="icon" class="text-primary w-6 h-6" aria-hidden="true" />
       {{ title }}

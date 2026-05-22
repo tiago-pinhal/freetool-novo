@@ -26,11 +26,11 @@ const detailsRef = ref<HTMLDetailsElement | null>(null)
 </script>
 
 <template>
-  <header class="navbar bg-base-100/80 backdrop-blur-md border-b border-base-content/5 w-full sticky top-0 z-50 h-16 px-4">
+  <header class="navbar bg-base-100/80 backdrop-blur-md border-b border-base-content/5 w-full sticky top-0 z-50 h-16 px-2 sm:px-4">
     <div class="navbar-start flex items-center h-full">
       <button
         @click="toggleMenu"
-        class="btn btn-ghost lg:hidden mr-2"
+        class="btn btn-ghost px-2 lg:hidden mr-1"
         aria-label="Menu"
         title="Menu"
       >
@@ -50,7 +50,7 @@ const detailsRef = ref<HTMLDetailsElement | null>(null)
         <ul class="menu menu-horizontal p-0">
           <li>
             <details ref="detailsRef">
-              <summary class="flex items-center gap-2 px-4 py-2 rounded-lg text-base-content hover:bg-base-content/10 transition-colors duration-200 cursor-pointer list-none">
+              <summary class="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 rounded-lg text-base-content hover:bg-base-content/10 transition-colors duration-200 cursor-pointer list-none">
                 <Icon name="language.svg?width=18&height=18" aria-hidden="true" />
                 <span class="hidden sm:inline font-medium text-sm">{{ currentLocaleName }}</span>
               </summary>

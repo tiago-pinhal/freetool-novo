@@ -16,10 +16,10 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <div class="max-w-5xl mx-auto px-4 pt-8 pb-8 lg:pb-12">
-    <!-- Cabeçalho da Ferramenta -->
+  <div class="max-w-5xl mx-auto px-4 pt-4 pb-8 lg:pb-12">
+    <!-- Tool header -->
     <div class="mb-6 text-left">
-      <h1 class="text-4xl sm:text-5xl font-black tracking-tight text-base-content mb-3">
+      <h1 class="text-2xl sm:text-5xl font-black tracking-tight text-base-content mb-3">
         {{ title }}
       </h1>
       <p v-if="description" class="text-lg text-base-content leading-relaxed">
@@ -27,14 +27,20 @@ withDefaults(defineProps<Props>(), {
       </p>
     </div>
 
-    <!-- Área Principal da Ferramenta (Slot) -->
-    <section 
-      :aria-label="title" class="bg-base-100 text-base-content rounded-xl shadow-sm border border-primary/20 p-4"
+    <!-- Main tool area (slot) -->
+    <section
+      :aria-label="title"
+      class="bg-base-100 text-base-content rounded-xl shadow-sm border border-primary/20 p-4"
     >
       <slot />
     </section>
 
-    <!-- Seção de Anúncios Central (Condicional) -->
+    <!--
+      In-content ad. Explicitly responsive (`auto`): this is the unit that
+      reliably fills on every viewport, including mobile. Do NOT switch this
+      to `vertical` here — vertical inventory does not exist for narrow
+      viewports and would come back `unfilled`.
+    -->
     <Transition
       enter-active-class="transition duration-700 ease-out"
       enter-from-class="opacity-0 translate-y-4"
@@ -42,11 +48,11 @@ withDefaults(defineProps<Props>(), {
       leave-to-class="opacity-0"
     >
       <div v-if="showAds" class="my-8">
-        <Adsense v-once />
+        <Adsense ad-format="horizontal" :responsive="true" ad-slot="8446462656" />
       </div>
     </Transition>
 
-    <!-- Informações Detalhadas (ToolInfo) -->
+    <!-- Detailed information (ToolInfo) -->
     <ToolInfo
       v-if="infoDescription || $slots.info"
       :title="infoTitle"
@@ -57,7 +63,7 @@ withDefaults(defineProps<Props>(), {
       <slot name="info" />
     </ToolInfo>
 
-    <!-- Links Relacionados (SeeAlso) -->
+    <!-- Related links (SeeAlso) -->
     <SeeAlso
       v-if="seeAlsoLinks && seeAlsoLinks.length > 0"
       :links="seeAlsoLinks"

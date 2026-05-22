@@ -14,15 +14,16 @@ useHead({
 })
 
 defineI18nRoute({
-    paths: {
-        pt: '/ferramentas-para-textos',
-        es: '/herramientas-para-textos',
-        fr: '/outils-pour-textes',
-        it: '/strumenti-per-testi',
-        id: '/alat-teks',
-        de: '/textwerkzeuge',
-        nl: '/teksttools'
-    }
+  paths: {
+    en: '/text-tools',
+    pt: '/ferramentas-para-textos',
+    es: '/herramientas-para-textos',
+    fr: '/outils-pour-textes',
+    it: '/strumenti-per-testi',
+    id: '/alat-teks',
+    de: '/textwerkzeuge',
+    nl: '/teksttools'
+  }
 })
 </script>
 
@@ -63,10 +64,15 @@ defineI18nRoute({
         icon="mdi:counter"
         :index="4"
       />
-      <ToolCard :title="t('lorem')" 
-        :to="localePath('text-generator')" 
+      <ToolCard :title="t('lorem')"
+        :to="localePath('text-generator')"
         icon="mdi:text"
         :index="5"
+      />
+      <ToolCard :title="t('invisible')"
+        :to="localePath('invisible-character')"
+        icon="mdi:eye-off-outline"
+        :index="6"
       />
     </div>
 
@@ -87,7 +93,8 @@ defineI18nRoute({
         txt: "Text Converter",
         diff: "Text Comparator",
         count: "Text Counter",
-        lorem: "Text Generator"
+        lorem: "Text Generator",
+        invisible: "Invisible Character"
     },
     pt: {
         title: "Ferramentas para Textos",
@@ -98,7 +105,8 @@ defineI18nRoute({
         txt: "Conversor de Texto",
         diff: "Comparador de Texto",
         count: "Contador de Texto",
-        lorem: "Gerador de Texto"
+        lorem: "Gerador de Texto",
+        invisible: "Caractere Invisível"
     },
     es: {
         title: "Herramientas para Textos",
@@ -109,7 +117,8 @@ defineI18nRoute({
         txt: "Convertidor de Texto",
         diff: "Comparador de Texto",
         count: "Contador de Texto",
-        lorem: "Generador de Texto"
+        lorem: "Generador de Texto",
+        invisible: "Carácter Invisible"
     },
     fr: {
         title: "Outils pour Textes",
@@ -120,7 +129,8 @@ defineI18nRoute({
         txt: "Convertisseur de Texte",
         diff: "Comparateur de Texte",
         count: "Compteur de Texte",
-        lorem: "Générateur de Texte"
+        lorem: "Générateur de Texte",
+        invisible: "Caractère Invisible"
     },
     it: {
         title: "Strumenti per Testi",
@@ -131,7 +141,8 @@ defineI18nRoute({
         txt: "Convertitore di Testo",
         diff: "Comparatore di Testo",
         count: "Contatore di Testo",
-        lorem: "Generatore di Testo"
+        lorem: "Generatore di Testo",
+        invisible: "Carattere Invisibile"
     },
     id: {
         title: "Alat Teks",
@@ -142,7 +153,8 @@ defineI18nRoute({
         txt: "Konverter Teks",
         diff: "Komparator Teks",
         count: "Penghitung Teks",
-        lorem: "Generator Teks"
+        lorem: "Generator Teks",
+        invisible: "Karakter Tak Terlihat"
     },
     de: {
         title: "Textwerkzeuge",
@@ -153,7 +165,8 @@ defineI18nRoute({
         txt: "Textkonverter",
         diff: "Textvergleicher",
         count: "Textzähler",
-        lorem: "Textgenerator"
+        lorem: "Textgenerator",
+        invisible: "Unsichtbares Zeichen"
     },
     nl: {
         title: "Teksttools",
@@ -164,7 +177,8 @@ defineI18nRoute({
         txt: "Tekstconverter",
         diff: "Tekstvergelijker",
         count: "Tekstteller",
-        lorem: "Tekstgenerator"
+        lorem: "Tekstgenerator",
+        invisible: "Onzichtbaar Teken"
     }
 }
 </i18n>

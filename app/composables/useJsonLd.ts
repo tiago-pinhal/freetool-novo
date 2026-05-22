@@ -58,6 +58,11 @@ export interface OfferSchema {
   priceCurrency?: string
 }
 
+// NOTE: FAQPage no longer produces SERP rich results for non-government/health
+// sites, but it remains a valid schema.org type and an active extraction signal
+// for AI answer engines (AI Overviews, ChatGPT Search, Perplexity, Gemini).
+// It is intentionally kept. The HowTo schema, by contrast, was fully deprecated
+// (no rich result on any device, no AI extraction value) and has been removed.
 export interface FAQPageSchema extends WithContext {
   '@type': 'FAQPage'
   mainEntity: FAQItem[]
@@ -70,19 +75,6 @@ export interface FAQItem {
     '@type': 'Answer'
     text: string
   }
-}
-
-export interface HowToSchema extends WithContext {
-  '@type': 'HowTo'
-  name: string
-  step: HowToStep[]
-}
-
-export interface HowToStep {
-  '@type': 'HowToStep'
-  position: number
-  name: string
-  text: string
 }
 
 export interface OrganizationSchema extends WithContext {
@@ -101,7 +93,6 @@ export type JsonLdInput =
   | SoftwareApplicationSchema
   | WebApplicationSchema
   | FAQPageSchema
-  | HowToSchema
   | OrganizationSchema
 
 // --- Constants ---
@@ -167,23 +158,6 @@ export function buildFAQPage(
   }
 }
 
-export function buildHowTo(
-  name: string,
-  steps: { name: string; text: string }[]
-): HowToSchema {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'HowTo',
-    name,
-    step: steps.map((s, index) => ({
-      '@type': 'HowToStep',
-      position: index + 1,
-      name: s.name,
-      text: s.text,
-    })),
-  }
-}
-
 export function buildOrganization(
   options: Omit<OrganizationSchema, '@context' | '@type'>
 ): OrganizationSchema {
@@ -215,8 +189,6 @@ interface PageJsonLdOptions {
   breadcrumb?: { name: string; url?: string }[]
   faq?: { question: string; answer: string }[]
   features?: string[]
-  howToName?: string
-  howToSteps?: { name: string; text: string }[]
 }
 
 export function usePageJsonLd(options: PageJsonLdOptions) {
@@ -264,10 +236,6 @@ export function usePageJsonLd(options: PageJsonLdOptions) {
 
   if (options.faq?.length) {
     schemas.push(buildFAQPage(options.faq))
-  }
-
-  if (options.howToSteps?.length) {
-    schemas.push(buildHowTo(options.howToName || options.name, options.howToSteps))
   }
 
   useJsonLd(schemas)

@@ -15,12 +15,6 @@ usePageJsonLd({
     t('f_3'),
     t('f_4')
   ],
-  howToName: t('how_to_use_title'),
-  howToSteps: [
-    { name: t('hiw_1_title'), text: t('hiw_1_desc') },
-    { name: t('hiw_2_title'), text: t('hiw_2_desc') },
-    { name: t('hiw_3_title'), text: t('hiw_3_desc') }
-  ],
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
     { question: t('faq_2_q'), answer: t('faq_2_a') },

@@ -12,12 +12,6 @@ usePageJsonLd({
     t('f_3'),
     t('f_4')
   ],
-  howToName: t('how_it_works_title'),
-  howToSteps: [
-    { name: t('hiw_1_title'), text: t('hiw_1_desc') },
-    { name: t('hiw_2_title'), text: t('hiw_2_desc') },
-    { name: t('hiw_3_title'), text: t('hiw_3_desc') }
-  ],
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
     { question: t('faq_2_q'), answer: t('faq_2_a') },
@@ -224,7 +218,7 @@ defineI18nRoute({
         m_title: "JavaScript Minifier Online - Minify & Compress JS for Free",
         title: "JavaScript Minifier",
         meta: "Free online JavaScript minifier. Paste your JS code and instantly compress it by removing whitespace, shortening variable names, and optimizing expressions.",
-        d1: "This online JavaScript minifier uses Terser to compress your code for production. It removes whitespace, comments, and dead code, shortens variable and function names, and simplifies expressions, all without changing how the code behaves.",
+        d1: "This online JavaScript optimizer uses Terser to compress your code for production. It removes whitespace, comments, and dead code, shortens variable and function names, and simplifies expressions, all without changing how the code behaves.",
         d2: "Smaller JavaScript bundles mean faster page loads, lower bandwidth costs, and better scores on Lighthouse and Core Web Vitals. Paste your source, click minify, and get production-ready output in seconds.",
         plc: "Paste the JavaScript code here or drag a file",
         bt: "Minify JavaScript",

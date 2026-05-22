@@ -74,13 +74,7 @@ usePageJsonLd({
   faq: [
     { question: t('faq1q'), answer: t('faq1a') },
     { question: t('faq2q'), answer: t('faq2a') }
-  ],
-  howToName: t('how_to_use_title'),
-  howToSteps: [
-    { name: t('step_1_title'), text: t('step_1_desc') },
-    { name: t('step_2_title'), text: t('step_2_desc') },
-    { name: t('step_3_title'), text: t('step_3_desc') },
-  ],
+  ]
 })
 
 useHead({
@@ -90,6 +84,7 @@ useHead({
 
 defineI18nRoute({
   paths: {
+    en: '/birthday-generator',
     pt: '/gerador-data-nascimento',
     es: '/generador-fecha-nacimiento',
     fr: '/generateur-date-naissance',
@@ -117,27 +112,13 @@ defineI18nRoute({
       <!-- Left Column: Controls -->
       <div class="space-y-5">
         <!-- Mode selector -->
-        <div>
-          <label class="label pb-1">
-            <span class="label-text font-bold text-base-content/80">{{ t('mode_label') }}</span>
-          </label>
-          <div class="flex flex-wrap gap-3">
-            <label 
-              class="flex items-center gap-2 cursor-pointer bg-base-200/50 px-4 py-2.5 rounded-xl border transition-all duration-200"
-              :class="state.tp === 'age' ? 'border-primary bg-primary/5 ring-1 ring-primary/20' : 'border-base-content/5 hover:bg-base-200'"
-            >
-              <input type="radio" value="age" v-model="state.tp" class="radio radio-primary radio-sm" />
-              <span class="text-sm font-semibold" :class="state.tp === 'age' ? 'text-primary' : 'text-base-content/70'">{{ t('ages') }}</span>
-            </label>
-            <label 
-              class="flex items-center gap-2 cursor-pointer bg-base-200/50 px-4 py-2.5 rounded-xl border transition-all duration-200"
-              :class="state.tp === 'year' ? 'border-primary bg-primary/5 ring-1 ring-primary/20' : 'border-base-content/5 hover:bg-base-200'"
-            >
-              <input type="radio" value="year" v-model="state.tp" class="radio radio-primary radio-sm" />
-              <span class="text-sm font-semibold" :class="state.tp === 'year' ? 'text-primary' : 'text-base-content/70'">{{ t('years') }}</span>
-            </label>
-          </div>
-        </div>
+        <label class="form-control flex flex-col w-full">
+          <span class="label-text pb-1 font-bold text-base-content/80">{{ t('mode_label') }}</span>
+          <select v-model="state.tp" class="select select-bordered bg-base-100">
+            <option value="age">{{ t('ages') }}</option>
+            <option value="year">{{ t('years') }}</option>
+          </select>
+        </label>
 
         <!-- Inputs -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -174,7 +155,7 @@ defineI18nRoute({
         <!-- Generate button -->
         <ButtonPrimary
           @click="generate"
-          icon="heroicons:sparkles-20-solid"
+          icon="heroicons:calendar-days-20-solid"
           class="w-full h-14 text-lg"
         >
           {{ t('bt') }}
@@ -193,9 +174,8 @@ defineI18nRoute({
               :content="state.output" 
               :label="t('dt')" 
               class="!my-0 [&>div:last-child]:!w-full"
-            >
-              <span class="text-3xl sm:text-4xl font-mono font-bold tracking-tight text-primary">{{ state.output }}</span>
-            </LineCopy>
+            >{{ state.output }}
+          </LineCopy>
 
             <!-- Age Stats -->
             <div v-if="state.age" class="space-y-3">
@@ -350,7 +330,7 @@ defineI18nRoute({
     maxAge: "Idade Máxima",
     minYear: "Ano Inicial",
     maxYear: "Ano Final",
-    bt: "Gerar Data de Nascimento",
+    bt: "Gerar Data",
     dt: "Data de Nascimento",
     age: "Idade",
     years_label: "Anos",
@@ -405,7 +385,7 @@ defineI18nRoute({
     maxAge: "Edad Máxima",
     minYear: "Año Inicial",
     maxYear: "Año Final",
-    bt: "Generar Fecha de Nacimiento",
+    bt: "Generar Fecha",
     dt: "Fecha de Nacimiento",
     age: "Edad",
     years_label: "Años",
@@ -429,7 +409,7 @@ defineI18nRoute({
     step_1_title: "Elige el Modo",
     step_1_desc: "Selecciona 'Por rango de edad' para generar un cumpleaños para alguien de una edad determinada, o 'Por año de nacimiento' para limitar el resultado a un período específico.",
     step_2_title: "Define el Rango",
-    step_2_desc: "Introduce los valores mínimo y máximo —edades o años— para definir la ventana de la fecha aleatoria.",
+    step_2_desc: "Introduce los valores mínimo y máximo —edades o años— para definir el intervalo de las fechas aleatorias.",
     step_3_title: "Generar y Copiar",
     step_3_desc: "Haz clic en 'Generar Fecha de Nacimiento'. El resultado muestra la fecha y la edad exacta calculada. Usa el botón de copia para copiar la fecha generada.",
     ex_title: "Ejemplos Comunes",
@@ -460,7 +440,7 @@ defineI18nRoute({
     maxAge: "Âge Maximum",
     minYear: "Année de Début",
     maxYear: "Année de Fin",
-    bt: "Générer une Date de Naissance",
+    bt: "Générer une Date",
     dt: "Date de Naissance",
     age: "Âge",
     years_label: "Années",
@@ -515,7 +495,7 @@ defineI18nRoute({
     maxAge: "Età Massima",
     minYear: "Anno Iniziale",
     maxYear: "Anno Finale",
-    bt: "Genera Data di Nascita",
+    bt: "Genera Data",
     dt: "Data di Nascita",
     age: "Età",
     years_label: "Anni",
@@ -570,7 +550,7 @@ defineI18nRoute({
     maxAge: "Usia Maksimum",
     minYear: "Tahun Awal",
     maxYear: "Tahun Akhir",
-    bt: "Buat Tanggal Lahir",
+    bt: "Buat Tanggal",
     dt: "Tanggal Lahir",
     age: "Usia",
     years_label: "Tahun",
@@ -625,7 +605,7 @@ defineI18nRoute({
     maxAge: "Höchstalter",
     minYear: "Startjahr",
     maxYear: "Endjahr",
-    bt: "Geburtstag generieren",
+    bt: "Datum generieren",
     dt: "Geburtsdatum",
     age: "Alter",
     years_label: "Jahre",
@@ -680,7 +660,7 @@ defineI18nRoute({
     maxAge: "Maximumleeftijd",
     minYear: "Startjaar",
     maxYear: "Eindjaar",
-    bt: "Geboortedatum genereren",
+    bt: "Datum genereren",
     dt: "Geboortedatum",
     age: "Leeftijd",
     years_label: "Jaren",

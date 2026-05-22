@@ -18,7 +18,7 @@ usePageJsonLd({
       <h1 class="text-4xl font-extrabold mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
         Privacy &amp; Cookies Policy
       </h1>
-      <p class="text-sm opacity-50 mb-10">Last updated: May 5, 2026</p>
+      <p class="text-sm opacity-50 mb-10">Last updated: May 17, 2026</p>
 
       <div class="space-y-8 opacity-85 leading-relaxed">
 
@@ -35,7 +35,7 @@ usePageJsonLd({
         <section>
           <h2 class="text-lg font-bold mb-2 text-orange-300">2. Information We Collect</h2>
           <p>We do <strong>not</strong> require you to create an account or provide any personal information to use our tools.
-          The following information may be collected, but <strong>only after you provide explicit consent</strong> via our cookie banner:</p>
+          The following information may be collected through third-party services (Google Analytics and Google AdSense), subject to your consent preferences:</p>
           <ul class="list-disc list-inside mt-2 space-y-1 opacity-90">
             <li>Anonymized and truncated IP addresses (processed by Google Analytics).</li>
             <li>Browser type, device type, and operating system.</li>
@@ -44,6 +44,7 @@ usePageJsonLd({
           </ul>
           <p class="mt-2">
             This information is collected in aggregate form and cannot be used to personally identify you.
+            We do <strong>not</strong> store, collect, or sell any data you input into our tools.
           </p>
         </section>
 
@@ -51,12 +52,14 @@ usePageJsonLd({
           <h2 class="text-lg font-bold mb-2 text-orange-300">3. Cookies and Tracking Technologies</h2>
           <p>
             We use cookies and similar tracking technologies to analyze Site usage and serve relevant advertising.
-            When you first visit the Site, a cookie banner will ask for your preferences. <strong>Analytics and advertising cookies are only set after your explicit consent.</strong> You may accept all, decline all, or manage each category individually.
-            The types of cookies we use are:
+            This Site uses <strong>Google Consent Mode v2</strong>: all consent signals default to <em>denied</em> on your first visit.
+            Depending on your region, a consent notice (managed by Google's Privacy &amp; Messaging platform) will ask for your preferences.
+            Until you grant consent, analytics tracking is disabled and only non-personalized (limited) ads may be shown.
+            The types of cookies involved are:
           </p>
           <ul class="list-disc list-inside mt-2 space-y-1 opacity-90">
-            <li><strong>Analytics cookies</strong> — collect anonymous data about how visitors interact with the Site.</li>
-            <li><strong>Advertising cookies</strong> — used by our advertising partners to show relevant ads.</li>
+            <li><strong>Analytics cookies</strong> — collect anonymous data about how visitors interact with the Site (only active after consent).</li>
+            <li><strong>Advertising cookies</strong> — used by Google to serve personalized ads (only active after consent; non-personalized ads may be shown without consent).</li>
           </ul>
           <p class="mt-2">
             We do <strong>not</strong> use cookies to collect personally identifiable information, and we do not sell your data to third parties.
@@ -66,10 +69,10 @@ usePageJsonLd({
         <section>
           <h2 class="text-lg font-bold mb-2 text-orange-300">4. Google Analytics</h2>
           <p>
-            This Site uses <strong>Google Analytics</strong>, a web analytics service provided by Google LLC ("Google").
-            Google Analytics is only loaded after you explicitly consent to the <strong>Analytics</strong> category in our cookie banner.
-            It uses performance cookies to collect anonymized browsing data (including truncated IP addresses).
-            This data is used exclusively to analyze Site traffic, compile usage reports, and improve our services.
+            This Site uses <strong>Google Analytics 4 (GA4)</strong>, a web analytics service provided by Google LLC ("Google").
+            The GA4 script is loaded for all visitors, but operates under <strong>Google Consent Mode v2</strong> with <code>analytics_storage</code> set to <em>denied</em> by default.
+            Without your consent, no user-level tracking cookies are set and individual browsing data is not collected.
+            When you grant analytics consent, GA4 uses performance cookies to collect anonymized browsing data (including truncated IP addresses) to analyze Site traffic and improve our services.
             Your full IP address is never stored by Google on our behalf.
           </p>
           <p class="mt-2">For more information, please review:</p>
@@ -95,9 +98,10 @@ usePageJsonLd({
         <section>
           <h2 class="text-lg font-bold mb-2 text-orange-300">5. Advertising — Google AdSense &amp; DoubleClick DART Cookie</h2>
           <p>
-            We use <strong>Google AdSense</strong> to display advertisements on the Site. AdSense is only loaded after you explicitly consent to the <strong>Advertising</strong> category in our cookie banner.
-            If you decline, the AdSense script is never executed and no advertising cookies are set.
-            When AdSense is active, Google and its partners may use cookies to serve ads based on your visits to this Site and other sites on the Internet.
+            We use <strong>Google AdSense</strong> to display advertisements on the Site.
+            The AdSense script is loaded for all visitors and operates under <strong>Google Consent Mode v2</strong> with <code>ad_storage</code>, <code>ad_user_data</code>, and <code>ad_personalization</code> set to <em>denied</em> by default.
+            Without your consent, only <strong>non-personalized (limited) ads</strong> may be shown and no advertising cookies that identify you are set.
+            When you grant advertising consent, Google and its partners may use cookies to serve personalized ads based on your visits to this Site and other sites on the Internet.
           </p>
           <p class="mt-2">You can manage or opt out of personalized advertising at any time:</p>
           <ul class="list-disc list-inside mt-1 space-y-1">
@@ -137,7 +141,11 @@ usePageJsonLd({
             All interactive tools available on FreeTool.dev operate <strong>entirely within your browser</strong>.
             No input data — text, files, or any other content you paste or upload — is transmitted to our servers,
             stored, logged, or shared with any third party.
+            <strong>FreeTool.dev does not store, collect, or sell any data you input into our tools.</strong>
             Your data never leaves your device while using our tools.
+          </p>
+          <p class="mt-2">
+            The <strong>"Do Not Sell or Share My Personal Information"</strong> notice that may appear at the bottom of the page (shown to applicable residents under the CCPA and similar laws) refers exclusively to advertising and analytics data collected by Google — it has no relation to content you enter into our tools.
           </p>
         </section>
 

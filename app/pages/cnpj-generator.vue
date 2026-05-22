@@ -1,36 +1,75 @@
 <script setup lang="ts">
 const { t } = useI18n({ useScope: 'local' })
 
+// Charset used to draw random characters for the alphanumeric root.
+// The RFB recommends excluding I, O, Q and F (visual ambiguity with digits
+// and check-digit collisions), so these letters are never generated.
+const ALPHA_ROOT_CHARSET = '0123456789ABCDEGHJKLMNPRSTUVWXYZ'
+
 const state = reactive({
   cnpj: '',
   justNum: false,
   cnpjList: [] as string[],
   multipleCount: 5,
   showMultiple: false,
+  cnpjType: 'legacy' as 'legacy' | 'alphanumeric',
   ads: false
 })
 
 const random = (): number => Math.floor(Math.random() * 10)
 
-function formatCNPJ(digits: string, justNum: boolean): string {
-  if (justNum) return digits
-  return digits.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})$/, '$1.$2.$3/$4-$5')
+// Official CNPJ alphanumeric rule (IN RFB nº 2.229/2024, Serpro / Nota
+// Técnica Conjunta CNPJ Alfanumérico 2025.001): the value used in the
+// modulo-11 check-digit calculation is the character's ASCII code minus 48.
+// Digits 0–9 keep their value; letters map A=17, B=18, ... Z=42.
+function charValue(c: string): number {
+  return c.charCodeAt(0) - 48
 }
 
-function generateCNPJ(): string {
+function formatCNPJ(raw: string, justNum: boolean): string {
+  if (justNum) return raw
+  return `${raw.slice(0, 2)}.${raw.slice(2, 5)}.${raw.slice(5, 8)}/${raw.slice(8, 12)}-${raw.slice(12, 14)}`
+}
+
+function generateLegacyCNPJ(): string {
   const n1 = random(), n2 = random(), n3 = random(), n4 = random()
   const n5 = random(), n6 = random(), n7 = random(), n8 = random()
   const n9 = 0, n10 = 0, n11 = 0, n12 = 1
 
-  let d1 = n12 * 2 + n11 * 3 + n10 * 4 + n9 * 5 + n8 * 6 + n7 * 7 + n6 * 8 + n5 * 9 + n4 * 2 + n3 * 3 + n2 * 4 + n1 * 5
+  let d1 = n12*2 + n11*3 + n10*4 + n9*5 + n8*6 + n7*7 + n6*8 + n5*9 + n4*2 + n3*3 + n2*4 + n1*5
   d1 = 11 - (d1 % 11)
   if (d1 >= 10) d1 = 0
 
-  let d2 = d1 * 2 + n12 * 3 + n11 * 4 + n10 * 5 + n9 * 6 + n8 * 7 + n7 * 8 + n6 * 9 + n5 * 2 + n4 * 3 + n3 * 4 + n2 * 5 + n1 * 6
+  let d2 = d1*2 + n12*3 + n11*4 + n10*5 + n9*6 + n8*7 + n7*8 + n6*9 + n5*2 + n4*3 + n3*4 + n2*5 + n1*6
   d2 = 11 - (d2 % 11)
   if (d2 >= 10) d2 = 0
 
-  return formatCNPJ('' + n1 + n2 + n3 + n4 + n5 + n6 + n7 + n8 + n9 + n10 + n11 + n12 + d1 + d2, state.justNum)
+  return formatCNPJ('' + n1+n2+n3+n4+n5+n6+n7+n8+n9+n10+n11+n12+d1+d2, state.justNum)
+}
+
+function generateAlphanumericCNPJ(): string {
+  const raiz = Array.from(
+    { length: 8 },
+    () => ALPHA_ROOT_CHARSET.charAt(Math.floor(Math.random() * ALPHA_ROOT_CHARSET.length))
+  )
+  const filial = ['0', '0', '0', '1']
+  const all12 = [...raiz, ...filial]
+
+  const w1 = [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+  const sum1 = all12.reduce((acc, c, i) => acc + charValue(c) * w1[i]!, 0)
+  const r1 = sum1 % 11
+  const d1 = r1 < 2 ? 0 : 11 - r1
+
+  const w2 = [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+  const sum2 = all12.reduce((acc, c, i) => acc + charValue(c) * w2[i]!, 0) + d1 * 2
+  const r2 = sum2 % 11
+  const d2 = r2 < 2 ? 0 : 11 - r2
+
+  return formatCNPJ(all12.join('') + d1.toString() + d2.toString(), state.justNum)
+}
+
+function generateCNPJ(): string {
+  return state.cnpjType === 'alphanumeric' ? generateAlphanumericCNPJ() : generateLegacyCNPJ()
 }
 
 function generate(): void {
@@ -58,11 +97,14 @@ function copyAll(): void {
 
 watch(() => state.justNum, () => {
   if (state.cnpj) {
-    const numbers = state.cnpj.replace(/\D/g, '')
-    if (numbers.length === 14) state.cnpj = formatCNPJ(numbers, state.justNum)
+    const raw = state.cnpj.replace(/[.\-/]/g, '')
+    if (raw.length === 14) state.cnpj = formatCNPJ(raw, state.justNum)
   }
   if (state.cnpjList.length > 0) {
-    state.cnpjList = state.cnpjList.map(cnpj => formatCNPJ(cnpj.replace(/\D/g, ''), state.justNum))
+    state.cnpjList = state.cnpjList.map(cnpj => {
+      const raw = cnpj.replace(/[.\-/]/g, '')
+      return formatCNPJ(raw, state.justNum)
+    })
   }
 })
 
@@ -71,21 +113,27 @@ watch(() => state.showMultiple, () => {
   else state.cnpjList = []
 })
 
+watch(() => state.cnpjType, () => {
+  state.cnpj = ''
+  state.cnpjList = []
+  state.justNum = false
+})
+
+onMounted(() => {
+  generate()
+})
+
 usePageJsonLd({
   name: t('title'),
   description: t('meta'),
-  features: [t('f_1'), t('f_2'), t('f_3'), t('f_4')],
+  features: [t('f_1'), t('f_2'), t('f_3'), t('f_4'), t('f_5')],
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
     { question: t('faq_2_q'), answer: t('faq_2_a') },
     { question: t('faq_3_q'), answer: t('faq_3_a') },
-    { question: t('faq_4_q'), answer: t('faq_4_a') }
-  ],
-  howToName: t('how_to_use_title'),
-  howToSteps: [
-    { name: t('step_1_title'), text: t('step_1_desc') },
-    { name: t('step_2_title'), text: t('step_2_desc') },
-    { name: t('step_3_title'), text: t('step_3_desc') }
+    { question: t('faq_4_q'), answer: t('faq_4_a') },
+    { question: t('faq_5_q'), answer: t('faq_5_a') },
+    { question: t('faq_6_q'), answer: t('faq_6_a') }
   ]
 })
 
@@ -125,6 +173,24 @@ defineI18nRoute({
     <div class="grid lg:grid-cols-2 gap-8 mb-4">
       <!-- Left Column: Controls -->
       <div class="space-y-5">
+
+        <!-- Type selector -->
+        <div class="form-control">
+          <label class="label pb-1">
+            <span class="label-text font-bold text-base-content/80">{{ t('type_label') }}</span>
+          </label>
+          <div class="flex flex-col gap-2">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" v-model="state.cnpjType" value="legacy" class="radio radio-primary" />
+              <span class="font-medium">{{ t('type_legacy') }}</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" v-model="state.cnpjType" value="alphanumeric" class="radio radio-secondary" />
+              <span class="font-medium">{{ t('type_alpha') }}</span>
+            </label>
+          </div>
+        </div>
+
         <!-- Toggles -->
         <div class="flex flex-col gap-3">
           <label class="flex items-center gap-3 cursor-pointer">
@@ -159,7 +225,6 @@ defineI18nRoute({
         >
           {{ state.showMultiple ? t('bt_multiple') : t('bt') }}
         </ButtonPrimary>
-        <p class="text-sm text-base-content/50 italic px-1 text-center">{{ t('warning') }}</p>
       </div>
 
       <!-- Right Column: Result -->
@@ -171,18 +236,29 @@ defineI18nRoute({
           enter-to-class="transform scale-100 opacity-100"
         >
           <div v-if="state.cnpj && !state.cnpjList.length" class="space-y-2 w-full">
+            <div class="mb-2">
+              <span :class="['badge badge-sm', state.cnpjType === 'alphanumeric' ? 'badge-secondary' : 'badge-primary badge-outline']">
+                {{ state.cnpjType === 'alphanumeric' ? t('type_alpha_short') : t('type_legacy_short') }}
+              </span>
+            </div>
             <LineCopy
               :content="state.cnpj"
               :label="t('cnpj_label')"
               class="!my-0 [&>div:last-child]:!w-full"
             />
+            <p class="text-xs text-base-content/70 italic px-1 text-center mt-3">{{ t('warning') }}</p>
           </div>
         </Transition>
 
         <!-- Multiple CNPJs -->
         <div v-if="state.cnpjList.length > 0" class="w-full space-y-1">
           <div class="flex items-center justify-between mb-3">
-            <span class="text-sm font-semibold">{{ t('generated_cnpjs', { count: state.cnpjList.length }) }}</span>
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-semibold">{{ t('generated_cnpjs', { count: state.cnpjList.length }) }}</span>
+              <span :class="['badge badge-xs', state.cnpjType === 'alphanumeric' ? 'badge-secondary' : 'badge-primary badge-outline']">
+                {{ state.cnpjType === 'alphanumeric' ? t('type_alpha_short') : t('type_legacy_short') }}
+              </span>
+            </div>
             <button @click="copyAll" class="btn btn-ghost btn-sm gap-1.5">
               <Icon name="material-symbols:content-copy-outline" class="w-4 h-4" />
               {{ t('copy_all') }}
@@ -217,7 +293,7 @@ defineI18nRoute({
 
         <FeatureSection
           :title="t('features_title')"
-          :items="[ t('f_1'), t('f_2'), t('f_3'), t('f_4') ]"
+          :items="[t('f_1'), t('f_2'), t('f_3'), t('f_4'), t('f_5')]"
           icon="heroicons:check-badge-20-solid"
         />
 
@@ -229,6 +305,14 @@ defineI18nRoute({
           <p class="text-base-content/80 leading-relaxed">{{ t('how_desc') }}</p>
         </section>
 
+        <section>
+          <h2 class="text-2xl font-bold mb-3 flex items-center gap-2">
+            <Icon name="heroicons:arrows-right-left-20-solid" class="w-6 h-6 text-primary" />
+            {{ t('diff_title') }}
+          </h2>
+          <p class="text-base-content/80 leading-relaxed">{{ t('diff_desc') }}</p>
+        </section>
+
         <UseCaseSection
           :title="t('use_cases_title')"
           :description="t('use_cases_intro')"
@@ -237,7 +321,9 @@ defineI18nRoute({
             { title: t('use_2_t'), description: t('use_2_d') },
             { title: t('use_3_t'), description: t('use_3_d') },
             { title: t('use_4_t'), description: t('use_4_d') },
-            { title: t('use_5_t'), description: t('use_5_d') }
+            { title: t('use_5_t'), description: t('use_5_d') },
+            { title: t('use_6_t'), description: t('use_6_d') },
+            { title: t('use_7_t'), description: t('use_7_d') }
           ]"
         />
 
@@ -256,7 +342,9 @@ defineI18nRoute({
             { question: t('faq_1_q'), answer: t('faq_1_a') },
             { question: t('faq_2_q'), answer: t('faq_2_a') },
             { question: t('faq_3_q'), answer: t('faq_3_a') },
-            { question: t('faq_4_q'), answer: t('faq_4_a') }
+            { question: t('faq_4_q'), answer: t('faq_4_a') },
+            { question: t('faq_5_q'), answer: t('faq_5_a') },
+            { question: t('faq_6_q'), answer: t('faq_6_a') }
           ]"
         />
       </div>
@@ -267,10 +355,17 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   pt: {
-    pageTitle: "Gerador de CNPJ Válido e Aleatório para Testes — Grátis",
+    pageTitle: "Gerador de CNPJ — Legado e Alfanumérico (Novo Formato) | Grátis",
     title: "Gerador de CNPJ",
-    meta: "Gerador de CNPJ online grátis para testes de software. Gere um ou vários CNPJs válidos, em formato pontuado ou somente números, de forma simples e fácil.",
-    num: "Somente Números",
+    meta: "Gere CNPJ válido no formato legado (numérico) ou no novo formato alfanumérico, previsto para julho de 2026. Dígitos verificadores calculados pelo algoritmo oficial de módulo 11. Grátis, no navegador, sem cadastro.",
+
+    type_label: "Formato",
+    type_legacy: "Formato Numérico",
+    type_alpha: "Formato Alfanumérico (novo)",
+    type_legacy_short: "Numérico",
+    type_alpha_short: "Alfanumérico",
+
+    num: "Sem pontuação",
     multiple_label: "Gerar Múltiplos CNPJs",
     bt: "Gerar CNPJ",
     bt_multiple: "Gerar CNPJs",
@@ -280,52 +375,77 @@ defineI18nRoute({
     copy_all: "Copiar Todos",
     placeholder: "Clique em Gerar CNPJ para criar um número",
     warning: "Os números gerados são fictícios e destinados exclusivamente a testes.",
-    d1: "Ferramenta online gratuita para gerar CNPJ válido para desenvolvedores, testadores de software (QA) e estudantes de programação. Gere números fictícios de registro empresarial com dígitos verificadores matematicamente corretos, em formato pontuado ou somente números. Ideal para testes de sistemas, validação de formulários e ambientes de staging.",
+
+    d1: "Gerador de CNPJ online e gratuito para desenvolvedores, QAs e estudantes de programação. Suporta o formato legado — 14 dígitos numéricos com dígitos verificadores calculados por módulo 11 — e o novo CNPJ alfanumérico, com implantação prevista para julho de 2026, no qual as doze primeiras posições (raiz e ordem) podem conter letras de A a Z além de números. Os dois últimos caracteres, os dígitos verificadores, permanecem numéricos. Todos os CNPJs gerados são matematicamente válidos e passam em qualquer validação de formato ou regra de negócio. O processo roda inteiramente no navegador, sem cadastro e sem vínculo com empresas reais.",
+
     features_title: "Funcionalidades",
-    f_1: "Gere CNPJs válidos instantaneamente",
-    f_2: "Gere até 100 CNPJs únicos de uma vez",
-    f_3: "Formato pontuado ou somente números",
-    f_4: "Geração com dígitos verificadores matematicamente corretos",
-    how_title: "O que é CNPJ e Como Funciona o Algoritmo?",
-    how_desc: "O CNPJ (Cadastro Nacional da Pessoa Jurídica) é o número de registro nacional de empresas do Brasil. Este número único de 14 dígitos é obrigatório para qualquer pessoa jurídica — necessário para emitir notas fiscais, abrir contas bancárias empresariais e realizar atividades comerciais. A estrutura do CNPJ é composta por 12 dígitos base seguidos por 2 dígitos verificadores calculados por um algoritmo de soma ponderada com módulo-11 aplicado duas vezes.",
-    use_cases_title: "Principais Casos de Uso",
-    use_cases_intro: "Nosso gerador de CNPJ é a solução ideal para diversas situações do dia a dia de desenvolvedores e profissionais de tecnologia:",
-    use_1_t: "Validação de Formulários",
-    use_1_d: "Teste campos de CNPJ, máscaras e lógica de validação em cadastros de clientes.",
-    use_2_t: "Sistemas Fiscais",
-    use_2_d: "Valide fluxos de emissão de NF-e e integração com sistemas de faturamento.",
-    use_3_t: "Bancos de Dados",
-    use_3_d: "Preencha ambientes de staging e homologação com dados empresariais realistas.",
+    f_1: "Geração de CNPJ legado (numérico) e alfanumérico (novo formato)",
+    f_2: "Lotes de até 100 CNPJs únicos por vez",
+    f_3: "Saída com ou sem pontuação",
+    f_4: "Dígitos verificadores calculados pelo algoritmo oficial de módulo 11",
+    f_5: "Tabela comparativa e explicação completa do novo CNPJ alfanumérico",
+
+    how_title: "Como Funciona o Algoritmo do CNPJ — Legado e Alfanumérico",
+    how_desc: "No CNPJ legado, os 14 dígitos se dividem em raiz (8 dígitos), ordem (4 dígitos — 0001 para a matriz) e verificadores (2 dígitos). Os verificadores são calculados por soma ponderada com módulo 11 aplicado duas vezes: cada caractere é multiplicado por um peso, os resultados são somados e divididos por 11, e o resto define o verificador (0 se o resto for menor que 2, caso contrário 11 menos o resto). No CNPJ alfanumérico o procedimento é o mesmo, mas as doze primeiras posições (raiz e ordem) podem conter letras de A a Z. Para o cálculo, cada caractere recebe o valor da tabela ASCII menos 48: os números de 0 a 9 mantêm seu valor e as letras assumem A=17, B=18, C=19 e assim por diante até Z=42. Os dígitos verificadores resultantes são sempre numéricos (0–9). A Receita Federal recomenda não utilizar as letras I, O, Q e F, por gerarem confusão visual com números e colisões no cálculo do verificador; este gerador já as exclui.",
+
+    diff_title: "CNPJ Legado vs. CNPJ Alfanumérico — Qual a Diferença?",
+    diff_desc: "O CNPJ brasileiro passou por uma atualização estrutural. O formato legado utiliza apenas dígitos nos seus 14 caracteres, e o modelo numérico está próximo do seu limite de registros. O novo formato alfanumérico, com implantação prevista para julho de 2026, mantém os 14 caracteres, mas as doze primeiras posições (raiz e ordem) passam a aceitar letras de A a Z além dos dígitos, ampliando de forma significativa a capacidade de novos registros. Apenas os dois dígitos verificadores permanecem numéricos, e o cálculo por módulo 11 não muda — o que simplifica a adaptação dos sistemas existentes.",
+    use_cases_title: "Casos de Uso",
+    use_cases_intro: "As aplicações práticas mais comuns do gerador de CNPJ no fluxo de trabalho de desenvolvimento e QA são:",
+    use_1_t: "Validação de Formulários e UI",
+    use_1_d: "Teste campos de CNPJ, máscaras e lógica de validação em cadastros. Com o novo formato alfanumérico disponível, valide se a UI aceita corretamente letras nas primeiras posições.",
+    use_2_t: "Sistemas Fiscais e NF-e",
+    use_2_d: "Valide fluxos de emissão de nota fiscal eletrônica e integrações com sistemas de faturamento, testando tanto CNPJs legados quanto alfanuméricos.",
+    use_3_t: "Bancos de Dados e Ambientes de Staging",
+    use_3_d: "Preencha ambientes de staging e homologação com dados empresariais realistas, sem expor informações de empresas reais.",
     use_4_t: "Integração de APIs",
-    use_4_d: "Realize testes de integração com serviços externos que validam o formato do CNPJ.",
-    use_5_t: "UX Design & Demos",
-    use_5_d: "Crie personas empresariais para demonstrações sem expor dados reais.",
-    how_to_use_title: "Como Utilizar Esta Ferramenta",
-    step_1_title: "Gerar um CNPJ",
-    step_1_desc: "Escolha o formato desejado e clique em \"Gerar CNPJ\". O número gerado pode ser copiado com um clique.",
-    step_2_title: "Gerar múltiplos CNPJs",
-    step_2_desc: "Ative \"Gerar Múltiplos CNPJs\", defina a quantidade (2 a 100) e clique em \"Gerar CNPJs\". Use \"Copiar Todos\" para copiar a lista completa.",
-    step_3_title: "Com ou sem pontuação",
-    step_3_desc: "Ative \"Somente Números\" para obter o CNPJ sem pontos, barra e traço — ideal para integrações e bancos de dados.",
+    use_4_d: "Realize testes de integração com serviços externos que validam o formato do CNPJ, verificando se ambos os formatos legado e alfanumérico são aceitos corretamente.",
+    use_5_t: "UX Design e Demos",
+    use_5_d: "Crie personas empresariais para protótipos no Figma, Adobe XD ou apresentações para clientes sem expor dados reais de empresas.",
+    use_6_t: "Migração para o CNPJ Alfanumérico",
+    use_6_d: "Gere CNPJs alfanuméricos para testar se sistemas legados foram corretamente atualizados: campos de formulário que aceitam letras, colunas de banco com tipo e comprimento corretos, validações de API e regras de negócio.",
+    use_7_t: "Testes de Compatibilidade entre Formatos",
+    use_7_d: "Gere lotes com ambos os tipos para garantir que relatórios, integrações e regras de negócio tratem os dois formatos de forma consistente durante o período de coexistência.",
+
+    how_to_use_title: "Como Usar",
+    step_1_title: "Escolher o formato",
+    step_1_desc: "Selecione entre CNPJ Legado (numérico, 14 dígitos) ou CNPJ Alfanumérico (novo formato com letras nas primeiras posições). Ao abrir a página, um CNPJ legado já é gerado automaticamente.",
+    step_2_title: "Gerar um ou vários",
+    step_2_desc: "Clique em \"Gerar CNPJ\" para um número único, pronto para copiar com um clique. Para lotes, ative \"Gerar Múltiplos CNPJs\", defina a quantidade (2 a 100) e use \"Copiar Todos\".",
+    step_3_title: "Escolher o formato de saída",
+    step_3_desc: "Ative \"Sem pontuação\" para remover pontos, barra e traço — ideal para banco de dados, JSON e APIs.",
+
     faq_title: "Perguntas e Respostas",
     faq_1_q: "O CNPJ gerado é real?",
-    faq_1_a: "Não. Os CNPJs gerados são fictícios e não estão cadastrados. Eles passam na validação matemática dos dígitos verificadores, mas não têm validade legal. Use exclusivamente para testes de software e desenvolvimento.",
+    faq_1_a: "Não. Os CNPJs gerados são fictícios e não estão cadastrados na Receita Federal. Eles passam na validação matemática dos dígitos verificadores, mas não têm validade legal. Use exclusivamente para testes de software e desenvolvimento.",
     faq_2_q: "É legal usar este gerador de CNPJ?",
     faq_2_a: "Sim, para testes de software, fins educacionais e demonstrações técnicas. Usar CNPJs fictícios ou de terceiros para cadastros oficiais, fraudes ou obtenção de benefícios indevidos é crime de falsidade ideológica (Art. 299 do Código Penal Brasileiro).",
-    faq_3_q: "Como funciona a validação do CNPJ?",
-    faq_3_a: "O CNPJ possui 2 dígitos verificadores calculados a partir dos 12 primeiros dígitos usando soma ponderada com módulo-11 aplicado duas vezes. Nosso gerador cria números que passam nessa validação, tornando-os adequados para testes de sistemas.",
-    faq_4_q: "Posso gerar vários CNPJs de uma vez?",
-    faq_4_a: "Sim! Gere até 100 CNPJs únicos de uma vez. Perfeito para testes em lote, automação de QA e preenchimento de bases de dados de teste.",
+    faq_3_q: "O que é o CNPJ alfanumérico e o que mudou?",
+    faq_3_a: "O CNPJ alfanumérico é o novo formato do cadastro empresarial brasileiro, com implantação prevista para julho de 2026. As doze primeiras posições do número (a raiz, de 8 caracteres, e a ordem, de 4) passam a aceitar letras de A a Z além dos dígitos de 0 a 9. Os dois dígitos verificadores continuam numéricos, e o algoritmo de validação por módulo 11 permanece o mesmo — apenas os valores das letras passam a ser obtidos pela tabela ASCII menos 48 (A=17 até Z=42).",
+    faq_4_q: "A partir de quando vale o novo CNPJ?",
+    faq_4_a: "O novo CNPJ alfanumérico tem implantação prevista para julho de 2026. A Receita Federal adotará uma transição gradual: os CNPJs legados (numéricos) já emitidos continuarão válidos indefinidamente, e os novos registros passarão a receber o formato alfanumérico à medida que o estoque numérico se esgotar. Na prática, sistemas que processam CNPJs precisam estar preparados para validar e armazenar os dois formatos.",
+    faq_5_q: "Os CNPJs legados continuam válidos após a mudança?",
+    faq_5_a: "Sim. Todos os CNPJs emitidos no formato numérico legado continuam plenamente válidos e não precisam ser substituídos. A adoção do formato alfanumérico é aditiva: os novos registros passarão a usar o novo formato, mas empresas com CNPJ legado não precisam migrar. Para desenvolvedores, isso significa que os sistemas devem aceitar e validar os dois formatos simultaneamente.",
+    faq_6_q: "Como funciona o algoritmo de validação do CNPJ?",
+    faq_6_a: "O CNPJ tem 2 dígitos verificadores calculados a partir dos 12 primeiros caracteres (raiz + ordem) por soma ponderada com módulo 11 aplicado duas vezes. Os pesos do primeiro cálculo são 5,4,3,2,9,8,7,6,5,4,3,2 e os do segundo 6,5,4,3,2,9,8,7,6,5,4,3,2. No formato alfanumérico, cada caractere é convertido pelo valor da tabela ASCII menos 48 antes do cálculo: os dígitos de 0 a 9 mantêm seu valor e as letras vão de A=17 a Z=42. Se o resto da divisão for menor que 2, o verificador é 0; caso contrário, é 11 menos o resto. A Receita Federal recomenda não utilizar as letras I, O, Q e F.",
+
     see1: "Gerador de CPF",
     see2: "Letras Diferentes",
     see3: "Gerador de Cartão de Crédito",
     see4: "Gerador de Data de Nascimento"
   },
   en: {
-    pageTitle: "Brazilian CNPJ Generator — Fake & Valid for Testing",
+    pageTitle: "Brazilian CNPJ Generator — Legacy & Alphanumeric New Format | Free",
     title: "CNPJ Generator",
-    meta: "Free online CNPJ generator for software testing. Generate one or multiple valid CNPJs, formatted or numbers-only, quickly and easily.",
-    num: "Numbers Only",
+    meta: "Generate valid Brazilian CNPJ in legacy (numeric) or the new alphanumeric format, planned for July 2026. Check digits calculated by the official modulo 11 algorithm. Free, in-browser, no sign-up.",
+
+    type_label: "Format",
+    type_legacy: "Numeric Format",
+    type_alpha: "Alphanumeric Format (new)",
+    type_legacy_short: "Numérico",
+    type_alpha_short: "Alphanumeric",
+
+    num: "No punctuation",
     multiple_label: "Generate Multiple CNPJs",
     bt: "Generate CNPJ",
     bt_multiple: "Generate CNPJs",
@@ -335,52 +455,78 @@ defineI18nRoute({
     copy_all: "Copy All",
     placeholder: "Click Generate CNPJ to create a number",
     warning: "The generated numbers are fictitious and intended exclusively for testing purposes.",
-    d1: "Free online tool to generate valid CNPJ numbers for developers, software testers (QA), and programming students. Generate fictitious Brazilian company registration numbers with mathematically correct check digits, in formatted or numbers-only format. Ideal for system testing, form validation, and staging environments.",
+
+    d1: "Free online CNPJ generator for developers, QA engineers, and programming students. Supports both the legacy format — 14 numeric digits with check digits calculated by modulo 11 — and the new alphanumeric CNPJ, planned for July 2026, in which the first twelve positions (base and branch) can contain letters A–Z in addition to digits. The last two characters, the check digits, remain numeric. All generated CNPJs are mathematically valid and pass any format validation or business rule. The process runs entirely in the browser, with no sign-up and no connection to real companies.",
+
     features_title: "Features",
-    f_1: "Generate valid CNPJs instantly",
-    f_2: "Generate up to 100 unique CNPJs at once",
-    f_3: "Formatted or numbers-only format",
-    f_4: "Generation with mathematically correct check digits",
-    how_title: "What is CNPJ and How Does the Algorithm Work?",
-    how_desc: "The CNPJ (Cadastro Nacional da Pessoa Jurídica) is Brazil's national company registration number. This unique 14-digit number is mandatory for any legal entity — required for issuing invoices, opening business bank accounts, and conducting official commercial activities. The CNPJ structure consists of 12 base digits followed by 2 check digits calculated using a weighted sum algorithm with modulo-11 applied twice.",
-    use_cases_title: "Main Use Cases",
-    use_cases_intro: "Our CNPJ generator is the ideal solution for various everyday situations for developers and technology professionals:",
-    use_1_t: "Form Validation",
-    use_1_d: "Test CNPJ fields, masks, and validation logic in registration forms.",
-    use_2_t: "Tax Systems",
-    use_2_d: "Validate NF-e issuance flows and integration with billing systems.",
-    use_3_t: "Databases",
-    use_3_d: "Fill staging and testing environments with realistic company data.",
+    f_1: "Legacy (numeric) and alphanumeric (new format) CNPJ generation",
+    f_2: "Batches of up to 100 unique CNPJs at once",
+    f_3: "Output with or without punctuation",
+    f_4: "Check digits calculated via the official modulo 11 algorithm",
+    f_5: "Comparison table and full explanation of the new alphanumeric CNPJ",
+
+    how_title: "How the CNPJ Algorithm Works — Legacy and Alphanumeric",
+    how_desc: "In the legacy CNPJ, the 14 digits are split into base (8 digits), branch (4 digits — 0001 for headquarters), and check digits (2 digits). The check digits are calculated by weighted sum with modulo 11 applied twice: each character is multiplied by a specific weight, the results are summed, divided by 11, and the remainder determines the check digit (0 if the remainder is less than 2, otherwise 11 minus the remainder). The alphanumeric CNPJ follows the same procedure, but the first twelve positions (base and branch) can include letters A–Z. For the calculation, each character receives its ASCII table value minus 48: digits from 0 to 9 keep their value, and letters become A=17, B=18, C=19, and so on through Z=42. The resulting check digits are always numeric (0–9). The Receita Federal recommends avoiding the letters I, O, Q, and F because they can cause visual confusion with numbers and collisions in the check-digit calculation; this generator already excludes them.",
+
+    diff_title: "Legacy CNPJ vs. Alphanumeric CNPJ — What's the Difference?",
+    diff_desc: "The Brazilian CNPJ has undergone a structural update. The legacy format uses only digits across its 14 characters, and the numeric model is close to its registration limit. The new alphanumeric format, planned for July 2026, keeps the 14 characters, but the first twelve positions (base and branch) will accept letters A–Z in addition to digits, significantly expanding capacity for new registrations. Only the two check digits remain numeric, and the modulo 11 calculation does not change — simplifying the adaptation of existing systems.",
+
+    use_cases_title: "Use Cases",
+    use_cases_intro: "The most common practical applications of the CNPJ generator in development and QA workflows are:",
+    use_1_t: "Form and UI Validation",
+    use_1_d: "Test CNPJ fields, masks, and validation logic in registration forms. With the new alphanumeric format available, verify whether the UI correctly accepts letters in the first positions.",
+    use_2_t: "Tax Systems and NF-e",
+    use_2_d: "Validate invoice issuance flows and billing system integrations, testing both legacy and alphanumeric CNPJs.",
+    use_3_t: "Databases and Staging Environments",
+    use_3_d: "Fill staging and testing environments with realistic company data without exposing real company information.",
     use_4_t: "API Integration",
-    use_4_d: "Perform integration tests with external services that validate CNPJ format.",
-    use_5_t: "UX Design & Demos",
-    use_5_d: "Create business personas for demonstrations without exposing real data.",
-    how_to_use_title: "How to Use This Tool",
-    step_1_title: "Generate a CNPJ",
-    step_1_desc: "Choose the desired format and click \"Generate CNPJ\". The generated number can be copied with one click.",
-    step_2_title: "Generate multiple CNPJs",
-    step_2_desc: "Enable \"Generate Multiple CNPJs\", set the quantity (2 to 100) and click \"Generate CNPJs\". Use \"Copy All\" to copy the full list.",
-    step_3_title: "With or without punctuation",
-    step_3_desc: "Enable \"Numbers Only\" to get the CNPJ without dots, slash, and dash — ideal for integrations and databases.",
+    use_4_d: "Run integration tests with external services that validate CNPJ format, checking whether both legacy and alphanumeric formats are accepted.",
+    use_5_t: "UX Design and Demos",
+    use_5_d: "Create business personas for Figma, Adobe XD prototypes, or client presentations without exposing real company data.",
+    use_6_t: "Migration to Alphanumeric CNPJ",
+    use_6_d: "Generate alphanumeric CNPJs to test whether legacy systems have been correctly updated: form fields accepting letters, database columns with correct type and length, API validations, and business rules.",
+    use_7_t: "Cross-Format Compatibility Testing",
+    use_7_d: "Generate batches of both types to ensure reports, integrations, and business rules handle both formats consistently during the coexistence period.",
+
+    how_to_use_title: "How to Use",
+    step_1_title: "Choose the format",
+    step_1_desc: "Select Legacy CNPJ (numeric, 14 digits) or Alphanumeric CNPJ (new format with letters in the first positions). When you open the page, a legacy CNPJ is already generated automatically.",
+    step_2_title: "Generate one or several",
+    step_2_desc: "Click \"Generate CNPJ\" for a single number, ready to copy with one click. For batches, enable \"Generate Multiple CNPJs\", set the quantity (2 to 100), and use \"Copy All\".",
+    step_3_title: "Choose the output format",
+    step_3_desc: "Enable \"No punctuation\" to remove dots, slash, and dash — ideal for databases, JSON, and APIs.",
+
     faq_title: "Questions & Answers",
     faq_1_q: "Is the generated CNPJ real?",
-    faq_1_a: "No. The generated CNPJs are fictitious and not registered. They pass the mathematical check digit validation, but have no legal validity. Use exclusively for software testing and development.",
+    faq_1_a: "No. The generated CNPJs are fictitious and not registered with the Receita Federal. They pass mathematical check digit validation, but have no legal validity. Use exclusively for software testing and development.",
     faq_2_q: "Is it legal to use this CNPJ generator?",
     faq_2_a: "Yes, for software testing, educational purposes, and technical demonstrations. Using fictitious or third-party CNPJs for official registrations, fraud, or obtaining undue benefits is a crime under the Brazilian Penal Code (Art. 299).",
-    faq_3_q: "How does CNPJ validation work?",
-    faq_3_a: "The CNPJ has 2 check digits calculated from the first 12 digits using a weighted sum with modulo-11 applied twice. Our generator creates numbers that pass this validation, making them suitable for system testing.",
-    faq_4_q: "Can I generate multiple CNPJs at once?",
-    faq_4_a: "Yes! Generate up to 100 unique CNPJs at once. Perfect for batch testing, QA automation, and filling test databases.",
+    faq_3_q: "What is the alphanumeric CNPJ and what changed?",
+    faq_3_a: "The alphanumeric CNPJ is the new format for the Brazilian company registry, planned for July 2026. The first twelve positions of the number (the 8-character base and the 4-character branch) will accept letters A–Z in addition to digits 0–9. The two check digits remain numeric, and the modulo 11 validation algorithm stays the same — only letter values are obtained from the ASCII table minus 48 (A=17 through Z=42).",
+    faq_4_q: "From when is the new CNPJ valid?",
+    faq_4_a: "The new alphanumeric CNPJ is planned for July 2026. The Receita Federal will adopt a gradual transition: legacy (numeric) CNPJs already issued will remain valid indefinitely, and new company registrations will start receiving the alphanumeric format as the numeric stock is exhausted. In practice, systems processing CNPJs need to be prepared to validate and store both formats.",
+    faq_5_q: "Do legacy CNPJs remain valid after the change?",
+    faq_5_a: "Yes, all CNPJs issued in the legacy numeric format remain fully valid and do not need to be replaced. The shift to the alphanumeric format is additive: new registrations use the new format, but companies with a legacy CNPJ do not need to migrate. For developers, this means systems must accept and validate both formats simultaneously.",
+    faq_6_q: "How does the CNPJ validation algorithm work?",
+    faq_6_a: "The CNPJ has 2 check digits calculated from the first 12 characters (base + branch) using weighted sum with modulo 11 applied twice. The weights for the first calculation are 5,4,3,2,9,8,7,6,5,4,3,2 and for the second 6,5,4,3,2,9,8,7,6,5,4,3,2. For alphanumeric CNPJs, letters are converted using their ASCII code minus 48 (A=17 through Z=42) before the same calculation. If the remainder is less than 2, the check digit is 0; otherwise it is 11 minus the remainder. The Receita Federal recommends avoiding the letters I, O, Q, and F.",
+
     see1: "CPF Generator",
     see2: "Fancy Letters",
     see3: "Credit Card Generator",
     see4: "Birthday Generator"
   },
   es: {
-    pageTitle: "Generador de CNPJ Válido para Pruebas — Gratis",
+    pageTitle: "Generador de CNPJ Brasileño — Legado y Alfanumérico (Nuevo Formato) | Gratis",
     title: "Generador de CNPJ Brasileño",
-    meta: "Generador de CNPJ online gratuito para pruebas de software. Genera uno o varios CNPJs válidos, con puntuación o solo números, de forma sencilla y rápida.",
-    num: "Solo Números",
+    meta: "Genera CNPJ válido en formato legado (numérico) o en el nuevo formato alfanumérico, previsto para julio de 2026. Dígitos verificadores calculados por el algoritmo oficial. Gratis, sin registro.",
+
+    type_label: "Formato",
+    type_legacy: "Formato Numérico",
+    type_alpha: "Formato Alfanumérico (nuevo)",
+    type_legacy_short: "Numérico",
+    type_alpha_short: "Alfanumérico",
+
+    num: "Sin puntuación",
     multiple_label: "Generar Múltiples CNPJs",
     bt: "Generar CNPJ",
     bt_multiple: "Generar CNPJs",
@@ -390,217 +536,321 @@ defineI18nRoute({
     copy_all: "Copiar Todos",
     placeholder: "Haz clic en Generar CNPJ para crear un número",
     warning: "Los números generados son ficticios y están destinados exclusivamente a pruebas.",
-    d1: "Herramienta online gratuita para generar CNPJ válido para desarrolladores, testers de software (QA) y estudiantes de programación. Genera números ficticios de registro empresarial brasileño con dígitos verificadores matemáticamente correctos, en formato con puntuación o solo números. Ideal para pruebas de sistemas, validación de formularios y entornos de staging.",
+
+    d1: "Generador de CNPJ online y gratuito para desarrolladores, QA y estudiantes de programación. Soporta el formato legado — 14 dígitos numéricos con dígitos verificadores calculados por módulo 11 — y el nuevo CNPJ alfanumérico, previsto para julio de 2026. Todos los CNPJs generados son matemáticamente válidos. El proceso corre en el navegador, sin registro y sin vínculo con empresas reales.",
+
     features_title: "Funcionalidades",
-    f_1: "Genera CNPJs válidos al instante",
-    f_2: "Genera hasta 100 CNPJs únicos a la vez",
-    f_3: "Formato con puntuación o solo números",
-    f_4: "Generación con dígitos verificadores matemáticamente correctos",
-    how_title: "¿Qué es el CNPJ y cómo funciona el algoritmo?",
-    how_desc: "El CNPJ (Cadastro Nacional da Pessoa Jurídica) es el número de registro nacional de empresas de Brasil. Este número único de 14 dígitos es obligatorio para cualquier persona jurídica — necesario para emitir facturas, abrir cuentas bancarias empresariales y realizar actividades comerciales. La estructura del CNPJ se compone de 12 dígitos base seguidos de 2 dígitos verificadores calculados mediante un algoritmo de suma ponderada con módulo-11 aplicado dos veces.",
-    use_cases_title: "Principales Casos de Uso",
-    use_cases_intro: "Nuestro generador de CNPJ es la solución ideal para diversas situaciones cotidianas de desarrolladores y profesionales de tecnología:",
-    use_1_t: "Validación de Formularios",
-    use_1_d: "Pruebe campos de CNPJ, máscaras y lógica de validación en registros de clientes.",
-    use_2_t: "Sistemas Fiscales",
-    use_2_d: "Valide flujos de emisión de facturas e integración con sistemas de facturación.",
-    use_3_t: "Bases de Datos",
-    use_3_d: "Llene entornos de staging y pruebas con datos empresariales realistas.",
+    f_1: "Generación de CNPJ legado (numérico) y alfanumérico (nuevo formato)",
+    f_2: "Lotes de hasta 100 CNPJs únicos a la vez",
+    f_3: "Salida con o sin puntuación",
+    f_4: "Dígitos verificadores calculados por el algoritmo oficial de módulo 11",
+    f_5: "Tabla comparativa y explicación del nuevo CNPJ alfanumérico",
+
+    how_title: "Cómo Funciona el Algoritmo del CNPJ — Legado y Alfanumérico",
+    how_desc: "En el CNPJ legado, los 14 dígitos se dividen en raíz (8 dígitos), filial (4 dígitos — 0001 para la matriz) y verificadores (2 dígitos). Los verificadores se calculan por suma ponderada con módulo 11 aplicado dos veces: cada carácter se multiplica por un peso específico, se suman los resultados, se dividen por 11 y el resto determina el verificador (0 si el resto es menor que 2, de lo contrario 11 menos el resto). En el CNPJ alfanumérico el procedimiento es idéntico, pero los doce primeros caracteres (raíz y filial) pueden incluir letras de A a Z — el valor de cada letra es su código ASCII menos 48 (A=17, B=18… Z=42). Los dígitos verificadores resultantes siempre son numéricos (0–9). La Receita Federal recomienda evitar las letras I, O, Q y F para evitar confusión visual y colisiones en el cálculo; este generador ya las excluye.",
+    
+    diff_title: "CNPJ Legado vs. CNPJ Alfanumérico — ¿Cuál es la Diferencia?",
+    diff_desc: "El CNPJ brasileño pasó por una actualización estructural significativa. El formato legado usa exclusivamente dígitos en sus 14 caracteres, con capacidad de aproximadamente 100 millones de bases únicas. El nuevo formato alfanumérico, previsto para julio de 2026, mantiene los 14 caracteres pero los doce primeros (raíz y filial) pasarán a aceptar letras de A a Z además de dígitos, ampliando significativamente la capacidad. Solo los dos dígitos verificadores permanecen numéricos, y el algoritmo de módulo 11 no cambia.",
+
+    use_cases_title: "Casos de Uso",
+    use_cases_intro: "Las aplicaciones prácticas más comunes del generador de CNPJ en el flujo de trabajo de desarrollo y QA son:",
+    use_1_t: "Validación de Formularios y UI",
+    use_1_d: "Prueba campos de CNPJ, máscaras y lógica de validación. Con el formato alfanumérico disponible, verifica si la UI acepta correctamente letras en los primeros caracteres.",
+    use_2_t: "Sistemas Fiscales y NF-e",
+    use_2_d: "Valida flujos de emisión de facturas e integraciones con sistemas de facturación, probando tanto CNPJs legados como alfanuméricos.",
+    use_3_t: "Bases de Datos y Entornos de Staging",
+    use_3_d: "Llena entornos de staging y pruebas con datos empresariales realistas sin exponer información de empresas reales.",
     use_4_t: "Integración de APIs",
-    use_4_d: "Realice pruebas de integración con servicios externos que validan el formato del CNPJ.",
-    use_5_t: "Diseño UX y Demos",
-    use_5_d: "Cree personas empresariales para demostraciones sin exponer datos reales.",
-    how_to_use_title: "Cómo Utilizar Esta Herramienta",
-    step_1_title: "Generar un CNPJ",
-    step_1_desc: "Elige el formato deseado y haz clic en \"Generar CNPJ\". El número generado puede copiarse con un clic.",
-    step_2_title: "Generar múltiples CNPJs",
-    step_2_desc: "Activa \"Generar Múltiples CNPJs\", define la cantidad (2 a 100) y haz clic en \"Generar CNPJs\". Usa \"Copiar Todos\" para copiar la lista completa.",
-    step_3_title: "Con o sin puntuación",
-    step_3_desc: "Activa \"Solo Números\" para obtener el CNPJ sin puntos, barra ni guión — ideal para integraciones y bases de datos.",
+    use_4_d: "Realiza pruebas de integración con servicios externos que validan el formato del CNPJ, verificando si ambos formatos son aceptados.",
+    use_5_t: "UX Design y Demos",
+    use_5_d: "Crea personas empresariales para prototipos y presentaciones para clientes sin exponer datos reales.",
+    use_6_t: "Migración al CNPJ Alfanumérico",
+    use_6_d: "Genera CNPJs alfanuméricos para probar si los sistemas legados fueron correctamente actualizados: campos que aceptan letras, columnas de base de datos con tipo y longitud correctos.",
+    use_7_t: "Pruebas de Compatibilidad entre Formatos",
+    use_7_d: "Genera lotes de ambos tipos para garantizar que informes, integraciones y reglas de negocio traten los dos formatos de forma consistente.",
+
+    how_to_use_title: "Cómo Usar",
+    step_1_title: "Elegir el formato",
+    step_1_desc: "Selecciona entre CNPJ Legado (numérico) o CNPJ Alfanumérico (nuevo formato con letras en las primeras posiciones). Al abrir la página, un CNPJ legado ya se genera automáticamente.",
+    step_2_title: "Generar uno o varios",
+    step_2_desc: "Haz clic en \"Generar CNPJ\" para un número único. Para lotes, activa \"Generar Múltiples CNPJs\", define la cantidad (2 a 100) y usa \"Copiar Todos\".",
+    step_3_title: "Elegir el formato de salida",
+    step_3_desc: "Activa \"Sin puntuación\" para eliminar puntos, barra y guión — ideal para bases de datos, JSON y APIs.",
+
     faq_title: "Preguntas y Respuestas",
     faq_1_q: "¿El CNPJ generado es real?",
-    faq_1_a: "No. Los CNPJs generados son ficticios y no están registrados. Pasan la validación matemática de los dígitos verificadores, pero no tienen validez legal. Úsalos exclusivamente para pruebas de software y desarrollo.",
+    faq_1_a: "No. Los CNPJs generados son ficticios y no están registrados. Pasan la validación matemática de dígitos verificadores, pero no tienen validez legal. Úsalos exclusivamente para pruebas de software y desarrollo.",
     faq_2_q: "¿Es legal usar este generador de CNPJ?",
-    faq_2_a: "Sí, para pruebas de software, fines educativos y demostraciones técnicas. Usar CNPJs ficticios o de terceros para registros oficiales, fraudes u obtención de beneficios indebidos es un delito según el Código Penal Brasileño (Art. 299).",
-    faq_3_q: "¿Cómo funciona la validación del CNPJ?",
-    faq_3_a: "El CNPJ tiene 2 dígitos verificadores calculados a partir de los 12 primeros dígitos usando suma ponderada con módulo-11 aplicado dos veces. Nuestro generador crea números que pasan esta validación, haciéndolos adecuados para pruebas.",
-    faq_4_q: "¿Puedo generar varios CNPJs a la vez?",
-    faq_4_a: "¡Sí! Genera hasta 100 CNPJs únicos a la vez. Perfecto para pruebas en lote, automatización de QA y relleno de bases de datos de prueba.",
+    faq_2_a: "Sí, para pruebas de software, fines educativos y demostraciones técnicas. Usar CNPJs ficticios o de terceros para registros oficiales o fraudes es un delito según el Código Penal Brasileño (Art. 299).",
+    faq_3_q: "¿Qué es el CNPJ alfanumérico y qué cambió?",
+    faq_3_a: "El CNPJ alfanumérico es el nuevo formato del registro empresarial brasileño, previsto para julio de 2026. Los doce primeros caracteres (raíz y filial) pasarán a aceptar letras de A a Z además de dígitos 0 a 9. Solo los dos dígitos verificadores permanecen numéricos, y el algoritmo de módulo 11 no cambia.",
+    faq_4_q: "¿A partir de cuándo vale el nuevo CNPJ?",
+    faq_4_a: "El nuevo CNPJ alfanumérico está previsto para julio de 2026. Los CNPJs legados ya emitidos seguirán siendo válidos indefinidamente. Los sistemas deberán estar preparados para validar y almacenar ambos formatos.",
+    faq_5_q: "¿Los CNPJs legados siguen siendo válidos?",
+    faq_5_a: "Sí, todos los CNPJs emitidos en formato numérico legado siguen siendo plenamente válidos. Los sistemas deben aceptar y validar ambos formatos simultáneamente.",
+    faq_6_q: "¿Cómo funciona el algoritmo de validación del CNPJ?",
+    faq_6_a: "El CNPJ tiene 2 dígitos verificadores calculados a partir de los 12 primeros caracteres mediante una suma ponderada con módulo 11 aplicado dos veces. Los pesos para el primer cálculo son 5,4,3,2,9,8,7,6,5,4,3,2 y para el segundo 6,5,4,3,2,9,8,7,6,5,4,3,2. Para el formato alfanumérico, las letras se convierten usando su código ASCII menos 48 (A=17 hasta Z=42) antes del mismo cálculo. Si el resto de la división es menor que 2, el verificador es 0; de lo contrario, es 11 menos el resto. Se recomienda no usar las letras I, O, Q y F.",
+
     see1: "Generador de CPF",
     see2: "Letras Diferentes",
     see3: "Generador de Tarjeta de Crédito",
     see4: "Generador de Fecha de Nacimiento"
   },
   fr: {
-    pageTitle: "Générateur de CNPJ Brésilien — Exemple Valide Gratuit",
+    pageTitle: "Générateur de CNPJ Brésilien — Ancien et Alphanumérique | Gratuit",
     title: "Générateur de CNPJ Brésilien",
-    meta: "Générateur de CNPJ en ligne gratuit pour les tests logiciels. Générez un ou plusieurs CNPJs valides, avec ou sans ponctuation, facilement et rapidement.",
-    num: "Chiffres Uniquement",
-    multiple_label: "Générer Plusieurs CNPJs",
+    meta: "Générez un CNPJ valide au format ancien (numérique) ou au nouveau format alphanumérique, prévu pour juillet 2026. Chiffres de contrôle calculés par l'algorithme officiel. Gratuit, sans inscription.",
+
+    type_label: "Format",
+    type_legacy: "Format Numérique",
+    type_alpha: "Format Alphanumérique (nouveau)",
+    type_legacy_short: "Numérique",
+    type_alpha_short: "Alphanumérique",
+
+    num: "Sans ponctuation",
+    multiple_label: "Générer plusieurs CNPJs",
     bt: "Générer CNPJ",
     bt_multiple: "Générer des CNPJs",
     cnpj_label: "CNPJ Généré",
     quantity: "Quantité",
     generated_cnpjs: "CNPJs Générés ({count})",
-    copy_all: "Tout Copier",
+    copy_all: "Tout copier",
     placeholder: "Cliquez sur Générer CNPJ pour créer un numéro",
     warning: "Les numéros générés sont fictifs et destinés exclusivement à des fins de test.",
-    d1: "Outil en ligne gratuit pour générer des CNPJ valides pour les développeurs, les testeurs de logiciels (QA) et les étudiants en programmation. Générez des numéros fictifs d'enregistrement d'entreprise brésilienne avec des chiffres de contrôle mathématiquement corrects, au format ponctué ou chiffres uniquement. Idéal pour les tests de systèmes, la validation de formulaires et les environnements de staging.",
+
+    d1: "Générateur de CNPJ en ligne et gratuit pour les développeurs, testeurs et étudiants en programmation. Prend en charge le format ancien — 14 chiffres numériques avec chiffres de contrôle calculés par modulo 11 — et le nouveau CNPJ alphanumérique, prévu pour juillet 2026. Tous les CNPJs générés sont mathématiquement valides. Le processus s'exécute dans le navigateur, sans inscription.",
+
     features_title: "Fonctionnalités",
-    f_1: "Générez des CNPJs valides instantanément",
-    f_2: "Générez jusqu'à 100 CNPJs uniques en une fois",
-    f_3: "Format ponctué ou chiffres uniquement",
-    f_4: "Génération avec chiffres de contrôle mathématiquement corrects",
-    how_title: "Qu'est-ce que le CNPJ et comment fonctionne l'algorithme ?",
-    how_desc: "Le CNPJ (Cadastro Nacional da Pessoa Jurídica) est le numéro d'enregistrement national des entreprises au Brésil. Ce numéro unique de 14 chiffres est obligatoire pour toute personne morale — nécessaire pour émettre des factures, ouvrir des comptes bancaires professionnels et exercer des activités commerciales. La structure du CNPJ est composée de 12 chiffres de base suivis de 2 chiffres de contrôle calculés par un algorithme de somme pondérée avec modulo-11 appliqué deux fois.",
-    use_cases_title: "Principaux Cas d'Usage",
-    use_cases_intro: "Notre générateur de CNPJ est la solution idéale pour diverses situations quotidiennes des développeurs et des professionnels de la technologie :",
-    use_1_t: "Validation de Formulaires",
-    use_1_d: "Testez les champs CNPJ, les masques et la logique de validation dans les formulaires.",
-    use_2_t: "Systèmes Fiscaux",
-    use_2_d: "Validez les flux d'émission de factures et l'intégration avec les systèmes de facturation.",
-    use_3_t: "Bases de Données",
-    use_3_d: "Remplissez les environnements de staging et de test avec des données d'entreprise réalistes.",
+    f_1: "Génération de CNPJ ancien (numérique) et alphanumérique (nouveau format)",
+    f_2: "Lots de jusqu'à 100 CNPJs uniques en une fois",
+    f_3: "Sortie avec ou sans ponctuation",
+    f_4: "Chiffres de contrôle calculés par l'algorithme officiel modulo 11",
+    f_5: "Tableau comparatif et explication du nouveau CNPJ alphanumérique",
+
+    how_title: "Comment Fonctionne l'Algorithme du CNPJ — Ancien et Alphanumérique",
+    how_desc: "Dans le CNPJ ancien, les 14 chiffres se divisent en racine (8 chiffres), succursale (4 — 0001 pour le siège social) et chiffres de contrôle (2). Les chiffres de contrôle sont calculés par somme pondérée avec modulo 11 appliqué deux fois : chaque caractère est multiplié par un poids spécifique, les résultats sont sommés, divisés par 11, et le reste définit le chiffre de contrôle (0 si le reste est inférieur à 2, sinon 11 moins le reste). Le CNPJ alphanumérique suit le même procédé, mais les douze premiers caractères (racine et succursale) peuvent inclure des lettres A–Z — la valeur de chaque lettre est son code ASCII moins 48 (A=17… Z=42). Les chiffres de contrôle restent toujours numériques (0–9). La Receita Federal recommande d'éviter les lettres I, O, Q et F pour éviter la confusion visuelle et les collisions de calcul ; ce générateur les exclut déjà.",
+
+    diff_title: "CNPJ Ancien vs. CNPJ Alphanumérique — Quelle Différence ?",
+    diff_desc: "Le CNPJ brésilien a subi une mise à jour structurelle importante. Le format ancien utilise exclusivement des chiffres sur ses 14 caractères, avec une capacité d'environ 100 millions de racines uniques. Le nouveau format alphanumérique, prévu pour juillet 2026, conserve les 14 caractères mais les douze premiers (racine et succursale) accepteront des lettres A–Z en plus des chiffres, augmentant significativement la capacité. Seuls les deux chiffres de contrôle restent numériques, et l'algorithme modulo 11 ne change pas.",
+
+    use_cases_title: "Cas d'Usage",
+    use_cases_intro: "Les applications pratiques les plus courantes du générateur de CNPJ dans les flux de développement et de QA sont :",
+    use_1_t: "Validation de formulaires et UI",
+    use_1_d: "Testez les champs CNPJ, les masques et la logique de validation. Avec le format alphanumérique, vérifiez si l'UI accepte correctement les lettres.",
+    use_2_t: "Systèmes fiscaux et NF-e",
+    use_2_d: "Validez les flux d'émission de factures et les intégrations, en testant les deux formats.",
+    use_3_t: "Bases de données et environnements de staging",
+    use_3_d: "Remplissez les environnements de test avec des données d'entreprise réalistes sans exposer de vraies informations.",
     use_4_t: "Intégration d'API",
     use_4_d: "Effectuez des tests d'intégration avec des services externes validant le format CNPJ.",
-    use_5_t: "UX Design & Demos",
-    use_5_d: "Créez des personas d'entreprise pour des démos sans exposer de vraies données.",
-    how_to_use_title: "Comment Utiliser Cet Outil",
-    step_1_title: "Générer un CNPJ",
-    step_1_desc: "Choisissez le format souhaité et cliquez sur \"Générer CNPJ\". Le numéro généré peut être copié en un clic.",
-    step_2_title: "Générer plusieurs CNPJs",
-    step_2_desc: "Activez \"Générer Plusieurs CNPJs\", définissez la quantité (2 à 100) et cliquez sur \"Générer des CNPJs\". Utilisez \"Tout Copier\" pour copier la liste complète.",
-    step_3_title: "Avec ou sans ponctuation",
-    step_3_desc: "Activez \"Chiffres Uniquement\" pour obtenir le CNPJ sans points, barre ni tiret — idéal pour les intégrations et les bases de données.",
+    use_5_t: "UX Design et Démos",
+    use_5_d: "Créez des personas d'entreprise pour des prototypes et des présentations clients sans exposer de vraies données.",
+    use_6_t: "Migration vers le CNPJ Alphanumérique",
+    use_6_d: "Générez des CNPJs alphanumériques pour tester si les systèmes existants ont été correctement mis à jour.",
+    use_7_t: "Tests de compatibilité entre formats",
+    use_7_d: "Générez des lots des deux types pour garantir que les rapports et intégrations gèrent les deux formats de manière cohérente.",
+
+    how_to_use_title: "Comment Utiliser",
+    step_1_title: "Choisir le format",
+    step_1_desc: "Sélectionnez CNPJ Ancien (numérique) ou CNPJ Alphanumérique (nouveau format avec des lettres dans les premières positions). À l'ouverture, un CNPJ ancien est déjà généré.",
+    step_2_title: "Générer un ou plusieurs",
+    step_2_desc: "Cliquez sur « Générer CNPJ » pour un numéro unique. Pour des lots, activez « Générer Plusieurs CNPJs » et utilisez « Tout Copier ».",
+    step_3_title: "Choisir le format de sortie",
+    step_3_desc: "Activez « Sans ponctuation » pour supprimer les points, la barre et le tiret — idéal pour les bases de données, JSON et APIs.",
+
     faq_title: "Questions et Réponses",
     faq_1_q: "Le CNPJ généré est-il réel ?",
-    faq_1_a: "Non. Les CNPJs générés sont fictifs et non enregistrés. Ils passent la validation mathématique des chiffres de contrôle, mais n'ont aucune validité légale. Utilisez-les exclusivement pour les tests logiciels et le développement.",
+    faq_1_a: "Non. Les CNPJs générés sont fictifs et non enregistrés. Ils passent la validation mathématique, mais n'ont aucune validité légale. Utilisez-les exclusivement pour les tests logiciels.",
     faq_2_q: "Est-il légal d'utiliser ce générateur de CNPJ ?",
-    faq_2_a: "Oui, pour les tests logiciels, les fins éducatives et les démonstrations techniques. Utiliser des CNPJs fictifs ou de tiers pour des inscriptions officielles, des fraudes ou l'obtention d'avantages indus est un crime selon le Code Pénal Brésilien (Art. 299).",
-    faq_3_q: "Comment fonctionne la validation du CNPJ ?",
-    faq_3_a: "Le CNPJ possède 2 chiffres de contrôle calculés à partir des 12 premiers chiffres via une somme pondérée avec modulo-11 appliqué deux fois. Notre générateur crée des numéros qui passent cette validation, les rendant adaptés aux tests de systèmes.",
-    faq_4_q: "Puis-je générer plusieurs CNPJs à la fois ?",
-    faq_4_a: "Oui ! Générez jusqu'à 100 CNPJs uniques en une fois. Parfait pour les tests en lot, l'automatisation QA et le remplissage de bases de données de test.",
+    faq_2_a: "Oui, pour les tests logiciels, les fins éducatives et les démonstrations techniques. Utiliser des CNPJs fictifs pour des inscriptions officielles ou des fraudes est un délit selon le Code Pénal Brésilien (Art. 299).",
+    faq_3_q: "Qu'est-ce que le CNPJ alphanumérique et qu'est-ce qui a changé ?",
+    faq_3_a: "Le CNPJ alphanumérique est le nouveau format du registre d'entreprises brésilien, prévu pour juillet 2026. Les douze premiers caractères (base et filiale) accepteront des lettres A–Z en plus des chiffres 0–9. Seuls les deux chiffres de contrôle restent numériques, et l'algorithme modulo 11 ne change pas.",
+    faq_4_q: "À partir de quand le nouveau CNPJ est-il valable ?",
+    faq_4_a: "Le nouveau CNPJ alphanumérique est prévu pour juillet 2026. Les CNPJs anciens déjà émis resteront valides indéfiniment. Les systèmes devront être préparés à valider les deux formats.",
+    faq_5_q: "Les CNPJs anciens restent-ils valides ?",
+    faq_5_a: "Oui, tous les CNPJs émis au format numérique ancien restent pleinement valides. Les systèmes doivent accepter et valider les deux formats simultanément.",
+    faq_6_q: "Comment fonctionne l'algorithme de validation du CNPJ ?",
+    faq_6_a: "Le CNPJ a 2 chiffres de contrôle calculés à partir des 12 premiers caractères par somme pondérée avec modulo 11 appliqué deux fois. Les poids pour le premier calcul sont 5,4,3,2,9,8,7,6,5,4,3,2 et pour le second 6,5,4,3,2,9,8,7,6,5,4,3,2. Pour les CNPJs alphanumériques, les lettres sont converties via leur code ASCII moins 48 (A=17 à Z=42) avant le même calcul. Si le reste est inférieur à 2, le chiffre de contrôle est 0 ; sinon, il est égal à 11 moins le reste. La Receita Federal recommande d'éviter les lettres I, O, Q et F.",
+
     see1: "Générateur de CPF",
     see2: "Lettres Différentes",
     see3: "Générateur de Carte de Crédit",
     see4: "Générateur de Date de Naissance"
   },
   it: {
-    pageTitle: "Generatore di CNPJ Brasile — Esempio Valido Gratis",
+    pageTitle: "Generatore di CNPJ Brasiliano — Legacy e Alfanumerico | Gratis",
     title: "Generatore di CNPJ Brasiliano",
-    meta: "Generatore di CNPJ online gratuito per test software. Genera uno o più CNPJ validi, con o senza punteggiatura, in modo semplice e veloce.",
-    num: "Solo Numeri",
+    meta: "Genera CNPJ valido nel formato legacy (numerico) o nel nuovo formato alfanumerico, previsto per luglio 2026. Cifre di controllo calcolate dall'algoritmo ufficiale. Gratis, senza registrazione.",
+
+    type_label: "Formato",
+    type_legacy: "Formato Numerico",
+    type_alpha: "Formato Alfanumerico (nuovo)",
+    type_legacy_short: "Numérico",
+    type_alpha_short: "Alfanumerico",
+
+    num: "Senza punteggiatura",
     multiple_label: "Genera Più CNPJ",
     bt: "Genera CNPJ",
-    bt_multiple: "Genera CNPJ",
+    bt_multiple: "Genera più CNPJ",
     cnpj_label: "CNPJ Generato",
     quantity: "Quantità",
     generated_cnpjs: "CNPJ Generati ({count})",
     copy_all: "Copia Tutti",
     placeholder: "Clicca su Genera CNPJ per creare un numero",
     warning: "I numeri generati sono fittizi e destinati esclusivamente a scopi di test.",
-    d1: "Strumento online gratuito per generare CNPJ validi per sviluppatori, tester di software (QA) e studenti di programmazione. Genera numeri fittizi di registro aziendale brasiliano con cifre di controllo matematicamente corrette, in formato punteggiato o solo numeri. Ideale per test di sistemi, validazione di moduli e ambienti di staging.",
+
+    d1: "Generatore di CNPJ online e gratuito per sviluppatori, tester e studenti. Supporta il formato legacy — 14 cifre numeriche con cifre di controllo calcolate tramite modulo 11 — e il nuovo CNPJ alfanumerico, previsto per luglio 2026. Tutti i CNPJ generati sono matematicamente validi. Il processo gira nel browser, senza registrazione.",
+
     features_title: "Funzionalità",
-    f_1: "Genera CNPJ validi istantaneamente",
-    f_2: "Genera fino a 100 CNPJ unici in una volta",
-    f_3: "Formato punteggiato o solo numeri",
-    f_4: "Generazione con cifre di controllo matematicamente corrette",
-    how_title: "Cos'è il CNPJ e come funziona l'algoritmo?",
-    how_desc: "Il CNPJ (Cadastro Nacional da Pessoa Jurídica) è il numero di registro nazionale delle aziende in Brasile. Questo numero univoco di 14 cifre è obbligatorio per qualsiasi persona giuridica — necessario per emettere fatture, aprire conti bancari aziendali e svolgere attività commerciali. La struttura del CNPJ è composta da 12 cifre base seguite da 2 cifre di controllo calcolate tramite un algoritmo di somma ponderata con modulo-11 applicato due volte.",
-    use_cases_title: "Principali Casi d'Uso",
-    use_cases_intro: "Il nostro generatore di CNPJ è la soluzione ideale per diverse situazioni quotidiane di sviluppatori e professionisti tecnologici:",
-    use_1_t: "Validazione Moduli",
-    use_1_d: "Testa campi CNPJ, maschere e logica di validazione nei moduli di registrazione.",
-    use_2_t: "Sistemi Fiscali",
-    use_2_d: "Valida flussi di emissione fatture e integrazione con sistemi di fatturazione.",
-    use_3_t: "Database",
-    use_3_d: "Popola ambienti di staging e test con dati aziendali realistici.",
+    f_1: "Generazione di CNPJ legacy (numerico) e alfanumerico (nuovo formato)",
+    f_2: "Batch fino a 100 CNPJ unici in una volta",
+    f_3: "Output con o senza punteggiatura",
+    f_4: "Cifre di controllo calcolate con l'algoritmo ufficiale modulo 11",
+    f_5: "Tabella comparativa e spiegazione del nuovo CNPJ alfanumerico",
+
+    how_title: "Come Funziona l'Algoritmo del CNPJ — Legacy e Alfanumerico",
+    how_desc: "Nel CNPJ legacy, le 14 cifre si dividono in base (8), filiale (4 — 0001 per la sede) e verificatori (2). I verificatori sono calcolati con somma ponderata e modulo 11 applicato due volte: ogni carattere viene moltiplicato per un peso specifico, i risultati vengono sommati, divisi per 11 e il resto definisce il verificatore (0 se il resto è minore di 2, altrimenti 11 meno il resto). Nel CNPJ alfanumerico la procedura è identica, ma i dodici primi caratteri (base e filiale) possono includere lettere A–Z — il valore di ogni lettera è il suo codice ASCII meno 48 (A=17… Z=42). Le cifre di controllo sono sempre numeriche (0–9). La Receita Federal raccomanda di evitare le lettere I, O, Q e F per evitare confusione visiva e collisioni nel calcolo; questo generatore le esclude già.",
+
+    diff_title: "CNPJ Legacy vs. CNPJ Alfanumerico — Qual è la Differenza?",
+    diff_desc: "Il CNPJ brasiliano ha subito un aggiornamento strutturale significativo. Il formato legacy usa solo cifre sui 14 caratteri, con circa 100 milioni di basi uniche. Il nuovo formato alfanumerico, previsto per luglio 2026, mantiene i 14 caratteri ma i primi dodici (base e filiale) accetteranno lettere A–Z oltre alle cifre, ampliando significativamente la capacità. Solo le due cifre di controllo restano numeriche, e l'algoritmo modulo 11 non cambia.",
+
+    use_cases_title: "Casi d'Uso",
+    use_cases_intro: "Le applicazioni pratiche più comuni del generatore di CNPJ nel flusso di lavoro di sviluppo e QA sono:",
+    use_1_t: "Validazione di form e UI",
+    use_1_d: "Testa campi CNPJ, maschere e logica di validazione. Con il formato alfanumerico, verifica se la UI accetta correttamente le lettere.",
+    use_2_t: "Sistemi fiscali e NF-e",
+    use_2_d: "Valida flussi di emissione fatture e integrazioni, testando entrambi i formati.",
+    use_3_t: "Database e ambienti di staging",
+    use_3_d: "Popola ambienti di staging con dati aziendali realistici senza esporre informazioni reali.",
     use_4_t: "Integrazione API",
     use_4_d: "Esegui test di integrazione con servizi esterni che validano il formato CNPJ.",
-    use_5_t: "UX Design & Demo",
-    use_5_d: "Crea personas aziendali per dimostrazioni senza esporre dati reali.",
-    how_to_use_title: "Come Utilizzare Questo Strumento",
-    step_1_title: "Generare un CNPJ",
-    step_1_desc: "Scegli il formato desiderato e clicca su \"Genera CNPJ\". Il numero generato può essere copiato con un clic.",
-    step_2_title: "Generare più CNPJ",
-    step_2_desc: "Attiva \"Genera Più CNPJ\", imposta la quantità (da 2 a 100) e clicca su \"Genera CNPJ\". Usa \"Copia Tutti\" per copiare l'intera lista.",
-    step_3_title: "Con o senza punteggiatura",
-    step_3_desc: "Attiva \"Solo Numeri\" per ottenere il CNPJ senza punti, barra e trattino — ideale per integrazioni e database.",
+    use_5_t: "UX Design e Demo",
+    use_5_d: "Crea personas aziendali per prototipi e presentazioni senza esporre dati reali.",
+    use_6_t: "Migrazione al CNPJ Alfanumerico",
+    use_6_d: "Genera CNPJ alfanumerici per testare se i sistemi legacy sono stati aggiornati correttamente.",
+    use_7_t: "Test di compatibilità tra formati",
+    use_7_d: "Genera batch di entrambi i tipi per garantire che report e integrazioni gestiscano i due formati in modo coerente.",
+
+    how_to_use_title: "Come Usare",
+    step_1_title: "Scegliere il formato",
+    step_1_desc: "Seleziona CNPJ Legacy (numerico) o CNPJ Alfanumerico (nuovo formato). All'apertura, un CNPJ legacy viene già generato.",
+    step_2_title: "Generare uno o più",
+    step_2_desc: "Clicca su \"Genera CNPJ\" per un numero singolo. Per batch, attiva \"Genera Più CNPJ\" e usa \"Copia Tutti\".",
+    step_3_title: "Scegliere il formato di output",
+    step_3_desc: "Attiva \"Senza punteggiatura\" per rimuovere punti, barra e trattino — ideale per database, JSON e API.",
+
     faq_title: "Domande e Risposte",
     faq_1_q: "Il CNPJ generato è reale?",
-    faq_1_a: "No. I CNPJ generati sono fittizi e non registrati. Superano la validazione matematica delle cifre di controllo, ma non hanno alcuna validità legale. Usali esclusivamente per test software e sviluppo.",
+    faq_1_a: "No. I CNPJ generati sono fittizi e non registrati. Superano la validazione matematica, ma non hanno alcuna validità legale. Usali esclusivamente per test software.",
     faq_2_q: "È legale usare questo generatore di CNPJ?",
-    faq_2_a: "Sì, per test software, scopi educativi e dimostrazioni tecniche. Usare CNPJ fittizi o di terzi per registrazioni ufficiali, frodi o ottenimento di vantaggi indebiti è un reato ai sensi del Codice Penale Brasiliano (Art. 299).",
-    faq_3_q: "Come funziona la validazione del CNPJ?",
-    faq_3_a: "Il CNPJ ha 2 cifre di controllo calcolate dalle prime 12 cifre usando una somma ponderata con modulo-11 applicato due volte. Il nostro generatore crea numeri che superano questa validazione, rendendoli adatti ai test di sistemi.",
-    faq_4_q: "Posso generare più CNPJ in una volta?",
-    faq_4_a: "Sì! Genera fino a 100 CNPJ unici in una volta. Perfetto per test in batch, automazione QA e popolamento di database di test.",
+    faq_2_a: "Sì, per test software, scopi educativi e dimostrazioni tecniche. Usare CNPJ fittizi per registrazioni ufficiali o frodi è un reato ai sensi del Codice Penale Brasiliano (Art. 299).",
+    faq_3_q: "Cos'è il CNPJ alfanumerico e cosa è cambiato?",
+    faq_3_a: "Il CNPJ alfanumerico è il nuovo formato del registro aziendale brasiliano, previsto per luglio 2026. I primi dodici caratteri (radice e filiale) accetteranno lettere A–Z oltre alle cifre 0–9. Solo le due cifre di controllo restano numeriche, e l'algoritmo modulo 11 non cambia.",
+    faq_4_q: "Da quando è valido il nuovo CNPJ?",
+    faq_4_a: "Il nuovo CNPJ alfanumerico è previsto per luglio 2026. I CNPJ legacy già emessi resteranno validi indefinitamente. I sistemi dovranno essere preparati a validare entrambi i formati.",
+    faq_5_q: "I CNPJ legacy restano validi?",
+    faq_5_a: "Sì, tutti i CNPJ emessi nel formato numerico legacy restano pienamente validi. I sistemi devono accettare e validare entrambi i formati simultaneamente.",
+    faq_6_q: "Come funziona l'algoritmo di validazione del CNPJ?",
+    faq_6_a: "Il CNPJ ha 2 cifre di controllo calcolate dai primi 12 caratteri con somma ponderata e modulo 11 due volte. I pesi per il primo calcolo sono 5,4,3,2,9,8,7,6,5,4,3,2 e per il secondo 6,5,4,3,2,9,8,7,6,5,4,3,2. Per i CNPJ alfanumerici, le lettere vengono convertite tramite il codice ASCII meno 48 (A=17 fino a Z=42) prima dello stesso calcolo. Se il resto della divisione è minore di 2, la cifra di controllo è 0; altrimenti è 11 meno il resto. Si raccomanda di evitare le lettere I, O, Q e F.",
+
     see1: "Generatore di CPF",
     see2: "Lettere Diverse",
     see3: "Generatore di Carte di Credito",
     see4: "Generatore di Data di Nascita"
   },
   id: {
-    pageTitle: "Generator CNPJ Brasil Valid untuk Pengujian — Gratis",
+    pageTitle: "Generator CNPJ Brasil — Legacy dan Alfanumerik (Format Baru) | Gratis",
     title: "Generator CNPJ Brasil",
-    meta: "Generator CNPJ online gratis untuk pengujian perangkat lunak. Buat satu atau beberapa CNPJ valid, dengan atau tanpa tanda baca, dengan mudah dan cepat.",
-    num: "Hanya Angka",
+    meta: "Buat CNPJ valid dalam format legacy (numerik) atau format alfanumerik baru, direncanakan untuk Juli 2026. Digit verifikasi dihitung dengan algoritma resmi. Gratis, tanpa pendaftaran.",
+
+    type_label: "Format",
+    type_legacy: "Format Numerik",
+    type_alpha: "Format Alfanumerik (baru)",
+    type_legacy_short: "Numérico",
+    type_alpha_short: "Alfanumerik",
+
+    num: "Tanpa tanda baca",
     multiple_label: "Buat Beberapa CNPJ",
     bt: "Buat CNPJ",
-    bt_multiple: "Buat CNPJ",
+    bt_multiple: "Buat Beberapa CNPJ",
     cnpj_label: "CNPJ yang Dibuat",
     quantity: "Jumlah",
     generated_cnpjs: "CNPJ yang Dibuat ({count})",
     copy_all: "Salin Semua",
     placeholder: "Klik Buat CNPJ untuk membuat nomor",
     warning: "Nomor yang dihasilkan bersifat fiktif dan ditujukan semata-mata untuk keperluan pengujian.",
-    d1: "Alat online gratis untuk menghasilkan CNPJ valid bagi pengembang, penguji perangkat lunak (QA), dan mahasiswa pemrograman. Buat nomor fiktif registrasi perusahaan Brasil dengan digit verifikasi yang benar secara matematis, dalam format berpungtuasi atau hanya angka. Ideal untuk pengujian sistem, validasi formulir, dan lingkungan staging.",
+
+    d1: "Generator CNPJ online dan gratis untuk pengembang, QA, dan pelajar pemrograman. Mendukung format legacy — 14 digit numerik dengan digit verifikasi dihitung menggunakan modulo 11 — dan CNPJ alfanumerik baru, direncanakan untuk Juli 2026. Semua CNPJ yang dihasilkan valid secara matematis. Proses berjalan sepenuhnya di browser, tanpa pendaftaran.",
+
     features_title: "Fitur",
-    f_1: "Buat CNPJ valid secara instan",
-    f_2: "Buat hingga 100 CNPJ unik sekaligus",
-    f_3: "Format berpungtuasi atau hanya angka",
-    f_4: "Pembuatan dengan digit verifikasi yang benar secara matematis",
-    how_title: "Apa itu CNPJ dan Bagaimana Cara Kerja Algoritmanya?",
-    how_desc: "CNPJ (Cadastro Nacional da Pessoa Jurídica) adalah nomor registrasi nasional perusahaan di Brasil. Nomor unik 14 digit ini wajib dimiliki oleh setiap badan hukum — diperlukan untuk menerbitkan faktur, membuka rekening bank bisnis, dan menjalankan kegiatan komersial. Struktur CNPJ terdiri dari 12 digit dasar diikuti 2 digit verifikasi yang dihitung menggunakan algoritma jumlah berbobot dengan modulo-11 yang diterapkan dua kali.",
-    use_cases_title: "Kasus Penggunaan Utama",
-    use_cases_intro: "Generator CNPJ kami adalah solusi ideal untuk berbagai situasi sehari-hari bagi pengembang dan profesional teknologi:",
-    use_1_t: "Validasi Formulir",
-    use_1_d: "Uji bidang CNPJ, masker, dan logika validasi dalam formulir pendaftaran.",
-    use_2_t: "Sistem Pajak",
-    use_2_d: "Validasi alur penerbitan faktur dan integrasi dengan sistem penagihan.",
-    use_3_t: "Basis Data",
-    use_3_d: "Isi lingkungan staging dan pengujian dengan data perusahaan yang realistis.",
+    f_1: "Pembuatan CNPJ legacy (numerik) dan alfanumerik (format baru)",
+    f_2: "Batch hingga 100 CNPJ unik sekaligus",
+    f_3: "Output dengan atau tanpa tanda baca",
+    f_4: "Digit verifikasi dihitung dengan algoritma resmi modulo 11",
+    f_5: "Tabel perbandingan dan penjelasan CNPJ alfanumerik baru",
+
+    how_title: "Cara Kerja Algoritma CNPJ — Legacy dan Alfanumerik",
+    how_desc: "Dalam CNPJ legacy, 14 digit dibagi menjadi basis (8), cabang (4 — 0001 untuk kantor pusat) dan digit verifikasi (2). Digit verifikasi dihitung dengan jumlah berbobot dan modulo 11 dua kali: setiap karakter dikalikan dengan bobot tertentu, hasilnya dijumlahkan, dibagi 11, dan sisanya menentukan digit verifikasi (0 jika sisa < 2, jika tidak 11 dikurangi sisa). Pada CNPJ alfanumerik prosedurnya sama, tetapi dua belas karakter pertama (basis dan cabang) dapat mencakup huruf A–Z — nilai setiap huruf adalah kode ASCII-nya dikurangi 48 (A=17… Z=42). Digit verifikasi selalu numerik (0–9). Receita Federal menyarankan untuk menghindari huruf I, O, Q, dan F untuk mencegah kebingungan visual dan tabrakan perhitungan; generator ini sudah mengecualikannya.",
+
+    diff_title: "CNPJ Legacy vs. CNPJ Alfanumerik — Apa Bedanya?",
+    diff_desc: "CNPJ Brasil mengalami pembaruan struktural yang signifikan. Format legacy hanya menggunakan digit pada 14 karakternya, dengan kapasitas sekitar 100 juta basis unik. Format alfanumerik baru, direncanakan untuk Juli 2026, mempertahankan 14 karakter tetapi dua belas karakter pertama (basis dan cabang) akan menerima huruf A–Z selain digit, memperluas kapasitas secara signifikan. Hanya dua digit verifikasi yang tetap numerik, dan algoritma modulo 11 tidak berubah.",
+
+    use_cases_title: "Kasus Penggunaan",
+    use_cases_intro: "Aplikasi praktis paling umum dari generator CNPJ dalam alur kerja pengembangan dan QA adalah:",
+    use_1_t: "Validasi Formulir dan UI",
+    use_1_d: "Uji bidang CNPJ, masker, dan logika validasi. Dengan format alfanumerik, periksa apakah UI menerima huruf dengan benar.",
+    use_2_t: "Sistem Pajak dan NF-e",
+    use_2_d: "Validasi alur penerbitan faktur dan integrasi, menguji kedua format.",
+    use_3_t: "Database dan Lingkungan Staging",
+    use_3_d: "Isi lingkungan staging dengan data perusahaan yang realistis tanpa mengekspos informasi nyata.",
     use_4_t: "Integrasi API",
     use_4_d: "Lakukan pengujian integrasi dengan layanan eksternal yang memvalidasi format CNPJ.",
-    use_5_t: "Desain UX & Demo",
-    use_5_d: "Buat persona bisnis untuk demonstrasi tanpa mengekspos data nyata.",
-    how_to_use_title: "Cara Menggunakan Alat Ini",
-    step_1_title: "Buat satu CNPJ",
-    step_1_desc: "Pilih format yang diinginkan dan klik \"Buat CNPJ\". Nomor yang dihasilkan bisa disalin dengan satu klik.",
-    step_2_title: "Buat beberapa CNPJ",
-    step_2_desc: "Aktifkan \"Buat Beberapa CNPJ\", tentukan jumlahnya (2 hingga 100) dan klik \"Buat CNPJ\". Gunakan \"Salin Semua\" untuk menyalin seluruh daftar.",
-    step_3_title: "Dengan atau tanpa tanda baca",
-    step_3_desc: "Aktifkan \"Hanya Angka\" untuk mendapatkan CNPJ tanpa titik, garis miring, dan tanda hubung — ideal untuk integrasi dan basis data.",
+    use_5_t: "UX Design dan Demo",
+    use_5_d: "Buat persona bisnis untuk prototipe dan presentasi tanpa mengekspos data nyata.",
+    use_6_t: "Migrasi ke CNPJ Alfanumerik",
+    use_6_d: "Buat CNPJ alfanumerik untuk menguji apakah sistem lama telah diperbarui dengan benar.",
+    use_7_t: "Uji Kompatibilitas antar Format",
+    use_7_d: "Buat batch dari kedua jenis untuk memastikan laporan dan integrasi menangani kedua format secara konsisten.",
+
+    how_to_use_title: "Cara Menggunakan",
+    step_1_title: "Pilih format",
+    step_1_desc: "Pilih antara CNPJ Legacy (numerik) atau CNPJ Alfanumerik (format baru). Saat membuka halaman, CNPJ legacy sudah dibuat secara otomatis.",
+    step_2_title: "Buat satu atau beberapa",
+    step_2_desc: "Klik \"Buat CNPJ\" untuk satu nomor. Untuk batch, aktifkan \"Buat Beberapa CNPJ\" dan gunakan \"Salin Semua\".",
+    step_3_title: "Pilih format output",
+    step_3_desc: "Aktifkan \"Tanpa tanda baca\" untuk menghapus titik, garis miring, dan tanda hubung — ideal untuk database, JSON, dan API.",
+
     faq_title: "Pertanyaan dan Jawaban",
     faq_1_q: "Apakah CNPJ yang dihasilkan nyata?",
-    faq_1_a: "Tidak. CNPJ yang dihasilkan bersifat fiktif dan tidak terdaftar. Mereka lulus validasi matematis digit verifikasi, tetapi tidak memiliki validitas hukum. Gunakan secara eksklusif untuk pengujian perangkat lunak dan pengembangan.",
+    faq_1_a: "Tidak. CNPJ yang dihasilkan bersifat fiktif dan tidak terdaftar. Mereka lulus validasi matematis, tetapi tidak memiliki validitas hukum. Gunakan secara eksklusif untuk pengujian perangkat lunak.",
     faq_2_q: "Apakah legal menggunakan generator CNPJ ini?",
-    faq_2_a: "Ya, untuk pengujian perangkat lunak, tujuan pendidikan, dan demonstrasi teknis. Menggunakan CNPJ fiktif atau milik pihak ketiga untuk pendaftaran resmi, penipuan, atau memperoleh keuntungan yang tidak semestinya adalah tindak pidana menurut Kitab Undang-Undang Hukum Pidana Brasil (Pasal 299).",
-    faq_3_q: "Bagaimana cara kerja validasi CNPJ?",
-    faq_3_a: "CNPJ memiliki 2 digit verifikasi yang dihitung dari 12 digit pertama menggunakan jumlah berbobot dengan modulo-11 yang diterapkan dua kali. Generator kami membuat nomor yang lulus validasi ini, sehingga cocok untuk pengujian sistem.",
-    faq_4_q: "Bisakah saya membuat beberapa CNPJ sekaligus?",
-    faq_4_a: "Ya! Buat hingga 100 CNPJ unik sekaligus. Sempurna untuk pengujian batch, otomasi QA, dan pengisian basis data pengujian.",
+    faq_2_a: "Ya, untuk pengujian perangkat lunak, tujuan pendidikan, dan demonstrasi teknis. Menggunakan CNPJ fiktif untuk pendaftaran resmi atau penipuan adalah tindak pidana menurut KUHP Brasil (Pasal 299).",
+    faq_3_q: "Apa itu CNPJ alfanumerik dan apa yang berubah?",
+    faq_3_a: "CNPJ alfanumerik adalah format baru registrasi perusahaan Brasil, direncanakan untuk Juli 2026. Dua belas karakter pertama (basis dan cabang) akan menerima huruf A–Z selain digit 0–9. Hanya dua digit verifikasi yang tetap numerik, dan algoritma modulo 11 tidak berubah.",
+    faq_4_q: "Mulai kapan CNPJ baru berlaku?",
+    faq_4_a: "CNPJ alfanumerik baru direncanakan untuk Juli 2026. CNPJ legacy yang sudah diterbitkan akan tetap berlaku selamanya. Sistem harus mempersiapkan diri untuk memvalidasi kedua format.",
+    faq_5_q: "Apakah CNPJ legacy tetap berlaku?",
+    faq_5_a: "Ya, semua CNPJ yang diterbitkan dalam format numerik legacy tetap sepenuhnya berlaku. Sistem harus menerima dan memvalidasi kedua format secara bersamaan.",
+    faq_6_q: "Bagaimana cara kerja algoritma validasi CNPJ?",
+    faq_6_a: "CNPJ memiliki 2 digit verifikasi yang dihitung dari 12 karakter pertama menggunakan jumlah berbobot dengan modulo 11 dua kali. Bobot untuk perhitungan pertama adalah 5,4,3,2,9,8,7,6,5,4,3,2 dan untuk yang kedua 6,5,4,3,2,9,8,7,6,5,4,3,2. Untuk CNPJ alfanumerik, huruf dikonversi menggunakan kode ASCII dikurangi 48 (A=17 hingga Z=42) sebelum perhitungan yang sama. Jika sisa pembagian kurang dari 2, digit verifikasi adalah 0; jika tidak, 11 dikurangi sisa. Receita Federal menyarankan untuk menghindari huruf I, O, Q, dan F.",
+
     see1: "Generator CPF",
     see2: "Huruf Berbeda",
     see3: "Generator Kartu Kredit",
     see4: "Generator Tanggal Lahir"
   },
   de: {
-    pageTitle: "Gültiger CNPJ-Generator Online für Tests — Kostenlos",
+    pageTitle: "Brasilianischer CNPJ-Generator — Legacy und Alphanumerisch | Kostenlos",
     title: "Brasilianischer CNPJ-Generator",
-    meta: "Kostenloser Online-CNPJ-Generator für Softwaretests. Generieren Sie einen oder mehrere gültige CNPJs, mit oder ohne Formatierung, einfach und schnell.",
-    num: "Nur Zahlen",
+    meta: "Generieren Sie gültige CNPJs im Legacy-Format (numerisch) oder im neuen alphanumerischen Format, geplant für Juli 2026. Prüfziffern nach dem offiziellen Algorithmus. Kostenlos, ohne Registrierung.",
+
+    type_label: "Format",
+    type_legacy: "Numerisches Format",
+    type_alpha: "Alphanumerisches Format (neu)",
+    type_legacy_short: "Numérico",
+    type_alpha_short: "Alphanumerisch",
+
+    num: "Ohne Satzzeichen",
     multiple_label: "Mehrere CNPJs generieren",
     bt: "CNPJ generieren",
     bt_multiple: "CNPJs generieren",
@@ -610,52 +860,78 @@ defineI18nRoute({
     copy_all: "Alle kopieren",
     placeholder: "Klicken Sie auf CNPJ generieren, um eine Nummer zu erstellen",
     warning: "Die generierten Nummern sind fiktiv und ausschließlich für Testzwecke bestimmt.",
-    d1: "Kostenloses Online-Tool zum Generieren gültiger CNPJ-Nummern für Entwickler, Softwaretester (QA) und Programmierstudenten. Generieren Sie fiktive brasilianische Unternehmensregisternummern mit mathematisch korrekten Prüfziffern, im formatierten Format oder nur als Zahlen. Ideal für Systemtests, Formularvalidierung und Staging-Umgebungen.",
+
+    d1: "Kostenloser Online-CNPJ-Generator für Entwickler, Tester und Programmierstudenten. Unterstützt das Legacy-Format — 14 numerische Stellen mit Prüfziffern nach Modulo-11 — und das neue alphanumerische CNPJ, geplant für Juli 2026. Alle generierten CNPJs sind mathematisch korrekt. Der Prozess läuft vollständig im Browser ab, ohne Registrierung.",
+
     features_title: "Funktionen",
-    f_1: "Gültige CNPJs sofort generieren",
-    f_2: "Bis zu 100 eindeutige CNPJs auf einmal generieren",
-    f_3: "Formatiertes Format oder nur Zahlen",
-    f_4: "Generierung mit mathematisch korrekten Prüfziffern",
-    how_title: "Was ist der CNPJ und wie funktioniert der Algorithmus?",
-    how_desc: "Der CNPJ (Cadastro Nacional da Pessoa Jurídica) ist die nationale Unternehmensregisternummer Brasiliens. Diese eindeutige 14-stellige Nummer ist für jede juristische Person obligatorisch — erforderlich für die Ausstellung von Rechnungen, die Eröffnung von Geschäftskonten und die Durchführung offizieller kommerzieller Aktivitäten. Die CNPJ-Struktur besteht aus 12 Basisstellen gefolgt von 2 Prüfziffern, die mit einem gewichteten Summenalgorithmus mit zweimal angewendetem Modulo-11 berechnet werden.",
-    use_cases_title: "Wichtigste Anwendungsfälle",
-    use_cases_intro: "Unser CNPJ-Generator ist die ideale Lösung für verschiedene Alltagssituationen von Entwicklern und Technologieexperten:",
-    use_1_t: "Formularvalidierung",
-    use_1_d: "Testen Sie CNPJ-Felder, Masken und Validierungslogik in Registrierungsformularen.",
-    use_2_t: "Steuersysteme",
-    use_2_d: "Validieren Sie NF-e-Ausstellungsabläufe und die Integration in Abrechnungssysteme.",
-    use_3_t: "Datenbanken",
-    use_3_d: "Füllen Sie Staging- und Testumgebungen mit realistischen Unternehmensdaten.",
+    f_1: "Generierung von Legacy-CNPJ (numerisch) und alphanumerisch (neues Format)",
+    f_2: "Batches mit bis zu 100 eindeutigen CNPJs auf einmal",
+    f_3: "Ausgabe mit oder ohne Satzzeichen",
+    f_4: "Prüfziffern berechnet nach dem offiziellen Modulo-11-Algorithmus",
+    f_5: "Vergleichstabelle und vollständige Erklärung des neuen alphanumerischen CNPJ",
+
+    how_title: "Wie der CNPJ-Algorithmus funktioniert — Legacy und Alphanumerisch",
+    how_desc: "Im Legacy-CNPJ sind die 14 Stellen aufgeteilt in Basis (8), Filiale (4 — 0001 für den Hauptsitz) und Prüfziffern (2), berechnet durch gewichtete Summe mit Modulo-11 zweimal: Jedes Zeichen wird mit einem bestimmten Gewicht multipliziert, die Ergebnisse werden addiert, durch 11 geteilt und der Rest bestimmt die Prüfziffer (0, wenn der Rest kleiner als 2 ist, andernfalls 11 minus der Rest). Im alphanumerischen CNPJ ist das Verfahren identisch, aber die ersten zwölf Zeichen (Basis und Filiale) können Buchstaben A–Z enthalten — der Wert jedes Buchstabens ist sein ASCII-Code minus 48 (A=17… Z=42). Die Prüfziffern bleiben immer numerisch (0–9). Die Receita Federal empfiehlt, die Buchstaben I, O, Q und F zu vermeiden, um visuelle Verwechslungen und Berechnungsstörungen zu verhindern; dieser Generator schließt sie bereits aus.",
+
+    diff_title: "Legacy-CNPJ vs. Alphanumerischer CNPJ — Was ist der Unterschied?",
+    diff_desc: "Der brasilianische CNPJ hat eine bedeutende strukturelle Aktualisierung erhalten. Das Legacy-Format verwendet ausschließlich Ziffern auf seinen 14 Zeichen, mit ca. 100 Millionen eindeutigen Basen. Das neue alphanumerische Format, geplant für Juli 2026, behält die 14 Zeichen bei, aber die ersten zwölf (Basis und Filiale) werden Buchstaben A–Z zusätzlich zu Ziffern akzeptieren, was die Kapazität erheblich erhöht. Nur die zwei Prüfziffern bleiben numerisch, und der Modulo-11-Algorithmus ändert sich nicht.",
+
+    use_cases_title: "Anwendungsfälle",
+    use_cases_intro: "Die häufigsten praktischen Anwendungen des CNPJ-Generators im Entwicklungs- und QA-Workflow sind:",
+    use_1_t: "Formular- und UI-Validierung",
+    use_1_d: "Testen Sie CNPJ-Felder, Masken und Validierungslogik. Mit dem alphanumerischen Format prüfen Sie, ob die UI Buchstaben korrekt akzeptiert.",
+    use_2_t: "Steuersysteme und NF-e",
+    use_2_d: "Validieren Sie Rechnungsausstellungsabläufe und Integrationen, indem Sie beide Formate testen.",
+    use_3_t: "Datenbanken und Staging-Umgebungen",
+    use_3_d: "Füllen Sie Testumgebungen mit realistischen Unternehmensdaten ohne echte Informationen preiszugeben.",
     use_4_t: "API-Integration",
     use_4_d: "Führen Sie Integrationstests mit externen Diensten durch, die das CNPJ-Format validieren.",
-    use_5_t: "UX Design & Demos",
-    use_5_d: "Erstellen Sie Geschäftspersonas für Demonstrationen, ohne echte Daten preiszugeben.",
-    how_to_use_title: "Verwendung dieses Tools",
-    step_1_title: "Einen CNPJ generieren",
-    step_1_desc: "Wählen Sie das gewünschte Format und klicken Sie auf \"CNPJ generieren\". Die generierte Nummer kann mit einem Klick kopiert werden.",
-    step_2_title: "Mehrere CNPJs generieren",
-    step_2_desc: "Aktivieren Sie \"Mehrere CNPJs generieren\", legen Sie die Anzahl fest (2 bis 100) und klicken Sie auf \"CNPJs generieren\". Verwenden Sie \"Alle kopieren\", um die gesamte liste zu kopieren.",
-    step_3_title: "Mit oder ohne Punktierung",
-    step_3_desc: "Aktivieren Sie \"Nur Zahlen\", um den CNPJ ohne Punkte, Schrägstrich und Bindestrich zu erhalten — ideal für Integrationen und Datenbanken.",
+    use_5_t: "UX Design und Demos",
+    use_5_d: "Erstellen Sie Geschäftspersonas für Prototypen und Präsentationen ohne echte Daten preiszugeben.",
+    use_6_t: "Migration zum alphanumerischen CNPJ",
+    use_6_d: "Generieren Sie alphanumerische CNPJs, um zu testen, ob Legacy-Systeme korrekt aktualisiert wurden.",
+    use_7_t: "Formatübergreifende Kompatibilitätstests",
+    use_7_d: "Generieren Sie Batches beider Typen, um sicherzustellen, dass Berichte und Integrationen beide Formate konsistent verarbeiten.",
+
+    how_to_use_title: "Verwendung",
+    step_1_title: "Format wählen",
+    step_1_desc: "Wählen Sie Legacy-CNPJ (numerisch) oder alphanumerischen CNPJ (neues Format). Beim Öffnen der Seite wird automatisch ein Legacy-CNPJ generiert.",
+    step_2_title: "Einen oder mehrere generieren",
+    step_2_desc: "Klicken Sie auf \"CNPJ generieren\" für eine einzelne Nummer. Für Batches aktivieren Sie \"Mehrere CNPJs generieren\" und verwenden \"Alle kopieren\".",
+    step_3_title: "Ausgabeformat wählen",
+    step_3_desc: "Aktivieren Sie \"Ohne Satzzeichen\", um Punkte, Schrägstrich und Bindestrich zu entfernen — ideal für Datenbanken, JSON und APIs.",
+
     faq_title: "Fragen & Antworten",
     faq_1_q: "Ist der generierte CNPJ echt?",
-    faq_1_a: "Nein. Die generierten CNPJs sind fiktiv und nicht registriert. Sie bestehen die mathematische Prüfziffervalidierung, haben aber keine rechtliche Gültigkeit. Ausschließlich für Softwaretests und Entwicklung verwenden.",
+    faq_1_a: "Nein. Die generierten CNPJs sind fiktiv und nicht registriert. Sie bestehen die mathematische Prüfziffervalidierung, haben aber keine rechtliche Gültigkeit. Ausschließlich für Softwaretests verwenden.",
     faq_2_q: "Ist es legal, diesen CNPJ-Generator zu verwenden?",
-    faq_2_a: "Ja, für Softwaretests, Bildungszwecke und technische Demonstrationen. Die Verwendung fiktiver oder fremder CNPJs für offizielle Registrierungen, Betrug oder die Erlangung unrechtmäßiger Vorteile ist nach dem brasilianischen Strafgesetzbuch (Art. 299) eine Straftat.",
-    faq_3_q: "Wie funktioniert die CNPJ-Validierung?",
-    faq_3_a: "Der CNPJ hat 2 Prüfziffern, die aus den ersten 12 Stellen mittels einer gewichteten Summe mit zweimal angewendetem Modulo-11 berechnet werden. Unser Generator erstellt Nummern, die diese Validierung bestehen und sich somit für Systemtests eignen.",
-    faq_4_q: "Kann ich mehrere CNPJs auf einmal generieren?",
-    faq_4_a: "Ja! Generieren Sie bis zu 100 eindeutige CNPJs auf einmal. Perfekt für Batch-Tests, QA-Automatisierung und das Befüllen von Testdatenbanken.",
+    faq_2_a: "Ja, für Softwaretests, Bildungszwecke und technische Demonstrationen. Die Verwendung fiktiver CNPJs für offizielle Registrierungen oder Betrug ist nach dem brasilianischen Strafgesetzbuch (Art. 299) eine Straftat.",
+    faq_3_q: "Was ist der alphanumerische CNPJ und was hat sich geändert?",
+    faq_3_a: "Der alphanumerische CNPJ ist das neue Format des brasilianischen Unternehmensregisters, geplant für Juli 2026. Die ersten zwölf Zeichen (Basis und Filiale) werden Buchstaben A–Z zusätzlich zu den Ziffern 0–9 akzeptieren. Nur die zwei Prüfziffern bleiben numerisch, und der Modulo-11-Algorithmus ändert sich nicht.",
+    faq_4_q: "Ab wann gilt der neue CNPJ?",
+    faq_4_a: "Der neue alphanumerische CNPJ ist für Juli 2026 geplant. Bereits ausgestellte Legacy-CNPJs werden unbegrenzt gültig bleiben. Systeme müssen sich darauf vorbereiten, beide Formate zu validieren.",
+    faq_5_q: "Bleiben Legacy-CNPJs gültig?",
+    faq_5_a: "Ja, alle im numerischen Legacy-Format ausgestellten CNPJs bleiben vollständig gültig. Systeme müssen beide Formate gleichzeitig akzeptieren und validieren.",
+    faq_6_q: "Wie funktioniert der CNPJ-Validierungsalgorithmus?",
+    faq_6_a: "Der CNPJ hat 2 Prüfziffern, die aus den ersten 12 Zeichen durch gewichtete Summe mit Modulo-11 zweimal berechnet werden. Die Gewichte für die erste Berechnung sind 5,4,3,2,9,8,7,6,5,4,3,2 und für die zweite 6,5,4,3,2,9,8,7,6,5,4,3,2. Für alphanumerische CNPJs werden Buchstaben über ihren ASCII-Code minus 48 umgewandelt (A=17 bis Z=42) vor derselben Berechnung. Wenn der Rest der Division kleiner als 2 ist, ist die Prüfziffer 0; andernfalls ist sie 11 minus der Rest. Es wird empfohlen, die Buchstaben I, O, Q und F zu vermeiden.",
+
     see1: "CPF-Generator",
     see2: "Schöne Schriften",
     see3: "Kreditkarten-Generator",
     see4: "Geburtsdatum-Generator"
   },
   nl: {
-    pageTitle: "Geldige CNPJ-generator Online voor Tests — Gratis",
+    pageTitle: "Braziliaanse CNPJ-generator — Legacy en Alfanumeriek | Gratis",
     title: "Braziliaanse CNPJ-generator",
-    meta: "Gratis online CNPJ-generator voor softwaretests. Genereer snel en eenvoudig één of meerdere geldige CNPJ's, geformatteerd of alleen cijfers.",
-    num: "Alleen cijfers",
+    meta: "Genereer geldige CNPJ in legacy (numeriek) of het nieuwe alfanumerieke formaat, gepland voor juli 2026. Controlecijfers berekend via het officiële algoritme. Gratis, zonder registratie.",
+
+    type_label: "Formaat",
+    type_legacy: "Numeriek formaat",
+    type_alpha: "Alfanumeriek formaat (nieuw)",
+    type_legacy_short: "Numérico",
+    type_alpha_short: "Alfanumeriek",
+
+    num: "Zonder leestekens",
     multiple_label: "Genereer meerdere CNPJ's",
     bt: "Genereer CNPJ",
     bt_multiple: "Genereer CNPJ's",
@@ -665,42 +941,61 @@ defineI18nRoute({
     copy_all: "Alles kopiëren",
     placeholder: "Klik op Genereer CNPJ om een nummer aan te maken",
     warning: "De gegenereerde nummers zijn fictief en uitsluitend bedoeld voor testdoeleinden.",
-    d1: "Gratis online tool om geldige CNPJ-nummers te genereren voor ontwikkelaars, softwaretesters (QA) en programmeerstudenten. Genereer fictieve Braziliaanse bedrijfsregistratienummers met wiskundig correcte controlecijfers, in geformatteerd of alleen-cijfers formaat. Ideaal voor systeemtesten, formuliervalidatie en staging-omgevingen.",
+
+    d1: "Gratis online CNPJ-generator voor ontwikkelaars, testers en programmeerstudenten. Ondersteunt het legacy-formaat — 14 numerieke cijfers met controlecijfers berekend via modulo 11 — en de nieuwe alfanumerieke CNPJ, gepland voor juli 2026. Alle gegenereerde CNPJ's zijn wiskundig geldig. Het proces verloopt volledig in de browser, zonder registratie.",
+
     features_title: "Functionaliteiten",
-    f_1: "Genereer direct geldige CNPJ's",
-    f_2: "Genereer tot 100 unieke CNPJ's tegelijk",
-    f_3: "Geformatteerd of alleen-cijfers formaat",
-    f_4: "Generatie met wiskundig correcte controlecijfers",
-    how_title: "Wat is CNPJ en hoe werkt het algoritme?",
-    how_desc: "De CNPJ (Cadastro Nacional da Pessoa Jurídica) is het nationale bedrijfsregistratienummer van Brazilië. Dit unieke 14-cijferige nummer is verplicht voor elke rechtspersoon — vereist voor het uitgeven van facturen, het openen van zakelijke bankrekeningen en het uitvoeren van officiële commerciële activiteiten. De CNPJ-structuur bestaat uit 12 basiscijfers gevolgd door 2 controlecijfers berekend met een gewogen som-algoritme met modulo-11 dat twee keer is toegepast.",
-    use_cases_title: "Belangrijkste gebruiksscenario's",
-    use_cases_intro: "Onze CNPJ-generator is de ideale oplossing voor diverse alledaagse situaties voor ontwikkelaars en technologieprofessionals:",
-    use_1_t: "Formuliervalidatie",
-    use_1_d: "Test CNPJ-velden, maskers en validatielogica in registratieformulieren.",
-    use_2_t: "Fiscale systemen",
-    use_2_d: "Valideer NF-e uitgiftestromen en integratie met facturatiesystemen.",
-    use_3_t: "Databases",
-    use_3_d: "Vul staging- en testomgevingen met realistische bedrijfsgegevens.",
+    f_1: "Generatie van legacy-CNPJ (numeriek) en alfanumeriek (nieuw formaat)",
+    f_2: "Batches tot 100 unieke CNPJ's tegelijk",
+    f_3: "Uitvoer met of zonder leestekens",
+    f_4: "Controlecijfers berekend met het officiële modulo 11-algoritme",
+    f_5: "Vergelijkingstabel en uitleg van de nieuwe alfanumerieke CNPJ",
+
+    how_title: "Hoe het CNPJ-algoritme werkt — Legacy en Alfanumeriek",
+    how_desc: "In de legacy CNPJ zijn de 14 cijfers verdeeld in basis (8), vestiging (4 — 0001 voor hoofdkantoor) en controlecijfers (2), berekend via gewogen som met modulo 11 twee keer: elk karakter wordt vermenigvuldigd met een specifiek gewicht, de resultaten worden opgeteld, gedeeld door 11, en het restant bepaalt het controlecijfer (0 als het restant kleiner is dan 2, anders 11 min het restant). De alfanumerieke CNPJ volgt dezelfde procedure, maar de eerste twaalf tekens (basis en vestiging) kunnen letters A–Z bevatten — de waarde van elke letter is zijn ASCII-code min 48 (A=17… Z=42). De controlecijfers zijn altijd numeriek (0–9). De Receita Federal raadt aan om de letters I, O, Q en F te vermijden om visuele verwarring en berekeningsbotsingen te voorkomen; deze generator sluit ze al uit.",
+
+    diff_title: "Legacy CNPJ vs. Alfanumerieke CNPJ — Wat is het Verschil?",
+    diff_desc: "De Braziliaanse CNPJ heeft een belangrijke structurele update ondergaan. Het legacy-formaat gebruikt uitsluitend cijfers op zijn 14 tekens, met een capaciteit van ongeveer 100 miljoen unieke bases. Het nieuwe alfanumerieke formaat, gepland voor juli 2026, behoudt de 14 tekens maar de eerste twaalf (basis en vestiging) zullen letters A–Z naast cijfers accepteren, waardoor de capaciteit aanzienlijk toeneemt. Alleen de twee controlecijfers blijven numeriek, en het modulo 11-algoritme verandert niet.",
+
+    use_cases_title: "Gebruiksscenario's",
+    use_cases_intro: "De meest voorkomende praktische toepassingen van de CNPJ-generator in de ontwikkelings- en QA-workflow zijn:",
+    use_1_t: "Formulier- en UI-validatie",
+    use_1_d: "Test CNPJ-velden, maskers en validatielogica. Met het alfanumerieke formaat verifieer je of de UI letters correct accepteert.",
+    use_2_t: "Fiscale systemen en NF-e",
+    use_2_d: "Valideer facturatiestromen en integraties, waarbij beide formaten worden getest.",
+    use_3_t: "Databases en stagingomgevingen",
+    use_3_d: "Vul testomgevingen met realistische bedrijfsgegevens zonder echte informatie bloot te stellen.",
     use_4_t: "API-integratie",
     use_4_d: "Voer integratietests uit met externe services die het CNPJ-formaat valideren.",
-    use_5_t: "UX Design & Demo's",
-    use_5_d: "Maak zakelijke persona's voor demonstraties zonder echte gegevens bloot te stellen.",
-    how_to_use_title: "Hoe deze tool te gebruiken",
-    step_1_title: "Een CNPJ genereren",
-    step_1_desc: "Kies het gewenste formaat en klik op \"Genereer CNPJ\". Het gegenereerde nummer kan met één klik worden gekopieerd.",
-    step_2_title: "Meerdere CNPJ's genereren",
-    step_2_desc: "Schakel \"Genereer meerdere CNPJ's\" in, stel het aantal in (2 tot 100) en klik op \"Genereer CNPJ's\". Gebruik \"Alles kopiëren\" om de volledige lijst te kopiëren.",
-    step_3_title: "Met of zonder interpunctie",
-    step_3_desc: "Schakel \"Alleen cijfers\" in om de CNPJ zonder punten, schuine streep en streepje te krijgen — ideaal voor integraties en databases.",
+    use_5_t: "UX Design en Demo's",
+    use_5_d: "Maak zakelijke persona's voor prototypes en presentaties zonder echte gegevens bloot te stellen.",
+    use_6_t: "Migratie naar alfanumerieke CNPJ",
+    use_6_d: "Genereer alfanumerieke CNPJ's om te testen of legacy-systemen correct zijn bijgewerkt.",
+    use_7_t: "Compatibiliteitstests tussen formaten",
+    use_7_d: "Genereer batches van beide typen om te garanderen dat rapporten en integraties beide formaten consistent verwerken.",
+
+    how_to_use_title: "Hoe te gebruiken",
+    step_1_title: "Formaat kiezen",
+    step_1_desc: "Selecteer Legacy CNPJ (numeriek) of alfanumerieke CNPJ (nieuw formaat). Bij het openen van de pagina wordt automatisch een legacy CNPJ gegenereerd.",
+    step_2_title: "Één of meerdere genereren",
+    step_2_desc: "Klik op \"Genereer CNPJ\" voor één nummer. Voor batches schakel \"Genereer meerdere CNPJ's\" in en gebruik \"Alles kopiëren\".",
+    step_3_title: "Uitvoerformaat kiezen",
+    step_3_desc: "Schakel \"Zonder leestekens\" in om punten, schuine streep en streepje te verwijderen — ideaal voor databases, JSON en API's.",
+
     faq_title: "Vragen & Antwoorden",
     faq_1_q: "Is de gegenereerde CNPJ echt?",
-    faq_1_a: "Nee. De gegenereerde CNPJ's zijn fictief en niet geregistreerd. Ze slagen voor de wiskundige controlecijfervalidatie, maar hebben geen wettelijke geldigheid. Uitsluitend gebruiken voor softwaretests en ontwikkeling.",
+    faq_1_a: "Nee. De gegenereerde CNPJ's zijn fictief en niet geregistreerd. Ze slagen voor de wiskundige controlecijfervalidatie, maar hebben geen wettelijke geldigheid. Uitsluitend gebruiken voor softwaretests.",
     faq_2_q: "Is het legaal om deze CNPJ-generator te gebruiken?",
-    faq_2_a: "Ja, voor softwaretests, educatieve doeleinden en technische demonstraties. Het gebruik van fictieve of andermans CNPJ's voor officiële registraties, fraude of het verkrijgen van onrechtmatige voordelen is een misdrijf volgens het Braziliaanse Wetboek van Strafrecht (Art. 299).",
-    faq_3_q: "Hoe werkt CNPJ-validatie?",
-    faq_3_a: "De CNPJ heeft 2 controlecijfers berekend op basis van de eerste 12 cijfers met behulp van een gewogen som met modulo-11 twee keer toegepast. Onze generator maakt nummers die deze validatie doorstaan, waardoor ze geschikt zijn voor systeemtesten.",
-    faq_4_q: "Kan ik meerdere CNPJ's tegelijk genereren?",
-    faq_4_a: "Ja! Genereer tot 100 unieke CNPJ's tegelijk. Perfect voor batchtesten, QA-automatisering en het vullen van testdatabases.",
+    faq_2_a: "Ja, voor softwaretests, educatieve doeleinden en technische demonstraties. Het gebruik van fictieve CNPJ's voor officiële registraties of fraude is een misdrijf volgens het Braziliaanse Wetboek van Strafrecht (Art. 299).",
+    faq_3_q: "Wat is de alfanumerieke CNPJ en wat is er veranderd?",
+    faq_3_a: "De alfanumerieke CNPJ is het nieuwe formaat van het Braziliaanse bedrijfsregister, gepland voor juli 2026. De eerste twaalf tekens (basis en vestiging) zullen letters A–Z naast de cijfers 0–9 accepteren. Alleen de twee controlecijfers blijven numeriek, en het modulo 11-algoritme verandert niet.",
+    faq_4_q: "Vanaf wanneer is de nieuwe CNPJ geldig?",
+    faq_4_a: "De nieuwe alfanumerieke CNPJ is gepland voor juli 2026. Al uitgegeven legacy-CNPJ's zullen onbeperkt geldig blijven. Systemen moeten zich voorbereiden op het valideren van beide formaten.",
+    faq_5_q: "Blijven legacy CNPJ's geldig?",
+    faq_5_a: "Ja, alle CNPJ's die zijn uitgegeven in het numerieke legacy-formaat blijven volledig geldig. Systemen moeten beide formaten tegelijkertijd accepteren en valideren.",
+    faq_6_q: "Hoe werkt het CNPJ-validatiealgoritme?",
+    faq_6_a: "De CNPJ heeft 2 controlecijfers berekend op basis van de eerste 12 tekens met gewogen som en modulo 11 twee keer toegepast. De gewichten voor de eerste berekening zijn 5,4,3,2,9,8,7,6,5,4,3,2 en voor de tweede 6,5,4,3,2,9,8,7,6,5,4,3,2. Voor alfanumerieke CNPJ's worden letters omgezet via hun ASCII-code min 48 (A=17 tot Z=42) voor dezelfde berekening. Als het restant van de deling kleiner is dan 2, is het controlecijfer 0; anders is het 11 min het restant. Het wordt aanbevolen om de letters I, O, Q en F te vermijden.",
+
     see1: "CPF-generator",
     see2: "Mooie letters",
     see3: "Creditcard-generator",

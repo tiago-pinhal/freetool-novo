@@ -35,6 +35,7 @@
             active-class="active"
             class="tooltip tooltip-right p-3"
             :data-tip="t(item.label)"
+            :aria-label="t(item.label)"
           >
             <Icon :name="`${item.icon}.svg?width=24&height=24`" aria-hidden="true" />
           </NuxtLink>

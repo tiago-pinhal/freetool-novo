@@ -1,0 +1,105 @@
+# FreeTool
+
+A premium, privacy-first suite of online utility tools. All tools are designed to operate purely on the client-side using JavaScript, which means all file conversion, generation, and processing are done 100% locally in the user's browser. No data or files are ever uploaded to external servers, guaranteeing absolute privacy and security.
+
+- Website: https://www.freetool.dev
+- Supported Languages: English (default), Portuguese (pt), Spanish (es), French (fr), Italian (it), Indonesian (id), German (de), Dutch (nl).
+
+## PDF Tools
+Secure, local PDF manipulation utility suite.
+
+- [PDF to Image](/pdf-to-image) | [Português](/pt/pdf-para-imagem) | [Español](/es/pdf-a-imagen): Converts PDF pages locally into high-quality JPG or PNG images.
+- [Image to PDF](/image-to-pdf) | [Português](/pt/imagem-para-pdf) | [Español](/es/imagen-a-pdf): Combines multiple JPG, JPEG, or PNG images into a single PDF document.
+- [PDF Editor](/pdf-editor) | [Português](/pt/editor-de-pdf) | [Español](/es/editor-de-pdf): Client-side PDF editing, annotation, and form filling utility.
+- [Split PDF](/pdf-splitter) | [Português](/pt/divisor-de-pdf) | [Español](/es/divisor-de-pdf): Splits a single PDF file into multiple separate PDFs page-by-page.
+- [Number PDF](/numbering-pdf) | [Português](/pt/numerar-pdf) | [Español](/es/numerar-pdf): Adds custom page numbers to a PDF file locally with advanced formatting and positioning.
+
+## Random Data Generators
+Dummy data and developer testing utility generators.
+
+- [CPF Generator](/cpf-generator) | [Português](/pt/gerador-de-cpf) | [Español](/es/generador-de-cpf): Generates valid Brazilian CPF numbers (formatted or plain) for software testing, with option to select specific states/regions.
+- [CNPJ Generator](/cnpj-generator) | [Português](/pt/gerador-de-cnpj) | [Español](/es/generador-de-cnpj): Generates valid Brazilian CNPJ numbers (formatted or plain) for software testing.
+- [RG Generator](/rg-generator) | [Português](/pt/gerador-de-rg) | [Español](/es/generador-de-rg): Generates valid Brazilian RG (Identity Card) numbers for software testing.
+- [Credit Card Generator](/credit-card-generator) | [Português](/pt/gerador-de-cartao-de-credito) | [Español](/es/generador-de-tarjeta-de-credito): Generates valid dummy credit card numbers with CVV and expiration dates for payment gateway testing.
+- [Password Generator](/password-generator) | [Português](/pt/gerador-de-senha) | [Español](/es/generador-de-contrasena): Creates strong, secure, and fully customizable random passwords locally.
+- [UUID Generator](/uuid-generator) | [Português](/pt/gerador-de-uuid) | [Español](/es/generador-de-uuid): Generates random UUIDs (version 4) for software development and identification.
+- [Birthday Generator](/birthday-generator) | [Português](/pt/gerador-de-aniversario) | [Español](/es/generador-de-cumpleanos): Generates realistic dummy birthdates within custom age ranges.
+- [Random Number Generator](/random-number-generator) | [Português](/pt/gerador-de-numeros-aleatorios) | [Español](/es/generador-de-numeros-aleatorios): Generates single or multiple random numbers within custom ranges.
+- [List Randomizer](/list-randomizer) | [Português](/pt/randomizador-de-lista) | [Español](/es/randomizador-de-lista): Shuffles lists of items or picks a random winner/item from a custom list.
+- [Dice Roller](/dice-roller) | [Português](/pt/rolador-de-dados) | [Español](/es/tirador-de-dados): Rolls various types of virtual polyhedral dice (d4, d6, d8, d10, d12, d20, d100) for tabletop games and testing.
+
+## Date & Time Tools
+Accurate, client-side calendar and time calculation utilities.
+
+- [Age Calculator](/age-calculator) | [Português](/pt/calculadora-de-idade) | [Español](/es/calculadora-de-edad): Calculates exact age in years, months, weeks, days, hours, and minutes from a birth date.
+- [Date Difference](/date-difference) | [Português](/pt/diferenca-de-datas) | [Español](/es/diferencia-de-fechas): Calculates the exact number of days, weeks, months, or years between two custom dates.
+- [Date Time Difference](/date-time-difference) | [Português](/pt/diferenca-de-data-e-hora) | [Español](/es/diferencia-de-fecha-y-hora): Calculates the precise time difference between two dates and times down to the minute.
+- [Future Date Calculator](/future-date-calculator) | [Português](/pt/calculadora-de-data-futura) | [Español](/es/calculadora-de-fecha-futura): Adds a specific number of days, weeks, months, or years to a starting date.
+- [Past Date Calculator](/past-date-calculator) | [Português](/pt/calculadora-de-data-passada) | [Español](/es/calculadora-de-fecha-pasada): Subtracts a specific number of days, weeks, months, or years from a starting date.
+- [Hours and Minutes Calculator](/hours-and-minutes-calculator) | [Português](/pt/calculadora-de-horas-e-minutos) | [Español](/es/calculadora-de-horas-y-minutos): Adds or subtracts time durations (hours and minutes) to calculate totals.
+- [Time Converter](/time-converter) | [Português](/pt/conversor-de-tempo) | [Español](/es/conversor-de-tiempo): Converts between time units (seconds, minutes, hours, days, weeks, months, years).
+- [Time Difference](/time-difference) | [Português](/pt/diferenca-de-tempo) | [Español](/es/diferencia-de-tiempo): Calculates the time elapsed between two specific times.
+- [Unix Timestamp Converter](/unix-timestamp-converter) | [Português](/pt/conversor-de-timestamp-unix) | [Español](/es/conversor-de-timestamp-unix): Converts Unix timestamps to human-readable dates and vice-versa.
+- [Moon Phase Today](/moon-phase) | [Português](/pt/fase-da-lua) | [Español](/es/fase-de-la-luna): Displays the current lunar phase, illumination percentage, and countdown to the next phase in real time based on date and hemisphere.
+
+## Code & Developer Tools
+Secure, local code formatters, minifiers, and utility converters for software engineers.
+
+- [CSS Formatter](/css-formatter) | [Português](/pt/formatador-de-css) | [Español](/es/formateador-de-css): Beautifies and formats CSS code for enhanced readability and style standards.
+- [CSS Minifier](/css-minifier) | [Português](/pt/minificador-de-css) | [Español](/es/minificador-de-css): Compresses and minifies CSS code to reduce file sizes for web production.
+- [HTML Formatter](/html-formatter) | [Português](/pt/formatador-de-html) | [Español](/es/formateador-de-html): Beautifies and formats HTML code with proper hierarchical indentation.
+- [HTML Minifier](/html-minifier) | [Português](/pt/minificador-de-html) | [Español](/es/minificador-de-html): Minifies HTML markup to optimize load times.
+- [JavaScript Formatter](/javascript-formatter) | [Português](/pt/formatador-de-javascript) | [Español](/es/formateador-de-javascript): Formats JavaScript code with standard indentation rules.
+- [JavaScript Minifier](/javascript-minifier) | [Português](/pt/minificador-de-javascript) | [Español](/es/minificador-de-javascript): Minifies and compresses JavaScript code.
+- [GraphQL Formatter](/graphql-formatter) | [Português](/pt/formatador-de-graphql) | [Español](/es/formateador-de-graphql): Formats and indents GraphQL queries properly.
+- [JSON Viewer](/json-viewer) | [Português](/pt/visualizador-de-json) | [Español](/es/visualizador-de-json): Formats, inspects, validates, and beautifies JSON data structures.
+- [JSON to CSV Converter](/json-to-csv-converter) | [Português](/pt/conversor-de-json-para-csv) | [Español](/es/conversor-de-json-a-csv): Converts JSON data into clean CSV sheets.
+- [JSON to XML Converter](/json-to-xml-converter) | [Português](/pt/conversor-de-json-para-xml) | [Español](/es/conversor-de-json-a-xml): Converts JSON data into structured XML markup.
+- [XML to JSON Converter](/xml-to-json-converter) | [Português](/pt/conversor-de-xml-para-json) | [Español](/es/conversor-de-xml-a-json): Converts XML data into JSON objects.
+- [CSV to JSON Converter](/csv-to-json-converter) | [Português](/pt/conversor-de-csv-para-json) | [Español](/es/conversor-de-csv-a-json): Converts CSV rows and tables into structured JSON lists.
+- [LESS to CSS Converter](/less-to-css-converter) | [Português](/pt/conversor-de-less-para-css) | [Español](/es/conversor-de-less-a-css): Compiles LESS stylesheet code into clean standard CSS.
+- [MD5 Hash Generator](/md5-hash-generator) | [Português](/pt/gerador-de-hash-md5) | [Español](/es/generador-de-hash-md5): Generates MD5 cryptographic hashes from plain text locally.
+- [Bcrypt Generator](/bcrypt-generator) | [Português](/pt/gerador-de-bcrypt) | [Español](/es/generador-de-bcrypt): Generates and verifies secure bcrypt password hashes locally.
+- [Crontab Generator](/crontab-generator) | [Português](/pt/gerador-de-crontab) | [Español](/es/generador-de-crontab): Visually builds crontab schedules and expressions.
+- [URL Encoder/Decoder](/url-encoder-decoder) | [Português](/pt/codificador-decodificador-de-url) | [Español](/es/codificador-decodificador-de-url): Percent-encodes or decodes URLs and query parameters.
+- [Number Base Converter](/number-base-converter) | [Português](/pt/conversor-de-base-numerica) | [Español](/es/conversor-de-base-numerica): Converts numbers between binary, octal, decimal, hexadecimal, and custom bases.
+
+## Image & Design Tools
+Secure, local graphic utilities for web designers and editors.
+
+- [Crop Image](/crop-image) | [Português](/pt/cortar-imagem) | [Español](/es/recortar-imagen): Crops images locally with responsive aspect ratio presets and custom sizing.
+- [Resize Image](/resize-image) | [Português](/pt/redimensionar-imagem) | [Español](/es/redimensionar-imagen): Resizes images locally by adjusting width, height, or quality settings.
+- [QR Code Generator](/qrcode-generator) | [Português](/pt/gerador-de-qrcode) | [Español](/es/generador-de-codigo-qr): Generates customizable QR codes (text, URL, Wi-Fi) with custom colors and logo embedding.
+- [Color Tools](/color-tools) | [Português](/pt/ferramentas-para-cores) | [Español](/es/herramientas-para-colores): Hub page for all color utilities.
+- [Random Colors](/random-colors) | [Português](/pt/cores-aleatorias) | [Español](/es/colores-aleatorios): Generates random color palettes with HEX, RGB and HSL codes, ready to copy.
+- [Image Colors](/dominant-colors-of-the-image) | [Português](/pt/cores-dominantes-da-imagem) | [Español](/es/colores-dominantes-de-la-imagen): Extracts the dominant color and a full palette from any uploaded image, processed locally.
+- [Color Converter](/color-converter) | [Português](/pt/conversor-de-cores) | [Español](/es/convertidor-de-colores): Converts colors between HEX, RGB, HSL, HSV and other formats instantly.
+- [Color Combination](/color-combination) | [Português](/pt/combinacao-de-cores) | [Español](/es/combinacion-de-colores): Generates harmonious color palettes (analogous, triadic, complementary, etc.) from any base color.
+- [Barcode Generator](/barcode-generator) | [Português](/pt/gerador-de-codigo-de-barras) | [Español](/es/generador-de-codigo-de-barras): Generates barcode images (CODE128, EAN, UPC, etc.) from numerical inputs.
+
+## Text & Content Utilities
+Local text parsing, scrubbing, styling, and formatting tools.
+
+- [Text Counter](/text-counter) | [Português](/pt/contador-de-texto) | [Español](/es/contador-de-texto): Counts characters, words, paragraphs, lines, and estimates reading time.
+- [Text Comparator](/text-comparator) | [Português](/pt/comparador-de-texto) | [Español](/es/comparador-de-texto): Compares two text blocks to highlight line-by-line or character-by-character differences.
+- [Text Converter](/text-converter) | [Português](/pt/conversor-de-texto) | [Español](/es/conversor-de-texto): Converts text case styles (lowercase, UPPERCASE, Title Case, camelCase, kebab-case, etc.).
+- [Morse Code Converter](/morse-code-converter) | [Português](/pt/conversor-de-codigo-morse) | [Español](/es/convertidor-de-codigo-morse) | [Français](/fr/convertisseur-code-morse) | [Italiano](/it/convertitore-codice-morse) | [Indonesian](/id/konverter-kode-morse): Converts text to international Morse code and decodes Morse sequences back to plain text.
+- [Text Generator](/text-generator) | [Português](/pt/gerador-de-texto) | [Español](/es/generador-de-texto): Generates custom lorem ipsum or random placeholder text.
+- [Email Extractor](/email-extractor) | [Português](/pt/extrator-de-email) | [Español](/es/extractor-de-email): Extracts all valid email addresses from any block of text.
+- [Invisible Character](/invisible-character) | [Português](/pt/caractere-invisivel) | [Español](/es/caracter-invisible): Generates and copies blank space characters (zero-width, braille spaces, etc.) for social media or formatting.
+- [Fancy Letters](/fancy-letters) | [Português](/pt/letras-diferentes) | [Español](/es/letras-diferentes): Converts plain text into styled, aesthetic unicode fonts for social media bios.
+- [ASCII Letter Generator](/ascii-letter-generator) | [Português](/pt/gerador-de-letras-ascii) | [Español](/es/generador-de-letras-ascii): Creates large text banners using creative ASCII art font styles.
+- [Emoji Picker](/emoji-picker) | [Português](/pt/seletor-de-emoji) | [Español](/es/selector-de-emojis): Easily browses, searches, and copies emojis.
+- [Kaomoji Picker](/kaomoji) | [Português](/pt/kaomoji) | [Español](/es/kaomoji): Browse and copy Japanese kaomoji emoticons.
+- [Lenny Face Picker](/lenny-face) | [Português](/pt/lenny-face) | [Español](/es/lenny-face): Copy popular Lenny faces and text emoticons.
+- [Symbol Picker](/symbol-picker) | [Português](/pt/seletor-de-simbolos) | [Español](/es/selector-de-simbolos): Browse and copy special characters, math signs, and symbols.
+
+## Calculators & Math Utilities
+Quick, offline math calculations and unit converters.
+
+- [Percentage Calculator](/percentage-calculator) | [Português](/pt/calculadora-de-porcentagem) | [Español](/es/calculadora-de-porcentaje): Performs various percentage calculations (increase, decrease, ratio, absolute value).
+- [Simple Rule of Three Calculator](/simple-rule-of-three-calculator) | [Português](/pt/calculadora-de-regra-de-tres-simples) | [Español](/es/calculadora-de-regla-de-tres-simple): Solves direct or inverse simple rule of three proportions.
+- [Roman Numerals Converter](/roman-numerals-converter) | [Português](/pt/conversor-de-numeros-romanos) | [Español](/es/conversor-de-numeros-romanos): Converts Arabic numbers to Roman numerals and vice-versa.
+- [Length Converter](/length-converter) | [Português](/pt/conversor-de-comprimento) | [Español](/es/conversor-de-longitud): Converts between metric and imperial length units.
+- [Storage Unit Converter](/storage-unit-converter) | [Português](/pt/conversor-de-unidades-de-armazenamento) | [Español](/es/conversor-de-unidades-de-almacenamiento): Converts data storage units (bytes, KB, MB, GB, TB, etc.).
+- [Temperature Converter](/temperature-converter) | [Português](/pt/conversor-de-temperatura) | [Español](/es/conversor-de-temperatura): Converts temperatures between Celsius, Fahrenheit, and Kelvin.

@@ -105,25 +105,13 @@ usePageJsonLd({
   name: t('title'),
   description: t('meta'),
   features: [t('feature_1'), t('feature_2'), t('feature_3'), t('feature_4')],
-  howToName: t('how_to_title'),
-  howToSteps: [
-    { name: t('how_1_title'), text: t('how_1_desc') },
-    { name: t('how_2_title'), text: t('how_2_desc') },
-    { name: t('how_3_title'), text: t('how_3_desc') }
-  ],
   faq: faqItems.value
 })
 
 useHead({
   title: t('page_title'),
   meta: [
-    { name: 'description', content: t('meta') },
-    { property: 'og:title', content: t('og_title') },
-    { property: 'og:description', content: t('meta') },
-    { property: 'og:type', content: 'website' },
-    { name: 'twitter:card', content: 'summary' },
-    { name: 'twitter:title', content: t('og_title') },
-    { name: 'twitter:description', content: t('meta') }
+    { name: 'description', content: t('meta') }
   ]
 })
 
@@ -351,6 +339,7 @@ function download() {
 
 defineI18nRoute({
   paths: {
+    en: '/qrcode-generator',
     pt: '/gerador-de-qr-code',
     es: '/generador-de-qr-code',
     fr: '/generateur-de-qr-code',
@@ -700,7 +689,7 @@ onLoaded(() => {
 
           <button type="button" class="btn btn-primary mt-4 w-full" :disabled="!qrLoaded" :aria-label="t('download_aria')" @click="download">
             <Icon name="heroicons:arrow-down-tray-20-solid" class="h-5 w-5" aria-hidden="true" />
-            Download PNG
+            Download
           </button>
 
           <p class="mt-3 text-sm text-base-content/70">{{ t('scan_tip') }}</p>
@@ -906,7 +895,7 @@ onLoaded(() => {
     type_sms: "SMS: opens a text message with phone and content defined.",
     type_pix: "PIX: generates a static QR Code for receiving payments and transfers.",
     type_text: "Text: stores simple information that appears directly upon scanning.",
-    faq_title: "Frequently Asked Questions",
+    faq_title: "Questions and Answers",
     faq_1_q: "Can I add my logo to the QR Code?",
     faq_1_a: "Yes. Use the logo option to upload an image and position it in the center. To keep reading reliable, prefer simple logos and test the QR code before printing.",
     faq_3_q: "Does the QR Code still work with different colors and shapes?",
@@ -1025,7 +1014,7 @@ onLoaded(() => {
     type_pix: "PIX: gera um QR Code estático para recebimento de pagamentos e transferências.",
     type_text: "Texto: armazena uma informação simples que aparece diretamente ao escanear.",
 
-    faq_title: "Perguntas frequentes",
+    faq_title: "Perguntas e Respostas",
     faq_1_q: "Posso adicionar meu logo ao QR Code?",
     faq_1_a: "Sim. Use a opção de logo para enviar uma imagem e posicioná-la no centro. Para manter a leitura confiável, prefira logos simples e teste o QR Code antes de imprimir.",
     faq_3_q: "O QR Code continua funcionando com cores e formatos diferentes?",
@@ -1138,7 +1127,7 @@ onLoaded(() => {
     type_sms: "SMS: abre un mensaje de texto con teléfono y contenido definidos.",
     type_pix: "PIX: genera un código QR estático para recibir pagos y transferencias.",
     type_text: "Texto: almacena información simple que aparece directamente al escanear.",
-    faq_title: "Preguntas frecuentes",
+    faq_title: "Preguntas y Respuestas",
     faq_1_q: "¿Puedo agregar mi logo al código QR?",
     faq_1_a: "Sí. Use la opción de logo para enviar una imagen y posicionarla en el centro. Para mantener la lectura confiable, prefiera logos simples y pruebe el código QR antes de imprimir.",
     faq_3_q: "¿El código QR sigue funcionando con diferentes colores y formas?",
@@ -1250,7 +1239,7 @@ onLoaded(() => {
     type_sms: "SMS : ouvre un message texte avec le téléphone et le contenu définis.",
     type_pix: "PIX : génère un code QR statique pour la réception de paiements et de virements.",
     type_text: "Texte : stocke des informations simples qui apparaissent directement lors du scan.",
-    faq_title: "Foire Aux Questions",
+    faq_title: "Questions et Réponses",
     faq_1_q: "Puis-je ajouter mon logo au code QR ?",
     faq_1_a: "Oui. Utilisez l'option logo pour télécharger une image et la positionner au centre. Pour garder une lecture fiable, préférez des logos simples et testez le code QR avant d'imprimer.",
     faq_3_q: "Le code QR fonctionne-t-il toujours avec des couleurs et des formes différentes ?",
@@ -1362,7 +1351,7 @@ onLoaded(() => {
     type_sms: "SMS: apre un messaggio di testo con telefono e contenuto definiti.",
     type_pix: "PIX: genera un codice QR statico per la ricezione di pagamenti e bonifici.",
     type_text: "Testo: memorizza una semplice informazione che appare direttamente alla scansione.",
-    faq_title: "Domande frequenti",
+    faq_title: "Domande e Risposte",
     faq_1_q: "Posso aggiungere il mio logo al codice QR?",
     faq_1_a: "Sì. Usa l'opzione logo per caricare un'immagine e posizionarla al centro. Per mantenere la lettura affidabile, preferisci loghi semplici e testa il codice QR prima di stampare.",
     faq_3_q: "Il codice QR funziona ancora con colori e forme diverse?",
@@ -1474,7 +1463,7 @@ onLoaded(() => {
     type_sms: "SMS: membuka pesan teks dengan telepon dan konten yang ditentukan.",
     type_pix: "PIX: menghasilkan kode QR statis untuk menerima pembayaran dan transfer.",
     type_text: "Teks: menyimpan informasi sederhana yang muncul langsung saat pemindaian.",
-    faq_title: "Pertanyaan yang Sering Diajukan",
+    faq_title: "Pertanyaan dan Jawaban",
     faq_1_q: "Bisakah saya menambahkan logo saya ke kode QR?",
     faq_1_a: "Ya. Gunakan opsi logo untuk mengunggah gambar dan memposisikannya di tengah. Agar pembacaan tetap andal, pilih logo yang sederhana dan uji kode QR sebelum mencetak.",
     faq_3_q: "Apakah kode QR masih berfungsi dengan warna dan bentuk yang berbeda?",
@@ -1586,7 +1575,7 @@ onLoaded(() => {
     type_sms: "SMS: öffnet eine Textnachricht mit definierter Telefonnummer und Inhalt.",
     type_pix: "PIX: generiert einen statischen QR-Code zum Empfangen von Zahlungen und Überweisungen.",
     type_text: "Text: speichert einfache Informationen, die direkt beim Scannen angezeigt werden.",
-    faq_title: "Häufig gestellte Fragen",
+    faq_title: "Fragen und Antworten",
     faq_1_q: "Kann ich mein Logo zum QR-Code hinzufügen?",
     faq_1_a: "Ja. Verwenden Sie die Logo-Option, um ein Bild hochzuladen und in der Mitte zu platzieren. Um eine zuverlässige Lesbarkeit zu gewährleisten, bevorzugen Sie einfache Logos und testen Sie den QR-Code vor dem Drucken.",
     faq_3_q: "Funktioniert der QR-Code noch mit verschiedenen Farben und Formen?",
@@ -1698,7 +1687,7 @@ onLoaded(() => {
     type_sms: "Sms: opent een sms-bericht met gedefinieerde telefoon en inhoud.",
     type_pix: "PIX: genereert een statische QR-code voor het ontvangen van betalingen en overschrijvingen.",
     type_text: "Tekst: slaat eenvoudige informatie op die direct verschijnt bij het scannen.",
-    faq_title: "Veelgestelde Vragen",
+    faq_title: "Vragen en Antwoorden",
     faq_1_q: "Kan ik mijn logo toevoegen aan de QR-code?",
     faq_1_a: "Ja. Gebruik de logo-optie om een afbeelding te uploaden en in het midden te plaatsen. Kies voor betrouwbaar scannen bij voorkeur voor eenvoudige logo's en test de QR-code voor het afdrukken.",
     faq_3_q: "Werkt de QR-code nog steeds met verschillende kleuren en vormen?",

@@ -29,7 +29,7 @@ defineI18nRoute({
   <div class="container mx-auto px-4 py-24 min-h-[60vh]">
     <div class="max-w-3xl mx-auto">
       <div class="flex items-center gap-4 mb-8">
-        <img src="/img/logo.png" :alt="t('logo_alt')" class="w-12 h-12 object-contain" />
+        <img src="https://www.freetool.dev/img/logo.png" :alt="t('logo_alt')" class="w-12 h-12 object-contain" />
         <h1 class="text-4xl font-extrabold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
           {{ t('title') }} FreeTool.Dev
         </h1>

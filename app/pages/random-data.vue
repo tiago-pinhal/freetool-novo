@@ -14,15 +14,16 @@ useHead({
 })
 
 defineI18nRoute({
-    paths: {
-        pt: "/dados-aleatorios",
-        es: "/datos-aleatorios",
-        fr: '/donnees-aleatoires',
-        it: '/dati-casuali',
-        id: '/data-acak',
-        de: '/zufallsdaten',
-        nl: '/willekeurige-gegevens'
-    }
+  paths: {
+    en: '/random-data',
+    pt: "/dados-aleatorios",
+    es: "/datos-aleatorios",
+    fr: '/donnees-aleatoires',
+    it: '/dati-casuali',
+    id: '/data-acak',
+    de: '/zufallsdaten',
+    nl: '/willekeurige-gegevens'
+  }
 })
 </script>
 

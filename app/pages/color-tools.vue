@@ -14,6 +14,7 @@ useHead({
 
 defineI18nRoute({
     paths: {
+        en: '/color-tools',
         pt: '/ferramentas-para-cores',
         es: '/herramientas-para-colores',
         fr: '/outils-pour-couleurs',

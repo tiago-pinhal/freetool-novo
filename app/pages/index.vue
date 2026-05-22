@@ -53,7 +53,7 @@ const toolCategories = [
 
     <!-- Tools Grid Section -->
     <section>
-      <div class="container mx-auto">
+      <div class="container mx-auto max-w-6xl">
         <div class="flex items-center gap-4 mb-12">
           <h2 class="text-2xl font-bold text-base-content">{{ t('d3') }}</h2>
           <div class="h-px flex-1 bg-base-content/10"></div>

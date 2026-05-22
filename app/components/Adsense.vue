@@ -1,4 +1,21 @@
 <script setup lang="ts">
+/**
+ * Single Google AdSense unit.
+ *
+ * Responsibilities (single responsibility):
+ *  - Render exactly one <ins class="adsbygoogle"> when ad consent is granted.
+ *  - Trigger the AdSense fill request only ONCE, and only AFTER the slot
+ *    has a non-zero width. Pushing while the slot is 0px wide (hydration
+ *    under <ClientOnly>, sticky aside, breakpoint not yet applied) makes
+ *    AdSense read the slot as 0x0 and reply `unfilled` permanently.
+ *  - Stay SSR-safe and clean up its own observer.
+ *
+ * NOT handled here on purpose: layout / breakpoint decisions (e.g. "show the
+ * vertical unit on desktop only"). That is the parent's concern. A `vertical`
+ * unit requested on a narrow mobile viewport has no inventory and returns
+ * `unfilled`, so the parent must simply not mount a vertical slot on mobile.
+ */
+
 type AdFormat = 'auto' | 'horizontal' | 'vertical' | 'rectangle' | 'fluid'
 
 const props = withDefaults(defineProps<{
@@ -7,39 +24,101 @@ const props = withDefaults(defineProps<{
   responsive?: boolean
 }>(), {
   adFormat: 'auto',
-  responsive: true
+  responsive: true,
 })
 
-const insRef = ref<HTMLElement>()
+const insRef = ref<HTMLElement | null>(null)
 const isDev = import.meta.dev
-const { adsConsent } = useConsentState()
+
+let resizeObserver: ResizeObserver | null = null
+let hasPushed = false
 
 const reservedHeight = computed(() => {
   switch (props.adFormat) {
     case 'vertical':
-      return 'min-h-[600px]'
+      return 'min-h-[250px] sm:min-h-[600px]'
     case 'horizontal':
-      return 'min-h-[90px]'
+      return 'min-h-[280px] sm:min-h-[90px]'
     case 'rectangle':
       return 'min-h-[250px]'
     case 'fluid':
       return 'min-h-[200px]'
-    case 'auto':
     default:
       return 'min-h-[280px] sm:min-h-[90px]'
   }
 })
 
-watch(adsConsent, async (granted) => {
-  if (!granted) return
-  await nextTick()
-  if (!insRef.value || insRef.value.offsetWidth === 0) return
+function disconnectObserver(): void {
+  if (resizeObserver) {
+    resizeObserver.disconnect()
+    resizeObserver = null
+  }
+}
+
+/**
+ * Attempts the AdSense fill request.
+ * Returns true once the attempt is settled (so callers stop retrying):
+ *  - true  -> pushed, or already filled by something else, or push errored
+ *             (no point retrying an errored/duplicate push)
+ *  - false -> not laid out yet (width 0); caller should keep waiting
+ */
+function tryPush(): boolean {
+  if (hasPushed) return true
+
+  const el = insRef.value
+  if (!el) return false
+
+  // Belt-and-suspenders: if this <ins> was already processed, do not push
+  // again (AdSense throws "All ins elements already have ads").
+  if (el.getAttribute('data-adsbygoogle-status')) {
+    hasPushed = true
+    return true
+  }
+
+  // The decisive guard: a 0-width slot is interpreted as 0x0 -> unfilled.
+  if (el.offsetWidth === 0) return false
+
+  hasPushed = true
   try {
     ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-  } catch (e) {
-    if (isDev) console.warn('AdSense push failed:', e)
+  } catch (error) {
+    if (isDev) console.warn('[Adsense] push failed:', error)
   }
-}, { immediate: true })
+  return true
+}
+
+function startFillWhenVisible(): void {
+  // Browser-only: ResizeObserver / window do not exist during SSR.
+  if (!import.meta.client) return
+
+  // Fast path: slot already has a real width.
+  if (tryPush()) return
+
+  const el = insRef.value
+  if (!el) return
+
+  // Width is 0 right now. Observe the slot and push the moment it gets a
+  // real width (layout settled / breakpoint applied), then stop observing.
+  // If the slot stays hidden (e.g. desktop-only unit on mobile), width
+  // stays 0, the push never fires, and no wasted `unfilled` request is made.
+  resizeObserver = new ResizeObserver(() => {
+    if (tryPush()) disconnectObserver()
+  })
+  resizeObserver.observe(el)
+}
+
+watch(
+  insRef,
+  async (el) => {
+    if (!el) return
+    // Wait a tick for the DOM element to be fully integrated
+    await nextTick()
+    startFillWhenVisible()
+  },
+  { immediate: true },
+)
+
+onScopeDispose(disconnectObserver)
 </script>
 
 <template>
@@ -61,15 +140,25 @@ watch(adsConsent, async (granted) => {
       </div>
     </div>
 
-    <ins
-      v-else-if="adsConsent"
-      ref="insRef"
-      class="adsbygoogle"
-      style="display:block"
-      data-ad-client="ca-pub-6172875094663882"
-      :data-ad-slot="adSlot || '9118007770'"
-      :data-ad-format="adFormat"
-      :data-full-width-responsive="String(responsive)"
-    />
+    <ClientOnly v-else>
+      <!--
+        width:100% is REQUIRED, not cosmetic. The wrapper is a flex
+        container (justify-center / items-center); a bare display:block
+        child with no width collapses to its content width, and an empty
+        <ins> has zero content => offsetWidth stays 0 even on desktop with
+        a settled layout. AdSense then reads the slot as 0x0 and replies
+        `unfilled`. width:100% makes the slot inherit the wrapper width so
+        the ResizeObserver can measure a real size and the push can fire.
+      -->
+      <ins
+        ref="insRef"
+        class="adsbygoogle"
+        style="display:block; width:100%"
+        data-ad-client="ca-pub-6172875094663882"
+        :data-ad-slot="adSlot || '5577057946'"
+        :data-ad-format="adFormat"
+        :data-full-width-responsive="String(responsive)"
+      />
+    </ClientOnly>
   </div>
 </template>

@@ -22,7 +22,8 @@ const wordCount = computed(() => text.value.split(/\s+/).filter(Boolean).length)
 const faqs = computed(() => [
   { question: t('faq1q'), answer: t('faq1a') },
   { question: t('faq2q'), answer: t('faq2a') },
-  { question: t('faq3q'), answer: t('faq3a') }
+  { question: t('faq3q'), answer: t('faq3a') },
+  { question: t('faq4q'), answer: t('faq4a') }
 ])
 
 const features = computed(() => [
@@ -215,8 +216,6 @@ usePageJsonLd({
   name: t('title'),
   description: t('meta'),
   features: features.value,
-  howToName: t('how_to_use_title'),
-  howToSteps: howToSteps.value,
   faq: faqs.value
 })
 
@@ -247,10 +246,11 @@ defineI18nRoute({
     :description="t('meta')"
     :show-ads="state.ads"
     :see-also-links="[
-      { label: t('see1'), to: 'ascii-letter-generator' },
+      { label: t('see1'), to: 'invisible-character' },
       { label: t('see2'), to: 'fancy-letters' },
       { label: t('see3'), to: 'text-counter' },
-      { label: t('see4'), to: 'text-comparator' }
+      { label: t('see4'), to: 'text-comparator' },
+      { label: t('see_morse'), to: 'morse-code-converter' }
     ]"
   >
     <div class="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -396,7 +396,7 @@ defineI18nRoute({
   pt: {
     m_title: "Conversor de Maiúsculas e Minúsculas Online Grátis",
     title: "Conversor de Texto",
-    meta: "Converta texto em maiúsculas ou minúsculas, remova acentos, limpe espaços extras e muito mais. Tudo o que você precisa para formatar e padronizar textos de forma simples, rápida e gratuita.",
+    meta: "Converta texto de letras maiúsculas para minúsculas (e vice-versa), remova acentos, limpe espaços extras e muito mais. Tudo o que você precisa para formatar e padronizar textos de forma simples, rápida e gratuita.",
     about_desc: "Este conversor de texto online permite editar, formatar e organizar textos rapidamente em uma única ferramenta. Insira seu conteúdo para converter letras maiúsculas e minúsculas, remover acentos, limpar formatações indesejadas de textos copiados e transformar frases em diferentes estilos de escrita, inclusive para redes sociais. Ideal para padronizar documentos, formatar mensagens e organizar listas de forma prática, rápida e eficiente.",
     how_to_use_title: "Como usar o Conversor de Texto",
     step_1_title: "Cole ou digite o texto",
@@ -438,6 +438,8 @@ defineI18nRoute({
     faq2a: "Sim. A aba de programação converte texto para camelCase, PascalCase, snake_case, kebab-case, dot.case e slugs de URL.",
     faq3q: "Posso limpar texto copiado de PDFs ou documentos?",
     faq3a: "Sim. As ferramentas de limpeza removem espaços extras, linhas em branco, quebras de linha, números, pontuação e acentos de texto copiado.",
+    faq4q: "Como converter letras maiúsculas para minúsculas?",
+    faq4a: "Basta colar o seu texto na área principal e clicar no botão 'minúsculas' na aba de conversão. O texto será transformado instantaneamente.",
     features_title: "Principais Funcionalidades",
     feature1: "Conversão para maiúsculas, minúsculas, title case e sentence case",
     feature2: "Ferramentas para remover espaços, acentos, pontuação e quebras de linha",
@@ -466,15 +468,16 @@ defineI18nRoute({
     words: "palavras",
     copy: "Copiar",
     copied: "Copiado!",
-    see1: "Gerador de Letras ASCII",
+    see1: "Caractere Invisível",
     see2: "Letras Diferentes",
     see3: "Contador de Texto",
-    see4: "Comparador de Texto"
+    see4: "Comparador de Texto",
+    see_morse: "Código Morse"
   },
   en: {
     m_title: "Free Online Case Converter",
     title: "Text Converter",
-    meta: "Convert text to uppercase or lowercase, remove accents, clear extra spaces and much more. Everything you need to format and standardize texts simply, quickly, and for free.",
+    meta: "Convert text from uppercase to lowercase (and vice versa), remove accents, clear extra spaces and much more. Everything you need to format and standardize texts simply, quickly, and for free.",
     about_desc: "This online text converter allows you to edit, format, and organize texts quickly in a single tool. Insert your content to convert uppercase and lowercase letters, remove accents, clean up unwanted formatting from copied texts, and transform sentences into different writing styles, including for social media. Ideal for standardizing documents, formatting messages, and organizing lists practically, quickly, and efficiently.",
     how_to_use_title: "How to Use the Text Converter",
     step_1_title: "Paste or type the text",
@@ -516,6 +519,8 @@ defineI18nRoute({
     faq2a: "Yes. The programming tab converts text to camelCase, PascalCase, snake_case, kebab-case, dot.case, and URL slugs.",
     faq3q: "Can I clean text copied from PDFs or documents?",
     faq3a: "Yes. The cleaning tools remove extra spaces, blank lines, line breaks, numbers, punctuation, and accents from copied text.",
+    faq4q: "How to convert uppercase to lowercase?",
+    faq4a: "Simply paste your text into the main area and click the 'lowercase' button in the case conversion tab. The text will be instantly transformed.",
     features_title: "Key Features",
     feature1: "Conversion to uppercase, lowercase, title case, and sentence case",
     feature2: "Tools to remove spaces, accents, punctuation, and line breaks",
@@ -544,15 +549,16 @@ defineI18nRoute({
     words: "words",
     copy: "Copy",
     copied: "Copied!",
-    see1: "ASCII Letter Generator",
+    see1: "Invisible Character",
     see2: "Fancy Letters",
     see3: "Text Counter",
-    see4: "Text Comparator"
+    see4: "Text Comparator",
+    see_morse: "Morse Code"
   },
   es: {
     m_title: "Convertidor de Mayúsculas y Minúsculas Online Gratis",
     title: "Convertidor de Texto",
-    meta: "Convierte texto a mayúsculas o minúsculas, elimina acentos, limpia espacios extra y mucho más. Todo lo que necesitas para formatear y estandarizar textos de forma sencilla, rápida y gratuita.",
+    meta: "Convierte texto de mayúsculas a minúsculas (y viceversa), elimina acentos, limpia espacios extra y mucho más. Todo lo que necesitas para formatear y estandarizar textos de forma sencilla, rápida y gratuita.",
     about_desc: "Este convertidor de texto online te permite editar, formatear y organizar textos rápidamente en una sola herramienta. Inserta tu contenido para convertir letras a mayúsculas y minúsculas, eliminar acentos, limpiar formatos no deseados de textos copiados y transformar frases en diferentes estilos de escritura, incluso para redes sociales. Ideal para estandarizar documentos, formatear mensajes y organizar listas de forma práctica, rápida y eficiente.",
     how_to_use_title: "Cómo usar el Convertidor de Texto",
     step_1_title: "Pega o escribe el texto",
@@ -594,6 +600,8 @@ defineI18nRoute({
     faq2a: "Sí. La pestaña de programación convierte texto a camelCase, PascalCase, snake_case, kebab-case, dot.case y slugs de URL.",
     faq3q: "¿Puedo limpiar texto copiado de PDFs o documentos?",
     faq3a: "Sí. Las herramientas de limpieza eliminan espacios extra, líneas en blanco, saltos de línea, números, puntuación y acentos de textos copiados.",
+    faq4q: "¿Cómo convertir mayúsculas a minúsculas?",
+    faq4a: "Simplemente pega tu texto en el área principal y haz clic en el botón 'minúsculas' en la pestaña de conversión. El texto se transformará instantáneamente.",
     features_title: "Características Principales",
     feature1: "Conversión a mayúsculas, minúsculas, title case y sentence case",
     feature2: "Herramientas para eliminar espacios, acentos, puntuación y saltos de línea",
@@ -622,7 +630,7 @@ defineI18nRoute({
     words: "palabras",
     copy: "Copiar",
     copied: "¡Copiado!",
-    see1: "Generador de Letras ASCII",
+    see1: "Carácter Invisible",
     see2: "Letras Diferentes",
     see3: "Contador de Texto",
     see4: "Comparador de Texto"
@@ -630,7 +638,7 @@ defineI18nRoute({
   fr: {
     m_title: "Convertisseur de Majuscules et Minuscules en Ligne Gratuit",
     title: "Convertisseur de Texte",
-    meta: "Convertissez du texte en majuscules ou minuscules, supprimez les accents, nettoyez les espaces supplémentaires et bien plus encore. Tout ce dont vous avez besoin pour formater et standardiser des textes de manière simple, rapide et gratuite.",
+    meta: "Convertissez du texte de majuscules en minuscules (et vice versa), supprimez les accents, nettoyez les espaces supplémentaires et bien plus encore. Tout ce dont vous avez besoin pour formater et standardiser des textes de manière simple, rapide et gratuite.",
     about_desc: "Ce convertisseur de texte en ligne vous permet d'éditer, de formater et d'organiser des textes rapidement dans un seul outil. Insérez votre contenu pour convertir les lettres en majuscules et minuscules, supprimer les accents, nettoyer les formatages indésirables des textes copiés et transformer les phrases dans différents styles d'écriture, y compris pour les réseaux sociaux. Idéal pour standardiser des documents, formater des messages et organiser des listes de manière pratique, rapide et efficace.",
     how_to_use_title: "Comment utiliser le Convertisseur de Texte",
     step_1_title: "Collez ou tapez le texte",
@@ -672,6 +680,8 @@ defineI18nRoute({
     faq2a: "Oui. L'onglet de programmation convertit le texte en camelCase, PascalCase, snake_case, kebab-case, dot.case et en slugs d'URL.",
     faq3q: "Puis-je nettoyer le texte copié à partir de PDF ou de documents ?",
     faq3a: "Oui. Les outils de nettoyage suppriment les espaces supplémentaires, les lignes vides, les sauts de ligne, les nombres, la ponctuation et les accents du texte copié.",
+    faq4q: "Comment convertir des majuscules en minuscules ?",
+    faq4a: "Il suffit de coller votre texte dans la zone principale et de cliquer sur le bouton 'minuscules' dans l'onglet de conversion. Le texte sera instantanément transformé.",
     features_title: "Fonctionnalités Principales",
     feature1: "Conversion en majuscules, minuscules, casse de titre et casse de phrase",
     feature2: "Outils pour supprimer les espaces, les accents, la ponctuation et les sauts de ligne",
@@ -700,7 +710,7 @@ defineI18nRoute({
     words: "mots",
     copy: "Copier",
     copied: "Copié !",
-    see1: "Générateur de Lettres ASCII",
+    see1: "Caractère Invisible",
     see2: "Lettres Différentes",
     see3: "Compteur de Texte",
     see4: "Comparateur de Texte"
@@ -708,7 +718,7 @@ defineI18nRoute({
   it: {
     m_title: "Convertitore di Maiuscole e Minuscole Online Gratis",
     title: "Convertitore di Testo",
-    meta: "Converti il testo in maiuscolo o minuscolo, rimuovi gli accenti, pulisci gli spazi extra e molto altro. Tutto ciò di cui hai bisogno per formattare e standardizzare i testi in modo semplice, rapido e gratuito.",
+    meta: "Converti il testo da maiuscole in minuscole (e viceversa), rimuovi gli accenti, pulisci gli spazi extra e molto altro. Tutto ciò di cui hai bisogno per formattare e standardizzare i testi in modo semplice, rapido e gratuito.",
     about_desc: "Questo convertitore di testo online ti consente di modificare, formattare e organizzare i testi rapidamente in un unico strumento. Inserisci il tuo contenuto per convertire le lettere in maiuscole e minuscole, rimuovere gli accenti, ripulire le formattazioni indesiderate dai testi copiati e trasformare le frasi in diversi stili di scrittura, anche per i social network. Ideale per standardizzare documenti, formattare messaggi e organizzare elenchi in modo pratico, veloce ed efficiente.",
     how_to_use_title: "Come usare il Convertitore di Testo",
     step_1_title: "Incolla o digita il testo",
@@ -750,6 +760,8 @@ defineI18nRoute({
     faq2a: "Sì. La scheda di programmazione converte il testo in camelCase, PascalCase, snake_case, kebab-case, dot.case e URL slug.",
     faq3q: "Posso pulire il testo copiato da PDF o documenti?",
     faq3a: "Sì. Gli strumenti di pulizia rimuovono spazi extra, righe vuote, interruzioni di riga, numeri, punteggiatura e accenti dai testi copiati.",
+    faq4q: "Come convertire le maiuscole in minuscole?",
+    faq4a: "Basta incollare il testo nell'area principale e cliccare sul pulsante 'minuscole' nella scheda di conversione. Il testo verrà trasformato istantaneamente.",
     features_title: "Funzionalità Principali",
     feature1: "Conversione in maiuscolo, minuscolo, title case e sentence case",
     feature2: "Strumenti per rimuovere spazi, accenti, punteggiatura e interruzioni di riga",
@@ -778,7 +790,7 @@ defineI18nRoute({
     words: "parole",
     copy: "Copia",
     copied: "Copiato!",
-    see1: "Generatore di Lettere ASCII",
+    see1: "Carattere Invisibile",
     see2: "Lettere Diverse",
     see3: "Contatore di Testo",
     see4: "Comparatore di Testo"
@@ -786,7 +798,7 @@ defineI18nRoute({
   id: {
     m_title: "Konverter Huruf Besar dan Kecil Online Gratis",
     title: "Konverter Teks",
-    meta: "Ubah teks menjadi huruf besar atau kecil, hapus aksen, bersihkan spasi berlebih, dan banyak lagi. Semua yang Anda butuhkan untuk memformat dan menstandarkan teks secara sederhana, cepat, dan gratis.",
+    meta: "Ubah teks dari huruf besar menjadi huruf kecil (dan sebaliknya), hapus aksen, bersihkan spasi berlebih, dan banyak lagi. Semua yang Anda butuhkan untuk memformat dan menstandarkan teks secara sederhana, cepat, dan gratis.",
     about_desc: "Konverter teks online ini memungkinkan Anda mengedit, memformat, dan mengatur teks dengan cepat dalam satu alat. Masukkan konten Anda untuk mengubah huruf menjadi huruf besar dan kecil, menghapus aksen, membersihkan format yang tidak diinginkan dari teks yang disalin, dan mengubah kalimat menjadi berbagai gaya penulisan, termasuk untuk media sosial. Ideal untuk menstandarkan dokumen, memformat pesan, dan mengatur daftar secara praktis, cepat, dan efisien.",
     how_to_use_title: "Cara Menggunakan Konverter Teks",
     step_1_title: "Tempel atau ketik teks",
@@ -828,6 +840,8 @@ defineI18nRoute({
     faq2a: "Ya. Tab pemrograman mengonversi teks menjadi camelCase, PascalCase, snake_case, kebab-case, dot.case, dan slug URL.",
     faq3q: "Bisakah saya membersihkan teks yang disalin dari PDF atau dokumen?",
     faq3a: "Ya. Alat pembersihan menghapus spasi berlebih, baris kosong, jeda baris, angka, tanda baca, dan aksen dari teks yang disalin.",
+    faq4q: "Bagaimana cara mengubah huruf besar menjadi huruf kecil?",
+    faq4a: "Cukup tempelkan teks Anda ke area utama dan klik tombol 'huruf kecil' di tab konversi. Teks akan langsung diubah.",
     features_title: "Fitur Utama",
     feature1: "Konversi ke huruf besar, huruf kecil, huruf judul, dan huruf kalimat",
     feature2: "Alat untuk menghapus spasi, aksen, tanda baca, dan jeda baris",
@@ -856,7 +870,7 @@ defineI18nRoute({
     words: "kata",
     copy: "Salin",
     copied: "Disalin!",
-    see1: "Generator Huruf ASCII",
+    see1: "Karakter Tak Terlihat",
     see2: "Huruf Berbeda",
     see3: "Penghitung Teks",
     see4: "Komparator Teks"
@@ -864,7 +878,7 @@ defineI18nRoute({
   de: {
     m_title: "Groß- und Kleinschreibung Konverter Online Kostenlos",
     title: "Textkonverter",
-    meta: "Konvertieren Sie Text in Groß- oder Kleinbuchstaben, entfernen Sie Akzente, bereinigen Sie zusätzliche Leerzeichen und vieles mehr. Alles, was Sie brauchen, um Texte einfach, schnell und kostenlos zu formatieren und zu standardisieren.",
+    meta: "Konvertieren Sie Text von Großbuchstaben in Kleinbuchstaben (und umgekehrt), entfernen Sie Akzente, bereinigen Sie zusätzliche Leerzeichen und vieles mehr. Alles, was Sie brauchen, um Texte einfach, schnell und kostenlos zu formatieren und zu standardisieren.",
     about_desc: "Dieser Online-Textkonverter ermöglicht es Ihnen, Texte schnell in einem einzigen Tool zu bearbeiten, zu formatieren und zu organisieren. Fügen Sie Ihren Inhalt ein, um Buchstaben in Groß- und Kleinbuchstaben umzuwandeln, Akzente zu entfernen, unerwünschte Formatierungen aus kopierten Texten zu bereinigen und Sätze in verschiedene Schreibstile umzuwandeln, auch für soziale Medien. Ideal, um Dokumente zu standardisieren, Nachrichten zu formatieren und Listen praktisch, schnell und effizient zu organisieren.",
     how_to_use_title: "So verwenden Sie den Textkonverter",
     step_1_title: "Text einfügen oder eingeben",
@@ -906,6 +920,8 @@ defineI18nRoute({
     faq2a: "Ja. Die Registerkarte Programmierung konvertiert Text in camelCase, PascalCase, snake_case, kebab-case, dot.case und URL-Slugs.",
     faq3q: "Kann ich Text bereinigen, der aus PDFs oder Dokumenten kopiert wurde?",
     faq3a: "Ja. Die Bereinigungstools entfernen zusätzliche Leerzeichen, Leerzeilen, Zeilenumbrüche, Zahlen, Satzzeichen und Akzente aus kopiertem Text.",
+    faq4q: "Wie wandle ich Großbuchstaben in Kleinbuchstaben um?",
+    faq4a: "Fügen Sie einfach Ihren Text in den Hauptbereich ein und klicken Sie auf die Schaltfläche 'kleinschreibung' in der Registerkarte für die Groß-/Kleinschreibung. Der Text wird sofort umgewandelt.",
     features_title: "Hauptmerkmale",
     feature1: "Konvertierung in Großbuchstaben, Kleinbuchstaben, Titel-Schreibweise und Satz-Schreibweise",
     feature2: "Tools zum Entfernen von Leerzeichen, Akzenten, Satzzeichen und Zeilenumbrüchen",
@@ -934,7 +950,7 @@ defineI18nRoute({
     words: "Wörter",
     copy: "Kopieren",
     copied: "Kopiert!",
-    see1: "ASCII-Buchstaben-Generator",
+    see1: "Unsichtbares Zeichen",
     see2: "Verschiedene Buchstaben",
     see3: "Textzähler",
     see4: "Textvergleicher"
@@ -942,7 +958,7 @@ defineI18nRoute({
   nl: {
     m_title: "Gratis Online Hoofdletters en Kleine Letters Converter",
     title: "Tekst Converter",
-    meta: "Converteer tekst naar hoofdletters of kleine letters, verwijder accenten, wis extra spaties en nog veel meer. Alles wat je nodig hebt om teksten eenvoudig, snel en gratis op te maken en te standaardiseren.",
+    meta: "Converteer tekst van hoofdletters naar kleine letters (en vice versa), verwijder accenten, wis extra spaties en nog veel meer. Alles wat je nodig hebt om teksten eenvoudig, snel en gratis op te maken en te standaardiseren.",
     about_desc: "Met deze online tekstconverter kun je teksten snel bewerken, opmaken en ordenen in één enkele tool. Voeg je inhoud in om letters om te zetten in hoofdletters en kleine letters, accenten te verwijderen, ongewenste opmaak uit gekopieerde teksten te wissen en zinnen om te zetten in verschillende schrijfstijlen, inclusief voor sociale media. Ideaal voor het standaardiseren van documenten, het opmaken van berichten en het ordenen van lijsten op een praktische, snelle en efficiënte manier.",
     how_to_use_title: "Hoe de Tekst Converter te gebruiken",
     step_1_title: "Plak of typ de tekst",
@@ -984,6 +1000,8 @@ defineI18nRoute({
     faq2a: "Ja. Het tabblad programmeren converteert tekst naar camelCase, PascalCase, snake_case, kebab-case, dot.case en URL slugs.",
     faq3q: "Kan ik tekst opschonen die gekopieerd is uit PDF's of documenten?",
     faq3a: "Ja. De opschoontools verwijderen extra spaties, lege regels, regeleinden, cijfers, interpunctie en accenten uit gekopieerde tekst.",
+    faq4q: "Hoe verander ik hoofdletters in kleine letters?",
+    faq4a: "Plak uw tekst in het hoofdgebied en klik op de knop 'kleine letters' in het conversietabblad. De tekst wordt direct getransformeerd.",
     features_title: "Belangrijkste Kenmerken",
     feature1: "Conversie naar hoofdletters, kleine letters, titel case en zin case",
     feature2: "Tools om spaties, accenten, interpunctie en regeleinden te verwijderen",
@@ -1012,7 +1030,7 @@ defineI18nRoute({
     words: "woorden",
     copy: "Kopiëren",
     copied: "Gekopieerd!",
-    see1: "ASCII Letters Generator",
+    see1: "Onzichtbaar Teken",
     see2: "Verschillende Letters",
     see3: "Tekst Teller",
     see4: "Tekst Vergelijker"

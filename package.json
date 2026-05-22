@@ -2,6 +2,9 @@
   "name": "freetool",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
@@ -13,8 +16,8 @@
     "@nuxt/scripts": "^1.0.1",
     "@nuxtjs/i18n": "10.2.4",
     "@nuxtjs/sitemap": "8.0.14",
+    "lunarphase-js": "^2.0.3",
     "nuxt": "^4.4.2",
-    "vanilla-cookieconsent": "3.1.0",
     "vue": "^3.5.32",
     "vue-router": "^5.0.4"
   },

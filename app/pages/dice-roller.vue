@@ -57,11 +57,10 @@ usePageJsonLd({
         t('f_3'),
         t('f_4')
     ],
-    howToName: t('how_to_use_title'),
-    howToSteps: [
-        { name: t('step_1_title'), text: t('step_1_desc') },
-        { name: t('step_2_title'), text: t('step_2_desc') },
-        { name: t('step_3_title'), text: t('step_3_desc') }
+    faq: [
+        { question: t('faq1q'), answer: t('faq1a') },
+        { question: t('faq2q'), answer: t('faq2a') },
+        { question: t('faq3q'), answer: t('faq3a') }
     ]
 })
 

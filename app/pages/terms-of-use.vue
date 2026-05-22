@@ -18,7 +18,7 @@ usePageJsonLd({
       <h1 class="text-4xl font-extrabold mb-2 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
         Terms and Conditions
       </h1>
-      <p class="text-sm opacity-50 mb-10">Last updated: May 5, 2026</p>
+      <p class="text-sm opacity-50 mb-10">Last updated: May 17, 2026</p>
 
       <div class="space-y-8 opacity-85 leading-relaxed">
 
@@ -167,7 +167,7 @@ usePageJsonLd({
           </p>
           <p class="mt-2">
             The Site also displays third-party advertisements served by <strong>Google AdSense</strong>.
-            These ads are only shown after you explicitly consent to the Advertising cookie category via our cookie banner.
+            Ads are served under Google Consent Mode v2: non-personalized (limited) ads may be shown without consent, while personalized ads are only served after you grant advertising consent via the privacy notice managed by Google's Privacy &amp; Messaging platform.
             FreeTool.dev is not responsible for the content of any advertisement or the products and services advertised.
           </p>
           <p class="mt-2">
@@ -184,7 +184,7 @@ usePageJsonLd({
             <NuxtLink to="/privacy/" class="link">Privacy and Cookies Policy</NuxtLink>,
             which is incorporated into these Terms by reference. Any collection or processing of personal data
             is carried out only to the extent and under the conditions described in that Policy,
-            and where required by law, only after your explicit consent via our cookie banner.
+            and where required by law, only after your explicit consent via the privacy notice managed by Google's Privacy &amp; Messaging platform.
           </p>
         </section>
 

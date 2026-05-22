@@ -98,12 +98,6 @@ usePageJsonLd({
   name: t('title'),
   description: t('meta'),
   features: [t('feature_1'), t('feature_2'), t('feature_3'), t('feature_4')],
-  howToName: t('how_to_title'),
-  howToSteps: [
-    { name: t('how_1_title'), text: t('how_1_desc') },
-    { name: t('how_2_title'), text: t('how_2_desc') },
-    { name: t('how_3_title'), text: t('how_3_desc') }
-  ],
   faq: faqItems.value
 })
 
@@ -212,18 +206,18 @@ defineI18nRoute({
       { label: t('see4'), to: 'dominant-colors-of-the-image' }
     ]"
   >
-    <div class="grid gap-6 lg:grid-cols-[minmax(0,1fr)_360px]">
+    <div class="flex flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_360px] gap-6 lg:items-start">
       <div class="space-y-4">
         <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4">
           <h2 class="mb-4 text-lg font-bold text-base-content">{{ t('data') }}</h2>
 
-          <div class="grid gap-4 sm:grid-cols-[minmax(0,1fr)_220px]">
+          <div class="flex flex-col sm:grid sm:grid-cols-[minmax(0,1fr)_220px] gap-4">
             <label class="form-control">
               <span class="label-text mb-2 font-semibold">{{ t('text') }}</span>
               <input
                 v-model="text"
                 type="text"
-                class="input input-bordered bg-base-100"
+                class="input input-bordered bg-base-100 w-full min-w-0"
                 :placeholder="t('text_placeholder')"
                 autofocus
                 autocomplete="off"
@@ -233,7 +227,7 @@ defineI18nRoute({
 
             <label class="form-control">
               <span class="label-text mb-2 font-semibold">{{ t('format') }}</span>
-              <select v-model="state.format" class="select select-bordered bg-base-100">
+              <select v-model="state.format" class="select select-bordered bg-base-100 w-full min-w-0">
                 <option v-for="format in formats" :key="format" :value="format">
                   {{ format.toUpperCase() }}
                 </option>
@@ -245,7 +239,7 @@ defineI18nRoute({
         <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4">
           <h2 class="mb-4 text-lg font-bold text-base-content">{{ t('dimensions') }}</h2>
 
-          <div class="grid gap-5 sm:grid-cols-2">
+          <div class="flex flex-col sm:grid sm:grid-cols-2 gap-5">
             <label class="form-control">
               <span class="mb-2 flex items-center justify-between gap-3 text-sm font-semibold">
                 {{ t('height') }}
@@ -283,16 +277,16 @@ defineI18nRoute({
         <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4">
           <h2 class="mb-4 text-lg font-bold text-base-content">{{ t('styles') }}</h2>
 
-          <div class="grid gap-4">
-            <label class="label cursor-pointer justify-start gap-3 rounded-2xl bg-base-100 px-4">
-              <input v-model="state.displayValue" type="checkbox" class="toggle toggle-primary" />
-              <span class="label-text font-semibold">{{ t('display') }}</span>
+          <div class="flex flex-col gap-4">
+            <label class="label cursor-pointer justify-start gap-3 rounded-2xl bg-base-100 px-4 py-3">
+              <input v-model="state.displayValue" type="checkbox" class="toggle toggle-primary shrink-0" />
+              <span class="label-text font-semibold text-left flex-1 min-w-0 whitespace-normal break-words">{{ t('display') }}</span>
             </label>
 
-            <div v-if="state.displayValue" class="grid gap-4 sm:grid-cols-2">
+            <div v-if="state.displayValue" class="flex flex-col sm:grid sm:grid-cols-2 gap-4">
               <label class="form-control">
                 <span class="label-text mb-2 font-semibold">{{ t('font') }}</span>
-                <select v-model="state.font" class="select select-bordered bg-base-100">
+                <select v-model="state.font" class="select select-bordered bg-base-100 w-full min-w-0">
                   <option v-for="font in fonts" :key="font" :value="font.toLowerCase()">
                     {{ font }}
                   </option>
@@ -301,7 +295,7 @@ defineI18nRoute({
 
               <label class="form-control">
                 <span class="label-text mb-2 font-semibold">{{ t('font_options') }}</span>
-                <select v-model="state.fontOptions" class="select select-bordered bg-base-100">
+                <select v-model="state.fontOptions" class="select select-bordered bg-base-100 w-full min-w-0">
                   <option value="">{{ t('normal') }}</option>
                   <option value="bold">{{ t('bold') }}</option>
                   <option value="italic">{{ t('italic') }}</option>
@@ -311,7 +305,7 @@ defineI18nRoute({
 
               <label class="form-control">
                 <span class="label-text mb-2 font-semibold">{{ t('text_position') }}</span>
-                <select v-model="state.textPosition" class="select select-bordered bg-base-100">
+                <select v-model="state.textPosition" class="select select-bordered bg-base-100 w-full min-w-0">
                   <option value="bottom">{{ t('bottom') }}</option>
                   <option value="top">{{ t('top') }}</option>
                 </select>
@@ -319,7 +313,7 @@ defineI18nRoute({
 
               <label class="form-control">
                 <span class="label-text mb-2 font-semibold">{{ t('text_align') }}</span>
-                <select v-model="state.textAlign" class="select select-bordered bg-base-100">
+                <select v-model="state.textAlign" class="select select-bordered bg-base-100 w-full min-w-0">
                   <option value="left">{{ t('left') }}</option>
                   <option value="center">{{ t('center') }}</option>
                   <option value="right">{{ t('right') }}</option>
@@ -340,7 +334,7 @@ defineI18nRoute({
         <section class="rounded-2xl border border-base-content/10 bg-base-200/35 p-4">
           <h2 class="mb-4 text-lg font-bold text-base-content">{{ t('colors') }}</h2>
 
-          <div class="grid gap-3 sm:grid-cols-2">
+          <div class="flex flex-col sm:grid sm:grid-cols-2 gap-3">
             <label class="barcode-color-control">
               <span>{{ t('background') }}</span>
               <input v-model="state.background" type="color" />
@@ -375,7 +369,7 @@ defineI18nRoute({
 
           <button type="button" class="btn btn-primary mt-4 w-full" :disabled="!barcodeLoaded || Boolean(error)" @click="download">
             <Icon name="heroicons:arrow-down-tray-20-solid" class="h-5 w-5" aria-hidden="true" />
-            Download PNG
+            Download
           </button>
 
           <p class="mt-3 text-sm text-base-content/70">{{ t('scan_tip') }}</p>

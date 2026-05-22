@@ -13,15 +13,16 @@ useHead({
 })
 
 defineI18nRoute({
-    paths: {
-        pt: '/ferramentas-para-pdf',
-        es: '/herramientas-para-pdf',
-        fr: '/outils-pour-pdf',
-        it: '/strumenti-per-pdf',
-        id: '/alat-pdf',
-        de: '/pdf-werkzeuge',
-        nl: '/pdf-tools'
-    }
+  paths: {
+    en: '/pdf-tools',
+    pt: '/ferramentas-para-pdf',
+    es: '/herramientas-para-pdf',
+    fr: '/outils-pour-pdf',
+    it: '/strumenti-per-pdf',
+    id: '/alat-pdf',
+    de: '/pdf-werkzeuge',
+    nl: '/pdf-tools'
+  }
 })
 </script>
 
@@ -37,22 +38,22 @@ defineI18nRoute({
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-4 gap-6">
-      <ToolCard         :title="t('edit')" 
+      <ToolCard :title="t('edit')" 
         to="pdf-editor" 
         icon="mdi:file-cog"
         :index="0"
       />
-      <ToolCard         :title="t('split')" 
+      <ToolCard :title="t('split')" 
         to="pdf-splitter" 
         icon="mdi:content-cut"
         :index="1"
       />
-      <ToolCard         :title="t('num')" 
+      <ToolCard :title="t('num')" 
         to="numbering-pdf" 
         icon="mdi:numeric-1-box-multiple-outline"
         :index="2"
       />
-      <ToolCard         :title="t('to_img')" 
+      <ToolCard :title="t('to_img')" 
         to="pdf-to-image" 
         icon="mdi:file-image"
         :index="3"

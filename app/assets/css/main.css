@@ -82,7 +82,7 @@ select option:hover {
 }
 
 .adsense-wrapper {
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -54,8 +54,6 @@ usePageJsonLd({
   name: t('title'),
   description: t('meta'),
   features: features.value,
-  howToName: t('how_to_use_title'),
-  howToSteps: howToSteps.value,
   faq: faqs.value
 })
 
@@ -169,7 +167,8 @@ defineI18nRoute({
       { label: t('see1'), to: 'text-converter' },
       { label: t('see2'), to: 'ascii-letter-generator' },
       { label: t('see3'), to: 'fancy-letters' },
-      { label: t('see4'), to: 'text-counter' }
+      { label: t('see4'), to: 'text-counter' },
+      { label: t('see_morse'), to: 'morse-code-converter' }
     ]"
   >
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -381,7 +380,8 @@ defineI18nRoute({
     see1: "Conversor de Texto",
     see2: "Gerador de Letras ASCII",
     see3: "Letras Diferentes",
-    see4: "Contador de Texto"
+    see4: "Contador de Texto",
+    see_morse: "Código Morse"
   },
   en: {
     title: "Text Comparator",
@@ -439,7 +439,8 @@ defineI18nRoute({
     see1: "Text Converter",
     see2: "ASCII Letter Generator",
     see3: "Fancy Letters",
-    see4: "Text Counter"
+    see4: "Text Counter",
+    see_morse: "Morse Code"
   },
   es: {
     title: "Comparador de Textos",

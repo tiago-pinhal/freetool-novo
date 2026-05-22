@@ -87,6 +87,7 @@ function copyAll(): void {
   navigator.clipboard.writeText(allCpfs).catch(() => { })
 }
 
+
 function getRegionName(digit: string): string {
   return regionNames[digit] || ''
 }
@@ -130,19 +131,13 @@ onMounted(() => {
 usePageJsonLd({
   name: t('title'),
   description: t('meta'),
-  features: [t('f_1'), t('f_2'), t('f_3'), t('f_4')],
+  features: [t('f_1'), t('f_2'), t('f_3'), t('f_4'), t('f_5')],
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
     { question: t('faq_2_q'), answer: t('faq_2_a') },
     { question: t('faq_3_q'), answer: t('faq_3_a') },
     { question: t('faq_4_q'), answer: t('faq_4_a') },
     { question: t('faq_5_q'), answer: t('faq_5_a') }
-  ],
-  howToName: t('how_to_use_title'),
-  howToSteps: [
-    { name: t('step_1_title'), text: t('step_1_desc') },
-    { name: t('step_2_title'), text: t('step_2_desc') },
-    { name: t('step_3_title'), text: t('step_3_desc') }
   ]
 })
 
@@ -211,19 +206,20 @@ defineI18nRoute({
           {{ state.showMultiple ? t('bt_multiple') : t('bt') }}
         </ButtonPrimary>
 
-        <p class="text-sm text-base-content/50 italic px-1 text-center">{{ t('warning') }}</p>
+       
       </div>
 
       <!-- Resultado -->
-      <div class="bg-base-200/50 border border-primary/10 rounded-2xl p-6 min-h-[16rem] flex flex-col justify-center">
+      <div class="bg-base-200/50 border border-primary/10 rounded-2xl p-6 flex flex-col justify-center">
         <Transition enter-active-class="transition duration-300 ease-out"
           enter-from-class="transform scale-95 opacity-0" enter-to-class="transform scale-100 opacity-100">
           <div v-if="state.cpf && !state.cpfList.length" class="space-y-2 w-full">
             <LineCopy :content="state.cpf" :label="t('cpf_label')" class="!my-0 [&>div:last-child]:!w-full" />
             <p v-if="state.generatedRegion && state.selectedRegion === 'all'"
-              class="text-xs text-base-content/60 px-1 mt-3">
+              class="text-xs text-base-content/70 px-1 mt-3">
               {{ t('region_from') }}: {{ getRegionName(state.generatedRegion) }}
             </p>
+            <p class="text-xs text-base-content/70 italic px-1 text-center mt-3">{{ t('warning') }}</p>
           </div>
         </Transition>
 
@@ -238,7 +234,7 @@ defineI18nRoute({
           <div class="space-y-2 max-h-64 overflow-y-auto pr-1">
             <div v-for="(item, index) in state.cpfList" :key="index">
               <LineCopy :content="item.cpf" :label="`CPF ${index + 1}`" class="!my-0" />
-              <p v-if="state.selectedRegion === 'all'" class="text-xs text-base-content/60 px-1 mt-2">{{
+              <p v-if="state.selectedRegion === 'all'" class="text-xs text-base-content/70 px-1 mt-2">{{
                 getRegionName(item.region) }}</p>
             </div>
           </div>
@@ -259,7 +255,7 @@ defineI18nRoute({
           <p>{{ t('d1') }}</p>
         </section>
 
-        <FeatureSection :title="t('features_title')" :items="[t('f_1'), t('f_2'), t('f_3'), t('f_4')]" />
+        <FeatureSection :title="t('features_title')" :items="[t('f_1'), t('f_2'), t('f_3'), t('f_4'), t('f_5')]" />
 
         <section>
           <h2 class="text-2xl font-bold mb-3 flex items-center gap-2">
@@ -269,12 +265,37 @@ defineI18nRoute({
           <p class="text-base-content/80 leading-relaxed">{{ t('how_desc') }}</p>
         </section>
 
+        <section>
+          <h2 class="text-2xl font-bold mb-3 flex items-center gap-2">
+            <Icon name="heroicons:map-20-solid" class="w-6 h-6 text-primary" />
+            {{ t('table_title') }}
+          </h2>
+          <div class="overflow-x-auto">
+            <table class="table table-zebra w-full text-sm">
+              <thead>
+                <tr>
+                  <th class="w-16 text-center">{{ t('table_digit') }}</th>
+                  <th>{{ t('table_states') }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="r in regions" :key="r">
+                  <td class="font-mono font-bold text-primary text-center">{{ r }}</td>
+                  <td>{{ regionNames[r] }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <UseCaseSection :title="t('use_cases_title')" :description="t('use_cases_intro')" :items="[
           { title: t('use_1_t'), description: t('use_1_d') },
           { title: t('use_2_t'), description: t('use_2_d') },
           { title: t('use_3_t'), description: t('use_3_d') },
           { title: t('use_4_t'), description: t('use_4_d') },
-          { title: t('use_5_t'), description: t('use_5_d') }
+          { title: t('use_5_t'), description: t('use_5_d') },
+          { title: t('use_6_t'), description: t('use_6_d') },
+          { title: t('use_7_t'), description: t('use_7_d') }
         ]" />
 
         <HowToSection :title="t('how_to_use_title')" :items="[
@@ -300,7 +321,7 @@ defineI18nRoute({
   pt: {
     pageTitle: "Gerador de CPF Válido Online para Testes — Grátis",
     title: "Gerador de CPF",
-    meta: "Gere CPFs válidos online e grátis, seja por estado, um ou múltiplos CPFs de uma só vez (com ou sem pontuação). Ferramenta ideal para testes e desenvolvimento.",
+    meta: "Gerador de CPF válido para testes e desenvolvimento de software. Gere um CPF aleatório ou vários de uma vez, por estado, com ou sem pontuação. Grátis, sem cadastro.",
 
     num: "Somente Números",
     multiple_label: "Gerar Múltiplos CPFs",
@@ -316,29 +337,34 @@ defineI18nRoute({
     placeholder: "Clique em Gerar CPF para criar um número",
     warning: "Os números gerados são fictícios e servem apenas para testes.",
 
-    d1: "Gerador de CPF online e gratuito para desenvolvedores e testes de software. Gere números de CPF matematicamente válidos com dígitos verificadores calculados via algoritmo oficial, garantindo que passem em qualquer validação de formulário ou regra de negócio. Nossa ferramenta funciona direto no navegador, é 100% segura (sem vínculo com pessoas reais) e não exige cadastro. Aproveite recursos avançados como geração de CPF por estado e criação de lotes de até 100 números simultâneos.",
+    d1: "Gerador de CPF online e gratuito voltado para desenvolvedores e testes de software. A ferramenta gera números de CPF válidos matematicamente, com os dígitos verificadores calculados pelo algoritmo oficial de módulo 11, de modo que passam em qualquer validação de formulário ou regra de negócio. Todo o processo acontece no próprio navegador, sem cadastro e sem vínculo com pessoas reais. É possível gerar um CPF aleatório, restringir o resultado a um estado específico ou criar lotes de até 100 números de uma só vez.",
 
     features_title: "Funcionalidades",
     f_1: "Gera CPF válido por estado",
     f_2: "Lotes de até 100 CPFs únicos",
     f_3: "Formato com pontuação ou só números",
     f_4: "Dígitos verificadores calculados pelo módulo 11",
+    f_5: "Tabela de regiões fiscais por dígito",
 
     how_title: "Como o algoritmo do CPF funciona",
     how_desc: "O algoritmo do CPF é composto por 11 dígitos: 9 de identificação e 2 verificadores no final. Os 9 primeiros são sequenciais por região fiscal, e o 9º indica o estado onde o documento foi emitido. Os dois últimos saem de um cálculo de módulo 11 sobre os anteriores: cada dígito é multiplicado por um peso, soma-se tudo, divide por 11, e o resto define o verificador. O método foi pensado para detectar erros de digitação. Trocar um dígito ou inverter dois quase sempre quebra a validação, o que permite a qualquer sistema rejeitar números inválidos sem precisar consultar a Receita.",
 
     use_cases_title: "Casos de Uso",
-    use_cases_intro: "Confira as principais aplicações práticas do gerador de CPF no fluxo de trabalho de desenvolvimento e QA:",
-    use_1_t: "Validação de formulários",
-    use_1_d: "Testar máscaras, validadores e mensagens de erro em campos de cadastro.",
-    use_2_t: "Testes automatizados",
-    use_2_d: "Popular cenários de teste com dados que passam na validação sem expor CPFs reais.",
-    use_3_t: "Ambientes de desenvolvimento",
-    use_3_d: "Criar registros em homologação e staging sem violar a LGPD nem usar dados de produção.",
-    use_4_t: "Integrações e APIs",
-    use_4_d: "Testar endpoints, payloads e serviços de terceiros que exigem CPF como parâmetro.",
-    use_5_t: "Mockups e demonstrações",
-    use_5_d: "Preencher protótipos, telas de demo e apresentações de produto sem utilizar dados reais.",
+    use_cases_intro: "As aplicações práticas mais comuns do gerador de CPF no fluxo de trabalho de desenvolvimento e QA são:",
+    use_1_t: "Validação de formulários e UI",
+    use_1_d: "Testar máscaras de input, validações em tempo real (JavaScript, React, Angular etc.), mensagens de erro e comportamento do frontend com dados que passam em todas as regras.",
+    use_2_t: "Testes automatizados (Unit, Integration e E2E)",
+    use_2_d: "Popular fixtures, bancos de dados de teste e cenários com CPFs válidos, eliminando o uso de dados reais e reduzindo o risco de vazamento.",
+    use_3_t: "Ambientes de desenvolvimento e homologação",
+    use_3_d: "Criar usuários de teste em staging, bancos locais ou ambientes de demonstração sem violar a LGPD e sem precisar de dados de produção.",
+    use_4_t: "Testes de APIs e integrações",
+    use_4_d: "Enviar payloads realistas para endpoints que exigem CPF: cadastros, consultas de crédito, emissões de nota fiscal e serviços de terceiros.",
+    use_5_t: "Mockups, protótipos e apresentações",
+    use_5_d: "Preencher telas no Figma, Adobe XD ou slides para clientes com dados visualmente convincentes, sem expor informações reais.",
+    use_6_t: "Testes de performance e carga",
+    use_6_d: "Gerar centenas de CPFs rapidamente para simular grandes volumes de cadastros ou consultas em ambiente controlado.",
+    use_7_t: "Estudos, treinamentos e cursos",
+    use_7_d: "Professores e alunos usam para exemplos práticos em aulas de programação, bancos de dados e validações de formulário.",
 
     how_to_use_title: "Como Usar",
     step_1_title: "Gerar um CPF rápido",
@@ -349,17 +375,20 @@ defineI18nRoute({
     step_3_desc: "Por padrão, o CPF vem com pontos e traço. Se você precisa do número limpo (banco de dados, JSON, etc.), ative \"Somente Números\" antes de gerar.",
 
     faq_title: "Perguntas e Respostas",
-    faq_1_q: "Os CPFs gerados aqui são reais ou estão registrados na Receita Federal?",
-    faq_1_a: "Não. São números fictícios construídos com o mesmo algoritmo de validação que a Receita usa, mas sem vínculo nenhum com pessoas reais. Eles passam na verificação dos dígitos porque o cálculo está correto, e nada além disso. Não tente usar para cadastros oficiais, pois não serão aceitos, e a tentativa pode configurar crime.",
-    faq_2_q: "Por que existe um campo de estado no gerador?",
-    faq_2_a: "O 9º dígito do CPF (logo antes dos verificadores) corresponde à região fiscal onde o documento foi emitido. São Paulo é 8, Rio Grande do Sul é 0, e por aí vai. Para alguns testes, faz diferença gerar números coerentes com uma região específica, e o filtro existe para isso. Se não importa, deixe em \"Todos os Estados\" que o sorteio é aleatório.",
-    faq_3_q: "Quando usar o formato com pontos e quando usar só números?",
-    faq_3_a: "Depende de onde o número vai entrar. Formulários e telas que mostram o CPF para o usuário normalmente usam o formato pontuado (999.999.999-99). Já bancos de dados, APIs e validações de backend tendem a armazenar o número limpo, sem caracteres especiais. O toggle \"Somente Números\" resolve sem precisar tratar a string depois.",
-    faq_4_q: "Posso usar o gerador para qualquer finalidade?",
-    faq_4_a: "Para testes de software, estudo, demonstrações e desenvolvimento, sim. É exatamente para isso que ele existe. O que você não pode fazer é usar um CPF gerado em cadastros oficiais, contratos, declarações ou qualquer situação que exija identificação real. Isso configura falsidade ideológica (Art. 299 do Código Penal) e, dependendo do caso, estelionato.",
-    faq_5_q: "Qual a diferença entre \"CPF fake\" e \"CPF aleatório\"?",
-    faq_5_a: "Na prática, os dois termos se referem à mesma ferramenta: um utilitário que gera números seguindo a regra matemática do CPF, mas sem pertencer a ninguém. Os termos \"fake\" e \"falso\" são populares na busca, embora alguns desenvolvedores prefiram \"fictício\" ou \"de teste\" por soarem menos sugestivos. O resultado e o uso são idênticos.",
+    faq_1_q: "Usar um CPF gerado é crime?",
+    faq_1_a: "Depende do uso. Para testes de software, estudo, demonstrações e desenvolvimento, não há problema, pois é exatamente para isso que a ferramenta existe. O que configura crime é usar um CPF gerado em cadastros oficiais, contratos, declarações ou qualquer situação que exija identificação real. Nesse caso, a conduta pode caracterizar falsidade ideológica (Art. 299 do Código Penal) e, dependendo do contexto, estelionato.",
+    faq_2_q: "O CPF gerado aqui é válido e está registrado na Receita Federal?",
+    faq_2_a: "O número é matematicamente válido, ou seja, passa na verificação dos dígitos porque o cálculo do módulo 11 está correto. Mas é fictício e não tem nenhum vínculo com pessoas reais nem registro na Receita Federal. Ele serve para validar formulários e regras de negócio durante o desenvolvimento, e nada além disso. Tentar usá-lo em cadastros oficiais não funciona e ainda pode configurar crime.",
+    faq_3_q: "Como o gerador define o estado e o que significa o nono dígito do CPF?",
+    faq_3_a: "O nono dígito do CPF, logo antes dos dois verificadores, corresponde à região fiscal onde o documento foi emitido. São Paulo é 8, Rio Grande do Sul é 0, Paraná e Santa Catarina são 9, e assim por diante. O seletor de estado fixa esse dígito para gerar números coerentes com uma região específica. Deixando em \"Todos os Estados\", o dígito é sorteado de forma aleatória.",
+    faq_4_q: "Quando usar o CPF com pontuação e quando usar só números?",
+    faq_4_a: "Depende de onde o número vai entrar. Formulários e telas que exibem o CPF para o usuário costumam usar o formato pontuado (999.999.999-99). Bancos de dados, APIs e validações de backend tendem a armazenar o número limpo, sem caracteres especiais. A opção \"Somente Números\" resolve isso direto na geração, sem precisar tratar a string depois.",
+    faq_5_q: "Qual a diferença entre CPF fake, falso e aleatório?",
+    faq_5_a: "Na prática, todos os termos descrevem a mesma ferramenta: um utilitário que gera números seguindo a regra matemática do CPF, mas sem pertencer a ninguém. \"Fake\" e \"falso\" são as buscas mais comuns, enquanto alguns desenvolvedores preferem \"fictício\", \"aleatório\" ou \"de teste\" por soarem menos sugestivos. O resultado e a finalidade são os mesmos em todos os casos.",
 
+    table_title: "9º Dígito do CPF por Região Fiscal",
+    table_digit: "Dígito",
+    table_states: "Estados",
     see1: "Gerador de CNPJ",
     see2: "Letras Diferentes",
     see3: "Gerador de Cartão de Crédito",
@@ -368,7 +397,7 @@ defineI18nRoute({
   en: {
     pageTitle: "Brazilian CPF Generator — Fake & Valid for Testing",
     title: "CPF Generator",
-    meta: "Generate valid CPFs online for free, whether by state, one or multiple CPFs at once (with or without formatting). Ideal tool for testing and development.",
+    meta: "Brazilian CPF generator for software testing and development. Generate a random CPF or several at once, by state, with or without punctuation. Free, no sign-up.",
 
     num: "Numbers Only",
     multiple_label: "Generate Multiple CPFs",
@@ -384,29 +413,34 @@ defineI18nRoute({
     placeholder: "Click Generate CPF to create a number",
     warning: "The generated numbers are fictitious and for testing purposes only.",
 
-    d1: "Free online CPF generator for developers and software testing. Generate mathematically valid CPF numbers with check digits calculated using the official algorithm, ensuring they pass any form validation or business rule. Our tool runs entirely in the browser, is 100% safe (not linked to real people), and requires no sign-up. Take advantage of advanced features like state-specific CPF generation and batch creation of up to 100 numbers at once.",
+    d1: "Free online CPF generator built for developers and software testing. The tool generates mathematically valid CPF numbers, with check digits calculated by the official modulo 11 algorithm, so they pass any form validation or business rule. The whole process runs in the browser, with no sign-up and no connection to real people. You can generate a random CPF, restrict the result to a specific state, or create batches of up to 100 numbers at once.",
 
     features_title: "Features",
     f_1: "Generate valid CPF by state",
     f_2: "Batches of up to 100 unique CPFs",
     f_3: "Formatted or numbers-only output",
     f_4: "Check digits calculated via modulo 11",
+    f_5: "Fiscal region table by digit",
 
     how_title: "How the CPF algorithm works",
     how_desc: "The CPF algorithm consists of 11 digits: 9 identification digits and 2 check digits at the end. The first 9 are sequential by fiscal region, and the 9th indicates the state where the document was issued. The last two are derived from a modulo 11 calculation over the preceding digits: each digit is multiplied by a weight, everything is summed, divided by 11, and the remainder determines the check digit. The method was designed to detect typing errors. Changing one digit or swapping two almost always breaks validation, allowing any system to reject invalid numbers without querying the tax authority.",
 
     use_cases_title: "Use Cases",
-    use_cases_intro: "Here are the main practical applications of the CPF generator in development and QA workflows:",
-    use_1_t: "Form validation",
-    use_1_d: "Test input masks, validators, and error messages in registration fields.",
-    use_2_t: "Automated testing",
-    use_2_d: "Populate test scenarios with data that passes validation without exposing real CPF numbers.",
-    use_3_t: "Development environments",
-    use_3_d: "Create records in staging and QA environments without violating data protection laws or using production data.",
-    use_4_t: "Integrations and APIs",
-    use_4_d: "Test endpoints, payloads, and third-party services that require a CPF as a parameter.",
-    use_5_t: "Mockups and demos",
-    use_5_d: "Fill in prototypes, demo screens, and product presentations without using real data.",
+    use_cases_intro: "The most common practical applications of the CPF generator in development and QA workflows are:",
+    use_1_t: "Form and UI validation",
+    use_1_d: "Test input masks, real-time validators (JavaScript, React, Angular, etc.), error messages, and frontend behavior with data that passes every business rule.",
+    use_2_t: "Automated testing (Unit, Integration & E2E)",
+    use_2_d: "Populate fixtures, test databases, and scenarios with valid CPFs, eliminating real data and reducing the risk of data leaks.",
+    use_3_t: "Development and staging environments",
+    use_3_d: "Create test users in staging, local databases, or demo environments without violating data protection laws or touching production data.",
+    use_4_t: "API and integration testing",
+    use_4_d: "Send realistic payloads to endpoints that require a CPF: registrations, credit checks, invoice issuance, and third-party services.",
+    use_5_t: "Mockups, prototypes, and presentations",
+    use_5_d: "Fill Figma, Adobe XD screens, or client slide decks with visually convincing data, without exposing real information.",
+    use_6_t: "Performance and load testing",
+    use_6_d: "Generate hundreds of CPFs quickly to simulate large registration or query volumes in a controlled environment.",
+    use_7_t: "Studies, training, and courses",
+    use_7_d: "Teachers and students use generated CPFs for hands-on examples in programming classes, database courses, and form validation exercises.",
 
     how_to_use_title: "How to Use",
     step_1_title: "Generate a CPF quickly",
@@ -417,17 +451,20 @@ defineI18nRoute({
     step_3_desc: "By default, the CPF is formatted with dots and a dash. If you need the raw number (database, JSON, etc.), enable \"Numbers Only\" before generating.",
 
     faq_title: "Questions and Answers",
-    faq_1_q: "Are the CPFs generated here real or registered with the Brazilian tax authority?",
-    faq_1_a: "No. They are fictitious numbers built with the same validation algorithm used by the Receita Federal, but with no connection to real people. They pass the check-digit verification because the calculation is correct, and nothing more. Do not attempt to use them for official registrations — they will not be accepted, and the attempt may constitute fraud.",
-    faq_2_q: "Why is there a state filter in the generator?",
-    faq_2_a: "The 9th digit of the CPF (just before the check digits) corresponds to the fiscal region where the document was issued. São Paulo is 8, Rio Grande do Sul is 0, and so on. For some tests it matters to generate numbers consistent with a specific region, and the filter exists for that purpose. If it doesn't matter, leave it on \"All States\" and the digit will be random.",
-    faq_3_q: "When should I use the formatted version vs. numbers only?",
-    faq_3_a: "It depends on where the number will be used. Forms and screens that display the CPF to the user typically use the formatted version (999.999.999-99). Databases, APIs, and backend validations, on the other hand, tend to store the raw number without special characters. The \"Numbers Only\" toggle handles this without needing to strip the string afterward.",
-    faq_4_q: "Can I use the generator for any purpose?",
-    faq_4_a: "For software testing, learning, demos, and development — yes. That is exactly what it was built for. What you cannot do is use a generated CPF in official registrations, contracts, declarations, or any situation that requires real identification. Doing so constitutes document fraud and, depending on the circumstances, may also be considered criminal impersonation.",
-    faq_5_q: "What is the difference between a \"fake CPF\" and a \"random CPF\"?",
-    faq_5_a: "In practice, both terms refer to the same tool: a utility that generates numbers following the CPF's mathematical rules without belonging to anyone. The terms \"fake\" and \"false\" are popular in searches, although some developers prefer \"fictitious\" or \"test CPF\" as they sound less suggestive. The output and use are identical.",
+    faq_1_q: "What is a CPF and what is this generator for?",
+    faq_1_a: "The CPF (Cadastro de Pessoas Físicas) is the Brazilian individual taxpayer registry number, the equivalent of a national ID/tax number for individuals. This generator produces numbers that follow the CPF's mathematical rules so they pass form validation and business logic during development. It is meant for software testing, learning, and demos — not for real identification.",
+    faq_2_q: "Are the generated CPFs valid and registered with the Brazilian tax authority?",
+    faq_2_a: "The number is mathematically valid, meaning it passes check-digit verification because the modulo 11 calculation is correct. But it is fictitious, with no connection to real people and no registration with the Receita Federal. It exists to validate forms and business rules during development, and nothing more. Using a generated CPF in official registrations does not work and, under Brazilian law, may constitute fraud.",
+    faq_3_q: "How does the generator set the state, and what does the 9th digit of the CPF mean?",
+    faq_3_a: "The 9th digit of the CPF, just before the two check digits, corresponds to the fiscal region where the document was issued. São Paulo is 8, Rio Grande do Sul is 0, Paraná and Santa Catarina are 9, and so on. The state selector fixes that digit to generate numbers consistent with a specific region. Left on \"All States\", the digit is chosen at random.",
+    faq_4_q: "When should I use the formatted CPF and when numbers only?",
+    faq_4_a: "It depends on where the number will be used. Forms and screens that display the CPF to the user typically use the formatted version (999.999.999-99). Databases, APIs, and backend validations tend to store the raw number without special characters. The \"Numbers Only\" option handles this at generation time, with no need to strip the string afterward.",
+    faq_5_q: "What is the difference between a fake, false, and random CPF?",
+    faq_5_a: "In practice, all these terms describe the same tool: a utility that generates numbers following the CPF's mathematical rules without belonging to anyone. \"Fake\" and \"false\" are the most common searches, while some developers prefer \"fictitious\", \"random\", or \"test CPF\" as they sound less suggestive. The result and the purpose are the same in every case.",
 
+    table_title: "CPF 9th Digit by Fiscal Region",
+    table_digit: "Digit",
+    table_states: "States",
     see1: "CNPJ Generator",
     see2: "Fancy Letters",
     see3: "Credit Card Generator",
@@ -436,7 +473,7 @@ defineI18nRoute({
   es: {
     pageTitle: "Generador de CPF de Brasil — Ejemplo Válido Gratis",
     title: "Generador de CPF Brasileño",
-    meta: "Genera CPFs válidos online y gratis, ya sea por estado, uno o múltiples CPFs a la vez (con o sin puntuación). Herramienta ideal para pruebas y desarrollo.",
+    meta: "Generador de CPF válido para pruebas y desarrollo de software. Genera un CPF aleatorio o varios a la vez, por estado, con o sin puntuación. Gratis, sin registro.",
 
     num: "Solo Números",
     multiple_label: "Generar Múltiples CPFs",
@@ -452,29 +489,34 @@ defineI18nRoute({
     placeholder: "Haz clic en Generar CPF para crear un número",
     warning: "Los números generados son ficticios y sirven solo para pruebas.",
 
-    d1: "Generador de CPF en línea y gratuito para desarrolladores y pruebas de software. Genera números de CPF matemáticamente válidos con dígitos verificadores calculados mediante el algoritmo oficial, garantizando que superen cualquier validación de formulario o regla de negocio. Nuestra herramienta funciona directamente en el navegador, es 100% segura (sin vinculación con personas reales) y no requiere registro. Aprovecha funciones avanzadas como la generación de CPF por estado y la creación de lotes de hasta 100 números simultáneos.",
+    d1: "Generador de CPF online y gratuito orientado a desarrolladores y pruebas de software. La herramienta genera números de CPF matemáticamente válidos, con los dígitos verificadores calculados mediante el algoritmo oficial de módulo 11, de modo que superan cualquier validación de formulario o regla de negocio. Todo el proceso ocurre en el propio navegador, sin registro y sin vínculo con personas reales. Es posible generar un CPF aleatorio, restringir el resultado a un estado específico o crear lotes de hasta 100 números a la vez.",
 
     features_title: "Funcionalidades",
     f_1: "Genera CPF válido por estado",
     f_2: "Lotes de hasta 100 CPFs únicos",
     f_3: "Formato con puntuación o solo números",
     f_4: "Dígitos verificadores calculados por módulo 11",
+    f_5: "Tabla de regiones fiscales por dígito",
 
     how_title: "Cómo funciona el algoritmo del CPF",
     how_desc: "El algoritmo del CPF está compuesto por 11 dígitos: 9 de identificación y 2 verificadores al final. Los 9 primeros son secuenciales por región fiscal, y el 9º indica el estado donde se emitió el documento. Los dos últimos se obtienen de un cálculo de módulo 11 sobre los anteriores: cada dígito se multiplica por un peso, se suman todos, se divide por 11, y el resto define el verificador. El método fue diseñado para detectar errores de escritura. Cambiar un dígito o invertir dos casi siempre rompe la validación, lo que permite a cualquier sistema rechazar números inválidos sin necesidad de consultar a la Receita Federal.",
 
     use_cases_title: "Casos de Uso",
-    use_cases_intro: "Consulta las principales aplicaciones prácticas del generador de CPF en el flujo de trabajo de desarrollo y QA:",
-    use_1_t: "Validación de formularios",
-    use_1_d: "Probar máscaras, validadores y mensajes de error en campos de registro.",
-    use_2_t: "Pruebas automatizadas",
-    use_2_d: "Poblar escenarios de prueba con datos que superen la validación sin exponer CPFs reales.",
-    use_3_t: "Entornos de desarrollo",
-    use_3_d: "Crear registros en homologación y staging sin violar la ley de protección de datos ni usar datos de producción.",
-    use_4_t: "Integraciones y APIs",
-    use_4_d: "Probar endpoints, payloads y servicios de terceros que requieren el CPF como parámetro.",
-    use_5_t: "Maquetas y demostraciones",
-    use_5_d: "Completar prototipos, pantallas de demo y presentaciones de producto sin usar datos reales.",
+    use_cases_intro: "Las aplicaciones prácticas más comunes del generador de CPF en el flujo de trabajo de desarrollo y QA son:",
+    use_1_t: "Validación de formularios y UI",
+    use_1_d: "Probar máscaras de entrada, validaciones en tiempo real (JavaScript, React, Angular, etc.), mensajes de error y comportamiento del frontend con datos que superan todas las reglas.",
+    use_2_t: "Pruebas automatizadas (Unit, Integration y E2E)",
+    use_2_d: "Poblar fixtures, bases de datos de prueba y escenarios con CPFs válidos, eliminando el uso de datos reales y reduciendo el riesgo de fuga.",
+    use_3_t: "Entornos de desarrollo y homologación",
+    use_3_d: "Crear usuarios de prueba en staging, bases de datos locales o entornos de demostración sin violar leyes de protección de datos ni usar datos de producción.",
+    use_4_t: "Pruebas de APIs e integraciones",
+    use_4_d: "Enviar payloads realistas a endpoints que requieren CPF: registros, consultas de crédito, emisión de facturas y servicios de terceros.",
+    use_5_t: "Maquetas, prototipos y presentaciones",
+    use_5_d: "Completar pantallas en Figma, Adobe XD o diapositivas para clientes con datos visualmente convincentes, sin exponer información real.",
+    use_6_t: "Pruebas de rendimiento y carga",
+    use_6_d: "Generar cientos de CPFs rápidamente para simular grandes volúmenes de registros o consultas en entorno controlado.",
+    use_7_t: "Estudios, entrenamientos y cursos",
+    use_7_d: "Profesores y alumnos los usan para ejemplos prácticos en clases de programación, bases de datos y validación de formularios.",
 
     how_to_use_title: "Cómo Usar",
     step_1_title: "Generar un CPF rápido",
@@ -485,17 +527,20 @@ defineI18nRoute({
     step_3_desc: "Por defecto, el CPF viene con puntos y guion. Si necesitas el número limpio (base de datos, JSON, etc.), activa \"Solo Números\" antes de generar.",
 
     faq_title: "Preguntas y Respuestas",
-    faq_1_q: "¿Los CPFs generados aquí son reales o están registrados en la Receita Federal?",
-    faq_1_a: "No. Son números ficticios construidos con el mismo algoritmo de validación que usa la Receita Federal, pero sin ningún vínculo con personas reales. Superan la verificación de dígitos porque el cálculo es correcto, y nada más. No intentes usarlos en registros oficiales, ya que no serán aceptados, y el intento puede constituir un delito.",
-    faq_2_q: "¿Por qué existe un filtro de estado en el generador?",
-    faq_2_a: "El 9º dígito del CPF (justo antes de los verificadores) corresponde a la región fiscal donde se emitió el documento. São Paulo es 8, Rio Grande do Sul es 0, y así sucesivamente. Para algunas pruebas importa generar números coherentes con una región específica, y el filtro existe para eso. Si no importa, déjalo en \"Todos los Estados\" y el sorteo será aleatorio.",
-    faq_3_q: "¿Cuándo usar el formato con puntos y cuándo solo números?",
-    faq_3_a: "Depende de dónde se usará el número. Los formularios y pantallas que muestran el CPF al usuario normalmente usan el formato con puntuación (999.999.999-99). Las bases de datos, APIs y validaciones de backend tienden a almacenar el número limpio, sin caracteres especiales. El toggle \"Solo Números\" lo resuelve sin necesidad de procesar la cadena después.",
-    faq_4_q: "¿Puedo usar el generador para cualquier finalidad?",
-    faq_4_a: "Para pruebas de software, estudio, demostraciones y desarrollo, sí. Para eso existe exactamente. Lo que no puedes hacer es usar un CPF generado en registros oficiales, contratos, declaraciones o cualquier situación que requiera identificación real. Eso constituye falsedad ideológica y, dependiendo del caso, puede ser considerado estafa.",
-    faq_5_q: "¿Cuál es la diferencia entre \"CPF falso\" y \"CPF aleatorio\"?",
-    faq_5_a: "En la práctica, ambos términos se refieren a la misma herramienta: un utilitario que genera números siguiendo la regla matemática del CPF, pero sin pertenecer a nadie. Los términos \"falso\" y \"fake\" son populares en las búsquedas, aunque algunos desarrolladores prefieren \"ficticio\" o \"de prueba\" por sonar menos sugestivos. El resultado y el uso son idénticos.",
+    faq_1_q: "¿Qué es un CPF y para qué sirve este generador?",
+    faq_1_a: "El CPF (Cadastro de Pessoas Físicas) es el número de registro tributario individual de Brasil, el equivalente a un número de identificación fiscal para personas físicas. Este generador produce números que siguen las reglas matemáticas del CPF para que superen la validación de formularios y la lógica de negocio durante el desarrollo. Está pensado para pruebas de software, estudio y demostraciones, no para identificación real.",
+    faq_2_q: "¿Los CPFs generados son válidos y están registrados en la Receita Federal?",
+    faq_2_a: "El número es matemáticamente válido, es decir, supera la verificación de dígitos porque el cálculo del módulo 11 es correcto. Pero es ficticio, sin ningún vínculo con personas reales ni registro en la Receita Federal. Existe para validar formularios y reglas de negocio durante el desarrollo, y nada más. Usar un CPF generado en registros oficiales no funciona y, según la legislación brasileña, puede constituir un delito.",
+    faq_3_q: "¿Cómo define el generador el estado y qué significa el noveno dígito del CPF?",
+    faq_3_a: "El noveno dígito del CPF, justo antes de los dos verificadores, corresponde a la región fiscal donde se emitió el documento. São Paulo es 8, Rio Grande do Sul es 0, Paraná y Santa Catarina son 9, y así sucesivamente. El selector de estado fija ese dígito para generar números coherentes con una región específica. Dejándolo en \"Todos los Estados\", el dígito se sortea de forma aleatoria.",
+    faq_4_q: "¿Cuándo usar el CPF con puntuación y cuándo solo números?",
+    faq_4_a: "Depende de dónde se usará el número. Los formularios y pantallas que muestran el CPF al usuario suelen usar el formato con puntuación (999.999.999-99). Las bases de datos, APIs y validaciones de backend tienden a almacenar el número limpio, sin caracteres especiales. La opción \"Solo Números\" lo resuelve en el momento de la generación, sin necesidad de procesar la cadena después.",
+    faq_5_q: "¿Cuál es la diferencia entre un CPF fake, falso y aleatorio?",
+    faq_5_a: "En la práctica, todos estos términos describen la misma herramienta: un utilitario que genera números siguiendo la regla matemática del CPF, pero sin pertenecer a nadie. \"Fake\" y \"falso\" son las búsquedas más comunes, mientras que algunos desarrolladores prefieren \"ficticio\", \"aleatorio\" o \"de prueba\" por sonar menos sugestivos. El resultado y la finalidad son los mismos en todos los casos.",
 
+    table_title: "9º Dígito del CPF por Región Fiscal",
+    table_digit: "Dígito",
+    table_states: "Estados",
     see1: "Generador de CNPJ",
     see2: "Letras Diferentes",
     see3: "Generador de Tarjeta de Crédito",
@@ -504,7 +549,7 @@ defineI18nRoute({
   fr: {
     pageTitle: "Générateur de CPF Valide en Ligne pour Tests — Gratuit",
     title: "Générateur de CPF Brésilien",
-    meta: "Générez des CPFs valides en ligne gratuitement, que ce soit par état, un ou plusieurs CPFs à la fois (avec ou sans ponctuation). Outil idéal pour les tests et le développement.",
+    meta: "Générateur de CPF valide pour les tests et le développement logiciel. Générez un CPF aléatoire ou plusieurs à la fois, par état, avec ou sans ponctuation. Gratuit, sans inscription.",
 
     num: "Chiffres Uniquement",
     multiple_label: "Générer Plusieurs CPF",
@@ -520,29 +565,34 @@ defineI18nRoute({
     placeholder: "Cliquez sur Générer un CPF pour créer un numéro",
     warning: "Les numéros générés sont fictifs et servent uniquement à des fins de test.",
 
-    d1: "Générateur de CPF en ligne et gratuit pour les développeurs et les tests logiciels. Générez des numéros de CPF mathématiquement valides avec des chiffres de contrôle calculés selon l'algorithme officiel, garantissant qu'ils passent toute validation de formulaire ou règle métier. Notre outil fonctionne directement dans le navigateur, est 100 % sécurisé (sans lien avec de vraies personnes) et ne nécessite aucune inscription. Profitez de fonctionnalités avancées comme la génération de CPF par état et la création de lots de jusqu'à 100 numéros simultanément.",
+    d1: "Générateur de CPF en ligne et gratuit destiné aux développeurs et aux tests logiciels. L'outil génère des numéros de CPF mathématiquement valides, avec les chiffres de contrôle calculés par l'algorithme officiel modulo 11, de sorte qu'ils passent n'importe quelle validation de formulaire ou règle métier. Tout le processus se déroule dans le navigateur, sans inscription et sans lien avec de vraies personnes. Il est possible de générer un CPF aléatoire, de restreindre le résultat à un état spécifique ou de créer des lots allant jusqu'à 100 numéros en une seule fois.",
 
     features_title: "Fonctionnalités",
     f_1: "Génère un CPF valide par état",
     f_2: "Lots de jusqu'à 100 CPF uniques",
     f_3: "Format avec ponctuation ou chiffres seuls",
     f_4: "Chiffres de contrôle calculés par modulo 11",
+    f_5: "Tableau des régions fiscales par chiffre",
 
     how_title: "Comment fonctionne l'algorithme du CPF",
     how_desc: "L'algorithme du CPF est composé de 11 chiffres : 9 d'identification et 2 de contrôle à la fin. Les 9 premiers sont séquentiels par région fiscale, et le 9e indique l'état où le document a été émis. Les deux derniers résultent d'un calcul modulo 11 sur les précédents : chaque chiffre est multiplié par un poids, tout est additionné, divisé par 11, et le reste détermine le chiffre de contrôle. La méthode a été conçue pour détecter les erreurs de frappe. Modifier un chiffre ou en inverser deux brise presque toujours la validation, ce qui permet à tout système de rejeter les numéros invalides sans consulter l'administration fiscale.",
 
     use_cases_title: "Cas d'Usage",
-    use_cases_intro: "Voici les principales applications pratiques du générateur de CPF dans les flux de travail de développement et de QA :",
-    use_1_t: "Validation de formulaires",
-    use_1_d: "Tester les masques de saisie, les validateurs et les messages d'erreur dans les champs d'inscription.",
-    use_2_t: "Tests automatisés",
-    use_2_d: "Alimenter des scénarios de test avec des données qui passent la validation sans exposer de vrais CPF.",
-    use_3_t: "Environnements de développement",
-    use_3_d: "Créer des enregistrements en staging et en recette sans violer les lois sur la protection des données ni utiliser des données de production.",
-    use_4_t: "Intégrations et API",
-    use_4_d: "Tester des endpoints, des payloads et des services tiers qui requièrent un CPF comme paramètre.",
-    use_5_t: "Maquettes et démonstrations",
-    use_5_d: "Remplir des prototypes, des écrans de démo et des présentations produit sans utiliser de vraies données.",
+    use_cases_intro: "Les applications pratiques les plus courantes du générateur de CPF dans le flux de travail de développement et de QA sont :",
+    use_1_t: "Validation de formulaires et UI",
+    use_1_d: "Tester les masques de saisie, les validations en temps réel (JavaScript, React, Angular, etc.), les messages d'erreur et le comportement du frontend avec des données qui passent toutes les règles.",
+    use_2_t: "Tests automatisés (Unit, Integration et E2E)",
+    use_2_d: "Alimenter des fixtures, des bases de données de test et des scénarios avec des CPF valides, en éliminant les données réelles et en réduisant le risque de fuite.",
+    use_3_t: "Environnements de développement et de recette",
+    use_3_d: "Créer des utilisateurs de test en staging, dans des bases de données locales ou des environnements de démonstration sans violer les lois sur la protection des données ni utiliser des données de production.",
+    use_4_t: "Tests d'API et d'intégrations",
+    use_4_d: "Envoyer des payloads réalistes aux endpoints nécessitant un CPF : inscriptions, vérifications de crédit, émission de factures et services tiers.",
+    use_5_t: "Maquettes, prototypes et présentations",
+    use_5_d: "Remplir des écrans Figma, Adobe XD ou des diapositives clients avec des données visuellement convaincantes, sans exposer de vraies informations.",
+    use_6_t: "Tests de performance et de charge",
+    use_6_d: "Générer des centaines de CPF rapidement pour simuler de grands volumes d'inscriptions ou de requêtes dans un environnement contrôlé.",
+    use_7_t: "Études, formations et cours",
+    use_7_d: "Professeurs et étudiants les utilisent pour des exemples pratiques en cours de programmation, de bases de données et de validation de formulaires.",
 
     how_to_use_title: "Comment Utiliser",
     step_1_title: "Générer un CPF rapidement",
@@ -553,17 +603,20 @@ defineI18nRoute({
     step_3_desc: "Par défaut, le CPF est formaté avec des points et un tiret. Si vous avez besoin du numéro brut (base de données, JSON, etc.), activez « Chiffres Uniquement » avant de générer.",
 
     faq_title: "Questions et Réponses",
-    faq_1_q: "Les CPF générés ici sont-ils réels ou enregistrés auprès de la Receita Federal ?",
-    faq_1_a: "Non. Ce sont des numéros fictifs construits avec le même algorithme de validation qu'utilise la Receita Federal, mais sans aucun lien avec de vraies personnes. Ils passent la vérification des chiffres de contrôle parce que le calcul est correct, et rien de plus. N'essayez pas de les utiliser pour des inscriptions officielles — ils ne seront pas acceptés, et la tentative peut constituer une fraude.",
-    faq_2_q: "Pourquoi y a-t-il un filtre par état dans le générateur ?",
-    faq_2_a: "Le 9e chiffre du CPF (juste avant les chiffres de contrôle) correspond à la région fiscale où le document a été émis. São Paulo correspond au 8, Rio Grande do Sul au 0, et ainsi de suite. Pour certains tests, il est important de générer des numéros cohérents avec une région spécifique, et le filtre existe à cet effet. Si cela n'a pas d'importance, laissez sur « Tous les États » et le tirage sera aléatoire.",
-    faq_3_q: "Quand utiliser le format avec ponctuation et quand utiliser les chiffres seuls ?",
-    faq_3_a: "Cela dépend de l'endroit où le numéro sera utilisé. Les formulaires et les écrans qui affichent le CPF à l'utilisateur utilisent généralement le format ponctué (999.999.999-99). Les bases de données, les API et les validations backend ont tendance à stocker le numéro brut, sans caractères spéciaux. Le bouton « Chiffres Uniquement » règle cela sans avoir à traiter la chaîne par la suite.",
-    faq_4_q: "Puis-je utiliser le générateur à n'importe quelle fin ?",
-    faq_4_a: "Pour les tests logiciels, l'apprentissage, les démonstrations et le développement, oui. C'est exactement pour cela qu'il a été créé. Ce que vous ne pouvez pas faire, c'est utiliser un CPF généré dans des inscriptions officielles, des contrats, des déclarations ou toute situation nécessitant une identification réelle. Cela constitue un faux en écriture et, selon les circonstances, peut être considéré comme une escroquerie.",
-    faq_5_q: "Quelle est la différence entre un « faux CPF » et un « CPF aléatoire » ?",
-    faq_5_a: "En pratique, les deux termes désignent le même outil : un utilitaire qui génère des numéros en suivant la règle mathématique du CPF, mais sans appartenir à personne. Les termes « faux » et « fake » sont populaires dans les recherches, bien que certains développeurs préfèrent « fictif » ou « de test » car ils semblent moins suggestifs. Le résultat et l'utilisation sont identiques.",
+    faq_1_q: "Utiliser un CPF généré est-il illégal ?",
+    faq_1_a: "Cela dépend de l'usage. Pour les tests logiciels, l'apprentissage, les démonstrations et le développement, il n'y a aucun problème, car c'est exactement à cela que sert l'outil. Ce qui constitue un délit, c'est d'utiliser un CPF généré dans des registres officiels, des contrats, des déclarations ou toute situation nécessitant une identification réelle. Dans ce cas, le comportement peut être qualifié de falsification idéologique (Art. 299 du Code pénal brésilien) et, selon le contexte, d'escroquerie.",
+    faq_2_q: "Le CPF généré ici est-il valide et enregistré auprès de la Receita Federal ?",
+    faq_2_a: "Le numéro est mathématiquement valide, c'est-à-dire qu'il passe la vérification des chiffres car le calcul modulo 11 est correct. Mais il est fictif et n'a aucun lien avec de vraies personnes ni d'enregistrement auprès de la Receita Federal. Il sert à valider des formulaires et des règles métier pendant le développement, et rien de plus. Tenter de l'utiliser dans des registres officiels ne fonctionne pas et peut constituer un délit.",
+    faq_3_q: "Comment le générateur détermine-t-il l'état et que signifie le neuvième chiffre du CPF ?",
+    faq_3_a: "Le neuvième chiffre du CPF, juste avant les deux chiffres de contrôle, correspond à la région fiscale où le document a été émis. São Paulo est 8, Rio Grande do Sul est 0, Paraná et Santa Catarina sont 9, et ainsi de suite. Le sélecteur d'état fixe ce chiffre pour générer des numéros cohérents avec une région spécifique. En laissant sur « Tous les États », le chiffre est tiré au sort de manière aléatoire.",
+    faq_4_q: "Quand utiliser le CPF avec ponctuation et quand utiliser seulement les chiffres ?",
+    faq_4_a: "Cela dépend de l'endroit où le numéro sera utilisé. Les formulaires et les écrans qui affichent le CPF à l'utilisateur utilisent généralement le format avec ponctuation (999.999.999-99). Les bases de données, les API et les validations backend ont tendance à stocker le numéro brut, sans caractères spéciaux. L'option « Chiffres Uniquement » règle cela directement lors de la génération, sans avoir besoin de traiter la chaîne ensuite.",
+    faq_5_q: "Quelle est la différence entre un CPF fake, faux et aléatoire ?",
+    faq_5_a: "En pratique, tous ces termes décrivent le même outil : un utilitaire qui génère des numéros suivant la règle mathématique du CPF, mais sans appartenir à personne. « Fake » et « faux » sont les recherches les plus courantes, tandis que certains développeurs préfèrent « fictif », « aléatoire » ou « de test » car ils semblent moins suggestifs. Le résultat et la finalité sont les mêmes dans tous les cas.",
 
+    table_title: "9e Chiffre du CPF par Région Fiscale",
+    table_digit: "Chiffre",
+    table_states: "États",
     see1: "Générateur de CNPJ",
     see2: "Lettres Différentes",
     see3: "Générateur de Carte de Crédit",
@@ -572,7 +625,7 @@ defineI18nRoute({
   it: {
     pageTitle: "Generatore di CPF Valido Online per Test — Gratis",
     title: "Generatore di CPF Brasiliano",
-    meta: "Genera CPF validi online gratuitamente, sia per stato, uno o più CPF alla volta (con o senza punteggiatura). Strumento ideale per test e sviluppo.",
+    meta: "Generatore di CPF valido per test e sviluppo software. Genera un CPF casuale o più alla volta, per stato, con o senza punteggiatura. Gratis, senza registrazione.",
 
     num: "Solo Numeri",
     multiple_label: "Genera Più CPF",
@@ -588,29 +641,34 @@ defineI18nRoute({
     placeholder: "Clicca su Genera CPF per creare un numero",
     warning: "I numeri generati sono fittizi e servono solo a scopi di test.",
 
-    d1: "Generatore di CPF online e gratuito per sviluppatori e test software. Genera numeri CPF matematicamente validi con cifre di controllo calcolate tramite l'algoritmo ufficiale, garantendo che superino qualsiasi validazione di modulo o regola di business. Il nostro strumento funziona direttamente nel browser, è sicuro al 100% (senza collegamento a persone reali) e non richiede registrazione. Sfrutta funzionalità avanzate come la generazione di CPF per stato e la creazione di batch fino a 100 numeri contemporaneamente.",
+    d1: "Generatore di CPF online e gratuito pensato per sviluppatori e test software. Lo strumento genera numeri di CPF matematicamente validi, con le cifre di controllo calcolate dall'algoritmo ufficiale modulo 11, in modo che superino qualsiasi validazione di modulo o regola aziendale. L'intero processo avviene nel browser, senza registrazione e senza collegamento con persone reali. È possibile generare un CPF casuale, limitare il risultato a uno stato specifico o creare batch fino a 100 numeri in una sola volta.",
 
     features_title: "Funzionalità",
     f_1: "Genera CPF valido per stato",
     f_2: "Batch fino a 100 CPF unici",
     f_3: "Formato con punteggiatura o solo numeri",
     f_4: "Cifre di controllo calcolate con modulo 11",
+    f_5: "Tabella delle regioni fiscali per cifra",
 
     how_title: "Come funziona l'algoritmo del CPF",
     how_desc: "L'algoritmo del CPF è composto da 11 cifre: 9 di identificazione e 2 di controllo alla fine. Le prime 9 sono sequenziali per regione fiscale, e la 9ª indica lo stato in cui il documento è stato emesso. Le ultime due derivano da un calcolo modulo 11 sulle cifre precedenti: ogni cifra viene moltiplicata per un peso, tutto viene sommato, diviso per 11, e il resto determina la cifra di controllo. Il metodo è stato progettato per rilevare errori di battitura. Modificare una cifra o invertirne due quasi sempre rompe la validazione, consentendo a qualsiasi sistema di rifiutare numeri non validi senza consultare l'autorità fiscale.",
 
     use_cases_title: "Casi d'Uso",
-    use_cases_intro: "Ecco le principali applicazioni pratiche del generatore di CPF nel flusso di lavoro di sviluppo e QA:",
-    use_1_t: "Validazione di moduli",
-    use_1_d: "Testare maschere di input, validatori e messaggi di errore nei campi di registrazione.",
-    use_2_t: "Test automatizzati",
-    use_2_d: "Popolare scenari di test con dati che superano la validazione senza esporre CPF reali.",
-    use_3_t: "Ambienti di sviluppo",
-    use_3_d: "Creare record in staging e collaudo senza violare le leggi sulla protezione dei dati né usare dati di produzione.",
-    use_4_t: "Integrazioni e API",
-    use_4_d: "Testare endpoint, payload e servizi di terze parti che richiedono un CPF come parametro.",
-    use_5_t: "Mockup e dimostrazioni",
-    use_5_d: "Compilare prototipi, schermate demo e presentazioni di prodotto senza utilizzare dati reali.",
+    use_cases_intro: "Le applicazioni pratiche più comuni del generatore di CPF nel flusso di lavoro di sviluppo e QA sono:",
+    use_1_t: "Validazione di form e UI",
+    use_1_d: "Testare maschere di input, validazioni in tempo reale (JavaScript, React, Angular, ecc.), messaggi di errore e comportamento del frontend con dati che superano tutte le regole.",
+    use_2_t: "Test automatizzati (Unit, Integration e E2E)",
+    use_2_d: "Popolare fixture, database di test e scenari con CPF validi, eliminando i dati reali e riducendo il rischio di fuga.",
+    use_3_t: "Ambienti di sviluppo e collaudo",
+    use_3_d: "Creare utenti di test in staging, database locali o ambienti di dimostrazione senza violare le leggi sulla protezione dei dati né usare dati di produzione.",
+    use_4_t: "Test di API e integrazioni",
+    use_4_d: "Inviare payload realistici agli endpoint che richiedono un CPF: registrazioni, controlli di credito, emissione di fatture e servizi di terze parti.",
+    use_5_t: "Mockup, prototipi e presentazioni",
+    use_5_d: "Riempire schermate in Figma, Adobe XD o slide per clienti con dati visivamente convincenti, senza esporre informazioni reali.",
+    use_6_t: "Test di performance e carico",
+    use_6_d: "Generare centinaia di CPF rapidamente per simulare grandi volumi di registrazioni o query in un ambiente controllato.",
+    use_7_t: "Studi, formazione e corsi",
+    use_7_d: "Professori e studenti li usano per esempi pratici in lezioni di programmazione, database e validazione di form.",
 
     how_to_use_title: "Come Usare",
     step_1_title: "Generare un CPF rapidamente",
@@ -621,17 +679,20 @@ defineI18nRoute({
     step_3_desc: "Per impostazione predefinita, il CPF è formattato con punti e trattino. Se hai bisogno del numero grezzo (database, JSON, ecc.), attiva \"Solo Numeri\" prima di generare.",
 
     faq_title: "Domande e Risposte",
-    faq_1_q: "I CPF generati qui sono reali o registrati presso la Receita Federal?",
-    faq_1_a: "No. Sono numeri fittizi costruiti con lo stesso algoritmo di validazione usato dalla Receita Federal, ma senza alcun collegamento con persone reali. Superano la verifica delle cifre di controllo perché il calcolo è corretto, e nulla di più. Non tentare di usarli per registrazioni ufficiali — non saranno accettati e il tentativo può costituire una frode.",
-    faq_2_q: "Perché c'è un filtro per stato nel generatore?",
-    faq_2_a: "La 9ª cifra del CPF (subito prima delle cifre di controllo) corrisponde alla regione fiscale in cui il documento è stato emesso. São Paulo corrisponde all'8, Rio Grande do Sul allo 0, e così via. Per alcuni test è importante generare numeri coerenti con una regione specifica, e il filtro esiste per questo. Se non importa, lascia su \"Tutti gli Stati\" e il sorteggio sarà casuale.",
-    faq_3_q: "Quando usare il formato con punteggiatura e quando solo i numeri?",
-    faq_3_a: "Dipende da dove verrà usato il numero. I moduli e le schermate che mostrano il CPF all'utente utilizzano generalmente il formato con punteggiatura (999.999.999-99). I database, le API e le validazioni backend tendono invece a memorizzare il numero grezzo, senza caratteri speciali. Il toggle \"Solo Numeri\" risolve il problema senza dover elaborare la stringa in seguito.",
-    faq_4_q: "Posso usare il generatore per qualsiasi scopo?",
-    faq_4_a: "Per test software, studio, dimostrazioni e sviluppo, sì. È esattamente per questo che esiste. Quello che non puoi fare è usare un CPF generato in registrazioni ufficiali, contratti, dichiarazioni o qualsiasi situazione che richieda un'identificazione reale. Ciò costituisce falso in atto pubblico e, a seconda dei casi, può essere considerato una truffa.",
-    faq_5_q: "Qual è la differenza tra un \"CPF falso\" e un \"CPF casuale\"?",
-    faq_5_a: "In pratica, entrambi i termini si riferiscono allo stesso strumento: un'utilità che genera numeri seguendo la regola matematica del CPF, ma senza appartenere a nessuno. I termini \"falso\" e \"fake\" sono popolari nelle ricerche, sebbene alcuni sviluppatori preferiscano \"fittizio\" o \"di test\" perché sembrano meno suggestivi. Il risultato e l'utilizzo sono identici.",
+    faq_1_q: "Usare un CPF generato è illegale?",
+    faq_1_a: "Dipende dall'uso. Per test software, studio, dimostrazioni e sviluppo, non c'è alcun problema, poiché è esattamente per questo che esiste lo strumento. Ciò che costituisce un reato è usare un CPF generato in registri ufficiali, contratti, dichiarazioni o qualsiasi situazione che richieda un'identificazione reale. In tal caso, il comportamento può configurarsi come falsità ideologica (Art. 299 del Codice Penale brasiliano) e, a seconda del contesto, truffa.",
+    faq_2_q: "Il CPF generato qui è valido e registrato presso la Receita Federal?",
+    faq_2_a: "Il numero è matematicamente valido, cioè supera la verifica delle cifre perché il calcolo del modulo 11 è corretto. Ma è fittizio e non ha alcun legame con persone reali né registrazione presso la Receita Federal. Serve a validare moduli e regole aziendali durante lo sviluppo, e nient'altro. Tentare di usarlo in registri ufficiali non funziona e può configurarsi come reato.",
+    faq_3_q: "Come il generatore determina lo stato e cosa significa la nona cifra del CPF?",
+    faq_3_a: "La nona cifra del CPF, appena prima delle due cifre di controllo, corrisponde alla regione fiscale in cui il documento è stato emesso. São Paulo è 8, Rio Grande do Sul è 0, Paraná e Santa Catarina sono 9, e così via. Il selettore di stato fissa quella cifra per generare numeri coerenti con una regione specifica. Lasciando su \"Tutti gli Stati\", la cifra viene sorteggiata in modo casuale.",
+    faq_4_q: "Quando usare il CPF con punteggiatura e quando usare solo numeri?",
+    faq_4_a: "Dipende da dove verrà usato il numero. I moduli e le schermate che mostrano il CPF all'utente di solito usano il formato con punteggiatura (999.999.999-99). I database, le API e le validazioni backend tendono a memorizzare il numero pulito, senza caratteri speciali. L'opzione \"Solo Numeri\" risolve questo al momento della generazione, senza dover elaborare la stringa in seguito.",
+    faq_5_q: "Qual è la differenza tra un CPF fake, falso e casuale?",
+    faq_5_a: "In pratica, tutti questi termini descrivono lo stesso strumento: un'utilità che genera numeri seguendo la regola matematica del CPF, ma senza appartenere a nessuno. \"Fake\" e \"falso\" sono le ricerche più comuni, mentre alcuni sviluppatori preferiscono \"fittizio\", \"casuale\" o \"di test\" perché sembrano meno suggestivi. Il risultato e la finalità sono gli stessi in tutti i casi.",
 
+    table_title: "9ª Cifra del CPF per Regione Fiscale",
+    table_digit: "Cifra",
+    table_states: "Stati",
     see1: "Generatore di CNPJ",
     see2: "Lettere Diverse",
     see3: "Generatore di Carte di Credito",
@@ -640,7 +701,7 @@ defineI18nRoute({
   id: {
     pageTitle: "Generator CPF Valid Online untuk Pengujian — Gratis",
     title: "Generator CPF Brasil",
-    meta: "Buat CPF valid online secara gratis, baik berdasarkan negara bagian, satu atau beberapa CPF sekaligus (dengan atau tanpa tanda baca). Alat ideal untuk pengujian dan pengembangan.",
+    meta: "Generator CPF valid untuk pengujian dan pengembangan perangkat lunak. Buat CPF acak atau beberapa sekaligus, per negara bagian, dengan atau tanpa tanda baca. Gratis, tanpa pendaftaran.",
 
     num: "Angka Saja",
     multiple_label: "Buat Beberapa CPF",
@@ -656,29 +717,34 @@ defineI18nRoute({
     placeholder: "Klik Buat CPF untuk membuat nomor",
     warning: "Nomor yang dihasilkan bersifat fiktif dan hanya untuk keperluan pengujian.",
 
-    d1: "Generator CPF online dan gratis untuk pengembang dan pengujian perangkat lunak. Buat nomor CPF yang valid secara matematis dengan digit verifikasi yang dihitung menggunakan algoritma resmi, memastikan mereka lulus validasi formulir atau aturan bisnis apa pun. Alat kami berjalan langsung di browser, 100% aman (tidak terhubung dengan orang sungguhan), dan tidak memerlukan pendaftaran. Manfaatkan fitur canggih seperti pembuatan CPF per negara bagian dan pembuatan batch hingga 100 nomor sekaligus.",
+    d1: "Generator CPF online dan gratis yang ditujukan untuk pengembang dan pengujian perangkat lunak. Alat ini menghasilkan nomor CPF yang valid secara matematis, dengan digit verifikasi dihitung menggunakan algoritma resmi modulo 11, sehingga lolos dari validasi formulir atau aturan bisnis apa pun. Seluruh proses berjalan di browser, tanpa pendaftaran dan tanpa kaitan dengan orang nyata. Anda dapat membuat CPF acak, membatasi hasil ke negara bagian tertentu, atau membuat batch hingga 100 nomor sekaligus.",
 
     features_title: "Fitur",
     f_1: "Buat CPF valid per negara bagian",
     f_2: "Batch hingga 100 CPF unik",
     f_3: "Format dengan tanda baca atau angka saja",
     f_4: "Digit verifikasi dihitung dengan modulo 11",
+    f_5: "Tabel wilayah fiskal berdasarkan digit",
 
     how_title: "Cara kerja algoritma CPF",
     how_desc: "Algoritma CPF terdiri dari 11 digit: 9 identifikasi dan 2 verifikasi di akhir. 9 digit pertama bersifat sekuensial berdasarkan wilayah fiskal, dan digit ke-9 menunjukkan negara bagian tempat dokumen diterbitkan. Dua digit terakhir berasal dari perhitungan modulo 11 atas digit sebelumnya: setiap digit dikalikan dengan bobot, semuanya dijumlahkan, dibagi 11, dan sisanya menentukan digit verifikasi. Metode ini dirancang untuk mendeteksi kesalahan ketik. Mengubah satu digit atau membalik dua digit hampir selalu merusak validasi, sehingga sistem apa pun dapat menolak nomor yang tidak valid tanpa perlu menghubungi otoritas pajak.",
 
     use_cases_title: "Kasus Penggunaan",
-    use_cases_intro: "Berikut adalah aplikasi praktis utama generator CPF dalam alur kerja pengembangan dan QA:",
-    use_1_t: "Validasi formulir",
-    use_1_d: "Menguji mask input, validator, dan pesan kesalahan pada kolom pendaftaran.",
-    use_2_t: "Pengujian otomatis",
-    use_2_d: "Mengisi skenario pengujian dengan data yang lulus validasi tanpa mengekspos CPF asli.",
-    use_3_t: "Lingkungan pengembangan",
-    use_3_d: "Membuat catatan di staging dan homologasi tanpa melanggar undang-undang perlindungan data atau menggunakan data produksi.",
-    use_4_t: "Integrasi dan API",
-    use_4_d: "Menguji endpoint, payload, dan layanan pihak ketiga yang memerlukan CPF sebagai parameter.",
-    use_5_t: "Mockup dan demonstrasi",
-    use_5_d: "Mengisi prototipe, layar demo, dan presentasi produk tanpa menggunakan data asli.",
+    use_cases_intro: "Aplikasi praktis paling umum dari generator CPF dalam alur kerja pengembangan dan QA adalah:",
+    use_1_t: "Validasi formulir dan UI",
+    use_1_d: "Menguji mask input, validasi real-time (JavaScript, React, Angular, dll.), pesan kesalahan, dan perilaku frontend dengan data yang lolos semua aturan.",
+    use_2_t: "Pengujian otomatis (Unit, Integration & E2E)",
+    use_2_d: "Mengisi fixture, database pengujian, dan skenario dengan CPF valid, menghilangkan data nyata dan mengurangi risiko kebocoran.",
+    use_3_t: "Lingkungan pengembangan dan staging",
+    use_3_d: "Membuat pengguna uji di staging, database lokal, atau lingkungan demo tanpa melanggar undang-undang perlindungan data atau menggunakan data produksi.",
+    use_4_t: "Pengujian API dan integrasi",
+    use_4_d: "Mengirim payload realistis ke endpoint yang memerlukan CPF: pendaftaran, pemeriksaan kredit, penerbitan faktur, dan layanan pihak ketiga.",
+    use_5_t: "Mockup, prototipe, dan presentasi",
+    use_5_d: "Mengisi layar Figma, Adobe XD, atau slide klien dengan data yang meyakinkan secara visual, tanpa mengekspos informasi nyata.",
+    use_6_t: "Pengujian performa dan beban",
+    use_6_d: "Menghasilkan ratusan CPF dengan cepat untuk mensimulasikan volume pendaftaran atau kueri besar dalam lingkungan terkendali.",
+    use_7_t: "Studi, pelatihan, dan kursus",
+    use_7_d: "Guru dan siswa menggunakannya untuk contoh praktis di kelas pemrograman, database, dan validasi formulir.",
 
     how_to_use_title: "Cara Menggunakan",
     step_1_title: "Buat CPF dengan cepat",
@@ -689,17 +755,20 @@ defineI18nRoute({
     step_3_desc: "Secara default, CPF diformat dengan titik dan tanda hubung. Jika Anda membutuhkan nomor mentah (database, JSON, dll.), aktifkan \"Angka Saja\" sebelum membuat.",
 
     faq_title: "Pertanyaan dan Jawaban",
-    faq_1_q: "Apakah CPF yang dihasilkan di sini nyata atau terdaftar di Receita Federal?",
-    faq_1_a: "Tidak. Mereka adalah nomor fiktif yang dibangun dengan algoritma validasi yang sama yang digunakan Receita Federal, tetapi tanpa hubungan apa pun dengan orang nyata. Mereka lulus verifikasi digit karena perhitungannya benar, dan tidak lebih dari itu. Jangan mencoba menggunakannya untuk pendaftaran resmi — tidak akan diterima, dan upaya tersebut dapat dianggap sebagai penipuan.",
-    faq_2_q: "Mengapa ada filter negara bagian di generator?",
-    faq_2_a: "Digit ke-9 CPF (tepat sebelum digit verifikasi) sesuai dengan wilayah fiskal tempat dokumen diterbitkan. São Paulo adalah 8, Rio Grande do Sul adalah 0, dan seterusnya. Untuk beberapa pengujian, penting untuk menghasilkan nomor yang konsisten dengan wilayah tertentu, dan filter ini ada untuk tujuan itu. Jika tidak penting, biarkan di \"Semua Negara Bagian\" dan pemilihan akan acak.",
-    faq_3_q: "Kapan menggunakan format dengan tanda baca dan kapan hanya angka?",
-    faq_3_a: "Tergantung di mana nomor akan digunakan. Formulir dan layar yang menampilkan CPF kepada pengguna biasanya menggunakan format bertanda baca (999.999.999-99). Database, API, dan validasi backend cenderung menyimpan nomor mentah, tanpa karakter khusus. Toggle \"Angka Saja\" menyelesaikan ini tanpa perlu memproses string setelahnya.",
-    faq_4_q: "Bisakah saya menggunakan generator untuk tujuan apa pun?",
-    faq_4_a: "Untuk pengujian perangkat lunak, pembelajaran, demonstrasi, dan pengembangan, ya. Itulah tepatnya tujuan pembuatannya. Yang tidak boleh Anda lakukan adalah menggunakan CPF yang dihasilkan dalam pendaftaran resmi, kontrak, deklarasi, atau situasi apa pun yang memerlukan identifikasi nyata. Hal itu merupakan pemalsuan dokumen dan, tergantung kasusnya, dapat dianggap sebagai penipuan.",
-    faq_5_q: "Apa perbedaan antara \"CPF palsu\" dan \"CPF acak\"?",
-    faq_5_a: "Dalam praktiknya, kedua istilah mengacu pada alat yang sama: utilitas yang menghasilkan nomor mengikuti aturan matematis CPF, tetapi tanpa milik siapa pun. Istilah \"palsu\" dan \"fake\" populer dalam pencarian, meskipun beberapa pengembang lebih suka \"fiktif\" atau \"untuk pengujian\" karena terdengar kurang sugestif. Hasilnya dan penggunaannya identik.",
+    faq_1_q: "Apakah menggunakan CPF yang dihasilkan adalah tindak pidana?",
+    faq_1_a: "Tergantung penggunaannya. Untuk pengujian perangkat lunak, studi, demonstrasi, dan pengembangan, tidak ada masalah, karena memang itulah tujuan alat ini. Yang menjadi tindak pidana adalah menggunakan CPF yang dihasilkan dalam daftar resmi, kontrak, deklarasi, atau situasi apa pun yang memerlukan identifikasi nyata. Dalam hal itu, perilaku tersebut dapat dikategorikan sebagai pemalsuan ideologis (Pasal 299 KUHP Brasil) dan, tergantung konteksnya, penipuan.",
+    faq_2_q: "Apakah CPF yang dihasilkan di sini valid dan terdaftar di Receita Federal?",
+    faq_2_a: "Nomor ini valid secara matematis, artinya lolos verifikasi digit karena perhitungan modulo 11 sudah benar. Namun fiktif dan tidak memiliki kaitan dengan orang nyata maupun pendaftaran di Receita Federal. Nomor ini digunakan untuk memvalidasi formulir dan aturan bisnis selama pengembangan, dan tidak lebih dari itu. Mencoba menggunakannya dalam pendaftaran resmi tidak akan berhasil dan masih dapat dikategorikan sebagai tindak pidana.",
+    faq_3_q: "Bagaimana generator menentukan negara bagian dan apa arti digit kesembilan CPF?",
+    faq_3_a: "Digit kesembilan CPF, tepat sebelum dua digit verifikasi, sesuai dengan wilayah fiskal tempat dokumen diterbitkan. São Paulo adalah 8, Rio Grande do Sul adalah 0, Paraná dan Santa Catarina adalah 9, dan seterusnya. Pemilih negara bagian menetapkan digit tersebut untuk menghasilkan nomor yang konsisten dengan wilayah tertentu. Jika dibiarkan pada \"Semua Negara Bagian\", digit dipilih secara acak.",
+    faq_4_q: "Kapan menggunakan CPF dengan tanda baca dan kapan menggunakan angka saja?",
+    faq_4_a: "Tergantung di mana nomor tersebut akan digunakan. Formulir dan layar yang menampilkan CPF kepada pengguna biasanya menggunakan format dengan tanda baca (999.999.999-99). Database, API, dan validasi backend cenderung menyimpan nomor bersih, tanpa karakter khusus. Opsi \"Angka Saja\" menangani ini langsung saat pembuatan, tanpa perlu memproses string setelahnya.",
+    faq_5_q: "Apa perbedaan antara CPF fake, palsu, dan acak?",
+    faq_5_a: "Dalam praktiknya, semua istilah tersebut menggambarkan alat yang sama: sebuah utilitas yang menghasilkan nomor mengikuti aturan matematis CPF, tetapi tanpa dimiliki oleh siapa pun. \"Fake\" dan \"palsu\" adalah pencarian yang paling umum, sementara beberapa pengembang lebih suka \"fiktif\", \"acak\", atau \"uji coba\" karena terdengar kurang sugestif. Hasilnya dan tujuannya sama dalam semua kasus.",
 
+    table_title: "Digit ke-9 CPF berdasarkan Wilayah Fiskal",
+    table_digit: "Digit",
+    table_states: "Negara Bagian",
     see1: "Generator CNPJ",
     see2: "Huruf Berbeda",
     see3: "Generator Kartu Kredit",
@@ -708,7 +777,7 @@ defineI18nRoute({
   de: {
     pageTitle: "Gültiger CPF-Generator Online für Tests — Kostenlos",
     title: "CPF-Generator",
-    meta: "Gültige CPFs kostenlos online generieren, ob nach Bundesstaat, einer oder mehrere CPFs auf einmal (mit oder ohne Interpunktion). Ideales Tool für Tests und Entwicklung.",
+    meta: "Gültiger CPF-Generator für Tests und Softwareentwicklung. Erstellen Sie eine zufällige CPF oder mehrere auf einmal, nach Bundesstaat, mit oder ohne Satzzeichen. Kostenlos, ohne Registrierung.",
 
     num: "Nur Zahlen",
     multiple_label: "Mehrere CPFs generieren",
@@ -724,29 +793,34 @@ defineI18nRoute({
     placeholder: "Klicken Sie auf CPF generieren, um eine Nummer zu erstellen",
     warning: "Die generierten Nummern sind fiktiv und dienen ausschließlich Testzwecken.",
 
-    d1: "Kostenloser Online-CPF-Generator für Entwickler und Softwaretests. Generieren Sie mathematisch gültige CPF-Nummern mit Prüfziffern, die nach dem offiziellen Algorithmus berechnet werden, sodass sie jede Formularvalidierung oder Geschäftsregel bestehen. Unser Tool läuft direkt im Browser, ist 100 % sicher (ohne Verbindung zu echten Personen) und erfordert keine Anmeldung. Nutzen Sie erweiterte Funktionen wie die CPF-Generierung nach Bundesstaat und die Erstellung von Batches mit bis zu 100 Nummern gleichzeitig.",
+    d1: "Kostenloser Online-CPF-Generator für Entwickler und Softwaretests. Das Tool erzeugt mathematisch gültige CPF-Nummern, deren Prüfziffern nach dem offiziellen Modulo-11-Algorithmus berechnet werden, sodass sie jede Formularvalidierung oder Geschäftsregel bestehen. Der gesamte Prozess läuft im Browser ab, ohne Registrierung und ohne Bezug zu echten Personen. Es ist möglich, eine zufällige CPF zu generieren, das Ergebnis auf einen bestimmten Bundesstaat einzuschränken oder Stapel mit bis zu 100 Nummern auf einmal zu erstellen.",
 
     features_title: "Funktionen",
     f_1: "Gültigen CPF nach Bundesstaat generieren",
     f_2: "Batches mit bis zu 100 eindeutigen CPFs",
     f_3: "Format mit Interpunktion oder nur Zahlen",
     f_4: "Prüfziffern berechnet mit Modulo 11",
+    f_5: "Tabelle der Steuerregionen nach Ziffer",
 
     how_title: "Wie der CPF-Algorithmus funktioniert",
     how_desc: "Der CPF-Algorithmus besteht aus 11 Ziffern: 9 Identifikationsziffern und 2 Prüfziffern am Ende. Die ersten 9 sind sequenziell nach Steuerregion, und die 9. gibt den Bundesstaat an, in dem das Dokument ausgestellt wurde. Die letzten beiden ergeben sich aus einer Modulo-11-Berechnung über die vorherigen Ziffern: Jede Ziffer wird mit einem Gewicht multipliziert, alles wird addiert, durch 11 geteilt, und der Rest bestimmt die Prüfziffer. Die Methode wurde entwickelt, um Tippfehler zu erkennen. Das Ändern einer Ziffer oder das Vertauschen von zwei bricht fast immer die Validierung, sodass jedes System ungültige Nummern ablehnen kann, ohne die Steuerbehörde zu befragen.",
 
     use_cases_title: "Anwendungsfälle",
-    use_cases_intro: "Hier sind die wichtigsten praktischen Anwendungen des CPF-Generators im Entwicklungs- und QA-Workflow:",
-    use_1_t: "Formularvalidierung",
-    use_1_d: "Eingabemasken, Validatoren und Fehlermeldungen in Registrierungsfeldern testen.",
-    use_2_t: "Automatisierte Tests",
-    use_2_d: "Testszenarien mit Daten füllen, die die Validierung bestehen, ohne echte CPFs preiszugeben.",
-    use_3_t: "Entwicklungsumgebungen",
-    use_3_d: "Datensätze in Staging- und Testumgebungen erstellen, ohne Datenschutzgesetze zu verletzen oder Produktionsdaten zu verwenden.",
-    use_4_t: "Integrationen und APIs",
-    use_4_d: "Endpunkte, Payloads und Drittanbieterdienste testen, die einen CPF als Parameter erfordern.",
-    use_5_t: "Mockups und Demonstrationen",
-    use_5_d: "Prototypen, Demo-Bildschirme und Produktpräsentationen ohne echte Daten ausfüllen.",
+    use_cases_intro: "Die häufigsten praktischen Anwendungen des CPF-Generators im Entwicklungs- und QA-Workflow sind:",
+    use_1_t: "Formular- und UI-Validierung",
+    use_1_d: "Eingabemasken, Echtzeit-Validierungen (JavaScript, React, Angular usw.), Fehlermeldungen und Frontend-Verhalten mit Daten testen, die alle Regeln bestehen.",
+    use_2_t: "Automatisierte Tests (Unit, Integration und E2E)",
+    use_2_d: "Fixtures, Testdatenbanken und Szenarien mit gültigen CPFs füllen, echte Daten vermeiden und das Leckagenrisiko reduzieren.",
+    use_3_t: "Entwicklungs- und Staging-Umgebungen",
+    use_3_d: "Testbenutzer in Staging, lokalen Datenbanken oder Demo-Umgebungen erstellen, ohne Datenschutzgesetze zu verletzen oder Produktionsdaten zu verwenden.",
+    use_4_t: "API- und Integrationstests",
+    use_4_d: "Realistische Payloads an Endpoints senden, die eine CPF erfordern: Registrierungen, Kreditprüfungen, Rechnungsausstellung und Drittanbieterdienste.",
+    use_5_t: "Mockups, Prototypen und Präsentationen",
+    use_5_d: "Figma-, Adobe XD-Bildschirme oder Kundenfolien mit visuell überzeugenden Daten füllen, ohne echte Informationen preiszugeben.",
+    use_6_t: "Performance- und Lasttests",
+    use_6_d: "Hunderte von CPFs schnell generieren, um große Registrierungs- oder Abfragevolumen in einer kontrollierten Umgebung zu simulieren.",
+    use_7_t: "Studium, Schulungen und Kurse",
+    use_7_d: "Lehrer und Schüler nutzen sie für praktische Beispiele in Programmier-, Datenbank- und Formularvalidierungskursen.",
 
     how_to_use_title: "Verwendung",
     step_1_title: "Schnell einen CPF generieren",
@@ -757,17 +831,20 @@ defineI18nRoute({
     step_3_desc: "Standardmäßig wird der CPF mit Punkten und Bindestrich formatiert. Wenn Sie die Rohdaten benötigen (Datenbank, JSON usw.), aktivieren Sie \"Nur Zahlen\" vor der Generierung.",
 
     faq_title: "Fragen und Antworten",
-    faq_1_q: "Sind die hier generierten CPFs echt oder bei der Receita Federal registriert?",
-    faq_1_a: "Nein. Es sind fiktive Nummern, die mit demselben Validierungsalgorithmus erstellt wurden, den die Receita Federal verwendet, aber ohne jede Verbindung zu echten Personen. Sie bestehen die Prüfzifferüberprüfung, weil die Berechnung korrekt ist, und nichts weiter. Versuchen Sie nicht, sie für offizielle Registrierungen zu verwenden — sie werden nicht akzeptiert, und der Versuch kann als Betrug gewertet werden.",
-    faq_2_q: "Warum gibt es einen Bundesstaatsfilter im Generator?",
-    faq_2_a: "Die 9. Ziffer des CPF (direkt vor den Prüfziffern) entspricht der Steuerregion, in der das Dokument ausgestellt wurde. São Paulo ist 8, Rio Grande do Sul ist 0, und so weiter. Für einige Tests ist es wichtig, Nummern zu generieren, die mit einer bestimmten Region übereinstimmen, und der Filter dient genau diesem Zweck. Wenn es keine Rolle spielt, lassen Sie es auf \"Alle Bundesstaaten\" und die Auswahl ist zufällig.",
-    faq_3_q: "Wann das Format mit Interpunktion und wann nur Zahlen verwenden?",
-    faq_3_a: "Es hängt davon ab, wo die Nummer verwendet wird. Formulare und Bildschirme, die den CPF dem Benutzer anzeigen, verwenden normalerweise das formatierte Format (999.999.999-99). Datenbanken, APIs und Backend-Validierungen neigen dazu, die Rohdaten ohne Sonderzeichen zu speichern. Der Schalter \"Nur Zahlen\" löst dies, ohne die Zeichenkette danach verarbeiten zu müssen.",
-    faq_4_q: "Kann ich den Generator für jeden Zweck verwenden?",
-    faq_4_a: "Für Softwaretests, Lernen, Demonstrationen und Entwicklung, ja. Genau dafür wurde er erstellt. Was Sie nicht tun können, ist einen generierten CPF bei offiziellen Registrierungen, Verträgen, Erklärungen oder in jeder Situation zu verwenden, die eine echte Identifikation erfordert. Dies stellt eine Urkundenfälschung dar und kann je nach Fall als Betrug gewertet werden.",
-    faq_5_q: "Was ist der Unterschied zwischen einem \"falschen CPF\" und einem \"zufälligen CPF\"?",
-    faq_5_a: "In der Praxis beziehen sich beide Begriffe auf dasselbe Tool: ein Hilfsprogramm, das Nummern nach der mathematischen Regel des CPF generiert, aber niemandem gehört. Die Begriffe \"falsch\" und \"fake\" sind in Suchanfragen populär, obwohl einige Entwickler \"fiktiv\" oder \"Test-CPF\" bevorzugen, da sie weniger suggestiv klingen. Das Ergebnis und die Verwendung sind identisch.",
+    faq_1_q: "Ist die Verwendung einer generierten CPF strafbar?",
+    faq_1_a: "Es kommt auf die Verwendung an. Für Softwaretests, Studium, Demonstrationen und Entwicklung gibt es kein Problem, denn genau dafür ist das Tool gedacht. Was einen Straftatbestand darstellt, ist die Verwendung einer generierten CPF in amtlichen Registern, Verträgen, Erklärungen oder in jeder Situation, die eine echte Identifizierung erfordert. In diesem Fall kann das Verhalten als ideologische Fälschung (Art. 299 des brasilianischen Strafgesetzbuches) und je nach Kontext als Betrug eingestuft werden.",
+    faq_2_q: "Ist die hier generierte CPF gültig und bei der Receita Federal registriert?",
+    faq_2_a: "Die Nummer ist mathematisch gültig, d. h. sie besteht die Ziffernprüfung, weil die Modulo-11-Berechnung korrekt ist. Sie ist jedoch fiktiv und hat weder eine Verbindung zu echten Personen noch eine Registrierung bei der Receita Federal. Sie dient dazu, Formulare und Geschäftsregeln während der Entwicklung zu validieren, und mehr nicht. Der Versuch, sie in offiziellen Registern zu verwenden, funktioniert nicht und kann einen Straftatbestand darstellen.",
+    faq_3_q: "Wie bestimmt der Generator den Bundesstaat und was bedeutet die neunte Ziffer der CPF?",
+    faq_3_a: "Die neunte Ziffer der CPF, direkt vor den zwei Prüfziffern, entspricht der Steuerregion, in der das Dokument ausgestellt wurde. São Paulo ist 8, Rio Grande do Sul ist 0, Paraná und Santa Catarina sind 9, und so weiter. Der Bundesstaatsauswähler fixiert diese Ziffer, um Nummern zu erzeugen, die mit einer bestimmten Region übereinstimmen. Wenn \"Alle Bundesstaaten\" ausgewählt ist, wird die Ziffer zufällig gewählt.",
+    faq_4_q: "Wann sollte die CPF mit Satzzeichen und wann nur als Zahlen verwendet werden?",
+    faq_4_a: "Es kommt darauf an, wo die Nummer verwendet wird. Formulare und Bildschirme, die die CPF dem Benutzer anzeigen, verwenden in der Regel das Format mit Satzzeichen (999.999.999-99). Datenbanken, APIs und Backend-Validierungen neigen dazu, die saubere Nummer ohne Sonderzeichen zu speichern. Die Option \"Nur Zahlen\" löst dies direkt bei der Generierung, ohne die Zeichenkette nachträglich bearbeiten zu müssen.",
+    faq_5_q: "Was ist der Unterschied zwischen einer gefälschten, falschen und zufälligen CPF?",
+    faq_5_a: "In der Praxis beschreiben alle diese Begriffe dasselbe Tool: ein Dienstprogramm, das Nummern nach der mathematischen Regel der CPF generiert, aber niemandem gehört. \"Fake\" und \"falsch\" sind die häufigsten Suchanfragen, während einige Entwickler \"fiktiv\", \"zufällig\" oder \"Test-CPF\" bevorzugen, da diese weniger suggestiv klingen. Das Ergebnis und der Zweck sind in allen Fällen gleich.",
 
+    table_title: "9. Ziffer der CPF nach Steuerregion",
+    table_digit: "Ziffer",
+    table_states: "Bundesstaaten",
     see1: "CNPJ-Generator",
     see2: "Andere Buchstaben",
     see3: "Kreditkartengenerator",
@@ -776,7 +853,7 @@ defineI18nRoute({
   nl: {
     pageTitle: "Geldige CPF-generator Online voor Tests — Gratis",
     title: "CPF-generator",
-    meta: "Genereer gratis online geldige CPF's, per staat, één of meerdere CPF's tegelijk (met of zonder interpunctie). Ideale tool voor testen en ontwikkeling.",
+    meta: "Geldige CPF-generator voor tests en softwareontwikkeling. Maak een willekeurige CPF of meerdere tegelijk, per staat, met of zonder leestekens. Gratis, zonder registratie.",
 
     num: "Alleen cijfers",
     multiple_label: "Genereer meerdere CPF's",
@@ -792,29 +869,34 @@ defineI18nRoute({
     placeholder: "Klik op Genereer CPF om een nummer aan te maken",
     warning: "De gegenereerde nummers zijn fictief en dienen uitsluitend voor testdoeleinden.",
 
-    d1: "Gratis online CPF-generator voor ontwikkelaars en softwaretests. Genereer wiskundig geldige CPF-nummers met controlecijfers berekend volgens het officiële algoritme, zodat ze elke formuliervalidatie of bedrijfsregel doorstaan. Onze tool werkt direct in de browser, is 100% veilig (geen verbinding met echte personen) en vereist geen registratie. Maak gebruik van geavanceerde functies zoals CPF-generatie per staat en het maken van batches tot 100 nummers tegelijk.",
+    d1: "Gratis online CPF-generator voor ontwikkelaars en softwaretests. Het hulpmiddel genereert wiskundig geldige CPF-nummers, waarvan de controlecijfers berekend worden via het officiële modulo 11-algoritme, zodat ze elke formuliervalidatie of bedrijfsregel doorstaan. Het hele proces verloopt in de browser, zonder registratie en zonder koppeling met echte personen. Het is mogelijk een willekeurige CPF te genereren, het resultaat te beperken tot een specifieke staat of batches van maximaal 100 nummers tegelijk aan te maken.",
 
     features_title: "Functionaliteiten",
     f_1: "Genereer geldige CPF per staat",
     f_2: "Batches tot 100 unieke CPF's",
     f_3: "Formaat met interpunctie of alleen cijfers",
     f_4: "Controlecijfers berekend met modulo 11",
+    f_5: "Tabel van fiscale regio's per cijfer",
 
     how_title: "Hoe het CPF-algoritme werkt",
     how_desc: "Het CPF-algoritme bestaat uit 11 cijfers: 9 identificatiecijfers en 2 controlecijfers aan het einde. De eerste 9 zijn opeenvolgend per fiscale regio, en het 9e cijfer geeft de staat aan waar het document is uitgegeven. De laatste twee zijn het resultaat van een modulo 11-berekening over de voorgaande cijfers: elk cijfer wordt vermenigvuldigd met een gewicht, alles wordt opgeteld, gedeeld door 11, en de rest bepaalt het controlecijfer. De methode is ontworpen om typefouten te detecteren. Het wijzigen van een cijfer of het omdraaien van twee cijfers verbreekt bijna altijd de validatie, waardoor elk systeem ongeldige nummers kan weigeren zonder de belastingdienst te raadplegen.",
 
     use_cases_title: "Gebruiksscenario's",
-    use_cases_intro: "Hier zijn de belangrijkste praktische toepassingen van de CPF-generator in de ontwikkelings- en QA-workflow:",
-    use_1_t: "Formuliervalidatie",
-    use_1_d: "Inputmaskers, validators en foutmeldingen in registratievelden testen.",
-    use_2_t: "Geautomatiseerde tests",
-    use_2_d: "Testscenario's vullen met gegevens die de validatie doorstaan zonder echte CPF's bloot te stellen.",
-    use_3_t: "Ontwikkelomgevingen",
-    use_3_d: "Records aanmaken in staging en homologatie zonder privacywetten te overtreden of productiegegevens te gebruiken.",
-    use_4_t: "Integraties en API's",
-    use_4_d: "Endpoints, payloads en diensten van derden testen die een CPF als parameter vereisen.",
-    use_5_t: "Mockup en demonstraties",
-    use_5_d: "Prototypes, demoschermen en productpresentaties invullen zonder echte gegevens te gebruiken.",
+    use_cases_intro: "De meest voorkomende praktische toepassingen van de CPF-generator in de ontwikkelings- en QA-workflow zijn:",
+    use_1_t: "Formulier- en UI-validatie",
+    use_1_d: "Inputmaskers, realtime validaties (JavaScript, React, Angular, etc.), foutmeldingen en frontendgedrag testen met gegevens die alle regels doorstaan.",
+    use_2_t: "Geautomatiseerde tests (Unit, Integration & E2E)",
+    use_2_d: "Fixtures, testdatabases en scenario's vullen met geldige CPF's, zonder echte gegevens en met minder lekrisico.",
+    use_3_t: "Ontwikkelings- en stagingomgevingen",
+    use_3_d: "Testgebruikers aanmaken in staging, lokale databases of demo-omgevingen zonder privacywetten te overtreden of productiegegevens te gebruiken.",
+    use_4_t: "API- en integratietests",
+    use_4_d: "Realistische payloads sturen naar endpoints die een CPF vereisen: registraties, kredietcontroles, factuuruitgifte en diensten van derden.",
+    use_5_t: "Mockups, prototypes en presentaties",
+    use_5_d: "Figma-, Adobe XD-schermen of klantpresentaties vullen met visueel overtuigende gegevens, zonder echte informatie bloot te stellen.",
+    use_6_t: "Performance- en loadtests",
+    use_6_d: "Honderden CPF's snel genereren om grote volumes aan registraties of zoekopdrachten te simuleren in een gecontroleerde omgeving.",
+    use_7_t: "Studies, trainingen en cursussen",
+    use_7_d: "Docenten en studenten gebruiken ze voor praktische voorbeelden in lessen programmeren, databases en formuliervalidatie.",
 
     how_to_use_title: "Hoe te gebruiken",
     step_1_title: "Snel een CPF genereren",
@@ -825,17 +907,20 @@ defineI18nRoute({
     step_3_desc: "Standaard wordt de CPF geformatteerd met punten en een streepje. Als je het ruwe nummer nodig hebt (database, JSON, etc.), schakel dan \"Alleen cijfers\" in voor het genereren.",
 
     faq_title: "Vragen en Antwoorden",
-    faq_1_q: "Zijn de hier gegenereerde CPF's echt of geregistreerd bij de Receita Federal?",
-    faq_1_a: "Nee. Het zijn fictieve nummers die zijn opgebouwd met hetzelfde validatie-algoritme dat de Receita Federal gebruikt, maar zonder enige link met echte personen. Ze slagen voor de controlecijferverificatie omdat de berekening correct is, en meer niet. Probeer ze niet te gebruiken voor officiële registraties — ze zullen niet worden geaccepteerd en de poging kan als fraude worden beschouwd.",
-    faq_2_q: "Waarom is er een staatsfilter in de generator?",
-    faq_2_a: "Het 9e cijfer van de CPF (vlak voor de controlecijfers) komt overeen met de fiscale regio waar het document is uitgegeven. São Paulo is 8, Rio Grande do Sul is 0, enzovoort. Voor sommige tests is het belangrijk om nummers te genereren die consistent zijn met een specifieke regio, en het filter is daarvoor bedoeld. Als het niet uitmaakt, laat het dan op \"Alle staten\" staan en de trekking zal willekeurig zijn.",
-    faq_3_q: "Wanneer het formaat met interpunctie gebruiken en wanneer alleen cijfers?",
-    faq_3_a: "Dat hangt ervan af waar het nummer gebruikt gaat worden. Formulieren en schermen die de CPF aan de gebruiker tonen, gebruiken meestal het geformatteerde formaat (999.999.999-99). Databases, API's en backend-validaties hebben de neiging om het ruwe nummer op te slaan, zonder speciale tekens. De schakelaar \"Alleen cijfers\" lost dit op zonder dat de string achteraf bewerkt hoeft te worden.",
-    faq_4_q: "Kan ik de generator voor elk doel gebruiken?",
-    faq_4_a: "Voor softwaretests, leren, demonstraties en ontwikkeling, ja. Dat is precies waarvoor het is gemaakt. Wat je niet kunt doen, is een gegenereerde CPF gebruiken bij officiële registraties, contracten, verklaringen of elke situatie die een echte identificatie vereist. Dit vormt valsheid in geschrifte en kan, afhankelijk van de omstandigheden, als oplichting worden beschouwd.",
-    faq_5_q: "Wat is het verschil tussen een \"valse CPF\" en een \"willekeurige CPF\"?",
-    faq_5_a: "In de praktijk verwijzen beide termen naar dezelfde tool: een hulpprogramma dat nummers genereert volgens de wiskundige regel van de CPF, maar zonder dat ze van iemand zijn. De termen \"valse\" en \"fake\" zijn populair in zoekopdrachten, hoewel sommige ontwikkelaars de voorkeur geven aan \"fictief\" of \"test-CPF\" omdat ze minder suggestief klinken. Het resultaat en het gebruik zijn identiek.",
+    faq_1_q: "Is het gebruik van een gegenereerde CPF strafbaar?",
+    faq_1_a: "Het hangt af van het gebruik. Voor softwaretests, studie, demonstraties en ontwikkeling is er geen probleem, want dat is precies waarvoor het hulpmiddel bedoeld is. Wat een strafbaar feit vormt, is het gebruik van een gegenereerde CPF in officiële registers, contracten, verklaringen of elke situatie die echte identificatie vereist. In dat geval kan het gedrag worden gekwalificeerd als ideologische valsheid (Art. 299 van het Braziliaanse Wetboek van Strafrecht) en, afhankelijk van de context, als oplichting.",
+    faq_2_q: "Is de hier gegenereerde CPF geldig en geregistreerd bij de Receita Federal?",
+    faq_2_a: "Het nummer is wiskundig geldig, dat wil zeggen dat het de cijfercontrole doorstaat omdat de modulo 11-berekening correct is. Maar het is fictief en heeft geen enkele koppeling met echte personen noch een registratie bij de Receita Federal. Het dient om formulieren en bedrijfsregels te valideren tijdens de ontwikkeling, en niets meer. Proberen het te gebruiken in officiële registers werkt niet en kan nog steeds een strafbaar feit vormen.",
+    faq_3_q: "Hoe bepaalt de generator de staat en wat betekent het negende cijfer van de CPF?",
+    faq_3_a: "Het negende cijfer van de CPF, vlak voor de twee controlecijfers, komt overeen met de fiscale regio waar het document is uitgegeven. São Paulo is 8, Rio Grande do Sul is 0, Paraná en Santa Catarina zijn 9, enzovoort. De staatskiezer fixeert dat cijfer om nummers te genereren die consistent zijn met een specifieke regio. Als \"Alle Staten\" geselecteerd is, wordt het cijfer willekeurig gekozen.",
+    faq_4_q: "Wanneer de CPF met leestekens gebruiken en wanneer alleen cijfers?",
+    faq_4_a: "Het hangt af van waar het nummer zal worden gebruikt. Formulieren en schermen die de CPF aan de gebruiker tonen, gebruiken doorgaans het geformatteerde formaat (999.999.999-99). Databases, API's en backend-validaties slaan de nummers doorgaans op zonder speciale tekens. De optie \"Alleen cijfers\" regelt dit direct bij het genereren, zonder de tekenreeks achteraf te hoeven verwerken.",
+    faq_5_q: "Wat is het verschil tussen een nep-, valse en willekeurige CPF?",
+    faq_5_a: "In de praktijk beschrijven al deze termen hetzelfde hulpmiddel: een hulpprogramma dat nummers genereert volgens de wiskundige regel van de CPF, maar zonder aan iemand toe te behoren. \"Nep\" en \"vals\" zijn de meest voorkomende zoekopdrachten, terwijl sommige ontwikkelaars de voorkeur geven aan \"fictief\", \"willekeurig\" of \"test-CPF\" omdat die minder suggestief klinken. Het resultaat en het doel zijn in alle gevallen hetzelfde.",
 
+    table_title: "9e Cijfer van de CPF per Fiscale Regio",
+    table_digit: "Cijfer",
+    table_states: "Staten",
     see1: "CNPJ-generator",
     see2: "Mooie letters",
     see3: "Creditcard-generator",

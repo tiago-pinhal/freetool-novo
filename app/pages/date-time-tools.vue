@@ -14,15 +14,16 @@ useHead({
 })
 
 defineI18nRoute({
-    paths: {
-        pt: '/ferramentas-para-datas-e-horas',
-        es: '/herramientas-para-fechas-y-horas',
-        fr: '/outils-pour-dates-et-heures',
-        it: '/strumenti-per-date-e-ore',
-        id: '/alat-tanggal-dan-waktu',
-        de: '/werkzeuge-fuer-datum-und-uhrzeit',
-        nl: '/datum-en-tijd-tools'
-    }
+  paths: {
+    en: '/date-time-tools',
+    pt: '/ferramentas-para-datas-e-horas',
+    es: '/herramientas-para-fechas-y-horas',
+    fr: '/outils-pour-dates-et-heures',
+    it: '/strumenti-per-date-e-ore',
+    id: '/alat-tanggal-dan-waktu',
+    de: '/werkzeuge-fuer-datum-und-uhrzeit',
+    nl: '/datum-en-tijd-tools'
+  }
 })
 </script>
 

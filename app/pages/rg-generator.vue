@@ -44,12 +44,6 @@ watch(() => state.justNum, () => {
 usePageJsonLd({
   name: t('title'),
   description: t('meta'),
-  howToName: t('how_to_use_title'),
-  howToSteps: [
-    { name: t('step_1_title'), text: t('step_1_desc') },
-    { name: t('step_2_title'), text: t('step_2_desc') },
-    { name: t('step_3_title'), text: t('step_3_desc') }
-  ]
 })
 
 useHead({
@@ -59,11 +53,14 @@ useHead({
 
 defineI18nRoute({
   paths: {
+    en: '/rg-generator',
     pt: '/gerador-de-rg',
     es: '/generador-de-rg',
     fr: '/generateur-de-rg',
     it: '/generatore-di-rg',
-    id: '/generator-rg'
+    id: '/generator-rg',
+    de: '/rg-generator',
+    nl: '/rg-generator'
   }
 })
 </script>

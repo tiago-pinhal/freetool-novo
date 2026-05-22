@@ -13,12 +13,6 @@ usePageJsonLd({
     t('f_2'),
     t('f_3'),
     t('f_4')
-  ],
-  howToName: t('how_to_use_title'),
-  howToSteps: [
-    { name: t('step_1_title'), text: t('step_1_desc') },
-    { name: t('step_2_title'), text: t('step_2_desc') },
-    { name: t('step_3_title'), text: t('step_3_desc') }
   ]
 })
 

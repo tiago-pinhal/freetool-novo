@@ -5,6 +5,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
+  nitro: {
+    preset: 'static',
+    prerender: {
+      concurrency: 5
+    }
+  },
+
   modules: ['@nuxtjs/i18n', '@nuxt/scripts', '@nuxtjs/sitemap'],
 
   site: {
@@ -26,6 +33,9 @@ export default defineNuxtConfig({
       htmlAttrs: {
         'data-theme': 'night'
       },
+      meta: [
+        { name: 'author', content: 'Tiago A. M. Pinhal' }
+      ],
       link: [
         { rel: 'preconnect', href: 'https://api.iconify.design' }
       ]

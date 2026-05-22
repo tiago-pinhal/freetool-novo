@@ -3,8 +3,21 @@ const { t } = useI18n()
 const localePath = useLocalePath()
 const currentYear = new Date().getFullYear()
 
+const googlefcReady = ref(false)
+
+onMounted(() => {
+  const check = () => {
+    if ((window as any).googlefc) {
+      googlefcReady.value = true
+    } else {
+      setTimeout(check, 500)
+    }
+  }
+  check()
+})
+
 const manageCookies = () => {
-  import('vanilla-cookieconsent').then(m => m.showPreferences())
+  (window as any).googlefc?.callCommand('SHOW_REVOKE_AD_PERSONALIZATION_DIALOG')
 }
 </script>
 
@@ -19,58 +32,58 @@ const manageCookies = () => {
       <NuxtLink :to="localePath('about')" class="link link-hover font-medium underline-offset-4">{{ t('a') }}</NuxtLink>
       <NuxtLink :to="localePath('privacy')" class="link link-hover font-medium underline-offset-4">{{ t('p') }}</NuxtLink>
       <NuxtLink :to="localePath('terms-of-use')" class="link link-hover font-medium underline-offset-4">{{ t('t') }}</NuxtLink>
-      <button class="link link-hover font-medium underline-offset-4" @click="manageCookies">{{ t('c') }}</button>
+      <button v-show="googlefcReady" class="link link-hover font-medium underline-offset-4" @click="manageCookies">{{ t('c') }}</button>
     </nav>
   </footer>
 </template>
 
 <i18n lang="yaml">
 en:
-    r: "All Rights Reserved"
-    a: "About"
-    p: "Privacy Policy"
-    t: "Terms"
-    c: "Cookies"
+  r: "All Rights Reserved"
+  a: "About"
+  p: "Privacy Policy"
+  t: "Terms"
+  c: "Cookies"
 pt:
-    r: "Todos os Direitos Reservados"
-    a: "Sobre"
-    p: "Política de Privacidade"
-    t: "Termos"
-    c: "Cookies"
+  r: "Todos os Direitos Reservados"
+  a: "Sobre"
+  p: "Política de Privacidade"
+  t: "Termos"
+  c: "Cookies"
 es:
-    r: "Todos los Derechos Reservados"
-    a: "Sobre nosotros"
-    p: "Política de Privacidad"
-    t: "Términos"
-    c: "Cookies"
+  r: "Todos los Derechos Reservados"
+  a: "Sobre nosotros"
+  p: "Política de Privacidad"
+  t: "Términos"
+  c: "Cookies"
 fr:
-    r: "Tous droits réservés"
-    a: "À propos"
-    p: "Politique de Confidentialité"
-    t: "Conditions"
-    c: "Cookies"
+  r: "Tous droits réservés"
+  a: "À propos"
+  p: "Politique de Confidentialité"
+  t: "Conditions"
+  c: "Cookies"
 it:
-    r: "Tutti i diritti riservati"
-    a: "Su di noi"
-    p: "Politica Sulla Privacy"
-    t: "Termini"
-    c: "Cookie"
+  r: "Tutti i diritti riservati"
+  a: "Su di noi"
+  p: "Politica Sulla Privacy"
+  t: "Termini"
+  c: "Cookie"
 id:
-    r: "Semua Hak Dilindungi"
-    a: "Tentang Kami"
-    p: "Kebijakan Privasi"
-    t: "Syarat dan Ketentuan"
-    c: "Cookie"
+  r: "Semua Hak Dilindungi"
+  a: "Tentang Kami"
+  p: "Kebijakan Privasi"
+  t: "Syarat dan Ketentuan"
+  c: "Cookie"
 de:
-    r: "Alle Rechte vorbehalten"
-    a: "Über uns"
-    p: "Datenschutzrichtlinie"
-    t: "Nutzungsbedingungen"
-    c: "Cookies"
+  r: "Alle Rechte vorbehalten"
+  a: "Über uns"
+  p: "Datenschutzrichtlinie"
+  t: "Nutzungsbedingungen"
+  c: "Cookies"
 nl:
-    r: "Alle rechten voorbehouden"
-    a: "Over ons"
-    p: "Privacybeleid"
-    t: "Voorwaarden"
-    c: "Cookies"
+  r: "Alle rechten voorbehouden"
+  a: "Over ons"
+  p: "Privacybeleid"
+  t: "Voorwaarden"
+  c: "Cookies"
 </i18n>
