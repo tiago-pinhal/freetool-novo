@@ -82,7 +82,8 @@ defineI18nRoute({
     it: '/visualizzatore-di-json',
     id: '/penampil-json',
     de: '/json-betrachter',
-    nl: '/json-viewer'
+    nl: '/json-viewer',
+    ru: '/json-viewer'
   }
 })
 </script>
@@ -241,11 +242,11 @@ defineI18nRoute({
         f_4: "No registration or installation required"
     },
     pt: {
-        m_title: "Visualizador de JSON Online - Visualize e Formate JSON de Graça",
-        title: "Visualizador de JSON",
-        meta: "Visualizador de JSON online gratuito. Cole ou digite seu JSON e visualize instantaneamente em uma estrutura de árvore recolhível com campos coloridos.",
+        m_title: "JSON Viewer Online - Visualize e Inspecione JSON de Graça",
+        title: "JSON Viewer",
+        meta: "JSON Viewer online gratuito. Cole ou digite seu JSON e visualize instantaneamente em uma estrutura de árvore recolhível com campos coloridos.",
         info_title: "Informações",
-        d1: "Este visualizador de JSON online exibe seus dados em um formato de árvore interativa, onde cada nó é indentado para refletir a hierarquia das informações. Você pode expandir ou recolher qualquer grupo para focar em determinados conjuntos de dados.",
+        d1: "Este JSON Viewer online exibe seus dados em um formato de árvore interativa, onde cada nó é indentado para refletir a hierarquia das informações. Você pode expandir ou recolher qualquer grupo para focar em determinados conjuntos de dados.",
         d2: "Campos e valores são coloridos para facilitar a leitura, e qualquer alteração feita no texto de entrada é refletida instantaneamente. Por isso, a ferramenta é ideal para desenvolvedores que depuram APIs, validam respostas ou inspecionam arquivos de configuração, sem instalação nem cadastro.",
         result: "Resultado",
         plc: "Insira o código JSON aqui ou arraste um arquivo",
@@ -323,11 +324,11 @@ defineI18nRoute({
         f_4: "Sin necesidad de registro ni instalación"
     },
     fr: {
-        m_title: "Visualiseur JSON en Ligne - Visualisez et Formatez Gratuit",
-        title: "Visualiseur JSON",
-        meta: "Visualiseur JSON en ligne gratuit. Collez ou importez votre JSON et visualisez-le instantanément sous forme d'arbre repliable avec champs en couleur.",
+        m_title: "JSON Viewer en Ligne - Visualisez et Formatez Gratuit",
+        title: "JSON Viewer en Ligne",
+        meta: "JSON Viewer en ligne gratuit. Collez ou importez votre JSON et visualisez-le instantanément sous forme d'arbre repliable avec champs en couleur.",
         info_title: "Information",
-        d1: "Ce visualiseur JSON en ligne affiche vos données dans un format d'arbre interactif, où chaque nœud est indenté pour refléter la hiérarchie des informations. Vous pouvez développer ou replier chaque groupe pour vous concentrer sur l'essentiel.",
+        d1: "Ce JSON Viewer en ligne affiche vos données dans un format d'arbre interactif, où chaque nœud est indenté pour refléter la hiérarchie des informations. Vous pouvez développer ou replier chaque groupe pour vous concentrer sur l'essentiel.",
         d2: "Les champs et les valeurs sont colorés pour faciliter la lecture, et chaque modification de l'entrée est validée instantanément. Idéal pour les développeurs qui déboguent des API, valident des réponses ou inspectent des fichiers de configuration, sans installation ni inscription.",
         result: "Résultat",
         plc: "Insérez le code JSON ici ou faites glisser un fichier",
@@ -446,11 +447,11 @@ defineI18nRoute({
         f_4: "Tanpa pendaftaran atau instalasi"
     },
     de: {
-        m_title: "JSON-Betrachter Online - JSON kostenlos visualisieren und formatieren",
-        title: "JSON-Betrachter",
-        meta: "Kostenloser Online-JSON-Betrachter. Füge dein JSON ein oder lade es hoch und visualisiere es sofort als einklappbare Baumstruktur mit farbcodierten Feldern. Keine Registrierung erforderlich.",
+        m_title: "JSON Viewer Online - JSON kostenlos visualisieren und formatieren",
+        title: "JSON Viewer",
+        meta: "Kostenloser Online-JSON Viewer. Füge dein JSON ein oder lade es hoch und visualisiere es sofort als einklappbare Baumstruktur mit farbcodierten Feldern. Keine Registrierung erforderlich.",
         info_title: "Informationen",
-        d1: "Dieser Online-JSON-Betrachter zeigt deine Daten in einem interaktiven Baumformat an, bei dem jeder Knoten eingerückt ist, um die Datenhierarchie darzustellen. Du kannst jede Gruppe ein- oder ausklappen, um dich auf die wichtigen Informationen zu konzentrieren.",
+        d1: "Dieser Online-JSON Viewer zeigt deine Daten in einem interaktiven Baumformat an, bei dem jeder Knoten eingerückt ist, um die Datenhierarchie darzustellen. Du kannst jede Gruppe ein- oder ausklappen, um dich auf die wichtigen Informationen zu konzentrieren.",
         d2: "Felder und Werte sind farbcodiert, damit du sie schnell erfassen kannst. Jede Änderung an der Eingabe wird sofort in der Visualisierung übernommen. Ideal für Entwickler, die APIs debuggen, Antworten validieren oder Konfigurationsdateien prüfen, ohne Installation oder Anmeldung.",
         result: "Ergebnis",
         plc: "JSON-Code hier einfügen oder eine Datei ziehen",
@@ -526,6 +527,47 @@ defineI18nRoute({
         f_2: "Syntaxis-highlighting en kleurgecodeerde velden",
         f_3: "Real-time validatie en foutdetectie",
         f_4: "Geen registratie of installatie vereist"
+    },
+    ru: {
+        m_title: "JSON Viewer Онлайн - Визуализация и форматирование JSON бесплатно",
+        title: "JSON Viewer",
+        meta: "Бесплатный онлайн JSON Viewer. Вставьте или загрузите ваш JSON и мгновенно визуализируйте его в виде раскрывающегося дерева с цветовым выделением полей. Регистрация не требуется.",
+        info_title: "Информация",
+        d1: "Этот онлайн JSON Viewer отображает ваши данные в формате интерактивного дерева, где каждый узел имеет отступ для отражения иерархии данных. Вы можете разворачивать или сворачивать любую группу, чтобы сосредоточиться на нужной информации.",
+        d2: "Поля и значения выделены цветом для быстрой идентификации, а любые изменения, внесенные в поле ввода, мгновенно отражаются в визуализации. Идеально подходит для разработчиков, отлаживающих API, проверяющих ответы или инспектирующих файлы конфигурации — без необходимости установки и регистрации.",
+        result: "Результат",
+        plc: "Вставьте код JSON сюда или перетащите файл",
+        err: "Предоставьте корректный JSON",
+        features_title: "Возможности",
+        how_to_use_title: "Как использовать",
+        hiw_1_title: "Вставьте ваш JSON",
+        hiw_1_desc: "Просто вставьте или перетащите исходный JSON-файл в редактор.",
+        hiw_2_title: "Мгновенная проверка",
+        hiw_2_desc: "Инструмент быстро проверяет ваш код, динамически указывая на синтаксические ошибки.",
+        hiw_3_title: "Дерево визуализации",
+        hiw_3_desc: "Генерирует полностью интерактивное дерево с цветовым кодированием для удобного чтения данных.",
+        use_cases_title: "Примеры использования",
+        uc_1_title: "Отладка API",
+        uc_1_desc: "Понимайте сложные структуры данных, изолируя узлы и проверяя отношения между родительскими и дочерними элементами.",
+        uc_2_title: "Проверка конфигураций",
+        uc_2_desc: "Легко находите пропущенные запятые, неверные скобки или плохо структурированные файлы настроек.",
+        uc_3_title: "Презентация данных",
+        uc_3_desc: "Легко делитесь экраном во время технических встреч со структурированным и сворачиваемым графическим представлением JSON.",
+        faq_title: "Вопросы и ответы",
+        faq_1_q: "Сохраняются ли мои JSON-данные на сервере?",
+        faq_1_a: "Нет. Обработка происходит строго внутри вашего браузера. Мы не передаем и не храним ваши JSON-объекты на наших серверах, гарантируя полную конфиденциальность.",
+        faq_2_q: "Могу ли я сворачивать отдельные части дерева для удобства?",
+        faq_2_a: "Да. Вы можете разворачивать или сворачивать объекты и массивы, чтобы более наглядно исследовать иерархию JSON.",
+        faq_3_q: "Указывает ли просмотрщик на синтаксические ошибки JSON?",
+        faq_3_a: "Да. Если ваш JSON-код отформатирован неверно (пропущены кавычки, лишние запятые, неверные скобки и т. д.), инструмент отобразит красное окно с ошибкой и заблокирует рендеринг дерева.",
+        see1: "XML → JSON",
+        see2: "JSON → XML",
+        see3: "MD5",
+        see4: "Bcrypt",
+        f_1: "Интерактивная визуализация дерева JSON",
+        f_2: "Подсветка синтаксиса и цветовое кодирование полей",
+        f_3: "Валидация в реальном времени и обнаружение ошибок",
+        f_4: "Не требуется регистрация или установка"
     }
 }
 </i18n>

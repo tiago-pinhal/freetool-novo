@@ -101,6 +101,7 @@ defineI18nRoute({
     id: '/karakter-tak-terlihat',
     de: '/unsichtbares-zeichen',
     nl: '/onzichtbaar-teken',
+    ru: '/nevidimyj-simvol',
   },
 })
 </script>
@@ -113,7 +114,7 @@ defineI18nRoute({
     :see-also-links="[
       { label: t('see1'), to: 'fancy-letters' },
       { label: t('see2'), to: 'lenny-face' },
-      { label: t('see3'), to: 'symbol-picker' },
+      { label: t('see3'), to: 'copy-paste-symbols' },
       { label: t('see4'), to: 'text-converter' }
     ]"
   >
@@ -306,9 +307,9 @@ defineI18nRoute({
 <i18n lang="json">
 {
   "pt": {
-    "m_title": "Caractere Invisível – Gerador de Espaço em Branco Online | FreeTool",
-    "title": "Gerador de Caractere Invisível",
-    "meta": "Gere e copie caracteres invisíveis e letras invisíveis para WhatsApp, Discord, Instagram e jogos. Zero Width Space, Hangul Filler, Braille em Branco e mais.",
+    "m_title": "Espaço Invisível – Gerador de Caractere Invisível e Letra Invisível | FreeTool",
+    "title": "Gerador de Espaço Invisível",
+    "meta": "Gere e copie espaço invisível, caracteres invisíveis e letras invisíveis para WhatsApp, Discord, Instagram e jogos. Zero Width Space, Hangul Filler e mais.",
     "d1": "Os caracteres invisíveis são símbolos Unicode sem representação visual que existem dentro do texto. Eles são amplamente usados para criar mensagens em branco no WhatsApp, nomes vazios no Discord e em jogos como Valorant, ou para separar parágrafos em legendas do Instagram de forma mais elegante. Com esta ferramenta, você pode gerar e copiar facilmente diferentes tipos de espaços vazios e caracteres invisíveis (como o Zero Width Space, o Preenchedor Hangul e o Braille em Branco) na quantidade que desejar. Nossa plataforma também oferece informações detalhadas de compatibilidade e um detector integrado para identificar e remover caracteres ocultos de qualquer texto.",
     "zwsp_name": "Espaço de Largura Zero",
     "hangul_name": "Preenchedor Hangul",
@@ -374,9 +375,9 @@ defineI18nRoute({
     "see4": "Conversor de Texto"
   },
   "en": {
-    "m_title": "Invisible Character Generator – Blank Space Copy & Paste | FreeTool",
+    "m_title": "Invisible Character & Letter Generator – Blank Space Copy Paste | FreeTool",
     "title": "Invisible Character Generator",
-    "meta": "Generate and copy invisible characters and blank spaces for WhatsApp, Discord, Instagram and games. Zero Width Space, Hangul Filler, Braille Blank and more.",
+    "meta": "Generate and copy invisible characters, invisible letters and blank spaces for WhatsApp, Discord, Instagram and games. Zero Width Space, Hangul Filler, Braille Blank and more.",
     "d1": "Invisible characters are Unicode symbols with no visual representation that exist within text. They are widely used to send blank messages on WhatsApp, create empty names on Discord and games like Valorant, or separate paragraphs in Instagram captions more elegantly. With this tool, you can easily generate and copy different types of blank spaces and invisible characters — such as Zero Width Space, Hangul Filler and Braille Blank — in any quantity. Our platform also provides detailed compatibility information and a built-in detector to identify and remove hidden characters from any text.",
     "zwsp_name": "Zero Width Space",
     "hangul_name": "Hangul Filler",
@@ -442,9 +443,9 @@ defineI18nRoute({
     "see4": "Text Converter"
   },
   "es": {
-    "m_title": "Generador de Caracteres Invisibles – Espacio en Blanco | FreeTool",
+    "m_title": "Caracteres Invisibles – Letra Invisible y Espacio en Blanco | FreeTool",
     "title": "Generador de Caracteres Invisibles",
-    "meta": "Genera y copia caracteres invisibles y espacios en blanco para WhatsApp, Discord, Instagram y juegos. Zero Width Space, Hangul Filler, Braille en Blanco y más.",
+    "meta": "Genera y copia caracteres invisibles, letras invisibles y espacios en blanco para WhatsApp, Discord, Instagram y juegos. Zero Width Space, Hangul Filler y más.",
     "d1": "Los caracteres invisibles son símbolos Unicode sin representación visual que existen dentro del texto. Se usan ampliamente para enviar mensajes en blanco en WhatsApp, crear nombres vacíos en Discord y juegos como Valorant, o separar párrafos en las descripciones de Instagram de forma más elegante. Con esta herramienta puedes generar y copiar fácilmente distintos tipos de espacios vacíos y caracteres invisibles — como el Zero Width Space, el Hangul Filler y el Braille en Blanco — en la cantidad que desees. Nuestra plataforma también ofrece información detallada de compatibilidad y un detector integrado para identificar y eliminar caracteres ocultos de cualquier texto.",
     "zwsp_name": "Espacio de Ancho Cero",
     "hangul_name": "Relleno Hangul",
@@ -646,9 +647,9 @@ defineI18nRoute({
     "see4": "Convertitore di Testo"
   },
   "id": {
-    "m_title": "Generator Karakter Tak Terlihat – Spasi Kosong Salin Tempel | FreeTool",
-    "title": "Generator Karakter Tak Terlihat",
-    "meta": "Buat dan salin karakter tak terlihat serta spasi kosong untuk WhatsApp, Discord, Instagram, dan game. Zero Width Space, Hangul Filler, Braille Kosong, dan lainnya.",
+    "m_title": "Generator Spasi Kosong – Karakter Tak Terlihat Salin Tempel | FreeTool",
+    "title": "Generator Spasi Kosong",
+    "meta": "Buat dan salin spasi kosong dan karakter tak terlihat untuk WhatsApp, Discord, Instagram, dan game. Zero Width Space, Hangul Filler, Braille Kosong, dan lainnya.",
     "d1": "Karakter tak terlihat adalah simbol Unicode tanpa representasi visual yang ada di dalam teks. Karakter ini banyak digunakan untuk mengirim pesan kosong di WhatsApp, membuat nama kosong di Discord dan game seperti Valorant, atau memisahkan paragraf di caption Instagram dengan lebih elegan. Dengan alat ini, kamu bisa dengan mudah membuat dan menyalin berbagai jenis spasi kosong dan karakter tak terlihat — seperti Zero Width Space, Hangul Filler, dan Braille Kosong — dalam jumlah berapa pun. Platform kami juga menyediakan informasi kompatibilitas lengkap dan detektor bawaan untuk mendeteksi serta menghapus karakter tersembunyi dari teks apa pun.",
     "zwsp_name": "Spasi Lebar Nol",
     "hangul_name": "Pengisi Hangul",
@@ -848,6 +849,74 @@ defineI18nRoute({
     "see2": "Lenny Face",
     "see3": "Speciale Symbolen",
     "see4": "Tekstconverter"
+  },
+  "ru": {
+    "m_title": "Невидимый символ – скопировать и вставить пустой символ | FreeTool",
+    "title": "Генератор невидимых символов",
+    "meta": "Создавайте и копируйте невидимые символы, пустые пробелы и скрытые буквы для WhatsApp, Discord, Instagram и игр. Поддержка Zero Width Space, Hangul Filler и других форматов.",
+    "d1": "Невидимые символы — это специальные знаки Unicode, которые не имеют визуального отображения, но присутствуют в тексте как реальные символы. Они широко используются для отправки пустых сообщений в WhatsApp, создания «невидимых» ников в Discord и играх вроде Valorant, а также для красивого разделения абзацев в Instagram. Наш генератор позволяет легко создавать и копировать различные виды пустых пространств и невидимых букв (таких как Zero Width Space, Hangul Filler и Braille Blank) в любом необходимом количестве. Мы также предоставляем подробную информацию о совместимости и встроенный анализатор для поиска и быстрого удаления скрытых символов из любого готового текста.",
+    "zwsp_name": "Пробел нулевой ширины (ZWSP)",
+    "hangul_name": "Заполнитель Хангыль",
+    "braille_name": "Пустой шрифт Брайля",
+    "nbsp_name": "Неразрывный пробел (NBSP)",
+    "zwnj_name": "Несоединитель нулевой ширины (ZWNJ)",
+    "zwj_name": "Соединитель нулевой ширины (ZWJ)",
+    "wj_name": "Соединитель слов (WJ)",
+    "nnbsp_name": "Узкий неразрывный пробел (NNBSP)",
+    "ideographic_name": "Идеографический пробел",
+    "compat_label": "Совместимо с:",
+    "copy_btn": "Копировать",
+    "copied": "Скопировано!",
+    "copied_announce": "Невидимый символ скопирован в буфер обмена",
+    "quantity_singular": "символ",
+    "quantity_label": "символов",
+    "library_title": "Библиотека символов",
+    "library_hint": "Выберите для копирования",
+    "analyzer_title": "Детектор невидимых символов",
+    "analyzer_desc": "Вставьте любой текст, чтобы узнать, сколько невидимых символов в нем скрыто, и мгновенно удалить их.",
+    "analyzer_placeholder": "Вставьте текст сюда для анализа...",
+    "remove_btn": "Удалить невидимые символы",
+    "detected_found": "Найдено невидимых символов: {count}",
+    "detected_none": "Невидимых символов не обнаружено",
+    "cleaned_result": "Текст без невидимых символов:",
+    "empty_result": "(текст стал полностью пустым после удаления)",
+    "features_title": "Возможности",
+    "f_1": "9 типов невидимых символов Unicode с индикаторами совместимости для популярных платформ (WhatsApp, Discord, Instagram и др.).",
+    "f_2": "Генератор количества: создавайте от 1 до 100 пустых пробелов за один клик.",
+    "f_3": "Встроенный детектор: находите и стирайте скрытые невидимые символы из любого скопированного текста.",
+    "f_4": "Удобный интерфейс с подсказками по выбору лучшего символа под конкретную задачу.",
+    "hiw_title": "Как использовать",
+    "hiw_1_title": "Выберите символ",
+    "hiw_1_desc": "Выберите подходящий тип невидимого символа в библиотеке. Каждый из них обладает своими свойствами — цветные теги подскажут, с какими приложениями он совместим.",
+    "hiw_2_title": "Укажите количество",
+    "hiw_2_desc": "Настройте количество для генерации (от 1 до 100 копий). Некоторым системам требуется минимальное количество знаков, чтобы принять пустое поле.",
+    "hiw_3_title": "Скопируйте и вставьте",
+    "hiw_3_desc": "Нажмите «Копировать» и используйте полученный символ в WhatsApp, Discord, Instagram, Valorant, Roblox или любом другом текстовом полем.",
+    "chars_section_title": "Справочник по невидимым символам",
+    "zwsp_desc": "Пробел нулевой ширины (Zero Width Space) — самый популярный и универсальный невидимый символ. Подходит для WhatsApp (отправка пустых сообщений), Discord (разделение текста без пробела) и Instagram (форматирование описаний и био). Он не занимает визуального места на экране, но технически присутствует в строке.",
+    "hangul_desc": "Заполнитель Хангыль (Hangul Filler) — специальный корейский символ, используемый в качестве пустого знака в никнеймах и именах пользователей. Отлично подходит для создания пустых ников в Discord, Valorant, Roblox and Minecraft, так как большинство игровых платформ не блокируют его. Он имеет небольшую физическую ширину, что помогает обходить проверки на минимальную длину имени.",
+    "braille_desc": "Пустой шрифт Брайля (Braille Blank) — это кодовая точка U+2800 в системе Брайля, обозначающая пустую ячейку без выпуклых точек. Визуально он неотличим от обычного пробела, но широко используется в Discord, Twitter/X, WhatsApp и Instagram. Особенно полезен для создания пустых строк в описаниях профилей Instagram, где обычные переводы строк часто сбрасываются.",
+    "nbsp_desc": "Неразрывный пробел (Non-Breaking Space) предотвращает автоматический перенос строки на месте пробела. Внешне он идентичен обычному пробелу, но системы не расценивают его как разделитель слов. Имеет отличную поддержку в WhatsApp, Instagram, Telegram и Facebook, сохраняя стандартную ширину обычного пробела.",
+    "zwnj_desc": "Несоединитель нулевой ширины (Zero Width Non-Joiner) запрещает слияние соседних букв (лигатур) без добавления видимого расстояния между ними. Исторически создан для языков со сложной вязью (например, персидского или арабского). В социальных сетях (Discord, Telegram) используется как скрытый разделитель.",
+    "zwj_desc": "Соединитель нулевой ширины (Zero Width Joiner) является противоположностью ZWNJ. Он принудительно объединяет стоящие рядом символы. Чаще всего применяется для сборки составных эмодзи (например, эмодзи семьи, состоящего из нескольких отдельных знаков). В Discord и Twitter также служит невидимым маркером.",
+    "wj_desc": "Соединитель слов (Word Joiner) ведет себя аналогично пробелу нулевой ширины, но при этом жестко связывает слова по обе стороны от себя, запрещая перенос строки в этой точке. Помогает сохранять целостность фраз в Discord, Twitter и Instagram без добавления видимых отступов.",
+    "nnbsp_desc": "Узкий неразрывный пробел (Narrow No-Break Space) имеет меньшую ширину, чем стандартный пробел, и также препятствует переносу строки. Часто применяется в типографике (например, для отделения чисел от единиц измерения или перед знаками препинания во французском языке). Почти незаметен в Discord и Twitter.",
+    "ideographic_desc": "Идеографический пробел (Ideographic Space) — это широкий пробел (full-width), пришедший из восточноазиатских письменностей (японской, китайской). Он занимает в два раза больше места, чем обычный латинский пробел. В полях профиля Discord или Instagram он может выглядеть просто как длинный пустой отступ.",
+    "faq_title": "Вопросы и ответы",
+    "faq_1_q": "Что такое невидимый символ или пустая буква?",
+    "faq_1_a": "Невидимый символ (или пустая буква, скрытый пробел) — это знак в стандарте Unicode, который не имеет графического очертания, но считывается системами как полноценный текстовый символ. Самые популярные примеры: пробел нулевой ширины (U+200B), заполнитель хангыль (U+3164) и пустой знак Брайля (U+2800). Они очень популярны в мессенджерах, социальных сетях и играх.",
+    "faq_2_q": "Как отправить пустое сообщение в WhatsApp?",
+    "faq_2_a": "Чтобы отправить абсолютно пустое сообщение в WhatsApp, скопируйте пробел нулевой ширины (U+200B) или пустой знак Брайля (U+2800) с помощью нашего генератора, вставьте его в поле ввода чата WhatsApp и нажмите отправить. Ваш собеседник получит сообщение без текста.",
+    "faq_3_q": "Как сделать пустой ник в Discord?",
+    "faq_3_a": "Для создания пустого или невидимого имени в Discord чаще всего используют заполнитель Хангыль (U+3164). Скопируйте его на нашем сайте, зайдите в настройки профиля Discord и вставьте в поле «Отображаемое имя». Пожалуйста, учитывайте, что некоторые серверы могут модерировать подобные ники.",
+    "faq_4_q": "Безопасно ли использовать скрытые невидимые символы?",
+    "faq_4_a": "Да. Все невидимые символы являются частью официальной универсальной спецификации Unicode и полностью поддерживаются всеми современными операционными системами (Android, iOS, Windows, macOS). Используйте их ответственно и в соответствии с правилами конкретных платформ.",
+    "faq_5_q": "Как быстро найти и удалить скрытые пробелы или невидимые знаки из текста?",
+    "faq_5_a": "Используйте встроенный детектор на этой странице: вставьте ваш текст в поле анализатора и нажмите «Удалить невидимые символы». Инструмент мгновенно отсканирует текст, определит точное количество невидимых знаков и полностью вырежет их, оставив чистый и готовый к копированию текст. Это крайне полезно при очистке скопированных материалов из PDF-файлов, текстовых редакторов или сообщений.",
+    "see1": "Красивые буквы",
+    "see2": "Lenny Face",
+    "see3": "Специальные символы",
+    "see4": "Конвертер текста"
   }
 }
 </i18n>

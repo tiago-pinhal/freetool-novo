@@ -21,7 +21,7 @@ usePageJsonLd({
 })
 
 useHead({
-  title: t('title'),
+  title: t('pageTitle'),
   meta: [
     { name: 'description', content: t('meta') }
   ]
@@ -77,7 +77,8 @@ defineI18nRoute({
     it: '/convertitore-di-numeri-romani',
     id: '/konverter-angka-romawi',
     de: '/roemische-zahlen-konverter',
-    nl: '/romeinse-cijfers-converter'
+    nl: '/romeinse-cijfers-converter',
+    ru: '/konverter-rimskih-cifr'
   }
 })
 </script>
@@ -183,7 +184,8 @@ defineI18nRoute({
 {
   en: {
     title: "Roman Numerals Converter",
-    meta: "Easily convert between Roman numerals and Arabic numbers. Enter any value and convert to or from Roman numerals instantly.",
+    pageTitle: "Roman Numerals Converter — Convert Numbers to Roman Numerals (1 to 3999)",
+    meta: "Free Roman numerals converter and translator. Convert numbers to Roman numerals and Roman numerals to numbers instantly — supports values from 1 to 3999, with full chart and rules.",
     desc: "With this tool, you can convert Roman numerals to their equivalent in Arabic numbers and vice versa. Just enter the value you wish to convert and click the button corresponding to the desired conversion. Whether for students, teachers, or anyone who wants a quick conversion, this tool makes it simple.",
     in: "Enter a value (Roman or Arabic)",
     result: "Result",
@@ -220,7 +222,8 @@ defineI18nRoute({
   },
   pt: {
     title: "Conversor de Números Romanos",
-    meta: "Converta facilmente entre números romanos e arábicos. Insira qualquer valor e converta para ou de algarismos romanos instantaneamente.",
+    pageTitle: "Conversor de Números Romanos — Converta Algarismos Romanos (1 a 3999) Online",
+    meta: "Conversor de números romanos online e gratuito. Converta números arábicos para algarismos romanos e vice-versa instantaneamente — de 1 a 3999, com tabela completa de números romanos.",
     desc: "Com esta ferramenta, você poderá converter algarismos romanos para seu equivalente em números arábicos e vice-versa. Basta inserir o valor que deseja converter e clicar no botão correspondente à conversão desejada. Seja para estudantes, professores ou qualquer pessoa que deseja uma conversão rápida, esta ferramenta torna a tarefa simples.",
     in: "Digite um valor (Romano ou Arábico)",
     result: "Resultado",
@@ -257,7 +260,8 @@ defineI18nRoute({
   },
   es: {
     title: "Convertidor de Números Romanos",
-    meta: "Convierte fácilmente entre números romanos y árabes. Introduce cualquier valor y conviértelo hacia o desde números romanos al instante.",
+    pageTitle: "Convertidor de Números Romanos — Convierte Números a Romanos (del 1 al 3999)",
+    meta: "Convertidor de números romanos online y gratis. Convierte números a romanos y de romanos a números al instante — del 1 al 3999, con tabla completa de los números romanos.",
     desc: "Con esta herramienta, podrás convertir números romanos a su equivalente en números árabes y viceversa. Solo tienes que introducir el valor que deseas convertir y hacer clic en el botón correspondiente a la conversión deseada. Ya sea para estudiantes, profesores o cualquiera que desee una conversión rápida, esta herramienta simplifica la tarea.",
     in: "Introduce un valor (Romano o Árabe)",
     result: "Resultado",
@@ -293,8 +297,9 @@ defineI18nRoute({
     f_4: "Compatible con números del 1 al 3999"
   },
   fr: {
-    title: "Convertisseur de Nombres Romains",
-    meta: "Convertissez facilement entre chiffres romains et nombres arabes. Entrez n'importe quelle valeur et convertissez instantanément.",
+    title: "Convertisseur de Chiffres Romains",
+    pageTitle: "Convertisseur de Chiffres Romains — Convertir Nombres en Chiffres Romains (1 à 3999)",
+    meta: "Convertisseur de chiffres romains en ligne et gratuit. Convertissez des nombres en chiffres romains et inversement instantanément — de 1 à 3999, avec tableau complet des chiffres romains.",
     desc: "Avec cet outil, vous pourrez convertir des chiffres romains en leur équivalent en nombres arabes et vice-versa. Il suffit d'insérer la valeur souhaitée et de cliquer sur le bouton correspondant à la conversion désirée. Que ce soit pour les étudiants, les enseignants ou toute personne désirant effectuer une conversion rapide, cet outil simplifie la tâche.",
     in: "Entrez une valeur (Romain ou Arabe)",
     result: "Résultat",
@@ -331,7 +336,8 @@ defineI18nRoute({
   },
   it: {
     title: "Convertitore di Numeri Romani",
-    meta: "Converti facilmente tra numeri romani e arabi. Inserisci qualsiasi valore e convertilo da o verso i numeri romani istantaneamente.",
+    pageTitle: "Convertitore di Numeri Romani — Conversione Numeri Romani (da 1 a 3999) Online",
+    meta: "Convertitore di numeri romani online e gratis. Conversione di numeri romani in arabi e viceversa istantaneamente — da 1 a 3999, con tabella completa dei numeri romani.",
     desc: "Con questo strumento, potrai convertire cifre romane nel loro equivalente in numeri arabi e viceversa. Basta inserire il valore che desideri convertire e fare clic sul pulsante corrispondente alla conversione desiderata. Che si tratti di studenti, insegnanti o chiunque voglia eseguire una conversione rapida, questo strumento semplifica il compito.",
     in: "Inserisci un valore (Romano o Arabo)",
     result: "Risultato",
@@ -368,7 +374,8 @@ defineI18nRoute({
   },
   id: {
     title: "Konverter Angka Romawi",
-    meta: "Konversi dengan mudah antara angka Romawi dan Arab. Masukkan nilai apa pun dan konversi ke atau dari angka Romawi secara instan.",
+    pageTitle: "Konverter Angka Romawi — Konversi Angka Romawi 1 sampai 3999 Online",
+    meta: "Konverter angka Romawi online dan gratis. Konversi angka biasa ke angka Romawi dan sebaliknya secara instan — dari 1 sampai 3999, lengkap dengan tabel angka Romawi.",
     desc: "Dengan alat ini, Anda dapat mengonversi angka Romawi ke padanannya dalam angka Arab dan sebaliknya. Cukup masukkan nilai yang ingin dikonversi dan klik tombol yang sesuai dengan konversi yang diinginkan. Baik untuk pelajar, guru, maupun siapa pun yang ingin melakukan konversi cepat, alat ini mempermudah prosesnya.",
     in: "Masukkan nilai (Romawi atau Arab)",
     result: "Hasil",
@@ -404,8 +411,9 @@ defineI18nRoute({
     f_4: "Mendukung angka dari 1 hingga 3999"
   },
   de: {
-    title: "Römische Zahlen",
-    meta: "Wandle einfach zwischen römischen Zahlen und arabischen Zahlen um. Gib einen beliebigen Wert ein und konvertiere sofort von oder zu römischen Zahlen.",
+    title: "Römische Zahlen Umrechnen",
+    pageTitle: "Römische Zahlen umrechnen — Übersetzer & Konverter (1 bis 3999) Online",
+    meta: "Kostenloser Online-Konverter und Übersetzer für römische Zahlen. Rechne arabische Zahlen in römische Zahlen um und umgekehrt — von 1 bis 3999, mit vollständiger Tabelle römischer Zahlen.",
     desc: "Mit diesem Tool kannst du römische Zahlen in ihre Entsprechung in arabischen Zahlen umwandeln und umgekehrt. Gib einfach den Wert ein, den du konvertieren möchtest, und klicke auf die Schaltfläche für die gewünschte Umrechnung. Ob für Schüler, Lehrkräfte oder alle, die eine schnelle Umrechnung benötigen, dieses Tool macht es einfach.",
     in: "Wert eingeben (Römisch oder Arabisch)",
     result: "Ergebnis",
@@ -441,8 +449,9 @@ defineI18nRoute({
     f_4: "Unterstützt Zahlen von 1 bis 3999"
   },
   nl: {
-    title: "Romeinse cijfers",
-    meta: "Zet eenvoudig om tussen Romeinse cijfers en Arabische cijfers. Voer een waarde in en converteer direct van of naar Romeinse cijfers.",
+    title: "Romeinse cijfers omzetten",
+    pageTitle: "Romeinse Cijfers Omzetten — Online Converter (1 t/m 3999)",
+    meta: "Gratis online tool om Romeinse cijfers om te zetten. Converteer getallen naar Romeinse cijfers en andersom direct — van 1 t/m 3999, met volledige tabel van Romeinse cijfers.",
     desc: "Met deze tool kun je Romeinse cijfers omzetten naar hun equivalent in Arabische cijfers en andersom. Voer de waarde in die je wilt converteren en klik op de knop voor de gewenste omzetting. Ideaal voor studenten, docenten of iedereen die een snelle berekening nodig heeft.",
     in: "Voer waarde in (Romeins of Arabisch)",
     result: "Resultaat",
@@ -476,6 +485,44 @@ defineI18nRoute({
     f_2: "Converteer Romeinse cijfers naar Arabische getallen",
     f_3: "Directe conversie in de browser",
     f_4: "Ondersteunt getallen van 1 tot 3999"
+  },
+  ru: {
+    title: "Конвертер римских цифр",
+    pageTitle: "Конвертер римских цифр — перевод чисел в римские цифры (от 1 до 3999) | Онлайн",
+    meta: "Бесплатный онлайн-переводчик и конвертер римских цифр. Мгновенно переводите арабские числа в римские цифры и наоборот — поддерживает значения от 1 до 3999, содержит таблицы и правила.",
+    desc: "С помощью этого инструмента вы можете легко переводить римские цифры в арабские числа и обратно. Просто введите значение, которое хотите преобразовать, и нажмите кнопку нужного направления конвертации. Этот инструмент прост и полезен для школьников, преподавателей и всех, кому требуется быстрый перевод.",
+    in: "Введите значение (римское или арабское число)",
+    result: "Результат",
+    to: "в",
+    from: "из",
+    btn_to: "Перевести в римские",
+    btn_from: "Перевести из римских",
+    err: "Не удалось перевести значение {0} римские",
+    how_it_works_title: "Как это работает",
+    step_1_title: "Введите значение",
+    step_1_desc: "Введите арабское число (например, 2024) или римскую цифру (например, MMXXIV).",
+    step_2_title: "Сконвертируйте",
+    step_2_desc: "Нажмите «Перевести в римские» или «Перевести из римских» в зависимости от исходного значения.",
+    step_3_title: "Скопируйте результат",
+    step_3_desc: "Используйте кнопку копирования, чтобы сохранить результат перевода в буфер обмена.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "История и образование",
+    uc_1_desc: "Расшифровка дат на исторических памятниках, в научных работах и классической литературе.",
+    uc_2_title: "Архитектура и дизайн",
+    uc_2_desc: "Использование римских цифр для оформления циферблатов часов, указания года постройки зданий и заголовков глав книг.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Почему максимальное ограничение составляет 3999?",
+    faq_1_a: "В классической римской системе счисления M (1000) является самым большим символом. Хотя более крупные числа можно записывать с горизонтальной чертой над ними (vinculum), большинство стандартных систем и данный конвертер ориентированы на диапазон от 1 до 3999, который покрывает практически все повседневные нужды.",
+    faq_2_q: "Как правильно читать римские цифры?",
+    faq_2_a: "В большинстве случаев значения символов складываются (например, XVI = 10 + 5 + 1 = 16). Однако, если меньшая цифра стоит перед большей, она вычитается (например, IV = 5 - 1 = 4, IX = 10 - 1 = 9).",
+    see1: "Системы счисления",
+    see2: "Длина",
+    see3: "Температура",
+    see4: "Время",
+    f_1: "Перевод арабских чисел в римские цифры",
+    f_2: "Перевод римских цифр в арабские числа",
+    f_3: "Мгновенные расчеты на стороне клиента",
+    f_4: "Поддержка чисел в диапазоне от 1 до 3999"
   }
 }
 </i18n>

@@ -85,6 +85,10 @@ select option:hover {
   transition: opacity 0.3s ease;
 }
 
+ins.adsbygoogle {
+  background: transparent !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

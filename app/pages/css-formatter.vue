@@ -92,7 +92,8 @@ defineI18nRoute({
     it: '/formattatore-css',
     id: '/pemformat-css',
     de: '/css-formatter',
-    nl: '/css-formatter'
+    nl: '/css-formatter',
+    ru: '/formatator-css'
   }
 })
 </script>
@@ -218,11 +219,11 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
     en: {
-        m_title: "CSS Formatter Online - Beautify & Indent CSS for Free",
+        m_title: "CSS Formatter & Beautifier Online - Format for Free",
         title: "CSS Formatter",
-        meta: "Free online CSS formatter. Paste your CSS code and instantly beautify it with proper indentation and consistent structure.",
-        d1: "This online CSS formatter parses and reformats your stylesheet with consistent indentation and uniform structure. Any messy, minified, or poorly organized CSS is transformed into readable, well-structured code in one click.",
-        d2: "It removes unnecessary blank lines, fixes indentation, and normalizes spacing inside rules and declarations, making the code easier to review, debug, or hand off to a teammate.",
+        meta: "Free online CSS formatter and beautifier. Paste your CSS code and instantly format, indent and beautify it with consistent structure — no signup, no installation.",
+        d1: "This online CSS formatter and beautifier parses and reformats your stylesheet with consistent indentation and uniform structure. Any messy, minified, or poorly organized CSS is transformed into readable, well-structured code in one click.",
+        d2: "It removes unnecessary blank lines, fixes indentation, and normalizes spacing inside rules and declarations, making the code easier to review, debug, or hand off to a teammate — a free CSS beautifier that runs entirely in your browser.",
         plc: "Insert the CSS code here or drag a file",
         bt: "Format CSS",
         rst: "Start Over",
@@ -262,7 +263,7 @@ defineI18nRoute({
     pt: {
         m_title: "Formatador CSS Online - Formate e Indente CSS Grátis",
         title: "Formatador CSS",
-        meta: "Formatador CSS online gratuito. Cole seu código CSS e deixe-o organizado com indentação correta e estrutura uniformizada.",
+        meta: "Formatador CSS online e gratuito (CSS beautifier). Cole seu código CSS e deixe-o organizado com indentação correta e estrutura uniformizada.",
         d1: "Este formatador CSS online analisa e reformata sua folha de estilos com indentação consistente e estrutura uniforme. Qualquer código CSS bagunçado, minificado ou mal organizado é transformado em código legível e bem estruturado com um clique.",
         d2: "Ele remove linhas em branco desnecessárias, corrige a indentação e normaliza o espaçamento dentro de regras e declarações, facilitando a revisão, depuração ou entrega do código para um colega.",
         plc: "Insira o código CSS aqui ou arraste um arquivo",
@@ -284,7 +285,7 @@ defineI18nRoute({
         uc_2_title: "Depuração de Estilos",
         uc_2_desc: "A indentação legível facilita muito o rastreamento de hierarquias de seletores e a identificação de regras conflitantes.",
         uc_3_title: "Aprendizado e Documentação",
-        uc_3_desc: "CSS well formatado é mais fácil de ler, entender e incluir em documentações ou tutoriais.",
+        uc_3_desc: "CSS bem formatado é mais fácil de ler, entender e incluir em documentações ou tutoriais.",
         faq_title: "Perguntas e Respostas",
         faq_1_q: "Meu código CSS é enviado para algum servidor?",
         faq_1_a: "Não. Todo o processamento é feito no seu navegador. Seu código nunca sai do seu dispositivo.",
@@ -304,7 +305,7 @@ defineI18nRoute({
     es: {
         m_title: "Formateador CSS Online - Formatea e Indenta CSS Gratis",
         title: "Formateador CSS",
-        meta: "Formateador CSS online gratuito. Pega tu código CSS y organízalo al instante con indentación correcta y estructura uniforme.",
+        meta: "Formateador CSS online y gratuito (CSS beautifier). Pega tu código CSS y organízalo al instante con indentación correcta y estructura uniforme.",
         d1: "Este formateador CSS online analiza y reformatea tu hoja de estilos con indentación consistente y estructura uniforme. Todo CSS desordenado, minificado o mal organizado se transforma en código legible y bien estructurado con un clic.",
         d2: "Elimina líneas en blanco innecesarias, corrige la indentación y normaliza el espaciado dentro de reglas y declaraciones, facilitando la revisión, depuración o entrega del código a un compañero.",
         plc: "Introduce el código CSS aquí o arrastra un archivo",
@@ -344,9 +345,9 @@ defineI18nRoute({
         f_4: "Sin necesidad de registro ni instalación"
     },
     fr: {
-        m_title: "Formateur CSS en Ligne - Formatez et Indentez CSS Gratuitement",
+        m_title: "Formateur CSS en Ligne - Indentez votre CSS Gratuit",
         title: "Formateur CSS",
-        meta: "Formateur CSS en ligne gratuit. Collez votre code CSS et obtenez instantanément une indentation correcte et une structure uniforme.",
+        meta: "Formateur CSS en ligne gratuit (CSS beautifier). Collez votre code CSS et obtenez instantanément une indentation correcte et une structure uniforme.",
         d1: "Ce formateur CSS en ligne analyse et reformate votre feuille de styles avec une indentation cohérente et une structure uniforme. Tout CSS désordonné, minifié ou mal organisé est transformé en code lisible et bien structuré en un clic.",
         d2: "Il supprime les lignes vides inutiles, corrige l'indentation et normalise les espaces à l'intérieur des règles et des déclarations, facilitant la révision, le débogage ou la transmission du code à un collègue.",
         plc: "Insérez le code CSS ici ou faites glisser un fichier",
@@ -386,9 +387,9 @@ defineI18nRoute({
         f_4: "Aucune inscription ou installation requise"
     },
     it: {
-        m_title: "Formattatore CSS Online - Formatta e Indenta CSS Gratis",
+        m_title: "Formattatore CSS Online - Indenta il tuo CSS Gratis",
         title: "Formattatore CSS",
-        meta: "Formattatore CSS online gratuito. Incolla il tuo codice CSS e ottieni istantaneamente indentazione corretta e struttura uniforme.",
+        meta: "Formattatore CSS online gratuito (CSS beautifier). Incolla il tuo codice CSS e ottieni istantaneamente indentazione corretta e struttura uniforme.",
         d1: "Questo formattatore CSS online analizza e riformatta il tuo foglio di stile con indentazione coerente e struttura uniforme. Qualsiasi CSS disordinato, minificato o mal organizzato viene trasformato in codice leggibile e ben strutturato con un clic.",
         d2: "Rimuove le righe vuote inutili, corregge l'indentazione e normalizza la spaziatura all'interno di regole e dichiarazioni, rendendo il codice più facile da revisionare, debuggare o passare a un collega.",
         plc: "Inserisci il codice CSS ici o trascina un file",
@@ -417,7 +418,7 @@ defineI18nRoute({
         faq_2_q: "Il formattatore supporta la sintassi CSS moderna?",
         faq_2_a: "Sì. Il formattatore supporta il CSS moderno, incluse le proprietà personalizzate, l'annidamento, le media query e le at-rule.",
         faq_3_q: "Cosa succede se il mio CSS ha errori di sintassi?",
-        faq_3_a: "Se il codice non può essere analizzato, lo strumento mostrerà un message d'errore per aiutarti a identificare e correggere il problema prima della formattazione.",
+        faq_3_a: "Se il codice non può essere analizzato, lo strumento mostrerà un messaggio d'errore per aiutarti a identificare e correggere il problema prima della formattazione.",
         see1: "Minificatore di CSS",
         see2: "Formattatore HTML",
         see3: "Formattatore JavaScript",
@@ -430,7 +431,7 @@ defineI18nRoute({
     id: {
         m_title: "Pemformat CSS Online - Format & Indentasi CSS Gratis",
         title: "Pemformat CSS",
-        meta: "Pemformat CSS online gratis. Tempelkan kode CSS Anda dan dapatkan indentasi yang benar dan struktur yang seragam secara instan.",
+        meta: "Pemformat CSS online gratis (CSS beautifier). Tempelkan kode CSS Anda dan dapatkan indentasi yang benar dan struktur yang seragam secara instan.",
         d1: "Pemformat CSS online ini mengurai dan memformat ulang lembar gaya Anda dengan indentasi yang konsisten dan struktur yang seragam. Semua CSS yang berantakan, diminifikasi, atau tidak terorganisir diubah menjadi kode yang mudah dibaca dan terstruktur dengan baik dalam satu klik.",
         d2: "Alat ini menghapus baris kosong yang tidak perlu, memperbaiki indentasi, dan menormalkan spasi di dalam aturan dan deklarasi, membuat kode lebih mudah ditinjau, di-debug, atau diserahkan ke rekan kerja.",
         plc: "Masukkan kode CSS di sini atau seret file",
@@ -470,9 +471,9 @@ defineI18nRoute({
         f_4: "Tanpa pendaftaran atau instalasi"
     },
     de: {
-        m_title: "CSS Formatter Online - CSS kostenlos formatieren und einrücken",
+        m_title: "CSS Formatter & Beautifier Online - Kostenlos",
         title: "CSS Formatter",
-        meta: "Kostenloser Online-CSS-Formatter. Fügen Sie Ihren CSS-Code ein und formatieren Sie ihn sofort mit korrekter Einrückung und konsistenter Struktur.",
+        meta: "Kostenloser Online-CSS-Formatter und Beautifier. Fügen Sie Ihren CSS-Code ein und formatieren Sie ihn sofort mit korrekter Einrückung und konsistenter Struktur.",
         d1: "Dieser Online-CSS-Formatter analysiert und formatiert Ihr Stylesheet mit konsistenter Einrückung und einheitlicher Struktur neu. Unübersichtlicher, minifizierter oder schlecht organisierter CSS-Code wird mit einem Klick in gut lesbaren und strukturierten Code umgewandelt.",
         d2: "Er entfernt unnötige Leerzeilen, korrigiert die Einrückung und normalisiert Abstände innerhalb von Regeln und Deklarationen, wodurch der Code leichter überprüft, debuggt oder an Kollegen weitergegeben werden kann.",
         plc: "Fügen Sie hier den CSS-Code ein oder ziehen Sie eine Datei hinein",
@@ -512,9 +513,9 @@ defineI18nRoute({
         f_4: "Keine Registrierung oder Installation erforderlich"
     },
     nl: {
-        m_title: "CSS Formatter Online - CSS gratis formatteren en inspringen",
+        m_title: "CSS Formatter & Beautifier Online - Gratis",
         title: "CSS Formatter",
-        meta: "Gratis online CSS-formatter. Plak je CSS-code en maak hem direct netjes met correcte inspringing en consistente structuur.",
+        meta: "Gratis online CSS-formatter en beautifier. Plak je CSS-code en maak hem direct netjes met correcte inspringing en consistente structuur.",
         d1: "Deze online CSS-formatter analyseert en formatteert je stylesheet opnieuw met consistente inspringing en structuur. Rommelige, geminificeerde of slecht georganiseerde CSS wordt met één klik omgezet in leesbare en goed gestructureerde code.",
         d2: "Het verwijdert onnodige lege regels, corrigeert inspringing en normaliseert spaties binnen regels en declaraties, waardoor de code makkelijker te controleren, debuggen of te delen is.",
         plc: "Plak hier de CSS-code of sleep een bestand",
@@ -552,6 +553,48 @@ defineI18nRoute({
         f_2: "Correcte inspringing en consistente spaties",
         f_3: "Detectie en melding van syntaxfouten",
         f_4: "Geen registratie of installatie vereist"
+    },
+    ru: {
+        m_title: "Форматтер CSS онлайн — форматируйте и индентируйте CSS бесплатно",
+        title: "Форматтер CSS",
+        meta: "Бесплатный онлайн-форматтер и структуризатор CSS. Вставьте свой CSS-код, чтобы мгновенно отформатировать, индентировать и сделать его аккуратным и читаемым.",
+        d1: "Этот онлайн-форматтер и структуризатор CSS анализирует и форматирует вашу таблицу стилей с последовательным отступом и единой структурой. Любой запутанный, минифицированный или плохо организованный код CSS преобразуется в хорошо читаемый и структурированный код всего за один клик.",
+        d2: "Он удаляет ненужные пустые строки, исправляет отступы и нормализует пробелы внутри правил и объявлений, что упрощает просмотр, отладку или передачу кода другим разработчикам. Инструмент работает полностью в вашем браузере.",
+        plc: "Вставьте код CSS сюда или перетащите файл",
+        bt: "Форматировать CSS",
+        rst: "Начать заново",
+        copy: "Копировать",
+        err: "Ошибка",
+        err_label: "Не удалось отформатировать CSS",
+        how_it_works_title: "Как это работает",
+        hiw_1_title: "Вставьте ваш CSS",
+        hiw_1_desc: "Скопируйте и вставьте исходный, минифицированный или неформатированный CSS-код в редактор.",
+        hiw_2_title: "Нажмите «Форматировать»",
+        hiw_2_desc: "Нажмите кнопку «Форматировать CSS», и инструмент мгновенно перестроит код.",
+        hiw_3_title: "Скопируйте результат",
+        hiw_3_desc: "Скопируйте отформатированный результат или начните заново с новым кодом.",
+        use_cases_title: "Варианты использования",
+        uc_1_title: "Обзоры кода (Code Review)",
+        uc_1_desc: "Приведите таблицы стилей в порядок перед тем, как делиться ими с коллегами или создавать пулл-реквест.",
+        uc_2_title: "Отладка стилей",
+        uc_2_desc: "Удобочитаемые отступы значительно упрощают отслеживание иерархии селекторов и поиск конфликтущих правил.",
+        uc_3_title: "Обучение и документация",
+        uc_3_desc: "Правильно форматированный CSS легче читать, понимать и использовать в учебных руководствах или документации.",
+        faq_title: "Вопросы и ответы",
+        faq_1_q: "Отправляется ли мой CSS-код на какой-либо сервер?",
+        faq_1_a: "Нет. Все форматирование выполняется исключительно в вашем браузере. Ваш код никогда не покидает ваше устройство.",
+        faq_2_q: "Поддерживает ли форматтер современный синтаксис CSS?",
+        faq_2_a: "Да. Форматтер поддерживает современные возможности CSS, включая пользовательские свойства (переменные), вложенность, медиа-запросы и директивы (at-rules).",
+        faq_3_q: "Что произойдет, если в моем CSS-коде будут синтаксические ошибки?",
+        faq_3_a: "Если код не удастся проанализировать, инструмент выведет сообщение об ошибке, чтобы вы могли локализовать и исправить проблему перед форматированием.",
+        see1: "Минификатор CSS",
+        see2: "Форматтер HTML",
+        see3: "Форматтер JavaScript",
+        see4: "Просмотр JSON",
+        f_1: "Мгновенное форматирование и украшение CSS",
+        f_2: "Правильные отступы и последовательные пробелы",
+        f_3: "Обнаружение и отображение синтаксических ошибок",
+        f_4: "Не требуется регистрация или установка"
     }
 }
 </i18n>

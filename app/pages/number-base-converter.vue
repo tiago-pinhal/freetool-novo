@@ -47,6 +47,16 @@ const output = computed(() => {
   return parsed.toString(Number(state.to))
 })
 
+const convTable: [number, string, string, string][] = [
+  [1,   '1',        '1',   '1'],
+  [8,   '1000',     '10',  '8'],
+  [10,  '1010',     '12',  'A'],
+  [16,  '10000',    '20',  '10'],
+  [42,  '101010',   '52',  '2A'],
+  [100, '1100100',  '144', '64'],
+  [255, '11111111', '377', 'FF'],
+]
+
 
 
 defineI18nRoute({
@@ -58,7 +68,8 @@ defineI18nRoute({
     it: '/convertitore-di-basi-numeriche',
     id: '/konverter-basis-angka',
     de: '/zahlenbasen-umrechner',
-    nl: '/talstelsel-converter'
+    nl: '/talstelsel-converter',
+    ru: '/konverter-sistem-schisleniya'
   }
 })
 </script>
@@ -153,6 +164,34 @@ defineI18nRoute({
           ]"
         />
 
+        <section>
+          <h2 class="text-2xl font-bold text-base-content mb-3 flex items-center gap-2">
+            <Icon name="heroicons:table-cells" class="text-primary w-6 h-6" aria-hidden="true" />
+            {{ t('conv_ex_title') }}
+          </h2>
+          <p class="text-base-content/70 mb-4 text-sm">{{ t('conv_ex_desc') }}</p>
+          <div class="overflow-x-auto rounded-2xl border border-base-content/10">
+            <table class="table table-zebra w-full">
+              <thead>
+                <tr class="text-base-content/60 text-xs uppercase tracking-wider">
+                  <th>{{ t('decimal') }} (10)</th>
+                  <th>{{ t('binary') }} (2)</th>
+                  <th>{{ t('octal') }} (8)</th>
+                  <th>{{ t('hexadecimal') }} (16)</th>
+                </tr>
+              </thead>
+              <tbody class="font-mono text-sm">
+                <tr v-for="[dec, bin, oct, hex] in convTable" :key="dec">
+                  <td class="text-primary font-bold">{{ dec }}</td>
+                  <td>{{ bin }}</td>
+                  <td>{{ oct }}</td>
+                  <td>{{ hex }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
         <FaqSection
           :title="t('faq_title')"
           :items="[
@@ -170,9 +209,9 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   en: {
-    m_title: "Number Base Converter — Binary, Octal, Decimal, Hex | Free Online",
+    m_title: "Number Base Converter — Binary to Decimal, Decimal to Binary, Hex & More | Free",
     title: "Number Base Converter",
-    meta: "Free online number base converter. Convert between binary, octal, decimal, hexadecimal and 15 other bases instantly. Perfect for programming, engineering and computer science.",
+    meta: "Free online number base converter. Instantly convert binary to decimal, decimal to binary, hex to decimal and 15 more base combinations. Perfect for programming, engineering and computer science.",
     num: "Number",
     from: "From",
     to: "To",
@@ -201,7 +240,7 @@ defineI18nRoute({
     see2: "JSON → XML",
     see3: "CSV → JSON",
     see4: "JSON → CSV",
-    d1: "Free online tool to convert numbers between any two bases from 2 to 20. Convert binary to decimal, hexadecimal to octal, or any combination instantly with maximum precision and zero delays.",
+    d1: "Convert binary to decimal, decimal to binary, hex to decimal and any other base pair from 2 to 20 instantly. Maximum precision, zero delays.",
     how_to_use_title: "How to use",
     how_desc: "This tool parses the input number in its source base and converts it to the target base using mathematically exact algorithms. The conversion runs entirely in your browser, ensuring privacy and speed.",
     step_1_title: "Enter Number",
@@ -239,15 +278,17 @@ defineI18nRoute({
     faq_3_a: "Hexadecimal is used for memory addresses, color codes (#RGB), file permissions in Unix (e.g. chmod 0x755), network MAC addresses, and raw byte values in debugging tools and hex editors.",
     faq_4_q: "Are there limits to the numbers I can convert?",
     faq_4_a: "Yes. This tool supports safe integers up to 2⁵³ - 1 (about 9 quadrillion in decimal). For most practical uses in programming and education, this limit is never reached.",
+    conv_ex_title: "Conversion Reference Table",
+    conv_ex_desc: "The same numbers expressed in binary, octal, decimal and hexadecimal — the four most common bases in computing.",
     f_1: "Convert between bases 2 to 20 instantly",
     f_2: "Supports binary, octal, decimal, hexadecimal and vigesimal",
     f_3: "No server calls — runs entirely in the browser",
     f_4: "Mathematically exact conversions for all supported bases"
   },
   pt: {
-    m_title: "Conversor de Bases Numéricas — Binário, Octal, Decimal, Hex | Grátis",
+    m_title: "Conversor de Bases Numéricas — Binário para Decimal, Decimal para Binário e Mais | Grátis",
     title: "Conversor de Bases Numéricas",
-    meta: "Conversor de bases numéricas online grátis. Converta entre binário, octal, decimal, hexadecimal e outras 15 bases instantaneamente. Ideal para programação e ciência da computação.",
+    meta: "Conversor de bases numéricas online grátis. Converta binário para decimal, decimal para binário, hexadecimal para octal e outras 15 combinações instantaneamente. Ideal para programação e ciência da computação.",
     num: "Número",
     from: "De",
     to: "Para",
@@ -276,7 +317,7 @@ defineI18nRoute({
     see2: "JSON → XML",
     see3: "CSV → JSON",
     see4: "JSON → CSV",
-    d1: "Ferramenta online gratuita para converter números entre qualquer base de 2 a 20. Converta binário para decimal, hexadecimal para octal ou qualquer combinação instantaneamente, com máxima precisão e sem atrasos.",
+    d1: "Converta binário para decimal, decimal para binário, hexadecimal para octal e qualquer outra combinação entre bases de 2 a 20 instantaneamente. Máxima precisão, sem atrasos.",
     how_to_use_title: "Como usar",
     how_desc: "Esta ferramenta interpreta o número na base de origem e o converte para a base alvo usando algoritmos matematicamente exatos. O processo ocorre inteiramente no seu navegador, garantindo privacidade e rapidez.",
     step_1_title: "Digite o Número",
@@ -314,15 +355,17 @@ defineI18nRoute({
     faq_3_a: "O hexadecimal é usado em endereços de memória, códigos de cor (#RGB), permissões de arquivos Unix (ex: chmod 0x755), endereços MAC de rede e valores brutos de bytes em ferramentas de depuração e editores hexadecimais.",
     faq_4_q: "Há limites para os números que posso converter?",
     faq_4_a: "Sim. Esta ferramenta suporta inteiros seguros até 2⁵³ - 1 (cerca de 9 quatrilhões em decimal). Para a maioria dos usos práticos em programação e educação, esse limite nunca é atingido.",
+    conv_ex_title: "Tabela de Referência de Conversão",
+    conv_ex_desc: "Os mesmos números expressos em binário, octal, decimal e hexadecimal — as quatro bases mais usadas na computação.",
     f_1: "Converter entre bases 2 a 20 instantaneamente",
     f_2: "Suporta binário, octal, decimal, hexadecimal e vigesimal",
     f_3: "Sem chamadas ao servidor — roda inteiramente no navegador",
     f_4: "Conversões matematicamente exatas para todas as bases suportadas"
   },
   es: {
-    m_title: "Conversor de Bases Numéricas — Binario, Octal, Decimal, Hex | Gratis",
+    m_title: "Conversor de Bases Numéricas — Binario a Decimal, Decimal a Binario y Más | Gratis",
     title: "Conversor de Bases Numéricas",
-    meta: "Conversor de bases numéricas online gratis. Convierte entre binario, octal, decimal, hexadecimal y otras 15 bases al instante. Ideal para programación y ciencias de la computación.",
+    meta: "Conversor de bases numéricas online gratis. Convierte binario a decimal, decimal a binario, hexadecimal a octal y otras 15 combinaciones al instante. Ideal para programación y ciencias de la computación.",
     num: "Número",
     from: "De",
     to: "A",
@@ -351,7 +394,7 @@ defineI18nRoute({
     see2: "JSON → XML",
     see3: "CSV → JSON",
     see4: "JSON → CSV",
-    d1: "Herramienta online gratuita para convertir números entre cualquier base del 2 al 20. Convierte binario a decimal, hexadecimal a octal o cualquier combinación al instante, con máxima precisión y sin retrasos.",
+    d1: "Convierte binario a decimal, decimal a binario, hexadecimal a octal y cualquier otra combinación entre bases del 2 al 20 al instante. Máxima precisión, sin retrasos.",
     how_to_use_title: "Cómo usar",
     how_desc: "Esta herramienta interpreta el número en la base de origen y lo convierte a la base destino utilizando algoritmos matemáticamente exactos. El proceso se ejecuta completamente en su navegador, garantizando privacidad y rapidez.",
     step_1_title: "Ingrese el Número",
@@ -389,6 +432,8 @@ defineI18nRoute({
     faq_3_a: "El hexadecimal se usa en direcciones de memoria, códigos de color (#RGB), permisos de archivos Unix (ej: chmod 0x755), direcciones MAC de red y valores brutos de bytes en herramientas de depuración y editores hexadecimales.",
     faq_4_q: "¿Hay límites para los números que puedo convertir?",
     faq_4_a: "Sí. Esta herramienta admite enteros seguros hasta 2⁵³ - 1 (unos 9 cuatrillones en decimal). Para la mayoría de los usos prácticos en programación y educación, este límite nunca se alcanza.",
+    conv_ex_title: "Tabla de Referencia de Conversión",
+    conv_ex_desc: "Los mismos números expresados en binario, octal, decimal y hexadecimal — las cuatro bases más comunes en informática.",
     f_1: "Convertir entre bases 2 a 20 instantáneamente",
     f_2: "Soporta binario, octal, decimal, hexadecimal y vigesimal",
     f_3: "Sin llamadas al servidor — se ejecuta completamente en el navegador",
@@ -426,7 +471,7 @@ defineI18nRoute({
     see2: "JSON → XML",
     see3: "CSV → JSON",
     see4: "JSON → CSV",
-    d1: "Outil en ligne gratuit pour convertir des nombres entre deux bases quelconques de 2 à 20. Convertissez binaire en décimal, hexadécimal en octal ou toute combinaison instantanément, avec une précision maximale et sans délai.",
+    d1: "Convertissez binaire en décimal, hexadécimal en octal ou toute combinaison instantanément, avec une précision maximale et sans délai.",
     how_to_use_title: "Comment utiliser",
     how_desc: "Cet outil interprète le nombre dans la base source et le convertit vers la base cible en utilisant des algorithmes mathématiquement exacts. Le processus s'exécute entièrement dans votre navigateur, garantissant confidentialité et rapidité.",
     step_1_title: "Saisir le Nombre",
@@ -464,6 +509,8 @@ defineI18nRoute({
     faq_3_a: "L'hexadécimal est utilisé pour les adresses mémoire, les codes couleur (#RGB), les permissions de fichiers Unix (ex : chmod 0x755), les adresses MAC réseau et les valeurs brutes d'octets dans les outils de débogage et les éditeurs hexadécimaux.",
     faq_4_q: "Y a-t-il des limites aux nombres que je peux convertir ?",
     faq_4_a: "Oui. Cet outil prend en charge les entiers sûrs jusqu'à 2⁵³ - 1 (environ 9 quadrillions en décimal). Pour la plupart des usages pratiques en programmation et en éducation, cette limite n'est jamais atteinte.",
+    conv_ex_title: "Table de référence de conversion",
+    conv_ex_desc: "Les mêmes nombres exprimés en binaire, octal, décimal et hexadécimal — les quatre bases les plus utilisées en informatique.",
     f_1: "Convertir entre les bases 2 à 20 instantanément",
     f_2: "Supporte binaire, octal, décimal, hexadécimal et vigésimal",
     f_3: "Sans appels serveur — s'exécute entièrement dans le navigateur",
@@ -501,7 +548,7 @@ defineI18nRoute({
     see2: "JSON → XML",
     see3: "CSV → JSON",
     see4: "JSON → CSV",
-    d1: "Strumento online gratuito per convertire numeri tra due basi qualsiasi da 2 a 20. Converti binario in decimale, esadecimale in ottale o qualsiasi combinazione all'istante, con la massima precisione e senza ritardi.",
+    d1: "Converti binario in decimale, esadecimale in ottale o qualsiasi combinazione all'istante, con la massima precisione e senza ritardi.",
     how_to_use_title: "Come usare",
     how_desc: "Questo strumento interpreta il numero nella base di origine e lo converte nella base di destinazione utilizzando algoritmi matematicamente esatti. Il processo avviene interamente nel tuo browser, garantendo privacy e velocità.",
     step_1_title: "Inserisci il Numero",
@@ -539,6 +586,8 @@ defineI18nRoute({
     faq_3_a: "L'esadecimale è usato per gli indirizzi di memoria, i codici colore (#RGB), i permessi dei file Unix (es: chmod 0x755), gli indirizzi MAC di rete e i valori grezzi in byte negli strumenti di debug e negli editor esadecimali.",
     faq_4_q: "Ci sono limiti ai numeri che posso convertire?",
     faq_4_a: "Sì. Questo strumento supporta numeri interi sicuri fino a 2⁵³ - 1 (circa 9 quadrilioni in decimale). Per la maggior parte degli usi pratici in programmazione e istruzione, questo limite non viene mai raggiunto.",
+    conv_ex_title: "Tabella di riferimento per la conversione",
+    conv_ex_desc: "Gli stessi numeri espressi in binario, ottale, decimale ed esadecimale — le quattro basi più comuni nell'informatica.",
     f_1: "Convertire tra basi 2 e 20 istantaneamente",
     f_2: "Supporta binario, ottale, decimale, esadecimale e vigesimale",
     f_3: "Nessuna chiamata al server — viene eseguito interamente nel browser",
@@ -576,7 +625,7 @@ defineI18nRoute({
     see2: "JSON → XML",
     see3: "CSV → JSON",
     see4: "JSON → CSV",
-    d1: "Alat online gratis untuk mengonversi angka antara dua basis apa pun dari 2 hingga 20. Konversi biner ke desimal, heksadesimal ke oktal, atau kombinasi apa pun secara instan dengan presisi maksimum tanpa hambatan.",
+    d1: "Konversi biner ke desimal, heksadesimal ke oktal, atau kombinasi apa pun secara instan dengan presisi maksimum tanpa hambatan.",
     how_to_use_title: "Cara menggunakan",
     how_desc: "Alat ini mengurai angka input dalam basis sumber dan mengonversinya ke basis target menggunakan algoritma yang tepat secara matematis. Proses ini berjalan sepenuhnya di browser Anda, menjamin privasi dan kecepatan.",
     step_1_title: "Masukkan Angka",
@@ -614,6 +663,8 @@ defineI18nRoute({
     faq_3_a: "Heksadesimal digunakan untuk alamat memori, kode warna (#RGB), izin file Unix, alamat MAC jaringan, dan nilai byte mentah.",
     faq_4_q: "Apakah ada batasan angka yang bisa saya konversi?",
     faq_4_a: "Ya. Alat ini mendukung integer aman hingga 2⁵³ - 1 (sekitar 9 kuadriliun dalam desimal). Untuk sebagian besar penggunaan praktis, batas ini tidak pernah tercapai.",
+    conv_ex_title: "Tabel Referensi Konversi",
+    conv_ex_desc: "Angka-angka yang sama dalam biner, oktal, desimal, dan heksadesimal — empat basis paling umum dalam komputasi.",
     f_1: "Konversi antara basis 2 hingga 20 secara instan",
     f_2: "Mendukung biner, oktal, desimal, heksadesimal, dan vigesimal",
     f_3: "Tanpa panggilan server — berjalan sepenuhnya di browser",
@@ -651,7 +702,7 @@ defineI18nRoute({
     see2: "JSON → XML",
     see3: "CSV → JSON",
     see4: "JSON → CSV",
-    d1: "Kostenloses Online-Tool zum Konvertieren von Zahlen zwischen beliebigen Basen von 2 bis 20. Wandle Binär in Dezimal, Hexadezimal in Oktal oder jede andere Kombination sofort um, mit maximaler Genauigkeit und ohne Verzögerung.",
+    d1: "Wandle Binär in Dezimal, Hexadezimal in Oktal oder jede andere Kombination sofort um, mit maximaler Genauigkeit und ohne Verzögerung.",
     how_to_use_title: "So verwendest du das Tool",
     how_desc: "Dieses Tool interpretiert die eingegebene Zahl in ihrer Ausgangsbasis und konvertiert sie mit mathematisch exakten Algorithmen in die Zielbasis. Die Umrechnung läuft vollständig in deinem Browser und sorgt so für Datenschutz und Geschwindigkeit.",
     step_1_title: "Zahl eingeben",
@@ -689,6 +740,8 @@ defineI18nRoute({
     faq_3_a: "Hexadezimal wird für Speicheradressen, Farbcodes (#RGB), Unix-Dateirechte (z. B. chmod 0x755), Netzwerk-MAC-Adressen und rohe Bytewerte in Debugging-Tools und Hex-Editoren verwendet.",
     faq_4_q: "Gibt es Grenzen für die Zahlen, die ich umrechnen kann?",
     faq_4_a: "Ja. Dieses Tool unterstützt sichere Ganzzahlen bis 2⁵³ - 1 (etwa 9 Billiarden im Dezimalsystem). Für die meisten praktischen Anwendungen in Programmierung und Bildung wird dieses Limit nie erreicht.",
+    conv_ex_title: "Konvertierungsreferenztabelle",
+    conv_ex_desc: "Dieselben Zahlen in Binär, Oktal, Dezimal und Hexadezimal — die vier häufigsten Zahlensysteme in der Informatik.",
     f_1: "Sofort zwischen Basen 2 bis 20 umrechnen",
     f_2: "Unterstützt Binär, Oktal, Dezimal, Hexadezimal und Vigesimal",
     f_3: "Keine Serveraufrufe — läuft vollständig im Browser",
@@ -726,7 +779,7 @@ defineI18nRoute({
     see2: "JSON → XML",
     see3: "CSV → JSON",
     see4: "JSON → CSV",
-    d1: "Gratis online tool om getallen te converteren tussen elke twee bases van 2 tot 20. Converteer binair naar decimaal, hexadecimaal naar octaal, of elke andere combinatie direct met maximale precisie en zonder vertraging.",
+    d1: "Converteer binair naar decimaal, hexadecimaal naar octaal, of elke andere combinatie direct met maximale precisie en zonder vertraging.",
     how_to_use_title: "Hoe te gebruiken",
     how_desc: "Deze tool verwerkt het ingevoerde getal in de bronbasis en converteert het naar de doelbasis met behulp van wiskundig exacte algoritmen. De conversie draait volledig in je browser, wat privacy en snelheid garandeert.",
     step_1_title: "Voer getal in",
@@ -764,10 +817,89 @@ defineI18nRoute({
     faq_3_a: "Hexadecimaal wordt gebruikt voor geheugenadressen, kleurcodes (#RGB), bestandsrechten in Unix (bijv. chmod 0x755), netwerk-MAC-adressen en ruwe byte-waarden in debug-tools en hex-editors.",
     faq_4_q: "Zijn er limieten aan de getallen die ik kan converteren?",
     faq_4_a: "Ja. Deze tool ondersteunt veilige gehele getallen tot 2⁵³ - 1 (ongeveer 9 biljard in decimaal). Voor de meeste praktische toepassingen in programmeren en onderwijs wordt deze limiet nooit bereikt.",
+    conv_ex_title: "Conversieverwijzingstabel",
+    conv_ex_desc: "Dezelfde getallen uitgedrukt in binair, octaal, decimaal en hexadecimaal — de vier meest gebruikte talstelsels in de informatica.",
     f_1: "Converteer direct tussen bases 2 tot 20",
     f_2: "Ondersteunt binair, octaal, decimaal, hexadecimaal en vigesimaal",
     f_3: "Geen serveraanroepen — draait volledig in de browser",
     f_4: "Wiskundig exacte conversies voor alle ondersteunde bases"
+  },
+  ru: {
+    m_title: "Конвертер систем счисления — перевод из двоичной в десятичную, из десятичной в двоичную, шестнадцатеричную и другие | Бесплатно",
+    title: "Конвертер систем счисления",
+    meta: "Бесплатный онлайн-конвертер систем счисления. Мгновенно переводите из двоичной в десятичную, из десятичной в двоичную, из шестнадцатеричной в десятичную и еще 15 других комбинаций баз. Идеально подходит для программирования, электроники и информатики.",
+    num: "Число",
+    from: "Из",
+    to: "В",
+    result: "Результат",
+    err: "Некорректное число",
+    binary: "Двоичная",
+    ternary: "Троичная",
+    quaternary: "Четверичная",
+    quinary: "Пятеричная",
+    senary: "Шестеричная",
+    septenary: "Семеричная",
+    octal: "Восьмеричная",
+    nonary: "Девятеричная",
+    decimal: "Десятичная",
+    undecimal: "Одиннадцатеричная",
+    duodecimal: "Двенадцатеричная",
+    tridecimal: "Тринадцатеричная",
+    tetradecimal: "Четырнадцатеричная",
+    pentadecimal: "Пятнадцатеричная",
+    hexadecimal: "Шестнадцатеричная",
+    heptadecimal: "Семнадцатеричная",
+    octodecimal: "Восемнадцатеричная",
+    nonadecimal: "Девятнадцатеричная",
+    vigesimal: "Двадцатеричная",
+    see1: "XML → JSON",
+    see2: "JSON → XML",
+    see3: "CSV → JSON",
+    see4: "JSON → CSV",
+    d1: "Мгновенно переводите числа из двоичной в десятичную, из десятичной в двоичную, из шестнадцатеричной в десятичную и между любыми другими системами счисления от 2 до 20. Максимальная точность, мгновенный результат.",
+    how_to_use_title: "Инструкция",
+    how_desc: "Этот инструмент разбирает введенное число в исходной системе счисления и преобразует его в целевую систему счисления с использованием математически точных алгоритмов. Расчет выполняется полностью в вашем браузере, обеспечивая скорость и конфиденциальность.",
+    step_1_title: "Введите число",
+    step_1_desc: "Введите или вставьте число, которое хотите перевести, в поле «Число».",
+    step_2_title: "Выберите системы счисления",
+    step_2_desc: "Выберите исходную систему счисления (Из) и целевую систему счисления (В) из раскрывающихся списков.",
+    step_3_title: "Скопируйте результат",
+    step_3_desc: "Преобразованное число сразу же отобразится в поле результата.",
+    use_cases_title: "Области применения",
+    uc_intro: "Конвертация систем счисления — фундаментальный навык в информатике и инженерии. Примеры повседневного использования включают:",
+    uc_1_t: "Отладка программного обеспечения",
+    uc_1_d: "Отладка двоичных и шестнадцатеричных представлений во встроенных системах и низкоуровневом программировании.",
+    uc_2_t: "Учебная практика",
+    uc_2_d: "Практика перевода чисел между различными позиционными системами счисления для курсов информатики и цифровой электроники.",
+    uc_3_t: "Системное программирование",
+    uc_3_d: "Преобразование адресов памяти между восьмеричной, десятичной и шестнадцатеричной системами счисления в ассемблере.",
+    uc_4_t: "Исторические исследования",
+    uc_4_d: "Изучение исторических систем счисления, таких как двадцатеричная (vigesimal) система счисления майя, для академических и математических исследований.",
+    tech_title: "Техническая справка",
+    tech_desc: "Ключевые технические детали о системах счисления, поддерживаемых этим конвертером:",
+    t_1_t: "Двоичная (Основание 2)",
+    t_1_d: "Использует только цифры 0 и 1 — основа всех цифровых вычислений и аппаратной логики.",
+    t_2_t: "Восьмеричная и шестнадцатеричная",
+    t_2_d: "Компактные представления, используемые при адресации памяти, правах доступа к файлам и цветовых кодах.",
+    t_3_t: "Десятичная (Основание 10)",
+    t_3_d: "Стандартная человекочитаемая система, используемая в качестве основного интерфейса для всех расчетов.",
+    t_4_t: "Продвинутые системы счисления",
+    t_4_d: "Поддержка оснований счисления от 11 до 20, включая двадцатеричную (основание 20) систему счисления древних цивилизаций.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Какой перевод систем счисления является наиболее распространенным в программировании?",
+    faq_1_a: "Двоичная ↔ Шестнадцатеричная. Шестнадцатеричная система представляет собой компактное отображение двоичного кода: каждая шестнадцатеричная цифра соответствует ровно 4 двоичным цифрам (полубайту/nibble). Например, 0xFF = 11111111 в двоичной = 255 в десятичной.",
+    faq_2_q: "Как перевести двоичное число в десятичное?",
+    faq_2_a: "Введите двоичное число в поле ввода, выберите Основание 2 в качестве исходного и Основание 10 в качестве целевого. Результат отобразится мгновенно — нажимать кнопку не требуется.",
+    faq_3_q: "Для чего используется шестнадцатеричная система счисления в программировании?",
+    faq_3_a: "Шестнадцатеричная система используется для адресов памяти, цветовых кодов (#RGB), прав доступа к файлам в Unix (например, chmod 0x755), MAC-адресов сетевых карт и необработанных значений байтов в отладчиках и шестнадцатеричных редакторах (hex-editors).",
+    faq_4_q: "Существуют ли ограничения на размер чисел для конвертации?",
+    faq_4_a: "Да. Этот инструмент поддерживает безопасные целые числа в диапазоне до 2⁵³ - 1 (около 9 квадриллионов в десятичной системе). Для большинства практических задач в программировании и учебе этот лимит никогда не достигается.",
+    conv_ex_title: "Справочная таблица перевода",
+    conv_ex_desc: "Одно и то же число, представленное в двоичной, восьмеричной, десятичной и шестнадцатеричной системах счисления — четырех наиболее распространенных базах в вычислительной технике.",
+    f_1: "Мгновенная конвертация между системами счисления от 2 до 20",
+    f_2: "Поддержка двоичной, восьмеричной, десятичной, шестнадцатеричной и двадцатеричной систем",
+    f_3: "Без запросов к серверу — работает полностью в браузере",
+    f_4: "Математически точные расчеты для всех поддерживаемых систем счисления"
   }
 }
 </i18n>

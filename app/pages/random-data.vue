@@ -22,7 +22,8 @@ defineI18nRoute({
     it: '/dati-casuali',
     id: '/data-acak',
     de: '/zufallsdaten',
-    nl: '/willekeurige-gegevens'
+    nl: '/willekeurige-gegevens',
+    ru: '/generator-sluchaynyh-dannyh',
   }
 })
 </script>
@@ -110,7 +111,7 @@ defineI18nRoute({
         devs: "For Developers"
     },
     pt: {
-        title: "Geradores de Dados Aleatórios",
+        title: "Dados Aleatórios",
         meta: "Geradores de dados aleatórios online grátis: números, senhas, CPF, CNPJ, RG, cartões de crédito e UUID. Gere dados de teste instantaneamente!",
         desc: "Com essas ferramentas, você pode gerar números aleatórios, senhas seguras e dados fictícios para testes e desenvolvimento. Perfeito para desenvolvedores e testadores. Instantâneo e sem necessidade de instalação.",
         available_generators: "Geradores Disponíveis",
@@ -124,7 +125,7 @@ defineI18nRoute({
         devs: "Para Desenvolvedores"
     },
     es: {
-        title: "Generadores de Datos Aleatorios",
+        title: "Datos Aleatorios",
         meta: "Generadores de datos aleatorios online gratis: números, contraseñas, CPF, CNPJ, RG, tarjetas de crédito y UUID. ¡Genera datos de prueba instantáneamente!",
         desc: "Con estas herramientas, puedes generar números aleatorios, contraseñas seguras y datos ficticios para pruebas y desarrollo. Perfecto para desarrolladores y testers. Instantáneo y sin necesidad de instalación.",
         available_generators: "Generadores Disponibles",
@@ -138,7 +139,7 @@ defineI18nRoute({
         devs: "Para Desarrolladores"
     },
     fr: {
-        title: "Générateurs de Données Aléatoires",
+        title: "Données Aléatoires",
         meta: "Générateurs de données aléatoires en ligne gratuits: nombres, mots de passe, CPF, CNPJ, RG, cartes de crédit et UUID. Générez des données de test instantanément!",
         desc: "Avec ces outils, vous pouvez générer des nombres aléatoires, des mots de passe sécurisés et des données fictives pour les tests et le développement. Parfait pour les développeurs et testeurs. Instantané et sans installation nécessaire.",
         available_generators: "Générateurs Disponibles",
@@ -152,7 +153,7 @@ defineI18nRoute({
         devs: "Pour les Développeurs"
     },
     it: {
-        title: "Generatori di Dati Casuali",
+        title: "Dati Casuali",
         meta: "Generatori di dati casuali online gratuiti: numeri, password, CPF, CNPJ, RG, carte di credito e UUID. Genera dati di test istantaneamente!",
         desc: "Con questi strumenti, puoi generare numeri casuali, password sicure e dati fittizi per test e sviluppo. Perfetto per sviluppatori e tester. Istantaneo e senza necessità di installazione.",
         available_generators: "Generatori Disponibili",
@@ -166,7 +167,7 @@ defineI18nRoute({
         devs: "Per Sviluppatori"
     },
     id: {
-        title: "Generator Data Acak",
+        title: "Data Acak",
         meta: "Generator data acak online gratis: angka, kata sandi, CPF, CNPJ, RG, kartu kredit, dan UUID. Buat data uji secara instan!",
         desc: "Dengan alat-alat ini, Anda dapat membuat angka acak, kata sandi yang aman, dan data fiktif untuk pengujian dan pengembangan. Sempurna untuk pengembang dan penguji. Instan dan tidak diperlukan instalasi.",
         available_generators: "Generator Tersedia",
@@ -180,7 +181,7 @@ defineI18nRoute({
         devs: "Untuk Developer"
     },
     de: {
-        title: "Generatoren für Zufallsdaten",
+        title: "Zufallsdaten",
         meta: "Kostenlose Online-Generatoren für Zufallsdaten: Zahlen, Passwörter, CPF, CNPJ, RG, Kreditkarten und UUID. Erzeuge Testdaten sofort!",
         desc: "Mit diesen Tools kannst du Zufallszahlen, sichere Passwörter und fiktive Daten für Tests und Entwicklung erzeugen. Perfekt für Entwickler und Tester. Sofort und ohne Installation.",
         available_generators: "Verfügbare Generatoren",
@@ -194,7 +195,7 @@ defineI18nRoute({
         devs: "Für Entwickler"
     },
     nl: {
-        title: "Willekeurige gegevensgeneratoren",
+        title: "Willekeurige gegevens",
         meta: "Gratis online willekeurige gegevensgeneratoren: getallen, wachtwoorden, CPF, CNPJ, RG, creditcards en UUID. Genereer direct testgegevens!",
         desc: "Met deze tools kun je willekeurige getallen, veilige wachtwoorden en fictieve gegevens genereren voor testen en ontwikkeling. Perfect voor ontwikkelaars en testers. Direct en geen installatie vereist.",
         available_generators: "Beschikbare generatoren",
@@ -206,6 +207,20 @@ defineI18nRoute({
         rg: "RG-generator 🇧🇷",
         uuid: "UUID-generator",
         devs: "Voor ontwikkelaars"
+    },
+    ru: {
+        title: "Случайные данные",
+        meta: "Бесплатные онлайн-генераторы случайных данных: числа, пароли, CPF, CNPJ, RG, кредитные карты и UUID. Генерируйте тестовые данные мгновенно!",
+        desc: "С помощью этих инструментов вы можете генерировать случайные числа, надежные пароли и фиктивные данные для тестирования и разработки. Идеально подходит для разработчиков и тестировщиков. Работает мгновенно и без необходимости установки.",
+        available_generators: "Доступные генераторы",
+        cc: "Генератор кредитных карт",
+        number: "Генератор случайных чисел",
+        pass: "Генератор паролей",
+        cpf: "Генератор CPF 🇧🇷",
+        cnpj: "Генератор CNPJ 🇧🇷",
+        rg: "Генератор RG 🇧🇷",
+        uuid: "Генератор UUID",
+        devs: "Для разработчиков"
     }
 }
 </i18n>

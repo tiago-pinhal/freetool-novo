@@ -91,14 +91,15 @@ function addToRecent(sym: string) {
 
 defineI18nRoute({
   paths: {
-    en: '/symbol-picker',
-    pt: '/seletor-de-simbolos',
-    es: '/selector-de-simbolos',
-    fr: '/selecteur-de-symboles',
-    it: '/selettore-di-simboli',
-    id: '/pemilih-simbol',
-    de: '/symbol-auswahl',
-    nl: '/symbool-kiezer'
+    en: '/copy-paste-symbols',
+    pt: '/simbolos-copiar-colar',
+    es: '/simbolos-copiar-pegar',
+    fr: '/symboles-copier-coller',
+    it: '/simboli-copiare-incollare',
+    id: '/simbol-salin-tempel',
+    de: '/symbole-kopieren-einfuegen',
+    nl: '/symbolen-kopieren-plakken',
+    ru: '/simvoly-kopirovat-vstavit'
   }
 })
 </script>
@@ -284,9 +285,9 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   pt: {
-    m_title: "Símbolos para Copiar e Colar - Seletor de Símbolos Unicode ★ ← ∑ ♥",
+    m_title: "Símbolos para Copiar e Colar ★ ♥ → ∑ ← - Setas, Matemática e Mais",
     title: "Símbolos para Copiar e Colar",
-    meta: "Ferramenta gratuita de símbolos Unicode para copiar e colar. Encontre setas, símbolos matemáticos, moedas, frações e muito mais.",
+    meta: "Copie e cole mais de 1.000 símbolos Unicode grátis — setas ←→, matemática ∑√π, corações ♥, estrelas ★, moedas €$, frações ½¾ e letras gregas. 25 categorias.",
     d1: "Navegue por 25 categorias que incluem setas, símbolos matemáticos, moedas, letras gregas, fonética e símbolos musicais. A ferramenta organiza mais de 1.000 símbolos prontos para copiar e colar em documentos, redes sociais, apresentações e outros aplicativos.",
 
     category_label: "Selecione uma categoria",
@@ -390,12 +391,12 @@ defineI18nRoute({
     see1: "Seletor de Emojis",
     see2: "Letras Estilizadas",
     see3: "Gerador de Texto",
-    see4: "Gerador de Letras ASCII"
+    see4: "Letras ASCII"
   },
   en: {
-    m_title: "Symbols to Copy and Paste - Unicode Symbol Picker ★ ← ∑ ♥",
+    m_title: "Copy and Paste Symbols ★ ♥ → ∑ ← - Arrows, Math, Currency & More",
     title: "Symbols to Copy and Paste",
-    meta: "Free Unicode symbol tool for copying and pasting. Find arrows, math symbols, currencies, fractions, and more.",
+    meta: "Copy and paste 1,000+ Unicode symbols free — arrows ←→, math ∑√π, hearts ♥, stars ★, currencies €$, fractions ½¾, Greek letters and 20 more categories.",
     d1: "Browse through 25 categories that include arrows, math symbols, currencies, Greek letters, phonetics, and musical symbols. The tool organizes over 1,000 symbols ready to be copied and pasted into documents, social networks, presentations, and other apps.",
 
     category_label: "Select a category",
@@ -502,9 +503,9 @@ defineI18nRoute({
     see4: "ASCII Letter Generator"
   },
   es: {
-    m_title: "Símbolos para Copiar y Pegar - Selector de Símbolos Unicode ★ ← ∑ ♥",
+    m_title: "Símbolos para Copiar y Pegar ★ ♥ → ∑ ← - Flechas, Matemáticas y Más",
     title: "Símbolos para Copiar y Pegar",
-    meta: "Herramienta gratuita de símbolos Unicode para copiar y pegar. Encuentra flechas, símbolos matemáticos, monedas, fracciones y mucho más.",
+    meta: "Copia y pega más de 1.000 símbolos Unicode gratis — flechas ←→, matemáticas ∑√π, corazones ♥, estrellas ★, monedas €$, fracciones ½¾ y letras griegas. 25 categorías.",
     d1: "Navega por 25 categorías que incluyen flechas, símbolos matemáticos, monedas, letras griegas, fonética y símbolos musicales. La herramienta organiza más de 1.000 símbolos listos para copiar y pegar en documentos, redes sociales, presentaciones y otras aplicaciones.",
 
     category_label: "Selecciona una categoría",
@@ -611,9 +612,9 @@ defineI18nRoute({
     see4: "Generador de Letras ASCII"
   },
   fr: {
-    m_title: "Symboles à Copier-Coller - Sélecteur de Symboles Unicode ★ ← ∑ ♥",
+    m_title: "Symboles à Copier-Coller ★ ♥ → ∑ ← - Flèches, Maths et Plus | Gratuit",
     title: "Symboles à Copier-Coller",
-    meta: "Outil gratuit de symboles Unicode à copier-coller. Trouvez des flèches, des symboles mathématiques, des devises, des fractions et plus encore.",
+    meta: "Copiez-collez plus de 1 000 symboles Unicode gratuitement — flèches ←→, maths ∑√π, cœurs ♥, étoiles ★, devises €$, fractions ½¾ et lettres grecques. 25 catégories.",
     d1: "Parcourez 25 catégories comprenant des flèches, des symboles mathématiques, des devises, des lettres grecques, de la phonétique et des symboles musicaux. L'outil organise plus de 1 000 symboles prêts à être copiés et collés dans des documents, des réseaux sociaux, des présentations et d'autres applications.",
 
     category_label: "Sélectionnez une catégorie",
@@ -720,9 +721,9 @@ defineI18nRoute({
     see4: "Générateur de Lettres ASCII"
   },
   it: {
-    m_title: "Simboli da Copiare e Incollare - Selettore di Simboli Unicode ★ ← ∑ ♥",
+    m_title: "Simboli da Copiare e Incollare ★ ♥ → ∑ ← - Frecce, Matematica e Altro",
     title: "Simboli da Copiare e Incollare",
-    meta: "Strumento gratuito di simboli Unicode da copiare e incollare. Trova frecce, simboli matematici, valute, frazioni e altro ancora.",
+    meta: "Copia e incolla oltre 1.000 simboli Unicode gratis — frecce ←→, matematica ∑√π, cuori ♥, stelle ★, valute €$, frazioni ½¾ e lettere greche. 25 categorie.",
     d1: "Sfoglia 25 categorie che includono frecce, simboli matematici, valute, lettere greche, fonetica e simboli musicali. Lo strumento organizza oltre 1.000 simboli pronti per essere copiati e incollati in documenti, social network, presentazioni e altre app.",
 
     category_label: "Seleziona una categoria",
@@ -829,9 +830,9 @@ defineI18nRoute({
     see4: "Generatore di Lettere ASCII"
   },
   id: {
-    m_title: "Simbol untuk Disalin dan Ditempel - Pemilih Simbol Unicode ★ ← ∑ ♥",
+    m_title: "Simbol untuk Disalin dan Ditempel ★ ♥ → ∑ ← - Panah, Matematika & Lainnya",
     title: "Simbol untuk Disalin dan Ditempel",
-    meta: "Alat simbol Unicode gratis untuk disalin dan ditempel. Temukan panah, simbol matematika, mata uang, pecahan, dan banyak lagi.",
+    meta: "Salin dan tempel lebih dari 1.000 simbol Unicode gratis — panah ←→, matematika ∑√π, hati ♥, bintang ★, mata uang €$, pecahan ½¾ dan huruf Yunani. 25 kategori.",
     d1: "Jelajahi 25 kategori yang mencakup panah, simbol matematika, mata uang, huruf Yunani, fonetik, dan simbol musik. Alat ini mengatur lebih dari 1.000 simbol yang siap disalin dan ditempel ke dokumen, jejaring sosial, presentasi, dan aplikasi lainnya.",
 
     category_label: "Pilih kategori",
@@ -938,9 +939,9 @@ defineI18nRoute({
     see4: "Generator Huruf ASCII"
   },
   de: {
-    m_title: "Symbole zum Kopieren und Einfügen - Unicode-Symbol-Auswahl ★ ← ∑ ♥",
+    m_title: "Symbole Kopieren und Einfügen ★ ♥ → ∑ ← - Pfeile, Mathe & Mehr | Kostenlos",
     title: "Symbole zum Kopieren und Einfügen",
-    meta: "Kostenloses Unicode-Symbol-Tool zum Kopieren und Einfügen. Finden Sie Pfeile, mathematische Symbole, Währungen, Brüche und mehr.",
+    meta: "Über 1.000 Unicode-Symbole kostenlos kopieren und einfügen — Pfeile ←→, Mathematik ∑√π, Herzen ♥, Sterne ★, Währungen €$, Brüche ½¾ und griechische Buchstaben. 25 Kategorien.",
     d1: "Durchsuchen Sie 25 Kategorien mit Pfeilen, mathematischen Symbolen, Währungen, griechischen Buchstaben, Phonetik und musikalischen Symbolen. Das Tool organisiert über 1.000 Symbole, die sofort in Dokumente, soziale Netzwerke, Präsentationen und andere Apps kopiert und eingefügt werden können.",
 
     category_label: "Kategorie auswählen",
@@ -1047,9 +1048,9 @@ defineI18nRoute({
     see4: "ASCII-Buchstaben-Generator"
   },
   nl: {
-    m_title: "Symbolen om te kopiëren en plakken - Unicode-symboolkiezer ★ ← ∑ ♥",
+    m_title: "Symbolen Kopiëren en Plakken ★ ♥ → ∑ ← - Pijlen, Wiskunde & Meer",
     title: "Symbolen om te kopiëren en plakken",
-    meta: "Gratis Unicode-symbooltool om te kopiëren en plakken. Vind pijlen, wiskundige symbolen, valuta's, breuken en meer.",
+    meta: "Kopieer en plak meer dan 1.000 Unicode-symbolen gratis — pijlen ←→, wiskunde ∑√π, harten ♥, sterren ★, valuta €$, breuken ½¾ en Griekse letters. 25 categorieën.",
     d1: "Blader door 25 categorieën met pijlen, wiskundige symbolen, valuta's, Griekse letters, fonetiek en muzikale symbolen. De tool organiseert meer dan 1.000 symbolen die klaar zijn om te worden gekopieerd en geplakt in documenten, sociale netwerken, presentaties en andere apps.",
 
     category_label: "Selecteer een categorie",
@@ -1154,6 +1155,107 @@ defineI18nRoute({
     see2: "Mooie Letters",
     see3: "Tekstgenerator",
     see4: "ASCII-lettergenerator"
+  },
+  ru: {
+    m_title: "Символы для Копирования и Вставки ★ ♥ → ∑ ← - Стрелки, Математика и Многое Другое",
+    title: "Символы для Копирования и Вставки",
+    meta: "Копируйте и вставляйте более 1000 бесплатных символов Unicode — стрелки ←→, математику ∑√π, сердца ♥, звезды ★, валюты €$, дроби ½¾ и греческие буквы. 25 категорий.",
+    d1: "Изучите 25 категорий, включающих стрелки, математические символы, валюты, греческие буквы, фонетику и музыкальные знаки. Инструмент систематизирует более 1000 символов, готовых для копирования и вставки в документы, социальные сети, презентации и другие приложения.",
+    category_label: "Выберите категорию",
+    symbols_count: "символов",
+    recently_copied: "Недавно скопированные",
+    copied_announce: "Символ скопирован в буфер обмена",
+    results_label: "Сетка символов",
+    features_title: "Возможности",
+    f_1: "Широкий выбор: Более 1000 символов, распределенных по 25 категориям, от математики до декоративных значков.",
+    f_2: "Автоматическое сохранение: Ваши любимые символы сохраняются локально в браузере для быстрого доступа при следующих визитах.",
+    f_3: "Универсальная совместимость: Символы в нативном формате Unicode, гарантирующем корректную работу в любых системах, социальных сетях и документах.",
+    use_cases_title: "Где использовать символы Unicode",
+    uc_1_title: "Документы и академические тексты",
+    uc_1_desc: "Математические символы (∑ ∫ √ ≈), греческие буквы (α β γ) и дроби (½ ¾) незаменимы в научных статьях, формулах и технических отчетах. Вставляйте их прямо в любой текстовый редактор.",
+    uc_2_title: "Социальные сети и описание профиля",
+    uc_2_desc: "Используйте стрелки, звезды, сердца и декоративные элементы, чтобы выделить свою био в Instagram, TikTok или Twitter. Символы Unicode корректно отображаются во всех мобильных и веб-приложениях.",
+    uc_3_title: "Презентации и дизайн",
+    uc_3_desc: "Символы псевдографики (─ │ ╔ ╗) помогают создавать визуальные структуры в слайдах и документах. Предупреждающие (⚠ ⚡) и технические (⚙ ✂) символы делают информацию нагляднее.",
+    uc_4_title: "Программирование и markdown",
+    uc_4_desc: "Символы сравнения (≤ ≥ ≠), математические операторы и знаки типографики (— … «») улучшают комментарии к коду, техническую документацию и файлы README.",
+    how_it_works_title: "Как пользоваться",
+    hiw_1_title: "Выберите категорию",
+    hiw_1_desc: "Выберите нужную категорию в раскрывающемся меню.",
+    hiw_2_title: "Кликните на символ, чтобы скопировать",
+    hiw_2_desc: "Один клик на любой символ автоматически копирует его в буфер обмена.",
+    hiw_3_title: "Вставьте куда угодно",
+    hiw_3_desc: "Вставьте скопированный символ в нужное место: Word, Google Docs, WhatsApp, Instagram, электронное письмо, код или терминал.",
+    categories_title: "Доступные категории символов",
+    categories_intro: "Символы распределены по 25 категориям для удобства навигации:",
+    cat0: "Стрелки",
+    cat0_d: "Стрелки во всех направлениях и стилях для навигации, блок-схем и диаграмм.",
+    cat1: "Геометрические фигуры",
+    cat1_d: "Квадраты, треугольники, круги и другие фигуры для дизайна и визуального представления.",
+    cat2: "Звезды и декор",
+    cat2_d: "Звезды, завитки и декоративные орнаменты для выделения текста и дизайна.",
+    cat3: "Сердца",
+    cat3_d: "Различные варианты сердец для выражения чувств в сообщениях и публикациях.",
+    cat4: "Математика",
+    cat4_d: "Операторы, интегралы, корни и ключевые символы для математической нотации.",
+    cat5: "Сравнение",
+    cat5_d: "Знаки равенства, неравенства и отношения порядка для уравнений и логики.",
+    cat6: "Дроби",
+    cat6_d: "Дроби Unicode, готовые к использованию в тексте без необходимости специального форматирования.",
+    cat7: "Числа",
+    cat7_d: "Числа в кружках, подстрочные и надстрочные знаки для списков и технических записей.",
+    cat8: "Валюты",
+    cat8_d: "Символы валют со всего мира для финансовых документов и прайс-листов.",
+    cat9: "Знаки препинания и типографика",
+    cat9_d: "Тире, многоточия, специальные кавычки и типографские знаки для профессионального письма.",
+    cat10: "Права и торговые марки",
+    cat10_d: "Символы копирайта, зарегистрированной торговой марки, патента и юридические знаки для официальных документов.",
+    cat11: "Греческие буквы",
+    cat11_d: "Полный греческий алфавит (прописные и строчные буквы) для математики, физики и науки.",
+    cat12: "Фонетика",
+    cat12_d: "Символы Международного фонетического алфавита (МФА) для лингвистики и произношения.",
+    cat13: "Музыка и медиа",
+    cat13_d: "Музыкальные ноты и символы воспроизведения для контента, связанного с музыкой.",
+    cat14: "Группировка",
+    cat14_d: "Круглые, квадратные, фигурные скобки и специальные разделители для кода и математики.",
+    cat15: "Линии и рамки",
+    cat15_d: "Символы псевдографики для создания таблиц, рамок и визуальных структур в простом тексте.",
+    cat16: "Единицы измерения",
+    cat16_d: "Градусы, температура, единицы измерения и стандартизированные научные символы.",
+    cat17: "Люди и гендер",
+    cat17_d: "Символы гендера, идентичности и базовые смайлы.",
+    cat18: "Игры",
+    cat18_d: "Шахматные фигуры, игральные карты и кости для игр и хобби.",
+    cat19: "Религия и духовность",
+    cat19_d: "Религиозные и духовные символы различных традиций и культур.",
+    cat20: "Техника и предупреждения",
+    cat20_d: "Значки предупреждений, инструменты и технические символы для сигнализации и коммуникации.",
+    cat21: "Японские символы",
+    cat21_d: "Иероглифы и символы японской письменности для многоязычного контента.",
+    cat22: "Звездочки и орнаменты",
+    cat22_d: "Различные варианты звездочек и типографских орнаментов для сносок и украшения.",
+    cat23: "Зодиак и астрология",
+    cat23_d: "Знаки зодиака и планетарные символы для астрологии и астрономии.",
+    cat24: "Разное",
+    cat24_d: "Различные символы погоды, предметов и значки общего назначения.",
+    unicode_title: "Почему символы Unicode работают на любой платформе",
+    unicode_p1: "Символы Unicode — это стандартизированные текстовые символы, а не изображения. Это означает, что они работают на любом устройстве, операционной системе или приложении, поддерживающем текст: от Android до iPhone, от Windows до Mac, от Word до Google Docs, от Instagram до Discord. Когда вы копируете символ здесь и вставляете его в другом месте, результат всегда совместим.",
+    unicode_p2: "Внешний вид может незначительно отличаться в зависимости от платформы и шрифта, но сам символ является универсальным. Такие символы, как ∑, →, ♥ и €, распознаются во всем мире и корректно отображаются практически во всех современных контекстах.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Как копировать и вставлять специальные символы на компьютере?",
+    faq_1_a: "Перейдите на эту страницу, выберите нужную категорию и кликните на любой символ. Он автоматически скопируется в буфер обмена. Затем перейдите в нужное приложение или документ и вставьте его. Ничего устанавливать не нужно.",
+    faq_2_q: "Работают ли символы в Instagram, WhatsApp и других социальных сетях?",
+    faq_2_a: "Да. Все символы в этом инструменте являются символами Unicode и работают в Instagram, WhatsApp, TikTok, Twitter, Telegram, Discord и на любой платформе, принимающей текст. Просто скопируйте и вставьте непосредственно в свою био, подпись или сообщение.",
+    faq_3_q: "Могу ли я использовать математические символы в Word и Google Docs?",
+    faq_3_a: "Да. Символы, такие как ∑, ∫, √, ≤, ≥, π, и греческие буквы, такие как α и β, корректно вставляются в Microsoft Word, Google Docs, LibreOffice и любой текстовый редактор. Для академических и научных текстов это самый быстрый способ ввода математических обозначений.",
+    faq_4_q: "В чем разница между символами Unicode и специальными символами клавиатуры?",
+    faq_4_a: "Стандартная клавиатура предлагает всего около 100 символов. Unicode определяет более 140 000 символов, включая знаки всех языков мира, математики, музыки, валют и многого другого. Этот инструмент дает вам доступ к сотням таких символов, которых нет на обычной клавиатуре.",
+    faq_5_q: "Работают ли символы в темах писем и заголовках рассылок?",
+    faq_5_a: "Да, с некоторыми оговорками. Простые символы Unicode, такие как ★, →, ✓ и ♥, обычно корректно отображаются в большинстве современных почтовых клиентов.",
+    see1: "Выбор эмодзи",
+    see2: "Красивые шрифты",
+    see3: "Генератор текста",
+    see4: "Генератор ASCII-арта"
   }
 }
 </i18n>

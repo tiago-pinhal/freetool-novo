@@ -107,7 +107,8 @@ defineI18nRoute({
     it: '/convertitore-da-csv-a-json',
     id: '/konverter-csv-ke-json',
     de: '/csv-zu-json-konverter',
-    nl: '/csv-naar-json-converter'
+    nl: '/csv-naar-json-converter',
+    ru: '/konverter-csv-v-json'
   }
 })
 </script>
@@ -546,9 +547,9 @@ defineI18nRoute({
     f_4: "Tanpa pendaftaran atau instalasi"
   },
   de: {
-    m_title: "CSV-zu-JSON-Konverter Online - Kostenlos und Sofort",
+    m_title: "CSV in JSON umwandeln — Kostenlos Online",
     title: "CSV-zu-JSON-Konverter",
-    meta: "Konvertiere CSV kostenlos online in JSON. Füge deine CSV-Daten ein und erhalte sauberes, formatiertes JSON mit automatischer Typerkennung und Unterstützung für benutzerdefinierte Trennzeichen.",
+    meta: "CSV in JSON umwandeln — kostenlos und direkt im Browser. CSV-Text einfügen und sofort sauberes JSON erhalten, mit automatischer Typerkennung und wählbarem Trennzeichen.",
     d1: "Dieses Tool analysiert deinen CSV-Text und ordnet jede Zeile ihrem JSON-Äquivalent zu. Kopfzeilen werden zu Objektschlüsseln und Zeilen zu Objekten in einem JSON-Array, wobei die ursprüngliche Datenstruktur erhalten bleibt.",
     d2: "Die Konvertierung von CSV in JSON ist besonders nützlich, wenn tabellarische Daten in Webanwendungen integriert, Exporte aus Altsystemen migriert oder REST-APIs verwendet werden sollen, die JSON-Payloads erwarten.",
     bt: "Konvertieren",
@@ -636,6 +637,52 @@ defineI18nRoute({
     f_2: "Ondersteuning voor aangepaste scheidingstekens",
     f_3: "Automatische datatypedetectie",
     f_4: "Geen registratie of installatie vereist"
+  },
+  ru: {
+    m_title: "Конвертер CSV в JSON онлайн — бесплатно и мгновенно",
+    title: "Конвертер CSV в JSON",
+    meta: "Конвертируйте CSV в JSON онлайн бесплатно. Вставьте CSV и получите чистый отформатированный JSON с автоопределением типов данных и поддержкой пользовательских разделителей.",
+    d1: "Этот инструмент разбирает ваш текст CSV и преобразует каждую строку в соответствующий объект JSON. Заголовки столбцов становятся ключами объектов, а строки — объектами в массиве JSON, сохраняя исходную иерархию данных.",
+    d2: "Конвертация CSV в JSON особенно полезна при интеграции табличных данных в веб-приложения, миграции экспортированных файлов из устаревших баз данных или отправке данных в REST API, ожидающие формат JSON.",
+    bt: "Конвертировать",
+    rst: "Начать заново",
+    copy: "Копировать",
+    plc: "Вставьте текст CSV сюда или перетащите файл",
+    header: "Первая строка — заголовок",
+    delimiter: "Разделитель:",
+    comma: "Запятая",
+    semicolon: "Точка с запятой",
+    pipe: "Вертикальная черта (Pipe)",
+    tab: "Табуляция",
+    err: "Ошибка",
+    err_label: "Ошибка парсинга",
+    how_it_works_title: "Как это работает",
+    hiw_1_title: "Вставьте CSV",
+    hiw_1_desc: "Вставьте или перетащите файл CSV в редактор. Включите опцию заголовка, если первая строка содержит имена столбцов.",
+    hiw_2_title: "Настройте параметры",
+    hiw_2_desc: "Выберите разделитель, используемый в вашем файле, и укажите, является ли первая строка строкой заголовков.",
+    hiw_3_title: "Скопируйте JSON",
+    hiw_3_desc: "Нажмите «Конвертировать», чтобы мгновенно получить чистый массив JSON. Нажмите кнопку «Копировать», чтобы скопировать его в буфер обмена.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Миграция данных",
+    uc_1_desc: "Конвертируйте экспортированные файлы из старых баз данных и электронных таблиц в JSON для последующей загрузки в современные базы данных NoSQL.",
+    uc_2_title: "Интеграция с API",
+    uc_2_desc: "Преобразуйте табличные наборы данных в полезную нагрузку (payload) JSON для отправки на конечные точки REST API.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Отправляются ли мои данные CSV на сервер?",
+    faq_1_a: "Нет. Конвертация выполняется полностью внутри вашего браузера. Ваши данные никогда не покинут ваше устройство.",
+    faq_2_q: "Могу ли я использовать разделитель, отличный от запятой?",
+    faq_2_a: "Да. Вы можете выбрать запятую, точку с запятой, вертикальную черту или табуляцию в соответствии с форматом экспорта вашего файла.",
+    faq_3_q: "Определяет ли инструмент числа и логические (boolean) значения автоматически?",
+    faq_3_a: "Да. Парсер автоматически распознает целые числа, числа с плавающей запятой и логические значения true/false и выводит их в JSON без кавычек.",
+    see1: "JSON → CSV",
+    see2: "XML → JSON",
+    see3: "JSON → XML",
+    see4: "JSON Viewer",
+    f_1: "Мгновенная конвертация CSV в JSON",
+    f_2: "Поддержка пользовательских разделителей",
+    f_3: "Автоматическое определение типов данных",
+    f_4: "Не требуется регистрация или установка"
   }
 }
 </i18n>

@@ -104,7 +104,8 @@ defineI18nRoute({
     it: '/minificatore-html',
     id: '/html-minifier',
     de: '/html-minifier',
-    nl: '/html-minifier'
+    nl: '/html-minifier',
+    ru: '/minifikator-html'
   }
 })
 </script>
@@ -232,7 +233,7 @@ defineI18nRoute({
   en: {
     m_title: "HTML Minifier Online - Minify & Compress HTML for Free",
     title: "HTML Minifier",
-    meta: "Free online HTML minifier. Paste your HTML code and instantly compress it by removing whitespace, comments, and redundant attributes.",
+    meta: "Free online HTML minifier to minify HTML and compress code. Paste your HTML and instantly remove whitespace, comments, and redundant attributes.",
     d1: "This online HTML optimizer compresses your markup for production by stripping out whitespace, blank lines, comments, and redundant attributes. Any verbose or development-ready HTML is reduced to the smallest possible size in one click.",
     d2: "It also minifies inline CSS and JavaScript, collapses boolean attributes, and normalizes the doctype, making your pages load faster without changing how they render.",
     plc: "Paste the HTML code here or drag a file",
@@ -272,9 +273,9 @@ defineI18nRoute({
     f_4: "No registration or installation required"
   },
   pt: {
-    m_title: "Minificador de HTML Online - Minifique e Comprima HTML Grátis",
-    title: "Minificador de HTML",
-    meta: "Minifique HTML online e otimize seu código para produção removendo espaços, quebras de linha e comentários.",
+    m_title: "Minificador HTML Online - Minifique e Comprima HTML Grátis",
+    title: "Minificador HTML",
+    meta: "Minificador HTML online grátis para minificar e comprimir HTML. Cole o código e otimize-o removendo espaços, comentários e atributos redundantes.",
     d1: "Este minificador de HTML online comprime seu código para produção removendo espaços desnecessários, linhas em branco, quebras de linha, comentários e atributos redundantes. Qualquer HTML verboso é reduzido ao menor tamanho possível com um clique.",
     d2: "Ele também minifica CSS e JavaScript embutidos, colapsa atributos booleanos e normaliza o doctype, tornando suas páginas mais rápidas sem alterar a forma como são renderizadas.",
     plc: "Cole o código HTML aqui ou arraste um arquivo",
@@ -316,7 +317,7 @@ defineI18nRoute({
   es: {
     m_title: "Minificador HTML Online - Minifica y Comprime HTML Gratis",
     title: "Minificador HTML",
-    meta: "Minificador HTML online gratuito. Pega tu código HTML y comprímelo al instante eliminando espacios, comentarios y atributos redundantes.",
+    meta: "Minificador HTML online gratis para minificar y comprimir HTML. Pega tu código y elimina espacios, comentarios y atributos redundantes al instante.",
     d1: "Este minificador HTML online comprime tu código para producción eliminando espacios en blanco, líneas vacías, comentarios y atributos redundantes. Cualquier HTML verboso se reduce al menor tamaño posible con un clic.",
     d2: "También minifica CSS y JavaScript en línea, colapsa atributos booleanos y normaliza el doctype, haciendo que tus páginas carguen más rápido sin cambiar cómo se renderizan.",
     plc: "Pega el código HTML aquí o arrastra un archivo",
@@ -356,9 +357,9 @@ defineI18nRoute({
     f_4: "Sin necesidad de registro ni instalación"
   },
   fr: {
-    m_title: "Minificateur HTML en Ligne - Minifiez et Compressez HTML Gratuitement",
+    m_title: "Minify HTML - Minificateur HTML en Ligne Gratuit",
     title: "Minificateur HTML",
-    meta: "Minificateur HTML en ligne gratuit. Collez votre code HTML et compressez-le instantanément en supprimant les espaces, commentaires et attributs redondants.",
+    meta: "Minificateur HTML en ligne gratuit (minify HTML). Collez votre code et compressez-le instantanément en supprimant espaces, commentaires et attributs redondants.",
     d1: "Ce minificateur HTML en ligne compresse votre code pour la production en supprimant les espaces, les lignes vides, les commentaires et les attributs redondants. Tout HTML verbeux est réduit à la taille minimale possible en un clic.",
     d2: "Il minifie également le CSS et le JavaScript en ligne, réduit les attributs booléens et normalise le doctype, rendant vos pages plus rapides sans modifier leur rendu.",
     plc: "Collez le code HTML ici ou faites glisser un fichier",
@@ -398,9 +399,9 @@ defineI18nRoute({
     f_4: "Aucune inscription ou installation requise"
   },
   it: {
-    m_title: "Minificatore HTML Online - Minifica e Comprimi HTML Gratis",
+    m_title: "Minify HTML - Minificatore HTML Online Gratis",
     title: "Minificatore HTML",
-    meta: "Minificatore HTML online gratuito. Incolla il tuo codice HTML e comprimilo istantaneamente rimuovendo spazi, commenti e attributi ridondanti.",
+    meta: "Minificatore HTML online gratuito (minify HTML). Incolla il tuo codice e comprimilo istantaneamente rimuovendo spazi, commenti e attributi ridondanti.",
     d1: "Questo minificatore HTML online comprime il tuo codice per la produzione rimuovendo spazi bianchi, righe vuote, commenti e attributi ridondanti. Qualsiasi HTML prolisso viene ridotto alla dimensione minima possibile con un clic.",
     d2: "Minifica anche CSS e JavaScript inline, riduce gli attributi booleani e normalizza il doctype, rendendo le tue pagine più veloci senza modificarne il rendering.",
     plc: "Incolla il codice HTML qui o trascina un file",
@@ -440,9 +441,9 @@ defineI18nRoute({
     f_4: "Nessuna registrazione o installazione richiesta"
   },
   id: {
-    m_title: "Minifikasi HTML Online - Minifikasi & Kompresi HTML Gratis",
-    title: "Minifikasi HTML",
-    meta: "Minifikasi HTML online gratis. Tempelkan kode HTML Anda dan kompres secara instan dengan menghapus spasi, komentar, dan atribut berlebih.",
+    m_title: "HTML Minifier Online - Minifikasi & Kompresi HTML Gratis",
+    title: "HTML Minifier",
+    meta: "HTML minifier online gratis untuk minifikasi dan kompresi kode HTML. Tempel kode dan hapus spasi, komentar, serta atribut berlebih secara instan.",
     d1: "Minifikasi HTML online ini mengompres kode Anda untuk produksi dengan menghapus spasi kosong, baris kosong, komentar, dan atribut yang berlebih. Semua HTML yang panjang dikurangi ke ukuran terkecil yang mungkin dalam satu klik.",
     d2: "Alat ini juga meminifikasi CSS dan JavaScript inline, menyederhanakan atribut boolean, dan menormalkan doctype, sehingga halaman Anda memuat lebih cepat tanpa mengubah tampilannya.",
     plc: "Tempel kode HTML di sini atau seret file",
@@ -484,7 +485,7 @@ defineI18nRoute({
   de: {
     m_title: "HTML-Minifier Online – HTML kostenlos minifizieren & komprimieren",
     title: "HTML-Minifier",
-    meta: "Kostenloser Online-HTML-Minifier. Füge deinen HTML-Code ein und komprimiere ihn sofort, indem Leerzeichen, Kommentare und redundante Attribute entfernt werden.",
+    meta: "Kostenloser Online-HTML-Minifier zum HTML komprimieren und minifizieren. Füge deinen Code ein und entferne Leerzeichen, Kommentare und redundante Attribute.",
     d1: "Dieser Online-HTML-Minifier komprimiert dein Markup für den Produktionseinsatz, indem Leerzeichen, leere Zeilen, Kommentare und redundante Attribute entfernt werden. Ausführliches oder entwicklungsorientiertes HTML wird mit einem Klick auf die kleinstmögliche Größe reduziert.",
     d2: "Er minifiziert auch Inline-CSS und JavaScript, fasst boolesche Attribute zusammen und normalisiert den Doctype, sodass deine Seiten schneller laden, ohne die Darstellung zu verändern.",
     plc: "HTML-Code hier einfügen oder Datei hineinziehen",
@@ -524,9 +525,9 @@ defineI18nRoute({
     f_4: "Keine Registrierung oder Installation erforderlich"
   },
   nl: {
-    m_title: "HTML-minifier online – HTML gratis minifiëren & comprimeren",
-    title: "HTML-minifier",
-    meta: "Gratis online HTML-minifier. Plak je HTML-code en comprimeer deze direct door spaties, opmerkingen en overbodige attributen te verwijderen.",
+    m_title: "HTML Minifier Online – HTML gratis minifiëren & comprimeren",
+    title: "HTML Minifier",
+    meta: "Gratis online HTML minifier om HTML te minifiëren en comprimeren. Plak je code en verwijder spaties, opmerkingen en overbodige attributen in één klik.",
     d1: "Deze online HTML-minifier comprimeert je markup voor productie door witruimte, lege regels, opmerkingen en redundante attributen te verwijderen. Uitgebreide of ontwikkelgerichte HTML wordt met één klik tot de kleinst mogelijke grootte gereduceerd.",
     d2: "Hij minifieert ook inline CSS en JavaScript, vereenvoudigt booleaanse attributen en normaliseert de doctype, waardoor je pagina’s sneller laden zonder de weergave te veranderen.",
     plc: "Plak hier de HTML-code of sleep een bestand",
@@ -564,6 +565,48 @@ defineI18nRoute({
     f_2: "Verwijdert spaties, opmerkingen en overbodige attributen",
     f_3: "Minificatie van inline CSS en JavaScript",
     f_4: "Geen registratie of installatie vereist"
+  },
+  ru: {
+    m_title: "Минификатор HTML онлайн — сжатие и минификация HTML бесплатно",
+    title: "Минификатор HTML",
+    meta: "Бесплатный онлайн-минификатор HTML для оптимизации разметки. Вставьте свой HTML-код, чтобы мгновенно удалить лишние пробелы, комментарии и избыточные атрибуты.",
+    d1: "Этот онлайн-оптимизатор HTML сжимает ваш код для продакшена, удаляя пробелы, пустые строки, комментарии и избыточные атрибуты. Любой раздутый или написанный для разработки HTML сокращается до минимально возможного размера всего за один клик.",
+    d2: "Он также минифицирует встроенные стили CSS и скрипты JavaScript, сокращает логические (boolean) атрибуты и нормализует doctype, благодаря чему ваши страницы загружаются быстрее без изменения их внешнего вида.",
+    plc: "Вставьте код HTML сюда или перетащите файл",
+    bt: "Минифицировать HTML",
+    rst: "Начать заново",
+    copy: "Копировать",
+    err: "Ошибка",
+    err_label: "Не удалось минифицировать HTML",
+    how_it_works_title: "Как это работает",
+    hiw_1_title: "Вставьте ваш HTML",
+    hiw_1_desc: "Скопируйте и вставьте исходный HTML-код в редактор.",
+    hiw_2_title: "Нажмите «Минифицировать»",
+    hiw_2_desc: "Нажмите кнопку «Минифицировать HTML», и инструмент мгновенно сожмет код.",
+    hiw_3_title: "Скопируйте результат",
+    hiw_3_desc: "Скопируйте сжатый HTML или начните заново с новым кодом.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Развертывание в продакшене",
+    uc_1_desc: "Сократите размер HTML-файлов перед публикацией на сервере для ускорения загрузки и экономии трафика.",
+    uc_2_title: "Оптимизация шаблонов",
+    uc_2_desc: "Минифицируйте HTML-шаблоны в веб-приложениях или шаблонах рассылок для повышения производительности и доставляемости писем.",
+    uc_3_title: "Lighthouse и Core Web Vitals",
+    uc_3_desc: "Уменьшение размера HTML-кода напрямую сокращает время до первого байта (TTFB) и улучшает показатели First Contentful Paint.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Отправляется ли мой HTML-код на какой-либо сервер?",
+    faq_1_a: "Нет. Сжатие выполняется полностью в вашем браузере. Ваш код никогда не покидает ваше устройство.",
+    faq_2_q: "Может ли минификация сломать мой HTML?",
+    faq_2_a: "Нет. Минификатор удаляет только лишние пробелы, комментарии и избыточные атрибуты, которые не влияют на отображение страницы. Результат функционально идентичен оригиналу.",
+    faq_3_q: "Что произойдет, если в моем HTML будут синтаксические ошибки?",
+    faq_3_a: "Если HTML не удастся проанализировать, инструмент выведет сообщение об ошибке, чтобы вы могли локализовать и исправить проблему перед сжатием.",
+    see1: "Минификатор CSS",
+    see2: "Минификатор JavaScript",
+    see3: "Форматтер HTML",
+    see4: "Форматтер JavaScript",
+    f_1: "Мгновенное сжатие и минификация HTML",
+    f_2: "Удаление пробелов, комментариев и избыточных атрибутов",
+    f_3: "Минификация встроенных CSS и JavaScript",
+    f_4: "Не требуется регистрация или установка"
   }
 }
 </i18n>

@@ -3,6 +3,56 @@ useScript('https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js', { trigger:
 
 const { t } = useI18n({ useScope: 'local' })
 
+// ---------------------------------------------------------------------------
+// Reference years for the static SEO "Examples" section.
+// These capture the long-tail cluster "born in X, how old am I" without
+// requiring user interaction. Rendered on the server so search engines
+// can index the computed ages.
+// ---------------------------------------------------------------------------
+const EXAMPLE_YEARS = [1990, 2000, 2005, 2010] as const
+
+interface ExampleAge {
+  year: number
+  years: number
+  yearsNextBirthday: number
+}
+
+/**
+ * Compute the current age (in completed years) for a given birth year,
+ * assuming birth date is January 1st of that year. Pure function that
+ * works in both SSR and client environments — no moment.js dependency.
+ */
+function computeAgeFromYear(birthYear: number, today: Date): ExampleAge {
+  const birth = new Date(Date.UTC(birthYear, 0, 1))
+  const todayUtc = new Date(Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()))
+
+  let years = todayUtc.getUTCFullYear() - birth.getUTCFullYear()
+
+  // Adjust if the anniversary hasn't happened yet this year.
+  const hasHadBirthday =
+    todayUtc.getUTCMonth() > birth.getUTCMonth() ||
+    (todayUtc.getUTCMonth() === birth.getUTCMonth() && todayUtc.getUTCDate() >= birth.getUTCDate())
+
+  if (!hasHadBirthday) years -= 1
+
+  return {
+    year: birthYear,
+    years,
+    yearsNextBirthday: years + 1
+  }
+}
+
+// Computed once at setup time. The 1-day staleness between SSR and client
+// hydration is irrelevant for age display, and useState ensures SSR/CSR
+// consistency without hydration mismatches.
+const examples = useState<ExampleAge[]>('age-calc-examples', () => {
+  const now = new Date()
+  return EXAMPLE_YEARS.map(year => computeAgeFromYear(year, now))
+})
+
+// ---------------------------------------------------------------------------
+// Interactive calculator state (unchanged behavior).
+// ---------------------------------------------------------------------------
 const state = reactive({
   dt: '',
   decompYears: 0,
@@ -63,7 +113,11 @@ usePageJsonLd({
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
     { question: t('faq_2_q'), answer: t('faq_2_a') },
-    { question: t('faq_3_q'), answer: t('faq_3_a') }
+    { question: t('faq_3_q'), answer: t('faq_3_a') },
+    { question: t('faq_4_q'), answer: t('faq_4_a') },
+    { question: t('faq_5_q'), answer: t('faq_5_a') },
+    { question: t('faq_6_q'), answer: t('faq_6_a') },
+    { question: t('faq_7_q'), answer: t('faq_7_a') }
   ]
 })
 
@@ -81,7 +135,8 @@ defineI18nRoute({
     it: '/calcolatrice-dell-eta',
     id: '/kalkulator-usia',
     de: '/alter-rechner',
-    nl: '/leeftijdscalculator'
+    nl: '/leeftijdscalculator',
+    ru: '/kalkulyator-vozrasta'
   }
 })
 </script>
@@ -204,12 +259,34 @@ defineI18nRoute({
           ]"
         />
 
+        <!-- Examples section: SSR-rendered for SEO long-tail capture -->
+        <section>
+          <h2 class="text-xl font-bold mb-2">{{ t('examples_title') }}</h2>
+          <p class="mb-4 text-base-content/80">{{ t('examples_intro') }}</p>
+          <ul class="space-y-2">
+            <li
+              v-for="ex in examples"
+              :key="ex.year"
+              class="bg-base-200/50 border border-base-content/10 rounded-lg px-4 py-3"
+            >
+              <strong>{{ t('examples_item_q', { year: ex.year }) }}</strong>
+              <span class="block text-base-content/80 mt-1">
+                {{ t('examples_item_a', { years: ex.years, yearsNext: ex.yearsNextBirthday }) }}
+              </span>
+            </li>
+          </ul>
+        </section>
+
         <FaqSection
           :title="t('faq_title')"
           :items="[
             { question: t('faq_1_q'), answer: t('faq_1_a') },
             { question: t('faq_2_q'), answer: t('faq_2_a') },
-            { question: t('faq_3_q'), answer: t('faq_3_a') }
+            { question: t('faq_3_q'), answer: t('faq_3_a') },
+            { question: t('faq_4_q'), answer: t('faq_4_a') },
+            { question: t('faq_5_q'), answer: t('faq_5_a') },
+            { question: t('faq_6_q'), answer: t('faq_6_a') },
+            { question: t('faq_7_q'), answer: t('faq_7_a') }
           ]"
         />
       </div>
@@ -222,7 +299,7 @@ defineI18nRoute({
   en: {
     pageTitle: "Age Calculator - How Old Am I?",
     title: "Age Calculator",
-    meta: "Free online age calculator. Enter your date of birth and instantly discover your exact age in years, months, weeks, and days.",
+    meta: "Find out how old you are with this free age calculator. Enter your date of birth and instantly see your exact age in years, months, weeks, and days.",
     dt: "Date of birth",
     age: "Your age",
     or: "or",
@@ -264,6 +341,10 @@ defineI18nRoute({
     step_2_desc: "Your age is calculated automatically as soon as you select a date.",
     step_3_title: "See Results",
     step_3_desc: "View your age broken down into years, months, weeks, and days, plus alternative representations.",
+    examples_title: "Common Examples",
+    examples_intro: "A quick reference for those wondering how old they are based on common birth years. The values below are updated automatically.",
+    examples_item_q: "If you were born in {year}, how old are you?",
+    examples_item_a: "You are currently {years} years old, or {yearsNext} if you have already had your birthday this year.",
     faq_title: "Questions and Answers",
     faq_1_q: "How is the age calculated?",
     faq_1_a: "We calculate the exact difference between your birth date and today, decomposed into years, months, weeks, and days.",
@@ -271,6 +352,14 @@ defineI18nRoute({
     faq_2_a: "Yes. It uses precise date arithmetic that accounts for leap years and varying month lengths.",
     faq_3_q: "What does 'or...' mean in the results?",
     faq_3_a: "It shows alternative ways to express your age, for example your total age expressed entirely in months or entirely in weeks.",
+    faq_4_q: "How do I find out how old I am from my date of birth?",
+    faq_4_a: "Simply enter your date of birth in the field above. The calculator instantly compares it with today's date and shows the result in years, months, weeks, and days.",
+    faq_5_q: "Does the calculator work for any age?",
+    faq_5_a: "Yes. It works for any birth date in the past, from young children to centenarians. The only restriction is that the date entered must be earlier than today.",
+    faq_6_q: "Can I calculate the age on a specific date instead of today?",
+    faq_6_a: "This calculator uses today's date as a reference. To compare two arbitrary dates, use our date difference tool, which returns the interval between any two dates.",
+    faq_7_q: "Why does the result show weeks and days separately?",
+    faq_7_a: "Breaking the age down into years, months, weeks, and days provides a more complete view than the year number alone. It is useful for monitoring babies, anniversaries, and personal milestones.",
     see1: "Birthday Generator",
     see2: "Date Difference",
     see3: "Future Date Calculator",
@@ -279,7 +368,7 @@ defineI18nRoute({
   pt: {
     pageTitle: "Calculadora de Idade - Quantos Anos Eu Tenho?",
     title: "Calculadora de Idade",
-    meta: "Calculadora de idade online grátis. Descubra sua idade exata em anos, meses, semanas e dias a partir da sua data de nascimento.",
+    meta: "Descubra quantos anos você tem com esta calculadora de idade online grátis. Informe sua data de nascimento e veja sua idade exata em anos, meses, semanas e dias.",
     dt: "Data de nascimento",
     age: "Sua idade",
     or: "ou",
@@ -321,14 +410,26 @@ defineI18nRoute({
     step_2_desc: "Sua idade é calculada automaticamente assim que você selecionar uma data.",
     step_3_title: "Veja o Resultado",
     step_3_desc: "Visualize sua idade em anos, meses, semanas e dias, além de representações alternativas.",
+    examples_title: "Exemplos Comuns",
+    examples_intro: "Uma referência rápida para quem quer saber quantos anos tem com base em anos de nascimento comuns. Os valores abaixo são atualizados automaticamente.",
+    examples_item_q: "Se eu nasci em {year}, quantos anos eu tenho?",
+    examples_item_a: "Você tem atualmente {years} anos, ou {yearsNext} se já fez aniversário este ano.",
     faq_title: "Perguntas e Respostas",
     faq_1_q: "Como a idade é calculada?",
     faq_1_a: "Calculamos a diferença exata entre sua data de nascimento e hoje, decomposta em anos, meses, semanas e dias.",
     faq_2_q: "A calculadora é precisa?",
-    faq_2_a: "Sim. Utiliza aritmética de datas precisa, considerando anos bissextos e a variação no número de dias dos meses.",
+    faq_2_a: "Sim. Ela usa aritmética de datas precisa que considera anos bissextos e meses com durações diferentes.",
     faq_3_q: "O que significa 'ou...' nos resultados?",
-    faq_3_a: "Exibe formas alternativas de expressar sua idade, por exemplo, sua idade total expressa apenas em meses ou apenas em semanas.",
-    see1: "Data de Nascimento",
+    faq_3_a: "Mostra formas alternativas de expressar sua idade, por exemplo o total expresso apenas em meses ou apenas em semanas.",
+    faq_4_q: "Como saber quantos anos eu tenho a partir da data de nascimento?",
+    faq_4_a: "Basta informar sua data de nascimento no campo acima. A calculadora compara com a data de hoje e mostra o resultado em anos, meses, semanas e dias instantaneamente.",
+    faq_5_q: "A calculadora funciona para qualquer idade?",
+    faq_5_a: "Sim. Funciona para qualquer data de nascimento no passado, de crianças pequenas a centenários. A única restrição é que a data informada precisa ser anterior à data atual.",
+    faq_6_q: "Posso calcular a idade em uma data específica em vez de hoje?",
+    faq_6_a: "Esta calculadora usa a data de hoje como referência. Para comparar duas datas quaisquer, utilize nossa ferramenta de diferença entre datas, que retorna o intervalo entre duas datas arbitrárias.",
+    faq_7_q: "Por que o resultado mostra semanas e dias separadamente?",
+    faq_7_a: "Decompor a idade em anos, meses, semanas e dias oferece uma visão mais completa do que apenas o número de anos. É útil para acompanhar bebês, aniversários e marcos pessoais.",
+    see1: "Gerador de Aniversário",
     see2: "Diferença entre Datas",
     see3: "Calculadora de Data Futura",
     see4: "Calculadora de Data Passada"
@@ -336,12 +437,12 @@ defineI18nRoute({
   es: {
     pageTitle: "Calculadora de Edad - ¿Cuántos Años Tengo?",
     title: "Calculadora de Edad",
-    meta: "Calculadora de edad online gratuita. Descubre tu edad exacta en años, meses, semanas y días desde tu fecha de nacimiento.",
+    meta: "Descubre cuántos años tienes con esta calculadora de edad online gratuita. Introduce tu fecha de nacimiento y consulta al instante tu edad exacta en años, meses, semanas y días.",
     dt: "Fecha de nacimiento",
     age: "Tu edad",
     or: "o",
-    err: "Ingresa una fecha anterior a hoy",
-    placeholder: "Ingresa tu fecha de nacimiento",
+    err: "Introduce una fecha anterior a hoy",
+    placeholder: "Introduce tu fecha de nacimiento",
     years: "año|años",
     months: "mes|meses",
     weeks: "semana|semanas",
@@ -350,9 +451,9 @@ defineI18nRoute({
     months_label: "Meses",
     weeks_label: "Semanas",
     days_label: "Días",
-    total_months_label: "Total en Meses",
-    total_weeks_label: "Total en Semanas",
-    total_days_label: "Total en Días",
+    total_months_label: "Total Meses",
+    total_weeks_label: "Total Semanas",
+    total_days_label: "Total Días",
     week_day: "Día de la semana",
     day_0: "Domingo",
     day_1: "Lunes",
@@ -361,44 +462,56 @@ defineI18nRoute({
     day_4: "Jueves",
     day_5: "Viernes",
     day_6: "Sábado",
-    desc: "Esta calculadora de edad gratuita calcula con precisión cuánto tiempo de vida tienes con base en tu fecha de nacimiento. El resultado va más allá de un simple número de años: se presenta de forma completa, con la edad descompuesta en años, meses, semanas y días, y también en unidades totales, como cuántos meses o cuántos días has vivido.",
+    desc: "Esta calculadora de edad gratuita calcula con precisión cuánto tiempo has vivido a partir de tu fecha de nacimiento. El resultado va más allá de un simple número de años: se presenta de forma completa, con la edad descompuesta en años, meses, semanas y días, y también en unidades totales, como cuántos meses o días has vivido.",
     use_cases_title: "Casos de Uso",
     uc_1_title: "Conoce Tu Edad Exacta",
-    uc_1_desc: "Descubre exactamente cuántos años, meses, semanas y días tienes.",
+    uc_1_desc: "Descubre con precisión cuántos años, meses, semanas y días tienes.",
     uc_2_title: "Calcular la Edad de Cualquier Persona",
-    uc_2_desc: "Ingresa cualquier fecha de nacimiento para conocer la edad exacta de un hijo, padre, paciente o cliente.",
+    uc_2_desc: "Introduce cualquier fecha de nacimiento para conocer la edad exacta de un hijo, padre, paciente o cliente.",
     uc_3_title: "Documentos Oficiales",
     uc_3_desc: "Verifica rápidamente tu edad para formularios, contratos o servicios con restricción de edad.",
     uc_4_title: "Salud y Bienestar",
-    uc_4_desc: "Sigue los hitos relacionados con la edad y los indicadores de salud con precisión.",
+    uc_4_desc: "Sigue hitos relacionados con la edad e indicadores de salud con precisión.",
     how_it_works_title: "Cómo Funciona",
     step_1_title: "Introduce la Fecha de Nacimiento",
-    step_1_desc: "Selecciona tu fecha de nacimiento usando el campo de fecha.",
+    step_1_desc: "Selecciona tu fecha de nacimiento utilizando el campo de fecha.",
     step_2_title: "Cálculo Instantáneo",
     step_2_desc: "Tu edad se calcula automáticamente en cuanto seleccionas una fecha.",
-    step_3_title: "Ver Resultados",
-    step_3_desc: "Visualiza tu edad en años, meses, semanas y días, más representaciones alternativas.",
+    step_3_title: "Consulta los Resultados",
+    step_3_desc: "Visualiza tu edad en años, meses, semanas y días, además de representaciones alternativas.",
+    examples_title: "Ejemplos Comunes",
+    examples_intro: "Una referencia rápida para quienes quieren saber cuántos años tienen a partir de años de nacimiento comunes. Los valores siguientes se actualizan automáticamente.",
+    examples_item_q: "Si nací en {year}, ¿cuántos años tengo?",
+    examples_item_a: "Actualmente tienes {years} años, o {yearsNext} si ya cumpliste años este año.",
     faq_title: "Preguntas y Respuestas",
     faq_1_q: "¿Cómo se calcula la edad?",
     faq_1_a: "Calculamos la diferencia exacta entre tu fecha de nacimiento y hoy, descompuesta en años, meses, semanas y días.",
-    faq_2_q: "¿Es precisa la calculadora?",
-    faq_2_a: "Sí. Utiliza aritmética de fechas precisa que tiene en cuenta los años bisiestos y los meses con diferente número de días.",
+    faq_2_q: "¿Esta calculadora es precisa?",
+    faq_2_a: "Sí. Utiliza aritmética de fechas precisa que tiene en cuenta los años bisiestos y los meses de duración variable.",
     faq_3_q: "¿Qué significa 'o...' en los resultados?",
     faq_3_a: "Muestra formas alternativas de expresar tu edad, por ejemplo tu edad total expresada solo en meses o solo en semanas.",
-    see1: "Fecha de Nacimiento",
+    faq_4_q: "¿Cómo saber cuántos años tengo a partir de mi fecha de nacimiento?",
+    faq_4_a: "Solo introduce tu fecha de nacimiento en el campo de arriba. La calculadora la compara con la fecha de hoy y muestra el resultado en años, meses, semanas y días al instante.",
+    faq_5_q: "¿La calculadora funciona para cualquier edad?",
+    faq_5_a: "Sí. Funciona para cualquier fecha de nacimiento en el pasado, desde niños pequeños hasta centenarios. La única restricción es que la fecha introducida sea anterior a la fecha actual.",
+    faq_6_q: "¿Puedo calcular la edad en una fecha específica en lugar de hoy?",
+    faq_6_a: "Esta calculadora usa la fecha de hoy como referencia. Para comparar dos fechas cualesquiera, utiliza nuestra herramienta de diferencia entre fechas, que devuelve el intervalo entre dos fechas arbitrarias.",
+    faq_7_q: "¿Por qué el resultado muestra semanas y días por separado?",
+    faq_7_a: "Descomponer la edad en años, meses, semanas y días ofrece una visión más completa que solo el número de años. Es útil para hacer seguimiento de bebés, aniversarios e hitos personales.",
+    see1: "Generador de Cumpleaños",
     see2: "Diferencia entre Fechas",
     see3: "Calculadora de Fecha Futura",
     see4: "Calculadora de Fecha Pasada"
   },
   fr: {
-    pageTitle: "Calculateur d'Âge - Quel Âge Ai-Je ?",
+    pageTitle: "Calculateur d'Âge - Quel Âge Ai-je?",
     title: "Calculateur d'Âge",
-    meta: "Calculateur d'âge en ligne gratuit. Entrez votre date de naissance et découvrez instantanément votre âge exact en années, mois, semaines et jours.",
+    meta: "Découvrez quel âge vous avez avec ce calculateur d'âge en ligne gratuit. Saisissez votre date de naissance et obtenez instantanément votre âge exact en années, mois, semaines et jours.",
     dt: "Date de naissance",
     age: "Votre âge",
     or: "ou",
-    err: "Veuillez entrer une date antérieure à aujourd'hui",
-    placeholder: "Entrez votre date de naissance",
+    err: "Veuillez saisir une date antérieure à aujourd'hui",
+    placeholder: "Saisissez votre date de naissance",
     years: "an|ans",
     months: "mois|mois",
     weeks: "semaine|semaines",
@@ -407,9 +520,9 @@ defineI18nRoute({
     months_label: "Mois",
     weeks_label: "Semaines",
     days_label: "Jours",
-    total_months_label: "Total en Mois",
-    total_weeks_label: "Total en Semaines",
-    total_days_label: "Total en Jours",
+    total_months_label: "Total Mois",
+    total_weeks_label: "Total Semaines",
+    total_days_label: "Total Jours",
     week_day: "Jour de la semaine",
     day_0: "Dimanche",
     day_1: "Lundi",
@@ -418,7 +531,7 @@ defineI18nRoute({
     day_4: "Jeudi",
     day_5: "Vendredi",
     day_6: "Samedi",
-    desc: "Cette calculatrice d'âge gratuite calcule avec précision le temps de vie que vous avez vécu en fonction de votre date de naissance. Le résultat va bien au-delà d'un simple nombre d'années : il est présenté de manière complète, avec l'âge décomposé en années, mois, semaines et jours, ainsi qu'en unités totales, comme le nombre de mois ou de jours que vous avez vécus.",
+    desc: "Ce calculateur d'âge gratuit calcule précisément depuis combien de temps vous vivez à partir de votre date de naissance. Le résultat va bien au-delà d'un simple nombre d'années : il est présenté de manière complète, avec l'âge décomposé en années, mois, semaines et jours, ainsi qu'en unités totales, comme le nombre de mois ou de jours que vous avez vécus.",
     use_cases_title: "Cas d'Utilisation",
     uc_1_title: "Connaître Votre Âge Exact",
     uc_1_desc: "Découvrez précisément votre âge en années, mois, semaines et jours.",
@@ -435,6 +548,10 @@ defineI18nRoute({
     step_2_desc: "Votre âge est calculé automatiquement dès que vous sélectionnez une date.",
     step_3_title: "Voir les Résultats",
     step_3_desc: "Visualisez votre âge en années, mois, semaines et jours, ainsi que des représentations alternatives.",
+    examples_title: "Exemples Courants",
+    examples_intro: "Une référence rapide pour ceux qui se demandent quel âge ils ont en fonction d'années de naissance courantes. Les valeurs ci-dessous sont mises à jour automatiquement.",
+    examples_item_q: "Si je suis né en {year}, quel âge ai-je ?",
+    examples_item_a: "Vous avez actuellement {years} ans, ou {yearsNext} si vous avez déjà fêté votre anniversaire cette année.",
     faq_title: "Questions et Réponses",
     faq_1_q: "Comment l'âge est-il calculé ?",
     faq_1_a: "Nous calculons la différence exacte entre votre date de naissance et aujourd'hui, décomposée en années, mois, semaines et jours.",
@@ -442,7 +559,15 @@ defineI18nRoute({
     faq_2_a: "Oui. Il utilise une arithmétique de dates précise qui tient compte des années bissextiles et des mois de longueurs variables.",
     faq_3_q: "Que signifie 'ou...' dans les résultats ?",
     faq_3_a: "Cela montre des façons alternatives d'exprimer votre âge, par exemple votre âge total exprimé uniquement en mois ou en semaines.",
-    see1: "Date de Naissance",
+    faq_4_q: "Comment savoir quel âge j'ai à partir de ma date de naissance ?",
+    faq_4_a: "Il suffit de saisir votre date de naissance dans le champ ci-dessus. Le calculateur la compare à la date du jour et affiche instantanément le résultat en années, mois, semaines et jours.",
+    faq_5_q: "Le calculateur fonctionne-t-il pour tout âge ?",
+    faq_5_a: "Oui. Il fonctionne pour toute date de naissance passée, des jeunes enfants aux centenaires. La seule restriction est que la date saisie doit être antérieure à la date actuelle.",
+    faq_6_q: "Puis-je calculer l'âge à une date précise au lieu d'aujourd'hui ?",
+    faq_6_a: "Ce calculateur utilise la date du jour comme référence. Pour comparer deux dates quelconques, utilisez notre outil de différence entre dates, qui retourne l'intervalle entre deux dates arbitraires.",
+    faq_7_q: "Pourquoi le résultat affiche-t-il les semaines et les jours séparément ?",
+    faq_7_a: "Décomposer l'âge en années, mois, semaines et jours offre une vision plus complète que le simple nombre d'années. C'est utile pour suivre les bébés, les anniversaires et les jalons personnels.",
+    see1: "Générateur de Date de Naissance",
     see2: "Différence entre Dates",
     see3: "Calculatrice de Date Future",
     see4: "Calculatrice de Date Passée"
@@ -450,7 +575,7 @@ defineI18nRoute({
   it: {
     pageTitle: "Calcolatrice dell'Età - Quanti Anni Ho?",
     title: "Calcolatrice dell'Età",
-    meta: "Calcolatrice dell'età online gratuita. Inserisci la tua data di nascita e scopri istantaneamente la tua età esatta in anni, mesi, settimane e giorni.",
+    meta: "Scopri quanti anni hai con questa calcolatrice dell'età online gratuita. Inserisci la tua data di nascita e visualizza immediatamente la tua età esatta in anni, mesi, settimane e giorni.",
     dt: "Data di nascita",
     age: "La tua età",
     or: "o",
@@ -492,22 +617,34 @@ defineI18nRoute({
     step_2_desc: "La tua età viene calcolata automaticamente non appena selezioni una data.",
     step_3_title: "Visualizza i Risultati",
     step_3_desc: "Visualizza la tua età in anni, mesi, settimane e giorni, più rappresentazioni alternative.",
+    examples_title: "Esempi Comuni",
+    examples_intro: "Un riferimento rapido per chi vuole sapere quanti anni ha in base ad anni di nascita comuni. I valori riportati di seguito si aggiornano automaticamente.",
+    examples_item_q: "Se sono nato nel {year}, quanti anni ho?",
+    examples_item_a: "Attualmente hai {years} anni, o {yearsNext} se hai già compiuto gli anni quest'anno.",
     faq_title: "Domande e Risposte",
     faq_1_q: "Come viene calcolata l'età?",
     faq_1_a: "Calcoliamo la differenza esatta tra la tua data di nascita e oggi, scomposta in anni, mesi, settimane e giorni.",
     faq_2_q: "Questa calcolatrice è accurata?",
-    faq_2_a: "Sì. Utilizza un'aritmetica delle date precisa che tiene conto degli anni bisestili e dei mesi di lunghezza variabile.",
+    faq_2_a: "Sì. Utilizza un'aritmetica delle date precisa che tiene conto degli anni bisestili e delle diverse durate dei mesi.",
     faq_3_q: "Cosa significa 'o...' nei risultati?",
-    faq_3_a: "Mostra modi alternativi per esprimere la tua età, ad esempio la tua età totale espressa solo in mesi o solo in settimane.",
-    see1: "Data di Nascita",
+    faq_3_a: "Mostra modi alternativi per esprimere la tua età, ad esempio la tua età totale espressa interamente in mesi o in settimane.",
+    faq_4_q: "Come faccio a sapere quanti anni ho a partire dalla mia data di nascita?",
+    faq_4_a: "È sufficiente inserire la tua data di nascita nel campo qui sopra. La calcolatrice la confronta con la data odierna e mostra immediatamente il risultato in anni, mesi, settimane e giorni.",
+    faq_5_q: "La calcolatrice funziona per qualsiasi età?",
+    faq_5_a: "Sì. Funziona per qualsiasi data di nascita nel passato, dai bambini piccoli ai centenari. L'unica restrizione è che la data inserita sia precedente alla data attuale.",
+    faq_6_q: "Posso calcolare l'età a una data specifica invece di oggi?",
+    faq_6_a: "Questa calcolatrice usa la data di oggi come riferimento. Per confrontare due date qualsiasi, utilizza il nostro strumento di differenza tra date, che restituisce l'intervallo tra due date arbitrarie.",
+    faq_7_q: "Perché il risultato mostra separatamente settimane e giorni?",
+    faq_7_a: "Scomporre l'età in anni, mesi, settimane e giorni offre una visione più completa rispetto al solo numero di anni. È utile per monitorare neonati, anniversari e tappe personali.",
+    see1: "Generatore di Compleanno",
     see2: "Differenza tra Date",
-    see3: "Calcolatrice di Data Futura",
-    see4: "Calcolatrice di Data Passata"
+    see3: "Calcolatrice Data Futura",
+    see4: "Calcolatrice Data Passata"
   },
   id: {
     pageTitle: "Kalkulator Usia - Berapa Umur Saya?",
     title: "Kalkulator Usia",
-    meta: "Kalkulator usia online gratis. Masukkan tanggal lahir Anda dan temukan usia tepat Anda dalam tahun, bulan, minggu, dan hari secara instan.",
+    meta: "Cari tahu berapa umur Anda dengan kalkulator usia online gratis ini. Masukkan tanggal lahir Anda dan lihat usia pasti dalam tahun, bulan, minggu, dan hari secara instan.",
     dt: "Tanggal lahir",
     age: "Usia Anda",
     or: "atau",
@@ -524,7 +661,7 @@ defineI18nRoute({
     total_months_label: "Total Bulan",
     total_weeks_label: "Total Minggu",
     total_days_label: "Total Hari",
-    week_day: "Hari dalam seminggu",
+    week_day: "Hari dalam minggu",
     day_0: "Minggu",
     day_1: "Senin",
     day_2: "Selasa",
@@ -532,10 +669,10 @@ defineI18nRoute({
     day_4: "Kamis",
     day_5: "Jumat",
     day_6: "Sabtu",
-    desc: "Kalkulator usia gratis ini menghitung dengan tepat berapa lama Anda telah hidup berdasarkan tanggal lahir Anda. Hasilnya lebih dari sekadar angka tahun: disajikan secara lengkap, dengan usia yang diuraikan dalam tahun, bulan, minggu, dan hari, serta dalam unit total, seperti berapa bulan atau berapa hari yang telah Anda jalani.",
+    desc: "Kalkulator usia gratis ini menghitung secara akurat berapa lama Anda telah hidup berdasarkan tanggal lahir. Hasilnya melampaui sekadar jumlah tahun: ditampilkan secara lengkap, dengan usia diuraikan dalam tahun, bulan, minggu, dan hari, juga dalam satuan total, seperti berapa bulan atau berapa hari Anda telah hidup.",
     use_cases_title: "Kasus Penggunaan",
     uc_1_title: "Ketahui Usia Tepat Anda",
-    uc_1_desc: "Temukan dengan tepat berapa tahun, bulan, minggu, dan hari usia Anda.",
+    uc_1_desc: "Cari tahu dengan tepat berapa tahun, bulan, minggu, dan hari usia Anda.",
     uc_2_title: "Hitung Usia Siapa Saja",
     uc_2_desc: "Masukkan tanggal lahir siapa pun untuk mengetahui usia tepat anak, orang tua, pasien, atau klien.",
     uc_3_title: "Dokumen Resmi",
@@ -549,6 +686,10 @@ defineI18nRoute({
     step_2_desc: "Usia Anda dihitung secara otomatis begitu Anda memilih tanggal.",
     step_3_title: "Lihat Hasilnya",
     step_3_desc: "Lihat usia Anda dalam tahun, bulan, minggu, dan hari, beserta representasi alternatif.",
+    examples_title: "Contoh Umum",
+    examples_intro: "Referensi cepat bagi mereka yang ingin tahu berapa umurnya berdasarkan tahun lahir yang umum. Nilai-nilai di bawah ini diperbarui secara otomatis.",
+    examples_item_q: "Jika saya lahir pada {year}, berapa umur saya?",
+    examples_item_a: "Saat ini Anda berusia {years} tahun, atau {yearsNext} jika Anda sudah berulang tahun tahun ini.",
     faq_title: "Pertanyaan dan Jawaban",
     faq_1_q: "Bagaimana usia dihitung?",
     faq_1_a: "Kami menghitung perbedaan tepat antara tanggal lahir Anda dan hari ini, diuraikan dalam tahun, bulan, minggu, dan hari.",
@@ -556,6 +697,14 @@ defineI18nRoute({
     faq_2_a: "Ya. Menggunakan aritmatika tanggal yang tepat dengan memperhitungkan tahun kabisat dan panjang bulan yang berbeda.",
     faq_3_q: "Apa arti 'atau...' di hasil?",
     faq_3_a: "Menampilkan cara alternatif untuk mengungkapkan usia Anda, misalnya total usia yang dinyatakan dalam bulan atau minggu saja.",
+    faq_4_q: "Bagaimana cara mengetahui umur saya dari tanggal lahir?",
+    faq_4_a: "Cukup masukkan tanggal lahir Anda di kolom di atas. Kalkulator membandingkannya dengan tanggal hari ini dan langsung menampilkan hasilnya dalam tahun, bulan, minggu, dan hari.",
+    faq_5_q: "Apakah kalkulator bekerja untuk semua usia?",
+    faq_5_a: "Ya. Berfungsi untuk tanggal lahir apa pun di masa lalu, dari anak-anak kecil hingga lansia berusia seratus tahun. Satu-satunya batasan adalah tanggal yang dimasukkan harus sebelum tanggal saat ini.",
+    faq_6_q: "Bisakah saya menghitung usia pada tanggal tertentu, bukan hari ini?",
+    faq_6_a: "Kalkulator ini menggunakan tanggal hari ini sebagai referensi. Untuk membandingkan dua tanggal sembarang, gunakan alat selisih tanggal kami, yang mengembalikan interval antara dua tanggal apa pun.",
+    faq_7_q: "Mengapa hasilnya menampilkan minggu dan hari secara terpisah?",
+    faq_7_a: "Menguraikan usia dalam tahun, bulan, minggu, dan hari memberikan gambaran yang lebih lengkap dibandingkan hanya jumlah tahun. Berguna untuk memantau bayi, peringatan, dan tonggak pribadi.",
     see1: "Generator Ulang Tahun",
     see2: "Selisih Tanggal",
     see3: "Kalkulator Tanggal Masa Depan",
@@ -564,7 +713,7 @@ defineI18nRoute({
   de: {
     pageTitle: "Altersrechner - Wie alt bin ich?",
     title: "Altersrechner",
-    meta: "Kostenloser Online-Altersrechner. Geben Sie Ihr Geburtsdatum ein und erfahren Sie sofort Ihr exaktes Alter in Jahren, Monaten, Wochen und Tagen.",
+    meta: "Finden Sie heraus, wie alt Sie sind, mit diesem kostenlosen Online-Altersrechner. Geben Sie Ihr Geburtsdatum ein und sehen Sie sofort Ihr exaktes Alter in Jahren, Monaten, Wochen und Tagen.",
     dt: "Geburtsdatum",
     age: "Ihr Alter",
     or: "oder",
@@ -606,6 +755,10 @@ defineI18nRoute({
     step_2_desc: "Ihr Alter wird automatisch berechnet, sobald Sie ein Datum auswählen.",
     step_3_title: "Ergebnisse anzeigen",
     step_3_desc: "Sehen Sie Ihr Alter in Jahren, Monaten, Wochen und Tagen sowie alternative Darstellungen.",
+    examples_title: "Häufige Beispiele",
+    examples_intro: "Eine schnelle Referenz für alle, die wissen möchten, wie alt sie auf Basis gängiger Geburtsjahre sind. Die nachstehenden Werte werden automatisch aktualisiert.",
+    examples_item_q: "Wenn ich {year} geboren bin, wie alt bin ich?",
+    examples_item_a: "Sie sind derzeit {years} Jahre alt, bzw. {yearsNext} Jahre, wenn Sie dieses Jahr bereits Geburtstag hatten.",
     faq_title: "Fragen und Antworten",
     faq_1_q: "Wie wird das Alter berechnet?",
     faq_1_a: "Wir berechnen die exakte Differenz zwischen Ihrem Geburtsdatum und dem heutigen Datum, aufgeschlüsselt in Jahre, Monate, Wochen und Tage.",
@@ -613,6 +766,14 @@ defineI18nRoute({
     faq_2_a: "Ja. Er verwendet präzise Datumsarithmetik unter Berücksichtigung von Schaltjahren und unterschiedlichen Monatslängen.",
     faq_3_q: "Was bedeutet 'oder...' in den Ergebnissen?",
     faq_3_a: "Es zeigt alternative Darstellungen Ihres Alters, z. B. vollständig in Monaten oder Wochen ausgedrückt.",
+    faq_4_q: "Wie erfahre ich mein Alter aus meinem Geburtsdatum?",
+    faq_4_a: "Geben Sie einfach Ihr Geburtsdatum in das Feld oben ein. Der Rechner vergleicht es mit dem heutigen Datum und zeigt das Ergebnis sofort in Jahren, Monaten, Wochen und Tagen an.",
+    faq_5_q: "Funktioniert der Rechner für jedes Alter?",
+    faq_5_a: "Ja. Er funktioniert für jedes Geburtsdatum in der Vergangenheit, vom Kleinkind bis zum Hundertjährigen. Einzige Einschränkung: Das eingegebene Datum muss vor dem heutigen Datum liegen.",
+    faq_6_q: "Kann ich das Alter zu einem bestimmten Datum anstelle von heute berechnen?",
+    faq_6_a: "Dieser Rechner verwendet das heutige Datum als Referenz. Um zwei beliebige Daten zu vergleichen, nutzen Sie unser Tool zur Datumsdifferenz, das den Abstand zwischen zwei beliebigen Daten ausgibt.",
+    faq_7_q: "Warum werden Wochen und Tage separat angezeigt?",
+    faq_7_a: "Die Aufschlüsselung des Alters in Jahre, Monate, Wochen und Tage bietet ein vollständigeres Bild als nur die Jahreszahl. Das ist nützlich für die Verfolgung von Babys, Jubiläen und persönlichen Meilensteinen.",
     see1: "Geburtstagsgenerator",
     see2: "Datumsdifferenz-Rechner",
     see3: "Zukunftsrechner",
@@ -621,7 +782,7 @@ defineI18nRoute({
   nl: {
     pageTitle: "Leeftijdscalculator - Hoe oud ben ik?",
     title: "Leeftijdscalculator",
-    meta: "Gratis online leeftijdscalculator. Voer uw geboortedatum in en ontdek direct uw exacte leeftijd in jaren, maanden, weken en dagen.",
+    meta: "Ontdek hoe oud u bent met deze gratis online leeftijdscalculator. Voer uw geboortedatum in en zie direct uw exacte leeftijd in jaren, maanden, weken en dagen.",
     dt: "Geboortedatum",
     age: "Uw leeftijd",
     or: "of",
@@ -663,6 +824,10 @@ defineI18nRoute({
     step_2_desc: "Uw leeftijd wordt automatisch berekend zodra u een datum selecteert.",
     step_3_title: "Bekijk resultaten",
     step_3_desc: "Bekijk uw leeftijd in jaren, maanden, weken en dagen en alternatieve weergaven.",
+    examples_title: "Veelvoorkomende voorbeelden",
+    examples_intro: "Een snelle referentie voor wie wil weten hoe oud hij of zij is op basis van veelvoorkomende geboortejaren. De onderstaande waarden worden automatisch bijgewerkt.",
+    examples_item_q: "Als ik in {year} ben geboren, hoe oud ben ik dan?",
+    examples_item_a: "U bent momenteel {years} jaar oud, of {yearsNext} als u dit jaar al jarig bent geweest.",
     faq_title: "Vragen en Antwoorden",
     faq_1_q: "Hoe wordt de leeftijd berekend?",
     faq_1_a: "We berekenen het exacte verschil tussen uw geboortedatum en vandaag, opgesplitst in jaren, maanden, weken en dagen.",
@@ -670,10 +835,87 @@ defineI18nRoute({
     faq_2_a: "Ja. Hij gebruikt nauwkeurige datumberekeningen met rekening met schrikkeljaren en variabele maandlengtes.",
     faq_3_q: "Wat betekent 'of...' in de resultaten?",
     faq_3_a: "Dit toont alternatieve manieren om uw leeftijd uit te drukken, bijvoorbeeld volledig in maanden of weken.",
+    faq_4_q: "Hoe weet ik hoe oud ik ben aan de hand van mijn geboortedatum?",
+    faq_4_a: "Voer eenvoudig uw geboortedatum in het veld hierboven in. De calculator vergelijkt deze met de datum van vandaag en toont het resultaat direct in jaren, maanden, weken en dagen.",
+    faq_5_q: "Werkt de calculator voor elke leeftijd?",
+    faq_5_a: "Ja. Hij werkt voor elke geboortedatum in het verleden, van jonge kinderen tot honderdjarigen. De enige beperking is dat de ingevoerde datum vóór de huidige datum moet liggen.",
+    faq_6_q: "Kan ik de leeftijd op een specifieke datum berekenen in plaats van vandaag?",
+    faq_6_a: "Deze calculator gebruikt de datum van vandaag als referentie. Om twee willekeurige datums te vergelijken, gebruik onze tool voor datumverschil, die het interval tussen twee willekeurige datums teruggeeft.",
+    faq_7_q: "Waarom worden weken en dagen apart weergegeven?",
+    faq_7_a: "Het uitsplitsen van de leeftijd in jaren, maanden, weken en dagen geeft een vollediger beeld dan alleen het aantal jaren. Dit is nuttig voor het volgen van baby's, jubilea en persoonlijke mijlpalen.",
     see1: "Geboortedatum-generator",
     see2: "Datumverschil-calculator",
     see3: "Toekomstige datum-calculator",
     see4: "Verleden datum-calculator"
+  },
+  ru: {
+    pageTitle: "Калькулятор возраста — Сколько мне лет?",
+    title: "Калькулятор возраста",
+    meta: "Узнайте, сколько вам лет, с помощью этого бесплатного калькулятора возраста. Введите дату рождения и мгновенно увидите точный возраст в годах, месяцах, неделях и днях.",
+    dt: "Дата рождения",
+    age: "Ваш возраст",
+    or: "или",
+    err: "Пожалуйста, введите дату ранее сегодняшнего дня",
+    placeholder: "Введите дату рождения выше",
+    years: "год|года|лет",
+    months: "месяц|месяца|месяцев",
+    weeks: "неделя|недели|недель",
+    days: "день|дня|дней",
+    years_label: "Лет",
+    months_label: "Месяцев",
+    weeks_label: "Недель",
+    days_label: "Дней",
+    total_months_label: "Всего месяцев",
+    total_weeks_label: "Всего недель",
+    total_days_label: "Всего дней",
+    week_day: "День недели",
+    day_0: "Воскресенье",
+    day_1: "Понедельник",
+    day_2: "Вторник",
+    day_3: "Среда",
+    day_4: "Четверг",
+    day_5: "Пятница",
+    day_6: "Суббота",
+    desc: "Этот бесплатный калькулятор возраста точно рассчитывает, сколько времени вы прожили, на основе вашей даты рождения. Результат выходит за рамки простого количества лет: он представлен во всех деталях, с разбивкой вашего возраста на года, месяцы, недели и дни, а также в общих единицах, показывающих, сколько всего месяцев или дней вы прожили.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Узнайте свой точный возраст",
+    uc_1_desc: "Выясните с точностью до дня, сколько вам лет, месяцев, недель и дней.",
+    uc_2_title: "Расчет возраста любого человека",
+    uc_2_desc: "Введите любую дату рождения, чтобы узнать точный возраст ребенка, родителя, пациента или клиента.",
+    uc_3_title: "Официальные документы",
+    uc_3_desc: "Быстро проверяйте свой возраст для заполнения анкет, договоров или получения услуг с возрастными ограничениями.",
+    uc_4_title: "Здоровье и фитнес",
+    uc_4_desc: "Точно отслеживайте возрастные изменения и показатели здоровья.",
+    how_it_works_title: "Как это работает",
+    step_1_title: "Введите дату рождения",
+    step_1_desc: "Выберите свою дату рождения, используя поле календаря.",
+    step_2_title: "Мгновенный расчет",
+    step_2_desc: "Ваш возраст рассчитывается автоматически сразу после выбора даты.",
+    step_3_title: "Просмотр результатов",
+    step_3_desc: "Ознакомьтесь с подробной разбивкой вашего возраста на годы, месяцы, недели и дни, а также с альтернативными вариантами выражения возраста.",
+    examples_title: "Популярные примеры",
+    examples_intro: "Быстрая справка для тех, кто хочет узнать свой возраст на основе популярных лет рождения. Значения ниже обновляются автоматически.",
+    examples_item_q: "Если вы родились в {year} году, сколько вам лет?",
+    examples_item_a: "Сейчас вам {years} лет (или {yearsNext} лет, если у вас уже был день рождения в этом году).",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Как рассчитывается возраст?",
+    faq_1_a: "Мы рассчитываем точную разницу между вашей датой рождения и сегодняшним днем, раскладывая её на годы, месяцы, недели и дни.",
+    faq_2_q: "Точен ли этот калькулятор?",
+    faq_2_a: "Да. Он использует точную календарную арифметику, которая автоматически учитывает високосные года и разную длину месяцев.",
+    faq_3_q: "Что означает раздел «или…» в результатах?",
+    faq_3_a: "Он показывает альтернативные способы выражения вашего возраста, например, ваш общий возраст, выраженный целиком в месяцах или целиком в неделях.",
+    faq_4_q: "Как узнать свой возраст по дате рождения?",
+    faq_4_a: "Просто введите свою дату рождения в поле выше. Калькулятор мгновенно сравнит её с текущей датой и покажет результат в годах, месяцах, неделях и днях.",
+    faq_5_q: "Работает ли калькулятор для любого возраста?",
+    faq_5_a: "Да. Он работает для любой даты рождения в прошлом — от маленьких детей до долгожителей. Единственное ограничение заключается в том, что вводимая дата должна быть ранее сегодняшнего дня.",
+    faq_6_q: "Могу ли я рассчитать возраст на определенную дату, а не на сегодня?",
+    faq_6_a: "Этот калькулятор использует сегодняшнюю дату в качестве ориентира. Чтобы сравнить две произвольные даты, воспользуйтесь нашим инструментом расчета разницы дат, который возвращает точный интервал между любыми двумя датами.",
+    faq_7_q: "Почему в результатах недели и дни показаны отдельно?",
+    faq_7_a: "Разложение возраста на годы, месяцы, недели и дни дает более полное представление, чем простое количество лет. Это особенно полезно для наблюдения за развитием младенцев, отслеживания юбилеев и личных вех.",
+    see1: "Генератор дат рождения",
+    see2: "Разница между датами",
+    see3: "Калькулятор будущей даты",
+    see4: "Калькулятор прошедшей даты"
   }
 }
 </i18n>

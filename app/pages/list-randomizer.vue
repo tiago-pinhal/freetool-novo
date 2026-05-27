@@ -65,13 +65,14 @@ watch(() => state.list, () => {
 defineI18nRoute({
   paths: {
     en: '/list-randomizer',
-    pt: '/embaralhador-de-listas',
-    es: '/mezclador-de-listas',
-    fr: '/melangeur-de-listes',
-    it: '/mescolatore-di-liste',
-    id: '/pengacak-daftar',
-    de: '/listen-zufallsgenerator',
-    nl: '/lijst-randomizer'
+    pt: '/sorteador-de-nomes',
+    es: '/sorteador-de-nombres',
+    fr: '/tirage-au-sort',
+    it: '/estrazione-casuale-nomi',
+    id: '/pengacak-nama',
+    de: '/namen-zufallsgenerator',
+    nl: '/namen-loten',
+    ru: '/randomizator-spiskov'
   }
 })
 </script>
@@ -123,10 +124,7 @@ defineI18nRoute({
         enter-to-class="transform scale-100 opacity-100"
       >
         <div v-if="state.output" class="space-y-2">
-          <label class="label">
-            <span class="label-text font-bold text-base-content">{{ t('result') }}</span>
-          </label>
-          <Blockcopy :content="state.output">
+          <Blockcopy :label="t('result')" :content="state.output">
             <div class="whitespace-pre-wrap font-mono text-lg leading-relaxed">{{ state.output }}</div>
           </Blockcopy>
         </div>
@@ -174,8 +172,8 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   en: {
-    title: "List Randomizer & List Shuffler",
-    meta: "Easily shuffle names, words, or items with our free online List Randomizer. Generate random orders and fair draws in a matter of seconds.",
+    title: "List Randomizer & Random Name Picker",
+    meta: "Easily shuffle names, words, or items with our free online List Randomizer and Random Name Picker. Generate random orders and fair draws in seconds.",
     desc: "This tool randomizes the order of names, words, or any list of items quickly and fairly. It is ideal for drawing random names, shuffling groups, reorganizing tasks, and ensuring unbiased results in games, competitions, classroom activities, and everyday decisions.",
     bt: "Shuffle",
     result: "Result",
@@ -193,7 +191,7 @@ defineI18nRoute({
     step_3_title: "Get Random Order",
     step_3_desc: "The items will be rearranged instantly. You can copy the final result with one click using the copy button.",
     f_1: "Instantly shuffle any list of names or words",
-    f_2: "Unbiased Fisher-Yates randomization algorithm",
+    f_2: "Truly unbiased and fair randomization",
     f_3: "Drag and drop text files support",
     f_4: "Completely free and private (client-side processing)",
     features_title: "Features",
@@ -211,8 +209,8 @@ defineI18nRoute({
     faq_3_a: "Absolutely. Your list never leaves your device. All randomization happens locally in your browser, and nothing is sent to our servers."
   },
   pt: {
-    title: "Embaralhador e Sorteador de Listas",
-    meta: "Embaralhe nomes, palavras ou itens facilmente com nosso Sorteador de Listas online gratuito. Crie ordens aleatórias para sorteios em segundos.",
+    title: "Sorteador de Nomes e Listas",
+    meta: "Sorteador de nomes online gratuito. Embaralhe nomes, palavras ou itens e gere ordens aleatórias para sorteios justos em poucos segundos.",
     desc: "Esta ferramenta embaralha nomes, palavras ou qualquer lista de itens de forma rápida e imparcial. Ela é ideal para sortear nomes, embaralhar grupos, reorganizar tarefas e garantir resultados justos em jogos, sorteios, atividades em grupo e decisões do dia a dia.",
     bt: "Embaralhar",
     result: "Resultado",
@@ -230,7 +228,7 @@ defineI18nRoute({
     step_3_title: "Obtenha a Ordem Aleatória",
     step_3_desc: "Os itens serão reorganizados instantaneamente. Você pode copiar o resultado final com um clique usando o botão de cópia.",
     f_1: "Embaralhe nomes, palavras ou itens instantaneamente",
-    f_2: "Algoritmo Fisher-Yates de aleatorização imparcial",
+    f_2: "Aleatorização realmente imparcial e justa",
     f_3: "Suporte para arrastar e soltar arquivos de texto",
     f_4: "Processamento local e totalmente gratuito",
     features_title: "Funcionalidades",
@@ -248,8 +246,8 @@ defineI18nRoute({
     faq_3_a: "Totalmente. Sua lista nunca sai do seu dispositivo. Toda a aleatorização acontece localmente no navegador e nada é enviado para nossos servidores."
   },
   es: {
-    title: "Aleatorizador y Mezclador de Listas",
-    meta: "Mezcla nombres, palabras o elementos fácilmente con nuestro Aleatorizador de Listas online gratuito. Genera un orden al azar para sorteos en segundos.",
+    title: "Sorteador de Nombres y Listas",
+    meta: "Sorteador de nombres online gratuito. Mezcla nombres, palabras o elementos y genera un orden al azar para sorteos justos en segundos.",
     desc: "Esta herramienta mezcla nombres, palabras o cualquier lista de elementos de forma rápida e imparcial. Es ideal para sortear nombres, mezclar grupos, reorganizar tareas y garantizar resultados justos en juegos, concursos, actividades en grupo y decisiones cotidianas.",
     bt: "Mezclar",
     result: "Resultado",
@@ -267,7 +265,7 @@ defineI18nRoute({
     step_3_title: "Obtener Orden Aleatorio",
     step_3_desc: "Los elementos se reorganizarán al instante. Puede copiar el resultado final con un clic usando el botón de copiar.",
     f_1: "Mezcla cualquier lista de nombres o palabras al instante",
-    f_2: "Algoritmo de aleatorización Fisher-Yates sin sesgos",
+    f_2: "Aleatorización totalmente imparcial y justa",
     f_3: "Soporte para arrastrar y soltar archivos de texto",
     f_4: "Totalmente gratuito y privado (procesamiento local)",
     features_title: "Funcionalidades",
@@ -285,8 +283,8 @@ defineI18nRoute({
     faq_3_a: "Totalmente. Su lista nunca sale de su dispositivo. Toda la aleatorización ocurre localmente en el navegador y nada se envía a nuestros servidores."
   },
   fr: {
-    title: "Générateur de Liste Aléatoire & Mélangeur",
-    meta: "Mélangez facilement des noms, mots ou éléments avec notre générateur de liste aléatoire en ligne. Créez un ordre au hasard pour vos tirages au sort.",
+    title: "Tirage au Sort en Ligne - Mélangeur de Liste",
+    meta: "Tirage au sort en ligne gratuit. Mélangez facilement noms, mots ou éléments et créez un ordre aléatoire pour vos tirages en quelques secondes.",
     desc: "Cet outil mélange rapidement et de manière impartiale des noms, des mots ou tout autre type de liste. Il est idéal pour tirer des noms au sort, mélanger des groupes, réorganiser des tâches et garantir des résultats justes dans les jeux, les concours, les activités de groupe et les décisions du quotidien.",
     bt: "Mélanger",
     result: "Résultat",
@@ -304,7 +302,7 @@ defineI18nRoute({
     step_3_title: "Obtenir l'Ordre Aléatoire",
     step_3_desc: "Les éléments seront instantanément réorganisés. Vous pouvez copier le résultat final en un clic à l'aide du bouton de copie.",
     f_1: "Mélangez instantanément n'importe quelle liste de noms ou de mots",
-    f_2: "Algorithme de randomisation Fisher-Yates impartial",
+    f_2: "Randomisation totalement impartiale et équitable",
     f_3: "Prise en charge du glisser-déposer de fichiers texte",
     f_4: "Privé et gratuit (traitement côté client)",
     features_title: "Fonctionnalités",
@@ -322,8 +320,8 @@ defineI18nRoute({
     faq_3_a: "Totalement. Votre liste ne quitte jamais votre appareil. Toute la randomisation se produit localement dans le navigateur et rien n'est envoyé à nos serveurs."
   },
   it: {
-    title: "Randomizzatore di Liste",
-    meta: "Mescola facilmente nomi, parole o elementi con il nostro generatore di liste casuali online. Crea un ordine casuale per i tuoi sorteggi in pochi secondi.",
+    title: "Estrazione Casuale Nomi e Liste",
+    meta: "Strumento online gratuito per l'estrazione casuale di nomi e liste. Mescola nomi, parole o elementi e crea un ordine casuale per i tuoi sorteggi in pochi secondi.",
     desc: "Questo strumento mescola nomi, parole o qualsiasi elenco di elementi in modo rapido e imparziale. È ideale per estrarre nomi a caso, mescolare gruppi, riorganizzare attività e garantire risultati equi in giochi, sorteggi, attività di gruppo e decisioni quotidiane.",
     bt: "Mescola",
     result: "Risultato",
@@ -341,7 +339,7 @@ defineI18nRoute({
     step_3_title: "Ottieni l'Ordine Casuale",
     step_3_desc: "Gli elementi saranno riorganizzati istantaneamente. Puoi copiare il risultato finale con un clic usando il pulsante di copia.",
     f_1: "Mescola istantaneamente nomi, parole o elementi",
-    f_2: "Algoritmo di randomizzazione Fisher-Yates imparziale",
+    f_2: "Randomizzazione totalmente imparziale ed equa",
     f_3: "Supporto drag-and-drop per file di testo",
     f_4: "Interamente gratuito e privato (elaborazione locale)",
     features_title: "Funzionalità",
@@ -359,8 +357,8 @@ defineI18nRoute({
     faq_3_a: "Assolutamente. Il tuo elenco non lascia mai il tuo dispositivo. Tutta la randomizzazione avviene localmente nel browser e nulla viene inviato ai nostri server."
   },
   id: {
-    title: "Pengacak Daftar",
-    meta: "Mudah mengocok nama, kata, atau item dengan Pengacak Daftar online gratis kami. Hasilkan urutan acak dan undian yang adil dalam hitungan detik.",
+    title: "Pengacak Nama dan Daftar",
+    meta: "Pengacak nama online gratis. Kocok nama, kata, atau item dengan mudah dan hasilkan urutan acak serta undian yang adil dalam hitungan detik.",
     desc: "Alat ini mengacak nama, kata, atau daftar item apa pun dengan cepat dan adil. Alat ini ideal untuk mengundi nama, mengacak kelompok, menyusun ulang tugas, dan membantu memberikan hasil yang tidak memihak untuk permainan, undian, aktivitas kelompok, dan keputusan sehari-hari.",
     bt: "Kocok",
     result: "Hasil",
@@ -378,7 +376,7 @@ defineI18nRoute({
     step_3_title: "Dapatkan Urutan Acak",
     step_3_desc: "Item akan diatur ulang secara instan. Anda dapat menyalin hasil akhir dengan satu klik menggunakan tombol salin.",
     f_1: "Kocok daftar nama atau kata secara instan",
-    f_2: "Algoritma pengacakan Fisher-Yates yang tidak memihak",
+    f_2: "Pengacakan yang sepenuhnya adil dan tidak memihak",
     f_3: "Dukungan seret dan lepas file teks",
     f_4: "Gratis dan pribadi (pemrosesan di sisi klien)",
     features_title: "Fitur",
@@ -396,8 +394,8 @@ defineI18nRoute({
     faq_3_a: "Sangat aman. Daftar Anda tidak pernah meninggalkan perangkat Anda. Semua pengacakan terjadi secara lokal di browser Anda, dan tidak ada yang dikirim ke server kami."
   },
   de: {
-    title: "Listen-Zufallsgenerator und Listenmischer",
-    meta: "Mische Namen, Wörter oder Einträge einfach mit unserem kostenlosen Online-Listen-Zufallsgenerator. Erzeuge zufällige Reihenfolgen und faire Auslosungen in Sekunden.",
+    title: "Namen-Zufallsgenerator und Listenmischer",
+    meta: "Kostenloser Namen-Zufallsgenerator online. Mische Namen, Wörter oder Einträge und erzeuge zufällige Reihenfolgen und faire Auslosungen in Sekunden.",
     desc: "Dieses Tool randomisiert die Reihenfolge von Namen, Wörtern oder beliebigen Listeneinträgen schnell und fair. Es eignet sich ideal zum Ziehen zufälliger Namen, Mischen von Gruppen, Neuordnen von Aufgaben und für unvoreingenommene Ergebnisse bei Spielen, Wettbewerben, Unterrichtsaktivitäten und Alltagsentscheidungen.",
     bt: "Mischen",
     result: "Ergebnis",
@@ -415,7 +413,7 @@ defineI18nRoute({
     step_3_title: "Zufällige Reihenfolge erhalten",
     step_3_desc: "Die Einträge werden sofort neu angeordnet. Du kannst das Endergebnis mit einem Klick über die Kopierschaltfläche kopieren.",
     f_1: "Jede Liste mit Namen oder Wörtern sofort mischen",
-    f_2: "Unvoreingenommener Fisher-Yates-Zufallsalgorithmus",
+    f_2: "Vollkommen faire und unvoreingenommene Zufallsauswahl",
     f_3: "Unterstützung für Drag-and-drop von Textdateien",
     f_4: "Vollständig kostenlos und privat (clientseitige Verarbeitung)",
     features_title: "Funktionen",
@@ -433,8 +431,8 @@ defineI18nRoute({
     faq_3_a: "Ja. Deine Liste verlässt dein Gerät nie. Die gesamte Randomisierung findet lokal in deinem Browser statt, und nichts wird an unsere Server gesendet."
   },
   nl: {
-    title: "Lijst-randomizer & Lijst-shuffler",
-    meta: "Hussel eenvoudig namen, woorden of items met onze gratis online Lijst-randomizer. Genereer in enkele seconden een willekeurige volgorde of een eerlijke loting.",
+    title: "Namen Loten & Lijst-randomizer",
+    meta: "Gratis online tool om namen te loten. Hussel eenvoudig namen, woorden of items en genereer in enkele seconden een willekeurige volgorde of een eerlijke loting.",
     desc: "Deze tool randomiseert snel en eerlijk de volgorde van namen, woorden of een willekeurige lijst met items. Het is ideaal voor het loten van namen, het husselen van groepen, het reorganiseren van taken en het garanderen van onbevooroordeelde resultaten bij spellen, wedstrijden, klassikale activiteiten en dagelijkse beslissingen.",
     bt: "Husselen",
     result: "Resultaat",
@@ -452,7 +450,7 @@ defineI18nRoute({
     step_3_title: "Krijg willekeurige volgorde",
     step_3_desc: "De items worden direct opnieuw gerangschikt. Je kunt het eindresultaat met één klik kopiëren met de kopieerknop.",
     f_1: "Hussel direct elke lijst met namen of woorden",
-    f_2: "Onbevooroordeeld Fisher-Yates randomisatie-algoritme",
+    f_2: "Volledig eerlijke en onbevooroordeelde randomisatie",
     f_3: "Ondersteuning voor drag-and-drop tekstbestanden",
     f_4: "Volledig gratis en privé (verwerking op je eigen apparaat)",
     features_title: "Functies",
@@ -468,6 +466,43 @@ defineI18nRoute({
     faq_2_a: "Ja. We gebruiken het Fisher-Yates husselalgoritme, een wiskundig bewezen methode voor het genereren van onbevooroordeelde permutaties van een lijst.",
     faq_3_q: "Zijn mijn gegevens privé?",
     faq_3_a: "Absoluut. Je lijst verlaat nooit je apparaat. Alle randomisatie gebeurt lokaal in je browser en er wordt niets naar onze servers gestuurd."
+  },
+  ru: {
+    title: "Рандомизатор списков и генератор случайных имен",
+    meta: "Легко перемешивайте имена, слова или любые элементы списка онлайн с помощью нашего бесплатного рандомизатора списков. Создавайте случайный порядок за секунды.",
+    desc: "Этот инструмент быстро и честно перемешивает порядок имен, слов или любых элементов списка. Он идеально подходит для розыгрыша случайных имен, деления на группы, перераспределения задач и обеспечения непредвзятых результатов в играх, конкурсах, учебных занятиях и повседневных решениях.",
+    bt: "Перемешать",
+    result: "Результат",
+    plc: "Введите ваш список элементов",
+    plc_hint: "Введите по одному элементу на строку...",
+    see1: "Калькулятор процентов",
+    see2: "Бросить кубики",
+    see3: "Правило трех",
+    see4: "Экстрактор email",
+    how_to_use_title: "Инструкция",
+    step_1_title: "Подготовьте список",
+    step_1_desc: "Введите или вставьте элементы списка в поле ввода, убедившись, что каждый элемент находится на отдельной строке.",
+    step_2_title: "Перемешайте элементы",
+    step_2_desc: "Нажмите кнопку «Перемешать», чтобы запустить алгоритм случайной сортировки.",
+    step_3_title: "Получите случайный порядок",
+    step_3_desc: "Элементы мгновенно перестроятся в случайном порядке. Вы можете скопировать итоговый результат в один клик с помощью кнопки копирования.",
+    f_1: "Мгновенное перемешивание любых списков имен или слов",
+    f_2: "Полностью честная и непредвзятая рандомизация",
+    f_3: "Поддержка перетаскивания (drag-and-drop) текстовых файлов",
+    f_4: "Полностью бесплатно и конфиденциально (локальная обработка)",
+    features_title: "Возможности",
+    use_cases_title: "Варианты использования",
+    uc_1: "Выбор случайных победителей в розыгрышах или конкурсах",
+    uc_2: "Перемешивание и деление на группы или команды для спорта и учебы",
+    uc_3: "Случайный выбор порядка задач в списке дел, чтобы избежать рутины",
+    uc_4: "Определение случайного порядка выступлений или ходов в играх",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Сколько элементов я могу перемешать за один раз?",
+    faq_1_a: "Строгого ограничения нет, но для максимального быстродействия мы рекомендуем перемешивать до 10 000 элементов за раз. Вся обработка происходит прямо в вашем браузере.",
+    faq_2_q: "Является ли перемешивание честным?",
+    faq_2_a: "Да. Мы используем проверенный временем математический алгоритм Тасования Фишера — Йетса (Fisher-Yates shuffle), который гарантирует получение абсолютно непредвзятых перестановок элементов списка.",
+    faq_3_q: "Безопасны ли мои данные?",
+    faq_3_a: "Абсолютно. Ваш список никогда не покидает ваше устройство. Вся рандомизация происходит локально в браузере, и никакие данные не отправляются на наши серверы."
   }
 }
 </i18n>

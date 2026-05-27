@@ -1,7 +1,10 @@
 <script setup lang="ts">
 const { t } = useI18n({ useScope: 'local' })
 
-// Constants outside setup — defined once per module, not per component instance
+// ---------------------------------------------------------------------------
+// Constants (module-scoped — created once, not per component instance)
+// ---------------------------------------------------------------------------
+
 const MORSE_MAP: Readonly<Record<string, string>> = Object.freeze({
   A: '.-',   B: '-...', C: '-.-.', D: '-..',  E: '.',
   F: '..-.', G: '--.',  H: '....', I: '..',   J: '.---',
@@ -12,20 +15,40 @@ const MORSE_MAP: Readonly<Record<string, string>> = Object.freeze({
   '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
   '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.',
   '.': '.-.-.-', ',': '--..--', '?': '..--..', "'": '.----.',
-  '!': '-.-.--', '(': '-.--.', ')': '-.--.-', '&': '.-...',
-  ':': '---...', ';': '-.-.-.', '=': '-...-', '+': '.-.-.',
+  '!': '-.-.--', '(': '-.--.',  ')': '-.--.-', '&': '.-...',
+  ':': '---...', ';': '-.-.-.', '=': '-...-',  '+': '.-.-.',
   '-': '-....-', '_': '..--.-', '"': '.-..-.', '@': '.--.-.'
 })
 
+/**
+ * Reverse lookup table built from MORSE_MAP at module load.
+ * Throws synchronously if two characters share the same Morse code,
+ * surfacing bugs in MORSE_MAP at build time rather than at runtime.
+ */
 const REVERSE_MORSE_MAP: Readonly<Record<string, string>> = Object.freeze(
-  Object.fromEntries(
-    Object.entries(MORSE_MAP).map(([char, code]) => [code, char])
-  )
+  (() => {
+    const reverse: Record<string, string> = {}
+    for (const [char, code] of Object.entries(MORSE_MAP)) {
+      if (reverse[code] !== undefined) {
+        throw new Error(
+          `Morse code collision: "${code}" maps to both "${reverse[code]}" and "${char}".`
+        )
+      }
+      reverse[code] = char
+    }
+    return reverse
+  })()
 )
 
 const WORD_SEPARATOR = ' / '
 const UNKNOWN_CHAR = '?'
-const MORSE_PATTERN = /^[.\-\s/]+$/
+
+/**
+ * Matches strings that look like Morse code: only dots, dashes, whitespace,
+ * and slashes — and must contain at least one dot or dash. The trailing
+ * requirement prevents whitespace-only strings from being misclassified.
+ */
+const MORSE_PATTERN = /^[.\-\s/]*[.\-][.\-\s/]*$/
 const MIN_LENGTH_FOR_DETECTION = 3
 
 const LETTER_CODES = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map(c => ({ char: c, code: MORSE_MAP[c] }))
@@ -44,6 +67,13 @@ const PUNCT_CHARS: Array<{ char: string; key: string }> = [
 const DOT_DURATION = 0.1
 const TONE_FREQ = 600
 const RAMP_TIME = 0.005
+const SYMBOL_GAP_UNITS = 1
+const LETTER_GAP_UNITS = 3
+const WORD_GAP_UNITS = 7
+
+// ---------------------------------------------------------------------------
+// Reactive state
+// ---------------------------------------------------------------------------
 
 const toneGain = ref(0.5)
 
@@ -54,8 +84,17 @@ const notMorseInput = ref(false)
 const looksLikeMorse = ref(false)
 const isPlaying = ref(false)
 const lastDirection = ref<'encode' | 'decode' | null>(null)
+
 let audioCtx: AudioContext | null = null
 let stopTimeoutId: ReturnType<typeof setTimeout> | null = null
+
+/**
+ * Holds every OscillatorNode currently scheduled or playing.
+ * Allows stopMorse() to silence in-flight playback synchronously — suspending
+ * the AudioContext alone would leave previously scheduled osc.start/osc.stop
+ * pairs intact, causing them to fire when the context resumes.
+ */
+const activeOscillators = new Set<OscillatorNode>()
 
 const punctTable = computed(() =>
   PUNCT_CHARS.map(({ char, key }) => ({ label: t(key), char, code: MORSE_MAP[char] }))
@@ -95,6 +134,10 @@ useHead({
     { name: 'twitter:description', content: t('meta') }
   ]
 })
+
+// ---------------------------------------------------------------------------
+// Pure encoding / decoding logic
+// ---------------------------------------------------------------------------
 
 /**
  * Normalizes text by removing diacritics, converting smart quotes/dashes,
@@ -170,6 +213,10 @@ function decodeFromMorse(code: string): { result: string; hasUnknown: boolean; n
   return { result, hasUnknown: unknown }
 }
 
+// ---------------------------------------------------------------------------
+// Button handlers
+// ---------------------------------------------------------------------------
+
 function handleToMorse() {
   stopMorse()
   notMorseInput.value = false
@@ -202,13 +249,67 @@ function handleFromMorse() {
   lastDirection.value = 'decode'
 }
 
+// ---------------------------------------------------------------------------
+// Audio playback
+// ---------------------------------------------------------------------------
+
+/**
+ * Lazily returns a singleton AudioContext.
+ * Reusing the context across plays avoids hitting the browser's
+ * per-tab AudioContext limit (Chrome historically caps at ~6) and
+ * skips the cost of re-initializing the audio graph each time.
+ * Returns null on the server, where AudioContext does not exist.
+ */
+function getAudioContext(): AudioContext | null {
+  if (typeof window === 'undefined' || typeof AudioContext === 'undefined') {
+    return null
+  }
+  if (!audioCtx || audioCtx.state === 'closed') {
+    audioCtx = new AudioContext()
+  }
+  return audioCtx
+}
+
+/**
+ * Schedules a single Morse symbol (dot or dash) on the audio graph.
+ * Returns the end time of the symbol so the caller can chain gaps.
+ * The oscillator is tracked in activeOscillators until it ends, so
+ * stopMorse() can interrupt scheduled playback synchronously.
+ */
+function scheduleSymbol(ctx: AudioContext, symbol: '.' | '-', startTime: number): number {
+  const duration = symbol === '.' ? DOT_DURATION : DOT_DURATION * 3
+  const osc = ctx.createOscillator()
+  const gain = ctx.createGain()
+  osc.connect(gain)
+  gain.connect(ctx.destination)
+  osc.frequency.value = TONE_FREQ
+  osc.type = 'sine'
+  gain.gain.setValueAtTime(0, startTime)
+  gain.gain.linearRampToValueAtTime(toneGain.value, startTime + RAMP_TIME)
+  gain.gain.setValueAtTime(toneGain.value, startTime + duration - RAMP_TIME)
+  gain.gain.linearRampToValueAtTime(0, startTime + duration)
+  osc.start(startTime)
+  osc.stop(startTime + duration)
+
+  activeOscillators.add(osc)
+  osc.onended = () => {
+    activeOscillators.delete(osc)
+    osc.disconnect()
+    gain.disconnect()
+  }
+
+  return startTime + duration
+}
+
 async function playMorse() {
   if (isPlaying.value || !output.value) return
 
-  cleanupAudio()
+  const ctx = getAudioContext()
+  if (!ctx) return
+
+  // Set the flag synchronously, before any await — prevents a double-click
+  // from passing the guard twice and queueing overlapping playbacks.
   isPlaying.value = true
-  audioCtx = new AudioContext()
-  const ctx = audioCtx
 
   if (ctx.state === 'suspended') {
     try {
@@ -219,11 +320,9 @@ async function playMorse() {
     }
   }
 
-  const dot = DOT_DURATION
-  const dash = dot * 3
-  const symbolGap = dot
-  const letterGap = dot * 3
-  const wordGap = dot * 7
+  const symbolGap = DOT_DURATION * SYMBOL_GAP_UNITS
+  const letterGap = DOT_DURATION * LETTER_GAP_UNITS
+  const wordGap = DOT_DURATION * WORD_GAP_UNITS
 
   let time = ctx.currentTime + 0.05
   const words = output.value.split(' / ')
@@ -231,23 +330,9 @@ async function playMorse() {
   for (const [wi, word] of words.entries()) {
     const letters = word.trim().split(' ').filter(Boolean)
     for (const [li, letter] of letters.entries()) {
-      const symbols = Array.from(letter)
+      const symbols = Array.from(letter).filter((s): s is '.' | '-' => s === '.' || s === '-')
       for (const [si, symbol] of symbols.entries()) {
-        if (symbol !== '.' && symbol !== '-') continue
-        const duration = symbol === '.' ? dot : dash
-        const osc = ctx.createOscillator()
-        const gain = ctx.createGain()
-        osc.connect(gain)
-        gain.connect(ctx.destination)
-        osc.frequency.value = TONE_FREQ
-        osc.type = 'sine'
-        gain.gain.setValueAtTime(0, time)
-        gain.gain.linearRampToValueAtTime(toneGain.value, time + RAMP_TIME)
-        gain.gain.setValueAtTime(toneGain.value, time + duration - RAMP_TIME)
-        gain.gain.linearRampToValueAtTime(0, time + duration)
-        osc.start(time)
-        osc.stop(time + duration)
-        time += duration
+        time = scheduleSymbol(ctx, symbol, time)
         if (si < symbols.length - 1) time += symbolGap
       }
       if (li < letters.length - 1) time += letterGap
@@ -255,18 +340,48 @@ async function playMorse() {
     if (wi < words.length - 1) time += wordGap
   }
 
-  stopTimeoutId = setTimeout(() => cleanupAudio(), (time - ctx.currentTime + 0.1) * 1000)
+  const playbackMs = (time - ctx.currentTime + 0.1) * 1000
+  stopTimeoutId = setTimeout(() => {
+    isPlaying.value = false
+    stopTimeoutId = null
+  }, playbackMs)
 }
 
+/**
+ * Cancels all scheduled audio and stops in-flight playback.
+ * Iterates active oscillators and calls stop(0) on each — required because
+ * AudioContext.suspend() pauses the clock but does not cancel pending
+ * osc.start/osc.stop pairs, which would otherwise fire on the next resume().
+ */
 function stopMorse() {
-  cleanupAudio()
-}
-
-function cleanupAudio() {
   if (stopTimeoutId) {
     clearTimeout(stopTimeoutId)
     stopTimeoutId = null
   }
+  for (const osc of activeOscillators) {
+    try {
+      osc.stop(0)
+    } catch {
+      // Oscillator may have already ended between the check and the call.
+    }
+  }
+  activeOscillators.clear()
+  if (audioCtx && audioCtx.state === 'running') {
+    audioCtx.suspend().catch(() => { /* ignore — context may already be suspended */ })
+  }
+  isPlaying.value = false
+}
+
+/**
+ * Fully releases the AudioContext. Called only on unmount, since the
+ * normal stop path uses suspend() to keep the context reusable.
+ */
+function destroyAudio() {
+  if (stopTimeoutId) {
+    clearTimeout(stopTimeoutId)
+    stopTimeoutId = null
+  }
+  activeOscillators.clear()
   if (audioCtx) {
     audioCtx.close().catch(() => { /* already closed */ })
     audioCtx = null
@@ -274,7 +389,7 @@ function cleanupAudio() {
   isPlaying.value = false
 }
 
-onBeforeUnmount(() => cleanupAudio())
+onBeforeUnmount(() => destroyAudio())
 
 defineI18nRoute({
   paths: {
@@ -285,7 +400,8 @@ defineI18nRoute({
     it: '/convertitore-codice-morse',
     id: '/konverter-kode-morse',
     de: '/morsecode-konverter',
-    nl: '/morsecode-converter'
+    nl: '/morsecode-converter',
+    ru: '/perevodchik-koda-morze'
   }
 })
 </script>
@@ -488,9 +604,9 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   pt: {
-    title: "Conversor de Código Morse",
-    meta_title: "Conversor de Código Morse Grátis - Texto ↔ Morse com Áudio",
-    meta: "Converta texto em código Morse e decodifique Morse em texto diretamente no navegador. Compatível com letras, números e pontuação. Sem cadastro e sem envio de dados.",
+    title: "Tradutor de Código Morse",
+    meta_title: "Tradutor de Código Morse Grátis – Texto a Morse com Áudio Online",
+    meta: "Tradutor de código Morse gratuito. Converta texto em código Morse e decodifique Morse em texto diretamente no navegador. Compatível com letras, números e pontuação. Sem cadastro e sem envio de dados.",
     about_desc: "Este Conversor de Código Morse permite transformar qualquer texto em sinais Morse (pontos e traços) e decodificar sequências Morse de volta para o texto original. Todo o processamento acontece diretamente no navegador, sem envio de dados para servidores. Também conhecido como tradutor Morse ou conversor do alfabeto Morse, a ferramenta é útil para estudantes, radioamadores, escoteiros, curiosos e profissionais que precisam trabalhar com o código Morse padronizado internacionalmente.",
     about_desc2: "A conversão funciona nos dois sentidos: você pode digitar uma palavra em português e obter a sequência correspondente em pontos e traços, ou colar uma mensagem em Morse e ler o texto decodificado. Também é possível ouvir o resultado em áudio com a cadência correta de pontos e traços, ideal para quem está aprendendo a reconhecer Morse pelo som. A ferramenta suporta letras de A a Z, números de 0 a 9 e os principais sinais de pontuação definidos pelo padrão internacional.",
     label_input: "Texto ou código Morse",
@@ -580,8 +696,8 @@ defineI18nRoute({
   },
   en: {
     title: "Morse Code Converter",
-    meta_title: "Free Morse Code Converter - Text ↔ Morse with Audio",
-    meta: "Convert text to Morse code and decode Morse code back to text directly in your browser. Supports letters, numbers, and punctuation. No sign-up required and no data sent.",
+    meta_title: "Morse Code Converter & Translator – Text to Morse with Audio",
+    meta: "Free Morse code converter and translator online. Convert text to Morse code and decode Morse back to text directly in your browser. Supports letters, numbers and punctuation. No sign-up required.",
     about_desc: "This Morse Code Converter allows you to transform any text into Morse code signals (dots and dashes) and decode Morse code sequences back into plain text. All processing happens directly in your browser, with no data sent to external servers. Also known as a Morse code translator or Morse alphabet converter, this tool is useful for students, amateur radio operators, scouts, hobbyists, and professionals who work with internationally standardized Morse code.",
     about_desc2: "Conversion works both ways: type a word and get the corresponding dot-and-dash sequence, or paste a Morse code message and read the decoded text. You can also listen to the result as audio with the correct timing of dots and dashes, making it ideal for anyone learning to recognize Morse code by ear. The tool supports letters from A to Z, digits from 0 to 9, and the main punctuation marks defined by the international standard.",
     label_input: "Text or Morse code",
@@ -670,9 +786,9 @@ defineI18nRoute({
     see4: "Text Counter"
   },
   es: {
-    title: "Conversor de Código Morse",
-    meta_title: "Conversor de Código Morse Gratis - Texto ↔ Morse con Audio",
-    meta: "Convierte texto a código Morse y decodifica código Morse a texto directamente en tu navegador. Compatible con letras, números y signos de puntuación. Sin registro y sin envío de datos.",
+    title: "Traductor de Código Morse",
+    meta_title: "Traductor Código Morse Gratis – Texto a Morse con Audio Online",
+    meta: "Traductor de código Morse gratuito online. Convierte texto a código Morse y decodifica Morse a texto directamente en tu navegador. Compatible con letras, números y signos de puntuación. Sin registro.",
     about_desc: "Este Conversor de Código Morse permite transformar cualquier texto en señales Morse (puntos y rayas) y decodificar secuencias de código Morse nuevamente en texto. Todo el procesamiento ocurre directamente en tu navegador, sin enviar datos a servidores externos. También conocido como traductor Morse o conversor del alfabeto Morse, esta herramienta es útil para estudiantes, radioaficionados, scouts, aficionados y profesionales que trabajan con el código Morse estandarizado internacionalmente.",
     about_desc2: "La conversión funciona en ambos sentidos: puedes escribir una palabra y obtener la secuencia correspondiente de puntos y rayas, o pegar un mensaje en código Morse y leer el texto decodificado. También puedes escuchar el resultado en audio con el ritmo correcto de puntos y rayas, ideal para quienes están aprendiendo a reconocer código Morse de oído. La herramienta admite letras de la A a la Z, números del 0 al 9 y los principales signos de puntuación definidos por el estándar internacional.",
     label_input: "Texto o código Morse",
@@ -1214,6 +1330,97 @@ defineI18nRoute({
     see2: "Tekstvergelijker",
     see3: "Romeinse cijfers",
     see4: "Tekstteller"
+  },
+  ru: {
+    title: "Переводчик кода Морзе",
+    meta_title: "Бесплатный переводчик кода Морзе – Текст в Морзе со звуком онлайн",
+    meta: "Бесплатный переводчик кода Морзе онлайн. Конвертируйте текст в код Морзе и декодируйте Морзе обратно в текст прямо в браузере. Поддерживает буквы, цифры и знаки препинания. Без регистрации.",
+    about_desc: "Этот конвертер кода Морзе позволяет преобразовывать любой текст в сигналы Морзе (точки и тире) и декодировать последовательности Морзе обратно в исходный текст. Все вычисления выполняются прямо в вашем браузере, без отправки данных на внешние серверы. Известный также как переводчик Морзе или конвертер азбуки Морзе, этот инструмент полезен для студентов, радиолюбителей, скаутов, энтузиастов и специалистов, работающих со стандартизированным международным кодом Морзе.",
+    about_desc2: "Конвертирование работает в обоих направлениях: вы можете ввести слово и получить соответствующую последовательность точек и тире или вставить сообщение в коде Морзе и прочитать расшифрованный текст. Вы также можете прослушать результат в виде аудио с правильными временными интервалами точек и тире, что делает его идеальным для всех, кто учится распознавать код Морзе на слух. Инструмент поддерживает буквы латинского алфавита от A до Z, цифры от 0 до 9 и основные знаки препинания, определенные международным стандартом.",
+    label_input: "Текст или код Морзе",
+    placeholder: "Введите текст или вставьте код Морзе здесь...",
+    btn_to_morse: "Текст → Морзе",
+    btn_from_morse: "Морзе → Текст",
+    result: "Результат",
+    btn_play: "Воспроизвести Морзе",
+    btn_stop: "Остановить",
+    label_volume: "Громкость",
+    warn_unknown: "Некоторые символы не были распознаны и заменены на «?».",
+    warn_not_morse: "Введенный текст не похож на код Морзе. Используйте кнопку «Текст → Морзе», чтобы преобразовать обычный текст в код Морзе.",
+    warn_looks_morse: "Введенное содержимое похоже на код Морзе. Используйте кнопку «Морзе → Текст», чтобы расшифровать его.",
+    features_title: "Основные возможности",
+    f_1: "Преобразование текста в код Морзе",
+    f_2: "Декодирование кода Морзе в текст",
+    f_3: "Воспроизведение звука кода Морзе прямо в браузере",
+    f_4: "Поддержка букв, цифр и знаков препинания",
+    f_5: "Локальная обработка для полной конфиденциальности",
+    what_title: "Что такое код Морзе",
+    what_p1: "Код Морзе — это система связи, которая представляет буквы, цифры и знаки препинания в виде последовательностей коротких и длинных сигналов, известных в просторечии как точки и тире. Каждый символ имеет уникальную комбинацию этих сигналов, что позволяет передавать сообщения с помощью звука, света, радио или даже постукивания по поверхности.",
+    what_p2: "Его главная особенность — простота. В отличие от многих других систем кодирования, коду Морзе требуются только два состояния: включено и выключено, короткий и длинный. Это делает его чрезвычайно надежным в неблагоприятных условиях. Сообщение на азбуке Морзе можно понять даже при фоновом шуме, слабых радиосигналах или плохой видимости — в ситуациях, когда голосовая связь может дать сбой.",
+    how_works_title: "Как работает код Морзе",
+    how_works_p1: "Каждый элемент кода Морзе имеет точную длительность. Тире длится в три раза дольше точки. Пауза между точками и тире внутри одной буквы равна одной точке. Пауза между буквами равна трем точкам, а пауза между словами — семи точкам. Это соотношение времени позволяет опытным операторам читать код Морзе на удивительно высоких скоростях, распознавая ритм еще до того, как они идентифицируют отдельные символы.",
+    how_works_p2: "В письменной форме, используемой в этом инструменте, буквы разделяются одинарным пробелом, а слова — косой чертой (/). Раздел часто задаваемых вопросов ниже содержит практические примеры того, как это соглашение работает при преобразовании реальных фраз.",
+    table_title: "Таблица международной азбуки Морзе",
+    table_letters: "Буквы",
+    table_numbers: "Цифры",
+    table_punct: "Знаки препинания",
+    punct_period: "Точка",
+    punct_comma: "Запятая",
+    punct_question: "Вопросительный знак",
+    punct_apostrophe: "Апостроф",
+    punct_exclamation: "Восклицательный знак",
+    punct_paren_open: "Открывающая скобка",
+    punct_paren_close: "Закрывающая скобка",
+    punct_ampersand: "Амперсанд",
+    punct_colon: "Двоеточие",
+    punct_semicolon: "Точка с запятой",
+    punct_equals: "Знак равенства",
+    punct_plus: "Знак плюс",
+    punct_hyphen: "Дефис",
+    punct_underscore: "Подчеркивание",
+    punct_quote: "Кавычки",
+    punct_at: "Символ {'@'}",
+    use_cases_title: "Где код Морзе используется сегодня",
+    use_1_t: "Радиолюбительство",
+    use_1_d: "Радиолюбительство является основным современным направлением использования кода Морзе сегодня. Операторы по всему миру общаются на коротких волнах в режиме CW (Continuous Wave), который по сути является кодом Морзе. Для многих энтузиастов это одновременно традиция и технический навык. Существует также практическое преимущество: сигналы CW могут пробиваться через помехи и преодолевать огромные расстояния при очень низкой мощности, чего часто невозможно достичь с помощью голосовой связи.",
+    use_2_t: "Авиация",
+    use_2_d: "Радиомаяки и навигационные станции по-прежнему передают свои идентификаторы кодом Морзе, повторяя последовательность букв станции каждые несколько секунд. Пилоты обучаются распознавать эти ритмы и подтверждать, что они настроены на правильную частоту.",
+    use_3_t: "Военная связь",
+    use_3_d: "Военные организации продолжают поддерживать код Морзе в качестве резервного метода связи в ситуациях, когда цифровые радиосистемы могут выйти из строя или быть перехвачены. Возможность передачи сообщений с использованием импровизированного оборудования считается стратегическим преимуществом.",
+    use_4_t: "Доступность",
+    use_4_d: "Люди с тяжелыми двигательными нарушениями используют адаптации кода Морзе для общения. С помощью одного нажатия кнопки или даже движения века можно писать целые слова, и на этом принципе основано множество современных приложений для доступности.",
+    use_5_t: "Скаутинг и образование",
+    use_5_d: "Многие скаутские отряды обучают коду Морзе в рамках своей программы по связи и сигнализации, помогая сохранить практический и исторически важный навык.",
+    use_6_t: "Чрезвычайные ситуации",
+    use_6_d: "Сигнал SOS (три точки, три тире, три точки) признан во всем мире. Люди в отдаленных районах использовали фонарики, зеркала и костры для отправки сигналов бедствия кодом Морзе, а спасательные команды обучены распознавать эти сигналы.",
+    how_to_use_title: "Как использовать",
+    step_1_title: "Введите текст",
+    step_1_desc: "Введите обычный текст для преобразования его в код Морзе или вставьте последовательность Морзе (точки, тире и косые черты) для ее расшифровки.",
+    step_2_title: "Выберите направление",
+    step_2_desc: "Нажмите «Текст → Морзе» для кодирования или «Морзе → Текст» для декодирования.",
+    step_3_title: "Скопируйте результат",
+    step_3_desc: "Используйте кнопку копирования, чтобы сохранить результат в буфер обмена.",
+    faq_title: "Часто задаваемые вопросы",
+    faq1q: "В чем разница между американским и международным кодом Морзе?",
+    faq1a: "Американский код Морзе, также известный как оригинальная азбука Морзе, был версией, созданной Сэмюэлем Морзе для железнодорожных телеграфных систем в США. В нем использовались внутренние паузы в некоторых буквах, что усложняло радиопередачу. Международный код Морзе, стандартизированный в 1865 году, устранил эти паузы и упростил несколько символов, в конечном итоге став мировым стандартом. Этот инструмент использует международный стандарт.",
+    faq2q: "Как вводить код Морзе на телефоне?",
+    faq2a: "Самый простой способ — использовать подобный инструмент: введите текст и скопируйте сгенерированный код Морзе. Для непосредственной передачи сигнала некоторые приложения могут преобразовывать текст в звуки или вспышки фонарика, воспроизводя правильный ритм точек и тире.",
+    faq3q: "Как в коде Морзе представляются ударения и специальные символы?",
+    faq3a: "Международный стандарт кода Морзе не включает символы с ударениями или диакритическими знаками. Этот инструмент автоматически удаляет ударения перед конвертированием, поэтому «café» превращается в «CAFE». Символы вне латинского алфавита, цифр и поддерживаемых знаков препинания заменяются на «?».",
+    faq4q: "Сколько времени нужно, чтобы выучить код Морзе?",
+    faq4a: "Для базового распознавания на скорости от 5 до 10 слов в минуту большинству людей требуется от четырех до восьми недель регулярной практики примерно по 15–30 минут в день. Достижение свободного разговорного темпа выше 20 слов в минуту может занять от полугода до года.",
+    faq5q: "Как работает разделение слов в коде Морзе?",
+    faq5a: "При звуковой передаче слова разделяются паузой, равной семи точкам. В письменном виде буквы разделяются пробелом, а слова — косой чертой (/). Например, «HI YOU» записывается как .... .. / -.-- --- ..-",
+    faq6q: "Почему именно SOS является сигналом бедствия?",
+    faq6a: "Распространенным заблуждением является то, что SOS расшифровывается как «Save Our Souls» (спасите наши души) или «Save Our Ship» (спасите наш корабль). На самом деле буквы были выбраны не из-за их значения, а из-за простоты последовательности: три точки, три тире и три точки без пауз между буквами. Этот шаблон легко передавать, трудно спутать с другими сообщениями и легко распознать даже в плохих условиях. Сигнал был принят в качестве международного морского стандарта бедствия в 1908 году, заменив старый сигнал CQD, использовавшийся компанией Marconi. В 1912 году гибель Титаника помогла популяризировать SOS во всем мире, хотя операторы корабля передавали той ночью как CQD, так и SOS.",
+    faq7q: "Какие символы поддерживаются этим инструментом?",
+    faq7a: "Инструмент поддерживает все буквы латинского алфавита от A до Z, цифры от 0 до 9 и наиболее распространенные знаки препинания, определенные международным стандартом, включая точки, запятые, вопросительные и восклицательные знаки, символ {'@'}, скобки и другие. Символы вне этого набора заменяются в результате вопросительным знаком.",
+    faq8q: "Могу ли я слушать код Морзе в виде звука?",
+    faq8a: "Да. После преобразования текста в код Морзе просто нажмите кнопку воспроизведения, чтобы услышать результат с правильным ритмом точек и тире. Аудио генерируется локально вашим браузером без необходимости установки стороннего ПО, что очень полезно для тех, кто учится распознавать код Морзе на слух.",
+    see1: "Конвертер текста",
+    see2: "Сравнение текстов",
+    see3: "Римские цифры",
+    see4: "Счетчик текста"
   }
 }
 </i18n>

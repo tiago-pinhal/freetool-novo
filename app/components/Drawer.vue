@@ -161,6 +161,17 @@ nl:
     fmt: "Code-formatteerders"
     conv: "Converters"
     misc: "Diverse tools"
+ru:
+    pdf: "Редактор PDF"
+    clr: "Цвета"
+    img: "Изображения"
+    txt: "Тексты"
+    dts: "Даты и время"
+    rand: "Случайные данные"
+    min: "Минификация кода"
+    fmt: "Форматирование кода"
+    conv: "Конвертеры"
+    misc: "Разные инструменты"
 </i18n>
 
 <style scoped>

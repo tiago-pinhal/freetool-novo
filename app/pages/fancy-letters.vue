@@ -124,11 +124,12 @@ defineI18nRoute({
     en: '/fancy-letters',
     pt: '/letras-diferentes',
     es: '/letras-diferentes',
-    fr: '/lettres-differentes',
+    fr: '/generateur-de-lettres',
     it: '/lettere-diverse',
     id: '/huruf-berbeda',
     de: '/schoene-schriften',
-    nl: '/mooie-letters'
+    nl: '/mooie-letters',
+    ru: '/krasivye-shrifty'
   }
 })
 </script>
@@ -139,7 +140,7 @@ defineI18nRoute({
     :description="t('meta')"
     :show-ads="state.text.length > 0"
     :see-also-links="[
-      { label: t('see1'), to: 'symbol-picker' },
+      { label: t('see1'), to: 'copy-paste-symbols' },
       { label: t('see2'), to: 'invisible-character' },
       { label: t('see3'), to: 'ascii-letter-generator' },
       { label: t('see4'), to: 'kaomoji' }
@@ -388,9 +389,9 @@ defineI18nRoute({
     f_4: "Gratuito, sem cadastro e sem instalação"
   },
   en: {
-    m_title: "Fancy Letters Generator - Copy & Paste Cool Fonts",
-    title: "Fancy Letters",
-    meta: "Create cool and different letters for Instagram, WhatsApp, Free Fire, and Discord. Over 30 stylized font styles ready to copy and paste.",
+    m_title: "Fancy Text Generator - Fancy Letters Copy & Paste",
+    title: "Fancy Text Generator",
+    meta: "Free fancy text generator with 30+ font styles. Create fancy letters for Instagram, WhatsApp, Discord and games – copy and paste in one click.",
     d1: "Transform any ordinary text into something unique, decorative, and full of personality. This tool generates dozens of variations at once, with cursive, gothic, bubble, monospaced, inverted, and many other fonts, ready for you to use in your Instagram bio, gaming nicks, WhatsApp status, or any app that accepts text.",
     in_label: "Your text",
     plc: "Type your name, phrase, or nick here...",
@@ -465,8 +466,8 @@ defineI18nRoute({
   es: {
     m_title: "Letras Diferentes - Generador de Letras Bonitas - Copiar y Pegar",
     title: "Letras Diferentes",
-    meta: "Crea letras diferentes y bonitas para Instagram, WhatsApp, Free Fire y Discord. Más de 30 estilos de fuentes estilizadas listas para copiar y pegar.",
-    d1: "Transforma cualquier texto común en algo único, decorativo y lleno de personalidad. Esta herramienta genera decenas de variaciones al mismo tiempo, con fuentes cursivas, góticas, burbuja, monoespaciadas, invertidas y muchas otras, listas para que las uses en tu biografía de Instagram, nicks de juegos, estados de WhatsApp o cualquier aplicación que acepte texto.",
+    meta: "Generador de letras bonitas para copiar y pegar en Instagram, WhatsApp, Free Fire y Discord. Más de 30 estilos de letras personalizadas.",
+    d1: "Transforma cualquier texto común en algo único, decorativo y lleno de personalidad con nuestro generador de letras bonitas. Esta herramienta online y gratuita genera decenas de fuentes diferentes y bonitas en el estilo cursivo, gótico, burbuja, monoespaciado, invertido y muchos otros. Es perfecto para quienes buscan una fuente para nick llamativa para juegos, bio de Instagram, mensaje de WhatsApp o para destacar en cualquier red social.",
     in_label: "Tu texto",
     plc: "Escribe tu nombre, frase o nick aquí...",
     preview_text: "Ejemplo",
@@ -480,31 +481,31 @@ defineI18nRoute({
 
     use_cases_title: "Dónde usar tus letras personalizadas",
     uc_1_title: "Instagram, TikTok y redes sociales",
-    uc_1_desc: "Destaca tu biografía, la descripción o el nombre de tu perfil con fuentes decorativas. Como todo está basado en símbolos universales, funciona directamente, sin instalar ninguna aplicación extra.",
+    uc_1_desc: "Destaca la bio, la descripción o el nombre de tu perfil con fuentes decorativas. Como todo está basado en símbolos universales, funciona directamente, sin instalar ninguna aplicación extra.",
     uc_2_title: "Nicknames para juegos en línea",
     uc_2_desc: "Crea nicks únicos para Free Fire, Roblox, Fortnite, Valorant y otros. Combina estilos con bordes decorativos para un aspecto llamativo en tu perfil de jugador.",
     uc_3_title: "WhatsApp, Telegram y Discord",
     uc_3_desc: "Personaliza tu nombre de visualización, estado, información y mensajes. Los caracteres funcionan en prácticamente todas las aplicaciones de mensajería modernas.",
     uc_4_title: "Perfiles de creadores y marcas personales",
-    uc_4_desc: "Haz destacar el nombre de tu canal, tienda o proyecto creativo con una identidad visual única. Útil para perfiles en TikTok, YouTube, Twitch y Etsy, donde un nombre diferente puede reforzar el reconocimiento de tu marca.",
+    uc_4_desc: "Destaca el nombre de tu canal, tienda o proyecto creativo con una identidad visual única. Útil para perfiles en TikTok, YouTube, Twitch y Etsy, donde un nombre diferente puede reforzar el reconocimiento de tu marca.",
 
-    how_it_works_title: "Cómo usar el generador de letras bonitas",
+    how_it_works_title: "Cómo usar el generador de letras y símbolos",
     hiw_1_title: "Escribe o pega tu texto",
     hiw_1_desc: "Escribe tu nombre, frase o nick en el campo principal. Los resultados aparecen automáticamente en más de 30 estilos diferentes, sin necesidad de hacer clic en generar.",
     hiw_2_title: "Añade bordes y símbolos (opcional)",
     hiw_2_desc: "Usa el selector de decoración para envolver el texto con marcos de estrellas, corazones, ondas y otros adornos. Combina estilos hasta encontrar el aspecto perfecto.",
     hiw_3_title: "Copia y pega donde quieras",
-    hiw_3_desc: "Haz clic en el icono junto al estilo que más te haya gustado. El texto va directo al portapapeles, listo para pegar en tu red social, juego o aplicación.",
+    hiw_3_desc: "Haz clic en el icono al lado del estilo que más te haya gustado. El texto va directo al portapapeles, listo para pegar en tu red social, juego o aplicación.",
 
-    styles_title: "Estilos de letras disponibles",
+    styles_title: "Estilos de letras bonitas disponibles",
     styles_intro: "La herramienta cubre las principales categorías de fuentes Unicode utilizadas en redes sociales y juegos. Mira a continuación lo que representa cada una:",
     st_cursive: "Cursiva y Script",
     st_cursive_d: "Imitan una caligrafía elegante y fluida. Ideales para biografías sofisticadas, nombres artísticos e invitaciones digitales.",
     st_gothic: "Gótica y Fraktur",
     st_gothic_d: "Trazos fuertes inspirados en manuscritos medievales. Buena elección para un aspecto con peso, tradición o toque heavy metal.",
-    st_bubble: "Burbuja",
+    st_bubble: "Burbuja (Bubble)",
     st_bubble_d: "Letras redondeadas y divertidas, que parecen burbujas infladas. Funcionan bien en mensajes casuales y perfiles lúdicos.",
-    st_square: "Cuadrada",
+    st_square: "Cuadrada (Square)",
     st_square_d: "Caracteres dentro de marcos cuadrados, creando un aspecto geométrico y moderno muy usado en nicks de juegos.",
     st_mono: "Monoespaciada (Retro)",
     st_mono_d: "Cada carácter ocupa exactamente el mismo espacio, recordando a máquinas de escribir y terminales. Estética limpia y minimalista.",
@@ -521,11 +522,11 @@ defineI18nRoute({
 
     faq_title: "Preguntas y Respuestas",
     faq_1_q: "¿Cómo poner letras diferentes en Instagram?",
-    faq_1_a: "Abre Instagram, ve a Editar Perfil y pega el texto estilizado en el campo de nombre o bio. Como los caracteres son Unicode universales —el mismo estándar que los emojis— aparecen automáticamente sin instalar nada. Para subtítulos y Stories, simplemente copia y pega normalmente.",
+    faq_1_a: "Accede a Instagram, ve a Editar Perfil y pega el texto estilizado en el campo de nombre o bio. Como los caracteres son Unicode universales —el mismo estándar que los emojis— aparecen automáticamente sin instalar nada. Para subtítulos y Stories, simplemente copia y pega normalmente.",
     faq_2_q: "¿Las letras diferentes funcionan en TikTok?",
-    faq_2_a: "Sí. TikTok acepta caracteres Unicode en el nombre de usuario, bio y subtítulos de videos. Pega el texto copiado directamente en los campos de texto de la app. La única limitación es cuando TikTok bloquea ciertos bloques Unicode en nombres de usuario — en ese caso, prueba un estilo diferente.",
+    faq_2_a: "Sí. TikTok acepta caracteres Unicode en el nombre de usuario, bio y subtítulos de videos. Pega el texto copiado directamente en los campos de texto de la app. La única limitación es cuando el TikTok bloquea ciertos bloques Unicode en nombres de usuario — en esos casos, prueba un estilo diferente.",
     faq_3_q: "¿Cómo crear un nick estilizado?",
-    faq_3_a: "Escribe el nombre deseado en el campo de la herramienta, elige un estilo que combine con tu juego o perfil y copia con un clic. Para juegos como Free Fire, Roblox y Fortnite, los estilos góticos, cuadrados o con bordes decorativos suelen funcionar muy bien. Consejo: combina un estilo de letra con un borde para un aspecto aún más llamativo.",
+    faq_3_a: "Ingresa el nombre deseado en el campo de la herramienta, elige un estilo que combine con tu juego o perfil y copia con un clic. Para juegos como Free Fire, Roblox y Fortnite, los estilos góticos, cuadrados o con bordes decorativos suelen funcionar muy bien. Consejo: combina un estilo de letra con un borde para un diseño aún más llamativo.",
 
     see1: "Selector de Símbolos",
     see2: "Carácter Invisible",
@@ -538,9 +539,9 @@ defineI18nRoute({
     f_4: "Gratis, sin registro y sin instalación"
   },
   fr: {
-    m_title: "Lettres Différentes - Générateur de Belles Polices - Copier & Coller",
-    title: "Lettres Différentes",
-    meta: "Créez des lettres stylées et belles pour Instagram, WhatsApp, Free Fire et Discord. Plus de 30 styles de polices stylisées prêtes à copier et coller.",
+    m_title: "Générateur de Lettres Stylées - Copier & Coller",
+    title: "Générateur de Lettres",
+    meta: "Générateur de lettres stylées gratuit avec plus de 30 styles. Créez des lettres fantaisie pour Instagram, WhatsApp, Discord et jeux – copiez et collez en un clic.",
     d1: "Transformez n'importe quel texte ordinaire en quelque chose d'unique, de décoratif et plein de personnalité. Cet outil génère des dizaines de variations à la fois, avec des polices cursives, gothiques, bulles, à chasse fixe, inversées et bien d'autres, prêtes à être utilisées dans votre bio Instagram, pseudos de jeux, statut WhatsApp ou toute application acceptant du texte.",
     in_label: "Votre texte",
     plc: "Tapez votre nom, phrase ou pseudo ici...",
@@ -613,9 +614,9 @@ defineI18nRoute({
     f_4: "Gratuit, sans inscription et sans installation"
   },
   it: {
-    m_title: "Lettere Diverse - Generatore di Font Bellissimi - Copia & Incolla",
-    title: "Lettere Diverse",
-    meta: "Crea lettere diverse e bellissime per Instagram, WhatsApp, Free Fire e Discord. Oltre 30 stili di font stilizzati pronti da copiare e incollare.",
+    m_title: "Lettere Stilizzate - Generatore di Font - Copia & Incolla",
+    title: "Lettere Stilizzate",
+    meta: "Generatore di lettere stilizzate e font particolari per Instagram, WhatsApp, Free Fire e Discord. Oltre 30 stili pronti da copiare e incollare.",
     d1: "Trasforma qualsiasi testo normale in qualcosa di unico, decorativo e pieno di personalità. Questo strumento genera decine di varianti contemporaneamente, con font corsivi, gotici, a bolla, a spaziatura fissa, invertiti e molti altri, pronti per essere usati nella tua bio di Instagram, nei nick dei giochi, nello stato di WhatsApp o in qualsiasi app che accetti del testo.",
     in_label: "Il tuo testo",
     plc: "Scrivi il tuo nome, frase o nick qui...",
@@ -688,9 +689,9 @@ defineI18nRoute({
     f_4: "Gratuito, senza registrazione e senza installazione"
   },
   id: {
-    m_title: "Huruf Berbeda - Generator Huruf Keren - Salin & Tempel",
-    title: "Huruf Berbeda",
-    meta: "Buat huruf yang berbeda dan keren untuk Instagram, WhatsApp, Free Fire, dan Discord. Lebih dari 30 gaya font bergaya siap untuk disalin dan ditempel.",
+    m_title: "Generator Huruf Keren - Tulisan Keren Salin & Tempel",
+    title: "Huruf Keren",
+    meta: "Generator huruf keren dan tulisan keren untuk Instagram, WhatsApp, Free Fire, dan Discord. Lebih dari 30 gaya huruf siap disalin dan ditempel.",
     d1: "Ubah teks biasa apa pun menjadi sesuatu yang unik, dekoratif, dan penuh kepribadian. Alat ini menghasilkan puluhan variasi sekaligus, dengan font kursif, gothic, gelembung, monospasi, terbalik, dan banyak lainnya, siap untuk Anda gunakan di bio Instagram, nama game, status WhatsApp, atau aplikasi apa pun yang menerima teks.",
     in_label: "Teks Anda",
     plc: "Ketik nama, frasa, atau nama panggilan Anda di sini...",
@@ -763,7 +764,7 @@ defineI18nRoute({
     f_4: "Gratis, tanpa pendaftaran, tanpa instalasi"
   },
   de: {
-    m_title: "Schöne Schriften - Coole Buchstaben Generator - Kopieren & Einfügen",
+    m_title: "Schöne Schriften - Buchstaben Generator - Kopieren & Einfügen",
     title: "Schöne Schriften",
     meta: "Erstelle schöne und coole Schriften für Instagram, WhatsApp, Free Fire und Discord. Über 30 stylische Schriftarten zum Kopieren und Einfügen.",
     d1: "Verwandle jeden gewöhnlichen Text in etwas Einzigartiges, Dekoratives und voller Persönlichkeit. Dieses Tool generiert Dutzende von Variationen gleichzeitig, mit Schreibschriften, Gothic, Bubble, Monospace, invertierten und vielen anderen Schriftarten, bereit für deine Instagram-Bio, Gaming-Nicks, WhatsApp-Status oder jede andere App, die Text akzeptiert.",
@@ -911,6 +912,81 @@ defineI18nRoute({
     f_2: "Snel 1-klik kopiëren",
     f_3: "Compatibel met Instagram, WhatsApp, Discord en games",
     f_4: "Gratis, zonder aanmelden, geen installatie"
+  },
+  ru: {
+    m_title: "Красивые шрифты и буквы - Копировать и вставить",
+    title: "Красивые шрифты",
+    meta: "Бесплатный генератор красивых букв и шрифтов. Более 30 стилей. Создавайте необычные шрифты для Instagram, WhatsApp, Discord и игр — копируйте в один клик.",
+    d1: "Превратите любой обычный текст в нечто уникальное, декоративное и полное индивидуальности. Этот инструмент одновременно генерирует десятки вариантов: курсив, готику, пузырьковый стиль, моноширинный, перевернутый и многие другие шрифты, готовые для использования в вашей биографии Instagram, игровых никах, статусе WhatsApp или в любом приложении, где можно вводить текст.",
+    in_label: "Ваш текст",
+    plc: "Введите ваше имя, фразу или ник здесь...",
+    preview_text: "Пример",
+    text: "Текст",
+    decoration: "Символы и рамки:",
+    no_deco: "Без украшений",
+    copy: "Копировать",
+    clear: "Очистить текст",
+    copied_announce: "Текст скопирован в буфер обмена",
+    results_label: "Список сгенерированных стилей",
+
+    use_cases_title: "Где можно использовать эти шрифты",
+    uc_1_title: "Instagram, TikTok и социальные сети",
+    uc_1_desc: "Выделите вашу биографию, подпись или имя профиля декоративными шрифтами. Поскольку всё основано на универсальных символах, это работает сразу и без установки дополнительных приложений.",
+    uc_2_title: "Никнеймы для онлайн-игр",
+    uc_2_desc: "Создавайте уникальные ники для Free Fire, Roblox, Fortnite, Valorant и других игр. Комбинируйте стили с декоративными рамками для создания яркого профиля игрока.",
+    uc_3_title: "WhatsApp, Telegram и Discord",
+    uc_3_desc: "Украсьте свое имя, статус, информацию о себе и сообщения. Эти символы поддерживаются практически всеми современными мессенджерами.",
+    uc_4_title: "Профили авторов и личные бренды",
+    uc_4_desc: "Сделайте имя вашего канала, магазина или творческого проекта запоминающимся. Отлично подходит для TikTok, YouTube, Twitch и Etsy, где оригинальное оформление имени может усилить узнаваемость вашего бренда.",
+
+    how_it_works_title: "Как использовать генератор красивых шрифтов",
+    hiw_1_title: "Введите или вставьте текст",
+    hiw_1_desc: "Напишите ваше имя, фразу или ник в главном поле. Результаты автоматически появятся в более чем 30 различных стилях, без необходимости нажимать кнопку генерации.",
+    hiw_2_title: "Добавьте рамки и символы (по желанию)",
+    hiw_2_desc: "Используйте панель украшений, чтобы добавить рамки из звездочек, сердечек, волн и других элементов. Экспериментируйте со стилями, пока не найдете идеальный вариант.",
+    hiw_3_title: "Копируйте и вставляйте куда угодно",
+    hiw_3_desc: "Нажмите на иконку рядом с понравившимся стилем. Текст будет скопирован в буфер обмена и готов к вставке в вашу социальную сеть, игру или приложение.",
+
+    styles_title: "Доступные стили шрифтов",
+    styles_intro: "Инструмент охватывает основные категории шрифтов Unicode, используемые в социальных сетях и играх. Ниже описано, что представляет собой каждая из них:",
+    st_cursive: "Курсивные и рукописные",
+    st_cursive_d: "Имитируют элегантный и плавный почерк. Идеально подходят для утонченных биографий, творческих псевдонимов и электронных приглашений.",
+    st_gothic: "Готика и фрактура",
+    st_gothic_d: "Строгие линии, вдохновленные средневековыми рукописями. Отличный выбор для создания солидного, традиционного стиля или атмосферы хэви-метала.",
+    st_bubble: "Пузырьковые",
+    st_bubble_d: "Округлые и забавные буквы, похожие на надутые пузыри. Хорошо смотрятся в неформальных сообщениях и игровых профилях.",
+    st_square: "Квадратные",
+    st_square_d: "Символы внутри квадратных рамок, создающие геометрический и современный вид, который часто используется в игровых никнеймах.",
+    st_mono: "Моноширинные (Ретро)",
+    st_mono_d: "Каждый символ занимает одинаковое пространство, напоминая печатную машинку или терминал. Чистая и минималистичная эстетика.",
+    st_invert: "Перевернутые и зеркальные",
+    st_invert_d: "Текст перевернут вверх ногами или отражен. Полезно для создания необычных визуальных эффектов и розыгрышей в сети.",
+    st_manga: "Манга",
+    st_manga_d: "Шрифт вдохновлен типографикой японских комиксов с динамичными штрихами, придающими тексту движение.",
+    st_zalgo: "Zalgo и Glitch",
+    st_zalgo_d: "Эффект искаженного текста с наложенными друг на друга символами. Идеально подходит для эстетики хоррора, мистики и киберпанка.",
+
+    unicode_title: "Почему эти буквы работают на любой платформе",
+    unicode_p1: "Несмотря на то, что они выглядят как специальные шрифты, в техническом смысле это не шрифты. Это реальные символы стандарта Unicode — той же универсальной системы, которая определяет эмодзи и алфавиты по всему миру. Именно поэтому текст выглядит одинаково на Android, iPhone, Windows или Mac, и для этого ничего не нужно устанавливать.",
+    unicode_p2: "Поскольку каждый символ независим, текст можно вставлять в любое поле, поддерживающее обычный ввод: биографию Instagram, имя в WhatsApp, информацию о себе в Discord, игровые никнеймы и даже формы на сайтах. Единственное ограничение может возникнуть, если приложение блокирует определенные блоки Unicode из соображений модерации или безопасности.",
+
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Как добавить красивые шрифты в Instagram?",
+    faq_1_a: "Откройте Instagram, перейдите в «Редактировать профиль» и вставьте стилизованный текст в поле имени или биографии. Поскольку эти символы являются стандартными символами Unicode (как и эмодзи), они отображаются автоматически без установки каких-либо программ. Для подписей к фото и Stories просто скопируйте и вставьте текст как обычно.",
+    faq_2_q: "Работают ли красивые шрифты в TikTok?",
+    faq_2_a: "Да. TikTok поддерживает символы Unicode в имени пользователя, описании профиля и подписях к видео. Просто вставьте скопированный текст прямо в приложение. Ограничение может возникнуть только если TikTok заблокирует определенные блоки Unicode для имен пользователей — в таком случае попробуйте другой стиль.",
+    faq_3_q: "Как создать красивый никнейм?",
+    faq_3_a: "Введите желаемое имя в поле инструмента, выберите стиль, подходящий для вашей игры или профиля, и скопируйте одним кликом. Для таких игр, как Free Fire, Roblox и Fortnite, отлично подходят готические, квадратные стили или шрифты с декоративными рамками. Совет: скомбинируйте стиль шрифта с рамкой для еще более эффектного результата.",
+
+    see1: "Таблица символов",
+    see2: "Невидимый символ",
+    see3: "Генератор ASCII-букв",
+    see4: "Генератор каомодзи",
+
+    f_1: "Более 30 стилей шрифтов",
+    f_2: "Быстрое копирование в 1 клик",
+    f_3: "Совместимо с Instagram, WhatsApp, Discord и играми",
+    f_4: "Бесплатно, без регистрации и установки"
   }
 }
 </i18n>

@@ -22,7 +22,7 @@ usePageJsonLd({
 })
 
 useHead({
-  title: `${t('title')} - Lorem Ipsum`,
+  title: t('meta_title'),
   meta: [
     { name: 'description', content: t('meta') }
   ]
@@ -78,7 +78,8 @@ defineI18nRoute({
       it: '/generatore-di-testo',
       id: '/generator-teks',
       de: '/text-generator',
-      nl: '/tekst-generator'
+      nl: '/tekst-generator',
+      ru: '/generator-teksta'
     }
 })
 </script>
@@ -190,8 +191,9 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   en: {
-    title: "Placeholder Text Generator",
-    meta: "Free online Lorem Ipsum generator. Create placeholder text, paragraphs, sentences, and lists for web design, Figma, Sketch, and prototyping.",
+    title: "Lorem Ipsum Generator",
+    meta_title: "Lorem Ipsum Generator — Free Placeholder Text Online",
+    meta: "Free Lorem Ipsum generator online. Create placeholder text — paragraphs, sentences, words and lists for web design, Figma, Sketch and prototyping.",
     desc: "Our Lorem Ipsum Generator instantly creates placeholder text for designers and developers. Use placeholders in wireframes, mockups, and prototypes to visualize the final layout without distractions from real content. Ideal for web design, UI/UX projects, Figma usage, and theme creation, the tool offers natural-looking text while the definitive content is not yet available. Lorem Ipsum is the industry standard in typography and design for layout testing, making it essential for frontend professionals and marketing teams.",
     qty: "Quantity",
     paragraphs: "Paragraphs",
@@ -228,8 +230,9 @@ defineI18nRoute({
     see4: "Fancy Letters",
   },
   pt: {
-    title: "Gerador de Texto Placeholder",
-    meta: "Gerador Lorem Ipsum online grátis. Crie texto placeholder, parágrafos, frases e listas para web design, Figma, Sketch e prototipagem.",
+    title: "Gerador de Lorem Ipsum",
+    meta_title: "Gerador de Lorem Ipsum — Texto Placeholder Online Grátis",
+    meta: "Gerador de Lorem Ipsum online grátis. Crie texto placeholder — parágrafos, frases, palavras e listas para web design, Figma, Sketch e prototipagem.",
     desc: "Nosso Gerador de Lorem Ipsum cria textos de preenchimento instantaneamente para designers e desenvolvedores. Utilize placeholders em wireframes, mockups e protótipos para visualizar o layout final sem distrações com o conteúdo real. Ideal para web design, projetos de UI/UX, uso no Figma e criação de temas, a ferramenta oferece textos com aparência natural enquanto o conteúdo definitivo ainda não está disponível. O Lorem Ipsum é o padrão da indústria em tipografia e design para testes de layout, sendo essencial para profissionais de frontend e equipes de marketing.",
     qty: "Quantidade",
     paragraphs: "Parágrafos",
@@ -262,12 +265,13 @@ defineI18nRoute({
     faq_4_a: "Sim! Todo o texto placeholder gerado por esta ferramenta é totalmente gratuito e livre de direitos autorais, podendo ser usado em qualquer projeto pessoal ou comercial, como sites, aplicativos e temas.",
     see1: "Contador de Texto",
     see2: "Conversor de Texto",
-    see3: "Gerador de Letras ASCII",
+    see3: "Letras ASCII",
     see4: "Letras Diferentes",
   },
    es: {
-    title: "Generador de Texto Placeholder",
-    meta: "Generador Lorem Ipsum online gratis. Crea texto placeholder, párrafos, frases y listas para diseño web, Figma, Sketch y prototipado.",
+    title: "Generador Lorem Ipsum",
+    meta_title: "Generador Lorem Ipsum — Texto Placeholder Online Gratis",
+    meta: "Generador Lorem Ipsum online gratis. Crea texto placeholder — párrafos, frases, palabras y listas para diseño web, Figma, Sketch y prototipado.",
     desc: "Nuestro Generador de Lorem Ipsum crea textos de relleno instantáneamente para diseñadores y desarrolladores. Utiliza placeholders en wireframes, mockups y prototipos para visualizar el diseño final sin distracciones con el contenido real. Ideal para diseño web, proyectos de UI/UX, uso en Figma y creación de temas, la herramienta ofrece textos con un aspecto natural mientras el contenido definitivo aún no está disponible. Lorem Ipsum es el estándar de la industria en tipografía y diseño para pruebas de maquetación, siendo esencial para profesionales de frontend y equipos de marketing.",
     qty: "Cantidad",
     paragraphs: "Párrafos",
@@ -304,8 +308,9 @@ defineI18nRoute({
     see4: "Letras Diferentes",
   },
   fr: {
-    title: "Générateur de Faux Texte",
-    meta: "Générateur de Lorem Ipsum en ligne gratuit. Créez du faux texte, des paragraphes, des phrases et des listes pour le web design, Figma, Sketch et le prototypage.",
+    title: "Générateur Lorem Ipsum",
+    meta_title: "Générateur Lorem Ipsum — Faux Texte en Ligne Gratuit",
+    meta: "Générateur Lorem Ipsum en ligne gratuit. Créez du faux texte — paragraphes, phrases, mots et listes pour le web design, Figma, Sketch et le prototypage.",
     desc: "Notre générateur de Lorem Ipsum crée instantanément du texte de remplissage pour les designers et les développeurs. Utilisez des espaces réservés dans vos wireframes, maquettes et prototypes pour visualiser la mise en page finale sans être distrait par le contenu réel. Idéal pour le web design, les projets UI/UX, l'utilisation dans Figma et la création de thèmes, l'outil offre un texte d'apparence naturelle en attendant le contenu définitif. Le Lorem Ipsum est la norme de l'industrie en typographie et en design pour tester les mises en page, ce qui en fait un élément essentiel pour les professionnels du frontend et les équipes marketing.",
     qty: "Quantité",
     paragraphs: "Paragraphes",
@@ -342,8 +347,9 @@ defineI18nRoute({
     see4: "Lettres Spéciales",
   },
   it: {
-    title: "Generatore di Testo Placeholder",
-    meta: "Generatore Lorem Ipsum online gratis. Crea testo placeholder, paragrafi, frasi e liste per web design, Figma, Sketch e prototipazione.",
+    title: "Generatore Lorem Ipsum",
+    meta_title: "Generatore Lorem Ipsum — Testo Segnaposto Online Gratis",
+    meta: "Generatore Lorem Ipsum online gratis. Crea testo segnaposto — paragrafi, frasi, parole e liste per web design, Figma, Sketch e prototipazione.",
     desc: "Il nostro Generatore di Lorem Ipsum crea istantaneamente testo riempitivo per designer e sviluppatori. Utilizza i placeholder in wireframe, mockup e prototipi per visualizzare il layout finale senza distrarti con il contenuto reale. Ideale per web design, progetti UI/UX, uso in Figma e creazione di temi, lo strumento offre un testo dall'aspetto naturale mentre il contenuto definitivo non è ancora disponibile. Il Lorem Ipsum è lo standard del settore in tipografia e design per i test di layout, essendo essenziale per professionisti frontend e team di marketing.",
     qty: "Quantità",
     paragraphs: "Paragrafi",
@@ -380,8 +386,9 @@ defineI18nRoute({
     see4: "Lettere Diverse",
   },
   id: {
-    title: "Generator Teks Placeholder",
-    meta: "Generator Lorem Ipsum online gratis. Buat teks placeholder, paragraf, kalimat, dan daftar untuk desain web, Figma, Sketch, dan pembuatan prototipe.",
+    title: "Generator Lorem Ipsum",
+    meta_title: "Generator Lorem Ipsum — Teks Placeholder Online Gratis",
+    meta: "Generator Lorem Ipsum online gratis. Buat teks placeholder — paragraf, kalimat, kata, dan daftar untuk desain web, Figma, Sketch, dan pembuatan prototipe.",
     desc: "Generator Lorem Ipsum kami secara instan membuat teks pengisi untuk desainer dan pengembang. Gunakan placeholder di wireframe, mockup, dan prototipe untuk memvisualisasikan tata letak akhir tanpa terganggu oleh konten asli. Ideal untuk desain web, proyek UI/UX, penggunaan Figma, dan pembuatan tema, alat ini menawarkan teks yang tampak alami sementara konten definitif belum tersedia. Lorem Ipsum adalah standar industri dalam tipografi dan desain untuk pengujian tata letak, sehingga sangat penting bagi para profesional frontend dan tim pemasaran.",
     qty: "Jumlah",
     paragraphs: "Paragraf",
@@ -418,8 +425,9 @@ defineI18nRoute({
     see4: "Huruf Keren",
   },
   de: {
-    title: "Platzhalter-Text-Generator",
-    meta: "Kostenloser Online-Lorem-Ipsum-Generator. Erstellen Sie Platzhaltertext, Absätze, Sätze und Listen für Webdesign, Figma, Sketch und Prototyping.",
+    title: "Lorem Ipsum Generator",
+    meta_title: "Lorem Ipsum Generator — Kostenloser Platzhaltertext Online",
+    meta: "Kostenloser Lorem Ipsum Generator online. Erstellen Sie Platzhaltertext — Absätze, Sätze, Wörter und Listen für Webdesign, Figma, Sketch und Prototyping.",
     desc: "Unser Lorem-Ipsum-Generator erstellt sofort Fülltext für Designer und Entwickler. Verwenden Sie Platzhalter in Wireframes, Mockups und Prototypen, um das endgültige Layout zu visualisieren, ohne vom eigentlichen Inhalt abgelenkt zu werden. Ideal für Webdesign, UI/UX-Projekte, die Verwendung in Figma und die Erstellung von Themes. Das Tool bietet natürlich aussehenden Text, solange der endgültige Inhalt noch nicht verfügbar ist. Lorem Ipsum ist der Industriestandard in Typografie und Design für Layout-Tests und daher für Frontend-Profis und Marketingteams unerlässlich.",
     qty: "Menge",
     paragraphs: "Absätze",
@@ -456,8 +464,9 @@ defineI18nRoute({
     see4: "Ausgefallene Buchstaben",
   },
   nl: {
-    title: "Placeholder Tekst Generator",
-    meta: "Gratis online Lorem Ipsum generator. Maak placeholder tekst, paragrafen, zinnen en lijsten voor webdesign, Figma, Sketch en prototyping.",
+    title: "Lorem Ipsum Generator",
+    meta_title: "Lorem Ipsum Generator — Gratis Placeholder Tekst Online",
+    meta: "Gratis Lorem Ipsum generator online. Maak placeholder tekst — paragrafen, zinnen, woorden en lijsten voor webdesign, Figma, Sketch en prototyping.",
     desc: "Onze Lorem Ipsum Generator maakt direct vultekst voor ontwerpers en ontwikkelaars. Gebruik placeholders in wireframes, mockups en prototypes om de uiteindelijke lay-out te visualiseren zonder te worden afgeleid door de echte inhoud. Ideaal voor webdesign, UI/UX-projecten, gebruik in Figma en het maken van thema's. De tool biedt natuurlijk ogende tekst terwijl de definitieve inhoud nog niet beschikbaar is. Lorem Ipsum is de industriestandaard in typografie en design voor lay-outtests, waardoor het essentieel is voor frontend-professionals en marketingteams.",
     qty: "Aantal",
     paragraphs: "Paragrafen",
@@ -492,6 +501,45 @@ defineI18nRoute({
     see2: "Tekst Converter",
     see3: "ASCII Letter Generator",
     see4: "Aparte Letters",
+  },
+  ru: {
+    title: "Генератор Lorem Ipsum",
+    meta_title: "Генератор Lorem Ipsum — бесплатный текст-рыба онлайн",
+    meta: "Бесплатный онлайн-генератор Lorem Ipsum. Создавайте текст-рыбу: абзацы, предложения, слова и списки для веб-дизайна, Figma, Sketch и прототипирования.",
+    desc: "Наш генератор Lorem Ipsum мгновенно создает текст-рыбу (заполнитель) для дизайнеров и разработчиков. Используйте плейсхолдеры в вайрфреймах, макетах и прототипах, чтобы визуализировать конечный макет, не отвлекаясь на реальный контент. Инструмент идеально подходит для веб-дизайна, UI/UX-проектов, работы в Figma и создания тем, предлагая текст с естественной структурой, пока окончательный контент еще не готов. Lorem Ipsum является стандартом в типографике и дизайне для тестирования разметки, что делает его незаменимым для фронтенд-разработчиков и маркетологов.",
+    qty: "Количество",
+    paragraphs: "Абзацы",
+    words: "Слова",
+    sentences: "Предложения",
+    lists: "Списки",
+    tags: "Добавить HTML-теги абзаца",
+    lorem: "Начинать с 'Lorem ipsum'",
+    gen: "Сгенерировать",
+    result: "Результат",
+    features_title: "Основные преимущества",
+    f_1: "Мгновенный плейсхолдер: создавайте абзацы, предложения, слова или списки Lorem Ipsum в один клик, без регистрации и установки.",
+    f_2: "Гибкие настройки: выбирайте точное количество и добавляйте HTML-теги абзацев для прямого использования в коде, CMS или редакторах.",
+    f_3: "Идеально для работы: отлично подходит для макетов, вайрфреймов, шаблонов сайтов, прототипов приложений и презентаций.",
+    how_to_use_title: "Как использовать",
+    step_1_title: "Выберите количество",
+    step_1_desc: "Укажите, сколько абзацев, предложений, слов или элементов списка вам необходимо для вашего проекта.",
+    step_2_title: "Выберите параметры",
+    step_2_desc: "Включите HTML-теги абзацев для веб-проектов или начните с классического вступления 'Lorem ipsum dolor sit amet'.",
+    step_3_title: "Сгенерируйте и скопируйте",
+    step_3_desc: "Выберите нужный тип контента и скопируйте сгенерированный текст-заполнитель прямо в ваш графический редактор или среду разработки.",
+    faq_title: "Часто задаваемые вопросы",
+    faq_1_q: "Что такое Lorem Ipsum и для чего он используется?",
+    faq_1_a: "Это стандартный псевдолатинский текст-заполнитель, используемый в полиграфии и веб-дизайне для заполнения текстовых блоков в макетах. Он позволяет оценить визуальную структуру и типографику, не отвлекаясь на смысл контента.",
+    faq_2_q: "Зачем использовать макетный текст вместо реального?",
+    faq_2_a: "Использование реального текста может отвлекать клиентов и рецензентов, заставляя их вчитываться в содержание вместо оценки дизайна. Lorem Ipsum имеет нормальное распределение букв, идеально имитируя визуальный вес естественного языка.",
+    faq_3_q: "Содержит ли сгенерированный текст скрытый смысл или ненормативную лексику?",
+    faq_3_a: "Нет. Наш генератор использует классический формат на основе оригинальных латинских текстов I века до н.э., гарантируя отсутствие двусмысленных слов или скрытых шуток посреди текста-заполнителя.",
+    faq_4_q: "Можно ли использовать сгенерированный текст в коммерческих проектах?",
+    faq_4_a: "Да! Весь текст-заполнитель, создаваемый этим инструментом, полностью бесплатен и не защищен авторским правом. Вы можете свободно использовать его в любых личных и коммерческих проектах, включая сайты, приложения и темы оформления.",
+    see1: "Счетчик текста",
+    see2: "Конвертер текста",
+    see3: "Генератор ASCII-букв",
+    see4: "Красивые буквы",
   }
 }
 </i18n>

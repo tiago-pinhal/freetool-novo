@@ -72,6 +72,7 @@ async function copy() {
   it: { copy: "Copia colore", copied: "Copiato!" },
   id: { copy: "Salin warna", copied: "Tersalin!" },
   de: { copy: "Farbe kopieren", copied: "Kopiert!" },
-  nl: { copy: "Kleur kopiëren", copied: "Gekopieerd!" }
+  nl: { copy: "Kleur kopiëren", copied: "Gekopieerd!" },
+  ru: { copy: "Скопировать цвет", copied: "Скопировано!" }
 }
 </i18n>

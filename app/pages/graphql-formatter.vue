@@ -92,7 +92,8 @@ defineI18nRoute({
     it: '/formattatore-graphql',
     id: '/pemformat-graphql',
     de: '/graphql-formatter',
-    nl: '/graphql-formatter'
+    nl: '/graphql-formatter',
+    ru: '/formatator-graphql'
   }
 })
 </script>
@@ -218,11 +219,11 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
     en: {
-        m_title: "GraphQL Formatter Online - Beautify & Indent GraphQL for Free",
+        m_title: "GraphQL Query Formatter & Beautifier Online - Free",
         title: "GraphQL Formatter",
-        meta: "Free online GraphQL formatter. Paste your queries, mutations or schema and instantly beautify them with proper indentation and consistent structure.",
-        d1: "This online GraphQL formatter parses and reformats your queries, mutations, subscriptions, and schema definitions with consistent indentation and uniform structure. Any messy or minified GraphQL is transformed into readable, well-structured code in one click.",
-        d2: "It fixes indentation, aligns fields and arguments correctly, and normalizes spacing across the document, making the code easier to review, debug, or share with your team.",
+        meta: "Free online GraphQL formatter and beautifier. Paste your queries, mutations or schema and instantly format, indent and beautify them with consistent structure — no signup, no installation.",
+        d1: "This online GraphQL formatter and beautifier parses and reformats your queries, mutations, subscriptions, and schema definitions with consistent indentation and uniform structure. Any messy or minified GraphQL is transformed into readable, well-structured code in one click.",
+        d2: "It fixes indentation, aligns fields and arguments correctly, and normalizes spacing across the document, making the code easier to review, debug, or share with your team — a free GraphQL query beautifier that runs entirely in your browser.",
         plc: "Insert the GraphQL code here or drag a file",
         bt: "Format GraphQL",
         rst: "Start Over",
@@ -260,9 +261,9 @@ defineI18nRoute({
         f_4: "No registration or installation required"
     },
     pt: {
-        m_title: "Formatador GraphQL Online - Formate e Indente GraphQL Grátis",
+        m_title: "Formatador GraphQL Online - Indente Queries e Schemas Grátis",
         title: "Formatador GraphQL",
-        meta: "Formatador GraphQL online gratuito. Cole suas queries, mutations ou schema e deixe-os organizados com indentação correta e estrutura uniformizada.",
+        meta: "Formatador GraphQL online e gratuito (GraphQL beautifier). Cole suas queries, mutations ou schema e deixe-os organizados com indentação correta e estrutura uniformizada.",
         d1: "Este formatador GraphQL online analisa e reformata suas queries, mutations, subscriptions e definições de schema com indentação consistente e estrutura uniformizada. Todo GraphQL bagunçado ou minificado é transformado em código legível e bem estruturado com um clique.",
         d2: "Ele corrige a indentação, alinha campos e argumentos corretamente e normaliza o espaçamento em todo o documento, facilitando a revisão, depuração ou compartilhamento com a equipe.",
         plc: "Insira o código GraphQL aqui ou arraste um arquivo",
@@ -302,9 +303,9 @@ defineI18nRoute({
         f_4: "Sem necessidade de cadastro ou instalação"
     },
     es: {
-        m_title: "Formateador GraphQL Online - Formatea e Indenta GraphQL Gratis",
+        m_title: "Formateador GraphQL Online - Indenta Queries y Schemas Gratis",
         title: "Formateador GraphQL",
-        meta: "Formateador GraphQL online gratuito. Pega tus queries, mutations o schema y organízalos al instante con indentación correcta y estructura uniforme.",
+        meta: "Formateador GraphQL online y gratuito (GraphQL beautifier). Pega tus queries, mutations o schema y organízalos al instante con indentación correcta y estructura uniforme.",
         d1: "Este formateador GraphQL online analiza y reformatea tus queries, mutations, subscriptions y definiciones de schema con indentación consistente y estructura uniforme. Todo GraphQL desordenado o minificado se transforma en código legible y bien estructurado con un clic.",
         d2: "Corrige la indentación, alinea campos y argumentos correctamente y normaliza el espaciado en todo el documento, facilitando la revisión, depuración o compartición con el equipo.",
         plc: "Introduce el código GraphQL aquí o arrastra un archivo",
@@ -344,9 +345,9 @@ defineI18nRoute({
         f_4: "Sin necesidad de registro ni instalación"
     },
     fr: {
-        m_title: "Formateur GraphQL en Ligne - Formatez et Indentez GraphQL Gratuitement",
+        m_title: "Formateur GraphQL en Ligne - Indentez Queries et Schémas",
         title: "Formateur GraphQL",
-        meta: "Formateur GraphQL en ligne gratuit. Collez vos requêtes, mutations ou schéma et obtenez instantanément une indentation correcte et une structure uniforme.",
+        meta: "Formateur GraphQL en ligne gratuit (GraphQL beautifier). Collez vos requêtes, mutations ou schéma et obtenez instantanément une indentation correcte et une structure uniforme.",
         d1: "Ce formateur GraphQL en ligne analyse et reformate vos requêtes, mutations, abonnements et définitions de schéma avec une indentation cohérente et une structure uniforme. Tout GraphQL désordonné ou minifié est transformé en code lisible et bien structuré en un clic.",
         d2: "Il corrige l'indentation, aligne correctement les champs et les arguments, et normalise les espaces dans tout le document, facilitant la révision, le débogage ou le partage avec l'équipe.",
         plc: "Insérez le code GraphQL ici ou faites glisser un fichier",
@@ -386,9 +387,9 @@ defineI18nRoute({
         f_4: "Aucune inscription ou installation requise"
     },
     it: {
-        m_title: "Formattatore GraphQL Online - Formatta e Indenta GraphQL Gratis",
+        m_title: "Formattatore GraphQL Online - Indenta Query e Schema Gratis",
         title: "Formattatore GraphQL",
-        meta: "Formattatore GraphQL online gratuito. Incolla le tue query, mutation o schema e ottieni istantaneamente indentazione corretta e struttura uniforme.",
+        meta: "Formattatore GraphQL online gratuito (GraphQL beautifier). Incolla le tue query, mutation o schema e ottieni istantaneamente indentazione corretta e struttura uniforme.",
         d1: "Questo formattatore GraphQL online analizza e riformatta le tue query, mutation, subscription e definizioni di schema con indentazione coerente e struttura uniforme. Qualsiasi GraphQL disordinato o minificato viene trasformato in codice leggibile e ben strutturato con un clic.",
         d2: "Corregge l'indentazione, allinea campi e argomenti correttamente e normalizza la spaziatura nell'intero documento, rendendo il codice più facile da revisionare, debuggare o condividere con il team.",
         plc: "Inserisci il codice GraphQL qui o trascina un file",
@@ -428,9 +429,9 @@ defineI18nRoute({
         f_4: "Nessuna registrazione o installazione richiesta"
     },
     id: {
-        m_title: "Pemformat GraphQL Online - Format & Indentasi GraphQL Gratis",
+        m_title: "Pemformat GraphQL Online - Format Query & Schema Gratis",
         title: "Pemformat GraphQL",
-        meta: "Pemformat GraphQL online gratis. Tempelkan query, mutation, atau schema Anda dan dapatkan indentasi yang benar dan struktur yang seragam secara instan.",
+        meta: "Pemformat GraphQL online gratis (GraphQL beautifier). Tempelkan query, mutation, atau schema Anda dan dapatkan indentasi yang benar dan struktur yang seragam secara instan.",
         d1: "Pemformat GraphQL online ini mengurai dan memformat ulang query, mutation, subscription, dan definisi schema Anda dengan indentasi yang konsisten dan struktur yang seragam. Semua GraphQL yang berantakan atau diminifikasi diubah menjadi kode yang mudah dibaca dan terstruktur dengan baik dalam satu klik.",
         d2: "Alat ini memperbaiki indentasi, menyelaraskan field dan argumen dengan benar, dan menormalkan spasi di seluruh dokumen, membuat kode lebih mudah ditinjau, di-debug, atau dibagikan ke tim.",
         plc: "Masukkan kode GraphQL di sini atau seret file",
@@ -470,9 +471,9 @@ defineI18nRoute({
         f_4: "Tanpa pendaftaran atau instalasi"
     },
     de: {
-        m_title: "GraphQL Formatter Online - GraphQL kostenlos verschönern & einrücken",
+        m_title: "GraphQL Formatter & Beautifier Online - Kostenlos",
         title: "GraphQL Formatter",
-        meta: "Kostenloser Online GraphQL Formatter. Fügen Sie Ihre Abfragen, Mutationen oder Schemata ein und verschönern Sie diese sofort mit korrekter Einrückung und konsistenter Struktur.",
+        meta: "Kostenloser Online-GraphQL-Formatter und Beautifier. Fügen Sie Ihre Abfragen, Mutationen oder Schemata ein und verschönern Sie diese sofort mit korrekter Einrückung und konsistenter Struktur.",
         d1: "Dieser Online-GraphQL-Formatter analysiert und formatiert Ihre Abfragen, Mutationen, Abonnements und Schemadefinitionen mit konsistenter Einrückung und einheitlicher Struktur neu. Jeder unordentliche oder minifizierte GraphQL-Code wird mit einem Klick in lesbaren, gut strukturierten Code umgewandelt.",
         d2: "Er korrigiert die Einrückung, richtet Felder und Argumente korrekt aus und normalisiert die Abstände im gesamten Dokument, wodurch der Code einfacher zu überprüfen, zu debuggen oder mit Ihrem Team zu teilen ist.",
         plc: "Geben Sie den GraphQL-Code hier ein oder ziehen Sie eine Datei hierher",
@@ -512,9 +513,9 @@ defineI18nRoute({
         f_4: "Keine Registrierung oder Installation erforderlich"
     },
     nl: {
-        m_title: "GraphQL Formatter Online - GraphQL gratis verfraaien & inspringen",
+        m_title: "GraphQL Formatter & Beautifier Online - Gratis",
         title: "GraphQL Formatter",
-        meta: "Gratis online GraphQL-formatter. Plak uw queries, mutaties of schema en verfraai ze direct met de juiste inspringing en een consistente structuur.",
+        meta: "Gratis online GraphQL-formatter en beautifier. Plak uw queries, mutaties of schema en verfraai ze direct met de juiste inspringing en een consistente structuur.",
         d1: "Deze online GraphQL-formatter analyseert en herformatteert uw queries, mutaties, abonnementen en schemadefinities met consistente inspringing en een uniforme structuur. Elke rommelige of geminificeerde GraphQL wordt met één klik omgezet in leesbare, goed gestructureerde code.",
         d2: "Het corrigeert inspringing, lijnt velden en argumenten correct uit en normaliseert de spatiëring in het hele document, waardoor de code gemakkelijker te beoordelen, te debuggen of te delen is met uw team.",
         plc: "Voer de GraphQL-code hier in of sleep een bestand",
@@ -552,6 +553,48 @@ defineI18nRoute({
         f_2: "Correcte inspringing en velduitlijning",
         f_3: "Detectie en rapportage van syntaxfouten",
         f_4: "Geen registratie of installatie vereist"
-    }
+    },
+    ru: {
+    m_title: "Форматтер запросов GraphQL онлайн — форматируйте и индентируйте GraphQL бесплатно",
+    title: "Форматтер GraphQL",
+    meta: "Бесплатный онлайн-форматтер и структуризатор GraphQL. Вставьте свои запросы, мутации или схемы, чтобы мгновенно отформатировать и упорядочить их.",
+    d1: "Этот онлайн-форматтер и структуризатор GraphQL анализирует и реорганизует ваши запросы (queries), мутации (mutations), подписки (subscriptions) и определения схем с последовательным отступом и единой структурой. Любой запутанный или минифицированный GraphQL-код превращается в хорошо читаемый и структурированный код всего за один клик.",
+    d2: "Он исправляет отступы, правильно выравнивает поля и аргументы, а также нормализует пробелы по всему документу, что упрощает просмотр, отладку или совместное использование кода с вашей командой. Инструмент работает полностью в вашем браузере.",
+    plc: "Вставьте код GraphQL сюда или перетащите файл",
+    bt: "Форматировать GraphQL",
+    rst: "Начать заново",
+    copy: "Копировать",
+    err: "Ошибка",
+    err_label: "Не удалось отформатировать GraphQL",
+    how_it_works_title: "Как это работает",
+    hiw_1_title: "Вставьте ваш GraphQL",
+    hiw_1_desc: "Скопируйте и вставьте исходный или неформатированный запрос, мутацию, подписку или схему в редактор.",
+    hiw_2_title: "Нажмите «Форматировать»",
+    hiw_2_desc: "Нажмите кнопку «Форматировать GraphQL», и инструмент мгновенно перестроит код.",
+    hiw_3_title: "Скопируйте результат",
+    hiw_3_desc: "Скопируйте отформатированный результат или начните заново с новым кодом.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Разработка API",
+    uc_1_desc: "Форматируйте запросы и мутации перед фиксацией их в репозитории или перед отправкой коллегам.",
+    uc_2_title: "Обзор схемы (Schema Review)",
+    uc_2_desc: "Удобочитаемые отступы значительно упрощают анализ определений типов, полей и связей в файлах SDL.",
+    uc_3_title: "Отладка запросов",
+    uc_3_desc: "Хорошо отформатированный GraphQL-код легче читать строка за строкой, что помогает быстро находить пропущенные поля или неверные аргументы.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Отправляется ли мой GraphQL-код на какой-либо сервер?",
+    faq_1_a: "Нет. Все форматирование выполняется исключительно в вашем браузере. Ваш код никогда не покидает ваше устройство.",
+    faq_2_q: "Поддерживает ли форматтер SDL и исполняемые документы?",
+    faq_2_a: "Да. Форматтер поддерживает как язык определения схем SDL (Schema Definition Language), так и исполняемые документы, включая запросы, мутации, подписки и фрагменты.",
+    faq_3_q: "Что произойдет, если в моем GraphQL будут синтаксические ошибки?",
+    faq_3_a: "Если код не удастся проанализировать, инструмент выведет сообщение об ошибке, чтобы вы могли локализовать и исправить проблему перед форматированием.",
+    see1: "Форматтер JavaScript",
+    see2: "Форматтер HTML",
+    see3: "Форматтер CSS",
+    see4: "Просмотр JSON",
+    f_1: "Мгновенное форматирование и украшение GraphQL",
+    f_2: "Правильные отступы и выравнивание полей",
+    f_3: "Обнаружение и отображение синтаксических ошибок",
+    f_4: "Не требуется регистрация или установка"
+  }
 }
 </i18n>

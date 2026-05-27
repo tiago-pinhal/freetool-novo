@@ -22,6 +22,7 @@ const toggleMenu = () => {
 }
 
 const route = useRoute()
+const isHomePage = computed(() => route.path === localePath('/'))
 const detailsRef = ref<HTMLDetailsElement | null>(null)
 </script>
 
@@ -29,6 +30,7 @@ const detailsRef = ref<HTMLDetailsElement | null>(null)
   <header class="navbar bg-base-100/80 backdrop-blur-md border-b border-base-content/5 w-full sticky top-0 z-50 h-16 px-2 sm:px-4">
     <div class="navbar-start flex items-center h-full">
       <button
+        v-if="!isHomePage"
         @click="toggleMenu"
         class="btn btn-ghost px-2 lg:hidden mr-1"
         aria-label="Menu"

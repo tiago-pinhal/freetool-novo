@@ -76,7 +76,6 @@ function copy() {
 usePageJsonLd({
   name: t('title'),
   description: t('meta'),
-  features: [t('f_1'), t('f_2'), t('f_3'), t('f_4')],
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
     { question: t('faq_2_q'), answer: t('faq_2_a') },
@@ -99,7 +98,8 @@ defineI18nRoute({
     it: '/generatore-di-numeri-casuali',
     id: '/generator-angka-acak',
     de: '/zufallszahlengenerator',
-    nl: '/willekeurige-getallen-generator'
+    nl: '/willekeurige-getallen-generator',
+    ru: '/generator-sluchaynyh-chisel',
   }
 })
 </script>
@@ -260,9 +260,9 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   en: {
-    pageTitle: "Random Number Generator - Generate Numbers Online | Free",
+    pageTitle: "Random Number Generator — Pick Random Numbers Online (Free Number Picker)",
     title: "Random Number Generator",
-    meta: "Free online random number generator. Set a custom range and quantity to create sequences for raffles, lotteries, games, simulations, and statistical analysis.",
+    meta: "Free random number generator and number picker online. Pick random numbers in any range and quantity for raffles, lotteries, games, simulations, and statistical analysis.",
     min: "Minimum Value",
     max: "Maximum Value",
     qty: "Quantity",
@@ -285,7 +285,7 @@ defineI18nRoute({
     step_2_desc: "Set the quantity, sort order, and click Generate Numbers.",
     step_3_title: "Copy",
     step_3_desc: "Use the copy button to send the result to your clipboard.",
-    d1: "Free online tool for generating random numbers with a custom range and quantity. Ideal for raffles, lotteries, games, simulations, software testing, and statistical analysis. Generate unique or repeated numbers with flexible sorting options.",
+    d1: "This free random number generator and number randomizer lets you create custom sequences with any range and quantity. Ideal for raffles, lotteries, games, simulations, software testing, and statistical analysis. Generate unique or repeated numbers with flexible sorting options.",
     use_cases_title: "Use Cases",
     uc_1_title: "Raffles & Lotteries",
     uc_1_desc: "Generate random numbers to select winners or lottery combinations fairly.",
@@ -310,9 +310,9 @@ defineI18nRoute({
     see4: "UUID Generator"
   },
   pt: {
-    pageTitle: "Gerador de Números Aleatórios - Gerar Números Online | Grátis",
+    pageTitle: "Sorteador de Números Online — Gerador de Números Aleatórios Grátis",
     title: "Gerador de Números Aleatórios",
-    meta: "Gerador de números aleatórios online grátis. Crie sequências personalizadas para sorteios, loteria, jogos e simulações. Defina intervalo, quantidade e ordenação.",
+    meta: "Sorteador de números online e grátis. Gerador de números aleatórios para sortear sequências de qualquer intervalo e quantidade — ideal para sorteios, mega sena, loterias, jogos e simulações.",
     min: "Valor Mínimo",
     max: "Valor Máximo",
     qty: "Quantidade a ser Gerada",
@@ -335,7 +335,7 @@ defineI18nRoute({
     step_2_desc: "Defina a quantidade, a ordenação e clique em Gerar Números.",
     step_3_title: "Copiar",
     step_3_desc: "Use o botão de copiar para enviar o resultado à área de transferência.",
-    d1: "Ferramenta online gratuita para gerar números aleatórios com intervalo e quantidade personalizados. Ideal para sorteios, loteria, jogos, simulações, testes de software e análises estatísticas. Gere números únicos ou repetidos com opções flexíveis de ordenação.",
+    d1: "Este gerador de números aleatórios gratuito cria sequências personalizadas com qualquer intervalo e quantidade. Ideal para sorteios, loteria, jogos, simulações, testes de software e análises estatísticas. Gere números únicos ou repetidos com opções flexíveis de ordenação.",
     use_cases_title: "Casos de Uso",
     uc_1_title: "Sorteios e Loterias",
     uc_1_desc: "Gere números aleatórios para selecionar vencedores ou combinações de loteria de forma imparcial.",
@@ -360,9 +360,9 @@ defineI18nRoute({
     see4: "Gerador de UUID"
   },
   es: {
-    pageTitle: "Generador de Números Aleatorios - Generar Números Online | Gratis",
+    pageTitle: "Generador de Números Aleatorios — Número Aleatorio y Sorteo Online | Gratis",
     title: "Generador de Números Aleatorios",
-    meta: "Generador de números aleatorios online gratuito. Crea secuencias numéricas personalizadas para sorteos, lotería, juegos, simulaciones y análisis estadístico.",
+    meta: "Generador de números aleatorios online y gratuito. Genera un número aleatorio o un sorteo de números en cualquier rango y cantidad — ideal para sorteos, lotería, juegos, simulaciones y análisis estadístico.",
     min: "Valor Mínimo",
     max: "Valor Máximo",
     qty: "Cantidad a Generar",
@@ -385,7 +385,7 @@ defineI18nRoute({
     step_2_desc: "Define la cantidad, el orden y haz clic en Generar Números.",
     step_3_title: "Copiar",
     step_3_desc: "Usa el botón de copiar para enviar el resultado al portapapeles.",
-    d1: "Herramienta online gratuita para generar números aleatorios con rango y cantidad personalizados. Ideal para sorteos, lotería, juegos, simulaciones, pruebas de software y análisis estadístico. Genera números únicos o repetidos con opciones flexibles de ordenación.",
+    d1: "Este generador de números aleatorios gratuito crea secuencias personalizadas con cualquier rango y cantidad. Ideal para sorteos, lotería, juegos, simulaciones, pruebas de software y análisis estadístico. Genera números únicos o repetidos con opciones flexibles de ordenación.",
     use_cases_title: "Casos de Uso",
     uc_1_title: "Sorteos y Loterías",
     uc_1_desc: "Genera números aleatorios para seleccionar ganadores o combinaciones de lotería de forma imparcial.",
@@ -410,9 +410,9 @@ defineI18nRoute({
     see4: "Generador de UUID"
   },
   fr: {
-    pageTitle: "Générateur de Nombres Aléatoires - Générer des Nombres en Ligne | Gratuit",
+    pageTitle: "Générateur de Nombres Aléatoires — Tirage au Sort en Ligne | Gratuit",
     title: "Générateur de Nombres Aléatoires",
-    meta: "Générateur de nombres aléatoires en ligne gratuit. Créez des séquences numériques personnalisées pour des tirages, jeux, simulations et analyses statistiques.",
+    meta: "Générateur de nombres aléatoires et tirage au sort en ligne gratuit. Générez un nombre aléatoire ou une séquence pour des tirages, loteries, jeux, simulations et analyses statistiques.",
     min: "Valeur Minimale",
     max: "Valeur Maximale",
     qty: "Quantité à Générer",
@@ -435,7 +435,7 @@ defineI18nRoute({
     step_2_desc: "Définissez la quantité, l'ordre et cliquez sur Générer des Nombres.",
     step_3_title: "Copier",
     step_3_desc: "Utilisez le bouton de copie pour envoyer le résultat dans le presse-papiers.",
-    d1: "Outil en ligne gratuit pour générer des nombres aléatoires avec un intervalle et une quantité personnalisés. Idéal pour les tirages au sort, la loterie, les jeux, les simulations et les analyses statistiques. Générez des nombres uniques ou répétés avec des options de tri flexibles.",
+    d1: "Ce générateur de nombres aléatoires gratuit crée des séquences personnalisées avec n'importe quel intervalle et quantité. Idéal pour les tirages au sort, la loterie, les jeux, les simulations et les analyses statistiques. Générez des nombres uniques ou répétés avec des options de tri flexibles.",
     use_cases_title: "Cas d'Utilisation",
     uc_1_title: "Tirages et Loteries",
     uc_1_desc: "Générez des nombres aléatoires pour sélectionner des gagnants ou des combinaisons de loterie de manière équitable.",
@@ -460,9 +460,9 @@ defineI18nRoute({
     see4: "Générateur d'UUID"
   },
   it: {
-    pageTitle: "Generatore di Numeri Casuali - Genera Numeri Online | Gratis",
+    pageTitle: "Generatore di Numeri Casuali — Estrazione Numeri Online (Genera Numero Casuale) | Gratis",
     title: "Generatore di Numeri Casuali",
-    meta: "Generatore di numeri casuali online gratuito. Crea sequenze numeriche personalizzate per estrazioni, lotterie, giochi, simulazioni e analisi statistiche.",
+    meta: "Generatore di numeri casuali online gratuito per l'estrazione di numeri. Genera un numero casuale o sequenze in qualsiasi intervallo e quantità — ideale per estrazioni, lotterie, giochi, simulazioni e analisi statistiche.",
     min: "Valore Minimo",
     max: "Valore Massimo",
     qty: "Quantità da Generare",
@@ -485,7 +485,7 @@ defineI18nRoute({
     step_2_desc: "Imposta la quantità, l'ordinamento e fai clic su Genera Numeri.",
     step_3_title: "Copia",
     step_3_desc: "Usa il pulsante di copia per inviare il risultato negli appunti.",
-    d1: "Strumento online gratuito per generare numeri casuali con intervallo e quantità personalizzati. Ideale per estrazioni, lotterie, giochi, simulazioni, test software e analisi statistiche. Genera numeri unici o ripetuti con opzioni di ordinamento flessibili.",
+    d1: "Questo generatore di numeri casuali gratuito crea sequenze personalizzate con qualsiasi intervallo e quantità. Ideale per estrazioni, lotterie, giochi, simulazioni, test software e analisi statistiche. Genera numeri unici o ripetuti con opzioni di ordinamento flessibili.",
     use_cases_title: "Casi d'Uso",
     uc_1_title: "Estrazioni e Lotterie",
     uc_1_desc: "Genera numeri casuali per selezionare vincitori o combinazioni di lotteria in modo imparziale.",
@@ -510,9 +510,9 @@ defineI18nRoute({
     see4: "Generatore di UUID"
   },
   id: {
-    pageTitle: "Generator Angka Acak - Buat Angka Acak Online | Gratis",
+    pageTitle: "Generator Angka Acak Online — Pengacak & Pilih Angka Acak | Gratis",
     title: "Generator Angka Acak",
-    meta: "Generator angka acak online gratis. Buat urutan angka khusus untuk undian, permainan, simulasi, dan analisis statistik dengan rentang dan jumlah yang dapat disesuaikan.",
+    meta: "Generator angka acak online gratis dan pengacak angka. Buat dan pilih angka acak dalam rentang dan jumlah apa pun — cocok untuk undian, togel, permainan, simulasi, dan analisis statistik.",
     min: "Nilai Minimum",
     max: "Nilai Maksimum",
     qty: "Jumlah yang Dihasilkan",
@@ -535,7 +535,7 @@ defineI18nRoute({
     step_2_desc: "Atur jumlah, urutan, dan klik Buat Angka.",
     step_3_title: "Salin",
     step_3_desc: "Gunakan tombol salin untuk menyalin hasil ke papan klip.",
-    d1: "Alat online gratis untuk menghasilkan angka acak dengan rentang dan jumlah yang dapat disesuaikan. Ideal untuk undian, lotere, permainan, simulasi, pengujian perangkat lunak, dan analisis statistik. Hasilkan angka unik atau berulang dengan opsi pengurutan yang fleksibel.",
+    d1: "Generator angka acak gratis ini membuat urutan khusus dengan rentang dan jumlah berapa pun. Ideal untuk undian, lotere, permainan, simulasi, pengujian perangkat lunak, dan analisis statistik. Hasilkan angka unik atau berulang dengan opsi pengurutan yang fleksibel.",
     use_cases_title: "Contoh Penggunaan",
     uc_1_title: "Undian & Lotere",
     uc_1_desc: "Hasilkan angka acak untuk memilih pemenang atau kombinasi lotere secara adil.",
@@ -560,9 +560,9 @@ defineI18nRoute({
     see4: "Generator UUID"
   },
   de: {
-    pageTitle: "Zufallszahlengenerator - Zahlen online generieren | Kostenlos",
+    pageTitle: "Zufallszahlengenerator — Zufallszahl & Zahlen Generator Online | Kostenlos",
     title: "Zufallszahlengenerator",
-    meta: "Kostenloser Online-Zufallszahlengenerator. Lege einen eigenen Bereich und eine eigene Menge fest, um Sequenzen für Verlosungen, Lotterien, Spiele, Simulationen und statistische Analysen zu erstellen.",
+    meta: "Kostenloser Online-Zufallszahlengenerator. Erzeuge eine Zufallszahl oder ganze Zahlen-Sequenzen in einem eigenen Bereich — ideal für Verlosungen, Lotto, Spiele, Simulationen und statistische Analysen.",
     min: "Minimalwert",
     max: "Maximalwert",
     qty: "Menge",
@@ -585,7 +585,7 @@ defineI18nRoute({
     step_2_desc: "Lege die Menge und die Sortierung fest und klicke auf Zahlen generieren.",
     step_3_title: "Kopieren",
     step_3_desc: "Nutze den Kopier-Button, um das Ergebnis in die Zwischenablage zu senden.",
-    d1: "Kostenloses Online-Tool zur Generierung von Zufallszahlen mit individuellem Bereich und Menge. Ideal für Verlosungen, Lotterien, Spiele, Simulationen, Softwaretests und statistische Analysen. Generiere einzigartige oder wiederholte Zahlen mit flexiblen Sortieroptionen.",
+    d1: "Dieser kostenlose Zufallszahlengenerator erstellt benutzerdefinierte Sequenzen mit beliebigem Bereich und Menge. Ideal für Verlosungen, Lotterien, Spiele, Simulationen, Softwaretests und statistische Analysen. Generiere einzigartige oder wiederholte Zahlen mit flexiblen Sortieroptionen.",
     use_cases_title: "Anwendungsfälle",
     uc_1_title: "Verlosungen & Lotterien",
     uc_1_desc: "Generiere Zufallszahlen, um Gewinner oder Lotteriekombinationen fair auszuwählen.",
@@ -610,9 +610,9 @@ defineI18nRoute({
     see4: "UUID-Generator"
   },
   nl: {
-    pageTitle: "Willekeurige getallen generator - Genereer getallen online | Gratis",
+    pageTitle: "Willekeurige getallen generator — Willekeurig getal online genereren | Gratis",
     title: "Willekeurige getallen generator",
-    meta: "Gratis online willekeurige getallen generator. Stel een aangepast bereik en aantal in om reeksen te maken voor lotingen, loterijen, games, simulaties en statistische analyse.",
+    meta: "Gratis online willekeurige getallen generator. Genereer een willekeurig getal of een reeks tussen elk bereik — ideaal voor lotingen, loterijen, bingo, games, simulaties en statistische analyse.",
     min: "Minimumwaarde",
     max: "Maximumwaarde",
     qty: "Aantal",
@@ -658,6 +658,56 @@ defineI18nRoute({
     see2: "Creditcardgenerator",
     see3: "CPF-generator",
     see4: "UUID-generator"
+  },
+  ru: {
+    pageTitle: "Генератор случайных чисел онлайн — бесплатный выбор чисел",
+    title: "Генератор случайных чисел",
+    meta: "Бесплатный генератор случайных чисел и выборщик чисел онлайн. Выбирайте случайные числа в любом диапазоне и количестве для розыгрышей, лотерей, игр, симуляций и статистического анализа.",
+    min: "Минимальное значение",
+    max: "Максимальное значение",
+    qty: "Количество",
+    order: "Порядок сортировки",
+    rand: "Случайный",
+    asc: "По возрастанию",
+    desc: "По убыванию",
+    repet: "Разрешить повторение чисел",
+    bt: "Сгенерировать числа",
+    result: "Сгенерированные числа",
+    copy: "Копировать",
+    err: "Запрошенное количество превышает допустимый диапазон без повторений",
+    err_max: "Максимально допустимое количество составляет 5 000 чисел",
+    placeholder: "Готов к генерации",
+    about_title: "Генератор случайных чисел",
+    how_it_works_title: "Как это работает",
+    step_1_title: "Настройка диапазона",
+    step_1_desc: "Установите минимальное и максимальное значения для ваших чисел.",
+    step_2_title: "Генерация",
+    step_2_desc: "Задайте количество, порядок сортировки и нажмите «Сгенерировать числа».",
+    step_3_title: "Копирование",
+    step_3_desc: "Используйте кнопку копирования, чтобы сохранить результат в буфер обмена.",
+    d1: "Этот бесплатный генератор и рандомизатор случайных чисел позволяет создавать собственные последовательности с любым диапазоном и количеством. Идеально подходит для розыгрышей, лотерей, игр, симуляций, тестирования программного обеспечения и статистического анализа. Генерируйте уникальные или повторяющиеся числа с гибкими параметрами сортировки.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Розыгрыши и лотереи",
+    uc_1_desc: "Генерируйте случайные числа для честного выбора победителей или лотерейных комбинаций.",
+    uc_2_title: "Игры и настольные игры",
+    uc_2_desc: "Создавайте случайные элементы для игровой механики, бросков кубиков или компьютерных симуляций.",
+    uc_3_title: "Тестирование ПО",
+    uc_3_desc: "Создавайте различные входные данные для тестирования функциональности систем и пограничных случаев.",
+    uc_4_title: "Статистическая выборка",
+    uc_4_desc: "Получайте случайные выборки для количественных исследований, научных работ и анализа данных.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Являются ли сгенерированные числа действительно случайными?",
+    faq_1_a: "Да. Мы используем стандартные программные алгоритмы, которые генерируют псевдослучайные числа, подходящие для большинства приложений, таких как розыгрыши, игры и симуляции.",
+    faq_2_q: "Могу ли я генерировать числа для лотереи?",
+    faq_2_a: "Да! Установите диапазон (например, 1–60) и количество (например, 6), отключите повторение и сгенерируйте комбинацию. Отлично работает для любого лотерейного формата.",
+    faq_3_q: "Какое максимальное количество чисел я могу сгенерировать?",
+    faq_3_a: "Вы можете сгенерировать до 5 000 чисел за один раз. Это гарантирует мгновенную работу инструмента и удобство обработки результатов. Единственное другое требование является математическим: если вы отключите повторение, количество чисел должно укладываться в выбранный вами диапазон.",
+    faq_4_q: "Могут ли числа повторяться?",
+    faq_4_a: "Вы сами это контролируете! Включите «Разрешить повторение чисел» для получения повторяющихся чисел или оставьте эту опцию выключенной только для уникальных чисел.",
+    see1: "Генератор паролей",
+    see2: "Генератор кредитных карт",
+    see3: "Генератор CPF",
+    see4: "Генератор UUID"
   }
 }
 </i18n>

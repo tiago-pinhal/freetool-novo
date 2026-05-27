@@ -21,6 +21,7 @@ defineI18nRoute({
     id: '/tentang-kami',
     de: '/ueber-uns',
     nl: '/over-ons',
+    ru: '/o-nas',
   },
 })
 </script>
@@ -135,6 +136,17 @@ defineI18nRoute({
     d4: "We hechten waarde aan efficiëntie en toegankelijkheid, dus we streven ernaar om middelen aan te bieden die de noodzaak om complexe software te installeren wegnemen, zodat taken snel, veilig en intuïtief kunnen worden uitgevoerd.",
     d5: "FreeTool.dev is een collaboratieve, voortdurend evoluerende ruimte, ontworpen om zowel ervaren professionals als degenen die hun eerste stappen in de technologiewereld zetten, te ondersteunen — of gewoon iedereen die op zoek is naar praktische oplossingen voor het dagelijks leven.",
     logo_alt: "FreeTool.dev-logo"
+  },
+  ru: {
+    title: "О проекте",
+    seo_desc: "FreeTool.dev предлагает широкий выбор бесплатных онлайн-инструментов, чтобы упростить повседневную работу разработчиков, дизайнеров, студентов и ИТ-специалистов.",
+    meta: "FreeTool.dev — это платформа, предлагающая широкий спектр абсолютно бесплатных онлайн-инструментов, разработанных для упрощения повседневной работы разработчиков, тестировщиков ПО, дизайнеров, создателей контента, студентов и других специалистов в области технологий и цифрового творчества.",
+    d1: "Наша цель — упростить типичные и повторяющиеся задачи, предоставляя практичные решения с помощью инструментов, распределенных по различным категориям.",
+    d2: "Хотя многие из наших решений особенно полезны для ИТ-специалистов, мы также предлагаем ресурсы, ориентированные на широкую аудиторию, предоставляя простые и быстрые альтернативы для повседневных задач.",
+    d3: "Помимо онлайн-инструментов, мы предлагаем полезные приложения в Google Play Store, расширяя наши возможности и позволяя выполнять эти задачи прямо на смартфонах удобным и доступным способом.",
+    d4: "Мы ценим эффективность и доступность, поэтому стремимся предоставлять ресурсы, исключающие необходимость установки сложного программного обеспечения, позволяя выполнять задачи быстро, безопасно и интуитивно понятно.",
+    d5: "FreeTool.dev — это совместное, постоянно развивающееся пространство, созданное для поддержки как опытных профессионалов, так и тех, кто делает свои первые шаги в мире технологий, или просто тех, кто ищет практичные решения для повседневной жизни.",
+    logo_alt: "Логотип FreeTool.dev"
   }
 }
 </i18n>

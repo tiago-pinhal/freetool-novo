@@ -16,12 +16,13 @@ usePageJsonLd({
   ],
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
-    { question: t('faq_2_q'), answer: t('faq_2_a') }
+    { question: t('faq_2_q'), answer: t('faq_2_a') },
+    { question: t('faq_3_q'), answer: t('faq_3_a') }
   ]
 })
 
 useHead({
-  title: t('title'),
+  title: t('page_title'),
   meta: [
     { name: 'description', content: t('meta') }
   ]
@@ -60,7 +61,8 @@ defineI18nRoute({
     it: '/convertitore-di-lunghezza',
     id: '/konverter-panjang',
     de: '/laengen-umrechner',
-    nl: '/lengte-converter'
+    nl: '/lengte-converter',
+    ru: '/konverter-dliny'
   }
 })
 </script>
@@ -107,7 +109,8 @@ defineI18nRoute({
           :title="t('faq_title')"
           :items="[
             { question: t('faq_1_q'), answer: t('faq_1_a') },
-            { question: t('faq_2_q'), answer: t('faq_2_a') }
+            { question: t('faq_2_q'), answer: t('faq_2_a') },
+            { question: t('faq_3_q'), answer: t('faq_3_a') }
           ]"
         />
       </div>
@@ -158,8 +161,9 @@ defineI18nRoute({
 {
   en: {
     title: "Length Converter",
-    meta: "With our Length Measurement Unit Converter, you can easily convert between various units of measurement, such as meters, kilometers, miles, and much more.",
-    d1: "Whether you need to transform centimeters into inches, kilometers into miles, feet into meters, or any other combination, our tool is ready to meet your needs. Simply enter the value to be converted and select the source and destination units to obtain the result instantly.",
+    page_title: "Length Converter — cm to Inches, Inches to cm, Meters to Feet & More | Free",
+    meta: "Free online length converter. Convert cm to inches, inches to cm, meters to feet, feet to cm, km to miles, miles to km and more — between 13 length units.",
+    d1: "Whether you need to convert cm to inches, inches to cm, meters to feet, feet to cm, km to miles, miles to km, or any other combination, our length converter handles it instantly. Simply enter the value, choose the source and destination units, and the result appears right away.",
     d2: "The units of measurement available for conversion include",
     m: "Meter",
     km: "Kilometer",
@@ -196,6 +200,8 @@ defineI18nRoute({
     faq_1_a: "The Metric system is decimal-based (meters, kilometers), while the Imperial system uses traditional units (inches, feet, miles). Most of the world uses Metric, but the US and UK still use Imperial units for many applications.",
     faq_2_q: "Is this converter accurate for astronomical distances?",
     faq_2_a: "Yes, it supports units like Light-years and Nautical Miles with high precision, making it suitable for both terrestrial and celestial calculations.",
+    faq_3_q: "Which units are supported?",
+    faq_3_a: "This tool supports 13 length units: meters, kilometers, centimeters, millimeters, micrometers, nanometers, feet, inches, yards, miles, nautical miles, light-years, and points.",
     see1: "Temperature",
     see2: "Time",
     see3: "Storage Unit",
@@ -207,8 +213,9 @@ defineI18nRoute({
   },
   pt: {
     title: "Conversor de Comprimento",
-    meta: "Com o nosso Conversor de Unidade de Medida de Comprimento, você pode facilmente converter entre diversas unidades de medida, como metros, quilômetros e muito mais.",
-    d1: "Seja para transformar centímetros em polegadas, quilômetros em milhas, pés em metros ou qualquer outra combinação, nossa ferramenta está pronta para atender às suas necessidades. Basta inserir o valor a ser convertido e selecionar as unidades de origem e de destino para obter o resultado instantaneamente.",
+    page_title: "Conversor de Comprimento — cm para Polegadas, Metros para Pés, km em Milhas e Mais | Grátis",
+    meta: "Conversor de comprimento online grátis. Converta cm para polegadas, metros para pés, quilômetros em milhas e mais — entre 13 unidades de comprimento.",
+    d1: "Seja para converter cm para polegadas, metros para pés, quilômetros em milhas, pés em metros ou qualquer outra combinação, nossa ferramenta resolve na hora. Basta inserir o valor a ser convertido e selecionar as unidades de origem e de destino para obter o resultado instantaneamente.",
     d2: "As unidades de medida disponíveis para conversão incluem",
     m: "Metro",
     km: "Quilômetro",
@@ -245,6 +252,8 @@ defineI18nRoute({
     faq_1_a: "O sistema Métrico é baseado em decimais (metros, quilômetros), enquanto o sistema Imperial utiliza unidades tradicionais (polegadas, pés, milhas). A maior parte do mundo usa o Métrico, mas os EUA e o Reino Unido ainda usam unidades Imperiais em muitas aplicações.",
     faq_2_q: "Este conversor é preciso para distâncias astronômicas?",
     faq_2_a: "Sim, ele suporta unidades como Anos-luz e Milhas Náuticas com alta precisão, tornando-o adequado para cálculos terrestres e celestiais.",
+    faq_3_q: "Quais unidades de comprimento são suportadas?",
+    faq_3_a: "Esta ferramenta suporta 13 unidades de comprimento: metros, quilômetros, centímetros, milímetros, micrômetros, nanômetros, pés, polegadas, jardas, milhas, milhas náuticas, anos-luz e pontos.",
     see1: "Temperatura",
     see2: "Tempo",
     see3: "Unidades de Armazenamento",
@@ -256,8 +265,9 @@ defineI18nRoute({
   },
   es: {
     title: "Convertidor de Longitud",
-    meta: "Con nuestro Convertidor de Unidad de Medida de Longitud, puede convertir fácilmente entre diversas unidades de medida, como metros, kilómetros y mucho más.",
-    d1: "Ya sea para transformar centímetros en pulgadas, kilómetros en millas, pies en metros o cualquier otra combinación, nuestra herramienta está lista para satisfacer sus necesidades. Simplemente ingrese el valor a convertir y seleccione las unidades de origen y destino para obtener el resultado al instante.",
+    page_title: "Convertidor de Longitud — cm a Pulgadas, Metros a Pies, km a Millas y Más | Gratis",
+    meta: "Convertidor de longitud online gratis. Convierte cm a pulgadas, metros a pies, kilómetros a millas, pies a metros y más — entre 13 unidades de longitud.",
+    d1: "Ya sea para convertir cm a pulgadas, metros a pies, kilómetros a millas, pies a metros o cualquier otra combinación, nuestra herramienta está lista. Simplemente ingresa el valor, elige las unidades de origen y destino para obtener el resultado al instante.",
     d2: "Las unidades de medida disponibles para conversión incluyen",
     m: "Metro",
     km: "Kilómetro",
@@ -294,6 +304,8 @@ defineI18nRoute({
     faq_1_a: "El sistema Métrico se basa en decimales (metros, kilómetros), mientras que el sistema Imperial utiliza unidades tradicionales (pulgadas, pies, millas). La mayor parte del mundo usa el Métrico, pero EE. UU. y el Reino Unido todavía usan unidades Imperiales en muchas aplicaciones.",
     faq_2_q: "¿Es preciso este convertidor para distancias astronómicas?",
     faq_2_a: "Sí, admite unidades como Años luz y Millas náuticas con alta precisión, lo que lo hace adecuado para cálculos terrestres y celestiales.",
+    faq_3_q: "¿Qué unidades de longitud son compatibles?",
+    faq_3_a: "Esta herramienta admite 13 unidades de longitud: metros, kilómetros, centímetros, milímetros, micrómetros, nanómetros, pies, pulgadas, yardas, millas, millas náuticas, años luz y puntos.",
     see1: "Temperatura",
     see2: "Tiempo",
     see3: "Unidades de Almacenamiento",
@@ -305,6 +317,7 @@ defineI18nRoute({
   },
   fr: {
     title: "Convertisseur de Longueur",
+    page_title: "Convertisseur de Longueur — cm en Pouces, Mètres en Pieds, km en Miles et Plus | Gratuit",
     meta: "Avec notre Convertisseur d'Unité de Mesure de Longueur, vous pouvez facilement convertir entre diverses unités de mesure, telles que mètres, kilomètres et bien plus encore.",
     d1: "Que ce soit pour transformer des centimètres en pouces, des kilomètres en miles, des pieds en mètres ou toute autre combinaison, notre outil est prêt à répondre à vos besoins. Il suffit d'entrer la valeur à convertir et de sélectionner les unités de départ et d'arrivée pour obtenir le résultat instantanément.",
     d2: "Les unités de mesure disponibles pour la conversion comprennent",
@@ -343,6 +356,8 @@ defineI18nRoute({
     faq_1_a: "Le système Métrique est basé sur les décimales (mètres, kilomètres), tandis que le système Impérial utilise des unités traditionnelles (pouces, pieds, miles). La majeure partie du monde utilise le Métrique, mais les États-Unis et le Royaume-Uni utilisent toujours les unités impériales pour de nombreuses applications.",
     faq_2_q: "Ce convertisseur est-il précis pour les distances astronomiques ?",
     faq_2_a: "Oui, il prend en charge des unités telles que les années-lumière et les milles nautiques avec une grande précision, ce qui le rend adapté aux calculs terrestres et célestes.",
+    faq_3_q: "Quelles unités de longueur sont prises en charge ?",
+    faq_3_a: "Cet outil prend en charge 13 unités de longueur : mètres, kilomètres, centimètres, millimètres, micromètres, nanomètres, pieds, pouces, yards, miles, milles nautiques, années-lumière et points.",
     see1: "Température",
     see2: "Temps",
     see3: "Stockage",
@@ -354,6 +369,7 @@ defineI18nRoute({
   },
   it: {
     title: "Convertitore di Lunghezza",
+    page_title: "Convertitore di Lunghezza — cm in Pollici, Metri in Piedi, km in Miglia e Altro | Gratis",
     meta: "Con il nostro Convertitore di Unità di Misura di Lunghezza, puoi facilmente convertire tra diverse unità di misura, come metri, chilometri e molto altro.",
     d1: "Che si tratti di trasformare centimetri in pollici, chilometri in miglia, piedi in metri o qualsiasi altra combinazione, il nostro strumento è pronto a soddisfare le tue esigenze. Basta inserire il valore da convertire e selezionare le unità di partenza e di arrivo per ottenere il risultato all'istante.",
     d2: "Le unità di misura disponibili per la conversione includono",
@@ -392,6 +408,8 @@ defineI18nRoute({
     faq_1_a: "Il sistema Metrico è basato sui decimali (metri, chilometri), mentre il sistema Imperiale utilizza unità tradizionali (pollici, piedi, miglia). La maggior parte del mondo usa il Metrico, ma gli USA e il Regno Unito usano ancora le unità imperiali per molte applicazioni.",
     faq_2_q: "Questo convertitore è preciso per le distanze astronomiche?",
     faq_2_a: "Sì, supporta unità come Anni luce e Miglia nautiche con alta precisione, rendendolo adatto sia per calcoli terrestri che celesti.",
+    faq_3_q: "Quali unità di lunghezza sono supportate?",
+    faq_3_a: "Questo strumento supporta 13 unità di lunghezza: metri, chilometri, centimetri, millimetri, micrometri, nanometri, piedi, pollici, iarde, miglia, miglia nautiche, anni luce e punti.",
     see1: "Temperatura",
     see2: "Tempo",
     see3: "Unità di Archiviazione",
@@ -403,6 +421,7 @@ defineI18nRoute({
   },
   id: {
     title: "Konverter Panjang",
+    page_title: "Konverter Panjang — cm ke Inci, Meter ke Kaki, km ke Mil dan Lainnya | Gratis",
     meta: "Dengan Konverter Satuan Panjang kami, Anda dapat dengan mudah mengonversi berbagai satuan ukuran, seperti meter, kilometer, mil, dan banyak lagi.",
     d1: "Baik untuk mengubah sentimeter menjadi inci, kilometer menjadi mil, kaki menjadi meter, atau kombinasi lainnya, alat kami siap memenuhi kebutuhan Anda. Cukup masukkan nilai yang ingin dikonversi, lalu pilih satuan asal dan tujuan untuk mendapatkan hasil secara instan.",
     d2: "Satuan ukuran yang tersedia untuk dikonversi meliputi",
@@ -441,6 +460,8 @@ defineI18nRoute({
     faq_1_a: "Sistem Metrik berbasis desimal (meter, kilometer), sedangkan sistem Imperial menggunakan satuan tradisional (inci, kaki, mil). Sebagian besar dunia menggunakan Metrik, tetapi AS dan Inggris masih menggunakan satuan Imperial untuk banyak aplikasi.",
     faq_2_q: "Apakah konverter ini akurat untuk jarak astronomi?",
     faq_2_a: "Ya, ini mendukung satuan seperti Tahun cahaya dan Mil Laut dengan presisi tinggi, sehingga cocok untuk perhitungan terestrial maupun celestial.",
+    faq_3_q: "Satuan panjang apa saja yang didukung?",
+    faq_3_a: "Alat ini mendukung 13 satuan panjang: meter, kilometer, sentimeter, milimeter, mikrometer, nanometer, kaki, inci, yard, mil, mil laut, tahun cahaya, dan poin.",
     see1: "Suhu",
     see2: "Waktu",
     see3: "Unit Penyimpanan",
@@ -451,9 +472,10 @@ defineI18nRoute({
     f_4: "Pemrosesan di browser — tidak ada data yang dikirim ke server"
   },
   de: {
-    title: "Längen-Umrechner",
-    meta: "Mit unserem Umrechner für Längeneinheiten kannst du ganz einfach zwischen verschiedenen Maßeinheiten wie Metern, Kilometern, Meilen und vielen weiteren umrechnen.",
-    d1: "Egal ob du Zentimeter in Zoll, Kilometer in Meilen, Fuß in Meter oder eine andere Kombination umwandeln möchtest, unser Tool ist dafür bereit. Gib einfach den Wert ein, der umgerechnet werden soll, und wähle die Ausgangs- und Zieleinheit aus, um das Ergebnis sofort zu erhalten.",
+    title: "Längen Umrechner",
+    page_title: "Längen Umrechner Online — cm in Zoll, Meter in Fuß, km in Meilen | Kostenlos",
+    meta: "Kostenloser Längen Umrechner online. Rechne cm in Zoll, Meter in Fuß, Kilometer in Meilen, Zoll in cm, Fuß in Meter und mehr um — zwischen 13 Längeneinheiten.",
+    d1: "Unser Längen Umrechner ermöglicht es dir, schnell und einfach zwischen allen gängigen Maßeinheiten zu wechseln. Egal ob du Zentimeter in Zoll, Kilometer in Meilen, Fuß in Meter oder eine andere Kombination umwandeln möchtest — gib einfach den Wert ein und wähle die Ausgangs- und Zieleinheit aus, um das Ergebnis sofort zu erhalten.",
     d2: "Zu den verfügbaren Maßeinheiten für die Umrechnung gehören",
     m: "Meter",
     km: "Kilometer",
@@ -490,6 +512,8 @@ defineI18nRoute({
     faq_1_a: "Das metrische System basiert auf Zehnerschritten (Meter, Kilometer), während das imperiale System traditionelle Einheiten wie Zoll, Fuß und Meilen verwendet. Der größte Teil der Welt nutzt das metrische System, aber in den USA und im Vereinigten Königreich sind imperiale Einheiten in vielen Bereichen noch üblich.",
     faq_2_q: "Ist dieser Umrechner auch für astronomische Entfernungen genau?",
     faq_2_a: "Ja. Er unterstützt Einheiten wie Lichtjahre und Seemeilen mit hoher Präzision und eignet sich dadurch sowohl für irdische als auch für astronomische Berechnungen.",
+    faq_3_q: "Welche Längeneinheiten werden unterstützt?",
+    faq_3_a: "Dieses Tool unterstützt 13 Längeneinheiten: Meter, Kilometer, Zentimeter, Millimeter, Mikrometer, Nanometer, Fuß, Zoll, Yard, Meilen, Seemeilen, Lichtjahre und Punkte.",
     see1: "Temperatur",
     see2: "Zeit",
     see3: "Speichereinheiten",
@@ -501,6 +525,7 @@ defineI18nRoute({
   },
   nl: {
     title: "Lengte-converter",
+    page_title: "Lengte-converter — cm naar Inches, Meter naar Voet, km naar Mijl en Meer | Gratis",
     meta: "Met onze Lengtemeeteenheid-converter kun je eenvoudig omrekenen tussen verschillende meeteenheden, zoals meters, kilometers, mijlen en nog veel meer.",
     d1: "Of je nu centimeters in inches, kilometers in mijlen, voet in meters of een andere combinatie wilt omzetten, onze tool staat klaar om aan je behoeften te voldoen. Voer eenvoudig de te converteren waarde in en selecteer de bron- en doeleenheden om direct het resultaat te krijgen.",
     d2: "De meeteenheden die beschikbaar zijn voor conversie omvatten",
@@ -539,6 +564,8 @@ defineI18nRoute({
     faq_1_a: "Het metrische systeem is gebaseerd op decimalen (meters, kilometers), terwijl het imperiale systeem traditionele eenheden gebruikt (inches, voet, mijlen). Het grootste deel van de wereld gebruikt het metrische systeem, maar de VS en het VK gebruiken nog steeds imperiale eenheden voor veel toepassingen.",
     faq_2_q: "Is deze converter nauwkeurig voor astronomische afstanden?",
     faq_2_a: "Ja, het ondersteunt eenheden zoals lichtjaren en zeemijlen met hoge precisie, waardoor het geschikt is voor zowel aardse als hemelse berekeningen.",
+    faq_3_q: "Welke lengte-eenheden worden ondersteund?",
+    faq_3_a: "Deze tool ondersteunt 13 lengte-eenheden: meters, kilometers, centimeters, millimeters, micrometers, nanometers, voet, inches, yards, mijlen, zeemijlen, lichtjaren en punten.",
     see1: "Temperatuur",
     see2: "Tijd",
     see3: "Opslageenheden",
@@ -547,6 +574,58 @@ defineI18nRoute({
     f_2: "Directe real-time conversie",
     f_3: "Ondersteunt metrische, imperiale en astronomische eenheden",
     f_4: "Verwerking in de browser — geen gegevens naar servers verzonden"
+  },
+  ru: {
+    title: "Конвертер длины",
+    page_title: "Конвертер длины — перевод см в дюймы, дюймов в см, метров в футы и другое | Бесплатно",
+    meta: "Бесплатный онлайн-конвертер длины. Переводите см в дюймы, дюймы в см, метры в футы, футы в см, км в мили, мили в км и многое другое — между 13 единицами длины.",
+    d1: "Независимо от того, нужно ли вам перевести см в дюймы, дюймы в см, метры в футы, футы в см, км в мили, мили в км или любую другую комбинацию, наш конвертер длины выполнит расчет мгновенно. Просто введите значение, выберите исходную и целевую единицы, и результат сразу же появится на экране.",
+    d2: "Доступные для конвертации единицы измерения включают",
+    m: "Метр",
+    km: "Километр",
+    cm: "Сантиметр",
+    mm: "Миллиметр",
+    μm: "Микрометр",
+    nm: "Нанометр",
+    ft: "Фут",
+    in: "Дюйм",
+    yd: "Ярд",
+    mi: "Миля",
+    nmi: "Морская миля",
+    ly: "Световой год",
+    point: "Пункт",
+    value: "Значение",
+    from: "Из",
+    to: "В",
+    result: "Результат",
+    err: "Конвертация не выполнена",
+    how_it_works_title: "Как это работает",
+    step_1_title: "Введите значение",
+    step_1_desc: "Введите значение длины, которое вы хотите перевести.",
+    step_2_title: "Выберите единицы",
+    step_2_desc: "Выберите исходную и целевую единицы длины из списков.",
+    step_3_title: "Скопируйте результат",
+    step_3_desc: "Конвертация происходит мгновенно. Используйте кнопку копирования, чтобы сохранить результат в буфер обмена.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Проектирование и строительство",
+    uc_1_desc: "Переводите значения между метрической и имперской системами мер для создания технических чертежей и строительных спецификаций.",
+    uc_2_title: "Международные путешествия",
+    uc_2_desc: "Быстро переводите дорожные расстояния из километров в мили или высоту человека из метров в футы.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "В чем разница между метрической и имперской системами мер?",
+    faq_1_a: "Метрическая система основана на десятичных соотношениях (метры, километры), тогда как имперская система использует традиционные единицы (дюймы, футы, мили). Большинство стран мира использует метрическую систему, однако США и Великобритания до сих пор применяют имперские единицы во многих сферах.",
+    faq_2_q: "Точен ли этот конвертер для астрономических расстояний?",
+    faq_2_a: "Да, он поддерживает такие единицы, как световые годы и морские мили, с высокой точностью, что делает его пригодным как для земных, так и для космических расчетов.",
+    faq_3_q: "Какие единицы измерения поддерживаются?",
+    faq_3_a: "Этот инструмент поддерживает 13 единиц длины: метры, километры, сантиметры, миллиметры, микрометры, нанометры, футы, дюймы, ярды, мили, морские мили, световые годы и пункты.",
+    see1: "Температура",
+    see2: "Время",
+    see3: "Единицы хранения",
+    see4: "Римские цифры",
+    f_1: "Конвертация между 13 единицами длины",
+    f_2: "Мгновенный перевод в реальном времени",
+    f_3: "Поддержка метрических, имперских и астрономических единиц",
+    f_4: "Обработка на стороне клиента — данные не отправляются на серверы"
   }
 }
 </i18n>

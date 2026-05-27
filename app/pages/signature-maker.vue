@@ -270,6 +270,7 @@ defineI18nRoute({
     id: '/tanda-tangan-online',
     de: '/unterschrift-online',
     nl: '/handtekening-online',
+    ru: '/podpis-online',
   }
 })
 </script>
@@ -468,7 +469,7 @@ defineI18nRoute({
     pageTitle: "Free Online Signature Maker — Draw or Type Your Signature",
     title: "Signature Maker",
     desc: "Draw or type your signature directly in the browser, with no installation and complete privacy. Download as PNG with a white or transparent background.",
-    meta: "Create your signature online for free. Draw with mouse or touch, or type your name in a cursive font. Download as PNG with white or transparent background. No sign-up needed.",
+    meta: "Free online signature maker. Draw with mouse or touch, or type your name in a cursive font. Download as PNG with white or transparent background. No sign-up needed.",
 
     tab_draw: "Draw",
     tab_type: "Type",
@@ -485,7 +486,7 @@ defineI18nRoute({
     save_transparent: "Download Transparent",
     warning: "Your signature is processed entirely in your browser and is never sent to any server.",
 
-    d1: "Free tool to create your signature online without installing any software. Choose between drawing with a mouse or finger, or typing your name in one of the available cursive fonts. Adjust the color, stroke width, and background, then export as an image. All processing happens locally in your browser, ensuring complete privacy.",
+    d1: "This free online signature maker lets you create your digital signature without installing any software. Choose between drawing with a mouse or finger, or typing your name in one of the available cursive fonts. Adjust the color, stroke width, and background, then export as an image. All processing happens locally in your browser, ensuring complete privacy.",
 
     features_title: "Features",
     f_1: "Draw mode: draw with mouse or touch",
@@ -813,6 +814,51 @@ defineI18nRoute({
     see2: "Afbeelding naar PDF",
     see3: "Formaat wijzigen",
     see4: "Mooie letters",
+  },
+  ru: {
+    pageTitle: "Создать подпись онлайн: бесплатно нарисовать или ввести",
+    title: "Создать подпись",
+    desc: "Нарисуйте или введите свою подпись прямо в браузере. Бесплатно, без установки программ и с полной конфиденциальностью. Скачивайте в формате PNG с белым или прозрачным фоном.",
+    meta: "Онлайн-генератор подписей бесплатно. Нарисуйте подпись мышкой или на сенсорном экране, либо введите имя красивым рукописным шрифтом. Скачивайте в PNG с прозрачным или белым фоном без регистрации.",
+    tab_draw: "Нарисовать",
+    tab_type: "Ввести текст",
+    sign_here: "Подпишите здесь",
+    pen_color: "Цвет",
+    stroke: "Толщина",
+    bg_color: "Фон",
+    font_size: "Размер",
+    clear: "Очистить",
+    loading: "Загрузка...",
+    type_placeholder: "Введите ваше имя...",
+    drag_hint: "Перетаскивайте для перемещения · Используйте боковые маркеры для масштабирования",
+    save_png: "Скачать",
+    save_transparent: "Скачать с прозрачным фоном",
+    warning: "Ваша подпись обрабатывается исключительно в вашем браузере и никогда не передается на сервер.",
+    d1: "Этот бесплатный онлайн-сервис позволяет создать цифровую подпись без установки каких-либо программ. Вы можете нарисовать её мышкой/пальцем или просто ввести своё имя, выбрав один из красивых рукописных шрифтов. Настраивайте цвет, толщину линий и фон, а затем сохраняйте готовую подпись как изображение. Вся обработка происходит локально в браузере, что гарантирует абсолютную конфиденциальность данных.",
+    features_title: "Возможности",
+    f_1: "Режим рисования: создание подписи мышкой или на сенсорном экране",
+    f_2: "Режим ввода: создание подписи из текста с возможностью перетаскивания и масштабирования",
+    f_3: "Выбор любого цвета подписи и толщины линий",
+    f_4: "Коллекция элегантных рукописных шрифтов",
+    f_5: "Экспорт в формате PNG с белым или прозрачным фоном",
+    how_to_use_title: "Как пользоваться",
+    step_1_title: "Выберите режим",
+    step_1_desc: "Используйте режим «Нарисовать» для создания уникального росчерка пальцем или мышью, либо «Ввести текст» для генерации подписи из вашего имени красивым шрифтом.",
+    step_2_title: "Настройте оформление",
+    step_2_desc: "В режиме ввода текста вы можете перетаскивать подпись, изменять её ширину боковыми маркерами и настраивать размер букв с помощью ползунка.",
+    step_3_title: "Скачайте изображение",
+    step_3_desc: "Нажмите «Скачать» для сохранения подписи с выбранным фоном или «Скачать с прозрачным фоном» для экспорта в PNG без подложки, что идеально подходит для наложения подписи на документы.",
+    faq_title: "Часто задаваемые вопросы",
+    faq_1_q: "Сохраняется ли моя подпись на сервере?",
+    faq_1_a: "Нет. Все процессы происходят локально на вашем устройстве, гарантируя полную конфиденциальность. Никакие данные не отправляются на наши или сторонние серверы. Подпись существует только в памяти вкладки браузера, пока вы её не закроете или не обновите.",
+    faq_2_q: "Можно ли использовать сервис на мобильном телефоне?",
+    faq_2_a: "Да. В режиме рисования холст отлично распознает касания пальцем или стилусом на экранах смартфонов и планшетов. В режиме ввода текста просто введите имя с помощью клавиатуры.",
+    faq_3_q: "Имеет ли созданная здесь подпись юридическую силу?",
+    faq_3_a: "Напрямую — нет. Инструмент создает графическое изображение вашей подписи (факсимиле). Для придания юридической силы обычно требуется квалифицированная электронная подпись (КЭП) или цифровой сертификат. Чаще всего созданную здесь картинку используют для визуального добавления подписи в PDF-документы через онлайн-редакторы, в презентации или формы обратной связи.",
+    see1: "Обрезка изображений",
+    see2: "Изображения в PDF",
+    see3: "Изменение размера изображений",
+    see4: "Красивые буквы"
   }
 }
 </i18n>

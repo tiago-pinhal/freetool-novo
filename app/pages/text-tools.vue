@@ -22,7 +22,8 @@ defineI18nRoute({
     it: '/strumenti-per-testi',
     id: '/alat-teks',
     de: '/textwerkzeuge',
-    nl: '/teksttools'
+    nl: '/teksttools',
+    ru: '/instrumenty-dlya-teksta',
   }
 })
 </script>
@@ -74,6 +75,21 @@ defineI18nRoute({
         icon="mdi:eye-off-outline"
         :index="6"
       />
+      <ToolCard :title="t('justify')"
+        :to="localePath('justify-text')"
+        icon="mdi:format-align-justify"
+        :index="7"
+      />
+      <ToolCard :title="t('reader')"
+        :to="localePath('text-reader')"
+        icon="mdi:volume-high"
+        :index="8"
+      />
+      <ToolCard :title="t('repeater')"
+        :to="localePath('text-repeater')"
+        icon="mdi:repeat"
+        :index="9"
+      />
     </div>
 
     <div class="mt-16 bg-base-200/50 rounded-3xl p-8 border border-base-content/5">
@@ -94,7 +110,10 @@ defineI18nRoute({
         diff: "Text Comparator",
         count: "Text Counter",
         lorem: "Text Generator",
-        invisible: "Invisible Character"
+        invisible: "Invisible Character",
+        justify: "Justify Text",
+        reader: "Text Reader",
+        repeater: "Text Repeater"
     },
     pt: {
         title: "Ferramentas para Textos",
@@ -106,7 +125,10 @@ defineI18nRoute({
         diff: "Comparador de Texto",
         count: "Contador de Texto",
         lorem: "Gerador de Texto",
-        invisible: "Caractere Invisível"
+        invisible: "Caractere Invisível",
+        justify: "Justificar Texto",
+        reader: "Leitor de Texto",
+        repeater: "Repetidor de Texto"
     },
     es: {
         title: "Herramientas para Textos",
@@ -118,7 +140,10 @@ defineI18nRoute({
         diff: "Comparador de Texto",
         count: "Contador de Texto",
         lorem: "Generador de Texto",
-        invisible: "Carácter Invisible"
+        invisible: "Carácter Invisible",
+        justify: "Justificar Texto",
+        reader: "Lector de Texto",
+        repeater: "Repetidor de Texto"
     },
     fr: {
         title: "Outils pour Textes",
@@ -130,7 +155,10 @@ defineI18nRoute({
         diff: "Comparateur de Texte",
         count: "Compteur de Texte",
         lorem: "Générateur de Texte",
-        invisible: "Caractère Invisible"
+        invisible: "Caractère Invisible",
+        justify: "Justifier le Texte",
+        reader: "Lecteur de Texte",
+        repeater: "Répéteur de Texte"
     },
     it: {
         title: "Strumenti per Testi",
@@ -142,7 +170,10 @@ defineI18nRoute({
         diff: "Comparatore di Testo",
         count: "Contatore di Testo",
         lorem: "Generatore di Testo",
-        invisible: "Carattere Invisibile"
+        invisible: "Carattere Invisibile",
+        justify: "Giustifica Testo",
+        reader: "Lettore di Testo",
+        repeater: "Ripetitore di Testo"
     },
     id: {
         title: "Alat Teks",
@@ -154,7 +185,10 @@ defineI18nRoute({
         diff: "Komparator Teks",
         count: "Penghitung Teks",
         lorem: "Generator Teks",
-        invisible: "Karakter Tak Terlihat"
+        invisible: "Karakter Tak Terlihat",
+        justify: "Ratakan Teks",
+        reader: "Pembaca Teks",
+        repeater: "Pengulang Teks"
     },
     de: {
         title: "Textwerkzeuge",
@@ -166,7 +200,10 @@ defineI18nRoute({
         diff: "Textvergleicher",
         count: "Textzähler",
         lorem: "Textgenerator",
-        invisible: "Unsichtbares Zeichen"
+        invisible: "Unsichtbares Zeichen",
+        justify: "Text ausrichten",
+        reader: "Text-Vorleser",
+        repeater: "Text-Wiederholer"
     },
     nl: {
         title: "Teksttools",
@@ -178,7 +215,25 @@ defineI18nRoute({
         diff: "Tekstvergelijker",
         count: "Tekstteller",
         lorem: "Tekstgenerator",
-        invisible: "Onzichtbaar Teken"
+        invisible: "Onzichtbaar Teken",
+        justify: "Tekst uitvullen",
+        reader: "Tekstvoorlezer",
+        repeater: "Tekst Herhaler"
+    },
+    ru: {
+        title: "Инструменты для работы с текстом",
+        meta: "Бесплатные онлайн-инструменты для работы с текстом: счетчик слов, генератор текста, конвертер, сравнение текстов, красивые шрифты и ASCII-арт. Повысьте свою продуктивность!",
+        desc: "Изменяйте регистр символов, сравнивайте документы, подсчитывайте слова, генерируйте рыбу-текст, создавайте красивые буквы и ASCII-графику. Вся обработка происходит прямо в вашем браузере: ваши данные никогда не покидают устройство и не требуют установки каких-либо программ.",
+        asc: "ASCII-символы",
+        fonts: "Красивые шрифты", 
+        txt: "Конвертер текста",
+        diff: "Сравнение текстов",
+        count: "Счетчик текста",
+        lorem: "Генератор текста",
+        invisible: "Невидимый символ",
+        justify: "Выравнивание текста",
+        reader: "Чтение текста вслух",
+        repeater: "Повторитель текста"
     }
 }
 </i18n>

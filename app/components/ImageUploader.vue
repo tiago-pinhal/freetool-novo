@@ -114,11 +114,14 @@ const { t } = useI18n({ useScope: 'local' })
   it: { clk: "Fai clic per caricare", drg: "o trascina e rilascia" },
   id: { clk: "Klik untuk mengunggah", drg: "atau seret dan lepas" },
   de: { clk: "Zum Hochladen klicken", drg: "oder per Drag & Drop" },
-  nl: { clk: "Klik om te uploaden", drg: "of versleep bestanden" }
+  nl: { clk: "Klik om te uploaden", drg: "of versleep bestanden" },
+  ru: { clk: "Нажмите для загрузки", drg: "или перетащите файлы" }
 }
 </i18n>
 
-<style lang="postcss" scoped>
+<style scoped>
+@reference "../assets/css/main.css";
+
 #drag-area {
   @apply flex items-center justify-center fixed left-0 top-0 w-full h-full overflow-hidden z-50 bg-black/50;
 }

@@ -22,7 +22,8 @@ defineI18nRoute({
     it: "/strumenti-diversi",
     id: "/berbagai-alat",
     de: "/verschiedene-tools",
-    nl: "/diverse-tools"
+    nl: "/diverse-tools",
+    ru: "/raznye-instrumenty"
   }
 })
 </script>
@@ -158,6 +159,7 @@ defineI18nRoute({
         json: "Visor de JSON",
         md5: "Generador de Hash MD5",
         bcrypt: "Generador Bcrypt",
+        morse: "Conversor de Código Morse",
     },
     fr: {
         title: "Outils Divers",
@@ -174,6 +176,7 @@ defineI18nRoute({
         json: "Visualiseur JSON",
         md5: "Générateur de Hash MD5",
         bcrypt: "Générateur Bcrypt",
+        morse: "Convertisseur de Code Morse",
     },
     it: {
         title: "Strumenti Vari",
@@ -190,6 +193,7 @@ defineI18nRoute({
         json: "Visualizzatore di JSON",
         md5: "Generatore di Hash MD5",
         bcrypt: "Generatore Bcrypt",
+        morse: "Convertitore di Codice Morse",
     },
     id: {
         title: "Berbagai Alat",
@@ -206,6 +210,7 @@ defineI18nRoute({
         json: "Penampil JSON",
         md5: "Generator Hash MD5",
         bcrypt: "Generator Bcrypt",
+        morse: "Konverter Kode Morse",
     },
     de: {
         title: "Verschiedene Tools",
@@ -222,6 +227,7 @@ defineI18nRoute({
         json: "JSON-Betrachter",
         md5: "MD5-Hash-Generator",
         bcrypt: "Bcrypt-Generator",
+        morse: "Morsecode-Konverter",
     },
     nl: {
         title: "Diverse tools",
@@ -238,6 +244,24 @@ defineI18nRoute({
         json: "JSON-viewer",
         md5: "MD5-hashgenerator",
         bcrypt: "Bcrypt-generator",
+        morse: "Morsecode-omzetter",
+    },
+    ru: {
+        title: "Разные инструменты",
+        meta: "Бесплатные различные онлайн-инструменты: калькулятор процентов, рандомизатор списков, виртуальные кубики, правило трех, экстрактор email, JSON Viewer, генераторы MD5 и Bcrypt. Полезные инструменты на каждый день!",
+        desc: "Вычисляйте проценты, перемешивайте списки, бросайте кубики, решайте пропорции по правилу трех, извлекайте email из текста и просматривайте форматированный JSON. Вся обработка происходит в вашем браузере, установка программ не требуется.",
+        main_tools: "Основные инструменты",
+        devs: "Для разработчиков",
+        calc: "Калькулятор процентов",
+        list: "Рандомизатор списков",
+        dice: "Виртуальные кубики",
+        rule: "Правило трех",
+        email: "Экстрактор email",
+        moon: "Фаза Луны Сегодня",
+        json: "JSON Viewer",
+        md5: "Генератор хэшей MD5",
+        bcrypt: "Генератор Bcrypt",
+        morse: "Переводчик кода Морзе",
     }
 }
 </i18n>

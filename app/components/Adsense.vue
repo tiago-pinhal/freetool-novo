@@ -4,9 +4,10 @@
  *
  * Responsibilities (single responsibility):
  *  - Render exactly one <ins class="adsbygoogle"> when ad consent is granted.
- *  - Trigger the AdSense fill request only ONCE, and only AFTER the slot
- *    has a non-zero width. Pushing while the slot is 0px wide (hydration
- *    under <ClientOnly>, sticky aside, breakpoint not yet applied) makes
+ *  - Trigger the AdSense fill request only ONCE, and only AFTER the AdSense
+ *    script is loaded and the slot has a non-zero width. Pushing while the slot
+ *    is 0px wide (hydration under <ClientOnly>, sticky aside, breakpoint not
+ *    yet applied) makes
  *    AdSense read the slot as 0x0 and reply `unfilled` permanently.
  *  - Stay SSR-safe and clean up its own observer.
  *
@@ -29,9 +30,19 @@ const props = withDefaults(defineProps<{
 
 const insRef = ref<HTMLElement | null>(null)
 const isDev = import.meta.dev
+const { public: { gtmId = '' } } = useRuntimeConfig()
+
+declare global {
+  interface Window {
+    __freetoolAdsenseReady?: boolean
+    __freetoolNextAdPushAt?: number
+  }
+}
 
 let resizeObserver: ResizeObserver | null = null
+let removeReadyListener: (() => void) | null = null
 let hasPushed = false
+let hasScheduledPush = false
 
 const reservedHeight = computed(() => {
   switch (props.adFormat) {
@@ -48,10 +59,36 @@ const reservedHeight = computed(() => {
   }
 })
 
+function runWhenIdle(callback: () => void, timeout = 3000): void {
+  const requestIdleCallback = window.requestIdleCallback
+  if (requestIdleCallback) {
+    requestIdleCallback(callback, { timeout })
+    return
+  }
+
+  window.setTimeout(callback, 1)
+}
+
+function scheduleAdsensePush(callback: () => void): void {
+  const now = Date.now()
+  const nextPushAt = window.__freetoolNextAdPushAt ?? 0
+  const wait = Math.max(0, nextPushAt - now)
+  window.__freetoolNextAdPushAt = now + wait + 600
+
+  window.setTimeout(() => runWhenIdle(callback), wait)
+}
+
 function disconnectObserver(): void {
   if (resizeObserver) {
     resizeObserver.disconnect()
     resizeObserver = null
+  }
+}
+
+function clearReadyListener(): void {
+  if (removeReadyListener) {
+    removeReadyListener()
+    removeReadyListener = null
   }
 }
 
@@ -63,7 +100,8 @@ function disconnectObserver(): void {
  *  - false -> not laid out yet (width 0); caller should keep waiting
  */
 function tryPush(): boolean {
-  if (hasPushed) return true
+  if (hasPushed || hasScheduledPush) return true
+  if (!window.__freetoolAdsenseReady) return false
 
   const el = insRef.value
   if (!el) return false
@@ -78,13 +116,37 @@ function tryPush(): boolean {
   // The decisive guard: a 0-width slot is interpreted as 0x0 -> unfilled.
   if (el.offsetWidth === 0) return false
 
-  hasPushed = true
-  try {
-    ;(window.adsbygoogle = window.adsbygoogle || []).push({})
-  } catch (error) {
-    if (isDev) console.warn('[Adsense] push failed:', error)
-  }
+  hasScheduledPush = true
+  scheduleAdsensePush(() => {
+    if (hasPushed) return
+
+    hasPushed = true
+    try {
+      ;(window.adsbygoogle = window.adsbygoogle || []).push({})
+    } catch (error) {
+      if (isDev) console.warn('[Adsense] push failed:', error)
+    }
+  })
   return true
+}
+
+function startFillWhenReady(): void {
+  if (!import.meta.client) return
+
+  if (window.__freetoolAdsenseReady) {
+    startFillWhenVisible()
+    return
+  }
+
+  if (removeReadyListener) return
+
+  const onReady = () => {
+    clearReadyListener()
+    startFillWhenVisible()
+  }
+
+  window.addEventListener('freetool:adsense-ready', onReady, { once: true })
+  removeReadyListener = () => window.removeEventListener('freetool:adsense-ready', onReady)
 }
 
 function startFillWhenVisible(): void {
@@ -113,12 +175,15 @@ watch(
     if (!el) return
     // Wait a tick for the DOM element to be fully integrated
     await nextTick()
-    startFillWhenVisible()
+    startFillWhenReady()
   },
   { immediate: true },
 )
 
-onScopeDispose(disconnectObserver)
+onScopeDispose(() => {
+  disconnectObserver()
+  clearReadyListener()
+})
 </script>
 
 <template>

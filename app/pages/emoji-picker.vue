@@ -28,7 +28,8 @@ usePageJsonLd({
     { question: t('faq_2_q'), answer: t('faq_2_a') },
     { question: t('faq_3_q'), answer: t('faq_3_a') },
     { question: t('faq_4_q'), answer: t('faq_4_a') },
-    { question: t('faq_5_q'), answer: t('faq_5_a') }
+    { question: t('faq_5_q'), answer: t('faq_5_a') },
+    { question: t('faq_6_q'), answer: t('faq_6_a') }
   ]
 })
 
@@ -122,7 +123,8 @@ defineI18nRoute({
     it: '/selettore-di-emoji',
     id: '/pemilih-emoji',
     de: '/emoji-auswahl',
-    nl: '/emoji-kiezer'
+    nl: '/emoji-kiezer',
+    ru: '/vybor-emoji'
   }
 })
 </script>
@@ -133,7 +135,7 @@ defineI18nRoute({
     :description="t('meta')"
     :show-ads="state.emojis.length > 0"
     :see-also-links="[
-      { label: t('see1'), to: 'symbol-picker' },
+      { label: t('see1'), to: 'copy-paste-symbols' },
       { label: t('see2'), to: 'barcode-generator' },
       { label: 'Kaomojis', to: 'kaomoji' },
       { label: t('see4'), to: 'dominant-colors-of-the-image' }
@@ -293,6 +295,11 @@ defineI18nRoute({
 
         <p>{{ t('d1') }}</p>
 
+        <div>
+          <h2 class="text-xl font-bold mb-3">{{ t('popular_title') }}</h2>
+          <p class="text-base-content leading-relaxed">{{ t('popular_p') }}</p>
+        </div>
+
         <UseCaseSection
           :title="t('use_cases_title')"
           :items="[
@@ -345,7 +352,8 @@ defineI18nRoute({
             { question: t('faq_2_q'), answer: t('faq_2_a') },
             { question: t('faq_3_q'), answer: t('faq_3_a') },
             { question: t('faq_4_q'), answer: t('faq_4_a') },
-            { question: t('faq_5_q'), answer: t('faq_5_a') }
+            { question: t('faq_5_q'), answer: t('faq_5_a') },
+            { question: t('faq_6_q'), answer: t('faq_6_a') }
           ]"
         />
 
@@ -359,8 +367,10 @@ defineI18nRoute({
   pt: {
     m_title: "Copiar e Colar Emojis - Seletor de Emojis Online 😀❤️🎉",
     title: "Copiar e Colar Emojis",
-    meta: "Seletor de emojis para copiar e colar. Encontre emojis por palavra-chave ou explore categorias de emojis como sorrisos, animais, comida e símbolos.",
-    d1: "Encontre o emoji ideal para copiar e colar em mensagens do WhatsApp, biografias do Instagram ou nicks de jogos. Busque emojis por palavra-chave ou navegue por categorias como rostos, animais, comida e símbolos. Esta ferramenta organiza os emojis para facilitar a busca e permitir cópia rápida em qualquer dispositivo.",
+    meta: "Seletor de emojis para copiar e colar. Pesquise por palavra-chave ou explore 10 categorias: sorrisos, animais, comida e símbolos. Funciona no celular, iPhone, Android e PC.",
+    d1: "Pesquise qualquer emoji e copie com um clique. Navegue por 10 categorias ou digite uma palavra-chave para encontrar emojis de coração ❤️, estrela ⭐, fogo 🔥, carinhas fofas e muito mais. Compatível com WhatsApp, Instagram, TikTok, Discord e qualquer plataforma que aceite texto — iPhone, Android, Windows e Mac incluídos.",
+    popular_title: "Emojis mais buscados",
+    popular_p: "Entre os termos mais pesquisados para copiar e colar emojis estão: emojis de coração (❤️ 🧡 💛 💚 💙 💜), emoji de fogo 🔥, emoji de estrela ⭐, joinha 👍, rindo chorando 😂 e emojis fofos como 🥰 🤩 😍. Esta ferramenta permite encontrar todos eles de forma rápida   — basta digitar o nome na busca e clicar para copiar.",
 
     search_label: "Pesquisar emojis",
     plc: "Pesquisar... (ex: heart, fire, smile)",
@@ -429,6 +439,8 @@ defineI18nRoute({
     faq_4_a: "Depende do jogo. Alguns aceitam emojis nos nicknames, outros bloqueiam caracteres Unicode especiais por questões de moderação. Emojis simples como ❤️ e ⭐ costumam ter melhor compatibilidade. Sempre teste antes de salvar o nick.",
     faq_5_q: "Como funciona o filtro de busca?",
     faq_5_a: "À medida que você digita a palavra-chave, a ferramenta filtra automaticamente a lista, exibindo apenas os emojis que correspondem ao termo pesquisado. Isso permite encontrar o ícone exato de forma rápida e dinâmica.",
+    faq_6_q: "Onde encontrar emojis fofos e emojis de coração para copiar e colar?",
+    faq_6_a: "Use a caixa de pesquisa nesta página e digite palavras como 'heart', 'love', 'star' ou 'smile' para filtrar a lista instantaneamente. Você também pode abrir a categoria Sorrisos e Emoções para encontrar carinhas fofas, ou explorar todas as categorias disponíveis.",
 
     see1: "Seletor de Símbolos",
     see2: "Gerador de Código de Barras",
@@ -442,8 +454,10 @@ defineI18nRoute({
   en: {
     m_title: "Copy and Paste Emojis - Online Emoji Picker 😀❤️🎉",
     title: "Copy and Paste Emojis",
-    meta: "Emoji picker to copy and paste. Find emojis by keyword or explore emoji categories such as smileys, animals, food, and symbols.",
-    d1: "Find the ideal emoji to copy and paste into WhatsApp messages, Instagram bios, or gaming nicknames. Search for emojis by keyword or browse through categories such as faces, animals, food, and symbols. This tool organizes emojis to facilitate searching and allow quick copying on any device.",
+    meta: "Emoji picker to copy and paste. Search emojis by keyword or browse 10 categories — smileys, animals, food, and symbols. Works on iPhone, Android, and PC.",
+    d1: "Search any emoji and copy paste with a single click. Browse 10 categories or type a keyword to instantly find heart emojis ❤️, star emojis ⭐, fire emojis 🔥, cute faces, and much more. Compatible with WhatsApp, Instagram, TikTok, Discord, and every platform that supports text — iPhone, Android, Windows, and Mac included.",
+    popular_title: "Most searched emojis",
+    popular_p: "Some of the most searched emoji copy paste terms include heart emojis (❤️ 🧡 💛 💚 💙 💜), fire emoji 🔥, star emoji ⭐, thumbs up 👍, laughing face 😂, and cute emojis like 🥰 🤩 😍. This tool lets you find all of them instantly — just type the name in the search box and click to copy.",
 
     search_label: "Search emojis",
     plc: "Search... (e.g., heart, fire, smile)",
@@ -512,6 +526,8 @@ defineI18nRoute({
     faq_4_a: "It depends on the game. Some accept emojis in nicknames, while others block special Unicode characters for moderation reasons. Simple emojis like ❤️ and ⭐ usually have better compatibility. Always test before saving your nick.",
     faq_5_q: "How does the search filter work?",
     faq_5_a: "As you type the keyword, the tool automatically filters the list, showing only the emojis that match your search term. This allows you to find the exact icon quickly and dynamically.",
+    faq_6_q: "Where can I find cute emojis and heart emojis to copy and paste?",
+    faq_6_a: "Use the search box on this page and type words like 'heart', 'love', 'star', or 'cute' to filter the emoji list instantly. You can also open the Smileys & Emotion category for cute faces, or browse all categories to discover emojis for any mood or occasion.",
 
     see1: "Symbol Picker",
     see2: "Barcode Generator",
@@ -525,8 +541,10 @@ defineI18nRoute({
   es: {
     m_title: "Copiar y Pegar Emojis - Selector de Emojis Online 😀❤️🎉",
     title: "Copiar y Pegar Emojis",
-    meta: "Selector de emojis para copiar y pegar. Encuentra emojis por palabra clave o explora categorías de emojis como caras, animales, comida y símbolos.",
-    d1: "Encuentra el emoji ideal para copiar y pegar en mensajes de WhatsApp, biografías de Instagram o apodos de juegos. Busca emojis por palabra clave o navega por categorías como caras, animales, comida y símbolos. Esta herramienta organiza los emojis para facilitar la búsqueda y permitir una copia rápida en cualquier dispositivo.",
+    meta: "Selector de emojis para copiar y pegar. Busca por palabra clave o explora 10 categorías: caras, animales, comida y símbolos. Funciona en iPhone, Android y PC.",
+    d1: "Busca cualquier emoji y cópialo con un solo clic. Navega por 10 categorías o escribe una palabra clave para encontrar emojis de corazón ❤️, estrella ⭐, fuego 🔥, caras bonitas y mucho más. Compatible con WhatsApp, Instagram, TikTok, Discord y cualquier plataforma que acepte texto — iPhone, Android, Windows y Mac incluidos.",
+    popular_title: "Emojis más buscados",
+    popular_p: "Entre los términos más buscados para copiar y pegar emojis se encuentran: emojis de corazón (❤️ 🧡 💛 💚 💙 💜), emoji de fuego 🔥, emoji de estrella ⭐, pulgar arriba 👍, cara llorando de risa 😂 y emojis bonitos como 🥰 🤩 😍. Esta herramienta te permite encontrarlos al instante — escribe el nombre en el buscador y haz clic para copiar.",
 
     search_label: "Buscar emojis",
     plc: "Buscar... (ej: heart, fire, smile)",
@@ -595,6 +613,8 @@ defineI18nRoute({
     faq_4_a: "Depende del juego. Algunos aceptan emojis en los apodos, mientras que otros bloquean los caracteres Unicode especiales por razones de moderación. Emojis simples como ❤️ y ⭐ suelen tener mejor compatibilidad. Prueba siempre antes de guardar tu apodo.",
     faq_5_q: "¿Cómo funciona el filtro de búsqueda?",
     faq_5_a: "A medida que escribes la palabra clave, la herramienta filtra automáticamente la lista, mostrando solo los emojis que coinciden con el término de búsqueda. Esto te permite encontrar el icono exacto de forma rápida y dinámica.",
+    faq_6_q: "¿Dónde encontrar emojis bonitos y emojis de corazón para copiar y pegar?",
+    faq_6_a: "Usa el cuadro de búsqueda en esta página y escribe palabras como 'heart', 'love', 'star' o 'cute' para filtrar la lista al instante. También puedes abrir la categoría Emoticonos y Emociones para encontrar caras bonitas, o explorar todas las categorías disponibles.",
 
     see1: "Selector de Símbolos",
     see2: "Generador de Código de Barras",
@@ -608,8 +628,10 @@ defineI18nRoute({
   fr: {
     m_title: "Copier et Coller des Emojis - Sélecteur d'Emojis en Ligne 😀❤️🎉",
     title: "Copier et Coller des Emojis",
-    meta: "Sélecteur d'emojis à copier et coller. Trouvez des emojis par mot-clé ou explorez des catégories d'emojis telles que les smileys, les animaux, la nourriture et les symboles.",
-    d1: "Trouvez l'emoji idéal à copier et coller dans les messages WhatsApp, les biographies Instagram ou les pseudos de jeux. Recherchez des emojis par mot-clé ou parcourez des catégories telles que les visages, les animaux, la nourriture et les symboles. Cet outil organise les emojis pour faciliter la recherche et permettre une copie rapide sur n'importe quel appareil.",
+    meta: "Sélecteur d'emojis à copier et coller. Cherchez par mot-clé ou explorez 10 catégories : smileys, animaux, nourriture et symboles. Fonctionne sur iPhone, Android et PC.",
+    d1: "Cherchez n'importe quel emoji et copiez-le en un clic. Parcourez 10 catégories ou tapez un mot-clé pour trouver des emojis cœur ❤️, étoile ⭐, feu 🔥, visages mignons et bien plus. Compatible avec WhatsApp, Instagram, TikTok, Discord et toute plateforme acceptant du texte — iPhone, Android, Windows et Mac inclus.",
+    popular_title: "Emojis les plus recherchés",
+    popular_p: "Parmi les termes les plus recherchés pour copier coller des emojis : emojis cœur (❤️ 🧡 💛 💚 💙 💜), emoji feu 🔥, emoji étoile ⭐, pouce levé 👍, mort de rire 😂 et emojis mignons comme 🥰 🤩 😍. Cet outil vous permet de tous les trouver instantanément — tapez le nom dans la recherche et cliquez pour copier.",
 
     search_label: "Rechercher des emojis",
     plc: "Rechercher... (ex: heart, fire, smile)",
@@ -678,6 +700,8 @@ defineI18nRoute({
     faq_4_a: "Cela dépend du jeu. Certains acceptent les emojis dans les pseudos, tandis que d'autres bloquent les caractères Unicode spéciaux pour des raisons de modération. Les emojis simples comme ❤️ et ⭐ ont généralement une meilleure compatibilité. Testez toujours avant d'enregistrer votre pseudo.",
     faq_5_q: "Comment fonctionne le filtre de recherche ?",
     faq_5_a: "Au fur et à mesure que vous tapez le mot-clé, l'outil filtre automatiquement la liste, en n'affichant que les emojis qui correspondent au terme de recherche. Cela vous permet de trouver l'icône exacte de manière rapide et dynamique.",
+    faq_6_q: "Où trouver des emojis mignons et des emojis cœur à copier coller ?",
+    faq_6_a: "Utilisez la barre de recherche et tapez des mots comme 'heart', 'love', 'star' ou 'cute' pour filtrer la liste instantanément. Vous pouvez aussi ouvrir la catégorie Smileys et Émotions pour les visages mignons, ou parcourir toutes les catégories disponibles.",
 
     see1: "Sélecteur de Symboles",
     see2: "Générateur de Code-Barres",
@@ -691,8 +715,10 @@ defineI18nRoute({
   it: {
     m_title: "Copia e Incolla Emoji - Selettore Emoji Online 😀❤️🎉",
     title: "Copia e Incolla Emoji",
-    meta: "Selettore di emoji da copiare e incollare. Trova emoji per parola chiave o esplora categorie di emoji come faccine, animali, cibo e simboli.",
-    d1: "Trova l'emoji ideale da copiare e incollare nei messaggi di WhatsApp, nelle bio di Instagram o nei nickname dei giochi. Cerca le emoji per parola chiave o esplora categorie come volti, animali, cibo e simboli. Questo strumento organizza le emoji per facilitare la ricerca e consentire una copia rapida su qualsiasi dispositivo.",
+    meta: "Selettore di emoji da copiare e incollare. Cerca per parola chiave o esplora 10 categorie: faccine, animali, cibo e simboli. Funziona su iPhone, Android e PC.",
+    d1: "Cerca qualsiasi emoji e copiala con un clic. Sfoglia 10 categorie o digita una parola chiave per trovare emoji cuore ❤️, stella ⭐, fuoco 🔥, faccine carine e molto altro. Compatibile con WhatsApp, Instagram, TikTok, Discord e qualsiasi piattaforma che accetti il testo — iPhone, Android, Windows e Mac inclusi.",
+    popular_title: "Emoji più cercate",
+    popular_p: "Tra i termini più cercati per copiare e incollare emoji ci sono: emoji cuore (❤️ 🧡 💛 💚 💙 💜), emoji fuoco 🔥, emoji stella ⭐, pollice su 👍, emoji risata 😂 e emoji carine come 🥰 🤩 😍. Questo strumento ti permette di trovarle tutte istantaneamente — digita il nome nella ricerca e clicca per copiare.",
 
     search_label: "Cerca emoji",
     plc: "Cerca... (es: heart, fire, smile)",
@@ -761,6 +787,8 @@ defineI18nRoute({
     faq_4_a: "Dipende dal gioco. Alcuni accettano emoji nei nickname, mentre altri bloccano i caratteri speciali Unicode per motivi di moderazione. Le emoji semplici come ❤️ e ⭐ hanno solitamente una compatibilità migliore. Testa sempre prima di salvare il tuo nickname.",
     faq_5_q: "Come funziona il filtro di ricerca?",
     faq_5_a: "Man mano che digiti la parola chiave, lo strumento filtra automaticamente l'elenco, mostrando solo le emoji che corrispondono al termine di ricerca. Questo ti consente di trovare l'icona esatta in modo rapido e dinamico.",
+    faq_6_q: "Dove trovare emoji carine ed emoji cuore da copiare e incollare?",
+    faq_6_a: "Usa la barra di ricerca e digita parole come 'heart', 'love', 'star' o 'cute' per filtrare la lista all'istante. Puoi anche aprire la categoria Faccine ed Emozioni per le faccine carine, o sfogliare tutte le categorie disponibili.",
 
     see1: "Selettore di Simboli",
     see2: "Generatore di Codice a Barre",
@@ -774,8 +802,10 @@ defineI18nRoute({
   id: {
     m_title: "Salin dan Tempel Emoji - Pemilih Emoji Online 😀❤️🎉",
     title: "Salin dan Tempel Emoji",
-    meta: "Pemilih emoji untuk disalin dan ditempel. Temukan emoji berdasarkan kata kunci atau jelajahi kategori emoji seperti wajah tersenyum, hewan, makanan, dan simbol.",
-    d1: "Temukan emoji yang ideal untuk disalin dan ditempel di pesan WhatsApp, bio Instagram, atau nama panggilan game. Cari emoji berdasarkan kata kunci atau telusuri kategori seperti wajah, hewan, makanan, dan simbol. Alat ini mengatur emoji untuk memudahkan pencarian dan memungkinkan penyalinan cepat di perangkat apa pun.",
+    meta: "Pemilih emoji untuk disalin dan ditempel. Cari berdasarkan kata kunci atau jelajahi 10 kategori: wajah, hewan, makanan, dan simbol. Berfungsi di iPhone, Android, dan PC.",
+    d1: "Cari emoji apa saja dan salin dengan satu klik. Jelajahi 10 kategori atau ketik kata kunci untuk menemukan emoji hati ❤️, bintang ⭐, api 🔥, wajah lucu, dan banyak lagi. Kompatibel dengan WhatsApp, Instagram, TikTok, Discord, dan platform apa pun yang mendukung teks — termasuk iPhone, Android, Windows, dan Mac.",
+    popular_title: "Emoji yang paling banyak dicari",
+    popular_p: "Beberapa istilah pencarian emoji yang paling populer meliputi: emoji hati (❤️ 🧡 💛 💚 💙 💜), emoji api 🔥, emoji bintang ⭐, jempol 👍, emoji tertawa 😂, dan emoji lucu seperti 🥰 🤩 😍. Alat ini memungkinkan Anda menemukannya secara instan — cukup ketik namanya di kotak pencarian dan klik untuk menyalin.",
 
     search_label: "Cari emoji",
     plc: "Cari... (contoh: heart, fire, smile)",
@@ -844,6 +874,8 @@ defineI18nRoute({
     faq_4_a: "Tergantung gamenya. Beberapa menerima emoji dalam nama panggilan, sementara yang lain memblokir karakter Unicode khusus untuk alasan moderasi. Emoji sederhana seperti ❤️ dan ⭐ biasanya memiliki kompatibilitas yang lebih baik. Selalu uji sebelum menyimpan nama panggilan Anda.",
     faq_5_q: "Bagaimana cara kerja filter pencarian?",
     faq_5_a: "Saat Anda mengetik kata kunci, alat ini secara otomatis memfilter daftar, hanya menampilkan emoji yang cocok dengan istilah pencarian Anda. Ini memungkinkan Anda menemukan ikon yang tepat dengan cepat dan dinamis.",
+    faq_6_q: "Di mana menemukan emoji lucu dan emoji hati untuk disalin dan ditempel?",
+    faq_6_a: "Gunakan kotak pencarian di halaman ini dan ketik kata seperti 'heart', 'love', 'star', atau 'cute' untuk memfilter daftar secara instan. Anda juga bisa membuka kategori Smiley & Emosi untuk wajah-wajah lucu, atau menelusuri semua kategori yang tersedia.",
 
     see1: "Pemilih Simbol",
     see2: "Generator Barcode",
@@ -857,8 +889,10 @@ defineI18nRoute({
   de: {
     m_title: "Emojis Kopieren und Einfügen - Online Emoji-Auswahl 😀❤️🎉",
     title: "Emojis Kopieren und Einfügen",
-    meta: "Emoji-Auswahl zum Kopieren und Einfügen. Finden Sie Emojis per Stichwort oder durchsuchen Sie Emoji-Kategorien wie Smileys, Tiere, Essen und Symbole.",
-    d1: "Finden Sie das ideale Emoji zum Kopieren und Einfügen in WhatsApp-Nachrichten, Instagram-Bios oder Gaming-Nicknames. Suchen Sie Emojis per Stichwort oder durchsuchen Sie Kategorien wie Gesichter, Tiere, Essen und Symbole. Dieses Tool organisiert Emojis, um die Suche zu erleichtern und ein schnelles Kopieren auf jedem Gerät zu ermöglichen.",
+    meta: "Emoji-Auswahl zum Kopieren und Einfügen. Suchen Sie per Stichwort oder durchsuchen Sie 10 Kategorien: Smileys, Tiere, Essen und Symbole. Funktioniert auf iPhone, Android und PC.",
+    d1: "Suchen Sie jedes Emoji und kopieren Sie es mit einem Klick. Durchsuchen Sie 10 Kategorien oder tippen Sie ein Stichwort ein, um Herz-Emojis ❤️, Stern-Emojis ⭐, Feuer-Emojis 🔥, süße Gesichter und vieles mehr zu finden. Kompatibel mit WhatsApp, Instagram, TikTok, Discord und jeder Plattform, die Text akzeptiert — iPhone, Android, Windows und Mac inklusive.",
+    popular_title: "Meistgesuchte Emojis",
+    popular_p: "Zu den am häufigsten gesuchten Emoji-Kopieren-Einfügen-Begriffen gehören: Herz-Emojis (❤️ 🧡 💛 💚 💙 💜), Feuer-Emoji 🔥, Stern-Emoji ⭐, Daumen hoch 👍, Lach-Emoji 😂 und süße Emojis wie 🥰 🤩 😍. Dieses Tool findet sie alle sofort — geben Sie den Namen in die Suche ein und klicken Sie zum Kopieren.",
 
     search_label: "Emojis suchen",
     plc: "Suchen... (z.B. heart, fire, smile)",
@@ -927,6 +961,8 @@ defineI18nRoute({
     faq_4_a: "Es hängt vom Spiel ab. Einige akzeptieren Emojis in Nicknames, während andere spezielle Unicode-Zeichen aus Moderationsgründen blockieren. Einfache Emojis wie ❤️ und ⭐ haben normalerweise eine bessere Kompatibilität. Testen Sie immer, bevor Sie Ihren Nick speichern.",
     faq_5_q: "Wie funktioniert der Suchfilter?",
     faq_5_a: "Während Sie das Stichwort eingeben, filtert das Tool die Liste automatisch und zeigt nur die Emojis an, die Ihrem Suchbegriff entsprechen. Dadurch finden Sie das genaue Symbol schnell und dynamisch.",
+    faq_6_q: "Wo finde ich süße Emojis und Herz-Emojis zum Kopieren und Einfügen?",
+    faq_6_a: "Nutzen Sie das Suchfeld und tippen Sie Wörter wie 'heart', 'love', 'star' oder 'cute' ein, um die Liste sofort zu filtern. Sie können auch die Kategorie Smileys & Emotionen für süße Gesichter öffnen oder alle verfügbaren Kategorien durchsuchen.",
 
     see1: "Symbol-Auswahl",
     see2: "Barcode-Generator",
@@ -940,8 +976,10 @@ defineI18nRoute({
   nl: {
     m_title: "Emoji's Kopiëren en Plakken - Online Emoji-Kiezer 😀❤️🎉",
     title: "Emoji's Kopiëren en Plakken",
-    meta: "Emoji-kiezer om te kopiëren en plakken. Zoek emoji's op trefwoord of verken categorieën zoals smileys, dieren, eten en symbolen.",
-    d1: "Vind de ideale emoji om te kopiëren en plakken in WhatsApp-berichten, Instagram-bio's of gaming-nicknames. Zoek emoji's op trefwoord of blader door categorieën zoals gezichten, dieren, eten en symbolen. Deze tool organiseert emoji's om het zoeken gemakkelijker te maken en snel kopiëren op elk apparaat mogelijk te maken.",
+    meta: "Emoji-kiezer om te kopiëren en plakken. Zoek op trefwoord of verken 10 categorieën: smileys, dieren, eten en symbolen. Werkt op iPhone, Android en PC.",
+    d1: "Zoek een emoji en kopieer die met één klik. Blader door 10 categorieën of typ een trefwoord om hart-emoji's ❤️, ster-emoji's ⭐, vuur-emoji's 🔥, schattige gezichten en nog veel meer te vinden. Compatibel met WhatsApp, Instagram, TikTok, Discord en elk platform dat tekst accepteert — inclusief iPhone, Android, Windows en Mac.",
+    popular_title: "Meest gezochte emoji's",
+    popular_p: "Tot de meest gezochte emoji kopiëren en plakken-termen behoren: hart-emoji's (❤️ 🧡 💛 💚 💙 💜), vuur-emoji 🔥, ster-emoji ⭐, duim omhoog 👍, lach-emoji 😂 en schattige emoji's zoals 🥰 🤩 😍. Met dit tool vind je ze direct — typ de naam in het zoekveld en klik om te kopiëren.",
 
     search_label: "Zoek emoji's",
     plc: "Zoeken... (bijv. heart, fire, smile)",
@@ -1010,6 +1048,8 @@ defineI18nRoute({
     faq_4_a: "Het hangt af van de game. Sommige accepteren emoji's in bijnamen, terwijl andere speciale Unicode-tekens blokkeren om moderatieredenen. Eenvoudige emoji's zoals ❤️ en ⭐ hebben meestal een betere compatibiliteit. Test altijd voordat u uw bijnaam opslaat.",
     faq_5_q: "Hoe werkt het zoekfilter?",
     faq_5_a: "Terwijl u het trefwoord typt, filtert de tool de lijst automatisch en toont alleen de emoji's die overeenkomen met uw zoekterm. Hierdoor kunt u snel en dynamisch het exacte pictogram vinden.",
+    faq_6_q: "Waar vind ik schattige emoji's en hart-emoji's om te kopiëren en plakken?",
+    faq_6_a: "Gebruik het zoekveld en typ woorden zoals 'heart', 'love', 'star' of 'cute' om de lijst direct te filteren. Je kunt ook de categorie Smileys en Emoties openen voor schattige gezichten, of alle beschikbare categorieën verkennen.",
 
     see1: "Symboolkiezer",
     see2: "Barcode Generator",
@@ -1019,6 +1059,85 @@ defineI18nRoute({
     f_2: "Kopiëren met één klik",
     f_3: "Zoeken op trefwoord",
     f_4: "Geschiedenis van recente emoji's"
+  },
+  ru: {
+    m_title: "Скопировать и Вставить Эмодзи - Онлайн Выбор Эмодзи 😀❤️🎉",
+    title: "Скопировать и Вставить Эмодзи",
+    meta: "Выбор эмодзи для копирования и вставки. Ищите по ключевым словам или исследуйте 10 категорий: смайлики, животные, еда и символы. Работает на iPhone, Android и ПК.",
+    d1: "Ищите любой эмодзи и копируйте его в один клик. Просматривайте 10 категорий или введите ключевое слово, чтобы быстро найти эмодзи сердца ❤️, звезды ⭐, огня 🔥, милых лиц и многого другого. Совместимо с WhatsApp, Instagram, TikTok, Discord и любой платформой, поддерживающей текст, включая iPhone, Android, Windows и Mac.",
+    popular_title: "Самые популярные эмодзи",
+    popular_p: "Среди наиболее частых запросов для копирования и вставки эмодзи: эмодзи сердца (❤️ 🧡 💛 💚 💙 💜), эмодзи огня 🔥, эмодзи звезды ⭐, большой палец вверх 👍, смех до слез 😂 и милые эмодзи, такие как 🥰 🤩 😍. Этот инструмент позволяет быстро найти их все — просто введите название в поиск и кликните, чтобы скопировать.",
+    search_label: "Поиск эмодзи",
+    plc: "Поиск... (например, heart, fire, smile)",
+    clear: "Очистить поиск",
+    categories: "Категории",
+    recently_copied: "Недавно скопированные",
+    copied_label: "Скопировано!",
+    copied_announce: "Эмодзи скопирован в буфер обмена",
+    found: "найдено",
+    empty: "Эмодзи не найдены. Попробуйте другое ключевое слово на английском языке.",
+    results_label: "Сетка эмодзи",
+    use_cases_title: "Где использовать эмодзи",
+    uc_1_title: "Instagram, TikTok и социальные сети",
+    uc_1_desc: "Оживите описание профиля, подписи и комментарии выразительными эмодзи. Посты с эмодзи вызывают больше вовлеченности, делая профиль более человечным и привлекательным.",
+    uc_2_title: "WhatsApp и Telegram",
+    uc_2_desc: "Точнее выражайте свои эмоции в разговорах. Правильный эмодзи задает тон сообщения, не оставляя места для недопонимания, и ускоряет чтение текстов.",
+    uc_3_title: "Discord и онлайн-сообщества",
+    uc_3_desc: "Персонализируйте свой никнейм, реагируйте на сообщения и делайте каналы динамичнее. Эмодзи — это естественный язык цифровых сообществ.",
+    uc_4_title: "E-mail, презентации и контент",
+    uc_4_desc: "Используйте умеренно для выделения важных моментов, очеловечивания заголовков и привлечения внимания в темах писем. Уместно размещенный эмодзи увеличивает открываемость писем.",
+    how_it_works_title: "Как пользоваться",
+    hiw_1_title: "Просматривайте категории или ищите",
+    hiw_1_desc: "Используйте вкладки для изучения эмодзи по темам или введите ключевое слово на английском (например, heart, star, fire), чтобы найти именно тот эмодзи, который вам нужен.",
+    hiw_2_title: "Кликните, чтобы скопировать",
+    hiw_2_desc: "Один клик на любой эмодзи автоматически копирует его в буфер обмена. Нет необходимости выделять, перетаскивать или нажимать дополнительные клавиши.",
+    hiw_3_title: "Вставьте куда угодно",
+    hiw_3_desc: "После копирования вставьте в любое нужное место. Это работает на любой платформе, принимающей текст.",
+    categories_title: "Доступные категории эмодзи",
+    categories_intro: "Эмодзи распределены по 10 категориям для удобства навигации. Вот что включает каждая из них:",
+    cat_smileys: "Смайлы и эмоции",
+    cat_smileys_d: "Счастливые, грустные, удивленные, влюбленные лица и многое другое. Это самая популярная категория для быстрого и универсального выражения чувств.",
+    cat_gestures: "Жесты",
+    cat_gestures_d: "Машущие руки, большие пальцы, ладони и повседневные жесты. Идеально подходят для выражения согласия, приветствия, просьб и быстрой реакции.",
+    cat_people: "Люди",
+    cat_people_d: "Аватары, семьи, профессии и различные репрезентации. Полезны для очеловечивания сообщений и отображения различных контекстов и личностей.",
+    cat_animals: "Животные и природа",
+    cat_animals_d: "Домашние питомцы, дикие животные, растения, цветы и природные явления. Идеально подходят для тех, кто любит мир природы или хочет добавить натуральный оттенок в сообщение.",
+    cat_food: "Еда и напитки",
+    cat_food_d: "Фрукты, блюда, десерты, напитки и кухонные принадлежности. Широко используются в рецептах, гастрономических публикациях и разговорах о еде.",
+    cat_travel: "Путешествия и места",
+    cat_travel_d: "Транспортные средства, достопримечательности, здания и окружение. Отлично подходят для туристических публикаций, отметок о прибытии и разговоров о направлениях.",
+    cat_activities: "Активность",
+    cat_activities_d: "Спорт, игры, искусство, музыка и хобби. Четко и динамично выражают увлечения, достижения и моменты досуга.",
+    cat_objects: "Предметы",
+    cat_objects_d: "Технологии, инструменты, одежда, аксессуары и повседневные вещи. Визуально передают конкретные контексты, ситуации и темы.",
+    cat_symbols: "Символы",
+    cat_symbols_d: "Дорожные знаки, религиозные символы, валюты, бренды и значки. Полезны для контекстуализации конкретных тем и добавления визуального смысла.",
+    cat_flags: "Флаги",
+    cat_flags_d: "Флаги стран, территорий и сообществ. Отлично подходят для указания происхождения, поддержки команды, географического контекста или культурной идентичности.",
+    unicode_title: "Почему эмодзи работают на любой платформе",
+    unicode_p1: "Эмодзи — это стандартизированные символы Unicode, а не изображения или файлы. Это значит, что они работают на всех устройствах, операционных системах и в приложениях, поддерживающих текст: от Android до iPhone, от Windows до Mac, от Instagram до Discord. Когда вы копируете эмодзи здесь и вставляете его в другом месте, результат всегда совместим.",
+    unicode_p2: "Визуальный вид может незначительно отличаться на разных платформах (❤️ на iOS выглядит иначе, чем на Android), но значение и совместимость остаются универсальными.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Как копировать и вставлять эмодзи на компьютере?",
+    faq_1_a: "Перейдите на эту страницу, кликните на любой эмодзи для его автоматического копирования в буфер обмена. Затем откройте нужное приложение или сайт и вставьте его. Установка программ не требуется.",
+    faq_2_q: "Работают ли эмодзи в описании профиля и подписях в Instagram?",
+    faq_2_a: "Да. Instagram принимает все эмодзи Unicode в био, подписях, комментариях, историях и никнеймах. Просто скопируйте эмодзи на этой странице и вставьте прямо в Instagram как с телефона, так и с компьютера.",
+    faq_3_q: "Могу ли я использовать эмодзи в имени и сообщениях в WhatsApp?",
+    faq_3_a: "Да. WhatsApp поддерживает эмодзи Unicode в именах профилей, сообщениях, статусах и описаниях групп.",
+    faq_4_q: "Работают ли эмодзи в игровых никнеймах, таких как Free Fire и Roblox?",
+    faq_4_a: "Это зависит от игры. Некоторые разрешают эмодзи в никнеймах, другие блокируют специальные символы Unicode в целях модерации. Простые эмодзи, такие как ❤️ и ⭐, обычно имеют лучшую совместимость. Всегда проверяйте никнейм перед сохранением.",
+    faq_5_q: "Как работает поисковый фильтр?",
+    faq_5_a: "По мере ввода ключевого слова инструмент автоматически фильтрует список, отображая только те эмодзи, которые соответствуют вашему поисковому запросу. Это позволяет быстро и динамично найти подходящий значок.",
+    faq_6_q: "Где найти милые эмодзи и эмодзи сердца для копирования и вставки?",
+    faq_6_a: "Используйте поле поиска на этой странице и введите слова 'heart', 'love', 'star' или 'cute' для мгновенной фильтрации списка. Вы также можете открыть категорию 'Смайлы и эмоции' для поиска милых лиц или изучить все доступные категории.",
+    see1: "Выбор символов",
+    see2: "Генератор штрихкодов",
+    see4: "Доминантные цвета изображения",
+    f_1: "Более 3000 доступных эмодзи",
+    f_2: "Копирование в один клик",
+    f_3: "Поиск по ключевым словам",
+    f_4: "История недавних эмодзи"
   }
 }
 </i18n>

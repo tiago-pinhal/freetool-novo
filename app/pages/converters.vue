@@ -22,7 +22,8 @@ defineI18nRoute({
     it: '/convertitori',
     id: '/konverter',
     de: '/umrechner',
-    nl: '/converters'
+    nl: '/converters',
+    ru: '/konvertery'
   }
 })
 </script>
@@ -215,6 +216,24 @@ defineI18nRoute({
         jsonToCsv: "JSON → CSV",
         num: "Getalstelsels",
         unit: "Opslageenheden",
+    },
+    ru: {
+        title: "Инструменты конвертации",
+        meta: "Бесплатные онлайн-конвертеры: единицы измерения, температура, время, римские цифры, URL, LESS в CSS, XML/JSON и многое другое. Конвертируйте данные мгновенно!",
+        desc: "Конвертируйте единицы длины, температуры и времени, кодируйте и декодируйте URL, переводите римские цифры и переключайтесь между форматами данных, такими как XML, JSON и CSV. Все операции выполняются в вашем браузере, установка не требуется.",
+        devs: "Для разработчиков",
+        roman: "Римские цифры",
+        length: "Длина",
+        temperature: "Температура",
+        time: "Время",
+        url: "URL/Ссылка",
+        less: "LESS → CSS",
+        xmlToJson: "XML → JSON",
+        jsonToXml: "JSON → XML",
+        csvToJson: "CSV → JSON",
+        jsonToCsv: "JSON → CSV",
+        num: "Системы счисления",
+        unit: "Единицы хранения",
     }
 }
 </i18n>

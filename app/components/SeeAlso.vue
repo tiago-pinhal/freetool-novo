@@ -59,6 +59,9 @@ const localePath = useLocalePath()
     },
     nl: {
       see: "Zie ook"
+    },
+    ru: {
+      see: "Смотрите также"
     }
 }
 </i18n>

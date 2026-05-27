@@ -6,7 +6,7 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "build": "nuxt build",
+    "build": "cross-env NODE_OPTIONS=--max-old-space-size=8192 nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^25.6.0",
+    "cross-env": "^10.1.0",
     "daisyui": "^5.5.19",
     "tailwindcss": "^4.2.2"
   }

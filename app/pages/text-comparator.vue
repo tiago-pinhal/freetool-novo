@@ -153,7 +153,8 @@ defineI18nRoute({
     it: '/comparatore-di-testo',
     id: '/komparator-teks',
     de: '/text-vergleicher',
-    nl: '/tekstvergelijker'
+    nl: '/tekstvergelijker',
+    ru: '/sravnenie-tekstov'
   }
 })
 </script>
@@ -167,8 +168,7 @@ defineI18nRoute({
       { label: t('see1'), to: 'text-converter' },
       { label: t('see2'), to: 'ascii-letter-generator' },
       { label: t('see3'), to: 'fancy-letters' },
-      { label: t('see4'), to: 'text-counter' },
-      { label: t('see_morse'), to: 'morse-code-converter' }
+      { label: t('see4'), to: 'text-counter' }
     ]"
   >
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -378,15 +378,14 @@ defineI18nRoute({
     legend_ins: "Adicionado",
     eq: "Os textos são idênticos. Nenhuma diferença encontrada.",
     see1: "Conversor de Texto",
-    see2: "Gerador de Letras ASCII",
+    see2: "Letras ASCII",
     see3: "Letras Diferentes",
-    see4: "Contador de Texto",
-    see_morse: "Código Morse"
+    see4: "Contador de Texto"
   },
   en: {
     title: "Text Comparator",
-    meta_title: "Free Online Text Comparator - Find Differences Instantly",
-    meta: "Compare two texts online for free. Identify additions, deletions, and changes in real-time with colored visual highlighting.",
+    meta_title: "Diff Checker – Free Online Text Comparator",
+    meta: "Free diff checker and text comparator online. Compare two texts to identify additions, deletions, and changes in real-time with colored visual highlighting. No sign-up required.",
     about_desc: "This online Text Comparator is the ideal solution to identify differences between two versions of content instantly and automatically. Forget manual reviewing: just insert the original text and the modified version to view precise highlights of everything that was added or removed, or to quickly confirm if the texts remain exactly the same. Perfect for reviewing contracts, code, and documents, ensuring total accuracy and privacy, as the processing is done locally in your browser.",
     features_title: "Key Features",
     f_1: "Real-time text comparison",
@@ -439,8 +438,7 @@ defineI18nRoute({
     see1: "Text Converter",
     see2: "ASCII Letter Generator",
     see3: "Fancy Letters",
-    see4: "Text Counter",
-    see_morse: "Morse Code"
+    see4: "Text Counter"
   },
   es: {
     title: "Comparador de Textos",
@@ -789,6 +787,64 @@ defineI18nRoute({
     see2: "ASCII-lettergenerator",
     see3: "Luxe Letters",
     see4: "Tekstteller"
+  },
+  ru: {
+    title: "Сравнение текстов",
+    meta_title: "Онлайн-сравнение текстов бесплатно — найти отличия",
+    meta: "Бесплатное сравнение двух текстов онлайн. Находите добавления, удаления и изменения в реальном времени с удобной цветовой подсветкой отличий.",
+    about_desc: "Этот бесплатный онлайн-инструмент для сравнения текстов — идеальное решение для мгновенного и автоматического поиска отличий между двумя версиями контента. Забудьте о ручной вычитке: просто вставьте исходный текст и измененную версию, чтобы увидеть точные выделения всего, что было добавлено или удалено, или быстро подтвердить, что тексты абсолютно идентичны. Идеально подходит для проверки контрактов, программного кода и документов. Обработка выполняется локально в вашем браузере, что гарантирует полную конфиденциальность.",
+    features_title: "Основные возможности",
+    f_1: "Сравнение текстов в реальном времени",
+    f_2: "Цветовая подсветка добавлений и удалений",
+    f_3: "Понятное уведомление при полной идентичности текстов",
+    f_4: "Поддержка длинных текстов и любых типов контента",
+    apps_title: "Сферы применения и примеры использования",
+    app_1_t: "Редактура и вычитка",
+    app_1_d: "Сравнивайте черновики, правки и финальные версии статей, описаний и корпоративных материалов.",
+    app_2_t: "Программирование",
+    app_2_d: "Проверяйте различия в фрагментах кода, файлах JSON, XML, конфигурациях и технической документации.",
+    app_3_t: "SEO и контент",
+    app_3_d: "Отслеживайте изменения в заголовках, мета-описаниях, структуре страниц и текстах, оптимизированных для поиска.",
+    app_4_t: "Бизнес и юриспруденция",
+    app_4_d: "Сверяйте правки в договорах, соглашениях, коммерческих предложениях и правилах перед подписанием.",
+    app_5_t: "Образование",
+    app_5_d: "Удобно сравнивайте версии эссе, рефератов, учебных работ и ответов.",
+    how_to_use_title: "Как использовать",
+    step_1_title: "Вставьте исходный текст",
+    step_1_desc: "Вставьте в левое (или первое) поле первоначальную версию текста для сравнения.",
+    step_2_title: "Вставьте измененный текст",
+    step_2_desc: "Вставьте в правое (или второе) поле новую или отредактированную версию того же текста.",
+    step_3_title: "Проверьте различия",
+    step_3_desc: "Мгновенно увидите удаленные фрагменты (красный цвет с зачеркиванием) и добавленные (зеленый/синий цвет) для точного анализа изменений.",
+    edge_title: "Точность и особые случаи",
+    edge_desc: "Наш инструмент учитывает наиболее частые практические сценарии для быстрой сверки контента.",
+    edge_1_t: "Идентичные тексты",
+    edge_1_d: "Инструмент выводит четкое уведомление о том, что тексты полностью совпадают и различий нет.",
+    edge_2_t: "Переносы строк",
+    edge_2_d: "Переносы строк сохраняются в итоговом результате для удобного чтения абзацев, списков и блоков кода.",
+    edge_3_t: "Семантическое выравнивание",
+    edge_3_d: "Алгоритм группирует изменения так, чтобы они выглядели логично, избегая запутанной и хаотичной посимвольной сверки.",
+    edge_4_t: "Ввод напрямую в браузере",
+    edge_4_d: "Вам не нужно загружать файлы на сервер. Просто скопируйте и вставьте текст в соответствующие поля.",
+    faq_title: "Вопросы и ответы",
+    faq1q: "Как инструмент показывает различия в тексте?",
+    faq1a: "Он сопоставляет две версии и наглядно подсвечивает удаленные и добавленные части для легкого чтения всех изменений.",
+    faq2q: "Можно ли сравнивать исходный код программ?",
+    faq2a: "Да. Инструмент отлично подходит для сравнения фрагментов кода, конфигурационных файлов, JSON, XML и других технических текстов.",
+    faq3q: "Что произойдет, если тексты абсолютно одинаковые?",
+    faq3a: "Система сообщит, что тексты полностью идентичны и никаких различий не обнаружено.",
+    label_original: "Исходный текст",
+    label_modified: "Измененный текст",
+    plc1: "Вставьте исходный текст здесь",
+    plc2: "Вставьте измененный текст здесь",
+    result: "Найденные различия",
+    legend_del: "Удалено",
+    legend_ins: "Добавлено",
+    eq: "Тексты полностью идентичны. Различий не обнаружено.",
+    see1: "Конвертер текста",
+    see2: "Генератор ASCII-букв",
+    see3: "Красивые буквы",
+    see4: "Счетчик текста"
   }
 }
 </i18n>

@@ -82,7 +82,8 @@ function onDrop(e) {
   it: { drop_msg: "Rilascia il file qui" },
   id: { drop_msg: "Lepas file di sini" },
   de: { drop_msg: "Datei hier ablegen" },
-  nl: { drop_msg: "Sleep het bestand hierheen" }
+  nl: { drop_msg: "Sleep het bestand hierheen" },
+  ru: { drop_msg: "Перетащите файл сюда" }
 }
 </i18n>
 

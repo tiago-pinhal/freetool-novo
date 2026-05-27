@@ -97,7 +97,11 @@ usePageJsonLd({
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
     { question: t('faq_2_q'), answer: t('faq_2_a') },
-    { question: t('faq_3_q'), answer: t('faq_3_a') }
+    { question: t('faq_3_q'), answer: t('faq_3_a') },
+    { question: t('faq_4_q'), answer: t('faq_4_a') },
+    { question: t('faq_5_q'), answer: t('faq_5_a') },
+    { question: t('faq_6_q'), answer: t('faq_6_a') },
+    { question: t('faq_7_q'), answer: t('faq_7_a') }
   ]
 })
 
@@ -117,7 +121,8 @@ defineI18nRoute({
     it: '/calcolatrice-di-percentuale',
     id: '/kalkulator-persentase',
     de: '/prozentrechner',
-    nl: '/percentagecalculator'
+    nl: '/percentagecalculator',
+    ru: '/kalkulyator-procentov'
   }
 })
 </script>
@@ -279,12 +284,42 @@ defineI18nRoute({
           :items="[ t('uc1'), t('uc2'), t('uc3'), t('uc4') ]"
         />
 
+        <section>
+          <h2 class="text-2xl font-bold mb-4">{{ t('examples_title') }}</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-base-200/40 border border-primary/5 rounded-2xl p-5 space-y-2">
+              <h3 class="font-bold text-primary">{{ t('ex1_title') }}</h3>
+              <p class="text-sm text-base-content/70 leading-relaxed">{{ t('ex1_desc') }}</p>
+            </div>
+            <div class="bg-base-200/40 border border-primary/5 rounded-2xl p-5 space-y-2">
+              <h3 class="font-bold text-primary">{{ t('ex2_title') }}</h3>
+              <p class="text-sm text-base-content/70 leading-relaxed">{{ t('ex2_desc') }}</p>
+            </div>
+            <div class="bg-base-200/40 border border-primary/5 rounded-2xl p-5 space-y-2">
+              <h3 class="font-bold text-primary">{{ t('ex3_title') }}</h3>
+              <p class="text-sm text-base-content/70 leading-relaxed">{{ t('ex3_desc') }}</p>
+            </div>
+            <div class="bg-base-200/40 border border-primary/5 rounded-2xl p-5 space-y-2">
+              <h3 class="font-bold text-primary">{{ t('ex4_title') }}</h3>
+              <p class="text-sm text-base-content/70 leading-relaxed">{{ t('ex4_desc') }}</p>
+            </div>
+            <div class="bg-base-200/40 border border-primary/5 rounded-2xl p-5 space-y-2 md:col-span-2">
+              <h3 class="font-bold text-primary">{{ t('ex5_title') }}</h3>
+              <p class="text-sm text-base-content/70 leading-relaxed">{{ t('ex5_desc') }}</p>
+            </div>
+          </div>
+        </section>
+
         <FaqSection
           :title="t('faq_title')"
           :items="[
             { question: t('faq_1_q'), answer: t('faq_1_a') },
             { question: t('faq_2_q'), answer: t('faq_2_a') },
-            { question: t('faq_3_q'), answer: t('faq_3_a') }
+            { question: t('faq_3_q'), answer: t('faq_3_a') },
+            { question: t('faq_4_q'), answer: t('faq_4_a') },
+            { question: t('faq_5_q'), answer: t('faq_5_a') },
+            { question: t('faq_6_q'), answer: t('faq_6_a') },
+            { question: t('faq_7_q'), answer: t('faq_7_a') }
           ]"
         />
       </div>
@@ -296,7 +331,7 @@ defineI18nRoute({
 {
   en: {
     title: "Percentage Calculator",
-    meta: "Free online percentage calculator for quick and accurate calculations. Calculate increases, decreases, and differences quickly and easily.",
+    meta: "Free percentage calculator online. Calculate percentage increase, percentage difference, decrease, and profit margin instantly — results update as you type.",
     desc: "Find percentages, increases, decreases, and differences between values quickly and easily. Perform percentage calculations with speed and precision using our free tool. Calculations are processed in real-time as you enter values, with results displayed automatically on the screen.",
     t2: "Multiple Calculation Types",
     t3: "Seven Calculation Modes Available",
@@ -351,11 +386,30 @@ defineI18nRoute({
     f3: "Find original value from a known percentage",
     f4: "Percentage difference between two values",
     f5: "Profit margin calculator (cost + margin → sale price)",
-    f6: "Real-time results as you type"
+    f6: "Real-time results as you type",
+    examples_title: "Practical Examples",
+    ex1_title: "Calculating a Salary Raise",
+    ex1_desc: "Your current salary is $4,000 and you received a 12% raise. Use the 'Increase by' calculator: enter 4000 and 12% to instantly see your new salary of $4,480.",
+    ex2_title: "Finding the Price After a Discount",
+    ex2_desc: "A $250 jacket is on sale for 30% off. Use the 'Decrease by' calculator: enter 250 and 30% to get the discounted price of $175 — saving you $75.",
+    ex3_title: "Setting a Price with Profit Margin",
+    ex3_desc: "Your product costs $80 to make and you want a 40% profit margin. Use the profit margin calculator: enter 80 as cost and 40% as margin to get the correct sale price of $133.33.",
+    ex4_title: "Comparing Sales Growth",
+    ex4_desc: "Revenue went from $18,000 last quarter to $22,500 this quarter. Use the 'Difference between' calculator to instantly see a +25% growth rate.",
+    ex5_title: "Finding the Original Price Before a Discount",
+    ex5_desc: "You paid $85 for a jacket that was 15% off. Since $85 is 85% of the original price, use the 'X is Y% of how much' calculator: enter 85 as the value and 85 as the percentage. The original price was $100.",
+    faq_4_q: "How do I calculate the percentage change between two numbers?",
+    faq_4_a: "Use the 'Difference between' calculator. Enter the starting value and the final value — the tool automatically shows the relative change with a +/- sign to indicate increase or decrease.",
+    faq_5_q: "How do I find the original price before a discount?",
+    faq_5_a: "Use the 'X is Y% of how much' calculator. If an item has a 15% discount, the sale price is 85% of the original. Enter the sale price and 85 as the percentage to instantly find what it cost before the discount.",
+    faq_6_q: "Can I calculate a percentage of a percentage?",
+    faq_6_a: "Yes. Calculate the first result normally, then use that result as the base for the second calculation. For example, to find 10% of 20% of $500: first calculate 20% of 500 to get $100, then find 10% of $100 to get $10.",
+    faq_7_q: "What is considered a good profit margin?",
+    faq_7_a: "It depends on the industry. Retail typically targets 10–20%, software and digital products can reach 60–80%, and services usually fall between 20–40%. Use the profit margin calculator to find the exact sale price for any margin goal."
   },
   pt: {
     title: "Calculadora de Porcentagem",
-    meta: "Calculadora de porcentagem online gratuita para cálculos rápidos e precisos. Calcule aumentos, reduções e diferenças de um jeito rápido e fácil.",
+    meta: "Calculadora de porcentagem online grátis. Calcule porcentagem, aumento percentual, desconto e margem de lucro em tempo real — sem precisar clicar em calcular.",
     desc: "Encontre porcentagens, aumentos, reduções e diferenças entre valores de forma simples e instantânea. Realize cálculos percentuais com rapidez e precisão usando nossa ferramenta gratuita. Os cálculos são processados em tempo real conforme você digita os valores nos campos, e os resultados são exibidos automaticamente na tela.",
     t2: "Múltiplos Tipos de Cálculo",
     t3: "Sete Modos de Cálculo Disponíveis",
@@ -410,11 +464,30 @@ defineI18nRoute({
     f3: "Encontra o valor original a partir de uma porcentagem",
     f4: "Diferença percentual entre dois valores",
     f5: "Calculadora de margem de lucro (custo + margem → preço de venda)",
-    f6: "Resultados em tempo real enquanto você digita"
+    f6: "Resultados em tempo real enquanto você digita",
+    examples_title: "Exemplos Práticos",
+    ex1_title: "Calculando um Aumento de Salário",
+    ex1_desc: "Seu salário atual é R$ 4.000 e você recebeu um aumento de 12%. Use a calculadora 'Aumentando o valor': insira 4000 e 12% para ver instantaneamente seu novo salário de R$ 4.480.",
+    ex2_title: "Encontrando o Preço Após um Desconto",
+    ex2_desc: "Uma jaqueta de R$ 250 está com 30% de desconto. Use a calculadora 'Diminuindo o valor': insira 250 e 30% para obter o preço com desconto de R$ 175 — economizando R$ 75.",
+    ex3_title: "Definindo Preço com Margem de Lucro",
+    ex3_desc: "Seu produto custa R$ 80 para fabricar e você quer 40% de margem de lucro. Use a calculadora de margem de lucro: insira 80 como custo e 40% como margem para obter o preço de venda correto de R$ 133,33.",
+    ex4_title: "Comparando Crescimento de Vendas",
+    ex4_desc: "A receita foi de R$ 18.000 no trimestre passado para R$ 22.500 neste. Use a calculadora 'A diferença entre' para ver instantaneamente um crescimento de +25%.",
+    ex5_title: "Encontrando o Preço Original Antes do Desconto",
+    ex5_desc: "Você pagou R$ 85 por uma jaqueta com 15% de desconto. Como R$ 85 é 85% do preço original, use a calculadora de 'valor original': insira 85 como valor e 85 como porcentagem. O preço original era R$ 100.",
+    faq_4_q: "Como calcular a variação percentual entre dois números?",
+    faq_4_a: "Use a calculadora 'A diferença entre'. Insira o valor inicial e o valor final — a ferramenta mostra automaticamente a variação relativa com sinal + ou - para indicar aumento ou redução.",
+    faq_5_q: "Como encontrar o preço original antes de um desconto?",
+    faq_5_a: "Use a calculadora de valor original. Se um item tem 15% de desconto, o preço pago representa 85% do original. Insira o preço pago e 85 como porcentagem para descobrir o valor antes do desconto.",
+    faq_6_q: "Posso calcular uma porcentagem de uma porcentagem?",
+    faq_6_a: "Sim. Calcule o primeiro resultado normalmente e use esse resultado como base para o segundo cálculo. Por exemplo, para 10% de 20% de R$ 500: primeiro calcule 20% de 500 (R$ 100), depois 10% de R$ 100 (R$ 10).",
+    faq_7_q: "O que é considerada uma boa margem de lucro?",
+    faq_7_a: "Depende do setor. O varejo geralmente mira entre 10–20%, software e produtos digitais podem chegar a 60–80%, e serviços costumam ficar entre 20–40%. Use a calculadora de margem de lucro para encontrar o preço de venda exato para qualquer meta."
   },
   es: {
     title: "Calculadora de Porcentajes",
-    meta: "Calculadora de porcentajes online gratuita para cálculos rápidos y precisos. Calcula aumentos, reducciones y diferencias de forma rápida y sencilla.",
+    meta: "Calculadora de porcentaje online gratis. Calcula porcentaje, aumentos, descuentos y margen de beneficio al instante — los resultados se actualizan mientras escribes.",
     desc: "Encuentra porcentajes, aumentos, reducciones y diferencias entre valores de forma sencilla e instantánea. Realiza cálculos porcentuales con rapidez y precisión usando nuestra herramienta gratuita. Los cálculos se procesan en tiempo real a medida que introduces los valores en los campos, y los resultados se muestran automáticamente en pantalla.",
     t2: "Múltiples Tipos de Cálculo",
     t3: "Siete Modos de Cálculo Disponibles",
@@ -469,11 +542,30 @@ defineI18nRoute({
     f3: "Encuentra el valor original a partir de un porcentaje",
     f4: "Diferencia porcentual entre dos valores",
     f5: "Calculadora de margen de ganancia (costo + margen → precio de venta)",
-    f6: "Resultados en tiempo real mientras escribes"
+    f6: "Resultados en tiempo real mientras escribes",
+    examples_title: "Ejemplos Prácticos",
+    ex1_title: "Calculando un Aumento de Sueldo",
+    ex1_desc: "Tu sueldo actual es $4.000 y recibiste un aumento del 12%. Usa la calculadora 'Aumentando el valor': ingresa 4000 y 12% para ver al instante tu nuevo sueldo de $4.480.",
+    ex2_title: "Encontrando el Precio con Descuento",
+    ex2_desc: "Una chaqueta de $250 tiene un 30% de descuento. Usa la calculadora 'Disminuyendo el valor': ingresa 250 y 30% para obtener el precio con descuento de $175 — ahorrando $75.",
+    ex3_title: "Fijando Precio con Margen de Ganancia",
+    ex3_desc: "Tu producto cuesta $80 fabricarlo y quieres un 40% de margen de ganancia. Usa la calculadora de margen de ganancia: ingresa 80 como costo y 40% como margen para obtener el precio de venta correcto de $133,33.",
+    ex4_title: "Comparando el Crecimiento de Ventas",
+    ex4_desc: "Las ventas pasaron de $18.000 el trimestre pasado a $22.500 este trimestre. Usa la calculadora 'La diferencia entre' para ver al instante un crecimiento de +25%.",
+    ex5_title: "Encontrando el Precio Original Antes del Descuento",
+    ex5_desc: "Pagaste $85 por una chaqueta con 15% de descuento. Como $85 es el 85% del precio original, usa la calculadora de valor original: ingresa 85 como valor y 85 como porcentaje. El precio original era $100.",
+    faq_4_q: "¿Cómo calcular el cambio porcentual entre dos números?",
+    faq_4_a: "Usa la calculadora 'La diferencia entre'. Ingresa el valor inicial y el valor final — la herramienta muestra automáticamente el cambio relativo con signo + o - para indicar aumento o disminución.",
+    faq_5_q: "¿Cómo encontrar el precio original antes de un descuento?",
+    faq_5_a: "Usa la calculadora de valor original. Si un artículo tiene 15% de descuento, el precio pagado representa el 85% del original. Ingresa el precio pagado y 85 como porcentaje para encontrar el valor antes del descuento.",
+    faq_6_q: "¿Puedo calcular un porcentaje de un porcentaje?",
+    faq_6_a: "Sí. Calcula el primer resultado normalmente y usa ese resultado como base para el segundo cálculo. Por ejemplo, para el 10% del 20% de $500: primero calcula el 20% de 500 ($100), luego el 10% de $100 ($10).",
+    faq_7_q: "¿Qué se considera un buen margen de ganancia?",
+    faq_7_a: "Depende del sector. El comercio minorista generalmente apunta a un 10–20%, el software y los productos digitales pueden llegar al 60–80%, y los servicios suelen estar entre el 20–40%. Usa la calculadora de margen de ganancia para encontrar el precio de venta exacto para cualquier objetivo."
   },
   fr: {
     title: "Calculatrice de Pourcentage",
-    meta: "Calculatrice de pourcentage en ligne gratuite pour des calculs rapides et précis. Calculez les augmentations, les réductions et les écarts rapidement et facilement.",
+    meta: "Calculatrice pourcentage en ligne gratuite. Calculez des pourcentages, augmentations, réductions et marges bénéficiaires instantanément — résultats en temps réel.",
     desc: "Trouvez des pourcentages, des augmentations, des réductions et des différences entre valeurs de façon simple et instantanée. Effectuez des calculs de pourcentage rapidement et précisément avec notre outil gratuit. Les calculs sont traités en temps réel lorsque vous saisissez les valeurs dans les champs, et les résultats s'affichent automatiquement à l'écran.",
     t2: "Multiples Types de Calcul",
     t3: "Sept Modes de Calcul Disponibles",
@@ -528,11 +620,30 @@ defineI18nRoute({
     f3: "Trouvez la valeur originale à partir d'un pourcentage",
     f4: "Différence en pourcentage entre deux valeurs",
     f5: "Calculatrice de marge bénéficiaire (coût + marge → prix de vente)",
-    f6: "Résultats en temps réel pendant la saisie"
+    f6: "Résultats en temps réel pendant la saisie",
+    examples_title: "Exemples Pratiques",
+    ex1_title: "Calculer une Augmentation de Salaire",
+    ex1_desc: "Ton salaire actuel est de 4 000€ et tu as reçu une augmentation de 12%. Utilise la calculatrice 'Augmenter la valeur' : saisis 4000 et 12% pour voir instantanément ton nouveau salaire de 4 480€.",
+    ex2_title: "Trouver le Prix Après une Réduction",
+    ex2_desc: "Une veste à 250€ est soldée à -30%. Utilise 'Diminuer la valeur' : saisis 250 et 30% pour obtenir le prix réduit de 175€ — soit 75€ d'économie.",
+    ex3_title: "Fixer un Prix avec Marge Bénéficiaire",
+    ex3_desc: "Ton produit coûte 80€ à fabriquer et tu veux une marge de 40%. Utilise la calculatrice de marge bénéficiaire : saisis 80 comme coût et 40% comme marge pour obtenir le bon prix de vente de 133,33€.",
+    ex4_title: "Comparer la Croissance des Ventes",
+    ex4_desc: "Le chiffre d'affaires est passé de 18 000€ le trimestre dernier à 22 500€ ce trimestre. Utilise 'La différence entre' pour voir instantanément une croissance de +25%.",
+    ex5_title: "Retrouver le Prix Original Avant Remise",
+    ex5_desc: "Tu as payé 85€ pour une veste remisée de 15%. Comme 85€ correspond à 85% du prix original, utilise la calculatrice de valeur d'origine : saisis 85 comme valeur et 85 comme pourcentage. Le prix original était 100€.",
+    faq_4_q: "Comment calculer la variation en pourcentage entre deux nombres ?",
+    faq_4_a: "Utilise la calculatrice 'La différence entre'. Saisis la valeur de départ et la valeur finale — l'outil affiche automatiquement la variation relative avec un signe + ou - pour indiquer une hausse ou une baisse.",
+    faq_5_q: "Comment retrouver le prix initial avant une remise ?",
+    faq_5_a: "Utilise la calculatrice de valeur d'origine. Si un article est remisé de 15%, le prix payé représente 85% du prix original. Saisis le prix payé et 85 comme pourcentage pour retrouver le prix avant remise.",
+    faq_6_q: "Peut-on calculer un pourcentage d'un pourcentage ?",
+    faq_6_a: "Oui. Calcule d'abord le premier résultat normalement, puis utilise ce résultat comme base pour le second calcul. Par exemple, pour 10% de 20% de 500€ : calcule d'abord 20% de 500 (100€), puis 10% de 100€ (10€).",
+    faq_7_q: "Quel est un bon taux de marge bénéficiaire ?",
+    faq_7_a: "Cela dépend du secteur. Le commerce de détail vise généralement 10–20%, les logiciels et produits numériques peuvent atteindre 60–80%, et les services se situent souvent entre 20–40%. Utilise la calculatrice de marge pour trouver le prix de vente exact pour n'importe quel objectif."
   },
   it: {
-    title: "Calcolatrice di Percentuali",
-    meta: "Calcolatrice di percentuali online gratuita per calcoli rapidi e precisi. Calcola aumenti, riduzioni e differenze in modo rapido e semplice.",
+    title: "Calcolatrice Percentuale",
+    meta: "Calcolatrice percentuale online gratuita. Calcola percentuale, aumento percentuale, sconto e margine di profitto in tempo reale — risultati aggiornati mentre digiti.",
     desc: "Trova percentuali, aumenti, riduzioni e differenze tra valori in modo semplice e istantaneo. Esegui calcoli percentuali con rapidità e precisione usando il nostro strumento gratuito. I calcoli vengono elaborati in tempo reale mentre inserisci i valori nei campi, e i risultati vengono mostrati automaticamente sullo schermo.",
     t2: "Molteplici Tipi di Calcolo",
     t3: "Sette Modalità di Calcolo Disponibili",
@@ -587,11 +698,30 @@ defineI18nRoute({
     f3: "Trova il valore originale da una percentuale",
     f4: "Differenza percentuale tra due valori",
     f5: "Calcolatrice del margine di profitto (costo + margine → prezzo di vendita)",
-    f6: "Risultati in tempo reale mentre digiti"
+    f6: "Risultati in tempo reale mentre digiti",
+    examples_title: "Esempi Pratici",
+    ex1_title: "Calcolare un Aumento di Stipendio",
+    ex1_desc: "Il tuo stipendio attuale è €4.000 e hai ricevuto un aumento del 12%. Usa la calcolatrice 'Aumentando il valore': inserisci 4000 e 12% per vedere subito il nuovo stipendio di €4.480.",
+    ex2_title: "Trovare il Prezzo Dopo uno Sconto",
+    ex2_desc: "Una giacca da €250 è in saldo al 30%. Usa 'Diminuendo il valore': inserisci 250 e 30% per ottenere il prezzo scontato di €175 — risparmiando €75.",
+    ex3_title: "Impostare un Prezzo con Margine di Profitto",
+    ex3_desc: "Il tuo prodotto costa €80 da produrre e vuoi un margine del 40%. Usa la calcolatrice del margine di profitto: inserisci 80 come costo e 40% come margine per ottenere il prezzo di vendita corretto di €133,33.",
+    ex4_title: "Confrontare la Crescita delle Vendite",
+    ex4_desc: "Il fatturato è passato da €18.000 il trimestre scorso a €22.500 questo trimestre. Usa 'La differenza tra' per vedere subito una crescita del +25%.",
+    ex5_title: "Trovare il Prezzo Originale Prima dello Sconto",
+    ex5_desc: "Hai pagato €85 per una giacca scontata del 15%. Poiché €85 è l'85% del prezzo originale, usa la calcolatrice del valore originale: inserisci 85 come valore e 85 come percentuale. Il prezzo originale era €100.",
+    faq_4_q: "Come si calcola la variazione percentuale tra due numeri?",
+    faq_4_a: "Usa la calcolatrice 'La differenza tra'. Inserisci il valore iniziale e il valore finale — lo strumento mostra automaticamente la variazione relativa con il segno + o - per indicare un aumento o una riduzione.",
+    faq_5_q: "Come si trova il prezzo originale prima di uno sconto?",
+    faq_5_a: "Usa la calcolatrice del valore originale. Se un articolo ha il 15% di sconto, il prezzo pagato rappresenta l'85% dell'originale. Inserisci il prezzo pagato e 85 come percentuale per trovare il valore prima dello sconto.",
+    faq_6_q: "Posso calcolare una percentuale di una percentuale?",
+    faq_6_a: "Sì. Calcola prima il primo risultato normalmente, poi usa quel risultato come base per il secondo calcolo. Ad esempio, per il 10% del 20% di €500: calcola prima il 20% di 500 (€100), poi il 10% di €100 (€10).",
+    faq_7_q: "Qual è considerato un buon margine di profitto?",
+    faq_7_a: "Dipende dal settore. Il commercio al dettaglio punta generalmente al 10–20%, il software e i prodotti digitali possono raggiungere il 60–80%, e i servizi di solito si collocano tra il 20–40%. Usa la calcolatrice del margine per trovare il prezzo di vendita esatto per qualsiasi obiettivo."
   },
   id: {
     title: "Kalkulator Persentase",
-    meta: "Kalkulator persentase online gratis untuk perhitungan yang cepat dan akurat. Hitung kenaikan, penurunan, dan perbedaan dengan cepat dan mudah.",
+    meta: "Kalkulator persentase online gratis. Hitung persentase, kenaikan, diskon, dan margin keuntungan secara instan — hasil langsung muncul saat Anda mengetik.",
     desc: "Temukan persentase, kenaikan, penurunan, dan perbedaan antar nilai dengan mudah dan instan. Lakukan perhitungan persentase dengan cepat dan akurat menggunakan alat gratis kami. Perhitungan diproses secara real-time saat Anda mengetik nilai di kolom, dan hasilnya otomatis ditampilkan di layar.",
     t2: "Berbagai Jenis Perhitungan",
     t3: "Tujuh Mode Perhitungan Tersedia",
@@ -646,11 +776,30 @@ defineI18nRoute({
     f3: "Temukan nilai asli dari persentase",
     f4: "Perbedaan persentase antara dua nilai",
     f5: "Kalkulator margin keuntungan (biaya + margin → harga jual)",
-    f6: "Hasil real-time saat Anda mengetik"
+    f6: "Hasil real-time saat Anda mengetik",
+    examples_title: "Contoh Praktis",
+    ex1_title: "Menghitung Kenaikan Gaji",
+    ex1_desc: "Gaji Anda saat ini Rp 4.000.000 dan mendapat kenaikan 12%. Gunakan kalkulator 'Meningkatkan nilai': masukkan 4000000 dan 12% untuk langsung melihat gaji baru Rp 4.480.000.",
+    ex2_title: "Menemukan Harga Setelah Diskon",
+    ex2_desc: "Sebuah jaket seharga Rp 250.000 mendapat diskon 30%. Gunakan 'Mengurangi nilai': masukkan 250000 dan 30% untuk mendapatkan harga diskon Rp 175.000 — menghemat Rp 75.000.",
+    ex3_title: "Menetapkan Harga dengan Margin Keuntungan",
+    ex3_desc: "Produk Anda berharga Rp 80.000 untuk dibuat dan Anda ingin margin 40%. Gunakan kalkulator margin keuntungan: masukkan 80000 sebagai biaya dan 40% sebagai margin untuk mendapatkan harga jual yang tepat Rp 133.333.",
+    ex4_title: "Membandingkan Pertumbuhan Penjualan",
+    ex4_desc: "Pendapatan naik dari Rp 18.000.000 kuartal lalu menjadi Rp 22.500.000 kuartal ini. Gunakan 'Perbedaan antara' untuk langsung melihat pertumbuhan +25%.",
+    ex5_title: "Menemukan Harga Asli Sebelum Diskon",
+    ex5_desc: "Anda membayar Rp 85.000 untuk jaket yang didiskon 15%. Karena Rp 85.000 adalah 85% dari harga asli, gunakan kalkulator nilai awal: masukkan 85000 sebagai nilai dan 85 sebagai persentase. Harga aslinya adalah Rp 100.000.",
+    faq_4_q: "Bagaimana cara menghitung perubahan persentase antara dua angka?",
+    faq_4_a: "Gunakan kalkulator 'Perbedaan antara'. Masukkan nilai awal dan nilai akhir — alat ini otomatis menampilkan perubahan relatif dengan tanda + atau - untuk menunjukkan kenaikan atau penurunan.",
+    faq_5_q: "Bagaimana cara menemukan harga asli sebelum diskon?",
+    faq_5_a: "Gunakan kalkulator nilai awal. Jika barang didiskon 15%, harga yang dibayar mewakili 85% dari harga asli. Masukkan harga yang dibayar dan 85 sebagai persentase untuk menemukan nilai sebelum diskon.",
+    faq_6_q: "Bisakah saya menghitung persentase dari persentase?",
+    faq_6_a: "Bisa. Hitung hasil pertama secara normal, lalu gunakan hasil itu sebagai dasar untuk perhitungan kedua. Misalnya, untuk 10% dari 20% dari Rp 500.000: pertama hitung 20% dari 500.000 (Rp 100.000), lalu 10% dari Rp 100.000 (Rp 10.000).",
+    faq_7_q: "Berapa margin keuntungan yang dianggap baik?",
+    faq_7_a: "Tergantung industri. Ritel biasanya menargetkan 10–20%, perangkat lunak dan produk digital bisa mencapai 60–80%, dan layanan biasanya berada di antara 20–40%. Gunakan kalkulator margin keuntungan untuk menemukan harga jual yang tepat sesuai target Anda."
   },
   de: {
     title: "Prozentrechner",
-    meta: "Kostenloser Online-Prozentrechner für schnelle und genaue Berechnungen. Berechne Erhöhungen, Reduzierungen und Unterschiede schnell und einfach.",
+    meta: "Kostenloser Prozentrechner online. Prozent berechnen, Erhöhungen, Rabatte und Gewinnmargen — Ergebnisse werden in Echtzeit angezeigt, während du tippst.",
     desc: "Finde Prozentsätze, Erhöhungen, Reduzierungen und Unterschiede zwischen Werten schnell und einfach. Führe Prozentberechnungen mit hoher Geschwindigkeit und Genauigkeit mit unserem kostenlosen Tool aus. Die Berechnungen erfolgen in Echtzeit, während du Werte eingibst, und die Ergebnisse werden automatisch auf dem Bildschirm angezeigt.",
     t2: "Mehrere Berechnungsarten",
     t3: "Sieben Berechnungsmodi verfügbar",
@@ -705,11 +854,30 @@ defineI18nRoute({
     f3: "Ursprünglichen Wert aus einem bekannten Prozentsatz finden",
     f4: "Prozentuale Differenz zwischen zwei Werten",
     f5: "Gewinnmargenrechner (Kosten + Marge → Verkaufspreis)",
-    f6: "Echtzeitergebnisse während der Eingabe"
+    f6: "Echtzeitergebnisse während der Eingabe",
+    examples_title: "Praktische Beispiele",
+    ex1_title: "Gehaltserhöhung berechnen",
+    ex1_desc: "Dein Gehalt beträgt 4.000€ und du bekommst 12% mehr. Nutze den Rechner 'Wert erhöhen': gib 4000 und 12% ein und sieh sofort dein neues Gehalt von 4.480€.",
+    ex2_title: "Preis nach Rabatt berechnen",
+    ex2_desc: "Eine Jacke für 250€ ist um 30% reduziert. Nutze 'Wert verringern': gib 250 und 30% ein und erhalte den Rabattpreis von 175€ — du sparst 75€.",
+    ex3_title: "Verkaufspreis mit Gewinnmarge festlegen",
+    ex3_desc: "Dein Produkt kostet 80€ in der Herstellung und du willst 40% Gewinnmarge. Nutze den Gewinnmargenrechner: gib 80 als Kosten und 40% als Marge ein, um den korrekten Verkaufspreis von 133,33€ zu erhalten.",
+    ex4_title: "Umsatzwachstum vergleichen",
+    ex4_desc: "Der Umsatz stieg von 18.000€ im letzten Quartal auf 22.500€ in diesem Quartal. Nutze 'Die Differenz zwischen', um sofort ein Wachstum von +25% zu sehen.",
+    ex5_title: "Ursprünglichen Preis vor dem Rabatt ermitteln",
+    ex5_desc: "Du hast 85€ für eine Jacke bezahlt, die 15% Rabatt hatte. Da 85€ 85% des Originalpreises sind, nutze den Rechner für den ursprünglichen Wert: gib 85 als Wert und 85 als Prozentsatz ein. Der Originalpreis betrug 100€.",
+    faq_4_q: "Wie berechne ich die prozentuale Veränderung zwischen zwei Zahlen?",
+    faq_4_a: "Nutze den Rechner 'Die Differenz zwischen'. Gib den Ausgangswert und den Endwert ein — das Tool zeigt automatisch die relative Veränderung mit einem + oder - Zeichen an.",
+    faq_5_q: "Wie finde ich den Originalpreis vor einem Rabatt?",
+    faq_5_a: "Nutze den Rechner für den ursprünglichen Wert. Bei 15% Rabatt entspricht der bezahlte Preis 85% des Originalpreises. Gib den gezahlten Preis und 85 als Prozentsatz ein, um den Preis vor dem Rabatt zu finden.",
+    faq_6_q: "Kann ich einen Prozentsatz eines Prozentsatzes berechnen?",
+    faq_6_a: "Ja. Berechne zuerst das erste Ergebnis normal und verwende dieses Ergebnis dann als Basis für die zweite Berechnung. Um zum Beispiel 10% von 20% von 500€ zu finden: berechne zuerst 20% von 500 (100€), dann 10% von 100€ (10€).",
+    faq_7_q: "Was gilt als gute Gewinnmarge?",
+    faq_7_a: "Das hängt von der Branche ab. Der Einzelhandel zielt typischerweise auf 10–20%, Software und digitale Produkte können 60–80% erreichen, und Dienstleistungen liegen meist zwischen 20–40%. Nutze den Gewinnmargenrechner, um den genauen Verkaufspreis für jedes Ziel zu finden."
   },
   nl: {
     title: "Percentagecalculator",
-    meta: "Gratis online percentagecalculator voor snelle en nauwkeurige berekeningen. Bereken verhogingen, verlagingen en verschillen snel en eenvoudig.",
+    meta: "Gratis percentagecalculator online. Bereken percentages, verhogingen, kortingen en winstmarges direct — resultaten verschijnen terwijl je typt.",
     desc: "Vind snel en eenvoudig percentages, verhogingen, verlagingen en verschillen tussen waarden. Voer percentageberekeningen uit met snelheid en precisie met behulp van onze gratis tool. Berekeningen worden realtime verwerkt terwijl je de waarden invoert, en de resultaten worden automatisch op het scherm getoond.",
     t2: "Meerdere soorten berekeningen",
     t3: "Zeven berekeningsmodi beschikbaar",
@@ -764,7 +932,104 @@ defineI18nRoute({
     f3: "Vind de oorspronkelijke waarde vanuit een bekend percentage",
     f4: "Percentageverschil tussen twee waarden",
     f5: "Winstmargecalculator (kosten + marge → verkoopprijs)",
-    f6: "Realtime resultaten terwijl je typt"
+    f6: "Realtime resultaten terwijl je typt",
+    examples_title: "Praktische Voorbeelden",
+    ex1_title: "Een Salarisverhoging Berekenen",
+    ex1_desc: "Je huidige salaris is €4.000 en je hebt 12% loonsverhoging gekregen. Gebruik de 'Waarde verhogen' calculator: voer 4000 en 12% in om meteen je nieuwe salaris van €4.480 te zien.",
+    ex2_title: "De Prijs Na Korting Vinden",
+    ex2_desc: "Een jas van €250 is 30% afgeprijsd. Gebruik 'Waarde verlagen': voer 250 en 30% in om de kortingsprijs van €175 te krijgen — je bespaart €75.",
+    ex3_title: "Prijs Instellen met Winstmarge",
+    ex3_desc: "Je product kost €80 om te maken en je wilt een winstmarge van 40%. Gebruik de winstmargecalculator: voer 80 in als kostprijs en 40% als marge om de juiste verkoopprijs van €133,33 te krijgen.",
+    ex4_title: "Omzetgroei Vergelijken",
+    ex4_desc: "De omzet steeg van €18.000 vorig kwartaal naar €22.500 dit kwartaal. Gebruik 'Het verschil tussen' om meteen een groei van +25% te zien.",
+    ex5_title: "Oorspronkelijke Prijs Voor Korting Vinden",
+    ex5_desc: "Je betaalde €85 voor een jas met 15% korting. Omdat €85 gelijk is aan 85% van de originele prijs, gebruik je de calculator voor de oorspronkelijke waarde: voer 85 in als waarde en 85 als percentage. De originele prijs was €100.",
+    faq_4_q: "Hoe bereken ik de procentuele verandering tussen twee getallen?",
+    faq_4_a: "Gebruik de 'Het verschil tussen' calculator. Voer de beginwaarde en de eindwaarde in — het tool toont automatisch de relatieve verandering met een + of - teken om verhoging of verlaging aan te geven.",
+    faq_5_q: "Hoe vind ik de originele prijs vóór een korting?",
+    faq_5_a: "Gebruik de calculator voor de oorspronkelijke waarde. Bij 15% korting is de betaalde prijs 85% van de originele. Voer de betaalde prijs en 85 als percentage in om de waarde vóór korting te vinden.",
+    faq_6_q: "Kan ik een percentage van een percentage berekenen?",
+    faq_6_a: "Ja. Bereken eerst het eerste resultaat normaal en gebruik dat resultaat als basis voor de tweede berekening. Bijvoorbeeld, voor 10% van 20% van €500: bereken eerst 20% van 500 (€100), dan 10% van €100 (€10).",
+    faq_7_q: "Wat wordt beschouwd als een goede winstmarge?",
+    faq_7_a: "Dat hangt af van de sector. De detailhandel richt zich doorgaans op 10–20%, software en digitale producten kunnen 60–80% bereiken, en diensten zitten meestal tussen 20–40%. Gebruik de winstmargecalculator om de exacte verkoopprijs voor elk margedoel te vinden."
+  },
+  ru: {
+    title: "Калькулятор процентов",
+    meta: "Бесплатный калькулятор процентов онлайн. Мгновенно рассчитывайте увеличение на процент, процентную разницу, скидки и маржу прибыли — результаты обновляются на лету.",
+    desc: "Быстро и легко находите проценты, увеличение, уменьшение и разницу между значениями. Выполняйте процентные расчеты быстро и точно с помощью нашего бесплатного инструмента. Все вычисления происходят в режиме реального времени прямо во время ввода, а результаты мгновенно выводятся на экран.",
+    t2: "Несколько типов расчетов",
+    t3: "Доступно семь режимов расчета",
+    t4: "Повседневное использование",
+    t5: "Профессиональное и академическое применение",
+    features_subtitle: "Наш калькулятор предлагает семь режимов расчета для любых нужд: базовый процент для нахождения доли одного числа от другого; увеличение на процент для расчета наценок; уменьшение на процент для определения скидки с показом сэкономленной суммы; нахождение исходного значения по известному проценту; процентное различие для сравнения изменений между двумя числами; и маржа прибыли для расчета цены продажи на основе себестоимости и желаемой маржи.",
+    how_to_use_title: "Инструкция",
+    step_1_title: "Выберите тип расчета",
+    step_1_desc: "Выберите один из 7 доступных режимов расчета в соответствии с вашей задачей.",
+    step_2_title: "Введите значения",
+    step_2_desc: "Просто введите числа в соответствующие поля. Нажимать кнопку «Рассчитать» не требуется.",
+    step_3_title: "Получите результат",
+    step_3_desc: "Результат рассчитывается мгновенно и отображается на экране прямо по мере ввода.",
+    applications_desc: "Используйте калькулятор, чтобы посчитать чаевые в ресторане, узнать размер скидки на распродажах, сравнить предложения, рассчитать продажную стоимость товара с учетом наценки или проанализировать темпы роста бизнеса.",
+    professional_desc: "Калькулятор полезен для ценообразования товаров с маржой прибыли, оценки скидок, анализа отклонений показателей эффективности, решения математических задач и понимания статистических концепций.",
+    simplicity_desc: "Упростите ваши процентные расчеты с помощью нашего онлайн-калькулятора процентов — идеального инструмента для студентов, профессионалов, покупателей и всех, кому нужны быстрые и точные результаты.",
+    features_title: "Возможности",
+    use_cases_title: "Варианты использования",
+    uc1: "Простой расчет чаевых в ресторанах.",
+    uc2: "Быстрое нахождение размера скидки во время распродаж.",
+    uc3: "Расчет продажной цены товаров с учетом желаемой маржи прибыли.",
+    uc4: "Анализ темпов роста бизнеса и изменений показателей эффективности.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "В чем разница между уменьшением на процент и процентным различием?",
+    faq_1_a: "Уменьшение на процент рассчитывает скидку от исходного значения (например, скидка 20% от $100). Процентное различие сравнивает два независимых числа, чтобы показать относительное изменение между ними.",
+    faq_2_q: "Как рассчитывается маржа прибыли?",
+    faq_2_a: "Инструмент использует себестоимость (цену закупки/производства) и желаемую маржу для определения конечной цены продажи, гарантируя, что указанный процент от цены продажи будет вашей чистой прибылью.",
+    faq_3_q: "Могу ли я использовать десятичные дроби в расчетах?",
+    faq_3_a: "Да! Наш калькулятор полностью поддерживает десятичные значения как для базовых чисел, так и для процентов, обеспечивая точные результаты для сложных расчетов.",
+    what: "Сколько будет",
+    of: "От:",
+    answer: "Ответ:",
+    value: "Значение",
+    rep: "Составляет",
+    rep_of: "Какую долю в % составляет от",
+    inc: "Увеличить значение",
+    dec: "Уменьшить значение",
+    by: "На:",
+    res: "Получим:",
+    diff: "Разница между",
+    and: "И",
+    is: "Составляет:",
+    cost: "Себестоимость",
+    margin: "С маржой прибыли",
+    sale_price: "Цена продажи:",
+    see1: "Рандомизатор списков",
+    see2: "Бросить кубики",
+    see3: "Правило трех",
+    see4: "Экстрактор email",
+    f1: "Расчет доли одного числа от другого в процентах",
+    f2: "Увеличение и уменьшение на процент с показом сэкономленной суммы",
+    f3: "Нахождение исходного значения по известному проценту",
+    f4: "Процентное различие между двумя значениями",
+    f5: "Калькулятор маржи прибыли (себестоимость + маржа → цена продажи)",
+    f6: "Расчет в реальном времени прямо во время ввода",
+    examples_title: "Практические примеры",
+    ex1_title: "Расчет повышения зарплаты",
+    ex1_desc: "Ваша текущая зарплата составляет $4,000, и вам повысили её на 12%. Используйте калькулятор «Увеличить значение»: введите 4000 и 12%, чтобы мгновенно увидеть новую зарплату — $4,480.",
+    ex2_title: "Определение цены после скидки",
+    ex2_desc: "Куртка стоимостью $250 продается со скидкой 30%. Используйте калькулятор «Уменьшить значение»: введите 250 и 30%, чтобы получить цену со скидкой — $175 (при этом ваша экономия составит $75).",
+    ex3_title: "Установка цены с маржой прибыли",
+    ex3_desc: "Производство товара обходится вам в $80, и вы хотите получить маржу прибыли 40%. Используйте калькулятор маржи прибыли: введите себестоимость 80 и маржу 40%, чтобы получить правильную цену продажи — $133.33.",
+    ex4_title: "Сравнение роста продаж",
+    ex4_desc: "Выручка выросла с $18,000 в прошлом квартале до $22,500 в этом. Используйте калькулятор «Разница между», чтобы мгновенно увидеть темп роста +25%.",
+    ex5_title: "Поиск исходной цены до применения скидки",
+    ex5_desc: "Вы заплатили $85 за куртку, которая продавалась со скидкой 15%. Поскольку $85 — это 85% от первоначальной цены, используйте калькулятор «значение составляет Y% от скольких»: введите 85 как значение и 85 как процент. Исходная цена составляла $100.",
+    faq_4_q: "Как рассчитать процентное изменение между двумя числами?",
+    faq_4_a: "Используйте калькулятор «Разница между». Введите начальное и конечное значение — инструмент автоматически покажет относительное изменение со знаком + или -, указывающим на увеличение или уменьшение.",
+    faq_5_q: "Как найти первоначальную цену до скидки?",
+    faq_5_a: "Используйте калькулятор для нахождения исходного значения по известному проценту. Если на товар действует скидка 15%, оплаченная цена составляет 85% от исходной. Введите оплаченную цену и 85 в качестве процента, чтобы узнать стоимость до скидки.",
+    faq_6_q: "Могу ли я рассчитать процент от процента?",
+    faq_6_a: "Да. Рассчитайте первый результат обычным образом, а затем используйте полученное число как основу для второго расчета. Например, чтобы найти 10% от 20% от $500: сначала посчитайте 20% от 500 (это $100), а затем 10% от $100 (это $10).",
+    faq_7_q: "Какая маржа прибыли считается хорошей?",
+    faq_7_a: "Это зависит от отрасли. В розничной торговле обычно ориентируются на 10–20%, в сфере ПО и цифровых продуктов маржа может достигать 60–80%, а в услугах обычно колеблется между 20% и 40%. Используйте калькулятор маржи прибыли, чтобы подобрать точную цену продажи под любую цель."
   }
 }
 </i18n>

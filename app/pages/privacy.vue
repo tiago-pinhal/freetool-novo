@@ -52,13 +52,12 @@ usePageJsonLd({
           <h2 class="text-lg font-bold mb-2 text-orange-300">3. Cookies and Tracking Technologies</h2>
           <p>
             We use cookies and similar tracking technologies to analyze Site usage and serve relevant advertising.
-            This Site uses <strong>Google Consent Mode v2</strong>: all consent signals default to <em>denied</em> on your first visit.
-            Depending on your region, a consent notice (managed by Google's Privacy &amp; Messaging platform) will ask for your preferences.
-            Until you grant consent, analytics tracking is disabled and only non-personalized (limited) ads may be shown.
+            This Site uses <strong>Google Consent Mode v2</strong>. In regions where prior consent is required, analytics and advertising storage default to <em>denied</em> until you make a choice in the privacy notice managed by Google's Privacy &amp; Messaging platform.
+            In other regions, analytics may be enabled by default to help us understand aggregate Site usage and improve our tools, while advertising storage and personalization remain restricted unless allowed by applicable Google controls or consent settings.
             The types of cookies involved are:
           </p>
           <ul class="list-disc list-inside mt-2 space-y-1 opacity-90">
-            <li><strong>Analytics cookies</strong> — collect anonymous data about how visitors interact with the Site (only active after consent).</li>
+            <li><strong>Analytics cookies</strong> — collect aggregate data about how visitors interact with the Site; where required by applicable law, they are only active after consent.</li>
             <li><strong>Advertising cookies</strong> — used by Google to serve personalized ads (only active after consent; non-personalized ads may be shown without consent).</li>
           </ul>
           <p class="mt-2">
@@ -70,9 +69,9 @@ usePageJsonLd({
           <h2 class="text-lg font-bold mb-2 text-orange-300">4. Google Analytics</h2>
           <p>
             This Site uses <strong>Google Analytics 4 (GA4)</strong>, a web analytics service provided by Google LLC ("Google").
-            The GA4 script is loaded for all visitors, but operates under <strong>Google Consent Mode v2</strong> with <code>analytics_storage</code> set to <em>denied</em> by default.
-            Without your consent, no user-level tracking cookies are set and individual browsing data is not collected.
-            When you grant analytics consent, GA4 uses performance cookies to collect anonymized browsing data (including truncated IP addresses) to analyze Site traffic and improve our services.
+            The GA4 script is loaded for visitors and operates under <strong>Google Consent Mode v2</strong>. In regions where prior consent is required, <code>analytics_storage</code> defaults to <em>denied</em> until consent is granted.
+            In other regions, analytics may be enabled by default to help us understand aggregate Site usage and improve our tools.
+            We do not use analytics to identify individual users, and you can limit or block analytics through your browser settings or the Google Analytics Opt-out Browser Add-on.
             Your full IP address is never stored by Google on our behalf.
           </p>
           <p class="mt-2">For more information, please review:</p>

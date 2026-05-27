@@ -75,6 +75,9 @@ de:
 nl:
   about: "Over deze tool"
   label: "Aanbevolen lectuur:"
+ru:
+  about: "Об этом инструменте"
+  label: "Рекомендуемое чтение:"
 </i18n>
 
 <style scoped>

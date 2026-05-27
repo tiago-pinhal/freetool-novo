@@ -51,6 +51,7 @@ Secure, local code formatters, minifiers, and utility converters for software en
 - [HTML Minifier](/html-minifier) | [Português](/pt/minificador-de-html) | [Español](/es/minificador-de-html): Minifies HTML markup to optimize load times.
 - [JavaScript Formatter](/javascript-formatter) | [Português](/pt/formatador-de-javascript) | [Español](/es/formateador-de-javascript): Formats JavaScript code with standard indentation rules.
 - [JavaScript Minifier](/javascript-minifier) | [Português](/pt/minificador-de-javascript) | [Español](/es/minificador-de-javascript): Minifies and compresses JavaScript code.
+- [JSON Formatter](/json-formatter) | [Português](/pt/formatador-json) | [Español](/es/formateador-json): Beautifies, formats, and validates JSON code locally with custom indentation.
 - [GraphQL Formatter](/graphql-formatter) | [Português](/pt/formatador-de-graphql) | [Español](/es/formateador-de-graphql): Formats and indents GraphQL queries properly.
 - [JSON Viewer](/json-viewer) | [Português](/pt/visualizador-de-json) | [Español](/es/visualizador-de-json): Formats, inspects, validates, and beautifies JSON data structures.
 - [JSON to CSV Converter](/json-to-csv-converter) | [Português](/pt/conversor-de-json-para-csv) | [Español](/es/conversor-de-json-a-csv): Converts JSON data into clean CSV sheets.
@@ -67,8 +68,10 @@ Secure, local code formatters, minifiers, and utility converters for software en
 ## Image & Design Tools
 Secure, local graphic utilities for web designers and editors.
 
+- [Compress Image](/image-compressor) | [Português](/pt/comprimir-imagem) | [Español](/es/comprimir-imagen): Compresses JPG, PNG, and WebP images locally while maintaining visual quality and aspect ratio.
 - [Crop Image](/crop-image) | [Português](/pt/cortar-imagem) | [Español](/es/recortar-imagen): Crops images locally with responsive aspect ratio presets and custom sizing.
 - [Resize Image](/resize-image) | [Português](/pt/redimensionar-imagem) | [Español](/es/redimensionar-imagen): Resizes images locally by adjusting width, height, or quality settings.
+- [Blur Image](/blur-image) | [Português](/pt/desfoque-imagem) | [Español](/es/blur-image): Applies a blur effect locally (entire image or selectable region) to hide sensitive details or protect privacy.
 - [QR Code Generator](/qrcode-generator) | [Português](/pt/gerador-de-qrcode) | [Español](/es/generador-de-codigo-qr): Generates customizable QR codes (text, URL, Wi-Fi) with custom colors and logo embedding.
 - [Color Tools](/color-tools) | [Português](/pt/ferramentas-para-cores) | [Español](/es/herramientas-para-colores): Hub page for all color utilities.
 - [Random Colors](/random-colors) | [Português](/pt/cores-aleatorias) | [Español](/es/colores-aleatorios): Generates random color palettes with HEX, RGB and HSL codes, ready to copy.
@@ -76,12 +79,15 @@ Secure, local graphic utilities for web designers and editors.
 - [Color Converter](/color-converter) | [Português](/pt/conversor-de-cores) | [Español](/es/convertidor-de-colores): Converts colors between HEX, RGB, HSL, HSV and other formats instantly.
 - [Color Combination](/color-combination) | [Português](/pt/combinacao-de-cores) | [Español](/es/combinacion-de-colores): Generates harmonious color palettes (analogous, triadic, complementary, etc.) from any base color.
 - [Barcode Generator](/barcode-generator) | [Português](/pt/gerador-de-codigo-de-barras) | [Español](/es/generador-de-codigo-de-barras): Generates barcode images (CODE128, EAN, UPC, etc.) from numerical inputs.
+- [Signature Maker](/signature-maker) | [Português](/pt/assinar-online) | [Español](/es/firma-online): Draws or types your digital signature directly in the browser, downloading as PNG with a white or transparent background.
 
 ## Text & Content Utilities
 Local text parsing, scrubbing, styling, and formatting tools.
 
 - [Text Counter](/text-counter) | [Português](/pt/contador-de-texto) | [Español](/es/contador-de-texto): Counts characters, words, paragraphs, lines, and estimates reading time.
+- [Text Reader](/text-reader) | [Português](/pt/leitor-de-texto) | [Español](/es/lector-de-texto) | [Français](/fr/lecteur-de-texte) | [Italiano](/it/lettore-di-testo): Converts any plain text into audio read aloud locally in the browser with customizable speed, pitch, and voice engine.
 - [Text Comparator](/text-comparator) | [Português](/pt/comparador-de-texto) | [Español](/es/comparador-de-texto): Compares two text blocks to highlight line-by-line or character-by-character differences.
+- [Justify Text](/justify-text) | [Português](/pt/justificar-texto) | [Español](/es/justificar-texto): Justifies and aligns text blocks with a customizable line width, padding characters, and word-breaking options.
 - [Text Converter](/text-converter) | [Português](/pt/conversor-de-texto) | [Español](/es/conversor-de-texto): Converts text case styles (lowercase, UPPERCASE, Title Case, camelCase, kebab-case, etc.).
 - [Morse Code Converter](/morse-code-converter) | [Português](/pt/conversor-de-codigo-morse) | [Español](/es/convertidor-de-codigo-morse) | [Français](/fr/convertisseur-code-morse) | [Italiano](/it/convertitore-codice-morse) | [Indonesian](/id/konverter-kode-morse): Converts text to international Morse code and decodes Morse sequences back to plain text.
 - [Text Generator](/text-generator) | [Português](/pt/gerador-de-texto) | [Español](/es/generador-de-texto): Generates custom lorem ipsum or random placeholder text.
@@ -93,6 +99,7 @@ Local text parsing, scrubbing, styling, and formatting tools.
 - [Kaomoji Picker](/kaomoji) | [Português](/pt/kaomoji) | [Español](/es/kaomoji): Browse and copy Japanese kaomoji emoticons.
 - [Lenny Face Picker](/lenny-face) | [Português](/pt/lenny-face) | [Español](/es/lenny-face): Copy popular Lenny faces and text emoticons.
 - [Symbol Picker](/symbol-picker) | [Português](/pt/seletor-de-simbolos) | [Español](/es/selector-de-simbolos): Browse and copy special characters, math signs, and symbols.
+- [Text Repeater](/text-repeater) | [Português](/pt/repetidor-de-texto) | [Español](/es/repetidor-de-texto): Repeats text multiple times locally in the browser with customizable separators.
 
 ## Calculators & Math Utilities
 Quick, offline math calculations and unit converters.

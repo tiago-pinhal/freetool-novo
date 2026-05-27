@@ -89,7 +89,8 @@ defineI18nRoute({
     it: '/minificatore-javascript',
     id: '/javascript-minifier',
     de: '/javascript-minifier',
-    nl: '/javascript-minifier'
+    nl: '/javascript-minifier',
+    ru: '/minifikator-javascript'
   }
 })
 </script>
@@ -215,9 +216,9 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
     en: {
-        m_title: "JavaScript Minifier Online - Minify & Compress JS for Free",
+        m_title: "JavaScript Minifier (JS Minifier) - Minify JS Online for Free",
         title: "JavaScript Minifier",
-        meta: "Free online JavaScript minifier. Paste your JS code and instantly compress it by removing whitespace, shortening variable names, and optimizing expressions.",
+        meta: "Free online JavaScript minifier (JS minifier) to minify JS code instantly. Paste your code and compress it by removing whitespace, shortening variables, and optimizing expressions.",
         d1: "This online JavaScript optimizer uses Terser to compress your code for production. It removes whitespace, comments, and dead code, shortens variable and function names, and simplifies expressions, all without changing how the code behaves.",
         d2: "Smaller JavaScript bundles mean faster page loads, lower bandwidth costs, and better scores on Lighthouse and Core Web Vitals. Paste your source, click minify, and get production-ready output in seconds.",
         plc: "Paste the JavaScript code here or drag a file",
@@ -257,9 +258,9 @@ defineI18nRoute({
         f_4: "No registration or installation required"
     },
     pt: {
-        m_title: "Minificador de JavaScript Online - Minifique e Comprima JS Grátis",
-        title: "Minificador de Javascript",
-        meta: "Melhore o desempenho do seu site otimizando o código JavaScript para produção. Remova espaços, comentários e encurte variáveis com um clique.",
+        m_title: "Minificador JavaScript Online - Minificar e Comprimir JS Grátis",
+        title: "Minificador JavaScript",
+        meta: "Minificador JavaScript online grátis para minificar e comprimir JS. Cole o código e otimize-o removendo espaços, encurtando variáveis e simplificando expressões.",
         d1: "Este minificador de JavaScript online usa o Terser para comprimir seu código para produção. Ele remove espaços, comentários e código morto, encurta nomes de variáveis e funções, e simplifica expressões, tudo sem alterar o comportamento do código.",
         d2: "Bundles JavaScript menores resultam em carregamentos mais rápidos, menor custo de banda e melhores pontuações no Lighthouse e Core Web Vitals. Cole o código, clique em minificar e obtenha o resultado pronto para produção em segundos.",
         plc: "Insira o código JavaScript aqui ou arraste um arquivo",
@@ -299,9 +300,9 @@ defineI18nRoute({
         f_4: "Sem necessidade de cadastro ou instalação"
     },
     es: {
-        m_title: "Minificador JavaScript Online - Minifica y Comprime JS Gratis",
+        m_title: "Minificador JavaScript Online - Minificar JS Gratis (JS Minifier)",
         title: "Minificador JavaScript",
-        meta: "Minificador JavaScript online gratuito. Pega tu código JS y comprímelo al instante eliminando espacios, acortando variables y optimizando expresiones.",
+        meta: "Minificador JavaScript online gratis para minificar y comprimir JS. Pega tu código y elimina espacios, acorta variables y optimiza expresiones al instante.",
         d1: "Este minificador JavaScript online usa Terser para comprimir tu código para producción. Elimina espacios, comentarios y código muerto, acorta nombres de variables y funciones, y simplifica expresiones, sin cambiar el comportamiento del código.",
         d2: "Los bundles JavaScript más pequeños resultan en cargas más rápidas, menor coste de ancho de banda y mejores puntuaciones en Lighthouse y Core Web Vitals. Pega tu código, haz clic en minificar y obtén el resultado listo para producción en segundos.",
         plc: "Pega el código JavaScript aquí o arrastra un archivo",
@@ -341,9 +342,9 @@ defineI18nRoute({
         f_4: "Sin necesidad de registro ni instalación"
     },
     fr: {
-        m_title: "Minificateur JavaScript en Ligne - Minifiez et Compressez JS Gratuitement",
+        m_title: "Minify JavaScript - Minificateur JS en Ligne Gratuit",
         title: "Minificateur JavaScript",
-        meta: "Minificateur JavaScript en ligne gratuit. Collez votre code JS et compressez-le instantanément en supprimant les espaces, en raccourcissant les variables et en optimisant les expressions.",
+        meta: "Minificateur JavaScript en ligne gratuit (minify JS). Collez votre code et compressez-le instantanément en supprimant les espaces, en raccourcissant les variables et en optimisant les expressions.",
         d1: "Ce minificateur JavaScript en ligne utilise Terser pour comprimer votre code pour la production. Il supprime les espaces, les commentaires et le code mort, raccourcit les noms de variables et de fonctions, et simplifie les expressions, sans modifier le comportement du code.",
         d2: "Des bundles JavaScript plus légers se traduisent par des chargements plus rapides, des coûts de bande passante réduits et de meilleures notes sur Lighthouse et Core Web Vitals. Collez votre code, cliquez sur minifier et obtenez un résultat prêt pour la production en quelques secondes.",
         plc: "Collez le code JavaScript ici ou faites glisser un fichier",
@@ -383,9 +384,9 @@ defineI18nRoute({
         f_4: "Aucune inscription ou installation requise"
     },
     it: {
-        m_title: "Minificatore JavaScript Online - Minifica e Comprimi JS Gratis",
+        m_title: "Minify JavaScript - Minificatore JS Online Gratis",
         title: "Minificatore JavaScript",
-        meta: "Minificatore JavaScript online gratuito. Incolla il tuo codice JS e comprimilo istantaneamente rimuovendo spazi, accorciando variabili e ottimizzando le espressioni.",
+        meta: "Minificatore JavaScript online gratuito (minify JS). Incolla il tuo codice e comprimilo istantaneamente rimuovendo spazi, accorciando variabili e ottimizzando le espressioni.",
         d1: "Questo minificatore JavaScript online usa Terser per comprimere il tuo codice per la produzione. Rimuove spazi, commenti e codice morto, accorcia i nomi di variabili e funzioni, e semplifica le espressioni, senza modificare il comportamento del codice.",
         d2: "Bundle JavaScript più piccoli significano caricamenti più veloci, costi di banda ridotti e migliori punteggi su Lighthouse e Core Web Vitals. Incolla il codice, clicca su minifica e ottieni il risultato pronto per la produzione in pochi secondi.",
         plc: "Incolla il codice JavaScript qui o trascina un file",
@@ -425,9 +426,9 @@ defineI18nRoute({
         f_4: "Nessuna registrazione o installazione richiesta"
     },
     id: {
-        m_title: "Minifikasi JavaScript Online - Minifikasi & Kompresi JS Gratis",
-        title: "Minifikasi JavaScript",
-        meta: "Minifikasi JavaScript online gratis. Tempelkan kode JS Anda dan kompres secara instan dengan menghapus spasi, mempersingkat variabel, dan mengoptimalkan ekspresi.",
+        m_title: "JavaScript Minifier Online - Minifikasi & Kompresi JS Gratis",
+        title: "JavaScript Minifier",
+        meta: "JavaScript minifier online gratis untuk minifikasi dan kompresi kode JS. Tempel kode dan hapus spasi, persingkat variabel, serta optimalkan ekspresi secara instan.",
         d1: "Minifikasi JavaScript online ini menggunakan Terser untuk mengompres kode Anda untuk produksi. Alat ini menghapus spasi, komentar, dan kode mati, mempersingkat nama variabel dan fungsi, serta menyederhanakan ekspresi, tanpa mengubah perilaku kode.",
         d2: "Bundle JavaScript yang lebih kecil berarti pemuatan halaman lebih cepat, biaya bandwidth lebih rendah, dan skor Lighthouse serta Core Web Vitals yang lebih baik. Tempel kode Anda, klik minifikasi, dan dapatkan hasil siap produksi dalam hitungan detik.",
         plc: "Tempel kode JavaScript di sini atau seret file",
@@ -467,9 +468,9 @@ defineI18nRoute({
         f_4: "Tanpa pendaftaran atau instalasi"
     },
     de: {
-      m_title: "JavaScript-Minifier Online – JS kostenlos minifizieren & komprimieren",
+      m_title: "JavaScript Minifier (JS Minifier) – JS kostenlos minifizieren & komprimieren",
       title: "JavaScript-Minifier",
-      meta: "Kostenloser Online-JavaScript-Minifier. Füge deinen JS-Code ein und komprimiere ihn sofort, indem Leerzeichen entfernt, Variablen gekürzt und Ausdrücke optimiert werden.",
+      meta: "Kostenloser Online-JavaScript-Minifier (JS Minifier) zum JS komprimieren und minifizieren. Füge deinen Code ein, entferne Leerzeichen, kürze Variablen und optimiere Ausdrücke.",
       d1: "Dieser Online-JavaScript-Minifier verwendet Terser, um deinen Code für die Produktion zu komprimieren. Er entfernt Leerzeichen, Kommentare und toten Code, kürzt Variablen- und Funktionsnamen und vereinfacht Ausdrücke, ohne das Verhalten zu verändern.",
       d2: "Kleinere JavaScript-Bundles bedeuten schnellere Ladezeiten, geringere Bandbreitenkosten und bessere Werte bei Lighthouse und Core Web Vitals. Füge deinen Code ein, klicke auf Minifizieren und erhalte in Sekunden produktionsreifen Output.",
       plc: "JavaScript-Code hier einfügen oder Datei hineinziehen",
@@ -509,9 +510,9 @@ defineI18nRoute({
       f_4: "Keine Registrierung oder Installation erforderlich"
   },
   nl: {
-      m_title: "JavaScript-minifier online – JS gratis minifiëren & comprimeren",
-      title: "JavaScript-minifier",
-      meta: "Gratis online JavaScript-minifier. Plak je JS-code en comprimeer deze direct door spaties te verwijderen, variabelen te verkorten en expressies te optimaliseren.",
+      m_title: "JavaScript Minifier (JS Minifier) – JS gratis minifiëren & comprimeren",
+      title: "JavaScript Minifier",
+      meta: "Gratis online JavaScript minifier (JS minifier) om JS te minifiëren en comprimeren. Plak je code en verwijder spaties, verkort variabelen en optimaliseer expressies.",
       d1: "Deze online JavaScript-minifier gebruikt Terser om je code te comprimeren voor productie. Hij verwijdert spaties, opmerkingen en dode code, verkort variabele- en functienamen en vereenvoudigt expressies zonder het gedrag te veranderen.",
       d2: "Kleinere JavaScript-bundels betekenen snellere laadtijden, lagere bandbreedtekosten en betere scores in Lighthouse en Core Web Vitals. Plak je code, klik op minifiëren en krijg binnen enkele seconden productieklare output.",
       plc: "Plak hier de JavaScript-code of sleep een bestand",
@@ -549,6 +550,48 @@ defineI18nRoute({
       f_2: "Verkorting van variabele- en functienamen",
       f_3: "Verwijdering van dode code en vereenvoudiging van expressies",
       f_4: "Geen registratie of installatie vereist"
+  },
+  ru: {
+    m_title: "Минификатор JavaScript онлайн — сжатие и минификация JS бесплатно",
+    title: "Минификатор JavaScript",
+    meta: "Бесплатный онлайн-минификатор JavaScript для сжатия JS-кода. Вставьте свой JS-код, чтобы мгновенно удалить лишние пробелы, комментарии, сократить имена переменных и оптимизировать выражения.",
+    d1: "Этот онлайн-оптимизатор JavaScript использует Terser для сжатия вашего кода для продакшена. Он удаляет лишние пробелы, комментарии и неиспользуемый код, сокращает имена переменных и функций, а также упрощает выражения без изменения логики работы скрипта.",
+    d2: "Меньший размер JavaScript-файлов означает более быструю загрузку страниц, сокращение расхода трафика и повышение оценок в Lighthouse и Core Web Vitals. Вставьте свой JS, нажмите кнопку сжатия и получите готовый к продакшену код за считанные секунды.",
+    plc: "Вставьте код JavaScript сюда или перетащите файл",
+    bt: "Минифицировать JavaScript",
+    rst: "Начать заново",
+    copy: "Копировать",
+    err: "Ошибка",
+    err_label: "Не удалось минифицировать JavaScript",
+    how_it_works_title: "Как это работает",
+    hiw_1_title: "Вставьте ваш JavaScript",
+    hiw_1_desc: "Скопируйте и вставьте исходный JavaScript-код в редактор.",
+    hiw_2_title: "Нажмите «Минифицировать»",
+    hiw_2_desc: "Нажмите кнопку «Минифицировать JavaScript», и Terser мгновенно сожмет код.",
+    hiw_3_title: "Скопируйте результат",
+    hiw_3_desc: "Скопируйте сжатый JavaScript или начните заново с новым кодом.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Развертывание в продакшене",
+    uc_1_desc: "Сократите размер JS-файлов перед публикацией на сервере для ускорения загрузки и экономии трафика.",
+    uc_2_title: "Процесс сборки",
+    uc_2_desc: "Быстро минифицируйте отдельные скрипты вне ваших инструментов сборки, когда нужна простая разовая оптимизация.",
+    uc_3_title: "Lighthouse и Core Web Vitals",
+    uc_3_desc: "Уменьшение размера JavaScript напрямую улучшает показатели Time to Interactive и сокращает Total Blocking Time.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Отправляется ли мой JavaScript-код на какой-либо сервер?",
+    faq_1_a: "Нет. Сжатие выполняется полностью в вашем браузере с использованием Terser. Ваш код никогда не покидает ваше устройство.",
+    faq_2_q: "Изменяет ли минификация логику работы кода?",
+    faq_2_a: "Нет. Terser удаляет только лишние пробелы, комментарии и избыточный синтаксис, а также безопасно переименовывает переменные. Сжатый код работает точно так же, как оригинал.",
+    faq_3_q: "Что произойдет, если в моем JavaScript будут синтаксические ошибки?",
+    faq_3_a: "Если код не удастся проанализировать, инструмент выведет сообщение об ошибке, чтобы вы могли локализовать и исправить проблему перед сжатием.",
+    see1: "Минификатор CSS",
+    see2: "Минификатор HTML",
+    see3: "Форматтер JavaScript",
+    see4: "Форматтер HTML",
+    f_1: "Мгновенное сжатие JavaScript на базе Terser",
+    f_2: "Сокращение имен переменных и функций",
+    f_3: "Удаление неиспользуемого кода и упрощение выражений",
+    f_4: "Не требуется регистрация или установка"
   }
 }
 </i18n>

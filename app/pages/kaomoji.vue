@@ -76,7 +76,10 @@ usePageJsonLd({
     { question: t('faq_2_q'), answer: t('faq_2_a') },
     { question: t('faq_3_q'), answer: t('faq_3_a') },
     { question: t('faq_4_q'), answer: t('faq_4_a') },
-    { question: t('faq_5_q'), answer: t('faq_5_a') }
+    { question: t('faq_5_q'), answer: t('faq_5_a') },
+    { question: t('faq_6_q'), answer: t('faq_6_a') },
+    { question: t('faq_7_q'), answer: t('faq_7_a') },
+    { question: t('faq_8_q'), answer: t('faq_8_a') }
   ]
 })
 
@@ -93,10 +96,17 @@ const state = reactive({
   kaomojis: [] as string[],
   recentlyCopied: [] as string[],
   copiedChar: null as string | null,
-  copyAnnouncement: ''
+  copyAnnouncement: '',
+  searchQuery: ''
 })
 
 const cachedCategories: Record<string, string[]> = {}
+
+const filteredKaomojis = computed(() => {
+  const q = state.searchQuery.trim()
+  if (!q) return state.kaomojis
+  return state.kaomojis.filter(k => k.includes(q))
+})
 
 async function loadCategory(id: string) {
   if (cachedCategories[id]) {
@@ -132,6 +142,7 @@ onMounted(() => {
 })
 
 watch(() => state.categoryId, (newId) => {
+  state.searchQuery = ''
   loadCategory(newId)
 })
 
@@ -165,7 +176,8 @@ defineI18nRoute({
     it: '/kaomoji',
     id: '/kaomoji',
     de: '/kaomoji',
-    nl: '/kaomoji'
+    nl: '/kaomoji',
+    ru: '/kaomoji'
   }
 })
 </script>
@@ -177,7 +189,7 @@ defineI18nRoute({
     :show-ads="state.kaomojis.length > 0"
     :see-also-links="[
       { label: t('see1'), to: 'emoji-picker' },
-      { label: t('see2'), to: 'symbol-picker' },
+      { label: t('see2'), to: 'copy-paste-symbols' },
       { label: t('see3'), to: 'fancy-letters' },
       { label: t('see4'), to: 'lenny-face' }
     ]"
@@ -189,7 +201,7 @@ defineI18nRoute({
         <label for="category-select" class="label">
           <span class="label-text font-bold text-base-content">{{ t('category_label') }}</span>
           <span v-if="!state.loading" class="label-text-alt text-base-content/70 text-sm">
-            {{ state.kaomojis.length }} {{ t('found') }}
+            {{ filteredKaomojis.length }} {{ t('found') }}
           </span>
         </label>
         <select
@@ -201,6 +213,17 @@ defineI18nRoute({
             {{ cat.icon }} {{ t(cat.name) }}
           </option>
         </select>
+      </div>
+
+      <!-- Campo de Busca -->
+      <div class="relative">
+        <input
+          v-model="state.searchQuery"
+          type="search"
+          :placeholder="t('search_placeholder')"
+          class="input input-bordered w-full bg-base-200 focus:bg-base-200 transition-all rounded-2xl text-base pl-10"
+        />
+        <Icon name="material-symbols:search" class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-base-content/40 pointer-events-none" aria-hidden="true" />
       </div>
 
       <!-- Kaomojis copiados recentemente -->
@@ -234,10 +257,14 @@ defineI18nRoute({
         <div v-else-if="state.kaomojis.length === 0" class="text-center py-20 text-base-content/60">
           {{ t('no_results') }}
         </div>
-        
+
+        <div v-else-if="filteredKaomojis.length === 0" class="text-center py-20 text-base-content/60">
+          {{ t('no_filter_results') }}
+        </div>
+
         <div v-else class="flex flex-wrap justify-center gap-3">
           <button
-            v-for="(char, i) in state.kaomojis"
+            v-for="(char, i) in filteredKaomojis"
             :key="i"
             type="button"
             @click="copy(char)"
@@ -293,7 +320,10 @@ defineI18nRoute({
             { question: t('faq_2_q'), answer: t('faq_2_a') },
             { question: t('faq_3_q'), answer: t('faq_3_a') },
             { question: t('faq_4_q'), answer: t('faq_4_a') },
-            { question: t('faq_5_q'), answer: t('faq_5_a') }
+            { question: t('faq_5_q'), answer: t('faq_5_a') },
+            { question: t('faq_6_q'), answer: t('faq_6_a') },
+            { question: t('faq_7_q'), answer: t('faq_7_a') },
+            { question: t('faq_8_q'), answer: t('faq_8_a') }
           ]"
         />
 
@@ -305,10 +335,10 @@ defineI18nRoute({
 <i18n lang="json">
 {
   "en": {
-    "m_title": "Kaomojis to Copy and Paste - Text Faces Online",
+    "m_title": "(◠‿◠) Kaomojis to Copy and Paste — 1,000+ Japanese Emoticons & Text Faces",
     "title": "Kaomojis to Copy and Paste",
-    "meta": "Complete collection of dozens of Kaomojis and Text Faces to copy and paste on WhatsApp, Instagram, TikTok, and Discord.",
-    "d1": "Find kaomojis and text faces to copy and paste into messages, bios, comments, nicknames, and posts. Our collection features dozens of curated categories to make your search easier, including emotion expressions (like happy, sad, angry, shy, and love), famous actions (like shrugging, facepalm, and table flipping), as well as cute animal faces (cats, dogs, bears) and special symbols (sparkles, magic, and music). Just click your favorite face to copy and paste it anywhere.",
+    "meta": "Copy and paste 1,000+ kaomojis and Japanese emoticons for WhatsApp, Instagram bio, TikTok, Discord and more. Browse 50+ categories — just click to copy.",
+    "d1": "Explore over 1,000 kaomojis and Japanese emoticons to copy and paste into messages, bios, comments, nicknames, and posts. Our collection features dozens of curated categories to make your search easier, including emotion expressions (like happy, sad, angry, shy, and love), famous actions (like shrugging, facepalm, and table flipping), as well as cute animal faces (cats, dogs, bears) and special symbols (sparkles, magic, and music). Looking for kaomoji for your Instagram or TikTok bio? Browse the Cute, Love, and Symbols categories. Just click any face to copy it instantly.",
     "category_label": "Select a Category",
     "found": "kaomojis found",
     "recently_copied": "Recently Copied",
@@ -406,12 +436,20 @@ defineI18nRoute({
     "see2": "Special Symbols",
     "see3": "Fancy Letters",
     "see4": "Lenny Face Generator",
+    "search_placeholder": "Filter kaomojis...",
+    "no_filter_results": "No kaomojis match your search.",
+    "faq_6_q": "What are the best kaomoji for Instagram bio?",
+    "faq_6_a": "Popular kaomoji for Instagram bios include cute expressions like (。•̀ᴗ-)✧, love faces like (♡˙︶˙♡), and aesthetic symbols like ✦ ﾟ·. Browse the Cute, Love, and Symbols categories to find ones that match your profile's style.",
+    "faq_7_q": "What is the difference between a kaomoji and an emoji?",
+    "faq_7_a": "Emojis are graphic images rendered by each device's operating system, so they can look different on iOS, Android, or Windows. Kaomojis are built entirely from standard text characters and punctuation marks, which means they look consistent everywhere and work in any text field that supports Unicode.",
+    "faq_8_q": "What does kaomoji mean in Japanese?",
+    "faq_8_a": "Kaomoji (顔文字) means 'face character' in Japanese — '顔' (kao) means face and '文字' (moji) means character or letter. The style originated in Japan in the 1980s, where faces are written horizontally rather than sideways like Western emoticons, e.g. :-)."
   },
   "pt": {
-    "m_title": "Kaomojis para Copiar e Colar - Carinhas de Texto Online",
+    "m_title": "(◠‿◠) Kaomojis para Copiar e Colar — +1.000 Emoticons Japoneses e Carinhas de Texto",
     "title": "Kaomojis para Copiar e Colar",
-    "meta": "Coleção com dezenas de Kaomojis e Carinhas de Texto (Text Faces) para copiar e colar no WhatsApp, Instagram, TikTok e Discord.",
-    "d1": "Encontre kaomojis e carinhas de texto para copiar e colar em mensagens, bios, comentários, nicks e posts. Nossa coleção conta com dezenas de categorias organizadas para facilitar sua busca, incluindo expressões de sentimentos como feliz, triste, bravo, tímido e apaixonado, ações famosas como dar de ombros, bater a mão na testa (facepalm) e virar a mesa, além de carinhas de animais como gatos, cachorros e ursos, e símbolos especiais como brilhos, magia e música. Basta clicar na sua carinha favorita para copiar e colar onde quiser.",
+    "meta": "Copie e cole mais de 1.000 kaomojis e emoticons japoneses para WhatsApp, bio do Instagram, TikTok, Discord e muito mais. Mais de 50 categorias — clique e copie na hora.",
+    "d1": "Explore mais de 1.000 kaomojis e emoticons japoneses para copiar e colar em mensagens, bios, comentários, nicks e posts. Nossa coleção conta com dezenas de categorias organizadas para facilitar sua busca, incluindo expressões de sentimentos como feliz, triste, bravo, tímido e apaixonado, ações famosas como dar de ombros, bater a mão na testa (facepalm) e virar a mesa, além de carinhas de animais como gatos, cachorros e ursos, e símbolos especiais como brilhos, magia e música. Procurando kaomojis para a bio do Instagram ou TikTok? Explore as categorias Fofos, Amor e Símbolos. Basta clicar em qualquer carinha para copiá-la na hora.",
     "category_label": "Selecione uma Categoria",
     "found": "kaomojis encontrados",
     "recently_copied": "Copiados Recentemente",
@@ -509,12 +547,20 @@ defineI18nRoute({
     "see2": "Símbolos Especiais",
     "see3": "Letras Diferentes",
     "see4": "Gerador de Lenny Face",
+    "search_placeholder": "Filtrar kaomojis...",
+    "no_filter_results": "Nenhum kaomoji corresponde à sua pesquisa.",
+    "faq_6_q": "Quais são os melhores kaomojis para bio do Instagram?",
+    "faq_6_a": "Kaomojis populares para bio do Instagram incluem expressões fofas como (。•̀ᴗ-)✧, carinhas de amor como (♡˙︶˙♡) e símbolos estéticos como ✦ ﾟ·. Explore as categorias Fofos, Amor e Símbolos para encontrar opções que combinem com o estilo do seu perfil.",
+    "faq_7_q": "Qual é a diferença entre kaomoji e emoji?",
+    "faq_7_a": "Emojis são imagens gráficas renderizadas pelo sistema operacional do dispositivo, portanto, podem ter aparências diferentes no iOS, Android ou Windows. Kaomojis são formados inteiramente por caracteres de texto e sinais de pontuação, o que garante que fiquem iguais em qualquer plataforma que suporte Unicode.",
+    "faq_8_q": "O que significa kaomoji em japonês?",
+    "faq_8_a": "Kaomoji (顔文字) significa 'personagem de rosto' em japonês — '顔' (kao) significa rosto e '文字' (moji) significa caractere ou letra. O estilo surgiu no Japão nos anos 1980, onde os rostos são escritos horizontalmente, ao contrário dos emoticons ocidentais que são lidos de lado."
   },
   "es": {
-    "m_title": "Kaomojis para Copiar y Pegar - Caritas de Texto Online",
+    "m_title": "(◠‿◠) Kaomojis para Copiar y Pegar — +1.000 Emoticones Japoneses y Caritas de Texto",
     "title": "Kaomojis para Copiar y Pegar",
-    "meta": "Colección con decenas de Kaomojis y Caritas de Texto (Text Faces) para copiar y pegar en WhatsApp, Instagram, TikTok y Discord.",
-    "d1": "Encuentra kaomojis y caritas de texto para copiar y pegar en mensajes, biografías, comentarios, nicks y publicaciones. Nuestra colección cuenta con decenas de categorías organizadas para facilitar tu búsqueda, incluyendo expresiones de sentimientos como feliz, triste, enojo, tímido y amor, acciones famosas como encogerse de hombros, llevarse la mano a la cara (facepalm) y voltear mesas, además de caritas de animales como gatos, perros y osos, y símbolos especiales como brillos, magia y música. Solo haz clic en tu carita favorita para copiar y pegar.",
+    "meta": "Copia y pega más de 1.000 kaomojis y emoticones japoneses para WhatsApp, bio de Instagram, TikTok, Discord y más. Más de 50 categorías — solo haz clic para copiar.",
+    "d1": "Explora más de 1.000 kaomojis y emoticones japoneses para copiar y pegar en mensajes, biografías, comentarios, nicks y publicaciones. Nuestra colección cuenta con decenas de categorías organizadas para facilitar tu búsqueda, incluyendo expresiones de sentimientos como feliz, triste, enojo, tímido y amor, acciones famosas como encogerse de hombros, llevarse la mano a la cara (facepalm) y voltear mesas, además de caritas de animales como gatos, perros y osos, y símbolos especiales como brillos, magia y música. ¿Buscas kaomojis para tu bio de Instagram o TikTok? Explora las categorías Lindos, Amor y Símbolos. Solo haz clic en tu carita favorita para copiarla al instante.",
     "category_label": "Selecciona una Categoría",
     "found": "kaomojis encontrados",
     "recently_copied": "Copiados Recientemente",
@@ -612,12 +658,20 @@ defineI18nRoute({
     "see2": "Símbolos Especiales",
     "see3": "Letras Bonitas",
     "see4": "Generador de Lenny Face",
+    "search_placeholder": "Filtrar kaomojis...",
+    "no_filter_results": "Ningún kaomoji coincide con tu búsqueda.",
+    "faq_6_q": "¿Cuáles son los mejores kaomojis para bio de Instagram?",
+    "faq_6_a": "Los kaomojis populares para bios de Instagram incluyen expresiones tiernas como (。•̀ᴗ-)✧, caritas de amor como (♡˙︶˙♡) y símbolos estéticos como ✦ ﾟ·. Explora las categorías Lindos, Amor y Símbolos para encontrar opciones que combinen con el estilo de tu perfil.",
+    "faq_7_q": "¿Cuál es la diferencia entre un kaomoji y un emoji?",
+    "faq_7_a": "Los emojis son imágenes gráficas que renderiza el sistema operativo de cada dispositivo, por lo que pueden verse distintos en iOS, Android o Windows. Los kaomojis están compuestos enteramente de caracteres de texto estándar y signos de puntuación, lo que los hace consistentes en cualquier plataforma que admita Unicode.",
+    "faq_8_q": "¿Qué significa kaomoji en japonés?",
+    "faq_8_a": "Kaomoji (顔文字) significa 'carácter de cara' en japonés — '顔' (kao) significa cara y '文字' (moji) significa carácter o letra. El estilo se originó en Japón en la década de 1980, donde los rostros se escriben en horizontal, a diferencia de los emoticones occidentales que se leen de lado."
   },
   "fr": {
-    "m_title": "Kaomojis à Copier et Coller - Émoticônes de Texte en Ligne",
+    "m_title": "(◠‿◠) Kaomojis à Copier et Coller — +1 000 Émoticônes Japonaises et Frimousses",
     "title": "Kaomojis à Copier et Coller",
-    "meta": "Collection de dizaines de Kaomojis et d'émoticônes de texte (Text Faces) à copier et coller sur WhatsApp, Instagram, TikTok et Discord.",
-    "d1": "Trouvez des kaomojis et des émoticônes de texte à copier et coller dans vos messages, bios, commentaires, pseudos et publications. Notre collection comprend des dizaines de catégories organisées pour faciliter vos recherches, notamment des expressions d'émotions (comme joyeux, triste, en colère, timide et amoureux), des actions célèbres (comme le haussement d'épaules, le facepalm et le renversement de table), ainsi que d'adorables visages d'animaux (chats, chiens, ours) et des symboles spéciaux (étincelles, magie et musique). Cliquez simplement sur votre frimousse préférée pour la copier et la coller.",
+    "meta": "Copiez et collez plus de 1 000 kaomojis et émoticônes japonaises pour WhatsApp, bio Instagram, TikTok, Discord et plus encore. Plus de 50 catégories — cliquez pour copier.",
+    "d1": "Explorez plus de 1 000 kaomojis et émoticônes japonaises à copier et coller dans vos messages, bios, commentaires, pseudos et publications. Notre collection comprend des dizaines de catégories organisées pour faciliter vos recherches, notamment des expressions d'émotions (comme joyeux, triste, en colère, timide et amoureux), des actions célèbres (comme le haussement d'épaules, le facepalm et le renversement de table), ainsi que d'adorables visages d'animaux (chats, chiens, ours) et des symboles spéciaux (étincelles, magie et musique). Vous cherchez des kaomojis pour votre bio Instagram ou TikTok ? Parcourez les catégories Mignons, Amour et Symboles. Cliquez simplement sur votre frimousse préférée pour la copier instantanément.",
     "category_label": "Sélectionner une Catégorie",
     "found": "kaomojis trouvés",
     "recently_copied": "Récemment Copiés",
@@ -715,12 +769,20 @@ defineI18nRoute({
     "see2": "Symboles Spéciaux",
     "see3": "Lettres Stylées",
     "see4": "Générateur de Lenny Face",
+    "search_placeholder": "Filtrer les kaomojis...",
+    "no_filter_results": "Aucun kaomoji ne correspond à votre recherche.",
+    "faq_6_q": "Quels sont les meilleurs kaomojis pour une bio Instagram ?",
+    "faq_6_a": "Les kaomojis populaires pour les bios Instagram incluent des expressions mignonnes comme (。•̀ᴗ-)✧, des visages amoureux comme (♡˙︶˙♡) et des symboles esthétiques comme ✦ ﾟ·. Explorez les catégories Mignons, Amour et Symboles pour trouver ceux qui correspondent au style de votre profil.",
+    "faq_7_q": "Quelle est la différence entre un kaomoji et un emoji ?",
+    "faq_7_a": "Les emojis sont des images graphiques affichées par le système d'exploitation de chaque appareil, ce qui peut les faire apparaître différemment sur iOS, Android ou Windows. Les kaomojis sont entièrement composés de caractères textuels standard et de signes de ponctuation, garantissant un rendu identique sur toute plateforme prenant en charge l'Unicode.",
+    "faq_8_q": "Que signifie kaomoji en japonais ?",
+    "faq_8_a": "Kaomoji (顔文字) signifie « caractère de visage » en japonais — « 顔 » (kao) signifie visage et « 文字 » (moji) signifie caractère ou lettre. Le style est né au Japon dans les années 1980, où les visages s'écrivent horizontalement, contrairement aux émoticônes occidentaux qui se lisent de côté."
   },
   "it": {
-    "m_title": "Kaomoji da Copiare e Incollare - Faccine di Testo Online",
+    "m_title": "(◠‿◠) Kaomoji da Copiare e Incollare — +1.000 Emoticon Giapponesi e Faccine di Testo",
     "title": "Kaomoji da Copiare e Incollare",
-    "meta": "Raccolta con decine di Kaomoji e Faccine di Testo (Text Faces) da copiare e incollare su WhatsApp, Instagram, TikTok e Discord.",
-    "d1": "Trova kaomoji e faccine di testo da copiare e incollare in messaggi, biografie, commenti, nick e post. La nostra collezione comprende decine di categorie organizzate per facilitare la tua ricerca, tra cui espressioni di emozioni (come felice, triste, arrabbiato, timido e innamorato), azioni famose (come l'alzata di spalle, il facepalm e il ribaltamento del tavolo), oltre a simpatiche faccine di animali (gatti, cani, orsi) e simboli speciali (scintille, magia e musica). Clicca sulla tua faccina preferita per copiarla e incollarla.",
+    "meta": "Copia e incolla oltre 1.000 kaomoji ed emoticon giapponesi per WhatsApp, bio Instagram, TikTok, Discord e non solo. Oltre 50 categorie — clicca per copiare.",
+    "d1": "Esplora oltre 1.000 kaomoji ed emoticon giapponesi da copiare e incollare in messaggi, biografie, commenti, nick e post. La nostra collezione comprende decine di categorie organizzate per facilitare la tua ricerca, tra cui espressioni di emozioni (come felice, triste, arrabbiato, timido e innamorato), azioni famose (come l'alzata di spalle, il facepalm e il ribaltamento del tavolo), oltre a simpatiche faccine di animali (gatti, cani, orsi) e simboli speciali (scintille, magia e musica). Cerchi kaomoji per la bio di Instagram o TikTok? Sfoglia le categorie Carini, Amore e Simboli. Clicca sulla tua faccina preferita per copiarla immediatamente.",
     "category_label": "Seleziona una Categoria",
     "found": "kaomoji trovati",
     "recently_copied": "Copiati di Recente",
@@ -818,12 +880,20 @@ defineI18nRoute({
     "see2": "Simboli Speciali",
     "see3": "Lettere Particolari",
     "see4": "Generatore di Lenny Face",
+    "search_placeholder": "Filtra kaomoji...",
+    "no_filter_results": "Nessun kaomoji corrisponde alla tua ricerca.",
+    "faq_6_q": "Quali sono i migliori kaomoji per la bio di Instagram?",
+    "faq_6_a": "I kaomoji popolari per le bio di Instagram includono espressioni carine come (。•̀ᴗ-)✧, faccine d'amore come (♡˙︶˙♡) e simboli estetici come ✦ ﾟ·. Esplora le categorie Carini, Amore e Simboli per trovare quelli che si adattano allo stile del tuo profilo.",
+    "faq_7_q": "Qual è la differenza tra un kaomoji e un emoji?",
+    "faq_7_a": "Gli emoji sono immagini grafiche visualizzate dal sistema operativo del dispositivo, quindi possono apparire diversamente su iOS, Android o Windows. I kaomoji sono composti interamente da caratteri di testo standard e segni di punteggiatura, il che li rende identici su qualsiasi piattaforma che supporti Unicode.",
+    "faq_8_q": "Cosa significa kaomoji in giapponese?",
+    "faq_8_a": "Kaomoji (顔文字) significa 'carattere faccina' in giapponese — '顔' (kao) significa faccia e '文字' (moji) significa carattere o lettera. Lo stile è nato in Giappone negli anni '80, dove le faccine vengono scritte orizzontalmente, a differenza delle emoticon occidentali che si leggono di lato."
   },
   "id": {
-    "m_title": "Kaomoji untuk Salin dan Tempel - Wajah Teks Online",
+    "m_title": "(◠‿◠) Kaomoji untuk Salin dan Tempel — 1.000+ Emotikon Jepang & Wajah Teks",
     "title": "Kaomoji untuk Salin dan Tempel",
-    "meta": "Koleksi puluhan Kaomoji dan Wajah Teks (Text Faces) untuk disalin dan ditempel di WhatsApp, Instagram, TikTok, dan Discord.",
-    "d1": "Temukan kaomoji dan wajah teks untuk disalin dan ditempel ke dalam pesan, bio, komentar, nama panggilan (nick), dan postingan. Koleksi kami memiliki puluhan kategori terorganisir untuk memudahkan pencarian Anda, termasuk ekspresi emosi (seperti bahagia, sedih, marah, malu, dan cinta), aksi terkenal (seperti mengangkat bahu, tepuk jidat/facepalm, dan membalikkan meja), serta wajah hewan lucu (kucing, anjing, beruang) dan simbol khusus (kilauan, sihir, dan musik). Cukup klik wajah favorit Anda untuk menyalin dan menempelkannya.",
+    "meta": "Salin dan tempel 1.000+ kaomoji dan emotikon Jepang untuk WhatsApp, bio Instagram, TikTok, Discord, dan lainnya. Lebih dari 50 kategori — klik untuk menyalin.",
+    "d1": "Jelajahi lebih dari 1.000 kaomoji dan emotikon Jepang untuk disalin dan ditempel ke dalam pesan, bio, komentar, nama panggilan (nick), dan postingan. Koleksi kami memiliki puluhan kategori terorganisir untuk memudahkan pencarian Anda, termasuk ekspresi emosi (seperti bahagia, sedih, marah, malu, dan cinta), aksi terkenal (seperti mengangkat bahu, tepuk jidat/facepalm, dan membalikkan meja), serta wajah hewan lucu (kucing, anjing, beruang) dan simbol khusus (kilauan, sihir, dan musik). Mencari kaomoji untuk bio Instagram atau TikTok? Jelajahi kategori Lucu & Imut, Cinta, dan Simbol. Cukup klik wajah favorit Anda untuk menyalinnya seketika.",
     "category_label": "Pilih Kategori",
     "found": "kaomoji ditemukan",
     "recently_copied": "Baru Saja Disalin",
@@ -921,12 +991,20 @@ defineI18nRoute({
     "see2": "Simbol Khusus",
     "see3": "Huruf Estetik",
     "see4": "Pembuat Lenny Face",
+    "search_placeholder": "Filter kaomoji...",
+    "no_filter_results": "Tidak ada kaomoji yang cocok dengan pencarianmu.",
+    "faq_6_q": "Kaomoji apa yang paling bagus untuk bio Instagram?",
+    "faq_6_a": "Kaomoji populer untuk bio Instagram meliputi ekspresi lucu seperti (。•̀ᴗ-)✧, wajah cinta seperti (♡˙︶˙♡), dan simbol estetik seperti ✦ ﾟ·. Jelajahi kategori Lucu & Imut, Cinta, dan Simbol untuk menemukan yang cocok dengan gaya profilmu.",
+    "faq_7_q": "Apa perbedaan antara kaomoji dan emoji?",
+    "faq_7_a": "Emoji adalah gambar grafis yang dirender oleh sistem operasi perangkat, sehingga tampilannya bisa berbeda di iOS, Android, atau Windows. Kaomoji seluruhnya terbuat dari karakter teks standar dan tanda baca, sehingga tampilannya konsisten di mana saja selama platform mendukung Unicode.",
+    "faq_8_q": "Apa arti kaomoji dalam bahasa Jepang?",
+    "faq_8_a": "Kaomoji (顔文字) berarti 'karakter wajah' dalam bahasa Jepang — '顔' (kao) berarti wajah dan '文字' (moji) berarti karakter atau huruf. Gaya ini berasal dari Jepang pada tahun 1980-an, di mana wajah ditulis secara horizontal, berbeda dari emotikon Barat yang dibaca miring."
   },
   "de": {
-    "m_title": "Kaomojis zum Kopieren und Einfügen - Text-Smileys Online",
+    "m_title": "(◠‿◠) Kaomojis zum Kopieren und Einfügen — 1.000+ Japanische Emoticons & Text-Smileys",
     "title": "Kaomojis zum Kopieren und Einfügen",
-    "meta": "Sammlung mit Dutzenden von Kaomojis und Text-Smileys (Text Faces) zum Kopieren und Einfügen auf WhatsApp, Instagram, TikTok und Discord.",
-    "d1": "Finde Kaomojis und Text-Smileys zum Kopieren und Einfügen in Nachrichten, Bios, Kommentaren, Nicks und Beiträgen. Unsere Sammlung bietet Dutzende sortierter Kategorien, um dir die Suche zu erleichtern, darunter Gefühlsausdrücke (wie glücklich, traurig, wütend, schüchtern und verliebt), bekannte Aktionen (wie Achselzucken, Facepalm und Tisch umwerfen) sowie niedliche Tiergesichter (Katzen, Hunde, Bären) und Sonderzeichen (Funkeln, Magie und Musik). Klicke einfach auf dein Lieblings-Kaomoji, um es zu kopieren und überall einzufügen.",
+    "meta": "Über 1.000 Kaomojis und japanische Emoticons zum Kopieren und Einfügen für WhatsApp, Instagram-Bio, TikTok, Discord und mehr. Über 50 Kategorien — einfach anklicken und kopieren.",
+    "d1": "Entdecke über 1.000 Kaomojis und japanische Emoticons zum Kopieren und Einfügen in Nachrichten, Bios, Kommentaren, Nicks und Beiträgen. Unsere Sammlung bietet Dutzende sortierter Kategorien, um dir die Suche zu erleichtern, darunter Gefühlsausdrücke (wie glücklich, traurig, wütend, schüchtern und verliebt), bekannte Aktionen (wie Achselzucken, Facepalm und Tisch umwerfen) sowie niedliche Tiergesichter (Katzen, Hunde, Bären) und Sonderzeichen (Funkeln, Magie und Musik). Suchst du Kaomojis für deine Instagram- oder TikTok-Bio? Stöbere in den Kategorien Süß & Niedlich, Liebe und Symbole. Klicke einfach auf dein Lieblings-Kaomoji, um es sofort zu kopieren.",
     "category_label": "Kategorie Auswählen",
     "found": "Kaomojis gefunden",
     "recently_copied": "Zuletzt Kopiert",
@@ -1024,12 +1102,20 @@ defineI18nRoute({
     "see2": "Sonderzeichen",
     "see3": "Schöne Schriftarten",
     "see4": "Lenny Face Generator",
+    "search_placeholder": "Kaomojis filtern...",
+    "no_filter_results": "Keine Kaomojis entsprechen deiner Suche.",
+    "faq_6_q": "Welche Kaomojis eignen sich am besten für eine Instagram-Bio?",
+    "faq_6_a": "Beliebte Kaomojis für Instagram-Bios sind niedliche Ausdrücke wie (。•̀ᴗ-)✧, verliebte Gesichter wie (♡˙︶˙♡) und ästhetische Symbole wie ✦ ﾟ·. Stöbere in den Kategorien Süß & Niedlich, Liebe und Symbole, um passende Kaomojis für deinen Profilstil zu finden.",
+    "faq_7_q": "Was ist der Unterschied zwischen einem Kaomoji und einem Emoji?",
+    "faq_7_a": "Emojis sind grafische Bilder, die vom Betriebssystem des Geräts gerendert werden – daher können sie auf iOS, Android oder Windows unterschiedlich aussehen. Kaomojis bestehen ausschließlich aus Standard-Textzeichen und Satzzeichen und sehen daher auf jeder Plattform identisch aus, solange Unicode unterstützt wird.",
+    "faq_8_q": "Was bedeutet Kaomoji auf Japanisch?",
+    "faq_8_a": "Kaomoji (顔文字) bedeutet auf Japanisch 'Gesichtszeichen' — '顔' (kao) bedeutet Gesicht und '文字' (moji) bedeutet Zeichen oder Buchstabe. Der Stil entstand in Japan in den 1980er Jahren, wo Gesichter horizontal geschrieben werden – im Gegensatz zu westlichen Emoticons, die man seitlich lesen muss."
   },
   "nl": {
-    "m_title": "Kaomojis Kopiëren en Plakken - Online Tekst-Smileys",
+    "m_title": "(◠‿◠) Kaomojis Kopiëren en Plakken — 1.000+ Japanse Emoticons & Tekst-Smileys",
     "title": "Kaomojis Kopiëren en Plakken",
-    "meta": "Verzameling met tientallen Kaomojis en Tekst-Smileys (Text Faces) om te kopiëren en te plakken op WhatsApp, Instagram, TikTok en Discord.",
-    "d1": "Vind kaomojis en tekst-smileys om te kopiëren en te plakken in berichten, bio's, reacties, nicks en posts. Onze collectie bevat tientallen georganiseerde categorieën om je zoekopdracht te vergemakkelijken, waaronder gevoelsuitdrukkingen (zoals blij, verdrietig, boos, verlegen en verliefd), bekende acties (zoals schouderophalen, facepalm en tafel omdraaien), evenals schattige dierengezichtjes (katten, honden, beren) en speciale symbolen (glinstering, magie en muziek). Klik gewoon op je favoriete gezichtje om het te kopiëren en te plakken.",
+    "meta": "Kopieer en plak 1.000+ kaomojis en Japanse emoticons voor WhatsApp, Instagram-bio, TikTok, Discord en meer. Meer dan 50 categorieën — klik om te kopiëren.",
+    "d1": "Ontdek meer dan 1.000 kaomojis en Japanse emoticons om te kopiëren en te plakken in berichten, bio's, reacties, nicks en posts. Onze collectie bevat tientallen georganiseerde categorieën om je zoekopdracht te vergemakkelijken, waaronder gevoelsuitdrukkingen (zoals blij, verdrietig, boos, verlegen en verliefd), bekende acties (zoals schouderophalen, facepalm en tafel omdraaien), evenals schattige dierengezichtjes (katten, honden, beren) en speciale symbolen (glinstering, magie en muziek). Op zoek naar kaomojis voor je Instagram- of TikTok-bio? Verken de categorieën Schattig & Lief, Liefde en Symbolen. Klik gewoon op je favoriete gezichtje om het direct te kopiëren.",
     "category_label": "Selecteer een Categorie",
     "found": "kaomojis gevonden",
     "recently_copied": "Onlangs Gekopieerd",
@@ -1127,6 +1213,121 @@ defineI18nRoute({
     "see2": "Speciale Symbolen",
     "see3": "Mooie Lettertypen",
     "see4": "Lenny Face Generator",
+    "search_placeholder": "Kaomojis filteren...",
+    "no_filter_results": "Geen kaomojis komen overeen met je zoekopdracht.",
+    "faq_6_q": "Welke kaomojis zijn het best voor een Instagram-bio?",
+    "faq_6_a": "Populaire kaomojis voor Instagram-bio's zijn schattige uitdrukkingen zoals (。•̀ᴗ-)✧, liefdesgezichtjes zoals (♡˙︶˙♡) en esthetische symbolen zoals ✦ ﾟ·. Verken de categorieën Schattig & Lief, Liefde en Symbolen om kaomojis te vinden die passen bij de stijl van je profiel.",
+    "faq_7_q": "Wat is het verschil tussen een kaomoji en een emoji?",
+    "faq_7_a": "Emoji's zijn grafische afbeeldingen die door het besturingssysteem van het apparaat worden weergegeven, waardoor ze er anders uit kunnen zien op iOS, Android of Windows. Kaomojis zijn volledig opgebouwd uit standaard teksttekens en leestekens, zodat ze er overal hetzelfde uitzien op platforms die Unicode ondersteunen.",
+    "faq_8_q": "Wat betekent kaomoji in het Japans?",
+    "faq_8_a": "Kaomoji (顔文字) betekent 'gezichtsteken' in het Japans — '顔' (kao) betekent gezicht en '文字' (moji) betekent teken of letter. De stijl is ontstaan in Japan in de jaren 1980, waar gezichten horizontaal worden geschreven, in tegenstelling tot westerse emoticons die je zijwaarts moet lezen."
+  },
+  "ru": {
+    "m_title": "(◠‿◠) Копировать и вставлять каомодзи — 1000+ японских смайликов и текстовых смайлов",
+    "title": "Копировать и вставлять каомодзи",
+    "meta": "Копируйте и вставляйте 1000+ каомодзи и японских смайликов для WhatsApp, Instagram, TikTok, Discord и других сервисов. Более 50 категорий — кликни, чтобы скопировать.",
+    "d1": "Откройте для себя более 1000 каомодзи и японских смайликов, которые можно копировать и вставлять в сообщения, биографии, комментарии, ники и публикации. Наша коллекция содержит десятки организованных категорий для удобного поиска, включая выражение чувств (радость, грусть, гнев, стеснение, любовь), популярные действия (пожатие плечами, фейспалм, переворачивание стола), а также милых животных (коты, собаки, медведи) и специальные символы (блестки, магия, музыка). Ищете каомодзи для Instagram или TikTok? Исследуйте категории «Милые», «Любовь» и «Символы». Просто нажмите на понравившийся смайлик, чтобы скопировать его.",
+    "category_label": "Выберите категорию",
+    "found": "найдено каомодзи",
+    "recently_copied": "Недавно скопированные",
+    "no_results": "В этой категории каомодзи не найдены.",
+    "copy_aria": "Скопировать каомодзи",
+    "copied": "Скопировано!",
+    "copied_announce": "Каомодзи скопирован в буфер обмена",
+    "cat_smile": "Улыбка",
+    "cat_happy": "Радость & Улыбка",
+    "cat_laugh": "Смех",
+    "cat_cute": "Мило & Симпатично",
+    "cat_shy": "Стеснение",
+    "cat_wink": "Подмигивание",
+    "cat_love": "Любовь & Романтика",
+    "cat_sad": "Грусть & Плач",
+    "cat_cry": "Плач",
+    "cat_angry": "Гнев & Переворачивание стола",
+    "cat_annoyed": "Раздражение",
+    "cat_surprised": "Удивление & Шок",
+    "cat_scared": "Страх",
+    "cat_confused": "Замешательство",
+    "cat_thinking": "Раздумья",
+    "cat_tired": "Усталость",
+    "cat_sleep": "Сон",
+    "cat_sorry": "Извинения",
+    "cat_thanks": "Спасибо",
+    "cat_hello": "Привет",
+    "cat_bye": "Пока",
+    "cat_please": "Пожалуйста",
+    "cat_yes_ok": "Да & OK",
+    "cat_no": "Нет",
+    "cat_shrug": "Пожатие плечами",
+    "cat_facepalm": "Фейспалм",
+    "cat_table_flip": "Переворачивание стола",
+    "cat_celebration": "Праздник",
+    "cat_excited": "Восторг",
+    "cat_applause": "Аплодисменты",
+    "cat_fight": "Драка",
+    "cat_hug": "Объятия",
+    "cat_kiss": "Поцелуй",
+    "cat_drink": "Напитки",
+    "cat_animals": "Животные",
+    "cat_cat": "Коты",
+    "cat_dog": "Собаки",
+    "cat_rabbit": "Зайцы",
+    "cat_bear": "Медведи",
+    "cat_bird": "Птицы",
+    "cat_fish": "Рыбы",
+    "cat_magic": "Магия & Блестки",
+    "cat_sparkle": "Блестки",
+    "cat_symbols": "Символы",
+    "cat_peace": "Мир",
+    "cat_cheer": "Поддержка",
+    "cat_dance": "Танцы",
+    "cat_sing": "Пение",
+    "cat_work": "Работа",
+    "cat_study": "Учеба",
+    "cat_computer": "Компьютер",
+    "cat_money": "Деньги",
+    "cat_season": "Времена года",
+    "cat_holiday": "Праздники",
+    "cat_misc": "Разное",
+    "use_cases_title": "Где использовать каомодзи",
+    "uc_1_title": "WhatsApp, Telegram и мессенджеры",
+    "uc_1_desc": "Используйте текстовые смайлы, чтобы выразить эмоции, ответить с юмором или украсить сообщение без необходимости использовать стикеры или картинки.",
+    "uc_2_title": "Instagram, TikTok и социальные сети",
+    "uc_2_desc": "Каомодзи идеально подходят для био, подписей и комментариев, так как они выделяются визуально и остаются в виде копируемого текста.",
+    "uc_3_title": "Discord, форумы и сообщества",
+    "uc_3_desc": "Персонализируйте свои ответы, никнеймы, названия каналов и взаимодействия, передавая эмоции даже в текстовой среде.",
+    "uc_4_title": "Никнеймы, профили и творчество",
+    "uc_4_desc": "Добавьте стиль в свои никнеймы, подписи, заметки и описания без установки дополнительных шрифтов или приложений.",
+    "how_it_works_title": "Как это работает",
+    "hiw_1_title": "Выберите категорию",
+    "hiw_1_desc": "Откройте список категорий и выберите тип каомодзи: радость, милые, любовь, гнев, аплодисменты, животные или символы.",
+    "hiw_2_title": "Кликните, чтобы скопировать",
+    "hiw_2_desc": "Нажмите на каомодзи в списке, чтобы автоматически скопировать его в буфер обмена. Последние скопированные элементы сохраняются на странице для быстрого доступа.",
+    "hiw_3_title": "Вставляйте везде",
+    "hiw_3_desc": "После копирования просто вставьте каомодзи в WhatsApp, Instagram, Discord, TikTok, электронную почту или любое другое приложение, поддерживающее текст.",
+    "faq_title": "Вопросы и ответы",
+    "faq_1_q": "Что такое каомодзи?",
+    "faq_1_a": "Каомодзи — это смайлик, состоящий из текстовых символов, знаков препинания и букв. В отличие от эмодзи, они не зависят от платформы, так как являются обычным текстом.",
+    "faq_2_q": "Как копировать и вставлять каомодзи?",
+    "faq_2_a": "Выберите категорию, кликните на нужный каомодзи, и он попадет в буфер обмена. Затем вставьте его в нужное поле ввода в приложении или соцсети.",
+    "faq_3_q": "Работают ли каомодзи в WhatsApp и Instagram?",
+    "faq_3_a": "Да. Поскольку каомодзи — это обычный текст, они работают везде: в сообщениях WhatsApp, био Instagram, комментариях и постах.",
+    "faq_4_q": "Можно ли использовать каомодзи в никнеймах игр?",
+    "faq_4_a": "Зависит от игры. Многие поддерживают специальные символы, но некоторые их блокируют из-за внутренних правил. Рекомендуем проверить, прежде чем сохранять никнейм.",
+    "faq_5_q": "Почему каомодзи выглядят по-разному на разных устройствах?",
+    "faq_5_a": "Большинство символов универсальны, но их вид может немного зависеть от шрифта, настроек браузера и операционной системы.",
+    "see1": "Выбор эмодзи",
+    "see2": "Специальные символы",
+    "see3": "Красивые шрифты",
+    "see4": "Генератор Lenny Face",
+    "search_placeholder": "Поиск каомодзи...",
+    "no_filter_results": "По вашему запросу ничего не найдено.",
+    "faq_6_q": "Какие каомодзи лучше всего подходят для био в Instagram?",
+    "faq_6_a": "Популярные варианты: милые эмоции, например (。•̀ᴗ-)✧, влюбленные смайлы (♡˙︶˙♡) и эстетичные символы, такие как ✦ ﾟ·. Изучите категории «Милые», «Любовь» и «Символы» для подбора стиля вашего профиля.",
+    "faq_7_q": "В чем разница между каомодзи и эмодзи?",
+    "faq_7_a": "Эмодзи — это графические изображения, которые могут выглядеть по-разному на iOS, Android или Windows. Каомодзи состоят из обычных текстовых символов, поэтому они выглядят одинаково на всех устройствах, поддерживающих Unicode.",
+    "faq_8_q": "Что означает «каомодзи» на японском?",
+    "faq_8_a": "Каомодзи (顔文字) переводится как «лицевой знак» — «као» (顔) означает лицо, а «модзи» (文字) — знак или буква. Стиль зародился в Японии в 80-х годах, где лица пишутся горизонтально, в отличие от западных эмотиконов, которые нужно читать, наклонив голову."
   }
 }
 </i18n>

@@ -98,7 +98,8 @@ defineI18nRoute({
     it: '/minificatore-css',
     id: '/css-minifier',
     de: '/css-minifier',
-    nl: '/css-minifier'
+    nl: '/css-minifier',
+    ru: '/minifikator-css'
   }
 })
 </script>
@@ -224,9 +225,9 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   en: {
-    m_title: "CSS Minifier Online - Minify & Compress CSS for Free",
+    m_title: "CSS Minifier Online - Minify CSS & Compress Stylesheets Free",
     title: "CSS Minifier",
-    meta: "Free online CSS minifier. Paste your CSS code and instantly compress it by removing whitespace, comments, and redundant rules.",
+    meta: "Free online CSS minifier to minify CSS and compress stylesheets instantly. Paste your code and remove whitespace, comments, and redundant rules in one click.",
     d1: "This online CSS optimizer compresses your stylesheet for production by stripping out whitespace, blank lines, and comments. Any verbose or development-ready CSS is reduced to the smallest possible size in one click.",
     d2: "Smaller stylesheets mean faster page loads, lower bandwidth costs, and better scores on Lighthouse and Core Web Vitals. Paste your CSS, click minify, and get production-ready output in seconds.",
     plc: "Paste the CSS code here or drag a file",
@@ -266,9 +267,9 @@ defineI18nRoute({
     f_4: "No registration or installation required"
   },
   pt: {
-    m_title: "Minificador de CSS Online - Minifique e Comprima CSS Grátis",
-    title: "Minificador de CSS",
-    meta: "Otimize o desempenho do seu site comprimindo o código CSS para produção. Remova espaços, comentários e regras redundantes com um clique.",
+    m_title: "Minificador CSS Online - Minificar e Comprimir CSS Grátis",
+    title: "Minificador CSS",
+    meta: "Minificador CSS online grátis para minificar e comprimir CSS. Cole o código e otimize-o removendo espaços, comentários e regras redundantes com um clique.",
     d1: "Este minificador de CSS online comprime sua folha de estilos para produção removendo espaços desnecessários, linhas em branco e comentários. Qualquer CSS verboso é reduzido ao menor tamanho possível com um clique.",
     d2: "Folhas de estilo menores significam carregamentos mais rápidos, menor custo de banda e melhores pontuações no Lighthouse e Core Web Vitals. Cole o CSS, clique em minificar e obtenha o resultado pronto para produção em segundos.",
     plc: "Insira o código CSS aqui ou arraste um arquivo",
@@ -308,9 +309,9 @@ defineI18nRoute({
     f_4: "Sem necessidade de cadastro ou instalação"
   },
   es: {
-    m_title: "Minificador CSS Online - Minifica y Comprime CSS Gratis",
+    m_title: "Minificador CSS Online - Minificar y Comprimir CSS Gratis",
     title: "Minificador CSS",
-    meta: "Minificador CSS online gratuito. Pega tu código CSS y comprímelo al instante eliminando espacios, comentarios y reglas redundantes.",
+    meta: "Minificador CSS online gratis para minificar y comprimir CSS. Pega tu código y elimina espacios, comentarios y reglas redundantes al instante.",
     d1: "Este minificador CSS online comprime tu hoja de estilos para producción eliminando espacios en blanco, líneas vacías y comentarios. Cualquier CSS verboso se reduce al menor tamaño posible con un clic.",
     d2: "Las hojas de estilo más pequeñas significan cargas más rápidas, menor coste de ancho de banda y mejores puntuaciones en Lighthouse y Core Web Vitals. Pega tu CSS, haz clic en minificar y obtén el resultado listo para producción en segundos.",
     plc: "Pega el código CSS aquí o arrastra un archivo",
@@ -350,9 +351,9 @@ defineI18nRoute({
     f_4: "Sin necesidad de registro ni instalación"
   },
   fr: {
-    m_title: "Minificateur CSS en Ligne - Minifiez et Compressez CSS Gratuitement",
+    m_title: "Minify CSS - Minificateur CSS en Ligne Gratuit",
     title: "Minificateur CSS",
-    meta: "Minificateur CSS en ligne gratuit. Collez votre code CSS et compressez-le instantanément en supprimant les espaces, commentaires et règles redondantes.",
+    meta: "Minificateur CSS en ligne gratuit (minify CSS). Collez votre code et compressez-le instantanément en supprimant espaces, commentaires et règles redondantes.",
     d1: "Ce minificateur CSS en ligne compresse votre feuille de styles pour la production en supprimant les espaces, les lignes vides et les commentaires. Tout CSS verbeux est réduit à la taille minimale possible en un clic.",
     d2: "Des feuilles de styles plus légères se traduisent par des chargements plus rapides, des coûts de bande passante réduits et de meilleures notes sur Lighthouse et Core Web Vitals. Collez votre CSS, cliquez sur minifier et obtenez un résultat prêt pour la production en quelques secondes.",
     plc: "Collez le code CSS ici ou faites glisser un fichier",
@@ -392,9 +393,9 @@ defineI18nRoute({
     f_4: "Aucune inscription ou installation requise"
   },
   it: {
-    m_title: "Minificatore CSS Online - Minifica e Comprimi CSS Gratis",
+    m_title: "Minify CSS - Minificatore CSS Online Gratis",
     title: "Minificatore CSS",
-    meta: "Minificatore CSS online gratuito. Incolla il tuo codice CSS e comprimilo istantaneamente rimuovendo spazi, commenti e regole ridondanti.",
+    meta: "Minificatore CSS online gratuito (minify CSS). Incolla il tuo codice e comprimilo istantaneamente rimuovendo spazi, commenti e regole ridondanti.",
     d1: "Questo minificatore CSS online comprime il tuo foglio di stile per la produzione rimuovendo spazi bianchi, righe vuote e commenti. Qualsiasi CSS prolisso viene ridotto alla dimensione minima possibile con un clic.",
     d2: "Fogli di stile più piccoli significano caricamenti più veloci, costi di banda ridotti e migliori punteggi su Lighthouse e Core Web Vitals. Incolla il CSS, clicca su minifica e ottieni il risultato pronto per la produzione in pochi secondi.",
     plc: "Incolla il codice CSS qui o trascina un file",
@@ -434,9 +435,9 @@ defineI18nRoute({
     f_4: "Nessuna registrazione o installazione richiesta"
   },
   id: {
-    m_title: "Minifikasi CSS Online - Minifikasi & Kompresi CSS Gratis",
-    title: "Minifikasi CSS",
-    meta: "Minifikasi CSS online gratis. Tempelkan kode CSS Anda dan kompres secara instan dengan menghapus spasi, komentar, dan aturan berlebih.",
+    m_title: "CSS Minifier Online - Minifikasi & Kompresi CSS Gratis",
+    title: "CSS Minifier",
+    meta: "CSS minifier online gratis untuk minifikasi dan kompresi kode CSS. Tempel kode dan hapus spasi, komentar, serta aturan berlebih secara instan.",
     d1: "Minifikasi CSS online ini mengompres lembar gaya Anda untuk produksi dengan menghapus spasi kosong, baris kosong, dan komentar. Semua CSS yang panjang dikurangi ke ukuran terkecil yang mungkin dalam satu klik.",
     d2: "Lembar gaya yang lebih kecil berarti pemuatan halaman lebih cepat, biaya bandwidth lebih rendah, dan skor Lighthouse serta Core Web Vitals yang lebih baik. Tempel CSS Anda, klik minifikasi, dan dapatkan hasil siap produksi dalam hitungan detik.",
     plc: "Tempel kode CSS di sini atau seret file",
@@ -476,9 +477,9 @@ defineI18nRoute({
     f_4: "Tanpa pendaftaran atau instalasi"
   },
   de: {
-    m_title: "CSS-Minifier Online – CSS kostenlos minifizieren & komprimieren",
+    m_title: "CSS Minifier Online – CSS kostenlos minifizieren & komprimieren",
     title: "CSS-Minifier",
-    meta: "Kostenloser Online-CSS-Minifier. Füge deinen CSS-Code ein und komprimiere ihn sofort, indem Leerzeichen, Kommentare und redundante Regeln entfernt werden.",
+    meta: "Kostenloser Online-CSS-Minifier zum CSS komprimieren und minifizieren. Füge deinen Code ein und entferne Leerzeichen, Kommentare und redundante Regeln.",
     d1: "Dieser Online-CSS-Minifier komprimiert dein Stylesheet für den Produktionseinsatz, indem Leerzeichen, leere Zeilen und Kommentare entfernt werden. Ausführliches oder entwicklungsorientiertes CSS wird mit einem Klick auf die kleinstmögliche Größe reduziert.",
     d2: "Kleinere Stylesheets bedeuten schnellere Ladezeiten, geringere Bandbreitenkosten und bessere Werte bei Lighthouse und Core Web Vitals. Füge dein CSS ein, klicke auf Minifizieren und erhalte in Sekunden produktionsreifen Output.",
     plc: "CSS-Code hier einfügen oder Datei hineinziehen",
@@ -518,9 +519,9 @@ defineI18nRoute({
     f_4: "Keine Registrierung oder Installation erforderlich"
   },
   nl: {
-    m_title: "CSS-minifier online – CSS gratis minifiëren & comprimeren",
-    title: "CSS-minifier",
-    meta: "Gratis online CSS-minifier. Plak je CSS-code en comprimeer deze direct door spaties, opmerkingen en overbodige regels te verwijderen.",
+    m_title: "CSS Minifier Online – CSS gratis minifiëren & comprimeren",
+    title: "CSS Minifier",
+    meta: "Gratis online CSS minifier om CSS te minifiëren en comprimeren. Plak je code en verwijder spaties, opmerkingen en overbodige regels in één klik.",
     d1: "Deze online CSS-minifier comprimeert je stylesheet voor productie door witruimte, lege regels en opmerkingen te verwijderen. Uitgebreide of ontwikkelgerichte CSS wordt met één klik tot de kleinst mogelijke grootte gereduceerd.",
     d2: "Kleinere stylesheets betekenen snellere laadtijden, lagere bandbreedtekosten en betere scores in Lighthouse en Core Web Vitals. Plak je CSS, klik op minifiëren en krijg binnen enkele seconden productieklare output.",
     plc: "Plak hier de CSS-code of sleep een bestand",
@@ -558,6 +559,48 @@ defineI18nRoute({
     f_2: "Verwijdert spaties, opmerkingen en overbodige regels",
     f_3: "Ondersteunt zowel pure CSS als style-tag-blokken",
     f_4: "Geen registratie of installatie vereist"
+  },
+  ru: {
+    m_title: "Минификатор CSS онлайн — сжатие и минификация CSS бесплатно",
+    title: "Минификатор CSS",
+    meta: "Бесплатный онлайн-минификатор CSS для сжатия таблиц стилей. Вставьте свой CSS-код, чтобы мгновенно удалить пробелы, комментарии и неиспользуемые правила.",
+    d1: "Этот онлайн-оптимизатор CSS сжимает ваши таблицы стилей для продакшена, удаляя пробелы, пустые строки и комментарии. Любой раздутый или написанный для разработки CSS сокращается до минимально возможного размера всего за один клик.",
+    d2: "Меньший размер файлов стилей означает более быструю загрузку страниц, сокращение расхода трафика и повышение оценок в Lighthouse и Core Web Vitals. Вставьте свой CSS, нажмите кнопку сжатия и получите готовый к продакшену код за считанные секунды.",
+    plc: "Вставьте код CSS сюда или перетащите файл",
+    bt: "Минифицировать CSS",
+    rst: "Начать заново",
+    copy: "Копировать",
+    err: "Ошибка",
+    err_label: "Не удалось минифицировать CSS",
+    how_it_works_title: "Как это работает",
+    hiw_1_title: "Вставьте ваш CSS",
+    hiw_1_desc: "Скопируйте и вставьте исходный CSS-код в редактор.",
+    hiw_2_title: "Нажмите «Минифицировать»",
+    hiw_2_desc: "Нажмите кнопку «Минифицировать CSS», и инструмент мгновенно сожмет код.",
+    hiw_3_title: "Скопируйте результат",
+    hiw_3_desc: "Скопируйте сжатый CSS или начните заново с новым кодом.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Развертывание в продакшене",
+    uc_1_desc: "Сократите размер файлов таблиц стилей перед развертыванием для ускорения загрузки и экономии трафика.",
+    uc_2_title: "Шаблоны электронных писем",
+    uc_2_desc: "Минифицируйте встроенный (inline) CSS в HTML-письмах, чтобы уменьшить размер писем и улучшить их доставляемость.",
+    uc_3_title: "Lighthouse и Core Web Vitals",
+    uc_3_desc: "Уменьшение размера CSS напрямую сокращает время блокировки рендеринга и улучшает показатели First Contentful Paint.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Отправляется ли мой CSS-код на какой-либо сервер?",
+    faq_1_a: "Нет. Сжатие выполняется полностью в вашем браузере. Ваш код никогда не покидает ваше устройство.",
+    faq_2_q: "Может ли минификация сломать мой CSS?",
+    faq_2_a: "Нет. Минификатор удаляет только лишние пробелы и комментарии, которые не влияют на отображение страницы. Результат функционально идентичен оригиналу.",
+    faq_3_q: "Что произойдет, если в моем CSS будут синтаксические ошибки?",
+    faq_3_a: "Если CSS не удастся проанализировать, инструмент выведет сообщение об ошибке, чтобы вы могли локализовать и исправить проблему перед сжатием.",
+    see1: "Минификатор HTML",
+    see2: "Минификатор JavaScript",
+    see3: "Форматтер CSS",
+    see4: "Форматтер HTML",
+    f_1: "Мгновенное сжатие и минификация CSS",
+    f_2: "Удаление пробелов, комментариев и избыточных правил",
+    f_3: "Поддержка как чистого CSS, так и блоков с тегом style",
+    f_4: "Не требуется регистрация или установка"
   }
 }
 </i18n>

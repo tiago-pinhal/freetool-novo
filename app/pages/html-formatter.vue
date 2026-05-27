@@ -92,7 +92,8 @@ defineI18nRoute({
     it: '/formattatore-html',
     id: '/pemformat-html',
     de: '/html-formatter',
-    nl: '/html-formatter'
+    nl: '/html-formatter',
+    ru: '/formatator-html'
   }
 })
 </script>
@@ -218,11 +219,11 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
     en: {
-        m_title: "HTML Formatter Online - Beautify & Indent HTML for Free",
+        m_title: "HTML Formatter & Beautifier Online - Format for Free",
         title: "HTML Formatter",
-        meta: "Free online HTML formatter. Paste your HTML code and instantly beautify it with proper indentation and consistent structure.",
-        d1: "This online HTML formatter parses and reformats your HTML code with consistent indentation and uniform structure. Any messy, minified, or poorly organized markup is transformed into readable, well-structured HTML in one click.",
-        d2: "It removes unnecessary blank lines, fixes indentation, and aligns tags correctly, making the code easier to review, debug, or hand off to a teammate.",
+        meta: "Free online HTML formatter and beautifier. Paste your HTML code and instantly format, indent and beautify it with consistent structure — no signup, no installation.",
+        d1: "This online HTML formatter and beautifier parses and reformats your HTML code with consistent indentation and uniform structure. Any messy, minified, or poorly organized markup is transformed into readable, well-structured HTML in one click.",
+        d2: "It removes unnecessary blank lines, fixes indentation, and aligns tags correctly, making the code easier to review, debug, or hand off to a teammate — a free HTML beautifier that runs entirely in your browser.",
         plc: "Insert the HTML code here or drag a file",
         bt: "Format HTML",
         rst: "Start Over",
@@ -262,7 +263,7 @@ defineI18nRoute({
     pt: {
         m_title: "Formatador HTML Online - Formate e Indente HTML Grátis",
         title: "Formatador HTML",
-        meta: "Formatador HTML online gratuito. Cole seu código HTML e deixe-o organizado com indentação correta e estrutura uniformizada.",
+        meta: "Formatador HTML online e gratuito (HTML beautifier). Cole seu código HTML e deixe-o organizado com indentação correta e estrutura uniformizada.",
         d1: "Este formatador HTML online analisa e reformata seu código HTML com indentação consistente e estrutura uniforme. Qualquer marcação bagunçada, minificada ou mal organizada é transformada em HTML legível e bem estruturado com um clique.",
         d2: "Ele remove linhas em branco desnecessárias, corrige a indentação e alinha as tags corretamente, facilitando a revisão, depuração ou entrega do código para um colega.",
         plc: "Insira o código HTML aqui ou arraste um arquivo",
@@ -304,7 +305,7 @@ defineI18nRoute({
     es: {
         m_title: "Formateador HTML Online - Formatea e Indenta HTML Gratis",
         title: "Formateador HTML",
-        meta: "Formateador HTML online gratuito. Pega tu código HTML y organízalo al instante con indentación correcta y estructura uniforme.",
+        meta: "Formateador HTML online y gratuito (HTML beautifier). Pega tu código HTML y organízalo al instante con indentación correcta y estructura uniforme.",
         d1: "Este formateador HTML online analiza y reformatea tu código HTML con indentación consistente y estructura uniforme. Todo marcado desordenado, minificado o mal organizado se transforma en HTML legible y bien estructurado con un clic.",
         d2: "Elimina líneas en blanco innecesarias, corrige la indentación y alinea las etiquetas correctamente, facilitando la revisión, depuración o entrega del código a un compañero.",
         plc: "Introduce el código HTML aquí o arrastra un archivo",
@@ -344,9 +345,9 @@ defineI18nRoute({
         f_4: "Sin necesidad de registro ni instalación"
     },
     fr: {
-        m_title: "Formateur HTML en Ligne - Formatez et Indentez HTML Gratuitement",
+        m_title: "Formateur HTML en Ligne - Indentez votre HTML Gratuit",
         title: "Formateur HTML",
-        meta: "Formateur HTML en ligne gratuit. Collez votre code HTML et obtenez instantanément une indentation correcte et une structure uniforme.",
+        meta: "Formateur HTML en ligne gratuit (HTML beautifier). Collez votre code HTML et obtenez instantanément une indentation correcte et une structure uniforme.",
         d1: "Ce formateur HTML en ligne analyse et reformate votre code HTML avec une indentation cohérente et une structure uniforme. Tout balisage désordonné, minifié ou mal organisé est transformé en HTML lisible et bien structuré en un clic.",
         d2: "Il supprime les lignes vides inutiles, corrige l'indentation et aligne correctement les balises, facilitant la révision, le débogage ou la transmission du code à un collègue.",
         plc: "Insérez le code HTML ici ou faites glisser un fichier",
@@ -386,9 +387,9 @@ defineI18nRoute({
         f_4: "Aucune inscription ou installation requise"
     },
     it: {
-        m_title: "Formattatore HTML Online - Formatta e Indenta HTML Gratis",
+        m_title: "Formattatore HTML Online - Indenta il tuo HTML Gratis",
         title: "Formattatore HTML",
-        meta: "Formattatore HTML online gratuito. Incolla il tuo codice HTML e ottieni istantaneamente indentazione corretta e struttura uniforme.",
+        meta: "Formattatore HTML online gratuito (HTML beautifier). Incolla il tuo codice HTML e ottieni istantaneamente indentazione corretta e struttura uniforme.",
         d1: "Questo formattatore HTML online analizza e riformatta il tuo codice HTML con indentazione coerente e struttura uniforme. Qualsiasi markup disordinato, minificato o mal organizzato viene trasformato in HTML leggibile e ben strutturato con un clic.",
         d2: "Rimuove le righe vuote inutili, corregge l'indentazione e allinea correttamente i tag, rendendo il codice più facile da revisionare, debuggare o passare a un collega.",
         plc: "Inserisci il codice HTML qui o trascina un file",
@@ -430,7 +431,7 @@ defineI18nRoute({
     id: {
         m_title: "Pemformat HTML Online - Format & Indentasi HTML Gratis",
         title: "Pemformat HTML",
-        meta: "Pemformat HTML online gratis. Tempelkan kode HTML Anda dan dapatkan indentasi yang benar dan struktur yang seragam secara instan.",
+        meta: "Pemformat HTML online gratis (HTML beautifier). Tempelkan kode HTML Anda dan dapatkan indentasi yang benar dan struktur yang seragam secara instan.",
         d1: "Pemformat HTML online ini mengurai dan memformat ulang kode HTML Anda dengan indentasi yang konsisten dan struktur yang seragam. Semua markup yang berantakan, diminifikasi, atau tidak terorganisir diubah menjadi HTML yang mudah dibaca dan terstruktur dengan baik dalam satu klik.",
         d2: "Alat ini menghapus baris kosong yang tidak perlu, memperbaiki indentasi, dan menyelaraskan tag dengan benar, membuat kode lebih mudah ditinjau, di-debug, atau diserahkan ke rekan kerja.",
         plc: "Masukkan kode HTML di sini atau seret file",
@@ -470,9 +471,9 @@ defineI18nRoute({
         f_4: "Tanpa pendaftaran atau instalasi"
     },
     de: {
-        m_title: "HTML Formatter Online - HTML kostenlos formatieren und einrücken",
+        m_title: "HTML Formatter & Beautifier Online - Kostenlos",
         title: "HTML Formatter",
-        meta: "Kostenloser Online-HTML-Formatter. Fügen Sie Ihren HTML-Code ein und formatieren Sie ihn sofort mit korrekter Einrückung und einheitlicher Struktur.",
+        meta: "Kostenloser Online-HTML-Formatter und Beautifier. Fügen Sie Ihren HTML-Code ein und formatieren Sie ihn sofort mit korrekter Einrückung und einheitlicher Struktur.",
         d1: "Dieser Online-HTML-Formatter analysiert und formatiert Ihren HTML-Code mit konsistenter Einrückung und einheitlicher Struktur neu. Unübersichtliches, minifiziertes oder schlecht organisiertes Markup wird mit einem Klick in gut lesbares und strukturiertes HTML umgewandelt.",
         d2: "Er entfernt unnötige Leerzeilen, korrigiert die Einrückung und richtet Tags korrekt aus, sodass der Code leichter überprüft, debuggt oder an Kollegen weitergegeben werden kann.",
         plc: "Fügen Sie hier Ihren HTML-Code ein oder ziehen Sie eine Datei hinein",
@@ -512,9 +513,9 @@ defineI18nRoute({
         f_4: "Keine Registrierung oder Installation erforderlich"
     },
     nl: {
-        m_title: "HTML Formatter Online - HTML gratis formatteren en inspringen",
+        m_title: "HTML Formatter & Beautifier Online - Gratis",
         title: "HTML Formatter",
-        meta: "Gratis online HTML-formatter. Plak je HTML-code en maak hem direct netjes met correcte inspringing en consistente structuur.",
+        meta: "Gratis online HTML-formatter en beautifier. Plak je HTML-code en maak hem direct netjes met correcte inspringing en consistente structuur.",
         d1: "Deze online HTML-formatter analyseert en formatteert je HTML-code opnieuw met consistente inspringing en structuur. Rommelige, geminificeerde of slecht georganiseerde markup wordt met één klik omgezet in leesbare en goed gestructureerde HTML.",
         d2: "Het verwijdert onnodige lege regels, corrigeert inspringing en lijnt tags correct uit, waardoor de code makkelijker te controleren, debuggen of te delen is.",
         plc: "Voer hier je HTML-code in of sleep een bestand",
@@ -552,6 +553,48 @@ defineI18nRoute({
         f_2: "Correcte inspringing en uitlijning van tags",
         f_3: "Detectie en melding van syntaxfouten",
         f_4: "Geen registratie of installatie vereist"
+    },
+    ru: {
+        m_title: "Форматтер HTML онлайн — форматируйте и индентируйте HTML бесплатно",
+        title: "Форматтер HTML",
+        meta: "Бесплатный онлайн-форматтер и структуризатор HTML. Вставьте свой HTML-код, чтобы мгновенно отформатировать, индентировать и выровнять теги.",
+        d1: "Этот онлайн-форматтер и структуризатор HTML анализирует и реорганизует ваш HTML-код с последовательным отступом и единой структурой. Любая запутанная, минифицированная или плохо организованная разметка превращается в хорошо читаемый и структурированный HTML всего за один клик.",
+        d2: "Он удаляет ненужные пустые строки, исправляет отступы и правильно выравнивает теги, что упрощает просмотр, отладку или передачу кода другим разработчикам. Инструмент работает полностью в вашем браузере.",
+        plc: "Вставьте код HTML сюда или перетащите файл",
+        bt: "Форматировать HTML",
+        rst: "Начать заново",
+        copy: "Копировать",
+        err: "Ошибка",
+        err_label: "Не удалось отформатировать HTML",
+        how_it_works_title: "Как это работает",
+        hiw_1_title: "Вставьте ваш HTML",
+        hiw_1_desc: "Скопируйте и вставьте исходный, минифицированный или неформатированный HTML-код в редактор.",
+        hiw_2_title: "Нажмите «Форматировать»",
+        hiw_2_desc: "Нажмите кнопку «Форматировать HTML», и инструмент мгновенно перестроит разметку.",
+        hiw_3_title: "Скопируйте результат",
+        hiw_3_desc: "Скопируйте отформатированный результат или начните заново с новым кодом.",
+        use_cases_title: "Варианты использования",
+        uc_1_title: "Обзоры кода (Code Review)",
+        uc_1_desc: "Приведите разметку в порядок перед тем, как делиться ею с коллегами или создавать пулл-реквест.",
+        uc_2_title: "Отладка шаблонов",
+        uc_2_desc: "Удобочитаемые отступы значительно упрощают поиск незакрытых тегов или ошибок вложенности элементов.",
+        uc_3_title: "Обучение и документация",
+        uc_3_desc: "Правильно форматированный HTML легче читать, понимать и использовать в учебных руководствах или документации.",
+        faq_title: "Вопросы и ответы",
+        faq_1_q: "Отправляется ли мой HTML-код на какой-либо сервер?",
+        faq_1_a: "Нет. Все форматирование выполняется исключительно в вашем браузере. Ваш код никогда не покидает ваше устройство.",
+        faq_2_q: "Какой стандарт HTML поддерживает этот форматтер?",
+        faq_2_a: "Форматтер поддерживает стандартную разметку HTML5, включая пользовательские атрибуты, встроенные скрипты и стили.",
+        faq_3_q: "Что произойдет, если в моем HTML-коде будут синтаксические ошибки?",
+        faq_3_a: "Если HTML не удастся проанализировать, инструмент выведет сообщение об ошибке, чтобы вы могли локализовать и исправить проблему перед форматированием.",
+        see1: "Минификатор HTML",
+        see2: "Форматтер JavaScript",
+        see3: "Форматтер CSS",
+        see4: "Просмотр JSON",
+        f_1: "Мгновенное форматирование и украшение HTML",
+        f_2: "Правильные отступы и выравнивание тегов",
+        f_3: "Обнаружение и отображение синтаксических ошибок",
+        f_4: "Не требуется регистрация или установка"
     }
-  }
+}
 </i18n>

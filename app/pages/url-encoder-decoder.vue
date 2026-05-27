@@ -17,7 +17,7 @@ usePageJsonLd({
 })
 
 useHead({
-  title: t('title'),
+  title: t('page_title'),
   meta: [
     { name: 'description', content: t('meta') }
   ]
@@ -47,7 +47,8 @@ defineI18nRoute({
     it: '/codificatore-e-decodificatore-di-url',
     id: '/enkoder-dekoder-url',
     de: '/url-kodierer-und-dekodierer',
-    nl: '/url-encoder-decoder-tool'
+    nl: '/url-encoder-decoder-tool',
+    ru: '/url-enkoder-dekoder'
   }
 })
 </script>
@@ -149,7 +150,8 @@ defineI18nRoute({
 {
   en: {
     title: "URL Encoder and Decoder",
-    meta: "With this URL Encoder and Decoder, you can easily and quickly encode and decode URLs directly in your browser.",
+    page_title: "URL Encoder Decoder Online — Free URL Encode & Decode Tool",
+    meta: "Free URL encoder and decoder online. Encode or decode any URL instantly in your browser — no installation or sign-up needed.",
     d1: "With this URL Encoder and Decoder, the Encode button will convert special characters and spaces into a string suitable for web use, ensuring that browsers and other systems correctly interpret the URL. The Decode button reverses the process, converting the encoded string back to its original, readable form. Simply paste the URL into the field above and click the desired action.",
     in: "Enter the URL here",
     encode: "Encode",
@@ -182,6 +184,7 @@ defineI18nRoute({
   },
   pt: {
     title: "Codificador e Decodificador de URL",
+    page_title: "Codificador e Decodificador de URL",
     meta: "Com este Codificador e Decodificador de URL, você pode codificar e decodificar URLs de forma fácil e rápida diretamente no navegador.",
     d1: "Com este Codificador e Decodificador de URL, o botão Codificar converterá caracteres especiais e espaços em uma sequência adequada para uso na web, assegurando que navegadores e outros sistemas interpretem a URL corretamente. O botão Decodificar reverte o processo, convertendo a sequência codificada de volta à sua forma original e legível. Basta colar a URL no campo acima e clicar na ação desejada.",
     in: "Insira a URL aqui",
@@ -215,6 +218,7 @@ defineI18nRoute({
   },
   es: {
     title: "Codificador y Decodificador de URL",
+    page_title: "Codificador y Decodificador de URL",
     meta: "Con este Codificador y Decodificador de URL, puedes codificar y decodificar URLs de manera fácil y rápida directamente en el navegador.",
     d1: "Con este Codificador y Decodificador de URL, el botón Codificar convertirá caracteres especiales y espacios en una secuencia adecuada para uso en la web, asegurando que los navegadores y otros sistemas interpreten la URL correctamente. El botón Decodificar revierte el proceso, convirtiendo la secuencia codificada de vuelta a su forma original y legible. Simplemente pega la URL en el campo de arriba y haz clic en la acción deseada.",
     in: "Ingresa la URL aquí",
@@ -248,6 +252,7 @@ defineI18nRoute({
   },
   fr: {
     title: "Encodeur et Décodeur d'URL",
+    page_title: "Encodeur et Décodeur d'URL",
     meta: "Avec cet Encodeur et Décodeur d'URL, vous pouvez facilement et rapidement encoder et décoder des URL directement dans votre navigateur.",
     d1: "Avec cet Encodeur et Décodeur d'URL, le bouton Encoder convertira les caractères spéciaux et les espaces en une séquence adaptée à l'utilisation sur le web, assurant que les navigateurs et autres systèmes interprètent l'URL correctement. Le bouton Décoder inverse le processus, en convertissant la séquence encodée vers sa forme originale et lisible. Il suffit de coller l'URL dans le champ ci-dessus et de cliquer sur l'action souhaitée.",
     in: "Saisissez l'URL ici",
@@ -281,6 +286,7 @@ defineI18nRoute({
   },
   it: {
     title: "Codificatore e Decodificatore di URL",
+    page_title: "Codificatore e Decodificatore di URL",
     meta: "Con questo Codificatore e Decodificatore di URL, puoi codificare e decodificare gli URL in modo facile e rapido direttamente nel browser.",
     d1: "Con questo Codificatore e Decodificatore di URL, il pulsante Codifica convertirà i caratteri speciali e gli spazi in una stringa adatta all'uso web, garantendo che i browser e altri sistemi interpretino correttamente l'URL. Il pulsante Decodifica inverte il processo, convertendo la stringa codificata nella sua forma originale e leggibile. Basta incollare l'URL nel campo sopra e fare clic sull'azione desiderata.",
     in: "Inserisci l'URL qui",
@@ -314,7 +320,8 @@ defineI18nRoute({
   },
   id: {
     title: "Enkoder dan Dekoder URL",
-    meta: "Dengan Enkoder dan Dekoder URL ini, Anda dapat dengan mudah dan cepat melakukan enkode dan dekode URL langsung di browser.",
+    page_title: "URL Encoder Decoder Online — Enkode & Dekode URL Gratis",
+    meta: "URL Encoder Decoder online gratis. Enkode atau dekode URL Anda secara instan di browser — tanpa instalasi.",
     d1: "Dengan Enkoder dan Dekoder URL ini, tombol Enkode akan mengubah karakter khusus dan spasi menjadi rangkaian karakter yang sesuai untuk penggunaan web, sehingga browser dan sistem lain dapat menafsirkan URL dengan benar. Tombol Dekode membalik prosesnya, mengubah rangkaian yang sudah dienkode kembali ke bentuk asli yang mudah dibaca. Cukup tempelkan URL ke kolom di atas dan klik tindakan yang diinginkan.",
     in: "Masukkan URL di sini",
     encode: "Enkode",
@@ -347,7 +354,8 @@ defineI18nRoute({
   },
   de: {
     title: "URL-Kodierer und -Dekodierer",
-    meta: "Mit diesem URL-Kodierer und -Dekodierer kannst du URLs direkt im Browser einfach und schnell kodieren und dekodieren.",
+    page_title: "URL kodieren & dekodieren Online — Kostenloser URL Encoder Decoder",
+    meta: "URL kodieren oder dekodieren kostenlos online. Füge die URL ein und klicke auf Kodieren oder Dekodieren — direkt im Browser, ohne Installation.",
     d1: "Mit diesem URL-Kodierer und -Dekodierer wandelt die Schaltfläche 'Kodieren' Sonderzeichen und Leerzeichen in eine für das Web geeignete Zeichenfolge um, damit Browser und andere Systeme die URL korrekt interpretieren. Die Schaltfläche 'Dekodieren' kehrt den Vorgang um und wandelt die kodierte Zeichenfolge wieder in ihre ursprüngliche, lesbare Form zurück. Füge einfach die URL in das Feld oben ein und klicke auf die gewünschte Aktion.",
     in: "URL hier eingeben",
     encode: "Kodieren",
@@ -380,6 +388,7 @@ defineI18nRoute({
   },
   nl: {
     title: "URL Encoder & Decoder",
+    page_title: "URL Encoder & Decoder",
     meta: "Snel URL's coderen e decoderen online. Maak uw URL's veilig voor webtransmissie door speciale tekens om te zetten in percent-gecodeerde formaten.",
     d1: "Onze online URL Encoder & Decoder is een essentieel hulpmiddel voor webontwikkelaars e iedereen die met webadressen werkt. Het stelt u in staat om speciale tekens in een URL om te zetten naar een formaat dat veilig over het internet kan worden verzonden (encoding) of om gecodeerde URL's terug te zetten naar hun leesbare vorm (decoding).",
     in: "Voer URL of tekst in",
@@ -410,6 +419,40 @@ defineI18nRoute({
     f_2: "Decodeer percent-gecodeerde URL's",
     f_3: "Real-time e veilige verwerking",
     f_4: "Ondersteunt UTF-8 tekens"
+  },
+  ru: {
+    title: "Кодировщик и декодировщик URL",
+    page_title: "Кодировщик и декодировщик URL онлайн — бесплатный инструмент кодирования и декодирования",
+    meta: "Бесплатный онлайн-кодировщик и декодировщик URL. Мгновенно кодируйте и декодируйте любые URL-адреса в браузере без установки и регистрации.",
+    d1: "С помощью этого инструмента кодирования и декодирования URL кнопка «Кодировать» преобразует специальные символы и пробелы в строку, пригодную для использования в веб-адресах, гарантируя, что браузеры и другие системы правильно интерпреруют URL. Кнопка «Декодировать» запускает обратный процесс, возвращая закодированную строку в ее исходный читаемый вид. Просто вставьте URL-адрес в поле выше и выберите нужное действие.",
+    in: "Введите URL-адрес сюда",
+    encode: "Кодировать",
+    decode: "Декодировать",
+    how_it_works_title: "Как это работает",
+    step_1_title: "Введите URL-адрес",
+    step_1_desc: "Вставьте или введите URL-адрес, который вы хотите закодировать или декодировать.",
+    step_2_title: "Выберите действие",
+    step_2_desc: "Нажмите «Кодировать» для форматирования под веб-стандарты или «Декодировать» для возврата к исходному тексту.",
+    step_3_title: "Скопируйте результат",
+    step_3_desc: "Результат появится мгновенно. Используйте кнопку копирования, чтобы сохранить его в буфер обмена.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Параметры URL-запроса в API",
+    uc_1_desc: "Кодируйте ключи и значения в строках запроса (query parameters), чтобы специальные символы не нарушали структуру URL-адреса.",
+    uc_2_title: "Безопасная передача данных",
+    uc_2_desc: "Гарантируйте, что такие символы, как пробелы, амперсанды (&) и косые черты (слеши), корректно обрабатываются веб-серверами.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Что такое кодирование URL?",
+    faq_1_a: "Кодирование URL (также известное как percent-encoding или процентное кодирование) — это механизм кодирования информации в Uniform Resource Identifier (URI).",
+    faq_2_q: "Когда следует использовать декодирование URL?",
+    faq_2_a: "Используйте его, когда у вас есть URL-адрес, содержащий знаки процента (например, %20), и вы хотите увидеть исходные символы (например, пробелы).",
+    see1: "LESS → CSS",
+    see2: "XML → JSON",
+    see3: "JSON → XML",
+    see4: "Системы счисления",
+    f_1: "Кодирование URL для безопасной передачи в сети",
+    f_2: "Декодирование закодированных URL в читаемый формат",
+    f_3: "Мгновенное кодирование и декодирование",
+    f_4: "Обработка на стороне клиента — данные не отправляются на серверы"
   }
 }
 </i18n>

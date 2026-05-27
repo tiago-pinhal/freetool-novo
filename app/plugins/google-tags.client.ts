@@ -1,40 +1,60 @@
-const GA_ID = 'G-B57PC5L4JC'
-const ADSENSE_CLIENT = 'ca-pub-6172875094663882'
+/**
+ * Loads Google Tag Manager when configured.
+ *
+ * All other tags (GA4, AdSense, Funding Choices) are managed, consented,
+ * and fired directly within the GTM container.
+ *
+ * Critical contract with components/Adsense.vue:
+ *   The Adsense component will check for window.adsbygoogle or gtmId.
+ *   Initializing window.adsbygoogle here prevents runtime errors if
+ *   components try to push ad requests before GTM loads the AdSense script.
+ */
 
-export default defineNuxtPlugin((nuxtApp) => {
+declare global {
+  interface Window {
+    dataLayer: unknown[]
+    gtag: (...args: unknown[]) => void
+    adsbygoogle: unknown[]
+  }
+}
+
+function runWhenIdle(callback: () => void, timeout = 4000): void {
+  if (window.requestIdleCallback) {
+    window.requestIdleCallback(callback, { timeout })
+    return
+  }
+
+  window.setTimeout(callback, 1)
+}
+
+/**
+ * Injects the Google Tag Manager container when a container ID is configured.
+ */
+function injectGtmContainer(containerId: string): void {
+  window.dataLayer.push({ 'gtm.start': Date.now(), event: 'gtm.js' })
+
+  const gtmScript = document.createElement('script')
+  gtmScript.src = 'https://www.googletagmanager.com/gtm.js?id=' + containerId
+  gtmScript.async = true
+  gtmScript.fetchPriority = 'low'
+  document.head.appendChild(gtmScript)
+}
+
+export default defineNuxtPlugin(() => {
   if (!import.meta.env.PROD || !import.meta.client) return
 
-  nuxtApp.runWithContext(() => {
-    useHead({
-      script: [
-        // 1. Consent Mode — deve rodar ANTES do GA4 e AdSense inicializarem
-        {
-          innerHTML: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'})`,
-          tagPosition: 'head'
-        },
-        // 2. AdSense — mantém async (precisa inicializar cedo para preencher os slots de anúncio)
-        {
-          src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`,
-          async: true,
-          crossorigin: 'anonymous',
-          tagPosition: 'head'
-        },
-        // 3. Funding Choices — painel de consentimento de anúncios (GDPR)
-        {
-          src: `https://fundingchoicesmessages.google.com/i/pub-6172875094663882?ers=1`,
-          async: true,
-          tagPosition: 'head'
-        },
-        {
-          innerHTML: `(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();`,
-          tagPosition: 'head'
-        }
-      ]
-    })
+  // Initialize globals synchronously to prevent runtime errors if components try to interact with them early
+  window.adsbygoogle = window.adsbygoogle ?? []
+  window.dataLayer = window.dataLayer ?? []
+  window.gtag = function (...args: unknown[]) { window.dataLayer.push(args) }
 
-    // 4. GA4 — carrega quando o browser está ocioso (após o LCP)
-    // trigger: 'idle' evita bloquear a thread principal durante o carregamento inicial
-    // Os eventos de pageview são enfileirados no dataLayer e processados quando o script carrega
-    useScriptGoogleAnalytics({ id: GA_ID }, { trigger: 'idle' })
-  })
+  const { public: { gtmId = '' } } = useRuntimeConfig()
+
+  if (gtmId) {
+    onNuxtReady(() => {
+      runWhenIdle(() => {
+        injectGtmContainer(gtmId)
+      })
+    })
+  }
 })

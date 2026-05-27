@@ -38,10 +38,11 @@ defineI18nRoute({
         pt: '/calculadora-regra-de-tres-simples', 
         es: '/calculadora-regla-de-tres-simple', 
         fr: '/calculatrice-regle-de-trois-simple',
-        it: '/calcolatrice-regola-di-tre-semplice',
-        id: '/kalkulator-aturan-tiga-sederhana',
+        it: '/calcolo-proporzioni',
+        id: '/perbandingan-senilai',
         de: '/dreisatzrechner',
-        nl: '/regel-van-drie-calculator'
+        nl: '/regel-van-drie-calculator',
+        ru: '/kalkulyator-pravila-treh'
     }
 })
 </script>
@@ -328,9 +329,9 @@ defineI18nRoute({
         f_4: "Aucune inscription ou installation requise"
     },
     it: {
-        title: "Regola di Tre",
-        meta: "Calcola la regola di tre semplice online con la nostra calcolatrice gratuita. Trova valori sconosciuti nelle proporzioni dirette in modo rapido e semplice.",
-        desc: "La regola di tre semplice, nota anche come moltiplicazione incrociata, è un metodo matematico pratico per trovare un quarto valore sconosciuto quando conosci già tre valori in proporzione diretta tra loro. La nostra calcolatrice semplifica il procedimento: che tu debba adattare una ricetta, calcolare percentuali, regolare misure o svolgere compiti scolastici, ti basta compilare i campi con i valori noti perché la calcolatrice esegua automaticamente il calcolo e mostri il risultato.",
+        title: "Calcolo Proporzioni",
+        meta: "Calcolo proporzioni online con la nostra calcolatrice gratuita. Risolvi la regola del tre e trova valori sconosciuti nelle proporzioni dirette in modo rapido e semplice.",
+        desc: "Il calcolo delle proporzioni con la regola del tre semplice, noto anche come moltiplicazione incrociata, è un metodo matematico pratico per trovare un quarto valore sconosciuto quando conosci già tre valori in proporzione diretta tra loro. La nostra calcolatrice semplifica il procedimento: che tu debba adattare una ricetta, calcolare percentuali, regolare misure o svolgere compiti scolastici, ti basta compilare i campi con i valori noti perché la calcolatrice esegua automaticamente il calcolo e mostri il risultato.",
         if: "Condizioni",
         then: "Obiettivo",
         val1: "Valore A",
@@ -364,9 +365,9 @@ defineI18nRoute({
         f_4: "Nessuna registrazione o installazione"
     },
     id: {
-        title: "Aturan Tiga",
-        meta: "Hitung aturan tiga sederhana secara online dengan kalkulator gratis kami. Temukan nilai yang belum diketahui dalam perbandingan senilai dengan cepat dan mudah.",
-        desc: "Aturan tiga sederhana, yang juga dikenal sebagai perkalian silang, adalah metode matematika praktis untuk menemukan nilai keempat yang belum diketahui ketika Anda sudah memiliki tiga nilai dengan hubungan perbandingan senilai. Kalkulator kami mempermudah proses ini: baik untuk menyesuaikan resep, menghitung persentase, mengatur ukuran, atau mengerjakan tugas sekolah, cukup isi kolom dengan nilai-nilai yang sudah diketahui agar kalkulator menghitung secara otomatis dan menampilkan hasilnya.",
+        title: "Perbandingan Senilai",
+        meta: "Hitung perbandingan senilai secara online dengan kalkulator gratis kami. Selesaikan soal aturan tiga dan temukan nilai yang belum diketahui dengan cepat dan mudah.",
+        desc: "Perbandingan senilai dengan aturan tiga, yang juga dikenal sebagai perkalian silang, adalah metode matematika praktis untuk menemukan nilai keempat yang belum diketahui ketika Anda sudah memiliki tiga nilai dengan hubungan perbandingan senilai. Kalkulator kami mempermudah proses ini: baik untuk menyesuaikan resep, menghitung persentase, mengatur ukuran, atau mengerjakan tugas sekolah, cukup isi kolom dengan nilai-nilai yang sudah diketahui agar kalkulator menghitung secara otomatis dan menampilkan hasilnya.",
         if: "Kondisi",
         then: "Target",
         val1: "Nilai A",
@@ -470,6 +471,42 @@ defineI18nRoute({
         f_2: "Realtime resultaat terwijl je typt",
         f_3: "Handig voor recepten, schalen en huiswerk",
         f_4: "Geen registratie of installatie vereist"
+    },
+    ru: {
+        title: "Правило трех",
+        meta: "Рассчитайте простую пропорцию по правилу трех онлайн с помощью нашего бесплатного калькулятора. Быстро и легко находите неизвестные значения в прямых пропорциях.",
+        desc: "Простое правило трех (также известное как пропорция или метод креста) — это практичный математический метод, используемый для нахождения неизвестного четвертого значения, когда вам уже известны три значения, находящиеся в прямой пропорциональной зависимости. Наш калькулятор делает этот процесс простым: независимо от того, масштабируете ли вы кулинарный рецепт, рассчитываете проценты, корректируете размеры или делаете домашнее задание, просто заполните поля известными значениями, и калькулятор автоматически выполнит расчет и покажет результат.",
+        if: "Условия",
+        then: "Цель",
+        val1: "Значение A",
+        val2: "Значение B",
+        val3: "Значение C",
+        result: "Итоговый результат (X)",
+        copy_result: "Скопировать результат",
+        waiting: "Введите все значения выше, чтобы увидеть результат",
+        tip_title: "Как это работает",
+        tip_formula: "Используется следующая формула",
+        features_title: "Возможности",
+        how_to_use_title: "Инструкция",
+        step_1_title: "Введите базовые значения",
+        step_1_desc: "Введите Значение A и Значение B, чтобы задать исходную известную пропорцию.",
+        step_2_title: "Введите цель",
+        step_2_desc: "Введите Значение C, чтобы найти соответствующее ему пропорциональное значение (X).",
+        step_3_title: "Получите результат",
+        step_3_desc: "Результат рассчитывается мгновенно. Используйте кнопку копирования, чтобы сохранить его в буфер обмена.",
+        see1: "Калькулятор процентов",
+        see2: "Генератор Bcrypt",
+        see3: "Экстрактор email",
+        see4: "JSON-просмотрщик",
+        use_cases_title: "Варианты использования",
+        uc_1: "Масштабирование рецептов блюд в зависимости от имеющихся ингредиентов",
+        uc_2: "Расчет расхода топлива для различных расстояний",
+        uc_3: "Корректировка технических размеров и чертежей в масштабе",
+        uc_4: "Решение математических задач и бизнес-расчетов на пропорции",
+        f_1: "Решение прямых пропорций по трем известным значениям",
+        f_2: "Расчет в реальном времени прямо во время ввода",
+        f_3: "Полезно для рецептов, масштабирования и учебы",
+        f_4: "Не требует регистрации или установки приложений"
     }
 }
 </i18n>

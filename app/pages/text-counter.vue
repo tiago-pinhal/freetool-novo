@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { reactive, watch, computed, onMounted } from 'vue'
+import { reactive, watch, computed } from 'vue'
 
 const { t } = useI18n({ useScope: 'local' })
 
@@ -81,7 +81,8 @@ defineI18nRoute({
     it: '/contatore-di-testo',
     id: '/penghitung-teks',
     de: '/text-zaehler',
-    nl: '/tekstteller'
+    nl: '/tekstteller',
+    ru: '/schetchik-teksta'
   }
 })
 </script>
@@ -95,8 +96,7 @@ defineI18nRoute({
       { label: t('converter'), to: 'text-converter' },
       { label: t('ascii'), to: 'ascii-letter-generator' },
       { label: t('fancy'), to: 'fancy-letters' },
-      { label: t('generator'), to: 'text-generator' },
-      { label: t('see_morse'), to: 'morse-code-converter' }
+      { label: t('generator'), to: 'text-generator' }
     ]"
   >
     <div class="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -187,10 +187,10 @@ defineI18nRoute({
 {
   pt: {
     title: "Contador de Texto",
-    meta_title: "Contador de Texto Online - Palavras, Caracteres, Linhas e Parágrafos",
+    meta_title: "Contador de Caracteres e Palavras Online — Linhas e Parágrafos",
     ogLocale: "pt_BR",
-    meta: "Conte palavras, caracteres, linhas e parágrafos do seu texto em tempo real com uma ferramenta online e gratuita.",
-    about_desc: "Este Contador de Texto permite analisar e contar palavras, caracteres, linhas e parágrafos com rapidez e precisão diretamente no seu navegador. Com processamento em tempo real, você acompanha instantaneamente métricas essenciais do seu conteúdo e garante que seu texto esteja dentro dos limites exigidos para SEO, redes sociais, trabalhos acadêmicos e produção de texto no dia a dia.",
+    meta: "Contador de caracteres e palavras online grátis. Conte caracteres com e sem espaços, palavras, linhas e parágrafos em tempo real.",
+    about_desc: "Este contador de caracteres e palavras gratuito permite analisar e contar palavras, caracteres, linhas e parágrafos com rapidez e precisão diretamente no seu navegador. Com processamento em tempo real, você acompanha instantaneamente métricas essenciais do seu conteúdo e garante que seu texto esteja dentro dos limites exigidos para SEO, redes sociais, trabalhos acadêmicos e produção de texto no dia a dia.",
     how_to_use_title: "Como usar o Contador de Texto",
     step_1_title: "Insira o seu texto",
     step_1_desc: "Digite ou cole o conteúdo que você deseja analisar.",
@@ -240,15 +240,14 @@ defineI18nRoute({
     converter: "Conversor de Texto",
     ascii: "Gerador de Letras ASCII",
     fancy: "Letras Diferentes",
-    generator: "Gerador de Texto",
-    see_morse: "Código Morse"
+    generator: "Gerador de Texto"
   },
   en: {
     title: "Text Counter",
-    meta_title: "Online Text Counter - Words, Characters, Lines and Paragraphs",
+    meta_title: "Word & Character Counter Online — Count Words, Lines and Paragraphs",
     ogLocale: "en_US",
-    meta: "Count words, characters, lines, and paragraphs of your text in real time with a free online tool.",
-    about_desc: "This Text Counter lets you analyze and count words, characters, lines, and paragraphs quickly and accurately right in your browser. With real-time processing, you can instantly track essential metrics for your content and ensure your text stays within the required limits for SEO, social media, academic work, and everyday writing.",
+    meta: "Free online word counter and character counter. Count words, characters with and without spaces, lines and paragraphs in real time.",
+    about_desc: "This free word counter and character counter lets you analyze and count words, characters, lines, and paragraphs quickly and accurately right in your browser. With real-time processing, you can instantly track essential metrics for your content and ensure your text stays within the required limits for SEO, social media, academic work, and everyday writing.",
     how_to_use_title: "How to use the Text Counter",
     step_1_title: "Enter your text",
     step_1_desc: "Type or paste the content you want to analyze.",
@@ -298,15 +297,14 @@ defineI18nRoute({
     converter: "Text Converter",
     ascii: "ASCII Letter Generator",
     fancy: "Fancy Letters",
-    generator: "Text Generator",
-    see_morse: "Morse Code"
+    generator: "Text Generator"
   },
   es: {
     title: "Contador de Texto",
-    meta_title: "Contador de Texto Online - Palabras, Caracteres, Líneas y Párrafos",
+    meta_title: "Contador de Caracteres y Palabras Online — Líneas y Párrafos",
     ogLocale: "es_ES",
-    meta: "Cuenta palabras, caracteres, líneas y párrafos de tu texto en tiempo real con una herramienta online y gratuita.",
-    about_desc: "Este Contador de Texto te permite analizar y contar palabras, caracteres, líneas y párrafos con rapidez y precisión directamente en tu navegador. Con el procesamiento en tiempo real, puedes monitorear instantáneamente métricas esenciales de tu contenido y asegurarte de que tu texto cumpla con los límites exigidos para SEO, redes sociales, trabajos académicos y redacción diaria.",
+    meta: "Contador de caracteres y palabras online gratis. Cuenta caracteres con y sin espacios, palabras, líneas y párrafos en tiempo real.",
+    about_desc: "Este contador de caracteres y palabras gratuito te permite analizar y contar palabras, caracteres, líneas y párrafos con rapidez y precisión directamente en tu navegador. Con el procesamiento en tiempo real, puedes monitorear instantáneamente métricas esenciales de tu contenido y asegurarte de que tu texto cumpla con los límites exigidos para SEO, redes sociales, trabajos académicos y redacción diaria.",
     how_to_use_title: "Cómo usar el Contador de Texto",
     step_1_title: "Ingresa tu texto",
     step_1_desc: "Escribe o pega el contenido que deseas analizar.",
@@ -360,10 +358,10 @@ defineI18nRoute({
   },
   fr: {
     title: "Compteur de Texte",
-    meta_title: "Compteur de Texte en Ligne - Mots, Caractères, Lignes et Paragraphes",
+    meta_title: "Compteur de Mots et Caractères en Ligne — Lignes et Paragraphes",
     ogLocale: "fr_FR",
-    meta: "Comptez les mots, caractères, lignes et paragraphes de votre texte en temps réel avec un outil en ligne gratuit.",
-    about_desc: "Ce Compteur de Texte vous permet d'analyser et de compter les mots, caractères, lignes et paragraphes avec rapidité et précision, directement dans votre navigateur. Avec un traitement en temps réel, vous pouvez suivre instantanément les métriques essentielles de votre contenu et vous assurer que votre texte respecte les limites exigées pour le SEO, les réseaux sociaux, les travaux académiques et la rédaction quotidienne.",
+    meta: "Compteur de mots et de caractères en ligne gratuit. Comptez les caractères avec et sans espaces, les mots, lignes et paragraphes en temps réel.",
+    about_desc: "Ce compteur de mots et de caractères gratuit vous permet d'analyser et de compter les mots, caractères, lignes et paragraphes avec rapidité et précision, directement dans votre navigateur. Avec un traitement en temps réel, vous pouvez suivre instantanément les métriques essentielles de votre contenu et vous assurer que votre texte respecte les limites exigées pour le SEO, les réseaux sociaux, les travaux académiques et la rédaction quotidienne.",
     how_to_use_title: "Comment utiliser le Compteur de Texte",
     step_1_title: "Insérez votre texte",
     step_1_desc: "Tapez ou collez le contenu que vous souhaitez analyser.",
@@ -474,10 +472,10 @@ defineI18nRoute({
   },
   id: {
     title: "Penghitung Teks",
-    meta_title: "Penghitung Teks Online - Kata, Karakter, Baris, dan Paragraf",
+    meta_title: "Penghitung Kata & Karakter Online — Baris dan Paragraf",
     ogLocale: "id_ID",
-    meta: "Hitung kata, karakter, baris, dan paragraf dari teks Anda secara real time dengan alat online gratis.",
-    about_desc: "Penghitung Teks ini memungkinkan Anda untuk menganalisis dan menghitung kata, karakter, baris, dan paragraf dengan cepat dan akurat langsung di browser Anda. Dengan pemrosesan waktu nyata, Anda dapat langsung melacak metrik penting untuk konten Anda dan memastikan teks Anda tetap berada dalam batas yang diperlukan untuk SEO, media sosial, tugas akademik, dan penulisan sehari-hari.",
+    meta: "Penghitung kata dan karakter online gratis. Hitung karakter dengan dan tanpa spasi, kata, baris, dan paragraf secara real time.",
+    about_desc: "Penghitung kata dan karakter gratis ini memungkinkan Anda untuk menganalisis dan menghitung kata, karakter, baris, dan paragraf dengan cepat dan akurat langsung di browser Anda. Dengan pemrosesan waktu nyata, Anda dapat langsung melacak metrik penting untuk konten Anda dan memastikan teks Anda tetap berada dalam batas yang diperlukan untuk SEO, media sosial, tugas akademik, dan penulisan sehari-hari.",
     how_to_use_title: "Cara menggunakan Penghitung Teks",
     step_1_title: "Masukkan teks Anda",
     step_1_desc: "Ketik atau rekatkan konten yang ingin Anda analisis.",
@@ -531,10 +529,10 @@ defineI18nRoute({
   },
   de: {
     title: "Textzähler",
-    meta_title: "Online-Textzähler - Wörter, Zeichen, Zeilen und Absätze",
+    meta_title: "Zeichenzähler Online — Wörter, Zeilen und Absätze zählen",
     ogLocale: "de_DE",
-    meta: "Zählen Sie Wörter, Zeichen, Zeilen und Absätze Ihres Textes in Echtzeit mit einem kostenlosen Online-Tool.",
-    about_desc: "Dieser Textzähler ermöglicht es Ihnen, Wörter, Zeichen, Zeilen und Absätze schnell und genau direkt in Ihrem Browser zu analysieren und zu zählen. Mit der Echtzeitverarbeitung können Sie wichtige Metriken für Ihre Inhalte sofort verfolgen und sicherstellen, dass Ihr Text innerhalb der erforderlichen Grenzen für SEO, soziale Medien, akademische Arbeiten und das tägliche Schreiben bleibt.",
+    meta: "Kostenloser Online-Zeichenzähler und Wortzähler. Zeichen mit und ohne Leerzeichen, Wörter, Zeilen und Absätze in Echtzeit zählen.",
+    about_desc: "Dieser kostenlose Zeichenzähler und Wortzähler ermöglicht es Ihnen, Wörter, Zeichen, Zeilen und Absätze schnell und genau direkt in Ihrem Browser zu analysieren und zu zählen. Mit der Echtzeitverarbeitung können Sie wichtige Metriken für Ihre Inhalte sofort verfolgen und sicherstellen, dass Ihr Text innerhalb der erforderlichen Grenzen für SEO, soziale Medien, akademische Arbeiten und das tägliche Schreiben bleibt.",
     how_to_use_title: "Wie man den Textzähler benutzt",
     step_1_title: "Geben Sie Ihren Text ein",
     step_1_desc: "Tippen oder fügen Sie den Inhalt ein, den Sie analysieren möchten.",
@@ -588,10 +586,10 @@ defineI18nRoute({
   },
   nl: {
     title: "Tekstteller",
-    meta_title: "Online Tekstteller - Woorden, Tekens, Regels en Alinea's",
+    meta_title: "Woordenteller Online — Woorden, Tekens, Regels en Alinea's tellen",
     ogLocale: "nl_NL",
-    meta: "Tel woorden, tekens, regels en alinea's van uw tekst in realtime met een gratis online tool.",
-    about_desc: "Met deze Tekstteller kunt u snel en nauwkeurig woorden, tekens, regels en alinea's analyseren en tellen, rechtstreeks in uw browser. Met realtime verwerking kunt u direct essentiële statistieken voor uw inhoud volgen en ervoor zorgen dat uw tekst binnen de vereiste limieten blijft voor SEO, sociale media, academisch werk en dagelijks schrijven.",
+    meta: "Gratis online woordenteller en tekenteller. Tel woorden, tekens met en zonder spaties, regels en alinea's in realtime.",
+    about_desc: "Met deze gratis woordenteller en tekenteller kunt u snel en nauwkeurig woorden, tekens, regels en alinea's analyseren en tellen, rechtstreeks in uw browser. Met realtime verwerking kunt u direct essentiële statistieken voor uw inhoud volgen en ervoor zorgen dat uw tekst binnen de vereiste limieten blijft voor SEO, sociale media, academisch werk en dagelijks schrijven.",
     how_to_use_title: "Hoe de Tekstteller te gebruiken",
     step_1_title: "Voer uw tekst in",
     step_1_desc: "Typ of plak de inhoud die u wilt analyseren.",
@@ -642,6 +640,63 @@ defineI18nRoute({
     ascii: "ASCII-lettergenerator",
     fancy: "Speciale Letters",
     generator: "Tekstgenerator"
+  },
+  ru: {
+    title: "Счетчик слов и символов",
+    meta_title: "Счетчик символов и слов онлайн — строки и абзацы",
+    ogLocale: "ru_RU",
+    meta: "Бесплатный онлайн-счетчик символов и слов. Считайте символы (с пробелами и без), слова, строки и абзацы в реальном времени.",
+    about_desc: "Этот бесплатный счетчик слов и символов позволяет быстро и точно анализировать и подсчитывать слова, символы, строки и абзацы прямо в вашем браузере. Благодаря обработке в реальном времени вы можете мгновенно отслеживать основные метрики вашего текста и проверять его соответствие ограничениям для SEO, социальных сетей, академических работ и повседневных задач.",
+    how_to_use_title: "Как использовать счетчик текста",
+    step_1_title: "Вставьте ваш текст",
+    step_1_desc: "Напечатайте или вставьте текст, который хотите проанализировать.",
+    step_2_title: "Смотрите результаты",
+    step_2_desc: "Количество слов, символов, строк и абзацев обновляется мгновенно по мере ввода или вставки текста.",
+    step_3_title: "Анализируйте метрики",
+    step_3_desc: "Используйте статистику в реальном времени, чтобы проверять ограничения на размер контента и соответствовать критериям SEO, социальных сетей и учебных заданий.",
+    apps_title: "Применение и варианты использования",
+    app_1_t: "SEO-копирайтинг",
+    app_1_d: "Оптимизируйте заголовки и мета-описания, придерживаясь идеальных ограничений по количеству символов для поисковых систем.",
+    app_2_t: "Социальные сети",
+    app_2_d: "Убедитесь, что ваши посты соответствуют лимитам таких платформ, как X (Twitter), Instagram, LinkedIn и WhatsApp.",
+    app_3_t: "Академические работы",
+    app_3_d: "Следите за точным количеством слов и абзацев при написании эссе, статей, диссертаций и школьных отчетов.",
+    app_4_t: "Маркетинговые тексты",
+    app_4_d: "Точно проверяйте длину рекламных объявлений, заголовков, email-рассылок и текстов для лендингов.",
+    app_5_t: "Редактура и вычитка",
+    app_5_d: "Сравнивайте разные версии текста и легко контролируйте сокращение или расширение контента.",
+    edge_title: "Точность и особые случаи",
+    edge_desc: "Этот счетчик текста разработан для удобного отображения наиболее важных повседневных метрик.",
+    edge_1_t: "Символы с пробелами и без",
+    edge_1_d: "Мы показываем оба значения, так как каждая платформа определяет «символ» по-разному. Например, некоторые учитывают пробелы, а другие — нет.",
+    edge_2_t: "Подсчет строк",
+    edge_2_d: "Полезно для заполнения форм, написания сценариев и эссе с ограничением по количеству строк.",
+    edge_3_t: "Подсчет абзацев",
+    edge_3_d: "Помогает проверить структуру статей, постов и форматированных текстов.",
+    edge_4_t: "Обновление в реальном времени",
+    edge_4_d: "Итоговые значения меняются автоматически по мере ввода или вставки текста.",
+    faq_title: "Вопросы и ответы",
+    faq1q: "В чем разница между символами и символами с пробелами?",
+    faq1a: "Обычно под символами понимаются буквы, цифры и знаки препинания без учета пробелов. «Символы с пробелами» включают в итоговое число все пробелы и отступы.",
+    faq2q: "Работает ли счетчик с текстами на других языках?",
+    faq2a: "Да. Инструмент работает с любым языком, где слова разделяются пробелами: английским, испанским, французским, немецким и другими. Подсчет символов от языка не зависит.",
+    faq3q: "Есть ли ограничения на объем анализируемого текста?",
+    faq3a: "Нет. Инструмент не имеет никаких ограничений. Обработка происходит прямо в вашем браузере, поэтому вы можете без проблем вставлять длинные тексты, такие как статьи, диссертации или сценарии.",
+    features_title: "Основные возможности",
+    f_1: "Счетчик слов",
+    f_2: "Счетчик символов с пробелами и без",
+    f_3: "Счетчик абзацев и строк",
+    f_4: "Результаты в реальном времени",
+    plc: "Напечатайте или вставьте текст сюда для подсчета слов и символов...",
+    words: "Слов",
+    paragraphs: "Абзацев",
+    lines: "Строк",
+    chars: "Символов",
+    all: "с пробелами",
+    converter: "Конвертер текста",
+    ascii: "Генератор ASCII-букв",
+    fancy: "Красивые буквы",
+    generator: "Генератор текста"
   }
 }
 </i18n>

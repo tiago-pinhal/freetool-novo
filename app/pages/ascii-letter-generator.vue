@@ -162,7 +162,8 @@ defineI18nRoute({
     it: '/generatore-di-lettere-ascii',
     id: '/generator-huruf-ascii',
     de: '/ascii-generator',
-    nl: '/ascii-generator'
+    nl: '/ascii-generator',
+    ru: '/ascii-generator'
   }
 })
 </script>
@@ -391,9 +392,9 @@ defineI18nRoute({
     see4: "Conversor de Texto"
   },
   en: {
-    m_title: "ASCII Letter Generator: Text to ASCII Art Online | Free",
-    title: "ASCII Letter Generator",
-    meta: "Free online ASCII letter generator. Convert text to ASCII art with 280+ creative font styles including 3D, banner and graffiti. Perfect for Discord, GitHub READMEs, code comments and social media. Instant copy and paste.",
+    m_title: "ASCII Art Generator – Free Text to ASCII Art Online",
+    title: "ASCII Art Generator",
+    meta: "Free ASCII art generator online. Convert text to ASCII art with 280+ FIGlet font styles including 3D, banner and graffiti. ASCII art maker perfect for Discord, GitHub READMEs, code comments and social media. Instant copy and paste.",
     input_label: "Your text",
     plc: "Type your text here",
     fonts: "Font",
@@ -405,7 +406,7 @@ defineI18nRoute({
     result: "Result",
     tab1: "Custom Font",
     tab2: "All Fonts",
-    d1: "Design eye-catching text art with a massive collection of over 280 creative FIGlet font styles ranging from retro to 3D. Easily transform any word into a visual masterpiece for Discord servers, GitHub READMEs, or code headers with instant processing that works directly in your browser without needing to install any software.",
+    d1: "Free online ASCII art generator with over 280 creative FIGlet font styles ranging from retro to 3D. Use it as an ASCII art maker or ASCII art creator to transform any word or name into eye-catching text art for Discord servers, GitHub READMEs, ASCII banners, or code headers — all processed instantly in your browser with no software to install.",
     features_title: "Features",
     f_1: "280+ creative FIGlet font styles",
     f_2: "3D, banner, graffiti and retro ASCII art",
@@ -441,9 +442,9 @@ defineI18nRoute({
     see4: "Text Converter"
   },
   es: {
-    m_title: "Generador de Letras ASCII: Texto a ASCII Online Gratis",
-    title: "Generador de Letras ASCII",
-    meta: "Convierte texto en arte ASCII con más de 280 fuentes creativas incluyendo estilos 3D, banner y graffiti. Ideal para Discord, GitHub y redes sociales. Copia y pega al instante.",
+    m_title: "Generador ASCII: Texto a Arte ASCII Online Gratis",
+    title: "Generador ASCII",
+    meta: "Generador ASCII online gratis. Convierte texto en arte ASCII con más de 280 fuentes creativas incluyendo estilos 3D, banner y graffiti. Ideal para Discord, GitHub y redes sociales. Copia y pega al instante.",
     input_label: "Tu texto",
     plc: "Escribe tu texto aquí",
     fonts: "Fuente",
@@ -739,6 +740,56 @@ defineI18nRoute({
     see2: "Tekstvergelijker",
     see3: "Tekstteller",
     see4: "Tekstconverter"
+  },
+  ru: {
+    m_title: "Генератор ASCII-арта: текст в ASCII онлайн бесплатно",
+    title: "Генератор ASCII-арта",
+    meta: "Онлайн-генератор ASCII-арта. Преобразуйте текст в ASCII с более чем 280 креативными шрифтами, включая 3D, баннеры и граффити. Подходит для Discord, GitHub, комментариев в коде и соцсетей. Быстрое копирование.",
+    input_label: "Ваш текст",
+    plc: "Введите ваш текст здесь",
+    fonts: "Шрифт",
+    width: "Ширина",
+    default: "По умолчанию",
+    bt: "Генерировать",
+    loading: "Загрузка...",
+    break: "Разрешить перенос слов",
+    result: "Результат",
+    tab1: "Выбор шрифта",
+    tab2: "Все шрифты",
+    d1: "Создавайте потрясающие текстовые дизайны с помощью более чем 280 креативных шрифтов и стилей FIGlet — от ретро до 3D. Наш инструмент позволяет превращать имена, ники и сообщения в визуальное искусство для украшения серверов Discord, файлов README в GitHub или комментариев в коде. Всё это работает мгновенно и без необходимости установки программ на компьютер. Используйте вкладку «Выбор шрифта» для генерации с определенным стилем или откройте вкладку «Все шрифты», чтобы сравнить ваш текст в различных вариантах оформления и выбрать идеальный.",
+    features_title: "Возможности",
+    f_1: "Более 280 креативных шрифтов и стилей FIGlet",
+    f_2: "3D-стили, баннеры, граффити и ретро ASCII-арт",
+    use_cases_title: "Варианты использования",
+    uc_intro: "Текстовый ASCII-арт универсален и может добавить индивидуальности во многие цифровые проекты:",
+    uc_1_t: "Discord и Slack",
+    uc_1_d: "Создавайте яркие баннеры и приветственные сообщения для ваших серверов и каналов.",
+    uc_2_t: "GitHub и файлы README",
+    uc_2_d: "Добавляйте стильные заголовки в файлы README, документацию к коду и вывод в консоль.",
+    uc_3_t: "Социальные сети",
+    uc_3_d: "Выделяйте свои профили в Twitter, Reddit, на форумах и игровых платформах с помощью уникального текстового арта.",
+    uc_4_t: "Подписи в email",
+    uc_4_d: "Добавьте стильный ретро-технологический штрих в подписи ваших писем и личные сообщения.",
+    how_to_use_title: "Как использовать",
+    step_1_title: "Введите ваш text",
+    step_1_desc: "Введите слово, фразу или никнейм, который хотите превратить в ASCII-арт, в поле ввода.",
+    step_2_title: "Выберите шрифт",
+    step_2_desc: "Выберите один из более чем 280 доступных шрифтов, включая 3D, Banner, Block, Graffiti и многие другие уникальные стили.",
+    step_3_title: "Нажмите «Генерировать»",
+    step_3_desc: "Нажмите кнопку генерации, и ваш ASCII-арт мгновенно отобразится ниже.",
+    step_4_title: "Скопируйте и вставьте",
+    step_4_desc: "Нажмите кнопку копирования и вставьте готовый ASCII-арт туда, куда вам нужно.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "Что такое ASCII-арт?",
+    faq_1_a: "ASCII-арт — это графическая техника, использующая печатные символы таблицы ASCII для создания изображений и художественного текста. Она зародилась на заре компьютерной эры, когда графические дисплеи еще не были доступны, и по сей день остается популярной благодаря своей ретро-эстетике и универсальной совместимости.",
+    faq_2_q: "Что такое шрифты FIGlet?",
+    faq_2_a: "FIGlet — это компьютерная программа, которая создает крупные буквы из обычного текста. Каждый шрифт FIGlet определяет, как именно должен отрисовываться символ с помощью знаков ASCII. Наш генератор включает более 280 таких шрифтов: от простых до сложных трехмерных и декоративных стилей.",
+    faq_3_q: "Где можно использовать ASCII-арт?",
+    faq_3_a: "ASCII-арт работает везде, где поддерживается обычный текст: в Discord, Slack, файлах README на GitHub, Twitter, Reddit, электронной почте, терминалах, комментариях к коду и т. д. Поскольку для этого используются только стандартные символы, арт будет корректно отображаться на любом устройстве и платформе.",
+    see1: "Красивые буквы",
+    see2: "Сравнение текстов",
+    see3: "Счетчик текста",
+    see4: "Конвертер текста"
   }
 }
 </i18n>

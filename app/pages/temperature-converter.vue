@@ -16,7 +16,8 @@ usePageJsonLd({
   ],
   faq: [
     { question: t('faq_1_q'), answer: t('faq_1_a') },
-    { question: t('faq_2_q'), answer: t('faq_2_a') }
+    { question: t('faq_2_q'), answer: t('faq_2_a') },
+    { question: t('faq_3_q'), answer: t('faq_3_a') }
   ]
 })
 
@@ -60,7 +61,8 @@ defineI18nRoute({
     it: '/convertitore-di-temperatura',
     id: '/konverter-suhu',
     de: '/temperatur-umrechner',
-    nl: '/temperatuur-converter'
+    nl: '/temperatuur-converter',
+    ru: '/konverter-temperatury'
   }
 })
 </script>
@@ -106,7 +108,8 @@ defineI18nRoute({
           :title="t('faq_title')"
           :items="[
             { question: t('faq_1_q'), answer: t('faq_1_a') },
-            { question: t('faq_2_q'), answer: t('faq_2_a') }
+            { question: t('faq_2_q'), answer: t('faq_2_a') },
+            { question: t('faq_3_q'), answer: t('faq_3_a') }
           ]"
         />
       </div>
@@ -185,6 +188,8 @@ defineI18nRoute({
     faq_1_a: "Celsius is based on the freezing and boiling points of water (0°C and 100°C), while Fahrenheit uses a different scale (32°F and 212°F for the same points).",
     faq_2_q: "When is Kelvin used?",
     faq_2_a: "Kelvin is the primary unit of temperature in the physical sciences and is used when absolute temperature measurements are required.",
+    faq_3_q: "Which temperature scales are supported?",
+    faq_3_a: "This tool supports the following 4 major temperature scales: Celsius (°C), Fahrenheit (°F), Kelvin (K), and Rankine (°R).",
     see1: "Length",
     see2: "Time",
     see3: "Storage Unit",
@@ -224,6 +229,8 @@ defineI18nRoute({
     faq_1_a: "Celsius é baseado nos pontos de congelamento e ebulição da água (0°C e 100°C), enquanto Fahrenheit usa uma escala diferente (32°F e 212°F para os mesmos pontos).",
     faq_2_q: "Quando o Kelvin é usado?",
     faq_2_a: "Kelvin é a unidade principal de temperatura nas ciências físicas e é usado quando medições de temperatura absoluta são necessárias.",
+    faq_3_q: "Quais escalas de temperatura são suportadas?",
+    faq_3_a: "Esta ferramenta suporta as seguintes 4 principais escalas de temperatura: Celsius (°C), Fahrenheit (°F), Kelvin (K) e Rankine (°R).",
     see1: "Comprimento",
     see2: "Tempo",
     see3: "Unidades de Armazenamento",
@@ -263,6 +270,8 @@ defineI18nRoute({
     faq_1_a: "Celsius se basa en los puntos de congelación y ebullición del agua (0°C y 100°C), mientras que Fahrenheit utiliza una escala diferente (32°F y 212°F para los mismos puntos).",
     faq_2_q: "¿Cuándo se usa el Kelvin?",
     faq_2_a: "Kelvin es la unidad principal de temperatura en las ciencias físicas y se utiliza cuando se requieren mediciones de temperatura absoluta.",
+    faq_3_q: "¿Qué escalas de temperatura son compatibles?",
+    faq_3_a: "Esta herramienta admite las siguientes 4 escalas de temperatura principales: Celsius (°C), Fahrenheit (°F), Kelvin (K) y Rankine (°R).",
     see1: "Longitud",
     see2: "Tiempo",
     see3: "Unidades de Almacenamiento",
@@ -302,6 +311,8 @@ defineI18nRoute({
     faq_1_a: "Le Celsius est basé sur les points de congélation et d'ébullition de l'eau (0°C et 100°C), tandis que le Fahrenheit utilise une échelle différente (32°F et 212°F pour les mêmes points).",
     faq_2_q: "Quand le Kelvin est-il utilisé ?",
     faq_2_a: "Le Kelvin est l'unité principale de température dans les sciences physiques et est utilisé lorsque des mesures de température absolue sont nécessaires.",
+    faq_3_q: "Quelles échelles de température sont prises en charge ?",
+    faq_3_a: "Cet outil prend en charge les 4 échelles de température principales suivantes : Celsius (°C), Fahrenheit (°F), Kelvin (K) et Rankine (°R).",
     see1: "Longueur",
     see2: "Temps",
     see3: "Unités de Stockage",
@@ -341,6 +352,8 @@ defineI18nRoute({
     faq_1_a: "Celsius si basa sui punti di congelamento e ebollizione dell'acqua (0°C e 100°C), mentre Fahrenheit utilizza una scala diversa (32°F e 212°F per gli stessi punti).",
     faq_2_q: "Quando viene usato il Kelvin?",
     faq_2_a: "Il Kelvin è l'unità principale di temperatura nelle scienze fisiche e viene utilizzato quando sono richieste misurazioni della temperatura assoluta.",
+    faq_3_q: "Quali scale di temperatura sono supportate?",
+    faq_3_a: "Questo strumento supporta le seguenti 4 scale di temperatura principali: Celsius (°C), Fahrenheit (°F), Kelvin (K) e Rankine (°R).",
     see1: "Lunghezza",
     see2: "Tempo",
     see3: "Unità di Archiviazione",
@@ -380,6 +393,8 @@ defineI18nRoute({
     faq_1_a: "Celsius didasarkan pada titik beku dan titik didih air (0°C dan 100°C), sedangkan Fahrenheit menggunakan skala yang berbeda (32°F dan 212°F untuk titik yang sama).",
     faq_2_q: "Kapan Kelvin digunakan?",
     faq_2_a: "Kelvin adalah satuan utama suhu dalam ilmu fisika dan digunakan ketika pengukuran suhu absolut diperlukan.",
+    faq_3_q: "Skala suhu apa saja yang didukung?",
+    faq_3_a: "Alat ini mendukung 4 skala suhu utama berikut: Celsius (°C), Fahrenheit (°F), Kelvin (K), dan Rankine (°R).",
     see1: "Panjang",
     see2: "Waktu",
     see3: "Unit Penyimpanan",
@@ -419,6 +434,8 @@ defineI18nRoute({
     faq_1_a: "Celsius basiert auf dem Gefrier- und Siedepunkt von Wasser (0°C und 100°C), während Fahrenheit eine andere Skala verwendet (32°F und 212°F für dieselben Punkte).",
     faq_2_q: "Wann wird Kelvin verwendet?",
     faq_2_a: "Kelvin ist die grundlegende Temperatureinheit in den physikalischen Wissenschaften und wird verwendet, wenn absolute Temperaturmessungen erforderlich sind.",
+    faq_3_q: "Welche Temperaturskalen werden unterstützt?",
+    faq_3_a: "Dieses Tool unterstützt die folgenden 4 wichtigen Temperaturskalen: Celsius (°C), Fahrenheit (°F), Kelvin (K) und Rankine (°R).",
     see1: "Länge",
     see2: "Zeit",
     see3: "Speichereinheiten",
@@ -458,6 +475,8 @@ defineI18nRoute({
     faq_1_a: "Het absolute nulpunt is de laagst mogelijke temperatuur waarbij alle thermische beweging stopt. Dit komt overeen met 0 Kelvin of -273,15 Celsius.",
     faq_2_q: "Bij welke temperatuur zijn Celsius e Fahrenheit gelijk?",
     faq_2_a: "De schalen van Celsius e Fahrenheit snijden elkaar precies op -40 graden. Dus -40°C is gelijk aan -40°F.",
+    faq_3_q: "Welke temperatuurschalen worden ondersteund?",
+    faq_3_a: "Deze tool ondersteunt de volgende 4 belangrijkste temperatuurschalen: Celsius (°C), Fahrenheit (°F), Kelvin (K) en Rankine (°R).",
     see1: "Lengte",
     see2: "Tijd",
     see3: "Romeinse cijfers",
@@ -466,6 +485,47 @@ defineI18nRoute({
     f_2: "Directe real-time resultaten",
     f_3: "Ondersteuning voor wetenschappelijke schalen",
     f_4: "Privé e veilig in uw browser"
+  },
+  ru: {
+    title: "Конвертер температуры",
+    meta: "Этот конвертер температурных величин позволяет легко переводить значения между различными температурными шкалами, такими как Цельсий, Фаренгейт, Ранкин и Кельвин.",
+    d1: "С помощью этого конвертера температуры вы можете, например, быстро перевести градусы Цельсия в Фаренгейты или Кельвины в Цельсии. Независимо от того, являетесь ли вы студентом, ученым, инженером или просто интересуетесь температурными шкалами, этот инструмент позволяет мгновенно переводить температуру в нужную единицу. Просто введите значение, выберите исходную и целевую шкалы, и результат отобразится мгновенно.",
+    C: "Цельсий",
+    F: "Фаренгейт",
+    K: "Кельвин",
+    R: "Ранкин",
+    value: "Значение",
+    from: "Из",
+    to: "В",
+    result: "Результат",
+    err: "Конвертация не выполнена",
+    how_it_works_title: "Как это работает",
+    step_1_title: "Введите значение",
+    step_1_desc: "Введите температурное значение, которое хотите перевести.",
+    step_2_title: "Выберите шкалы",
+    step_2_desc: "Выберите исходную и целевую шкалы температуры из списков.",
+    step_3_title: "Скопируйте результат",
+    step_3_desc: "Конвертация происходит мгновенно. Используйте кнопку копирования, чтобы сохранить результат в буфер обмена.",
+    use_cases_title: "Варианты использования",
+    uc_1_title: "Кулинария и рецепты",
+    uc_1_desc: "Быстро переводите температуру духовки между градусами Цельсия и Фаренгейта для приготовления блюд по международным рецептам.",
+    uc_2_title: "Научные исследования",
+    uc_2_desc: "Переводите измерения в Кельвины или Ранкины для термодинамических расчетов и лабораторных исследований.",
+    faq_title: "Вопросы и ответы",
+    faq_1_q: "В чем разница между градусами Цельсия и Фаренгейта?",
+    faq_1_a: "Шкала Цельсия основана на точках замерзания и кипения воды (0°C и 100°C соответственно), в то время как шкала Фаренгейта использует другие опорные значения (32°F и 212°F для тех же точек).",
+    faq_2_q: "Когда используется Кельвин?",
+    faq_2_a: "Кельвин является основной единицей измерения температуры в физических науках и используется в тех случаях, когда требуются измерения абсолютной температуры.",
+    faq_3_q: "Какие температурные шкалы поддерживаются?",
+    faq_3_a: "Этот инструмент поддерживает 4 основные температурные шкалы: Цельсий (°C), Фаренгейт (°F), Кельвин (K) и Ранкин (°R).",
+    see1: "Длина",
+    see2: "Время",
+    see3: "Единицы хранения",
+    see4: "Системы счисления",
+    f_1: "Перевод между шкалами Цельсия, Фаренгейта, Кельвина и Ранкина",
+    f_2: "Мгновенный перевод в реальном времени",
+    f_3: "Поддержка всех основных температурных шкал",
+    f_4: "Обработка на стороне клиента — данные не отправляются на серверы"
   }
 }
 </i18n>

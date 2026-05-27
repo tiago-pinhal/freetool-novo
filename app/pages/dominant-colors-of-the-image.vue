@@ -70,12 +70,12 @@ usePageJsonLd({
     t('feature_1'),
     t('feature_2'),
     t('feature_3'),
-    t('feature_4'),
-    t('feature_5')
+    t('feature_4')
   ],
   faq: [
     { question: t('faq2q'), answer: t('faq2a') },
-    { question: t('faq3q'), answer: t('faq3a') }
+    { question: t('faq3q'), answer: t('faq3a') },
+    { question: t('faq4q'), answer: t('faq4a') }
   ]
 })
 
@@ -109,7 +109,8 @@ defineI18nRoute({
     it: '/colori-dominanti-dell-immagine',
     id: '/warna-dominan-gambar',
     de: '/dominante-farben-des-bildes',
-    nl: '/dominante-kleuren-van-de-afbeelding'
+    nl: '/dominante-kleuren-van-de-afbeelding',
+    ru: '/cveta-iz-izobrazheniya'
   }
 })
 </script>
@@ -171,7 +172,7 @@ defineI18nRoute({
 
         <FeatureSection
           :title="t('features_title')"
-          :items="[t('feature_1'), t('feature_2'), t('feature_3'), t('feature_4'), t('feature_5')]"
+          :items="[t('feature_1'), t('feature_2'), t('feature_3'), t('feature_4')]"
         />
 
         <UseCaseSection
@@ -219,7 +220,8 @@ defineI18nRoute({
           :title="t('faq_title')"
           :items="[
             { question: t('faq2q'), answer: t('faq2a') },
-            { question: t('faq3q'), answer: t('faq3a') }
+            { question: t('faq3q'), answer: t('faq3a') },
+            { question: t('faq4q'), answer: t('faq4a') }
           ]"
         />
       </div>
@@ -230,12 +232,12 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   en: {
-    pageTitle: "Image Color Extractor — Dominant Color and Palette | Free Online",
-    ogTitle: "Image Color Extractor — Extract Colors from Any Photo",
+    pageTitle: "Color Palette from Image — Photo & Picture Color Extractor | Free",
+    ogTitle: "Color Palette Generator from Image — Extract Colors from Any Photo or Picture",
     ogLocale: "en_US",
     title: "Image Colors",
-    intro: "Identify the color profile of any image in seconds. Our Color Extractor analyzes your images locally to extract the dominant color and generate a ready-to-use palette. Upload a photo, screenshot, illustration, logo or product image to get HEX codes ideal for UI, branding, CSS variables, moodboards and visual analysis.",
-    meta: "Discover the color profile of any image with our free online palette extractor. Automatically generate a palette with the dominant colors of the image.",
+    intro: "Get the color palette of any image, photo, or illustration. Automatically detect the dominant color and generate a complete HEX palette from photos, screenshots, logos, illustrations, and product images.\n\nOur Color Extractor performs all processing directly in your browser, ensuring complete privacy and instant results. Ideal for UI/UX, branding, CSS variables, design systems, moodboards, and professional visual analysis.",
+    meta: "Generate color palettes from any image, photo, or picture. Instantly discover the dominant color and the corresponding HEX palette.",
     how_title: "How It Works",
     step_1_t: "Upload the Image",
     step_1_d: "Upload the image you want to analyze.",
@@ -260,12 +262,13 @@ defineI18nRoute({
     faq2a: "Common formats like PNG, JPG/JPEG and WebP work well. Cleaner images with less compression and a clearer main subject tend to produce more useful palettes.",
     faq3q: "Why does the dominant color sometimes look different from the main subject?",
     faq3a: "Because the tool analyzes the overall pixel distribution. If the image has a large background, shadows or neutral areas, those regions may influence the dominant result more than a smaller highlighted object.",
+    faq4q: "How do I extract a color palette from a photo?",
+    faq4a: "Click the upload area and select your photo, or drag and drop it directly. The tool instantly analyses the pixel distribution and extracts the dominant colour plus a full colour palette with HEX codes.",
     features_title: "Key Features",
     feature_1: "Quickly identify dominant colors in images",
     feature_2: "Generate color palettes from any image",
     feature_3: "Extract HEX codes with a single click",
     feature_4: "Supports formats like JPG, PNG and WebP",
-    feature_5: "Local browser processing for complete privacy",
     restart: "Start Over",
     dominant: "Dominant color",
     palette: "Image palette",
@@ -275,12 +278,12 @@ defineI18nRoute({
     see4: "QR Code Generator"
   },
   pt: {
-    pageTitle: "Extrator de Cores de Imagem — Cor Dominante e Paleta | Online Grátis",
-    ogTitle: "Extrator de Cores de Imagem — Extraia Cores de Qualquer Foto",
+    pageTitle: "Paleta de Cores de Imagem — Extrator de Cores de Foto e Imagem | Grátis",
+    ogTitle: "Gerador de Paleta de Cores de Imagem — Extraia Cores de Qualquer Foto",
     ogLocale: "pt_BR",
     title: "Cores da Imagem",
-    intro: "Identifique o perfil cromático de qualquer imagem em segundos. Nosso Extrator de Cores analisa suas imagens localmente para extrair a cor dominante e gerar uma paleta pronta para uso. Envie uma foto, screenshot, ilustração, logo ou imagem de produto para obter códigos HEX ideais para UI, branding, variáveis CSS, moodboards e análise visual.",
-    meta: "Descubra o perfil cromático de qualquer imagem com nosso extrator de paletas online gratuito. Gere automaticamente uma paleta com as cores dominantes da imagem.",
+    intro: "Obtenha a paleta de cores de qualquer imagem, foto ou ilustração. Detecte automaticamente a cor dominante e gere uma paleta HEX completa a partir de fotos, screenshots, logos, ilustrações e imagens de produtos.\n\nNosso Extrator de Cores realiza todo o processamento diretamente no seu navegador, garantindo total privacidade e resultados instantâneos. Ideal para UI/UX, branding, variáveis CSS, design systems, moodboards e análise visual profissional.",
+    meta: "Gere paletas de cores a partir de qualquer imagem, foto ou figura. Descubra instantaneamente a cor dominante e a paleta HEX correspondente.",
     how_title: "Como Funciona",
     step_1_t: "Envie a Imagem",
     step_1_d: "Faça upload da imagem que você quer analisar.",
@@ -305,12 +308,13 @@ defineI18nRoute({
     faq2a: "Formatos comuns como PNG, JPG/JPEG e WebP funcionam bem. Imagens mais limpas, com menos compressão e com o assunto principal mais claro, costumam gerar paletas mais úteis.",
     faq3q: "Por que a cor dominante às vezes parece diferente do objeto principal?",
     faq3a: "Porque a ferramenta analisa a distribuição geral dos pixels. Se a imagem tiver muito fundo, sombras ou áreas neutras, essas regiões podem influenciar o resultado dominante mais do que um objeto menor em destaque.",
+    faq4q: "Como extrair uma paleta de cores de uma foto?",
+    faq4a: "Clique na área de upload e selecione sua foto, ou arraste e solte diretamente. A ferramenta analisa instantaneamente a distribuição de pixels e extrai a cor dominante mais uma paleta completa com códigos HEX.",
     features_title: "Principais Recursos",
     feature_1: "Identifique rapidamente as cores dominantes em imagens",
     feature_2: "Gere paletas de cores a partir de qualquer imagem",
     feature_3: "Extraia códigos HEX com um único clique",
     feature_4: "Suporta formatos como JPG, PNG e WebP",
-    feature_5: "Processamento local no navegador para total privacidade",
     restart: "Recomeçar",
     dominant: "Cor dominante",
     palette: "Paleta da imagem",
@@ -320,12 +324,12 @@ defineI18nRoute({
     see4: "Gerador de QR Code"
   },
   es: {
-    pageTitle: "Extractor de Colores de Imagen — Color Dominante y Paleta | Online Gratis",
-    ogTitle: "Extractor de Colores de Imagen — Extrae Colores de Cualquier Foto",
+    pageTitle: "Paleta de Colores desde Imagen — Extractor de Colores de Foto | Gratis",
+    ogTitle: "Generador de Paleta de Colores desde Imagen — Extrae Colores de Cualquier Foto",
     ogLocale: "es_ES",
     title: "Colores de la Imagen",
-    intro: "Identifica el perfil cromático de cualquier imagen en segundos. Nuestro Extractor de Colores analiza tus imágenes localmente para extraer el color dominante y generar una paleta lista para usar. Sube una foto, captura de pantalla, ilustración, logo o imagen de producto para obtener códigos HEX ideales para UI, branding, variables CSS, moodboards y análisis visual.",
-    meta: "Descubre el perfil cromático de cualquier imagen con nuestro extractor de paletas online gratuito. Genera automáticamente una paleta con los colores dominantes de la imagen.",
+    intro: "Obtén la paleta de colores de cualquier imagen, foto o ilustración. Detecta automáticamente el color dominante y genera una paleta HEX completa a partir de fotos, capturas de pantalla, logotipos, ilustraciones e imágenes de productos.\n\nNuestro Extractor de Colores realiza todo el procesamiento directamente en tu navegador, garantizando total privacidad y resultados instantáneos. Ideal para UI/UX, branding, variables CSS, sistemas de diseño, moodboards y análisis visual profesional.",
+    meta: "Genera paletas de colores a partir de cualquier imagen, foto o ilustración. Descubre al instante el color dominante y la paleta HEX correspondiente.",
     how_title: "Cómo Funciona",
     step_1_t: "Sube la Imagen",
     step_1_d: "Sube la imagen que quieres analizar.",
@@ -350,12 +354,13 @@ defineI18nRoute({
     faq2a: "Formatos comunes como PNG, JPG/JPEG y WebP funcionan bien. Las imágenes más limpias, con menos compresión y con el sujeto principal más claro, suelen generar paletas más útiles.",
     faq3q: "¿Por qué el color dominante a veces parece diferente al objeto principal?",
     faq3a: "Porque la herramienta analiza la distribución general de píxeles. Si la imagen tiene mucho fondo, sombras o áreas neutras, esas regiones pueden influir en el resultado dominante más que un objeto más pequeño en primer plano.",
+    faq4q: "¿Cómo extraigo una paleta de colores de una foto?",
+    faq4a: "Haz clic en el área de carga y selecciona tu foto, o arrástrala y suéltala directamente. La herramienta analizará al instante la distribución de píxeles y extraerá el color dominante más una paleta completa con códigos HEX.",
     features_title: "Características Principales",
     feature_1: "Identifica rápidamente los colores dominantes en imágenes",
     feature_2: "Genera paletas de colores a partir de cualquier imagen",
     feature_3: "Extrae códigos HEX con un solo clic",
     feature_4: "Compatible con formatos como JPG, PNG y WebP",
-    feature_5: "Procesamiento local en el navegador para total privacidad",
     restart: "Empezar de nuevo",
     dominant: "Color dominante",
     palette: "Paleta de la imagen",
@@ -365,12 +370,12 @@ defineI18nRoute({
     see4: "Generador de QR Code"
   },
   fr: {
-    pageTitle: "Extracteur de Couleur d'Image — Couleur Dominante et Palette | En Ligne Gratuit",
-    ogTitle: "Extracteur de Couleur d'Image — Extrayez les Couleurs de n'importe quelle Photo",
+    pageTitle: "Palette de Couleurs depuis Image — Extracteur de Couleurs de Photo | Gratuit",
+    ogTitle: "Générateur de Palette depuis Image — Extrayez les Couleurs de n'importe quelle Photo",
     ogLocale: "fr_FR",
     title: "Couleurs de l'Image",
-    intro: "Identifiez le profil chromatique de n'importe quelle image en quelques secondes. Notre Extracteur de Couleur analyse vos images localement pour extraire la couleur dominante et générer une palette prête à l'emploi. Téléchargez une photo, une capture d'écran, une illustration, un logo ou une image de produit pour obtenir des codes HEX idéaux pour l'UI, le branding, les variables CSS, les moodboards et l'analyse visuelle.",
-    meta: "Découvrez le profil chromatique de n'importe quelle image avec notre extracteur de palette en ligne gratuit. Générez automatiquement une palette avec les couleurs dominantes de l'image.",
+    intro: "Obtenez la palette de couleurs de n'importe quelle image, photo ou illustration. Détectez automatiquement la couleur dominante et générez une palette HEX complète à partir de photos, captures d'écran, logos, illustrations et images de produits.\n\nNotre Extracteur de Couleurs effectue tout le traitement directement dans votre navigateur, garantissant une confidentialité totale et des résultats instantanés. Idéal pour l'UI/UX, le branding, les variables CSS, les design systems, les moodboards et l'analyse visuelle professionnelle.",
+    meta: "Générez des palettes de couleurs à partir de n'importe quelle image, photo ou illustration. Découvrez instantanément la couleur dominante et la palette HEX correspondante.",
     how_title: "Comment ça Fonctionne",
     step_1_t: "Envoyez l'Image",
     step_1_d: "Téléchargez l'image que vous souhaitez analyser.",
@@ -395,12 +400,13 @@ defineI18nRoute({
     faq2a: "Les formats courants comme PNG, JPG/JPEG et WebP fonctionnent très bien. Les images plus nettes, moins compressées et avec le sujet principal bien visible ont tendance à générer des palettes plus utiles.",
     faq3q: "Pourquoi la couleur dominante semble-t-elle parfois différente de l'objet principal ?",
     faq3a: "Parce que l'outil analyse la distribution globale des pixels. Si l'image comporte un grand arrière-plan, des ombres ou des zones neutres, ces régions peuvent influencer le résultat dominant plus qu'un objet plus petit mis en valeur.",
+    faq4q: "Comment extraire une palette de couleurs depuis une photo ?",
+    faq4a: "Cliquez sur la zone de téléversement et sélectionnez votre photo, ou glissez-déposez-la directement. L'outil analyse instantanément la distribution des pixels et extrait la couleur dominante ainsi qu'une palette complète avec codes HEX.",
     features_title: "Principaux Atouts",
     feature_1: "Identifiez rapidement les couleurs dominantes dans les images",
     feature_2: "Générez des palettes de couleurs à partir de n'importe quelle image",
     feature_3: "Extrayez des codes HEX en un seul clic",
     feature_4: "Prend en charge les formats comme JPG, PNG et WebP",
-    feature_5: "Traitement local dans le navigateur pour une confidentialité totale",
     restart: "Recommencer",
     dominant: "Couleur dominante",
     palette: "Palette de l'image",
@@ -410,12 +416,12 @@ defineI18nRoute({
     see4: "Générateur de QR Code"
   },
   it: {
-    pageTitle: "Estrattore di Colori da Immagine — Colore Dominante e Palette | Online Gratis",
-    ogTitle: "Estrattore di Colori da Immagine — Estrai Colori da Qualsiasi Foto",
+    pageTitle: "Palette di Colori da Immagine — Estrattore di Colori da Foto | Gratis",
+    ogTitle: "Generatore di Palette da Immagine — Estrai Colori da Qualsiasi Foto o Immagine",
     ogLocale: "it_IT",
     title: "Colori dell'Immagine",
-    intro: "Identifica il profilo cromatico di qualsiasi immagine in pochi secondi. Il nostro Estrattore di Colori analizza le tue immagini localmente per estrarre il colore dominante e generare una palette pronta all'uso. Carica una foto, uno screenshot, un'illustrazione, un logo o un'immagine di prodotto per ottenere codici HEX ideali per UI, branding, variabili CSS, moodboard e analisi visiva.",
-    meta: "Scopri il profilo cromatico di qualsiasi immagine con il nostro estrattore di palette online gratuito. Genera automaticamente una palette con i colori dominanti dell'immagine.",
+    intro: "Ottieni la palette di colori da qualsiasi immagine, foto o illustrazione. Rileva automaticamente il colore dominante e genera una palette HEX completa da foto, screenshot, loghi, illustrazioni e immagini di prodotti.\n\nIl nostro Estrattore di Colori esegue tutte le elaborazioni direttamente nel tuo browser, garantendo la totale privacy e risultati istantanei. Ideale per UI/UX, branding, variabili CSS, design system, moodboard e analisi visiva professionale.",
+    meta: "Genera palette di colori da qualsiasi immagine, foto o illustrazione. Scopri istantaneamente il colore dominante e la palette HEX corrispondente.",
     how_title: "Come Funziona",
     step_1_t: "Invia l'Immagine",
     step_1_d: "Carica l'immagine che desideri analizzare.",
@@ -438,14 +444,15 @@ defineI18nRoute({
     faq_title: "Domande e Risposte",
     faq2q: "Quali formati di immagine funzionano meglio ?",
     faq2a: "I formati comuni come PNG, JPG/JPEG e WebP funzionano molto bene. Le immagini più nitide, meno compresse e con il soggetto principale ben visibile tendono a generare palette più utili.",
-    faq3q: "Perché il colore dominante a volte sembra diverso dall'oggetto principale ?",
+    faq3q: "Perché il colore dominante a volte sembra diverso dall'oggetto principale?",
     faq3a: "Perché lo strumento analizza la distribuzione complessiva dei pixel. Se l'immagine presenta un grande sfondo, ombre o aree neutre, queste regioni possono influenzare il risultato dominante più di un oggetto in evidenza più piccolo.",
+    faq4q: "Come estraggo una palette di colori da una foto?",
+    faq4a: "Clicca sull'area di caricamento e seleziona la tua foto, oppure trascinala e rilasciala direttamente. Lo strumento analizzerà istantaneamente la distribuzione dei pixel ed estrarrà il colore dominante più una palette completa con codici HEX.",
     features_title: "Caratteristiche Principali",
     feature_1: "Identifica rapidamente i colori dominanti nelle immagini",
     feature_2: "Genera palette di colori da qualsiasi immagine",
     feature_3: "Estrai codici HEX con un singolo clic",
     feature_4: "Supporta formati come JPG, PNG e WebP",
-    feature_5: "Elaborazione locale nel browser per una privacy totale",
     restart: "Ricomincia",
     dominant: "Colore dominante",
     palette: "Palette dell'immagine",
@@ -455,12 +462,12 @@ defineI18nRoute({
     see4: "Generatore di QR Code"
   },
   id: {
-    pageTitle: "Ekstraktor Warna Gambar — Warna Dominan dan Palet | Gratis Online",
-    ogTitle: "Ekstraktor Warna Gambar — Ekstrak Warna dari Foto Apapun",
+    pageTitle: "Palet Warna dari Gambar — Ekstraktor Warna Foto & Gambar | Gratis",
+    ogTitle: "Generator Palet Warna dari Gambar — Ekstrak Warna dari Foto atau Gambar Apapun",
     ogLocale: "id_ID",
     title: "Warna Gambar",
-    intro: "Identifikasi profil warna gambar apapun dalam hitungan detik. Ekstraktor Warna kami menganalisis gambar secara lokal untuk mengekstrak warna dominan dan menghasilkan palet siap pakai. Unggah foto, tangkapan layar, ilustrasi, logo, atau gambar produk untuk mendapatkan kode HEX ideal untuk UI, branding, variabel CSS, moodboard, dan analisis visual.",
-    meta: "Temukan profil warna gambar apapun dengan ekstraktor palet online gratis kami. Buat palet secara otomatis dari warna dominan gambar.",
+    intro: "Dapatkan palet warna dari gambar, foto, atau ilustrasi apa pun. Deteksi warna dominan secara otomatis dan hasilkan palet HEX lengkap dari foto, tangkapan layar, logo, ilustrasi, dan gambar produk.\n\nEkstraktor Warna kami melakukan semua pemrosesan langsung di browser Anda, memastikan privasi penuh dan hasil instan. Sangat cocok untuk UI/UX, branding, variabel CSS, sistem desain, moodboard, dan analisis visual profesional.",
+    meta: "Hasilkan palet warna dari gambar, foto, atau ilustrasi apa pun. Temukan warna dominan dan palet HEX yang sesuai secara instan.",
     how_title: "Cara Penggunaan",
     step_1_t: "Unggah Gambar",
     step_1_d: "Unggah gambar yang ingin kamu analisis.",
@@ -485,12 +492,13 @@ defineI18nRoute({
     faq2a: "Format umum seperti PNG, JPG/JPEG, dan WebP bekerja dengan baik. Gambar yang lebih bersih dengan kompresi lebih rendah dan subjek utama yang lebih jelas cenderung menghasilkan palet yang lebih berguna.",
     faq3q: "Mengapa warna dominan terkadang terlihat berbeda dari objek utama?",
     faq3a: "Karena alat ini menganalisis distribusi piksel secara keseluruhan. Jika gambar memiliki banyak latar belakang, bayangan, atau area netral, area-area tersebut dapat memengaruhi hasil dominan lebih dari objek kecil yang disorot.",
+    faq4q: "Bagaimana cara mengekstrak palet warna dari foto?",
+    faq4a: "Klik area unggah dan pilih foto Anda, atau seret dan lepas langsung ke area tersebut. Alat ini akan langsung menganalisis distribusi piksel dan mengekstrak warna dominan beserta palet lengkap dengan kode HEX.",
     features_title: "Fitur Utama",
     feature_1: "Identifikasi warna dominan gambar dengan cepat",
     feature_2: "Buat palet warna dari gambar apapun",
     feature_3: "Ekstrak kode HEX hanya dengan satu klik",
     feature_4: "Mendukung format seperti JPG, PNG, dan WebP",
-    feature_5: "Pemrosesan lokal di browser untuk privasi penuh",
     restart: "Mulai Ulang",
     dominant: "Warna dominan",
     palette: "Palet gambar",
@@ -500,12 +508,12 @@ defineI18nRoute({
     see4: "Generator Kode QR"
   },
   de: {
-    pageTitle: "Bildfarben-Extraktor — Dominante Farbe und Palette | Kostenlos Online",
-    ogTitle: "Bildfarben-Extraktor — Farben aus jedem Foto extrahieren",
+    pageTitle: "Farbpalette aus Bild — Foto & Bild Farb-Extraktor | Kostenlos",
+    ogTitle: "Farbpaletten-Generator aus Bild — Farben aus Foto oder Bild extrahieren",
     ogLocale: "de_DE",
     title: "Bildfarben",
-    intro: "Identifiziere das Farbprofil eines beliebigen Bildes in Sekunden. Unser Farb-Extraktor analysiert deine Bilder lokal, um die dominante Farbe zu extrahieren und eine gebrauchsfertige Palette zu erstellen. Lade ein Foto, einen Screenshot, eine Illustration, ein Logo oder ein Produktbild hoch und erhalte HEX-Codes für UI, Branding, CSS-Variablen, Moodboards und visuelle Analyse.",
-    meta: "Entdecke das Farbprofil eines beliebigen Bildes mit unserem kostenlosen Online-Palettenextraktor. Erstelle automatisch eine Palette mit den dominanten Farben des Bildes.",
+    intro: "Holen Sie sich die Farbpalette von jedem Bild, Foto oder jeder Illustration. Erkennen Sie automatisch die dominante Farbe und generieren Sie eine vollständige HEX-Palette aus Fotos, Screenshots, Logos, Illustrationen und Produktbildern.\n\nUnser Farb-Extraktor führt die gesamte Verarbeitung direkt in Ihrem Browser durch und garantiert so absolute Privatsphäre und sofortige Ergebnisse. Ideal für UI/UX, Branding, CSS-Variablen, Design-Systeme, Moodboards und professionelle visuelle Analysen.",
+    meta: "Generieren Sie Farbpaletten aus jedem Bild, Foto oder jeder Illustration. Entdecken Sie sofort die dominante Farbe und die entsprechende HEX-Palette.",
     how_title: "So funktioniert es",
     step_1_t: "Bild hochladen",
     step_1_d: "Lade das Bild hoch, das du analysieren möchtest.",
@@ -530,12 +538,13 @@ defineI18nRoute({
     faq2a: "Gängige Formate wie PNG, JPG/JPEG und WebP funktionieren gut. Sauberere Bilder mit weniger Kompression und einem klareren Hauptmotiv erzeugen in der Regel nützlichere Paletten.",
     faq3q: "Warum sieht die dominante Farbe manchmal anders aus als das Hauptmotiv?",
     faq3a: "Weil das Tool die gesamte Pixelverteilung analysiert. Wenn das Bild viel Hintergrund, Schatten oder neutrale Bereiche hat, können diese Regionen das dominante Ergebnis stärker beeinflussen als ein kleineres hervorgehobenes Objekt.",
+    faq4q: "Wie extrahiere ich eine Farbpalette aus einem Foto?",
+    faq4a: "Klicke auf den Upload-Bereich und wähle dein Foto aus, oder ziehe es direkt per Drag & Drop hinein. Das Tool analysiert sofort die Pixelverteilung und extrahiert die dominante Farbe sowie eine vollständige Farbpalette mit HEX-Codes.",
     features_title: "Hauptfunktionen",
     feature_1: "Identifiziere schnell dominante Farben in Bildern",
     feature_2: "Erstelle Farbpaletten aus beliebigen Bildern",
     feature_3: "Extrahiere HEX-Codes mit einem einzigen Klick",
     feature_4: "Unterstützt Formate wie JPG, PNG und WebP",
-    feature_5: "Lokale Verarbeitung im Browser für vollständige Privatsphäre",
     restart: "Neu starten",
     dominant: "Dominante Farbe",
     palette: "Bildpalette",
@@ -545,12 +554,12 @@ defineI18nRoute({
     see4: "QR-Code-Generator"
   },
   nl: {
-    pageTitle: "Beeldkleur Extractor — Dominante Kleur en Palet | Gratis Online",
-    ogTitle: "Beeldkleur Extractor — Extraheer Kleuren uit Elke Foto",
+    pageTitle: "Kleurenpalet van Afbeelding — Foto & Afbeelding Kleur Extractor | Gratis",
+    ogTitle: "Kleurenpalet Generator van Afbeelding — Extraheer Kleuren uit Elke Foto",
     ogLocale: "nl_NL",
     title: "Beeldkleuren",
-    intro: "Identificeer het kleurprofiel van een afbeelding in seconden. Onze Kleur Extractor analyseert afbeeldingen lokaal om de dominante kleur te extraheren en een gebruiksklaar palet te genereren. Upload een foto, screenshot, illustratie, logo of productafbeelding voor HEX-codes die ideaal zijn voor UI, branding, CSS-variabelen, moodboards en visuele analyse.",
-    meta: "Ontdek het kleurprofiel van een afbeelding met onze gratis online palet extractor. Genereer automatisch een palet met de dominante kleuren van de afbeelding.",
+    intro: "Ontvang het kleurenpalet van elke afbeelding, foto of illustratie. Detecteer automatisch de dominante kleur en genereer een compleet HEX-palet van foto's, screenshots, logo's, illustraties en productafbeeldingen.\n\nOnze Kleurenextractor voert alle verwerkingen rechtstreeks in uw browser uit, wat zorgt voor volledige privacy en onmiddellijke resultaten. Ideaal voor UI/UX, branding, CSS-variabelen, ontwerpsystemen, moodboards en professionele visuele analyse.",
+    meta: "Genereer kleurenpaletten van elke afbeelding, foto of illustratie. Ontdek direct de dominante kleur en het bijbehorende HEX-palet.",
     how_title: "Hoe Het Werkt",
     step_1_t: "Upload de Afbeelding",
     step_1_d: "Upload de afbeelding die je wilt analyseren.",
@@ -575,12 +584,13 @@ defineI18nRoute({
     faq2a: "Veelgebruikte formaten zoals PNG, JPG/JPEG en WebP werken goed. Schonere afbeeldingen met minder compressie en een duidelijker hoofdonderwerp leveren doorgaans nuttigere paletten op.",
     faq3q: "Waarom ziet de dominante kleur er soms anders uit dan het hoofdonderwerp?",
     faq3a: "Omdat het tool de algehele pixelverdeling analyseert. Als de afbeelding veel achtergrond, schaduwen of neutrale gebieden heeft, kunnen die regio's het dominante resultaat meer beïnvloeden dan een kleiner uitgelicht object.",
+    faq4q: "Hoe extraheer ik een kleurenpalet uit een foto?",
+    faq4a: "Klik op het uploadgebied en selecteer je foto, of sleep en zet hem er direct in neer. Het tool analyseert direct de pixelverdeling en extraheert de dominante kleur samen met een volledig kleurenpalet met HEX-codes.",
     features_title: "Belangrijkste Functies",
     feature_1: "Identificeer snel dominante kleuren in afbeeldingen",
     feature_2: "Genereer kleurenpaletten uit elke afbeelding",
     feature_3: "Extraheer HEX-codes met één klik",
     feature_4: "Ondersteunt formaten zoals JPG, PNG en WebP",
-    feature_5: "Lokale verwerking in de browser voor volledige privacy",
     restart: "Opnieuw beginnen",
     dominant: "Dominante kleur",
     palette: "Afbeeldingspalet",
@@ -588,6 +598,52 @@ defineI18nRoute({
     see2: "Kleur Converter",
     see3: "Kleurencombinatie",
     see4: "QR-codegenerator"
+  },
+  ru: {
+    pageTitle: "Цветовая палитра из изображения — извлечь цвета из фото онлайн | Бесплатно",
+    ogTitle: "Генератор цветовой палитры по изображению — извлечь цвета из любой фотографии",
+    ogLocale: "ru_RU",
+    title: "Цвета из изображения",
+    intro: "Получите цветовую палитру любого изображения, фотографии или иллюстрации. Автоматически определяйте доминирующий цвет и создавайте полноценную HEX-палитру из фотографий, скриншотов, логотипов и изображений товаров.\n\nНаш инструмент выполняет всю обработку прямо в вашем браузере, обеспечивая полную конфиденциальность и мгновенный результат. Идеально для UI/UX-дизайна, брендинга, CSS-переменных, дизайн-систем и профессионального визуального анализа.",
+    meta: "Генерируйте цветовые палитры из любого изображения, фотографии или рисунка. Мгновенно определяйте доминирующий цвет и соответствующую HEX-палитру.",
+    how_title: "Как это работает",
+    step_1_t: "Загрузите изображение",
+    step_1_d: "Загрузите или перетащите изображение, которое вы хотите проанализировать.",
+    step_2_t: "Анализ пикселей",
+    step_2_d: "Инструмент проанализирует распределение пикселей, чтобы определить преобладающий цвет и извлечь наиболее часто встречающиеся цвета.",
+    step_3_t: "Скопируйте цвета",
+    step_3_d: "Кликните на любую сгенерированную плитку цвета, чтобы скопировать ее HEX-код.",
+    apps_title: "Практическое применение",
+    app1: "Извлекайте палитры из логотипов, скриншотов и фото товаров для создания интерфейсов, визуально соответствующих стилю бренда",
+    app2: "Копируйте HEX-коды из референсных изображений для создания презентаций, рекламы и макетов для соцсетей",
+    app3: "Определяйте фоновые, акцентные и поддерживающие цвета по фотографиям перед версткой лендингов или баннеров",
+    app4: "Анализируйте иллюстрации и портфолио для понимания цветового баланса и визуального стиля проекта",
+    app5: "Используйте извлечение палитр для мудбордов, дизайна интерьеров и творческого поиска, когда важна гармония",
+    tech_title: "Технические примечания",
+    tech_desc: "Несколько практических деталей, влияющих на интерпретацию извлеченных цветов в реальных проектах:",
+    tech1: "Доминирующий цвет не всегда является самым важным визуально. Большой фон или тени могут занимать больше площади, чем основной элемент, даже если он выглядит ярче",
+    tech2: "Изображения с градиентами, размытием или сильным сжатием могут давать примерную палитру, а не точные брендовые значения",
+    tech3: "Для получения более чистой палитры загружайте обрезанный фрагмент с главным элементом вместо полной композиции",
+    tech4: "Инструмент идеален для быстрого подбора. Для финального утверждения в бренд-буке рекомендуется проверять цвета вручную",
+    faq_title: "Часто задаваемые вопросы",
+    faq2q: "Какие форматы изображений поддерживаются?",
+    faq2a: "Любые популярные форматы: PNG, JPG/JPEG и WebP. Изображения с хорошей четкостью и четким объектом дают наилучший результат.",
+    faq3q: "Почему доминирующий цвет иногда отличается от цвета главного объекта?",
+    faq3a: "Потому что алгоритм анализирует общее количество пикселей. Огромный фон или тени могут повлиять на результат сильнее, чем маленький яркий объект.",
+    faq4q: "Как извлечь цветовую палитру из фотографии?",
+    faq4a: "Нажмите на область загрузки и выберите фото или перетащите его мышкой. Инструмент мгновенно проанализирует распределение пикселей и выведет доминирующий цвет и HEX-палитру.",
+    features_title: "Основные возможности",
+    feature_1: "Быстрое определение доминирующего цвета на картинке",
+    feature_2: "Создание цветовой палитры из любого файла",
+    feature_3: "Копирование HEX-кодов в один клик",
+    feature_4: "Поддержка форматов JPG, PNG и WebP",
+    restart: "Начать заново",
+    dominant: "Доминирующий цвет",
+    palette: "Палитра изображения",
+    see1: "Случайные цвета",
+    see2: "Конвертер цветов",
+    see3: "Цветовые комбинации",
+    see4: "Генератор QR-кодов"
   }
 }
 </i18n>

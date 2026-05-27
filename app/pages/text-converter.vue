@@ -47,7 +47,8 @@ const stopWords: Record<string, string[]> = {
   it: ['il', 'lo', 'la', 'i', 'gli', 'le', 'un', 'uno', 'una', 'di', 'del', 'dello', 'della', 'dei', 'degli', 'delle', 'e', 'o', 'in', 'a', 'da', 'con', 'per', 'su'],
   id: ['di', 'ke', 'dari', 'dan', 'atau', 'pada', 'oleh', 'untuk', 'dengan', 'yang', 'si', 'sang', 'pun'],
   de: ['der', 'die', 'das', 'den', 'dem', 'des', 'ein', 'eine', 'einer', 'eines', 'einem', 'einen', 'und', 'oder', 'aber', 'für', 'mit', 'auf', 'in', 'bei', 'von', 'zu', 'aus', 'an'],
-  nl: ['de', 'het', 'een', 'en', 'of', 'maar', 'want', 'voor', 'met', 'op', 'in', 'bij', 'van', 'naar', 'uit', 'aan', 'te', 'door']
+  nl: ['de', 'het', 'een', 'en', 'of', 'maar', 'want', 'voor', 'met', 'op', 'in', 'bij', 'van', 'naar', 'uit', 'aan', 'te', 'door'],
+  ru: ['и', 'в', 'во', 'не', 'на', 'с', 'со', 'что', 'как', 'а', 'то', 'или', 'но', 'к', 'ко', 'у', 'за', 'из', 'о', 'об', 'обо', 'от', 'ото', 'по', 'для', 'без', 'безо', 'до', 'под', 'подо', 'пред', 'предо', 'через', 'чрез', 'над', 'надо']
 }
 
 function markChanged() {
@@ -235,7 +236,8 @@ defineI18nRoute({
     it: '/convertitore-di-testo',
     id: '/konverter-teks',
     de: '/text-konverter',
-    nl: '/tekst-converter'
+    nl: '/tekst-converter',
+    ru: '/konverter-teksta'
   }
 })
 </script>
@@ -249,8 +251,7 @@ defineI18nRoute({
       { label: t('see1'), to: 'invisible-character' },
       { label: t('see2'), to: 'fancy-letters' },
       { label: t('see3'), to: 'text-counter' },
-      { label: t('see4'), to: 'text-comparator' },
-      { label: t('see_morse'), to: 'morse-code-converter' }
+      { label: t('see4'), to: 'text-comparator' }
     ]"
   >
     <div class="space-y-5 animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -394,7 +395,7 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
   pt: {
-    m_title: "Conversor de Maiúsculas e Minúsculas Online Grátis",
+    m_title: "Conversor de Texto Online Grátis – Maiúsculas e Minúsculas",
     title: "Conversor de Texto",
     meta: "Converta texto de letras maiúsculas para minúsculas (e vice-versa), remova acentos, limpe espaços extras e muito mais. Tudo o que você precisa para formatar e padronizar textos de forma simples, rápida e gratuita.",
     about_desc: "Este conversor de texto online permite editar, formatar e organizar textos rapidamente em uma única ferramenta. Insira seu conteúdo para converter letras maiúsculas e minúsculas, remover acentos, limpar formatações indesejadas de textos copiados e transformar frases em diferentes estilos de escrita, inclusive para redes sociais. Ideal para padronizar documentos, formatar mensagens e organizar listas de forma prática, rápida e eficiente.",
@@ -471,11 +472,10 @@ defineI18nRoute({
     see1: "Caractere Invisível",
     see2: "Letras Diferentes",
     see3: "Contador de Texto",
-    see4: "Comparador de Texto",
-    see_morse: "Código Morse"
+    see4: "Comparador de Texto"
   },
   en: {
-    m_title: "Free Online Case Converter",
+    m_title: "Case Converter – Uppercase to Lowercase Online Free",
     title: "Text Converter",
     meta: "Convert text from uppercase to lowercase (and vice versa), remove accents, clear extra spaces and much more. Everything you need to format and standardize texts simply, quickly, and for free.",
     about_desc: "This online text converter allows you to edit, format, and organize texts quickly in a single tool. Insert your content to convert uppercase and lowercase letters, remove accents, clean up unwanted formatting from copied texts, and transform sentences into different writing styles, including for social media. Ideal for standardizing documents, formatting messages, and organizing lists practically, quickly, and efficiently.",
@@ -552,8 +552,7 @@ defineI18nRoute({
     see1: "Invisible Character",
     see2: "Fancy Letters",
     see3: "Text Counter",
-    see4: "Text Comparator",
-    see_morse: "Morse Code"
+    see4: "Text Comparator"
   },
   es: {
     m_title: "Convertidor de Mayúsculas y Minúsculas Online Gratis",
@@ -956,7 +955,7 @@ defineI18nRoute({
     see4: "Textvergleicher"
   },
   nl: {
-    m_title: "Gratis Online Hoofdletters en Kleine Letters Converter",
+    m_title: "Tekst Converter Online Gratis – Hoofdletters en Kleine Letters",
     title: "Tekst Converter",
     meta: "Converteer tekst van hoofdletters naar kleine letters (en vice versa), verwijder accenten, wis extra spaties en nog veel meer. Alles wat je nodig hebt om teksten eenvoudig, snel en gratis op te maken en te standaardiseren.",
     about_desc: "Met deze online tekstconverter kun je teksten snel bewerken, opmaken en ordenen in één enkele tool. Voeg je inhoud in om letters om te zetten in hoofdletters en kleine letters, accenten te verwijderen, ongewenste opmaak uit gekopieerde teksten te wissen en zinnen om te zetten in verschillende schrijfstijlen, inclusief voor sociale media. Ideaal voor het standaardiseren van documenten, het opmaken van berichten en het ordenen van lijsten op een praktische, snelle en efficiënte manier.",
@@ -1034,6 +1033,86 @@ defineI18nRoute({
     see2: "Verschillende Letters",
     see3: "Tekst Teller",
     see4: "Tekst Vergelijker"
+  },
+  ru: {
+    m_title: "Онлайн-конвертер текста — регистр, удаление пробелов и акцентов",
+    title: "Конвертер текста",
+    meta: "Бесплатный онлайн-конвертер текста. Преобразование регистра (из заглавных в строчные и наоборот), удаление акцентов, лишних пробелов, пустых строк и пунктуации. Быстро и удобно.",
+    about_desc: "Этот бесплатный онлайн-конвертер позволяет быстро редактировать, форматировать и упорядочивать текст прямо в браузере. Вы можете легко преобразовывать регистр букв, удалять диакритические знаки (акценты), очищать нежелательное форматирование из скопированных текстов, а также переводить фразы в различные стили написания, включая форматы для программирования и соцсетей. Идеально подходит для стандартизации документов, подготовки сообщений и структурирования списков.",
+    how_to_use_title: "Как использовать конвертер текста",
+    step_1_title: "Вставьте или введите текст",
+    step_1_desc: "Введите ваш текст в главное поле или просто перетащите текстовый файл для его загрузки.",
+    step_2_title: "Выберите категорию",
+    step_2_desc: "Используйте вкладки для переключения между изменением регистра, очисткой текста и стилями для программирования.",
+    step_3_title: "Примените и скопируйте",
+    step_3_desc: "Нажмите на нужную кнопку конвертации и скопируйте отформатированный результат для использования в документах, коде или сообщениях.",
+    apps_title: "Сферы применения и примеры использования",
+    app_1_t: "Редактирование и копирайтинг",
+    app_1_d: "Быстро исправляйте регистр букв, приводите тексты к единому стандарту и оформляйте заголовки.",
+    app_2_t: "SEO и контент-маркетинг",
+    app_2_d: "Создавайте заголовки, оптимизированные для поисковых систем URL-адреса и чистые сниппеты для веб-страниц.",
+    app_3_t: "Программирование",
+    app_3_d: "Преобразуйте обычные фразы в camelCase, PascalCase, snake_case, kebab-case и dot.case для имен переменных, классов и пространств имен.",
+    app_4_t: "Очистка данных",
+    app_4_d: "Легко удаляйте акценты, цифры, пунктуацию, пустые строки, лишние пробелы и переносы.",
+    app_5_t: "Адаптация контента",
+    app_5_d: "Быстро адаптируйте один и тот же текст для документов, соцсетей, кода, URL-адресов и технических описаний.",
+    edge_title: "Точность и особые случаи",
+    edge_desc: "Конвертер учитывает практические нюансы, которые важны при переносе контента между различными форматами.",
+    edge_1_t: "Множество режимов регистра",
+    edge_1_d: "Используйте заглавные, строчные буквы, капитализацию каждого слова, регистр заголовков, предложений, чередование или инверсию.",
+    edge_2_t: "Очистка форматирования",
+    edge_2_d: "Устраняйте частые проблемы при копировании текста из PDF-файлов, электронных таблиц, документов и веб-страниц.",
+    edge_3_t: "Технические форматы",
+    edge_3_d: "Генерируйте имена, совместимые с популярными стандартами кода, URL-слагами и путями конфигурации.",
+    edge_4_t: "Быстрый рабочий процесс",
+    edge_4_d: "Все вычисления происходят прямо в браузере: ваши данные конфиденциальны, а обработка происходит мгновенно.",
+    conversion_title: "Доступные типы конвертации",
+    conversion_desc: "Все операции удобно распределены по категориям для быстрого выбора во время редактирования.",
+    conversion_case: "Изменение регистра: ЗАГЛАВНЫЕ, строчные, Начинать С Прописных, Регистр Заголовков, Регистр предложений, чЕрЕдОвАнИе, иНвЕрСиЯ и перевернутый текст.",
+    conversion_clean: "Очистка текста: удаление акцентов, лишних пробелов, переносов строк, пустых строк, цифр и пунктуации.",
+    conversion_code: "Форматы кода: генерация camelCase, PascalCase, snake_case, kebab-case, URL-слагов и dot.case.",
+    faq_title: "Вопросы и ответы",
+    faq1q: "Что делает этот конвертер текста?",
+    faq1a: "Этот инструмент изменяет регистр букв, выполняет очистку форматирования, удаляет акценты и пробелы, а также преобразует обычные фразы в форматы кода, такие как camelCase, snake_case, kebab-case и другие.",
+    faq2q: "Можно ли использовать его для имен переменных в программировании?",
+    faq2a: "Да. Вкладка программирования преобразует текст в стандарты camelCase, PascalCase, snake_case, kebab-case, dot.case и URL-слаги.",
+    faq3q: "Можно ли очистить текст, скопированный из PDF или документов?",
+    faq3a: "Да. Инструменты очистки эффективно удаляют лишние пробелы, пустые строки, переносы строк, цифры, знаки препинания и акценты из любого скопированного фрагмента.",
+    faq4q: "Как перевести заглавные буквы в строчные?",
+    faq4a: "Просто вставьте ваш текст в главное поле ввода и нажмите кнопку «строчные» во вкладке изменения регистра. Текст будет преобразован мгновенно.",
+    features_title: "Основные возможности",
+    feature1: "Преобразование в заглавные, строчные буквы, регистр заголовков и предложений",
+    feature2: "Удаление лишних пробелов, акцентов, пунктуации и переносов строк",
+    feature3: "Популярные форматы кода: camelCase, snake_case, kebab-case",
+    feature4: "Создание URL-слагов и преобразование в dot.case",
+    tab1: "Регистр",
+    tab2: "Очистка текста",
+    tab3: "Программирование",
+    bup: "ЗАГЛАВНЫЕ",
+    blow: "строчные",
+    balt: "чЕрЕдОвАнИе",
+    bcap: "Начинать С Прописных",
+    btitle: "Регистр Заголовков",
+    bsent: "Регистр предложений",
+    btoggle: "иНвЕрСиЯ",
+    bacc: "Удалить акценты",
+    bspaces: "Удалить лишние пробелы",
+    brlb: "Удалить переносы строк",
+    brbl: "Удалить пустые строки",
+    bnumbers: "Удалить цифры",
+    bpunct: "Удалить пунктуацию",
+    bslug: "URL-слаг",
+    brev: "Перевернуть текст",
+    plc: "Вставьте ваш текст сюда или перетащите файл",
+    chars: "символов",
+    words: "слов",
+    copy: "Копировать",
+    copied: "Скопировано!",
+    see1: "Невидимый символ",
+    see2: "Красивые буквы",
+    see3: "Счетчик текста",
+    see4: "Сравнение текстов"
   }
 }
 </i18n>

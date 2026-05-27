@@ -87,7 +87,9 @@ const state = reactive<BarcodeOptions>({
 const faqItems = computed(() => [
   { question: t('faq_1_q'), answer: t('faq_1_a') },
   { question: t('faq_2_q'), answer: t('faq_2_a') },
-  { question: t('faq_3_q'), answer: t('faq_3_a') }
+  { question: t('faq_3_q'), answer: t('faq_3_a') },
+  { question: t('faq_4_q'), answer: t('faq_4_a') },
+  { question: t('faq_5_q'), answer: t('faq_5_a') }
 ])
 
 const hasCustomData = computed(() => {
@@ -189,7 +191,8 @@ defineI18nRoute({
     it: '/generatore-di-codici-a-barre',
     id: '/generator-barcode',
     de: '/barcode-generator',
-    nl: '/barcode-generator'
+    nl: '/barcode-generator',
+    ru: '/generator-shtrihkodov'
   }
 })
 </script>
@@ -380,7 +383,7 @@ defineI18nRoute({
 
     <template #info>
       <div class="space-y-8">
-        <p>{{ t('intro') }}</p>
+        <p class="whitespace-pre-wrap">{{ t('intro') }}</p>
 
         <FeatureSection
           :title="t('features_title')"
@@ -457,10 +460,10 @@ defineI18nRoute({
 {
   en: {
     title: "Barcode Generator",
-    page_title: "Barcode Generator - Create Free Barcodes Online",
-    meta: "Free online barcode generator. Create labels in CODE128, EAN-13, UPC, CODE39 and more. Customize and download as PNG image without registration.",
-    og_title: "Free Online Barcode Generator",
-    intro: "Generate professional barcodes ready for printing, with instant local processing. Ideal for product labels, inventory control and logistics, with real-time preview and format validation.",
+    page_title: "Free Barcode Generator Online — Barcode Maker & Creator",
+    meta: "Free barcode generator online. Create labels with CODE128, EAN-13, UPC, CODE39 and 20+ formats. Barcode maker with real-time preview, no sign-up.",
+    og_title: "Free Barcode Generator Online — Barcode Maker & Creator",
+    intro: "Free online barcode generator and creator with real-time preview — no sign-up required. Generate professional barcodes ready for printing in seconds, with instant processing directly in your browser. Compatible with the main formats used in commerce and industry, ensuring high quality and precise reading on labels, packaging, and documents.\n\nIdeal for product labels, inventory control, logistics, shipping, tracking, and business organization. Customize sizes, text, and print standards in a simple, fast, and secure way — no software installation needed.",
 
     data: "Barcode Data",
     text: "Code",
@@ -540,7 +543,10 @@ defineI18nRoute({
     faq_2_a: "Yes. Download the high-quality PNG image and print it. We recommend testing the reading with a scanner before printing in large quantities.",
     faq_3_q: "What is the difference between CODE128 A, B and C?",
     faq_3_a: "They are sub-types that optimize the data encoding: 'A' for uppercase and control chars, 'B' for lowercase and numbers, and 'C' for numeric-only pairs (very compact).",
-
+    faq_4_q: "What barcode format should I use?",
+    faq_4_a: "CODE128 works for most internal and logistics use. EAN-13 is the retail standard for product labels. UPC-A is common in North America. ITF-14 is for outer packaging. When in doubt, use CODE128.",
+    faq_5_q: "Can I generate an EAN-13 barcode for free?",
+    faq_5_a: "Yes. Select EAN-13 in the format list, enter your 12 or 13-digit number and the barcode generates instantly.",
     see1: "Emoji Picker",
     see2: "QR Code Generator",
     see3: "Random Colors",
@@ -548,10 +554,10 @@ defineI18nRoute({
   },
   pt: {
     title: "Gerador de Código de Barras",
-    page_title: "Gerador de Código de Barras - Criar Códigos Online Grátis",
-    meta: "Gerador de código de barras online grátis. Crie etiquetas em CODE128, EAN-13, UPC, CODE39 e mais. Personalize e baixe em Imagem PNG.",
-    og_title: "Gerador de Código de Barras Online e Grátis",
-    intro: "Gere códigos de barras profissionais prontos para impressão, com processamento local e instantâneo. Ideal para etiquetas de produtos, controle de estoque e logística, com visualização em tempo real e validação de formatos.",
+    page_title: "Gerador de Código de Barras Online Grátis — Criador de Etiquetas",
+    meta: "Gerador de código de barras online e grátis. Crie etiquetas em CODE128, EAN-13, UPC, CODE39 e mais de 20 formatos. Criador com prévia em tempo real, sem cadastro.",
+    og_title: "Gerador de Código de Barras Online Grátis — Criador de Etiquetas",
+    intro: "Criador de código de barras com prévia em tempo real — sem cadastro e totalmente online. Gere códigos de barras profissionais prontos para impressão em segundos, com processamento instantâneo diretamente no navegador. Compatível com os principais formatos utilizados no comércio e na indústria, garantindo alta qualidade e leitura precisa em etiquetas, embalagens e documentos.\n\nIdeal para etiquetas de produtos, controle de estoque, logística, expedição, rastreamento e organização comercial. Personalize tamanhos, textos e padrões de impressão de forma simples, rápida e segura — sem instalar programas.",
 
     data: "Dados do código",
     text: "Código",
@@ -631,7 +637,10 @@ defineI18nRoute({
     faq_2_a: "Sim. Baixe a imagem gerada e use em etiquetas, documentos ou embalagens. Para impressão, mantenha bom contraste, margens suficientes e teste a leitura no tamanho final.",
     faq_3_q: "Qual a diferença entre CODE128 A, B e C?",
     faq_3_a: "CODE128A é usado para maiúsculas e caracteres de controle, CODE128B aceita letras maiúsculas e minúsculas, e CODE128C é otimizado para pares numéricos.",
-
+    faq_4_q: "Qual formato de código de barras devo usar?",
+    faq_4_a: "CODE128 serve para a maioria dos usos internos e logísticos. EAN-13 é o padrão para etiquetas de produtos no varejo. UPC-A é comum nos EUA e Canadá. ITF-14 é para embalagens externas. Na dúvida, use CODE128.",
+    faq_5_q: "Posso gerar um código de barras EAN-13 de graça?",
+    faq_5_a: "Sim. Selecione EAN-13 na lista de formatos, informe o número com 12 ou 13 dígitos e o código é gerado na hora.",
     see1: "Seletor de Emoji",
     see2: "Gerador de QR Code",
     see3: "Cores Aleatórias",
@@ -639,10 +648,10 @@ defineI18nRoute({
   },
   es: {
     title: "Generador de Código de Barras",
-    page_title: "Generador de Código de Barras - Crear Códigos Online Gratis",
-    meta: "Generador de código de barras online y gratis. Crea etiquetas en CODE128, EAN-13, UPC, CODE39 y más. Personaliza y descarga como imagen PNG sin registro.",
-    og_title: "Generador de Código de Barras Online y Gratis",
-    intro: "Genera códigos de barras profesionales listos para imprimir, con procesamiento local e instantáneo. Ideal para etiquetas de productos, control de stock y logística, con vista previa en tiempo real y validación de formatos.",
+    page_title: "Generador de Código de Barras Online Gratis — Creador de Etiquetas",
+    meta: "Generador de código de barras online y gratis. Crea etiquetas en CODE128, EAN-13, UPC, CODE39 y más de 20 formatos. Creador con vista previa en tiempo real, sin registro.",
+    og_title: "Generador de Código de Barras Online Gratis — Creador de Etiquetas",
+    intro: "Creador de códigos de barras online gratis con vista previa en tiempo real — sin registro. Genera códigos de barras profesionales listos para imprimir en segundos, con procesamiento instantáneo directamente en el navegador. Compatible con los principales formatos utilizados en el comercio y la industria, garantizando una alta calidad y una lectura precisa en etiquetas, embalajes y documentos.\n\nIdeal para etiquetas de productos, control de stock, logística, envíos, seguimiento y organización comercial. Personaliza tamaños, textos y patrones de impresión de forma sencilla, rápida y segura — sin instalar programas.",
 
     data: "Datos del código",
     text: "Código",
@@ -722,7 +731,10 @@ defineI18nRoute({
     faq_2_a: "Sí. Descargue la imagen PNG de alta calidad e imprímala. Recomendamos probar la lectura con un escáner antes de imprimir en grandes cantidades.",
     faq_3_q: "¿Cuál es la diferencia entre CODE128 A, B y C?",
     faq_3_a: "Son subtipos que optimizan la codificación: 'A' para mayúsculas y caracteres de control, 'B' para minúsculas y números, y 'C' para pares numéricos (muy compacto).",
-
+    faq_4_q: "¿Qué formato de código de barras debo usar?",
+    faq_4_a: "CODE128 sirve para la mayoría de los usos internos y logísticos. EAN-13 es el estándar para etiquetas de productos en supermercados. UPC-A es común en EE. UU. y Canadá. ITF-14 es para embalajes externos. En caso de duda, use CODE128.",
+    faq_5_q: "¿Puedo generar un código de barras EAN-13 gratis?",
+    faq_5_a: "Sí. Seleccione EAN-13 en la lista de formatos, ingrese su número de 12 o 13 dígitos y el código se genera al instante.",
     see1: "Selector de Emojis",
     see2: "Generador de Código QR",
     see3: "Colores Aleatorios",
@@ -730,10 +742,10 @@ defineI18nRoute({
   },
   fr: {
     title: "Générateur de Code-Barres",
-    page_title: "Générateur de Code-Barres - Créer des Codes en Ligne Gratuitement",
-    meta: "Générateur de code-barres en ligne et gratuit. Créez des étiquettes en CODE128, EAN-13, UPC, CODE39 et plus. Personnalisez et téléchargez en image PNG sans inscription.",
+    page_title: "Générateur de Code-Barres — Créer des Codes en Ligne Gratuitement",
+    meta: "Générateur de code-barres en ligne et gratuit. Créez des étiquettes en CODE128, EAN-13, UPC, CODE39 et plus de 20 formats. Téléchargement PNG sans inscription.",
     og_title: "Générateur de Code-Barres en Ligne et Gratuit",
-    intro: "Générez des codes-barres professionnels prêts pour l'impression, avec un traitement local et instantané. Idéal pour les étiquettes de produits, le contrôle des stocks et la logistique, avec aperçu en temps réel et validation des formats.",
+    intro: "Générateur de code-barres en ligne gratuit avec aperçu en temps réel — sans inscription. Génrez des codes-barres professionnels prêts pour l'impression en quelques secondes, avec un traitement instantané directement dans le navigateur. Compatible avec les principaux formats utilisés dans le commerce et l'industrie, garantissant une haute qualité et une lecture précise sur les étiquettes, emballages et documents.\n\nIdéal pour les étiquettes de produits, le contrôle des stocks, la logistique, l'expédition, le suivi et l'organisation commerciale. Personnalisez les tailles, les textes et les modèles d'impression de manière simple, rapide et sécurisée — sans installer de logiciel.",
 
     data: "Données du code",
     text: "Code",
@@ -813,7 +825,10 @@ defineI18nRoute({
     faq_2_a: "Oui. Téléchargez l'image PNG de haute qualité et imprimez-la. Nous recommandons de tester la lecture avec un scanner avant d'imprimer en grandes quantités.",
     faq_3_q: "Quelle est la différence entre CODE128 A, B et C ?",
     faq_3_a: "Ce sont des sous-types qui optimisent l'encodage : 'A' pour les majuscules et caractères de contrôle, 'B' pour les minuscules et chiffres, et 'C' pour les paires numériques (très compact).",
-
+    faq_4_q: "Quel format de code-barres dois-je utiliser ?",
+    faq_4_a: "CODE128 convient à la plupart des usages internes et logistiques. EAN-13 est la norme pour les étiquettes de produits en grande distribution. UPC-A est courant en Amérique du Nord. ITF-14 est pour les emballages extérieurs. En cas de doute, utilisez CODE128.",
+    faq_5_q: "Puis-je générer un code-barres EAN-13 gratuitement ?",
+    faq_5_a: "Oui. Sélectionnez EAN-13 dans la liste des formats, entrez votre numéro à 12 ou 13 chiffres et le code-barres est généré instantanément.",
     see1: "Sélecteur d'Emoji",
     see2: "Générateur de Code QR",
     see3: "Couleurs Aléatoires",
@@ -821,10 +836,10 @@ defineI18nRoute({
   },
   it: {
     title: "Generatore di Codici a Barre",
-    page_title: "Generatore di Codici a Barre - Crea Codici Online Gratis",
-    meta: "Generatore di codici a barre online e gratuito. Crea etichette in CODE128, EAN-13, UPC, CODE39 e altro ancora. Personalizza e scarica come immagine PNG senza registrazione.",
+    page_title: "Generatore di Codici a Barre — Crea Codici Online Gratis",
+    meta: "Generatore di codici a barre online e gratuito. Crea etichette in CODE128, EAN-13, UPC, CODE39 e oltre 20 formati. Scarica come immagine PNG senza registrazione.",
     og_title: "Generatore di Codici a Barre Online e Gratis",
-    intro: "Genera codici a barre professionali pronti per la stampa, con elaborazione locale istantanea. Ideale per etichette di prodotti, controllo delle scorte e logistica, con anteprima in tempo reale e convalida del formato.",
+    intro: "Generatore di codici a barre online gratuito con anteprima in tempo reale — senza registrazione. Genera codici a barre professionali pronti per la stampa in pochi secondi, con elaborazione istantanea direttamente nel browser. Compatibile con i principali formati utilizzati nel commercio e nell'industria, garantendo alta qualità e lettura precisa su etichette, imballaggi e documenti.\n\nIdeale per etichette di prodotti, controllo delle scorte, logistica, spedizioni, tracciamento e organizzazione aziendale. Personalizza dimensioni, testi e modelli di stampa in modo semplice, rapido e sicuro — senza installare software.",
 
     data: "Dati del codice",
     text: "Codice",
@@ -903,8 +918,11 @@ defineI18nRoute({
     faq_2_q: "Posso stampare il codice a barre generato?",
     faq_2_a: "Sì. Scarica l'immagine PNG di alta qualità e stampala. Consigliamo di testare la lettura con uno scanner prima di stampare in grandi quantità.",
     faq_3_q: "Qual è la differenza tra CODE128 A, B e C?",
-    faq_3_a: "Sono sottotipi che optimizzano la codifica dei dati: 'A' per maiuscole e caratteri di controllo, 'B' per minuscole e numeri, e 'C' per coppie numeriche (molto compatto).",
-
+    faq_3_a: "Sono sottotipi che ottimizzano la codifica dei dati: 'A' per maiuscole e caratteri di controllo, 'B' per minuscole e numeri, e 'C' per coppie numeriche (molto compatto).",
+    faq_4_q: "Quale formato di codice a barre dovrei usare?",
+    faq_4_a: "CODE128 funziona per la maggior parte degli usi interni e logistici. EAN-13 è lo standard per le etichette di prodotti al dettaglio. UPC-A è comune in Nord America. ITF-14 è per imballaggi esterni. In caso di dubbio, usa CODE128.",
+    faq_5_q: "Posso generare un codice a barre EAN-13 gratis?",
+    faq_5_a: "Sì. Seleziona EAN-13 nella lista dei formati, inserisci il tuo numero a 12 o 13 cifre e il codice a barre viene generato istantaneamente.",
     see1: "Selettore di Emoji",
     see2: "Generatore di Codice QR",
     see3: "Colori Casuali",
@@ -912,10 +930,10 @@ defineI18nRoute({
   },
   id: {
     title: "Generator Barcode",
-    page_title: "Generator Barcode - Buat Barcode Online Gratis",
-    meta: "Generator barcode online dan gratis. Buat label dalam CODE128, EAN-13, UPC, CODE39 dan banyak lagi. Sesuaikan dan unduh sebagai gambar PNG tanpa registrasi.",
+    page_title: "Generator Barcode — Buat Barcode Online Gratis",
+    meta: "Generator barcode online dan gratis. Buat label dalam CODE128, EAN-13, UPC, CODE39 dan lebih dari 20 format. Unduh sebagai gambar PNG tanpa registrasi.",
     og_title: "Generator Barcode Online Gratis",
-    intro: "Hasilkan barcode profesional yang siap dicetak, dengan pemrosesan lokal instan. Ideal untuk label produk, kontrol stok, dan logistik, dengan pratinjau waktu nyata dan validasi format.",
+    intro: "Pembuat barcode online gratis dengan pratinjau waktu nyata — tanpa pendaftaran. Hasilkan barcode profesional yang siap dicetak dalam hitungan detik, dengan pemrosesan instan langsung di browser Anda. Kompatibel dengan format utama yang digunakan dalam perdagangan dan industri, memastikan kualitas tinggi dan pembacaan yang presisi pada label, kemasan, dan dokumen.\n\nSangat cocok untuk label produk, kontrol stok, logistik, pengiriman, pelacakan, dan organisasi bisnis. Sesuaikan ukuran, teks, dan pola pencetakan dengan cara yang mudah, cepat, and aman — tanpa perlu menginstal aplikasi.",
 
     data: "Data Barcode",
     text: "Kode",
@@ -995,7 +1013,10 @@ defineI18nRoute({
     faq_2_a: "Ya. Unduh gambar PNG berkualitas tinggi dan cetak. Kami menyarankan untuk menguji pembacaan dengan pemindai sebelum mencetak dalam jumlah besar.",
     faq_3_q: "Apa perbedaan antara CODE128 A, B, dan C?",
     faq_3_a: "Ini adalah sub-tipe yang mengoptimalkan pengkodean data: 'A' untuk huruf besar dan karakter kontrol, 'B' untuk huruf kecil dan angka, dan 'C' untuk pasangan numerik (sangat ringkas).",
-
+    faq_4_q: "Format barcode apa yang harus saya gunakan?",
+    faq_4_a: "CODE128 cocok untuk sebagian besar penggunaan internal dan logistik. EAN-13 adalah standar untuk label produk ritel. UPC-A umum di Amerika Utara. ITF-14 untuk kemasan luar. Jika ragu, gunakan CODE128.",
+    faq_5_q: "Bisakah saya membuat barcode EAN-13 secara gratis?",
+    faq_5_a: "Ya. Pilih EAN-13 di daftar format, masukkan nomor 12 atau 13 digit Anda dan barcode langsung dibuat.",
     see1: "Pemilih Emoji",
     see2: "Generator Kode QR",
     see3: "Warna Acak",
@@ -1003,10 +1024,10 @@ defineI18nRoute({
   },
   de: {
     title: "Barcode-Generator",
-    page_title: "Barcode-Generator - Kostenlos online Barcodes erstellen",
-    meta: "Kostenloser Online-Barcode-Generator. Erstellen Sie Etiketten in CODE128, EAN-13, UPC, CODE39 und mehr. Anpassen und als PNG-Bild herunterladen ohne Registrierung.",
+    page_title: "Barcode-Generator — Kostenlos online Barcodes erstellen",
+    meta: "Kostenloser Online-Barcode-Generator. Erstellen Sie Etiketten in CODE128, EAN-13, UPC, CODE39 und über 20 Formaten. Download als PNG ohne Registrierung.",
     og_title: "Kostenloser Online-Barcode-Generator",
-    intro: "Erstellen Sie professionelle Barcodes für den Druck mit sofortiger lokaler Verarbeitung. Ideal für Produktetiketten, Bestandskontrolle und Logistik, mit Echtzeit-Vorschau und Formatvalidierung.",
+    intro: "Kostenloser Online-Barcode-Generator mit Echtzeit-Vorschau — ohne Registrierung. Erstellen Sie professionelle Barcodes druckfertig in Sekundenschnelle mit sofortiger Verarbeitung direkt im Browser. Kompatibel mit den wichtigsten in Handel und Industrie verwendeten Formaten, um eine hohe Qualität und präzise Lesbarkeit auf Etiketten, Verpackungen und Dokumenten zu gewährleisten.\n\nIdeal für Produktetiketten, Bestandskontrolle, Logistik, Versand, Sendungsverfolgung und die geschäftliche Organisation. Passen Sie Größen, Texte und Druckmuster einfach, schnell und sicher an — ohne Softwareinstallation.",
 
     data: "Barcode-Daten",
     text: "Code",
@@ -1073,11 +1094,11 @@ defineI18nRoute({
     type_code128: "CODE128 und Varianten A, B und C: kompaktes und vielseitiges Format für Text, Zahlen, interne Etiketten und Logistik.",
     type_ean: "EAN-13 und EAN-8: der internationale Standard für Einzelhandelsprodukte in Supermärkten.",
     type_upc: "UPC-A: gängiger Standard in Nordamerika für Konsumgüter.",
-    type_code39: "CODE39: in Industrie und Regierung weit verbreitet für alphanumerische Daten.",
-    type_itf: "ITF (Interleaved 2 of 5): üblich für die Nummerierung von Kartons und Paketen in der Logistik.",
-    type_msi: "MSI: wird hauptsächlich für die Regaletikettierung und Inventur im Einzelhandel verwendet.",
-    type_pharma: "Pharmacode: in der Pharmaindustrie zur Verpackungskontrolle verwendet.",
-    type_codabar: "Codabar: verwendet in Blutbanken, Bibliotheken und einigen Versandformularen.",
+    type_code39: "CODE39: In Industrie und Regierung weit verbreitet für alphanumerische Daten.",
+    type_itf: "ITF (Interleaved 2 of 5): Üblich für die Nummerierung von Kartons und Paketen in der Logistik.",
+    type_msi: "MSI: Wird hauptsächlich für die Regaletikettierung und Inventur im Einzelhandel verwendet.",
+    type_pharma: "Pharmacode: In der Pharmaindustrie zur Verpackungskontrolle verwendet.",
+    type_codabar: "Codabar: Wird in Blutbanken, Bibliotheken und einigen Versandformularen verwendet.",
 
     faq_title: "Häufig gestellte Fragen",
     faq_1_q: "Warum wird der Barcode nicht generiert?",
@@ -1086,7 +1107,10 @@ defineI18nRoute({
     faq_2_a: "Ja. Laden Sie das hochwertige PNG-Bild herunter und drucken Sie es aus. Wir empfehlen, das Lesen mit einem Scanner zu testen, bevor Sie in großen Mengen drucken.",
     faq_3_q: "Was ist der Unterschied zwischen CODE128 A, B und C?",
     faq_3_a: "Es handelt sich um Untertypen, die die Datencodierung optimieren: 'A' für Großbuchstaben und Steuerzeichen, 'B' für Kleinbuchstaben und Zahlen und 'C' für reine Zahlenpaare (sehr kompakt).",
-
+    faq_4_q: "Welches Barcode-Format sollte ich verwenden?",
+    faq_4_a: "CODE128 eignet sich für die meisten internen und logistischen Anwendungen. EAN-13 ist der Standard für Produktetiketten im Einzelhandel. UPC-A ist in Nordamerika verbreitet. ITF-14 ist für Außenverpackungen. Im Zweifelsfall verwenden Sie CODE128.",
+    faq_5_q: "Kann ich einen EAN-13-Barcode kostenlos erstellen?",
+    faq_5_a: "Ja. Wählen Sie EAN-13 in der Formatliste, geben Sie Ihre 12- oder 13-stellige Nummer ein und der Barcode wird sofort erstellt.",
     see1: "Emoji-Auswahl",
     see2: "QR-Code-Generator",
     see3: "Zufällige Farben",
@@ -1094,10 +1118,10 @@ defineI18nRoute({
   },
   nl: {
     title: "Barcode Generator",
-    page_title: "Barcode Generator - Maak Gratis Barcodes Online",
-    meta: "Gratis online barcode generator. Maak labels in CODE128, EAN-13, UPC, CODE39 en meer. Pas aan en download als PNG-afbeelding zonder registratie.",
+    page_title: "Barcode Generator — Maak Gratis Barcodes Online",
+    meta: "Gratis online barcode generator. Maak labels in CODE128, EAN-13, UPC, CODE39 en meer dan 20 formaten. Download als PNG-afbeelding zonder registratie.",
     og_title: "Gratis Online Barcode Generator",
-    intro: "Genereer professionele barcodes klaar voor afdrukken, met directe lokale verwerking. Ideaal voor productlabels, voorraadbeheer en logistiek, met realtime voorbeeld en formaatvalidatie.",
+    intro: "Gratis online barcode generator met realtime voorbeeld — zonder registratie. Genereer binnen enkele seconden professionele barcodes die klaar zijn voor afdrukken, met directe verwerking in uw browser. Compatibel met de belangrijkste formaten die in de handel en industrie worden gebruikt, wat zorgt voor hoge kwaliteit en nauwkeurige aflezing op labels, verpakkingen en documenten.\n\nIdeaal voor productlabels, voorraadbeheer, logistiek, verzending, tracking en bedrijfsorganisatie. Pas formaten, teksten en afdrukpatronen eenvoudig, snel en veilig aan — zonder software te installeren.",
 
     data: "Barcode Gegevens",
     text: "Code",
@@ -1177,11 +1201,102 @@ defineI18nRoute({
     faq_2_a: "Ja. Download de hoogwaardige PNG-afbeelding en druk deze af. We raden aan om het lezen met een scanner te testen voordat u grote hoeveelheden afdrukt.",
     faq_3_q: "Wat is het verschil tussen CODE128 A, B en C?",
     faq_3_a: "Het zijn subtypen die de gegevenscodering optimaliseren: 'A' voor hoofdletters en controletekens, 'B' voor kleine letters en cijfers, en 'C' voor alleen numerieke paren (zeer compact).",
-
+    faq_4_q: "Welk barcodeformaat moet ik gebruiken?",
+    faq_4_a: "CODE128 werkt voor de meeste interne en logistieke toepassingen. EAN-13 is de standaard voor productlabels in de detailhandel. UPC-A is gebruikelijk in Noord-Amerika. ITF-14 is voor buitenverpakkingen. Gebruik bij twijfel CODE128.",
+    faq_5_q: "Kan ik gratis een EAN-13-barcode genereren?",
+    faq_5_a: "Ja. Selecteer EAN-13 in de formaatlijst, voer uw 12- of 13-cijferig nummer in en de barcode wordt direct gegenereerd.",
     see1: "Emoji-kiezer",
-    see2: "QR Code Generator",
+    see2: "QR-code generator",
     see3: "Willekeurige kleuren",
     see4: "Dominante kleuren van de afbeelding"
+  },
+  ru: {
+    title: "Генератор штрихкодов",
+    page_title: "Бесплатный онлайн-генератор штрихкодов",
+    meta: "Бесплатный онлайн-генератор штрихкодов. Создавайте этикетки в форматах CODE128, EAN-13, UPC, CODE39 и еще более чем 20 стандартах. Быстрый и удобный инструмент с предпросмотром в реальном времени.",
+    og_title: "Бесплатный онлайн-генератор штрихкодов",
+    intro: "Бесплатный онлайн-генератор и конструктор штрихкодов с предварительным просмотром в реальном времени. Без регистрации. Создавайте профессиональные штрихкоды, готовые к печати, за считанные секунды прямо в браузере. Инструмент поддерживает все основные форматы, используемые в торговле, логистике и промышленности, обеспечивая высокое качество изображения для безошибочного считывания сканерами.\n\nИдеально подходит для маркировки товаров, инвентаризации, логистики, отправки посылок, отслеживания отправлений и автоматизации бизнеса. Настраивайте размеры, текст и параметры печати простым, быстрым и безопасным способом без установки дополнительных программ.",
+    data: "Данные штрихкода",
+    text: "Код",
+    text_placeholder: "Введите значение штрихкода",
+    format: "Формат",
+    dimensions: "Размеры",
+    width: "Ширина штрихов",
+    height: "Высота",
+    margin: "Внешние отступы",
+    text_margin: "Отступ текста",
+    styles: "Текст и оформление",
+    display: "Отображать закодированное значение",
+    font: "Шрифт",
+    font_options: "Стиль шрифта",
+    normal: "Обычный",
+    bold: "Полужирный",
+    italic: "Курсив",
+    bold_italic: "Полужирный курсив",
+    font_size: "Размер шрифта",
+    text_position: "Положение текста",
+    bottom: "Снизу",
+    top: "Сверху",
+    text_align: "Выравнивание",
+    left: "По левому краю",
+    center: "По центру",
+    right: "По правому краю",
+    colors: "Цвета",
+    background: "Цвет фона",
+    line_color: "Цвет штрихов",
+    preview: "Предпросмотр",
+    preview_alt: "Предпросмотр сгенерированного штрихкода",
+    scan_tip: "Совет: используйте высокую контрастность между штрихами и фоном. Обязательно протестируйте считывание кода мобильным телефоном или ручным сканером перед запуском тиража.",
+    error: "содержит недопустимые символы для выбранного формата штрихкода",
+    filename: "Штрихкод",
+    download_success: "Штрихкод успешно скачан.",
+    features_title: "Возможности генератора штрихкодов",
+    feature_1: "Поддержка более 20 стандартов: CODE128, EAN, UPC, CODE39, CODE93, ITF, MSI, Pharmacode и Codabar.",
+    feature_2: "Тонкая настройка высоты, ширины линий, отступов, шрифта, размера и расположения подписи.",
+    feature_3: "Выбор любого цвета для штрихов и фона с мгновенным обновлением на экране.",
+    feature_4: "Скачивание в высоком качестве PNG для четкой печати на принтерах этикеток и документов.",
+    use_cases_title: "Сферы применения штрихкодов",
+    use_cases_desc: "Штрихкоды необходимы для быстрой, безошибочной и стандартизированной идентификации объектов с помощью обычных сканеров или мобильных устройств.",
+    uc_1_title: "Продукция и розничная торговля",
+    uc_1_desc: "Создавайте коды для товарных ярлыков, упаковки и тестового внесения в базы данных. Для коммерческих продуктов используйте стандарты, принятые в вашей торговой сети или маркетплейсе.",
+    uc_2_title: "Складской учет и инвентаризация",
+    uc_2_desc: "Применяйте форматы CODE128, CODE39, ITF или MSI для маркировки стеллажей, оборудования, комплектующих, ящиков и отслеживания внутренних перемещений.",
+    uc_3_title: "Билеты, квитанции и мероприятия",
+    uc_3_desc: "Генерируйте штрихкоды для бейджей, ваучеров, браслетов, транспортных накладных и автоматического контроля доступа на входе.",
+    uc_4_title: "Логистика и доставка",
+    uc_4_desc: "Используйте такие форматы, как ITF-14 и CODE128, на транспортных коробах для сортировки, отслеживания пути посылок и контроля отгрузок.",
+    how_to_title: "Как создать штрихкод",
+    how_1_title: "Введите данные",
+    how_1_desc: "Введите числовое значение или текст. Пожалуйста, помните, что каждый стандарт имеет свои правила к длине и типу вводимых знаков.",
+    how_2_title: "Выберите нужный формат",
+    how_2_desc: "Выберите подходящий формат в зависимости от вашей бизнес-задачи.",
+    how_3_title: "Настройте и скачайте",
+    how_3_desc: "Скорректируйте размеры, цвета и подпись штрихкода. Когда всё готово, скачайте файл в формате PNG высокого разрешения.",
+    types_title: "Поддерживаемые виды штрихкодов",
+    types_desc: "Каждый стандарт штрихкодирования разработан под определенные требования торговли или логистики.",
+    type_code128: "CODE128 и его подтипы A, B, C: компактный и универсальный стандарт для кодирования букв, цифр, внутренних складских ярлыков и логистики.",
+    type_ean: "EAN-13 и EAN-8: международные форматы для идентификации штучных товаров на кассах магазинов и супермаркетов.",
+    type_upc: "UPC-A: распространенный стандарт маркировки потребительских товаров в Северной Америке.",
+    type_code39: "CODE39: популярный промышленный и государственный стандарт для хранения буквенно-цифровых данных.",
+    type_itf: "ITF (Interleaved 2 of 5): часто применяется в логистике для маркировки групповых упаковок и коробок.",
+    type_msi: "MSI: используется преимущественно для маркировки ценников, полок и проведения инвентаризации в розничной сети.",
+    type_pharma: "Pharmacode: специализированный стандарт фармацевтической промышленности для контроля упаковки медицинских препаратов.",
+    type_codabar: "Codabar: используется в банках крови, библиотеках и на некоторых бланках отправлений.",
+    faq_title: "Часто задаваемые вопросы",
+    faq_1_q: "Почему не создается штрихкод?",
+    faq_1_a: "Проверьте, соответствуют ли введенные данные выбранному формату. Например, стандарты EAN и UPC принимают строго только цифры.",
+    faq_2_q: "Можно ли распечатать готовый штрихкод?",
+    faq_2_a: "Да. Скачайте PNG-изображение высокого качества и отправьте на печать. Мы настоятельно рекомендуем проверить считывание кода мобильным телефоном или ручным сканером перед запуском тиража.",
+    faq_3_q: "В чем разница между CODE128 A, B и C?",
+    faq_3_a: "Это разные режимы кодирования в одном формате: «A» оптимизирован для заглавных букв и управляющих символов, «B» поддерживает строчные буквы и цифры, а «C» сжимает пары цифр (наиболее компактный вариант для числовых данных).",
+    faq_4_q: "Какой формат штрихкода выбрать?",
+    faq_4_a: "Для большинства внутренних нужд и логистики идеально подходит CODE128. EAN-13 используется для розничной продажи штучных товаров. UPC-A применяется в США и Канаде. ITF-14 нужен для групповых коробок. Если вы сомневаетесь, выбирайте универсальный CODE128.",
+    faq_5_q: "Можно ли сгенерировать штрихкод EAN-13 бесплатно?",
+    faq_5_a: "Да. Просто выберите формат EAN-13 из списка, укажите ваш 12-значный или 13-значный номер, и штрихкод сразу же появится на экране.",
+    see1: "Выбор эмодзи",
+    see2: "Генератор QR-кодов",
+    see3: "Случайные цвета",
+    see4: "Доминантные цвета изображения"
   }
 }
 </i18n>

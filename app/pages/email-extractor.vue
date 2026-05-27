@@ -65,7 +65,8 @@ defineI18nRoute({
     it: '/estrattore-di-email',
     id: '/ekstraktor-email',
     de: '/email-extraktor',
-    nl: '/e-mailextractor'
+    nl: '/e-mailextractor',
+    ru: '/ekstraktor-email'
   }
 })
 </script>
@@ -178,9 +179,9 @@ defineI18nRoute({
 <i18n lang="yaml">
 {
     en: {
-        title: "Email Extractor",
-        meta: "Extract multiple email addresses automatically from any text with our online Email Extractor.",
-        desc: "Need to extract dozens of contacts hidden inside a large block of text or data? Our Email Extractor makes that easy. Just paste or drag your content into the box, choose your preferred separator for the output list (comma, line break, semicolon, or pipe), and click 'Extract'. The tool automatically finds valid email addresses, removes duplicates, and generates a clean, ready-to-use list.",
+        title: "Free Email Extractor Online — Extract Emails from Text",
+        meta: "Free online email extractor tool. Automatically extract emails from any text, remove duplicates, and export a clean list instantly.",
+        desc: "Need to extract emails from text, HTML pages, or large data files? Our free online Email Extractor makes that easy. Just paste or drag your content into the box, choose your preferred separator for the output list (comma, line break, semicolon, or pipe), and click 'Extract'. The tool automatically finds all valid email addresses, removes duplicates, and generates a clean, ready-to-use list.",
         how_to_use_title: "How to use",
         step_1_title: "Input Text",
         step_1_desc: "Paste your text or drag a file into the input box.",
@@ -204,7 +205,7 @@ defineI18nRoute({
         pipe: "Pipe",
         res: "Result",
         features_title: "Features",
-        f_1: "Extract all valid email addresses from any text automatically",
+        f_1: "Extract emails from any text automatically — fast and free",
         f_2: "Remove duplicate emails automatically",
         f_3: "Export with comma, line break, semicolon, or pipe separator",
         f_4: "Drag and drop file support",
@@ -214,9 +215,9 @@ defineI18nRoute({
         see4: "Rule of Three"
     },
     pt: {
-        title: "Extrator de E-mails",
-        meta: "Extraia automaticamente múltiplos endereços de e-mail de qualquer texto com nosso Extrator de E-mails online.",
-        desc: "Precisa extrair dezenas de contatos escondidos em um grande bloco de texto ou dados? Nosso Extrator de E-mails facilita esse trabalho. Basta colar ou arrastar o conteúdo, escolher o separador da lista de saída (vírgula, quebra de linha, ponto e vírgula ou pipe) e clicar em 'Extrair'. A ferramenta encontra automaticamente todos os e-mails válidos, remove duplicados e gera uma lista limpa e pronta para uso.",
+        title: "Extrair Emails — Extrator de E-mails Online Grátis",
+        meta: "Extraia e-mails de qualquer texto automaticamente com nosso extrator de e-mails online grátis. Remova duplicatas e exporte a lista limpa em segundos.",
+        desc: "Precisa extrair emails de um texto longo, página HTML ou arquivo de dados? Nosso Extrator de E-mails online grátis facilita esse trabalho. Basta colar ou arrastar o conteúdo, escolher o separador da lista de saída (vírgula, quebra de linha, ponto e vírgula ou pipe) e clicar em 'Extrair'. A ferramenta encontra automaticamente todos os e-mails válidos, remove duplicados e gera uma lista limpa e pronta para uso.",
         how_to_use_title: "Como usar",
         step_1_title: "Inserir Texto",
         step_1_desc: "Cole o seu texto ou arraste um arquivo para a caixa de entrada.",
@@ -240,7 +241,7 @@ defineI18nRoute({
         pipe: "Pipe",
         res: "Resultado",
         features_title: "Funcionalidades",
-        f_1: "Extração automática de e-mails de qualquer texto",
+        f_1: "Extraia emails de qualquer texto automaticamente — rápido e grátis",
         f_2: "Remoção automática de e-mails duplicados",
         f_3: "Exportação com vírgula, quebra de linha, ponto e vírgula ou pipe",
         f_4: "Suporte para arrastar e soltar arquivos",
@@ -464,6 +465,42 @@ defineI18nRoute({
         see2: "Lijst-randomizer",
         see3: "Dobbelsteenroller",
         see4: "Regel-van-drie-calculator"
+    },
+    ru: {
+        title: "Экстрактор email-адресов",
+        meta: "Бесплатный онлайн-инструмент для извлечения email. Автоматически извлекайте адреса электронной почты из любого текста, удаляйте дубликаты и мгновенно экспортируйте чистый список.",
+        desc: "Нужно извлечь адреса электронной почты из текста, HTML-страниц или больших файлов данных? Наш бесплатный онлайн-экстрактор email делает это простым. Просто вставьте или перетащите ваш текст в поле ввода, выберите желаемый разделитель для итогового списка (запятая, перенос строки, точка с запятой или вертикальная черта) и нажмите «Извлечь». Инструмент автоматически найдет все корректные адреса электронной почты, удалит дубликаты и сгенерирует чистый, готовый к использованию список.",
+        how_to_use_title: "Как использовать",
+        step_1_title: "Введите текст",
+        step_1_desc: "Вставьте текст или перетащите файл в поле ввода.",
+        step_2_title: "Выберите разделитель",
+        step_2_desc: "Выберите разделитель (запятая, перенос строки и т. д.) и нажмите «Извлечь».",
+        step_3_title: "Скопируйте email",
+        step_3_desc: "Скопируйте чистый список извлеченных адресов электронной почты, готовый к использованию.",
+        use_cases_title: "Примеры использования",
+        use_cases_desc: "Экстрактор email помогает превратить неструктурированный текст в чистый и готовый к использованию список контактов. Он идеально подходит для:",
+        uc_2: "Извлечения адресов электронной почты из длинных HTML-страниц или логов сообщений",
+        uc_4: "Автоматического удаления дубликатов адресов для рассылок",
+        ideal_for_title: "Кому подходит",
+        ideal_for_desc: "Этот инструмент полезен для маркетинга, продаж, поддержки, рекрутинга, обслуживания клиентов, исследований и всех, кому необходимо быстро и точно отделять адреса электронной почты от длинных текстов.",
+        sep: "Разделить с помощью",
+        empty: "Адреса электронной почты не найдены",
+        bt: "Извлечь",
+        plc: "Вставьте текст сюда или перетащите файл",
+        comma: "Запятая",
+        line: "Перенос строки",
+        colon: "Точка с запятой",
+        pipe: "Вертикальная черта (|)",
+        res: "Результат",
+        features_title: "Возможности",
+        f_1: "Автоматическое извлечение email из любого текста — быстро и бесплатно",
+        f_2: "Автоматическое удаление дубликатов адресов",
+        f_3: "Экспорт с разделителем: запятая, перенос строки, точка с запятой или вертикальная черта",
+        f_4: "Поддержка перетаскивания файлов (Drag and Drop)",
+        see1: "Процентный калькулятор",
+        see2: "Сортировщик списков",
+        see3: "Генератор кубиков",
+        see4: "Правило трех"
     }
 }
 </i18n>

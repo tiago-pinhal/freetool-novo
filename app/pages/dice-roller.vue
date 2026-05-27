@@ -88,7 +88,8 @@ defineI18nRoute({
         it: '/lanciatore-di-dadi',
         id: '/lempar-dadu',
         de: '/wuerfelroller',
-        nl: '/dobbelsteenroller'
+        nl: '/dobbelsteenroller',
+        ru: '/brosit-kubik'
     }
 })
 </script>
@@ -276,9 +277,9 @@ defineI18nRoute({
         see4: "Email Extractor"
     },
     pt: {
-        pageTitle: "Dado Virtual Online e Lançador de RPG (D20, D6) | Grátis",
-        title: "Lançador de Dados",
-        meta: "Jogue dados virtuais online grátis. Simulador perfeito para RPG, D&D, jogos de tabuleiro, contendo dados poliedrais D4, D6, D8, D10, D12, D20.",
+        pageTitle: "Dado Virtual Online - Lançador de Dados para RPG e D&D | Grátis",
+        title: "Dado Virtual",
+        meta: "Dado virtual online grátis. Simulador perfeito para RPG, D&D e jogos de tabuleiro, com dados poliedrais D4, D6, D8, D10, D12, D20 e D100.",
         f_1: "Gere números aleatórios de D4 a D100",
         f_2: "Adicione modificadores fixos ao resultado final",
         f_3: "Soma instantânea e resultados animados",
@@ -315,9 +316,9 @@ defineI18nRoute({
         see4: "Extrator de E-mails"
     },
     es: {
-        pageTitle: "Dado Virtual Online y Lanzador de Rol (D20, D6) | Gratis",
-        title: "Lanzador de Dados Virtual",
-        meta: "Lanza dados virtuales gratis online. Simulador perfecto para RPG, D&D y juegos de mesa con dados poliedros D4, D6, D8, D10, D12, D20 y D100.",
+        pageTitle: "Dados Virtuales Online - Lanzador de Dados para Rol y D&D | Gratis",
+        title: "Dados Virtuales",
+        meta: "Dados virtuales gratis online. Simulador perfecto para RPG, D&D y juegos de mesa con dados poliedros D4, D6, D8, D10, D12, D20 y D100.",
         f_1: "Genera números aleatorios de D4 a D100",
         f_2: "Añade modificadores fijos al resultado final",
         f_3: "Suma instantánea y resultados animados",
@@ -471,9 +472,9 @@ defineI18nRoute({
         see4: "Ekstraktor Email"
     },
     de: {
-        pageTitle: "Virtueller Würfelroller online (D&D / RPG) | Kostenlos",
-        title: "Virtueller Würfelroller",
-        meta: "Würfle virtuelle polyedrische Würfel online sofort mit unserem kostenlosen Simulator. Perfekt für D&D, Brettspiele, Zufallsereignisse oder wann immer du schnell einen zuverlässigen D20- oder D6-Würfelroller brauchst.",
+        pageTitle: "Würfel Online - Virtueller Würfelsimulator für D&D und RPG | Kostenlos",
+        title: "Würfel Online",
+        meta: "Würfel online kostenlos. Virtueller Würfelsimulator perfekt für D&D, Brettspiele und Zufallsereignisse, mit polyedrischen Würfeln D4, D6, D8, D10, D12, D20 und D100.",
         f_1: "Zufallszahlen von D4 bis D100 erzeugen",
         f_2: "Feste Modifikatoren zum Endwurf hinzufügen",
         f_3: "Sofortige Summe und animierte Ergebnisse",
@@ -510,9 +511,9 @@ defineI18nRoute({
         see4: "E-Mail-Extraktor"
     },
     nl: {
-        pageTitle: "Online virtuele dobbelsteenroller (D&D / RPG) | Gratis",
-        title: "Virtuele dobbelsteenroller",
-        meta: "Werp direct online virtuele polyedrische dobbelstenen met onze gratis simulator. Perfect voor D&D, bordspellen, willekeurige gebeurtenissen of wanneer je snel een betrouwbare d20- of d6-dobbelsteenroller nodig hebt.",
+        pageTitle: "Dobbelsteen Online - Virtuele Dobbelsteensimulator voor D&D en RPG | Gratis",
+        title: "Dobbelsteen Online",
+        meta: "Dobbelsteen online gratis. Virtuele dobbelsteensimulator perfect voor D&D, bordspellen en willekeurige gebeurtenissen, met polyedrische dobbelstenen D4, D6, D8, D10, D12, D20 en D100.",
         f_1: "Genereer willekeurige getallen van D4 tot D100",
         f_2: "Voeg vaste modifiers toe aan de uiteindelijke worp",
         f_3: "Directe som en geanimeerde resultaten",
@@ -547,6 +548,45 @@ defineI18nRoute({
         see2: "Lijst-randomizer",
         see3: "Regel-van-drie-calculator",
         see4: "E-mailextractor"
+    },
+    ru: {
+        pageTitle: "Виртуальные кубики онлайн — бросить кости для RPG и D&D | Бесплатно",
+        title: "Виртуальные кубики",
+        meta: "Бросайте виртуальные многогранные кубики онлайн с помощью нашего бесплатного симулятора. Отлично подходит для D&D, настольных игр, случайных событий или когда нужен надежный d20 или d6.",
+        f_1: "Генерация случайных чисел для кубиков от D4 до D100",
+        f_2: "Добавление плоских модификаторов к итоговому броску",
+        f_3: "Мгновенное суммирование и анимированные результаты броска",
+        f_4: "100% бесплатно, без необходимости скачивания",
+        features_title: "Возможности",
+        how_to_use_title: "Инструкция",
+        how_desc: "Этот инструмент генерирует случайные результаты с использованием надежных криптографически стойких математических функций вашего браузера. Он идеально имитирует классические настольные многогранные кубики (D4, D6, D8, D10, D12, D20 и D100).",
+        step_1_title: "Выберите тип кубика",
+        step_1_desc: "Выберите стандартный кубик D4, D6, D8, D10, D12, D20 или D100 в меню выбора.",
+        step_2_title: "Настройте бросок",
+        step_2_desc: "Укажите количество кубиков для броска (до 100) и добавьте любые модификаторы в соответствии с правилами вашей игры.",
+        step_3_title: "Бросьте и получите результат",
+        step_3_desc: "Нажмите кнопку «Бросить кубики», чтобы увидеть анимацию броска и мгновенно получить итоговую сумму.",
+        use_cases_title: "Варианты использования",
+        uc1: "Игра в настольные ролевые игры (TTRPG), такие как D&D, Pathfinder, Call of Cthulhu и др., когда под рукой нет физических кубиков.",
+        uc2: "Генерация характеристик новых персонажей (например, бросок 4d6 для определения силы, ловкости и т.д.).",
+        uc3: "Ускорение бросков с большим количеством кубиков урона, когда подсчет суммы 10 или 20 кубиков вручную занимает много времени.",
+        uc4: "Обычные настольные игры, обучение теории вероятностей или простой способ решить, кто сегодня платит за ужин.",
+        faq_title: "Вопросы и ответы",
+        faq1q: "Является ли этот онлайн-бросатель кубиков действительно случайным?",
+        faq1a: "Да. Наш инструмент использует надежные генераторы псевдослучайных чисел, встроенные в современные веб-браузеры. Это гарантирует честное распределение, в точности соответствующее поведению физических кубиков, без каких-либо скрытых весов или предвзятых результатов.",
+        faq2q: "Могу ли я бросить несколько кубиков одновременно (например, 4d6)?",
+        faq2a: "Конечно. Просто укажите необходимое количество в поле «Количество кубиков». Симулятор бросит их все одновременно и автоматически посчитает общую сумму для вашего удобства.",
+        faq3q: "Что делает поле «Модификатор»?",
+        faq3a: "В ролевых играх к броску часто требуется добавить плоский бонус или штраф (например, 1d20 + 4). При указании значения в поле «Модификатор» калькулятор автоматически применит это математическое действие к итоговому результату.",
+        dice_type: "Тип кубика",
+        amount: "Количество кубиков",
+        modifier: "Модификатор (+/-)",
+        bt: "Бросить кубики",
+        ready: "Готово к броску",
+        see1: "Калькулятор процентов",
+        see2: "Рандомизатор списков",
+        see3: "Правило трех",
+        see4: "Экстрактор email"
     }
 }
 </i18n>
