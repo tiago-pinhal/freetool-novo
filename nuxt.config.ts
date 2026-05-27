@@ -5,11 +5,23 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: false },
 
-  nitro: {
-    preset: 'static',
-    prerender: {
-      concurrency: 5
+  runtimeConfig: {
+    public: {
+      gtmId: process.env.NUXT_PUBLIC_GTM_ID || 'GTM-PDBB7DS'
     }
+  },
+
+  nitro: {
+    preset: 'cloudflare-pages-static',
+    prerender: {
+      concurrency: 6,
+      crawlLinks: true,
+      routes: ['/']
+    }
+  },
+
+  features: {
+    inlineStyles: true
   },
 
   modules: ['@nuxtjs/i18n', '@nuxt/scripts', '@nuxtjs/sitemap'],
@@ -37,7 +49,11 @@ export default defineNuxtConfig({
         { name: 'author', content: 'Tiago A. M. Pinhal' }
       ],
       link: [
-        { rel: 'preconnect', href: 'https://api.iconify.design' }
+        { rel: 'preconnect', href: 'https://api.iconify.design' },
+        { rel: 'preconnect', href: 'https://pagead2.googlesyndication.com', crossorigin: '' },
+        { rel: 'preconnect', href: 'https://fundingchoicesmessages.google.com', crossorigin: '' },
+        { rel: 'dns-prefetch', href: 'https://www.googletagmanager.com' },
+        { rel: 'dns-prefetch', href: 'https://googleads.g.doubleclick.net' }
       ]
     }
   },
@@ -95,6 +111,11 @@ export default defineNuxtConfig({
         code: 'nl',
         name: 'Nederlands',
         language: 'nl'
+      },
+      {
+        code: 'ru',
+        name: 'Русский',
+        language: 'ru'
       }
     ],
     defaultLocale: 'en',
