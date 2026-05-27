@@ -34,6 +34,11 @@ export default defineNuxtConfig({
     zeroRuntime: true
   },
 
+  sourcemap: {
+    server: false,
+    client: false
+  },
+
   vite: {
     plugins: [tailwindcss() as any],
   },
