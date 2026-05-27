@@ -12,7 +12,12 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'cloudflare-pages'
+    preset: 'cloudflare-pages-static',
+    prerender: {
+      concurrency: 2,
+      crawlLinks: true,
+      routes: ['/']
+    }
   },
 
   features: {
